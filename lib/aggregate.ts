@@ -2,93 +2,125 @@ import { Scan, MovieAggregate, MovieMetadata } from '../types';
 import { slugify } from './utils';
 import { DEFAULT_POSTER } from '../constants';
 
-// --- ROBUST LEXICON MODEL ---
+// --- KOLLYWOOD / INDIAN CINEMA LEXICON ---
 
-const TIER_S_POSITIVE = ['masterpiece', 'extraordinary', 'phenomenal', 'perfect', '10/10', 'classic', 'breathtaking', 'spectacular', 'landmark', 'top tier', 'goated'];
-const TIER_A_POSITIVE = ['excellent', 'amazing', 'great', 'brilliant', 'superb', 'fantastic', 'awesome', 'wonderful', 'highly recommend', 'must watch', 'thrilling'];
-const TIER_B_POSITIVE = ['good', 'solid', 'enjoyable', 'fun', 'entertaining', 'decent', 'worth watching', 'fresh', 'engaging', 'satisfying', 'nice'];
+// "Sambavam" Tier - Absolute Peak
+const TIER_S_GOD = ['masterpiece', 'vera level', 'sambavam', 'cult classic', 'industry hit', 'perfect', 'blast', 'extraordinary', 'world class', 'goated', 'peak cinema'];
 
-const TIER_C_MIXED = ['mixed', 'average', 'okay', 'one time', 'passable', 'mediocre', 'cliché', 'formulaic', 'predictable', 'fine', 'flawed'];
+// "Mass" Tier - High Energy / Theatre Experience
+const TIER_A_MASS = ['goosebumps', 'fire', 'thala', 'thalapathy', 'superstar', 'celebration', 'festival', 'adrenalin', 'theatre experience', 'banger', 'on loop', 'hukum', 'engaging', 'racy'];
 
-const TIER_D_NEGATIVE = ['bad', 'boring', 'dull', 'slow', 'disappointing', 'weak', 'skippable', 'mess', 'confusing', 'underwhelming', 'generic'];
-const TIER_F_NEGATIVE = ['terrible', 'disaster', 'awful', 'waste', 'worst', 'garbage', 'rotten', 'torture', 'unbearable', 'horrible', 'trash', 'cringe'];
+// "Good" Tier - Solid Watch
+const TIER_B_GOOD = ['good', 'neat', 'clean', 'emotional', 'gripping', 'solid', 'super', 'enjoyable', 'worth', 'screenplay', 'comeback'];
 
-// Modifiers that dampen or boost sentiment
-const MODIFIERS_DOWN = ['but', 'however', 'although', 'except', 'despite', 'little', 'bit'];
-const MODIFIERS_UP = ['very', 'really', 'absolutely', 'extremely', 'highly', 'truly'];
+// "Mid" Tier - The "One Time Watch" Trap
+const TIER_C_MID = ['one time watch', 'average', 'mixed', 'okay', 'decent', 'passable', 'template', 'predictable', 'usual', 'commercial', 'pass time'];
+
+// "Lag" Tier - The Audience Killer
+const TIER_D_BAD = ['lag', 'drag', 'slow', 'boring', 'lengthy', 'flat', 'disappointed', 'weak', 'generic', 'logic', 'logicless', 'old wine'];
+
+// "Cringe" Tier - Disaster
+const TIER_F_DISASTER = ['cringe', 'serial', 'headache', 'torture', 'worst', 'waste', 'terrible', 'horrible', 'irritating', 'outdated', 'mockery'];
 
 // --- SCORING ENGINE ---
 
 /**
- * Analyzes text and returns a granular score (0-100).
- * This allows "Positive" reviews to range from 70 to 95 based on word choice.
+ * Analyzes text specifically for Indian Cinema nuances.
+ * @param text The review summary or comment
+ * @param isAudience If true, prioritizes "Mass" elements over "Logic"
  */
-const calculateTextNuance = (text: string): number => {
+const calculateIndianCinemaScore = (text: string, isAudience: boolean): number => {
     if (!text) return 50;
     const lower = text.toLowerCase();
     
-    let score = 50;
-    let hits = 0;
+    // Start at a neutral 50
+    let score = 50; 
+    let detectedKeywords = 0;
 
-    // Helper to scan layers
-    const scanLayer = (words: string[], impact: number) => {
-        let layerHits = 0;
+    const scan = (words: string[], impact: number) => {
         words.forEach(w => {
             if (lower.includes(w)) {
                 score += impact;
-                layerHits++;
+                detectedKeywords++;
             }
         });
-        return layerHits;
     };
 
-    // Apply Weights
-    hits += scanLayer(TIER_S_POSITIVE, 15);  // Massive boost
-    hits += scanLayer(TIER_A_POSITIVE, 10);  // Big boost
-    hits += scanLayer(TIER_B_POSITIVE, 5);   // Small boost
-    
-    hits += scanLayer(TIER_C_MIXED, -2);     // Slight drag
-    
-    hits += scanLayer(TIER_D_NEGATIVE, -8);  // Big drag
-    hits += scanLayer(TIER_F_NEGATIVE, -15); // Massive drag
+    // 1. "One Time Watch" Check (The Great Equalizer)
+    // If a movie is explicitly called "one time watch", it rarely exceeds 65 or drops below 45.
+    if (lower.includes('one time watch') || lower.includes('once watchable')) {
+        return isAudience ? 58 : 52;
+    }
 
-    // If no specific keywords found, return neutral
-    if (hits === 0) return 50;
+    // 2. Apply Tier Weights
+    if (isAudience) {
+        // Audience values Hype/Mass more
+        scan(TIER_S_GOD, 20);
+        scan(TIER_A_MASS, 15); // "Goosebumps" matters more to fans
+        scan(TIER_B_GOOD, 8);
+        scan(TIER_C_MID, -2);
+        scan(TIER_D_BAD, -12); // "Lag" hurts audience score massively
+        scan(TIER_F_DISASTER, -20);
+    } else {
+        // Critics value Making/Screenplay more
+        scan(TIER_S_GOD, 15);
+        scan(TIER_A_MASS, 5);  // Critics care less about "Mass"
+        scan(TIER_B_GOOD, 10); // Critics like "Neat/Gripping"
+        scan(TIER_C_MID, -5);
+        scan(TIER_D_BAD, -10);
+        scan(TIER_F_DISASTER, -15);
+    }
 
-    // Clamp score 0-100
-    return Math.max(0, Math.min(100, score));
+    // 3. Contextual Adjustments
+    
+    // The "Lag" Factor: Even good movies lose points if they lag
+    if (lower.includes('second half lag') || lower.includes('lengthy')) {
+        score -= isAudience ? 15 : 10;
+    }
+
+    // The "Family" Safety Net: Family movies rarely flop with audience
+    if (lower.includes('family audience') || lower.includes('kids')) {
+        score += isAudience ? 10 : 5;
+    }
+
+    // The "Logic" Factor: Critics hate no logic, Fans often forgive it
+    if (lower.includes('logic')) {
+        if (!isAudience) score -= 8; // Critics penalize
+        // Audience doesn't penalize logic unless it's boring
+    }
+
+    // 4. Default drift if no keywords found
+    if (detectedKeywords === 0) return 50;
+
+    return Math.max(10, Math.min(98, score));
 };
 
-/**
- * Combines the explicit label (Anchor) with the text nuance (Shift).
- * @param sentiment The label (Positive/Negative/etc)
- * @param text The summary text
- * @returns An integer score (e.g., 76)
- */
-const getHybridScore = (sentiment: string | undefined, text: string): number => {
-    let anchor = 50; // Default Neutral
-
-    // 1. Establish Anchor based on explicit label
+const getHybridScore = (sentiment: string | undefined, text: string, isAudience: boolean): number => {
+    // 1. Base Anchor from Label (If available)
+    let anchor = 50;
     const s = (sentiment || '').toLowerCase();
+    
+    // Adjusted Anchors for Indian Context
     if (s.includes('positive')) anchor = 75;
-    else if (s.includes('negative')) anchor = 35;
-    else if (s.includes('mixed')) anchor = 55;
+    else if (s.includes('negative')) anchor = 35; // Indian critics are harsh when negative
+    else if (s.includes('mixed')) anchor = 55;    // Mixed usually means "Average"
     else if (s.includes('neutral')) anchor = 50;
 
-    // 2. Calculate Nuance from text (0-100 scale, usually centers around 50)
-    const nuanceScore = calculateTextNuance(text);
-    const nuanceShift = nuanceScore - 50; // e.g., +15 or -10
+    // 2. Calculate Contextual Shift
+    const calculatedScore = calculateIndianCinemaScore(text, isAudience);
+    
+    // 3. Merge: 
+    // If Audience: Trust the text (feelings) more than the label.
+    // If Critic: Trust the label (verdict) more than the text.
+    const blendFactor = isAudience ? 0.7 : 0.4; // How much text overrides label
+    
+    let finalScore = (anchor * (1 - blendFactor)) + (calculatedScore * blendFactor);
 
-    // 3. Apply Shift to Anchor
-    // We weight the Anchor heavier (70%) because the label is the reviewer's final verdict,
-    // but we allow the text to sway it (30%) to create granularity.
-    let finalScore = anchor + (nuanceShift * 0.8);
-
-    // 4. Hard Clamps based on Label to prevent "Good" reviews becoming "Rotten"
+    // 4. Sanity Clamps
     if (s.includes('positive')) finalScore = Math.max(60, finalScore);
-    if (s.includes('negative')) finalScore = Math.min(49, finalScore);
+    if (s.includes('negative')) finalScore = Math.min(50, finalScore);
 
-    return Math.round(Math.max(10, Math.min(98, finalScore)));
+    return Math.round(finalScore);
 };
 
 // --- AGGREGATION LOGIC ---
@@ -106,24 +138,19 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
 
   for (const [subject, movieScans] of Object.entries(grouped)) {
     const uniqueReviewers = new Set(movieScans.map(s => s.reviewer_name)).size;
-    
-    // Sort by date desc
     movieScans.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
-    // Identify Primary Scan (Best Thumbnail + Earliest Date) for Poster/Release Date
     const chronologicalScans = [...movieScans].sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
     const primaryScan = chronologicalScans.find(s => s.thumbnail && s.thumbnail.startsWith('http')) || chronologicalScans[0];
 
     const releaseDate = primaryScan.created_at;
     const lastScanned = movieScans[0].created_at; 
 
-    // --- ACCUMULATORS ---
+    // Accumulators
     let criticSum = 0;
     let criticCount = 0;
-    
     let audienceSum = 0;
     let audienceCount = 0;
-
     const allTopics: string[] = [];
 
     movieScans.forEach(scan => {
@@ -131,87 +158,77 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       const mode = (scan.mode || 'REVIEWER').toUpperCase();
       const isCommentsMode = mode === 'COMMENTS';
 
-      // Gather Text for Analysis
       const summaryText = r.overallSummary || r.summary || r.sentimentDescription || "";
       const sentimentLabel = r.sentiment || 'Neutral';
 
-      // 1. CALCULATE CRITIC SCORE (Source: Reviewer Video)
+      // --- CRITIC CALCULATION ---
       if (!isCommentsMode) {
-          const score = getHybridScore(sentimentLabel, summaryText);
+          // Critics look for technicality, screenplay, and story
+          const score = getHybridScore(sentimentLabel, summaryText, false);
           criticSum += score;
           criticCount++;
+          
+          // --- AUDIENCE INFERENCE FROM CRITIC (If actual comments missing) ---
+          // Critics might hate a "Masala" movie, but they usually admit "Fans will enjoy this".
+          // We extract that admission to boost the audience score.
+          let inferredAudienceScore = getHybridScore(sentimentLabel, summaryText, true); // Use Audience weighting
+          
+          // Adjust Inference based on Reviewer's "Fan Service" admission
+          const lowerSum = summaryText.toLowerCase();
+          if (lowerSum.includes('fan moments') || lowerSum.includes('celebration') || lowerSum.includes('mass')) {
+              inferredAudienceScore = Math.max(inferredAudienceScore, 75); // Floor it at 75 if it's a celebration
+          }
+          if (lowerSum.includes('disconnect') || lowerSum.includes('outdated')) {
+              inferredAudienceScore -= 10;
+          }
+
+          audienceSum += inferredAudienceScore;
+          audienceCount++;
       }
 
-      // 2. CALCULATE AUDIENCE SCORE (Source: High Quality Insights OR Inference)
-      
-      // Method A: "The Voting Booth" - Use High Quality Insights as individual votes
-      // This is the most accurate method as it uses actual comment clusters
+      // --- AUDIENCE CALCULATION (From Real Comments) ---
       if (r.highQualityInsights && Array.isArray(r.highQualityInsights) && r.highQualityInsights.length > 0) {
           r.highQualityInsights.forEach((insight: any) => {
               const txt = insight.analysis || insight.text || "";
               if (!txt) return;
               
-              // Comments don't have labels, so we rely purely on text nuance
-              // We boost the base calculation because fans tend to be hyperbolic
-              let voteScore = calculateTextNuance(txt);
+              // Pure Text Analysis for comments (No labels usually)
+              // We prioritize "Mass", "Lag", "Super" keywords heavily here
+              let voteScore = calculateIndianCinemaScore(txt, true);
               
-              // Fan bias adjustment: Fans rarely rate "Average". They usually love or hate.
-              // Push scores away from 50.
-              if (voteScore > 60) voteScore += 5; 
-              if (voteScore < 40) voteScore -= 5;
+              // Fan Polarity: Fans rarely rate 50/100. It's either 100 or 0.
+              // We stretch the score distribution to reflect this passion.
+              if (voteScore > 60) voteScore = Math.min(100, voteScore + 10);
+              if (voteScore < 45) voteScore = Math.max(0, voteScore - 10);
 
-              audienceSum += voteScore;
-              audienceCount++;
+              // Overwrite/Add to the inferred score with REAL data (Higher weight)
+              audienceSum += (voteScore * 2); // Double weight for actual comments
+              audienceCount += 2;
           });
-      } 
-      // Method B: "The Inference" - If no comments scanned, infer audience reaction from Reviewer's description of the film
-      else {
-          let inferredScore = getHybridScore(sentimentLabel, summaryText);
-          
-          // Apply "Audience Bias" based on keywords in the review
-          const lowerSum = summaryText.toLowerCase();
-          
-          // Factor: Lag / Length (Audience hates slow movies more than critics)
-          if (lowerSum.includes('lag') || lowerSum.includes('slow') || lowerSum.includes('drag')) {
-              inferredScore -= 10; 
-          }
-          // Factor: Theatrical Moments (Audience loves hype more than critics)
-          if (lowerSum.includes('goosebumps') || lowerSum.includes('celebration') || lowerSum.includes('theatre') || lowerSum.includes('mass')) {
-              inferredScore += 12;
-          }
-          // Factor: Logic (Audience cares less about logic holes in action movies)
-          if (lowerSum.includes('logic') || lowerSum.includes('brain')) {
-              inferredScore += 5; // Critics deduct for this, add it back for audience
-          }
-
-          audienceSum += Math.min(100, Math.max(0, inferredScore));
-          audienceCount++;
       }
 
-      // Gather Topics
       const scanTopics = r.topics || [];
       if (Array.isArray(scanTopics)) allTopics.push(...scanTopics);
     });
 
-    // --- FINAL AGGREGATION ---
     const critics_score = criticCount > 0 ? Math.round(criticSum / criticCount) : 0;
     const audience_score = audienceCount > 0 ? Math.round(audienceSum / audienceCount) : 0;
 
-    // Consensus Text Logic
+    // --- CONSENSUS LINES (Localized) ---
     let consensus_line = "Pending Analysis";
     if (criticCount > 0) {
-        if (critics_score >= 90) consensus_line = "Universal Acclaim";
-        else if (critics_score >= 80) consensus_line = "Must Watch";
-        else if (critics_score >= 70) consensus_line = "Generally Favorable";
+        if (critics_score >= 90) consensus_line = "Cult Classic";
+        else if (critics_score >= 80) consensus_line = "Blockbuster";
+        else if (critics_score >= 70) consensus_line = "Super Hit";
         else if (critics_score >= 60) consensus_line = "Decent Watch";
-        else if (critics_score >= 50) consensus_line = "Mixed or Average";
-        else if (critics_score >= 35) consensus_line = "Generally Unfavorable";
+        else if (critics_score >= 50) consensus_line = "Mixed Bag";
+        else if (critics_score >= 40) consensus_line = "Below Average";
         else consensus_line = "Disaster";
     }
 
     // Topics Extraction
     const topicFreq: Record<string, number> = {};
-    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'watch', 'cinema', 'really', 'actor', 'acting', 'director', 'screenplay', 'performance'];
+    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'watch', 'cinema', 'really', 'actor', 'acting', 'director', 'screenplay', 'performance', 'audience'];
     allTopics.forEach(t => {
       const lowerT = String(t).toLowerCase().replace(/[^a-z\s]/g, '').trim();
       if(!lowerT || stopWords.includes(lowerT) || lowerT.length < 3) return;
@@ -223,7 +240,6 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       .slice(0, 3) 
       .map(([t]) => t.charAt(0).toUpperCase() + t.slice(1));
 
-    // Metadata
     const metadata: MovieMetadata = {
         release_date: releaseDate,
         genres: [] 
