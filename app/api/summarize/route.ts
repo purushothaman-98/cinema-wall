@@ -19,11 +19,13 @@ async function generateWithRetry(ai: GoogleGenAI, params: any, retries = 3) {
 }
 
 export async function POST(req: NextRequest) {
-  // Use strictly process.env.API_KEY as per guidelines
-  const apiKey = process.env.API_KEY;
+  // Support both the standard API_KEY and the user's specific GEMINI_API_KEY defined in Vercel
+  const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
-    return NextResponse.json({ error: 'Server configuration error: process.env.API_KEY is missing.' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Server configuration error: process.env.API_KEY (or GEMINI_API_KEY) is missing. Please check your Vercel Environment Variables.' 
+    }, { status: 500 });
   }
 
   try {
