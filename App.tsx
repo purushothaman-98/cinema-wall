@@ -175,9 +175,17 @@ const MovieDetail = ({ slug }: { slug: string }) => {
 
         if (vaultData) {
             const report = safeParseJSON(vaultData.summary_report);
-            if (report && report.summary) {
+            
+            // CRITICAL: Check if the cached report is actually an error message from a previous failed run
+            // If the tagline contains "Delayed", "Error", or "Failed", we treat it as invalid cache.
+            const isCachedError = report?.tagline?.includes("Delayed") || 
+                                  report?.tagline?.includes("Error") || 
+                                  report?.tagline?.includes("Failed");
+
+            if (report && report.summary && !isCachedError) {
                 setAiSummary(report);
             } else {
+                // Cache was bad or missing, regenerate
                 generateConsensus(movie);
             }
         } else {
@@ -233,9 +241,12 @@ const MovieDetail = ({ slug }: { slug: string }) => {
   if (loading) return <div className="text-center py-20 text-primary">Loading...</div>;
   if (!movie) return <div className="text-center py-20 text-red-500">Movie not found.</div>;
 
-  // Check if we are in a failed state
-  const isFailed = aiSummary?.tagline === "Analysis Failed" || aiSummary?.tagline === "Connection Error";
-  const isPending = !aiSummary || (aiSummary.tagline === "Analysis Delayed");
+  // Check if we are in a failed state (Including legacy "Delayed" messages)
+  const isFailed = aiSummary?.tagline === "Analysis Failed" || 
+                   aiSummary?.tagline === "Connection Error" ||
+                   aiSummary?.tagline?.includes("Delayed");
+                   
+  const isPending = !aiSummary;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -316,9 +327,9 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                         {!generating && (
                             <button 
                                 onClick={() => generateConsensus(movie)} 
-                                className="text-xs text-slate-500 hover:text-white transition-colors border border-slate-700 hover:border-slate-500 px-3 py-1 rounded-full"
+                                className={`text-xs transition-colors border px-3 py-1 rounded-full ${isFailed ? 'text-red-300 border-red-500/50 hover:bg-red-500/20' : 'text-slate-500 border-slate-700 hover:text-white hover:border-slate-500'}`}
                             >
-                                {isPending || isFailed ? 'Initialize Analysis' : 'Refresh Data'}
+                                {isPending ? 'Initialize Analysis' : isFailed ? 'Retry Protocol' : 'Refresh Data'}
                             </button>
                         )}
                     </div>
