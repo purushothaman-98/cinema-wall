@@ -17,7 +17,8 @@ async function generateWithRetry(ai: GoogleGenAI, params: any, retries = 3) {
 }
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
+  // Use strictly process.env.API_KEY as per guidelines
+  const apiKey = process.env.API_KEY;
 
   if (!apiKey) {
     return NextResponse.json({ error: 'Server configuration error: Missing AI Key' }, { status: 500 });

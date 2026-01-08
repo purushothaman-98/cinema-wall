@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,7 +7,7 @@ import { aggregateScans } from './lib/aggregate';
 import { MovieAggregate, Scan, NewsItem, VaultItem } from './types';
 import MovieCard from './components/MovieCard';
 import ReviewerCard from './components/ReviewerCard';
-import { DEFAULT_POSTER, TMDB_BASE_URL } from './constants';
+import { DEFAULT_POSTER } from './constants';
 import { unslugify, getScoreColor, formatDate } from './lib/utils';
 
 // Helper: Robust JSON Parsing for Vault items
@@ -278,12 +277,16 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                 <div className="bg-surface p-6 rounded-xl border border-slate-700/50">
                      <h3 className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-3">Metadata</h3>
                      <p className="text-sm text-gray-300 mb-2 flex justify-between">
-                        <span className="text-gray-500">Released</span> 
-                        <span>{movie.metadata?.release_date || 'Unknown'}</span>
+                        <span className="text-gray-500">First Upload</span> 
+                        <span>{formatDate(movie.metadata?.release_date || '')}</span>
                      </p>
                      <div className="flex flex-wrap gap-2 mt-4">
-                        {movie.metadata?.genres?.map(g => (
-                            <span key={g.id} className="text-[10px] bg-slate-800 text-gray-400 border border-slate-700 px-3 py-1 rounded-full">{g.name}</span>
+                        {/* Fallback to Top Topics as Tags since Genres (TMDB) are removed */}
+                        {(movie.metadata?.genres && movie.metadata.genres.length > 0 
+                            ? movie.metadata.genres.map(g => g.name) 
+                            : movie.top_topics
+                        ).map((tag, i) => (
+                            <span key={i} className="text-[10px] bg-slate-800 text-gray-400 border border-slate-700 px-3 py-1 rounded-full">{tag}</span>
                         ))}
                      </div>
                 </div>
@@ -366,110 +369,44 @@ const MovieDetail = ({ slug }: { slug: string }) => {
   );
 };
 
-const VaultPage = () => {
-  const [items, setItems] = useState<VaultItem[]>([]);
-  const [loading, setLoading] = useState(true);
+const App: React.FC = () => {
+    const [route, setRoute] = useState<string>('');
 
-  useEffect(() => {
-    const fetchVault = async () => {
-        const {data} = await supabase.from('memory_vault').select('*').order('created_at', { ascending: false });
-        if(data) setItems(data as unknown as VaultItem[]);
-        setLoading(false);
-    }
-    fetchVault();
-  }, []);
-
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-white mb-8 border-l-4 border-primary pl-4">Memory Vault</h1>
-        
-        {loading ? (
-             <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-t-2 border-primary"></div></div>
-        ) : (
-            <div className="grid gap-4">
-                {items.map(item => {
-                    const report = safeParseJSON(item.summary_report);
-                    if (!report || report.tagline === "Analysis Delayed") return null;
-
-                    return (
-                        <div key={item.id} className="bg-surface p-6 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors group">
-                            <div className="flex justify-between items-start mb-2">
-                                <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors">{item.movie_name}</h2>
-                                <span className="text-xs text-gray-500">{formatDate(item.created_at)}</span>
-                            </div>
-                            <p className="text-gray-300 font-serif italic mb-2">"{report.tagline}"</p>
-                            <p className="text-sm text-gray-500 line-clamp-2">{report.summary}</p>
-                            <div className="mt-4 flex justify-end">
-                                <a href={`#/movie/${item.movie_name.toLowerCase().replace(/\s+/g, '-')}`} className="text-xs text-white bg-slate-700 px-4 py-2 rounded hover:bg-slate-600 transition-colors">
-                                    Full Analysis
-                                </a>
-                            </div>
-                        </div>
-                    );
-                })}
-                {items.length === 0 && <div className="text-gray-500 text-center py-20">Vault is empty.</div>}
-            </div>
-        )}
-    </div>
-  );
-};
-
-const NewsPage = () => {
-    const [news, setNews] = useState<NewsItem[]>([]);
     useEffect(() => {
-        supabase.from('cinema_news').select('*').order('created_at', { ascending: false }).limit(20).then(({data}) => {
-            if(data) setNews(data as NewsItem[]);
-        });
+        // Handle client-side routing via hash
+        const handleHashChange = () => {
+            setRoute(window.location.hash);
+        };
+        
+        // Initial set
+        setRoute(window.location.hash || '#/');
+
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
     }, []);
+
+    const getComponent = () => {
+        if (route.startsWith('#/movie/')) {
+            const slug = route.replace('#/movie/', '');
+            return <MovieDetail slug={slug} />;
+        }
+        if (route === '#/news') {
+            return <div className="max-w-7xl mx-auto px-4 py-20 text-center text-gray-500">News Feed Module - Coming Soon</div>;
+        }
+        if (route === '#/vault') {
+             return <div className="max-w-7xl mx-auto px-4 py-20 text-center text-gray-500">Memory Vault - Coming Soon</div>;
+        }
+        return <HomePage />;
+    };
+
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold text-white mb-8 border-l-4 border-primary pl-4">Cinema News</h1>
-            <div className="space-y-6">
-                {news.map(item => (
-                    <div key={item.id} className="bg-surface p-6 rounded-lg border border-slate-700">
-                        <h2 className="text-xl font-bold text-white mb-2">{item.title}</h2>
-                        <p className="text-gray-400 mb-4">{item.content}</p>
-                        {item.url && <a href={item.url} target="_blank" className="text-primary text-sm hover:underline">Read Source &rarr;</a>}
-                    </div>
-                ))}
-            </div>
+        <div>
+            <Navbar />
+            <main>
+                {getComponent()}
+            </main>
         </div>
     );
-};
-
-const App = () => {
-  const [route, setRoute] = useState('#/');
-
-  useEffect(() => {
-    setRoute(window.location.hash || '#/');
-    const handleHashChange = () => setRoute(window.location.hash || '#/');
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  let Component: React.ElementType = HomePage;
-  let params: any = {};
-
-  if (route.startsWith('#/movie/')) {
-    Component = MovieDetail;
-    params = { slug: route.replace('#/movie/', '') };
-  } else if (route === '#/vault') {
-    Component = VaultPage;
-  } else if (route === '#/news') {
-    Component = NewsPage;
-  }
-
-  return (
-    <div className="min-h-screen bg-background text-white font-sans selection:bg-primary selection:text-black">
-      <Navbar />
-      <main>
-        <Component {...params} />
-      </main>
-      <footer className="border-t border-slate-800 mt-20 py-8 text-center text-gray-600 text-sm">
-        <p>&copy; {new Date().getFullYear()} Cinema Wall. Powered by AI.</p>
-      </footer>
-    </div>
-  );
 };
 
 export default App;

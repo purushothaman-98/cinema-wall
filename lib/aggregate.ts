@@ -1,8 +1,7 @@
 
 import { Scan, MovieAggregate, MovieMetadata } from '../types';
 import { slugify } from './utils';
-import { fetchMovieMetadata } from './tmdb';
-import { DEFAULT_POSTER, TMDB_BASE_URL } from '../constants';
+import { DEFAULT_POSTER } from '../constants';
 
 // Helper to safely extract values regardless of case
 const safeGet = (obj: any, keys: string[]) => {
@@ -60,9 +59,12 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
   for (const [subject, movieScans] of Object.entries(grouped)) {
     const uniqueReviewers = new Set(movieScans.map(s => s.reviewer_name)).size;
     
-    // Sort scans by date descending
+    // Sort scans by date descending (Newest first)
     movieScans.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    const lastScanned = movieScans[0].created_at;
+    
+    const lastScanned = movieScans[0].created_at; 
+    // Proxy for Release Date: The date of the EARLIEST scan/video upload we have in DB
+    const releaseDate = movieScans[movieScans.length - 1].created_at;
 
     let totalCriticScore = 0;
     let criticCount = 0;
@@ -153,27 +155,19 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
     
     const top_topics = Object.entries(topicFreq)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 3) // Limit to top 3 for cleaner UI
+      .slice(0, 3) 
       .map(([t]) => t.charAt(0).toUpperCase() + t.slice(1));
 
-    // Image Resolution
-    let metadata: MovieMetadata | undefined = undefined;
-    if (fetchMeta) {
-        metadata = await fetchMovieMetadata(subject);
-    }
+    // Construct Metadata purely from DB
+    const metadata: MovieMetadata = {
+        release_date: releaseDate, // Used oldest scan date as release date
+        genres: [] // No external genre data
+    };
 
     let poster_url = "";
-    // 1. TMDB Poster
-    if (metadata?.poster_path) {
-        poster_url = `${TMDB_BASE_URL}${metadata.poster_path}`;
-    }
-    
-    // 2. Scan Thumbnail Fallback
-    if ((!poster_url || poster_url === DEFAULT_POSTER)) {
-        // Find best resolution thumbnail
-        const validScan = movieScans.find(s => s.thumbnail && s.thumbnail.startsWith('http'));
-        if (validScan) poster_url = validScan.thumbnail || "";
-    }
+    // STRICT: Only use Scan Thumbnails
+    const validScan = movieScans.find(s => s.thumbnail && s.thumbnail.startsWith('http'));
+    if (validScan) poster_url = validScan.thumbnail || "";
     
     if (!poster_url) poster_url = DEFAULT_POSTER;
 

@@ -1,3 +1,4 @@
+
 // Explicit access is required for Next.js to replace variables at build time.
 // Dynamic access (process.env[key]) returns undefined in the browser.
 
@@ -11,5 +12,3 @@ export const SCORE_COLORS = {
   medium: "text-yellow-500",
   low: "text-red-500",
 };
-
-export const TMDB_BASE_URL = "https://image.tmdb.org/t/p/w500";
