@@ -1,13 +1,32 @@
+
 export interface ScanResult {
+  // Original keys
   sentiment?: 'Positive' | 'Negative' | 'Neutral' | 'Mixed';
-  sentiment_score?: number; // 0-100 or 0-10
-  audience_sentiment?: number; // 0-100
+  sentiment_score?: number; 
+  audience_sentiment?: number;
   topics?: string[];
-  pros?: string[];
-  cons?: string[];
+  summary?: string;
+  
+  // DeepAnalysisResult keys (from the AI generator)
+  sentimentDescription?: string;
+  overallSummary?: string;
+  reviewerStyleAnalysis?: string;
+  botDetection?: {
+    overallThreatLevel: "NOMINAL" | "ELEVATED" | "CRITICAL";
+    coordinatedClusters?: any[];
+  };
+  highQualityInsights?: {
+    username: string;
+    text: string;
+    analysis: string;
+  }[];
+  movieMetadata?: {
+    releaseMode?: string;
+  };
+  
+  // Legacy/Fallback keys
   is_bot?: boolean;
   bot_probability?: number;
-  summary?: string;
 }
 
 export interface Scan {
@@ -18,7 +37,7 @@ export interface Scan {
   reviewer_name: string;
   title: string;
   result: ScanResult | null; // JSON column
-  video_url?: string; // Assuming exist
+  video_url?: string; 
 }
 
 export interface MovieMetadata {
