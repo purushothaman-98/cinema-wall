@@ -41,43 +41,62 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
     movieScans.forEach(scan => {
       const r = scan.result || {};
       
+      // Normalize keys (handle camelCase or snake_case)
+      const sentimentScore = typeof r.sentiment_score === 'number' ? r.sentiment_score : (r as any).sentimentScore;
+      const sentimentStr = r.sentiment || (r as any).Sentiment;
+      const audienceSentiment = typeof r.audience_sentiment === 'number' ? r.audience_sentiment : (r as any).audienceSentiment;
+      const scanTopics = r.topics || (r as any).Topics;
+
       // Calculate Critic Score
-      if (typeof r.sentiment_score === 'number') {
+      if (typeof sentimentScore === 'number') {
         // Assume score is normalized to 0-100 or 0-10
-        totalCriticScore += r.sentiment_score <= 10 ? r.sentiment_score * 10 : r.sentiment_score;
+        totalCriticScore += sentimentScore <= 10 ? sentimentScore * 10 : sentimentScore;
         criticCount++;
-      } else if (r.sentiment) {
-        if (r.sentiment.toLowerCase() === 'positive') { totalCriticScore += 90; criticCount++; }
-        else if (r.sentiment.toLowerCase() === 'negative') { totalCriticScore += 30; criticCount++; }
-        else if (r.sentiment.toLowerCase() === 'mixed') { totalCriticScore += 60; criticCount++; }
-        else { totalCriticScore += 50; criticCount++; } // Neutral
+      } else if (sentimentStr) {
+        const s = sentimentStr.toLowerCase();
+        if (s.includes('positive') || s.includes('good') || s.includes('great')) { totalCriticScore += 90; criticCount++; }
+        else if (s.includes('negative') || s.includes('bad') || s.includes('poor')) { totalCriticScore += 30; criticCount++; }
+        else if (s.includes('mixed')) { totalCriticScore += 60; criticCount++; }
+        else { totalCriticScore += 50; criticCount++; } // Neutral/Other
       }
 
       // Calculate Audience Score
-      if (typeof r.audience_sentiment === 'number') {
-        totalAudienceScore += r.audience_sentiment;
+      if (typeof audienceSentiment === 'number') {
+        totalAudienceScore += audienceSentiment;
         audienceCount++;
       }
 
       // Collect topics/consensus seeds
-      if (r.topics && Array.isArray(r.topics)) allTopics.push(...r.topics);
-      if (r.sentiment) allSentiments.push(r.sentiment);
+      if (scanTopics && Array.isArray(scanTopics)) allTopics.push(...scanTopics);
+      if (sentimentStr) allSentiments.push(sentimentStr);
     });
 
+    // Default scores if no data but reviews exist
+    // If we have reviews but no numeric scores, we rely on the derived score from text sentiment
     const critics_score = criticCount > 0 ? Math.round(totalCriticScore / criticCount) : 0;
     const audience_score = audienceCount > 0 ? Math.round(totalAudienceScore / audienceCount) : 0;
 
-    // Simple Consensus Generation (Fallback if no AI summary yet)
-    const positiveCount = allSentiments.filter(s => s.toLowerCase() === 'positive').length;
-    const negativeCount = allSentiments.filter(s => s.toLowerCase() === 'negative').length;
+    // Consensus Generation
+    const positiveCount = allSentiments.filter(s => {
+        const lower = s.toLowerCase();
+        return lower.includes('positive') || lower.includes('great') || lower.includes('good');
+    }).length;
+    const negativeCount = allSentiments.filter(s => {
+        const lower = s.toLowerCase();
+        return lower.includes('negative') || lower.includes('bad') || lower.includes('poor');
+    }).length;
+
     let consensus_line = "Reviews are mixed.";
-    if (positiveCount > negativeCount * 2) consensus_line = "Acclaimed by critics.";
+    if (movieScans.length === 0) consensus_line = "No reviews yet.";
+    else if (positiveCount > negativeCount * 2 && positiveCount > 1) consensus_line = "Acclaimed by critics.";
+    else if (positiveCount > negativeCount) consensus_line = "Generally favorable.";
     else if (negativeCount > positiveCount) consensus_line = "Generally unfavorable reviews.";
     
     // Top Topics (Frequency Count)
     const topicFreq: Record<string, number> = {};
     allTopics.forEach(t => {
-      const lowerT = t.toLowerCase();
+      const lowerT = t.toLowerCase().trim();
+      if(!lowerT) return;
       topicFreq[lowerT] = (topicFreq[lowerT] || 0) + 1;
     });
     const top_topics = Object.entries(topicFreq)
@@ -88,8 +107,6 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
     // Metadata Fetching (Server-side)
     let metadata: MovieMetadata | undefined = undefined;
     if (fetchMeta) {
-        // Note: In a production list view, fetchMeta should be false or batched to avoid rate limits.
-        // We handle this in the detail view mostly.
         metadata = await fetchMovieMetadata(subject);
     }
 
