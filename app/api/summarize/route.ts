@@ -2,9 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI, Type } from "@google/genai";
 
 export async function POST(req: NextRequest) {
-  // Guidelines: API key must be obtained exclusively from process.env.API_KEY
-  if (!process.env.API_KEY) {
-    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+  // Support both variable names just in case
+  const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
+
+  if (!apiKey) {
+    console.error("Missing GEMINI_API_KEY");
+    return NextResponse.json({ error: 'Server configuration error: Missing AI Key' }, { status: 500 });
   }
 
   try {
@@ -22,8 +25,7 @@ export async function POST(req: NextRequest) {
       Create a short punchy consensus tagline and a detailed paragraph summary.
     `;
 
-    // Guidelines: Always use new GoogleGenAI({apiKey: process.env.API_KEY})
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: apiKey });
 
     // Guidelines: Use 'gemini-3-flash-preview' for Basic Text Tasks
     const response = await ai.models.generateContent({
@@ -42,7 +44,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Guidelines: Access .text property directly
     const text = response.text;
     
     if (!text) throw new Error("No response text from AI");

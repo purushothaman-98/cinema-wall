@@ -1,23 +1,10 @@
 import { MovieMetadata } from '../types';
 
-const getApiKey = () => {
-  try {
-    if (typeof process !== 'undefined' && process.env) {
-      return process.env.TMDB_API_KEY;
-    }
-  } catch (e) {}
-  return undefined;
-};
-
-const API_KEY = getApiKey();
-
 export async function fetchMovieMetadata(query: string): Promise<MovieMetadata | undefined> {
-  if (!API_KEY) return undefined;
-
   try {
-    const searchRes = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=en-US&page=1`
-    );
+    // We now fetch from our own internal API route (/api/metadata)
+    // This keeps the TMDB_API_KEY hidden on the server side
+    const searchRes = await fetch(`/api/metadata?query=${encodeURIComponent(query)}`);
     
     if (!searchRes.ok) return undefined;
     
@@ -26,10 +13,8 @@ export async function fetchMovieMetadata(query: string): Promise<MovieMetadata |
 
     if (!firstResult) return undefined;
 
-    // Fetch details for runtime/genres
-    const detailRes = await fetch(
-        `https://api.themoviedb.org/3/movie/${firstResult.id}?api_key=${API_KEY}`
-    );
+    // Fetch details for runtime/genres via internal proxy
+    const detailRes = await fetch(`/api/metadata?id=${firstResult.id}`);
     
     if(!detailRes.ok) {
         return {
@@ -53,7 +38,7 @@ export async function fetchMovieMetadata(query: string): Promise<MovieMetadata |
     };
 
   } catch (error) {
-    console.error("TMDB Fetch Error:", error);
+    console.error("Metadata Fetch Error:", error);
     return undefined;
   }
 }
