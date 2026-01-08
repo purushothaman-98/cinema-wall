@@ -2,52 +2,101 @@ import { Scan, MovieAggregate, MovieMetadata } from '../types';
 import { slugify } from './utils';
 import { DEFAULT_POSTER } from '../constants';
 
-// Helper to safely extract values regardless of case
-const safeGet = (obj: any, keys: string[]) => {
-  if (!obj) return undefined;
-  for (const key of keys) {
-    if (obj[key] !== undefined) return obj[key];
-    const lowerKey = key.toLowerCase();
-    const found = Object.keys(obj).find(k => k.toLowerCase() === lowerKey);
-    if (found && obj[found] !== undefined) return obj[found];
-  }
-  return undefined;
-};
+// --- ROBUST LEXICON MODEL ---
 
-// Normalize any score to 0-100 integer
-const normalizeScore = (val: any): number | null => {
-    if (val === undefined || val === null || val === '') return null;
-    let num = parseFloat(val);
-    if (isNaN(num)) return null;
+const TIER_S_POSITIVE = ['masterpiece', 'extraordinary', 'phenomenal', 'perfect', '10/10', 'classic', 'breathtaking', 'spectacular', 'landmark', 'top tier', 'goated'];
+const TIER_A_POSITIVE = ['excellent', 'amazing', 'great', 'brilliant', 'superb', 'fantastic', 'awesome', 'wonderful', 'highly recommend', 'must watch', 'thrilling'];
+const TIER_B_POSITIVE = ['good', 'solid', 'enjoyable', 'fun', 'entertaining', 'decent', 'worth watching', 'fresh', 'engaging', 'satisfying', 'nice'];
 
-    // Scale 0-1 -> 0-100
-    if (num <= 1 && num > 0) return Math.round(num * 100);
-    // Scale 0-5 -> 0-100
-    if (num <= 5 && num > 1) return Math.round(num * 20);
-    // Scale 0-10 -> 0-100
-    if (num <= 10 && num > 1) return Math.round(num * 10);
-    // 0-100
-    if (num <= 100) return Math.round(num);
-    
-    return 0;
-};
+const TIER_C_MIXED = ['mixed', 'average', 'okay', 'one time', 'passable', 'mediocre', 'cliché', 'formulaic', 'predictable', 'fine', 'flawed'];
 
-const analyzeSentimentText = (text: string): { score: number, label: string } => {
+const TIER_D_NEGATIVE = ['bad', 'boring', 'dull', 'slow', 'disappointing', 'weak', 'skippable', 'mess', 'confusing', 'underwhelming', 'generic'];
+const TIER_F_NEGATIVE = ['terrible', 'disaster', 'awful', 'waste', 'worst', 'garbage', 'rotten', 'torture', 'unbearable', 'horrible', 'trash', 'cringe'];
+
+// Modifiers that dampen or boost sentiment
+const MODIFIERS_DOWN = ['but', 'however', 'although', 'except', 'despite', 'little', 'bit'];
+const MODIFIERS_UP = ['very', 'really', 'absolutely', 'extremely', 'highly', 'truly'];
+
+// --- SCORING ENGINE ---
+
+/**
+ * Analyzes text and returns a granular score (0-100).
+ * This allows "Positive" reviews to range from 70 to 95 based on word choice.
+ */
+const calculateTextNuance = (text: string): number => {
+    if (!text) return 50;
     const lower = text.toLowerCase();
-    // Weighted Keyword Analysis
-    if (lower.match(/(masterpiece|extraordinary|phenomenal|perfect|10\/10|blockbuster)/)) return { score: 95, label: 'Positive' };
-    if (lower.match(/(excellent|great|good|enjoyable|hit|superb|brilliant|worth watch|solid|fresh|must watch)/)) return { score: 80, label: 'Positive' };
-    if (lower.match(/(mixed|average|decent|ok|okay|one time|fine|mediocre|passable|predictable)/)) return { score: 55, label: 'Mixed' };
-    if (lower.match(/(bad|boring|poor|dull|slow|flop|disappointing|skippable|weak)/)) return { score: 35, label: 'Negative' };
-    if (lower.match(/(terrible|disaster|awful|waste|worst|garbage|rotten|torture)/)) return { score: 15, label: 'Negative' };
-    return { score: 50, label: 'Neutral' };
+    
+    let score = 50;
+    let hits = 0;
+
+    // Helper to scan layers
+    const scanLayer = (words: string[], impact: number) => {
+        let layerHits = 0;
+        words.forEach(w => {
+            if (lower.includes(w)) {
+                score += impact;
+                layerHits++;
+            }
+        });
+        return layerHits;
+    };
+
+    // Apply Weights
+    hits += scanLayer(TIER_S_POSITIVE, 15);  // Massive boost
+    hits += scanLayer(TIER_A_POSITIVE, 10);  // Big boost
+    hits += scanLayer(TIER_B_POSITIVE, 5);   // Small boost
+    
+    hits += scanLayer(TIER_C_MIXED, -2);     // Slight drag
+    
+    hits += scanLayer(TIER_D_NEGATIVE, -8);  // Big drag
+    hits += scanLayer(TIER_F_NEGATIVE, -15); // Massive drag
+
+    // If no specific keywords found, return neutral
+    if (hits === 0) return 50;
+
+    // Clamp score 0-100
+    return Math.max(0, Math.min(100, score));
 };
+
+/**
+ * Combines the explicit label (Anchor) with the text nuance (Shift).
+ * @param sentiment The label (Positive/Negative/etc)
+ * @param text The summary text
+ * @returns An integer score (e.g., 76)
+ */
+const getHybridScore = (sentiment: string | undefined, text: string): number => {
+    let anchor = 50; // Default Neutral
+
+    // 1. Establish Anchor based on explicit label
+    const s = (sentiment || '').toLowerCase();
+    if (s.includes('positive')) anchor = 75;
+    else if (s.includes('negative')) anchor = 35;
+    else if (s.includes('mixed')) anchor = 55;
+    else if (s.includes('neutral')) anchor = 50;
+
+    // 2. Calculate Nuance from text (0-100 scale, usually centers around 50)
+    const nuanceScore = calculateTextNuance(text);
+    const nuanceShift = nuanceScore - 50; // e.g., +15 or -10
+
+    // 3. Apply Shift to Anchor
+    // We weight the Anchor heavier (70%) because the label is the reviewer's final verdict,
+    // but we allow the text to sway it (30%) to create granularity.
+    let finalScore = anchor + (nuanceShift * 0.8);
+
+    // 4. Hard Clamps based on Label to prevent "Good" reviews becoming "Rotten"
+    if (s.includes('positive')) finalScore = Math.max(60, finalScore);
+    if (s.includes('negative')) finalScore = Math.min(49, finalScore);
+
+    return Math.round(Math.max(10, Math.min(98, finalScore)));
+};
+
+// --- AGGREGATION LOGIC ---
 
 export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<MovieAggregate[]> {
   const grouped: Record<string, Scan[]> = {};
 
   scans.forEach(scan => {
-    // Normalize Subject Name to group better
     const key = scan.subject_name.trim();
     if (!grouped[key]) grouped[key] = [];
     grouped[key].push(scan);
@@ -58,22 +107,21 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
   for (const [subject, movieScans] of Object.entries(grouped)) {
     const uniqueReviewers = new Set(movieScans.map(s => s.reviewer_name)).size;
     
-    // 1. Sort scans by date descending (Newest first) for general display
+    // Sort by date desc
     movieScans.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
-    // 2. Identify Primary Scan for Visuals & Release Date
-    // We look for the EARLIEST scan that has a valid thumbnail (Likely the actual release/review drop)
+    // Identify Primary Scan (Best Thumbnail + Earliest Date) for Poster/Release Date
     const chronologicalScans = [...movieScans].sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
-    
-    // "Popularity" Proxy: We assume the first valid review video with a thumbnail represents the "Release"
     const primaryScan = chronologicalScans.find(s => s.thumbnail && s.thumbnail.startsWith('http')) || chronologicalScans[0];
 
     const releaseDate = primaryScan.created_at;
     const lastScanned = movieScans[0].created_at; 
 
-    let totalCriticScore = 0;
+    // --- ACCUMULATORS ---
+    let criticSum = 0;
     let criticCount = 0;
-    let totalAudienceScore = 0;
+    
+    let audienceSum = 0;
     let audienceCount = 0;
 
     const allTopics: string[] = [];
@@ -81,77 +129,89 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
     movieScans.forEach(scan => {
       const r = scan.result || {};
       const mode = (scan.mode || 'REVIEWER').toUpperCase();
-      const isAudienceScan = mode === 'AUDIENCE' || mode === 'COMMENTS';
+      const isCommentsMode = mode === 'COMMENTS';
 
-      // Get Values
-      const rawScore = safeGet(r, ['sentiment_score', 'sentimentScore', 'score']);
-      const rawAudience = safeGet(r, ['audience_sentiment', 'audienceSentiment', 'audienceScore']);
-      const textForAnalysis = safeGet(r, ['sentimentDescription', 'sentiment', 'overallSummary', 'summary']) || "";
+      // Gather Text for Analysis
+      const summaryText = r.overallSummary || r.summary || r.sentimentDescription || "";
+      const sentimentLabel = r.sentiment || 'Neutral';
 
-      // --- CRITICS SCORE ---
-      if (!isAudienceScan) {
-          const norm = normalizeScore(rawScore);
-          if (norm !== null) {
-              totalCriticScore += norm;
-              criticCount++;
-          } else if (textForAnalysis) {
-              const { score } = analyzeSentimentText(textForAnalysis);
-              totalCriticScore += score;
-              criticCount++;
-          }
+      // 1. CALCULATE CRITIC SCORE (Source: Reviewer Video)
+      if (!isCommentsMode) {
+          const score = getHybridScore(sentimentLabel, summaryText);
+          criticSum += score;
+          criticCount++;
       }
 
-      // --- AUDIENCE SCORE ---
-      let calculatedAudienceScore: number | null = null;
-      const normAudience = normalizeScore(rawAudience);
+      // 2. CALCULATE AUDIENCE SCORE (Source: High Quality Insights OR Inference)
+      
+      // Method A: "The Voting Booth" - Use High Quality Insights as individual votes
+      // This is the most accurate method as it uses actual comment clusters
+      if (r.highQualityInsights && Array.isArray(r.highQualityInsights) && r.highQualityInsights.length > 0) {
+          r.highQualityInsights.forEach((insight: any) => {
+              const txt = insight.analysis || insight.text || "";
+              if (!txt) return;
+              
+              // Comments don't have labels, so we rely purely on text nuance
+              // We boost the base calculation because fans tend to be hyperbolic
+              let voteScore = calculateTextNuance(txt);
+              
+              // Fan bias adjustment: Fans rarely rate "Average". They usually love or hate.
+              // Push scores away from 50.
+              if (voteScore > 60) voteScore += 5; 
+              if (voteScore < 40) voteScore -= 5;
 
-      if (normAudience !== null && normAudience > 0) {
-          calculatedAudienceScore = normAudience;
-      }
-      // Insight Sentiment Analysis
-      else if (r.highQualityInsights && Array.isArray(r.highQualityInsights) && r.highQualityInsights.length > 0) {
-          let insTotal = 0;
-          let insCount = 0;
-          r.highQualityInsights.forEach((ins: any) => {
-             const txt = ins.analysis || ins.text || "";
-             if (!txt) return;
-             const { score } = analyzeSentimentText(txt);
-             insTotal += score;
-             insCount++;
+              audienceSum += voteScore;
+              audienceCount++;
           });
-          if (insCount > 0) calculatedAudienceScore = Math.round(insTotal / insCount);
-      }
-      // Fallback Text Analysis for Audience Mode
-      else if (isAudienceScan && textForAnalysis) {
-          const { score } = analyzeSentimentText(textForAnalysis);
-          calculatedAudienceScore = score;
-      }
+      } 
+      // Method B: "The Inference" - If no comments scanned, infer audience reaction from Reviewer's description of the film
+      else {
+          let inferredScore = getHybridScore(sentimentLabel, summaryText);
+          
+          // Apply "Audience Bias" based on keywords in the review
+          const lowerSum = summaryText.toLowerCase();
+          
+          // Factor: Lag / Length (Audience hates slow movies more than critics)
+          if (lowerSum.includes('lag') || lowerSum.includes('slow') || lowerSum.includes('drag')) {
+              inferredScore -= 10; 
+          }
+          // Factor: Theatrical Moments (Audience loves hype more than critics)
+          if (lowerSum.includes('goosebumps') || lowerSum.includes('celebration') || lowerSum.includes('theatre') || lowerSum.includes('mass')) {
+              inferredScore += 12;
+          }
+          // Factor: Logic (Audience cares less about logic holes in action movies)
+          if (lowerSum.includes('logic') || lowerSum.includes('brain')) {
+              inferredScore += 5; // Critics deduct for this, add it back for audience
+          }
 
-      if (calculatedAudienceScore !== null) {
-          totalAudienceScore += calculatedAudienceScore;
+          audienceSum += Math.min(100, Math.max(0, inferredScore));
           audienceCount++;
       }
 
-      const scanTopics = safeGet(r, ['topics', 'Topics']) || [];
+      // Gather Topics
+      const scanTopics = r.topics || [];
       if (Array.isArray(scanTopics)) allTopics.push(...scanTopics);
     });
 
-    const critics_score = criticCount > 0 ? Math.round(totalCriticScore / criticCount) : 0;
-    const audience_score = audienceCount > 0 ? Math.round(totalAudienceScore / audienceCount) : 0;
+    // --- FINAL AGGREGATION ---
+    const critics_score = criticCount > 0 ? Math.round(criticSum / criticCount) : 0;
+    const audience_score = audienceCount > 0 ? Math.round(audienceSum / audienceCount) : 0;
 
     // Consensus Text Logic
     let consensus_line = "Pending Analysis";
     if (criticCount > 0) {
-        if (critics_score >= 85) consensus_line = "Universal Acclaim";
+        if (critics_score >= 90) consensus_line = "Universal Acclaim";
+        else if (critics_score >= 80) consensus_line = "Must Watch";
         else if (critics_score >= 70) consensus_line = "Generally Favorable";
+        else if (critics_score >= 60) consensus_line = "Decent Watch";
         else if (critics_score >= 50) consensus_line = "Mixed or Average";
-        else if (critics_score >= 30) consensus_line = "Generally Unfavorable";
-        else consensus_line = "Overwhelming Dislike";
+        else if (critics_score >= 35) consensus_line = "Generally Unfavorable";
+        else consensus_line = "Disaster";
     }
 
     // Topics Extraction
     const topicFreq: Record<string, number> = {};
-    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'watch', 'cinema', 'really', 'actor', 'acting', 'director', 'screenplay'];
+    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'watch', 'cinema', 'really', 'actor', 'acting', 'director', 'screenplay', 'performance'];
     allTopics.forEach(t => {
       const lowerT = String(t).toLowerCase().replace(/[^a-z\s]/g, '').trim();
       if(!lowerT || stopWords.includes(lowerT) || lowerT.length < 3) return;
@@ -163,13 +223,12 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       .slice(0, 3) 
       .map(([t]) => t.charAt(0).toUpperCase() + t.slice(1));
 
-    // Construct Metadata purely from DB
+    // Metadata
     const metadata: MovieMetadata = {
-        release_date: releaseDate, // Used the primary scan (upload date)
+        release_date: releaseDate,
         genres: [] 
     };
 
-    // Poster is derived from the Primary Scan (The one that defined the release date)
     let poster_url = primaryScan.thumbnail || "";
     if (!poster_url || !poster_url.startsWith('http')) poster_url = DEFAULT_POSTER;
 
