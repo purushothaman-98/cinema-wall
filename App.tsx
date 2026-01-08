@@ -150,17 +150,23 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             .from('memory_vault')
             .select('*')
             .eq('movie_name', movie.subject_name)
-            .maybeSingle(); // Use maybeSingle to avoid 406 error if multiple or 0
+            .maybeSingle();
 
         if (vaultData) {
             // Found existing analysis
             try {
-                const report = typeof vaultData.summary_report === 'string' 
+                let report = typeof vaultData.summary_report === 'string' 
                     ? JSON.parse(vaultData.summary_report) 
                     : vaultData.summary_report;
+                
+                // Ensure report is an object
+                if (!report || typeof report !== 'object') {
+                   report = { tagline: "Analysis Available", summary: "Review data has been processed." };
+                }
                 setAiSummary(report);
             } catch (e) {
                 console.error("Failed to parse vault report", e);
+                setAiSummary({ tagline: "Data Error", summary: "Could not retrieve analysis details." });
             }
         } else {
             // Not found, trigger auto-analysis
@@ -199,11 +205,12 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                 summary_report: JSON.stringify(data)
             });
         } else {
-            // Fallback for demo/error
-             console.warn("AI Generation failed, using fallback");
+             console.warn("AI Generation failed");
+             setAiSummary({ tagline: "Analysis Pending", summary: "The system is currently analyzing the latest reviews." });
         }
     } catch (e) {
         console.error("Generation Error", e);
+        setAiSummary({ tagline: "Connection Error", summary: "Could not reach the analysis engine." });
     } finally {
         setGenerating(false);
     }
@@ -223,9 +230,6 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             <div className="md:col-span-1 space-y-6">
                 <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group">
                     <img src={posterUrl} alt={movie.subject_name} className="w-full" />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="text-white font-bold border-2 border-white px-4 py-2">VIEW TRAILER</span>
-                    </div>
                 </div>
                 <div className="bg-surface p-4 rounded-lg border border-slate-700">
                     <h3 className="text-gray-400 text-sm uppercase tracking-widest font-bold mb-4">Scores</h3>
@@ -244,7 +248,6 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                 <div className="bg-surface p-4 rounded-lg border border-slate-700">
                      <h3 className="text-gray-400 text-sm uppercase tracking-widest font-bold mb-2">Details</h3>
                      <p className="text-sm text-gray-300"><span className="text-gray-500">Released:</span> {movie.metadata?.release_date || 'Unknown'}</p>
-                     <p className="text-sm text-gray-300"><span className="text-gray-500">Runtime:</span> {movie.metadata?.runtime ? `${movie.metadata.runtime} min` : 'N/A'}</p>
                      <div className="flex flex-wrap gap-2 mt-3">
                         {movie.metadata?.genres?.map(g => (
                             <span key={g.id} className="text-xs bg-slate-800 text-gray-300 px-2 py-1 rounded">{g.name}</span>
@@ -259,25 +262,32 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                 
                 {/* AI Consensus Block */}
                 <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-primary/30 p-6 rounded-xl relative overflow-hidden shadow-lg shadow-primary/5">
-                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                     <div className="absolute top-0 right-0 p-4 opacity-10">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-primary" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                         </svg>
                     </div>
                     
-                    <h2 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
-                        AI Consensus Protocol
-                        {generating && <span className="text-xs text-gray-400 animate-pulse font-normal">(Analyzing Data...)</span>}
-                    </h2>
+                    <div className="flex justify-between items-start">
+                        <h2 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                            AI Consensus Protocol
+                            {generating && <span className="text-xs text-gray-400 animate-pulse font-normal">(Analyzing Data...)</span>}
+                        </h2>
+                        {!generating && !aiSummary && (
+                             <button onClick={() => generateConsensus(movie)} className="text-xs border border-primary text-primary px-3 py-1 rounded hover:bg-primary hover:text-black">
+                                Force Retry
+                             </button>
+                        )}
+                    </div>
                     
                     {!aiSummary && !generating ? (
                         <div className="text-center py-8">
                            <p className="text-gray-500 italic">Initializing automated analysis...</p>
                         </div>
                     ) : aiSummary ? (
-                        <div className="animate-in fade-in duration-500">
-                            <p className="text-2xl font-serif text-white italic mb-6 leading-relaxed">"{aiSummary.tagline}"</p>
-                            <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary}</p>
+                        <div className="animate-in fade-in duration-500 relative z-10">
+                            <p className="text-2xl font-serif text-white italic mb-6 leading-relaxed">"{aiSummary.tagline || 'No tagline generated.'}"</p>
+                            <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary || 'No summary available.'}</p>
                             <div className="mt-4 flex items-center gap-2">
                                 <span className="text-xs text-green-400 font-mono">● SAVED TO VAULT</span>
                             </div>
@@ -309,10 +319,12 @@ const VaultPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.from('memory_vault').select('*').order('created_at', { ascending: false }).then(({data}) => {
+    const fetchVault = async () => {
+        const {data, error} = await supabase.from('memory_vault').select('*').order('created_at', { ascending: false });
         if(data) setItems(data as unknown as VaultItem[]);
         setLoading(false);
-    });
+    }
+    fetchVault();
   }, []);
 
   return (
@@ -326,8 +338,19 @@ const VaultPage = () => {
                 {items.map(item => {
                     let report: any = {};
                     try {
-                        report = typeof item.summary_report === 'string' ? JSON.parse(item.summary_report) : item.summary_report;
-                    } catch(e) { report = { tagline: "Error parsing report", summary: item.summary_report }; }
+                        if (!item.summary_report) {
+                            report = {};
+                        } else if (typeof item.summary_report === 'string') {
+                            report = JSON.parse(item.summary_report);
+                        } else {
+                            report = item.summary_report;
+                        }
+                    } catch(e) { 
+                        report = { tagline: "Error parsing report", summary: "Data corruption detected." }; 
+                    }
+                    
+                    // Safety check if JSON.parse returns null or primitive
+                    if (!report || typeof report !== 'object') report = {};
 
                     return (
                         <div key={item.id} className="bg-surface p-6 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors">
@@ -335,8 +358,8 @@ const VaultPage = () => {
                                 <h2 className="text-xl font-bold text-white">{item.movie_name}</h2>
                                 <span className="text-xs text-gray-500">{formatDate(item.created_at)}</span>
                             </div>
-                            <p className="text-primary italic text-lg font-serif mb-3">"{report.tagline}"</p>
-                            <p className="text-gray-400 text-sm line-clamp-2">{report.summary}</p>
+                            <p className="text-primary italic text-lg font-serif mb-3">"{report.tagline || 'Analysis pending...'}"</p>
+                            <p className="text-gray-400 text-sm line-clamp-2">{report.summary || 'Detailed summary unavailable.'}</p>
                             <div className="mt-4 pt-4 border-t border-slate-800 text-right">
                                 <a href={`#/movie/${item.movie_name.toLowerCase().replace(/\s+/g, '-')}`} className="text-xs text-white bg-slate-700 px-3 py-1 rounded hover:bg-slate-600">
                                     View Full Analysis
