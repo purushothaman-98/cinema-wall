@@ -37,7 +37,8 @@ export interface Scan {
   reviewer_name: string;
   title: string;
   result: ScanResult | null; // JSON column
-  video_url?: string; 
+  video_url?: string;
+  thumbnail?: string; // YouTube thumbnail
 }
 
 export interface MovieMetadata {
@@ -61,6 +62,7 @@ export interface MovieAggregate {
   top_topics: string[];
   scans: Scan[];
   metadata?: MovieMetadata;
+  poster_url?: string; // Final resolved poster (TMDB or Thumbnail)
 }
 
 export interface NewsItem {

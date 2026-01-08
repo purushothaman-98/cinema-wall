@@ -219,17 +219,13 @@ const MovieDetail = ({ slug }: { slug: string }) => {
   if (loading) return <div className="text-center py-20 text-primary">Loading Movie Details...</div>;
   if (!movie) return <div className="text-center py-20 text-red-500">Movie not found.</div>;
 
-  const posterUrl = movie.metadata?.poster_path 
-    ? `${TMDB_BASE_URL}${movie.metadata.poster_path}` 
-    : DEFAULT_POSTER;
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
         <a href="#/" className="text-secondary hover:text-white mb-6 inline-block">&larr; Back to Wall</a>
         <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-1 space-y-6">
-                <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group">
-                    <img src={posterUrl} alt={movie.subject_name} className="w-full" />
+                <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-800">
+                    <img src={movie.poster_url} alt={movie.subject_name} className="w-full" />
                 </div>
                 <div className="bg-surface p-4 rounded-lg border border-slate-700">
                     <h3 className="text-gray-400 text-sm uppercase tracking-widest font-bold mb-4">Scores</h3>
@@ -336,10 +332,10 @@ const VaultPage = () => {
         ) : (
             <div className="grid gap-4">
                 {items.map(item => {
-                    let report: any = {};
+                    let report: any = null;
                     try {
                         if (!item.summary_report) {
-                            report = {};
+                            report = null;
                         } else if (typeof item.summary_report === 'string') {
                             report = JSON.parse(item.summary_report);
                         } else {
@@ -349,8 +345,8 @@ const VaultPage = () => {
                         report = { tagline: "Error parsing report", summary: "Data corruption detected." }; 
                     }
                     
-                    // Safety check if JSON.parse returns null or primitive
-                    if (!report || typeof report !== 'object') report = {};
+                    // Fallback object to prevent crashes
+                    const safeReport = report || { tagline: "Processing...", summary: "Analysis is queued or unavailable." };
 
                     return (
                         <div key={item.id} className="bg-surface p-6 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors">
@@ -358,8 +354,8 @@ const VaultPage = () => {
                                 <h2 className="text-xl font-bold text-white">{item.movie_name}</h2>
                                 <span className="text-xs text-gray-500">{formatDate(item.created_at)}</span>
                             </div>
-                            <p className="text-primary italic text-lg font-serif mb-3">"{report.tagline || 'Analysis pending...'}"</p>
-                            <p className="text-gray-400 text-sm line-clamp-2">{report.summary || 'Detailed summary unavailable.'}</p>
+                            <p className="text-primary italic text-lg font-serif mb-3">"{safeReport.tagline || 'Pending...'}"</p>
+                            <p className="text-gray-400 text-sm line-clamp-2">{safeReport.summary || 'Summary unavailable.'}</p>
                             <div className="mt-4 pt-4 border-t border-slate-800 text-right">
                                 <a href={`#/movie/${item.movie_name.toLowerCase().replace(/\s+/g, '-')}`} className="text-xs text-white bg-slate-700 px-3 py-1 rounded hover:bg-slate-600">
                                     View Full Analysis

@@ -1,22 +1,17 @@
 import React from 'react';
 import { MovieAggregate } from '../types';
 import { formatDate, getScoreColor } from '../lib/utils';
-import { DEFAULT_POSTER, TMDB_BASE_URL } from '../constants';
 
 interface MovieCardProps {
   movie: MovieAggregate;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
-  const posterUrl = movie.metadata?.poster_path 
-    ? `${TMDB_BASE_URL}${movie.metadata.poster_path}` 
-    : DEFAULT_POSTER;
-
   return (
     <a href={`#/movie/${movie.slug}`} className="group block bg-surface rounded-lg overflow-hidden border border-slate-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-black/50">
-      <div className="relative aspect-[2/3] overflow-hidden">
+      <div className="relative aspect-[2/3] overflow-hidden bg-slate-800">
         <img 
-          src={posterUrl} 
+          src={movie.poster_url} 
           alt={movie.subject_name} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"

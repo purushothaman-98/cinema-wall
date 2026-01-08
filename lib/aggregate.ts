@@ -1,6 +1,7 @@
 import { Scan, MovieAggregate, MovieMetadata } from '../types';
 import { slugify } from './utils';
 import { fetchMovieMetadata } from './tmdb';
+import { DEFAULT_POSTER, TMDB_BASE_URL } from '../constants';
 
 // Helper to safely extract values regardless of case
 const safeGet = (obj: any, keys: string[]) => {
@@ -71,42 +72,45 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       const r = scan.result || {};
       
       // -- READ DATA FROM VARIOUS SCHEMAS --
-      
-      // 1. Try explicit numeric score
+      // Explicit numeric score (Usually Critic/Reviewer score)
       const explicitScore = safeGet(r, ['sentiment_score', 'sentimentScore', 'score']);
       
-      // 2. Try text description (DeepAnalysisResult uses 'sentimentDescription' or 'overallSummary')
+      // Text description (DeepAnalysisResult uses 'sentimentDescription' or 'overallSummary')
       const textForAnalysis = safeGet(r, ['sentimentDescription', 'sentiment', 'overallSummary', 'summary']) || "";
       
-      // 3. Try audience score
+      // Explicit Audience Score (from comments analysis)
       const explicitAudience = safeGet(r, ['audience_sentiment', 'audienceSentiment']);
       
-      // 4. Try topics
+      // Topics
       const scanTopics = safeGet(r, ['topics', 'Topics']) || []; // Original schema
       const insights = r.highQualityInsights || []; // DeepAnalysisResult schema
 
-      // -- CALCULATE CRITIC SCORE --
+      // --- LOGIC: CRITIC vs AUDIENCE ---
+      
+      // Critic Score: Derived from what the Reviewer said (or the main sentiment of the scan)
       if (typeof explicitScore === 'number') {
          let s = explicitScore;
          if (s <= 10) s *= 10;
          totalCriticScore += s;
          criticCount++;
       } else if (textForAnalysis) {
+         // Fallback: Infer critic score from text summary
          const { score, label } = analyzeSentimentText(textForAnalysis);
          totalCriticScore += score;
          criticCount++;
          allSentiments.push(label);
       }
 
-      // -- CALCULATE AUDIENCE SCORE --
+      // Audience Score: Derived from 'audience_sentiment' OR deep analysis of comments
       if (typeof explicitAudience === 'number') {
         let s = explicitAudience;
         if (s <= 1) s *= 100;
         totalAudienceScore += s;
         audienceCount++;
       } else {
-        // If no separate audience score, assumes the analysis reflects the audience (comments)
-        // In the DeepAnalysisResult, the entire analysis IS based on audience comments.
+        // If we don't have an explicit audience number, but we have a text analysis of comments
+        // (DeepAnalysisResult is fundamentally an analysis of comments/audience)
+        // We can infer the audience score from the text sentiment if the scan mode implies comment analysis.
         const { score } = analyzeSentimentText(textForAnalysis);
         totalAudienceScore += score;
         audienceCount++;
@@ -116,8 +120,6 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       if (Array.isArray(scanTopics)) allTopics.push(...scanTopics);
       if (Array.isArray(insights)) {
          insights.forEach((i: any) => {
-             // Extract keywords from analysis text is hard, so we just use the username as a proxy for "topic source" or skip
-             // Ideally we'd extract nouns, but for now let's just use simple word freq on the 'analysis' text
              const words = i.analysis?.split(' ') || [];
              words.forEach((w: string) => {
                  if(w.length > 5 && /^[a-zA-Z]+$/.test(w)) allTopics.push(w);
@@ -143,7 +145,7 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
 
     // Top Topics
     const topicFreq: Record<string, number> = {};
-    const stopWords = ['movie', 'film', 'this', 'that', 'with', 'review', 'about', 'really', 'comment'];
+    const stopWords = ['movie', 'film', 'this', 'that', 'with', 'review', 'about', 'really', 'comment', 'watch', 'video'];
     allTopics.forEach(t => {
       const lowerT = String(t).toLowerCase().replace(/[^a-z]/g, '');
       if(!lowerT || stopWords.includes(lowerT)) return;
@@ -161,6 +163,20 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
         metadata = await fetchMovieMetadata(subject);
     }
 
+    // --- THUMBNAIL LOGIC ---
+    // Priority: TMDB Poster -> First Scan Thumbnail -> Default
+    let poster_url = DEFAULT_POSTER;
+    
+    if (metadata?.poster_path) {
+        poster_url = `${TMDB_BASE_URL}${metadata.poster_path}`;
+    } else {
+        // Fallback to finding a thumbnail from the scans
+        const scanWithThumb = movieScans.find(s => s.thumbnail && s.thumbnail.startsWith('http'));
+        if (scanWithThumb?.thumbnail) {
+            poster_url = scanWithThumb.thumbnail;
+        }
+    }
+
     aggregates.push({
       subject_name: subject,
       slug: slugify(subject),
@@ -171,7 +187,8 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       consensus_line,
       top_topics,
       scans: movieScans,
-      metadata
+      metadata,
+      poster_url
     });
   }
 
