@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Scan } from '../types';
 import { formatDate } from '../lib/utils';
@@ -11,10 +10,10 @@ const ReviewerCard: React.FC<{ scan: Scan }> = ({ scan }) => {
   const sentiment = result.sentiment || 'Neutral';
   
   // Audience Perception Logic
-  const rawPerception = result.reviewerStyleAnalysis || 
+  // Removed arbitrary substring limit (120 chars) to allow full insight display
+  const perception = result.reviewerStyleAnalysis || 
                        (result.highQualityInsights?.[0]?.analysis ? `Comments highlight: ${result.highQualityInsights[0].analysis}` : null) ||
                        "No consensus data available.";
-  const perception = rawPerception.length > 120 ? rawPerception.substring(0, 117) + "..." : rawPerception;
 
   // Use scan thumbnail as "Analyst Avatar". Fallback to a generic gradient if missing.
   const avatarUrl = scan.thumbnail;
@@ -66,16 +65,16 @@ const ReviewerCard: React.FC<{ scan: Scan }> = ({ scan }) => {
                     <div className="mt-0.5 min-w-[12px]">
                          <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                     </div>
-                    <div>
-                        <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Audience Reception</p>
-                        <p className="text-xs text-gray-400 italic leading-tight">{perception}</p>
+                    <div className="flex-1">
+                        <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">Audience Reception</p>
+                        <p className="text-xs text-gray-400 italic leading-relaxed">{perception}</p>
                     </div>
-                    <div className="ml-auto">
+                    <div className="ml-auto pl-2">
                         <a 
                             href={scan.video_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-white hover:text-primary transition-colors"
+                            className="text-white hover:text-primary transition-colors flex items-center justify-center p-1"
                             title="Watch Video"
                         >
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
