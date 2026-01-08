@@ -218,10 +218,13 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                 summary_report: JSON.stringify(data)
             }, { onConflict: 'movie_name' });
         } else {
-             setAiSummary({ tagline: "Analysis Delayed", summary: "Server is busy. Please refresh manually." });
+             // Retrieve the specific error message from the API
+             const errorData = await res.json().catch(() => ({}));
+             const specificError = errorData.error || "Server is busy. Please check logs.";
+             setAiSummary({ tagline: "Analysis Failed", summary: specificError });
         }
-    } catch (e) {
-        setAiSummary({ tagline: "Network Error", summary: "Could not connect to AI service." });
+    } catch (e: any) {
+        setAiSummary({ tagline: "Connection Error", summary: e.message || "Could not connect to AI service." });
     } finally {
         setGenerating(false);
     }
@@ -230,7 +233,9 @@ const MovieDetail = ({ slug }: { slug: string }) => {
   if (loading) return <div className="text-center py-20 text-primary">Loading...</div>;
   if (!movie) return <div className="text-center py-20 text-red-500">Movie not found.</div>;
 
-  const isPending = aiSummary?.tagline === "Analysis Delayed" || !aiSummary;
+  // Check if we are in a failed state
+  const isFailed = aiSummary?.tagline === "Analysis Failed" || aiSummary?.tagline === "Connection Error";
+  const isPending = !aiSummary || (aiSummary.tagline === "Analysis Delayed");
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -305,7 +310,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                     
                     <div className="flex justify-between items-start mb-8 relative z-10">
                         <h2 className="text-white font-bold tracking-widest text-xs uppercase flex items-center gap-3">
-                            <span className={`w-2 h-2 rounded-full ${generating ? 'bg-yellow-500 animate-ping' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`}></span>
+                            <span className={`w-2 h-2 rounded-full ${generating ? 'bg-yellow-500 animate-ping' : isFailed ? 'bg-red-500' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`}></span>
                             Gemini 3 Consensus Protocol
                         </h2>
                         {!generating && (
@@ -313,7 +318,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                                 onClick={() => generateConsensus(movie)} 
                                 className="text-xs text-slate-500 hover:text-white transition-colors border border-slate-700 hover:border-slate-500 px-3 py-1 rounded-full"
                             >
-                                {isPending ? 'Initialize Analysis' : 'Refresh Data'}
+                                {isPending || isFailed ? 'Initialize Analysis' : 'Refresh Data'}
                             </button>
                         )}
                     </div>
@@ -326,14 +331,14 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                          </div>
                     ) : aiSummary ? (
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-10">
-                            <p className="text-2xl md:text-3xl font-serif italic text-white mb-6 leading-relaxed">
+                            <p className={`text-2xl md:text-3xl font-serif italic mb-6 leading-relaxed ${isFailed ? 'text-red-400' : 'text-white'}`}>
                                 "{aiSummary.tagline || 'Processing Data...'}"
                             </p>
                             <p className="text-gray-300 leading-relaxed text-lg mb-8 max-w-3xl">
                                 {aiSummary.summary}
                             </p>
 
-                            {!isPending && (
+                            {!isPending && !isFailed && (
                                 <div className="grid md:grid-cols-3 gap-4 border-t border-white/10 pt-6">
                                     <div className="bg-black/30 p-5 rounded-xl border border-white/5">
                                         <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Gap Analysis</h4>

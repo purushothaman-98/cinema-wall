@@ -6,6 +6,8 @@ async function generateWithRetry(ai: GoogleGenAI, params: any, retries = 3) {
     try {
       return await ai.models.generateContent(params);
     } catch (error: any) {
+      console.warn(`Attempt ${i + 1} failed: ${error.message}`);
+      // Retry on rate limits (429) or service unavailable (503)
       if ((error.status === 429 || error.status === 503) && i < retries - 1) {
         const delay = 1000 * Math.pow(2, i); 
         await new Promise(r => setTimeout(r, delay));
@@ -21,7 +23,7 @@ export async function POST(req: NextRequest) {
   const apiKey = process.env.API_KEY;
 
   if (!apiKey) {
-    return NextResponse.json({ error: 'Server configuration error: Missing AI Key' }, { status: 500 });
+    return NextResponse.json({ error: 'Server configuration error: process.env.API_KEY is missing.' }, { status: 500 });
   }
 
   try {
@@ -47,7 +49,7 @@ export async function POST(req: NextRequest) {
     const ai = new GoogleGenAI({ apiKey: apiKey });
 
     const response = await generateWithRetry(ai, {
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -72,8 +74,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(JSON.parse(text));
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Summary API Error:', error);
-    return NextResponse.json({ error: 'Failed to generate summary' }, { status: 500 });
+    // Return the actual error message to the client for debugging
+    const errorMessage = error.message || error.toString() || 'Unknown AI Error';
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
