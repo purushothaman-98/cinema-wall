@@ -37,7 +37,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         </div>
         
         <div className="flex justify-between items-center text-xs text-gray-500 border-t border-slate-700 pt-3">
-          <span>Audience: <span className={getScoreColor(movie.audience_score).split(' ')[0]}>{movie.audience_score}%</span></span>
+          <span>Audience: 
+             {movie.audience_score > 0 ? (
+               <span className={`ml-1 ${getScoreColor(movie.audience_score).split(' ')[0]}`}>{movie.audience_score}%</span>
+             ) : (
+               <span className="ml-1 text-gray-600">N/A</span>
+             )}
+          </span>
           <span>{formatDate(movie.last_scanned)}</span>
         </div>
       </div>

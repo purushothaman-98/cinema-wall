@@ -17,7 +17,7 @@ const safeGet = (obj: any, keys: string[]) => {
 
 // Normalize any score to 0-100 integer
 const normalizeScore = (val: any): number | null => {
-    if (val === undefined || val === null) return null;
+    if (val === undefined || val === null || val === '') return null;
     let num = parseFloat(val);
     if (isNaN(num)) return null;
 
@@ -30,17 +30,27 @@ const normalizeScore = (val: any): number | null => {
     // If score is 0-100, keep it
     if (num <= 100) return Math.round(num);
     
+    // If 0, return 0 (only if it was explicitly 0)
     return 0;
 };
 
 const analyzeSentimentText = (text: string): { score: number, label: string } => {
     const lower = text.toLowerCase();
-    if (lower.includes('masterpiece') || lower.includes('exceptional')) return { score: 95, label: 'Positive' };
-    if (lower.includes('excellent') || lower.includes('must watch') || lower.includes('blockbuster')) return { score: 90, label: 'Positive' };
-    if (lower.includes('good') || lower.includes('positive') || lower.includes('hit')) return { score: 75, label: 'Positive' };
-    if (lower.includes('average') || lower.includes('mixed') || lower.includes('decent')) return { score: 60, label: 'Mixed' };
-    if (lower.includes('bad') || lower.includes('negative') || lower.includes('flop') || lower.includes('boring')) return { score: 40, label: 'Negative' };
-    if (lower.includes('terrible') || lower.includes('disaster') || lower.includes('worst')) return { score: 20, label: 'Negative' };
+    // Super Positive
+    if (lower.match(/(masterpiece|extraordinary|phenomenal|perfect|universal acclaim|blockbuster)/)) return { score: 95, label: 'Positive' };
+    
+    // Positive
+    if (lower.match(/(excellent|great|good|enjoyable|hit|superb|brilliant|worth watch|solid|fresh)/)) return { score: 80, label: 'Positive' };
+    
+    // Mixed
+    if (lower.match(/(mixed|average|decent|ok|okay|one time|fine|mediocre|passable)/)) return { score: 60, label: 'Mixed' };
+    
+    // Negative
+    if (lower.match(/(bad|boring|poor|dull|slow|flop|disappointing|skippable)/)) return { score: 40, label: 'Negative' };
+    
+    // Super Negative
+    if (lower.match(/(terrible|disaster|awful|waste|worst|garbage|rotten)/)) return { score: 20, label: 'Negative' };
+
     return { score: 50, label: 'Neutral' };
 };
 
@@ -96,23 +106,41 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       }
 
       // --- AUDIENCE SCORE ---
-      // 1. Explicit Audience Score in DB
+      // We prioritize explicit scores, then fall back to analyzing the comments/insights
+      let calculatedAudienceScore: number | null = null;
+      
       const normAudience = normalizeScore(rawAudience);
-      if (normAudience !== null) {
-          totalAudienceScore += normAudience;
-          audienceCount++;
+      if (normAudience !== null && normAudience > 0) {
+          calculatedAudienceScore = normAudience;
       }
-      // 2. If this is an Audience Scan, the "Main Score" IS the audience score
-      else if (isAudienceScan) {
-          const normMain = normalizeScore(rawScore);
-          if (normMain !== null) {
-              totalAudienceScore += normMain;
-              audienceCount++;
-          } else if (textForAnalysis) {
-             const { score } = analyzeSentimentText(textForAnalysis);
-             totalAudienceScore += score;
-             audienceCount++;
+      // If no explicit score, derive from High Quality Insights (Comments)
+      else if (r.highQualityInsights && Array.isArray(r.highQualityInsights) && r.highQualityInsights.length > 0) {
+          let insTotal = 0;
+          let insCount = 0;
+          r.highQualityInsights.forEach((ins: any) => {
+             // Analyze the 'analysis' text which describes the comment sentiment
+             const txt = ins.analysis || ins.text || "";
+             if (!txt) return;
+             
+             // Check if the comment actually expresses an opinion
+             const { score } = analyzeSentimentText(txt);
+             insTotal += score;
+             insCount++;
+          });
+          
+          if (insCount > 0) {
+              calculatedAudienceScore = Math.round(insTotal / insCount);
           }
+      }
+      // If this scan IS an audience scan but has no number, analyze the main text
+      else if (isAudienceScan && textForAnalysis) {
+          const { score } = analyzeSentimentText(textForAnalysis);
+          calculatedAudienceScore = score;
+      }
+
+      if (calculatedAudienceScore !== null) {
+          totalAudienceScore += calculatedAudienceScore;
+          audienceCount++;
       }
 
       // Collect Topics
@@ -134,7 +162,7 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
 
     // Filter Topics
     const topicFreq: Record<string, number> = {};
-    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'first', 'half', 'second', 'watch'];
+    const stopWords = ['movie', 'film', 'review', 'video', 'story', 'plot', 'first', 'half', 'second', 'watch', 'cinema', 'really', 'actor', 'acting'];
     allTopics.forEach(t => {
       const lowerT = String(t).toLowerCase().replace(/[^a-z\s]/g, '').trim();
       if(!lowerT || stopWords.includes(lowerT) || lowerT.length < 4) return;
@@ -146,7 +174,7 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       .slice(0, 5)
       .map(([t]) => t.charAt(0).toUpperCase() + t.slice(1));
 
-    // Metadata & Poster
+    // Metadata & Poster logic
     let metadata: MovieMetadata | undefined = undefined;
     if (fetchMeta) {
         metadata = await fetchMovieMetadata(subject);
