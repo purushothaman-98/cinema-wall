@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -10,13 +11,12 @@ import ReviewerCard from './components/ReviewerCard';
 import { DEFAULT_POSTER, TMDB_BASE_URL } from './constants';
 import { unslugify, getScoreColor, formatDate } from './lib/utils';
 
-// Helper: Robust JSON Parsing for Vault items that might be double-stringified
+// Helper: Robust JSON Parsing for Vault items
 const safeParseJSON = (input: any) => {
     if (!input) return null;
     if (typeof input === 'object') return input;
     try {
         const parsed = JSON.parse(input);
-        // Handle double-stringification (common with some DB adapters)
         if (typeof parsed === 'string') return JSON.parse(parsed);
         return parsed;
     } catch (e) {
@@ -70,34 +70,52 @@ const HomePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold text-white border-l-4 border-primary pl-4 tracking-tight">The Wall</h1>
-        <div className="flex gap-2 w-full md:w-auto">
-            <input 
-                type="text"
-                placeholder="Search movies..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-surface border border-slate-700 rounded px-4 py-2 text-white w-full md:w-64 focus:border-primary focus:outline-none placeholder-gray-500"
-            />
-            <select 
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                className="bg-surface border border-slate-700 rounded px-4 py-2 text-white focus:border-primary focus:outline-none cursor-pointer"
-            >
-                <option value="trending">Trending</option>
-                <option value="latest">Latest</option>
-                <option value="az">A-Z</option>
-            </select>
-        </div>
+      {/* Hero Section */}
+      <div className="relative mb-12 p-8 rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/50 overflow-hidden">
+          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row justify-between items-end gap-6">
+              <div>
+                  <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">INTELLIGENT</span> CINEMA
+                  </h1>
+                  <p className="text-gray-400 max-w-lg text-lg">
+                      AI-aggregated consensus from the web's most trusted critics and comment sections.
+                  </p>
+              </div>
+              
+              <div className="flex gap-3 w-full md:w-auto">
+                  <div className="relative flex-grow md:flex-grow-0">
+                    <input 
+                        type="text"
+                        placeholder="Find a movie..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="w-full md:w-64 bg-black/30 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none placeholder-gray-500"
+                    />
+                    <svg className="w-5 h-5 absolute right-3 top-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  </div>
+                  <select 
+                      value={filter}
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="bg-black/30 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none cursor-pointer"
+                  >
+                      <option value="trending">Trending</option>
+                      <option value="latest">Latest</option>
+                      <option value="az">A-Z</option>
+                  </select>
+              </div>
+          </div>
       </div>
 
       {loading ? (
-         <div className="flex justify-center py-32">
-             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary"></div>
+         <div className="flex flex-col items-center justify-center py-32 space-y-4">
+             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+             <p className="text-gray-500 text-sm animate-pulse">Synchronizing Data Streams...</p>
          </div>
       ) : errorMsg ? (
-        <div className="text-center py-20 bg-red-950/30 border border-red-500/20 rounded-lg">
+        <div className="text-center py-20 bg-red-950/30 border border-red-500/20 rounded-xl">
             <h3 className="text-red-400 font-bold mb-2">System Offline</h3>
             <p className="text-gray-500 text-sm">{errorMsg}</p>
         </div>
@@ -217,104 +235,113 @@ const MovieDetail = ({ slug }: { slug: string }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-        <a href="#/" className="text-secondary hover:text-white mb-6 inline-flex items-center gap-2 text-sm">
+        <a href="#/" className="text-secondary hover:text-white mb-6 inline-flex items-center gap-2 text-sm bg-surface px-3 py-1 rounded-full border border-slate-700">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
-            Back to Wall
+            Back to Dashboard
         </a>
         
         <div className="grid md:grid-cols-12 gap-8">
             {/* Sidebar */}
             <div className="md:col-span-4 lg:col-span-3 space-y-6">
-                <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-800">
-                    <img src={movie.poster_url} alt={movie.subject_name} className="w-full h-auto object-cover" />
+                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-900">
+                    <img src={movie.poster_url} alt={movie.subject_name} className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
                 </div>
                 
-                <div className="bg-surface p-5 rounded-lg border border-slate-700">
-                    <h3 className="text-gray-400 text-xs uppercase tracking-widest font-bold mb-4">Sentiment Matrix</h3>
+                <div className="bg-surface p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm">
+                    <h3 className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-4">Metric Analysis</h3>
                     
                     {/* Critic Bar */}
-                    <div className="mb-4">
-                        <div className="flex justify-between text-sm mb-1">
-                            <span className="text-gray-300">Critics</span>
+                    <div className="mb-6">
+                        <div className="flex justify-between text-sm mb-2">
+                            <span className="text-gray-300 font-medium">Critics Aggregate</span>
                             <span className={`font-bold ${getScoreColor(movie.critics_score)}`}>{movie.critics_score}</span>
                         </div>
                         <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-primary transition-all duration-1000" style={{width: `${movie.critics_score}%`}}></div>
+                            <div className="h-full bg-gradient-to-r from-yellow-600 to-primary transition-all duration-1000" style={{width: `${movie.critics_score}%`}}></div>
                         </div>
                     </div>
 
                     {/* Audience Bar */}
                     <div>
-                        <div className="flex justify-between text-sm mb-1">
-                            <span className="text-gray-300">Audience</span>
-                            <span className={`font-bold ${getScoreColor(movie.audience_score)}`}>
+                        <div className="flex justify-between text-sm mb-2">
+                            <span className="text-gray-300 font-medium">Audience Sentiment</span>
+                            <span className={`font-bold ${movie.audience_score > 0 ? 'text-blue-400' : 'text-gray-500'}`}>
                                 {movie.audience_score > 0 ? movie.audience_score : 'N/A'}
                             </span>
                         </div>
                         <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 transition-all duration-1000" style={{width: `${movie.audience_score}%`}}></div>
+                            <div className="h-full bg-gradient-to-r from-blue-900 to-blue-500 transition-all duration-1000" style={{width: `${movie.audience_score}%`}}></div>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-surface p-5 rounded-lg border border-slate-700">
-                     <h3 className="text-gray-400 text-xs uppercase tracking-widest font-bold mb-3">Metadata</h3>
-                     <p className="text-sm text-gray-300 mb-2"><span className="text-gray-500">Released:</span> {movie.metadata?.release_date || 'Unknown'}</p>
-                     <div className="flex flex-wrap gap-2">
+                <div className="bg-surface p-6 rounded-xl border border-slate-700/50">
+                     <h3 className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-3">Metadata</h3>
+                     <p className="text-sm text-gray-300 mb-2 flex justify-between">
+                        <span className="text-gray-500">Released</span> 
+                        <span>{movie.metadata?.release_date || 'Unknown'}</span>
+                     </p>
+                     <div className="flex flex-wrap gap-2 mt-4">
                         {movie.metadata?.genres?.map(g => (
-                            <span key={g.id} className="text-[10px] bg-slate-800 text-gray-400 border border-slate-700 px-2 py-1 rounded">{g.name}</span>
+                            <span key={g.id} className="text-[10px] bg-slate-800 text-gray-400 border border-slate-700 px-3 py-1 rounded-full">{g.name}</span>
                         ))}
                      </div>
                 </div>
             </div>
 
             {/* Main Content */}
-            <div className="md:col-span-8 lg:col-span-9 space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{movie.subject_name}</h1>
+            <div className="md:col-span-8 lg:col-span-9 space-y-8">
+                <div>
+                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-2">{movie.subject_name}</h1>
+                     <p className="text-primary font-mono text-sm tracking-widest uppercase">{movie.consensus_line}</p>
+                </div>
                 
                 {/* AI Dashboard */}
-                <div className="bg-surfaceHighlight border border-slate-700/50 rounded-xl p-6 md:p-8 shadow-xl relative overflow-hidden">
-                    <div className="flex justify-between items-start mb-6">
-                        <h2 className="text-primary font-bold tracking-widest text-sm uppercase flex items-center gap-2">
-                            <div className={`w-2 h-2 rounded-full ${generating ? 'bg-yellow-500 animate-ping' : 'bg-green-500'}`}></div>
-                            AI Consensus Protocol
+                <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-12 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    
+                    <div className="flex justify-between items-start mb-8 relative z-10">
+                        <h2 className="text-white font-bold tracking-widest text-xs uppercase flex items-center gap-3">
+                            <span className={`w-2 h-2 rounded-full ${generating ? 'bg-yellow-500 animate-ping' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`}></span>
+                            Gemini 3 Consensus Protocol
                         </h2>
                         {!generating && (
                             <button 
                                 onClick={() => generateConsensus(movie)} 
-                                className="text-xs text-gray-500 hover:text-white transition-colors"
+                                className="text-xs text-slate-500 hover:text-white transition-colors border border-slate-700 hover:border-slate-500 px-3 py-1 rounded-full"
                             >
-                                {isPending ? 'Retry' : 'Refresh'}
+                                {isPending ? 'Initialize Analysis' : 'Refresh Data'}
                             </button>
                         )}
                     </div>
 
                     {!aiSummary && !generating ? (
-                         <div className="animate-pulse space-y-3">
-                             <div className="h-4 bg-slate-700 rounded w-3/4"></div>
-                             <div className="h-20 bg-slate-700/50 rounded"></div>
+                         <div className="animate-pulse space-y-4 opacity-50">
+                             <div className="h-6 bg-slate-700 rounded w-1/2"></div>
+                             <div className="h-4 bg-slate-700/50 rounded w-full"></div>
+                             <div className="h-4 bg-slate-700/50 rounded w-3/4"></div>
                          </div>
                     ) : aiSummary ? (
-                        <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-                            <p className="text-xl md:text-2xl font-serif italic text-white mb-4 leading-relaxed">
-                                "{aiSummary.tagline || 'Processing...'}"
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-10">
+                            <p className="text-2xl md:text-3xl font-serif italic text-white mb-6 leading-relaxed">
+                                "{aiSummary.tagline || 'Processing Data...'}"
                             </p>
-                            <p className="text-gray-300 leading-relaxed mb-6">
+                            <p className="text-gray-300 leading-relaxed text-lg mb-8 max-w-3xl">
                                 {aiSummary.summary}
                             </p>
 
                             {!isPending && (
-                                <div className="grid md:grid-cols-3 gap-4 border-t border-slate-700/50 pt-6">
-                                    <div className="bg-black/20 p-4 rounded-lg">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2">Critics vs Audience</h4>
-                                        <p className="text-sm text-gray-300">{aiSummary.critics_vs_audience || "N/A"}</p>
+                                <div className="grid md:grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
+                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Gap Analysis</h4>
+                                        <p className="text-sm text-gray-300 leading-snug">{aiSummary.critics_vs_audience || "N/A"}</p>
                                     </div>
-                                    <div className="bg-black/20 p-4 rounded-lg">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2">Key Conflict</h4>
-                                        <p className="text-sm text-gray-300">{aiSummary.conflict_points || "N/A"}</p>
+                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
+                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Major Conflict</h4>
+                                        <p className="text-sm text-gray-300 leading-snug">{aiSummary.conflict_points || "N/A"}</p>
                                     </div>
-                                    <div className="bg-black/20 p-4 rounded-lg">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2">Community Vibe</h4>
+                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
+                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Community Vibe</h4>
                                         <p className="text-sm font-mono text-primary">{aiSummary.comment_vibe || "Neutral"}</p>
                                     </div>
                                 </div>
@@ -325,9 +352,9 @@ const MovieDetail = ({ slug }: { slug: string }) => {
 
                 {/* Reviewers List */}
                 <div>
-                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3 border-l-4 border-primary pl-4">
                         Analyst Breakdown 
-                        <span className="text-sm font-normal text-gray-500">({movie.scans.length})</span>
+                        <span className="text-sm font-normal text-gray-500 bg-slate-800 px-2 py-0.5 rounded-full">{movie.scans.length} Sources</span>
                     </h3>
                     <div className="grid gap-4">
                         {movie.scans.map(scan => <ReviewerCard key={scan.id} scan={scan} />)}
