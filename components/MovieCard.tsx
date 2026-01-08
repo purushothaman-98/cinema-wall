@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MovieAggregate } from '../types';
 import { formatDate, getScoreColor } from '../lib/utils';
@@ -60,16 +59,16 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
                     {movie.consensus_line}
                 </span>
                 <span className="text-[10px] text-gray-400">
-                    {movie.metadata?.release_date?.split('-')[0] || 'Unknown'}
+                    {movie.metadata?.release_date ? new Date(movie.metadata.release_date).getFullYear() : 'Unknown'}
                 </span>
             </div>
 
             {/* Reviewer Avatars / Footer */}
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/50">
-                <div className="flex -space-x-2">
+                <div className="flex -space-x-1">
                     {reviewerAvatars.map((thumb, i) => (
-                        <div key={i} className="w-6 h-6 rounded-full border border-slate-800 overflow-hidden bg-slate-800">
-                            <img src={thumb} alt="Reviewer" className="w-full h-full object-cover opacity-80" />
+                        <div key={i} className="w-6 h-6 rounded-md border border-slate-800 overflow-hidden bg-slate-800 z-10 hover:z-20 transition-all hover:scale-125">
+                            <img src={thumb} alt="Reviewer" className="w-full h-full object-cover opacity-90" />
                         </div>
                     ))}
                     {reviewerAvatars.length === 0 && (

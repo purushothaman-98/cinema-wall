@@ -1,4 +1,3 @@
-
 import { Scan, MovieAggregate, MovieMetadata } from '../types';
 import { slugify } from './utils';
 import { DEFAULT_POSTER } from '../constants';
@@ -48,7 +47,7 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
   const grouped: Record<string, Scan[]> = {};
 
   scans.forEach(scan => {
-    // Normalize Subject Name slightly to group better
+    // Normalize Subject Name to group better
     const key = scan.subject_name.trim();
     if (!grouped[key]) grouped[key] = [];
     grouped[key].push(scan);
@@ -59,12 +58,18 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
   for (const [subject, movieScans] of Object.entries(grouped)) {
     const uniqueReviewers = new Set(movieScans.map(s => s.reviewer_name)).size;
     
-    // Sort scans by date descending (Newest first)
+    // 1. Sort scans by date descending (Newest first) for general display
     movieScans.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     
+    // 2. Identify Primary Scan for Visuals & Release Date
+    // We look for the EARLIEST scan that has a valid thumbnail (Likely the actual release/review drop)
+    const chronologicalScans = [...movieScans].sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+    
+    // "Popularity" Proxy: We assume the first valid review video with a thumbnail represents the "Release"
+    const primaryScan = chronologicalScans.find(s => s.thumbnail && s.thumbnail.startsWith('http')) || chronologicalScans[0];
+
+    const releaseDate = primaryScan.created_at;
     const lastScanned = movieScans[0].created_at; 
-    // Proxy for Release Date: The date of the EARLIEST scan/video upload we have in DB
-    const releaseDate = movieScans[movieScans.length - 1].created_at;
 
     let totalCriticScore = 0;
     let criticCount = 0;
@@ -160,16 +165,13 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
 
     // Construct Metadata purely from DB
     const metadata: MovieMetadata = {
-        release_date: releaseDate, // Used oldest scan date as release date
-        genres: [] // No external genre data
+        release_date: releaseDate, // Used the primary scan (upload date)
+        genres: [] 
     };
 
-    let poster_url = "";
-    // STRICT: Only use Scan Thumbnails
-    const validScan = movieScans.find(s => s.thumbnail && s.thumbnail.startsWith('http'));
-    if (validScan) poster_url = validScan.thumbnail || "";
-    
-    if (!poster_url) poster_url = DEFAULT_POSTER;
+    // Poster is derived from the Primary Scan (The one that defined the release date)
+    let poster_url = primaryScan.thumbnail || "";
+    if (!poster_url || !poster_url.startsWith('http')) poster_url = DEFAULT_POSTER;
 
     aggregates.push({
       subject_name: subject,
