@@ -72,51 +72,58 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
       const r = scan.result || {};
       
       // -- READ DATA FROM VARIOUS SCHEMAS --
-      // Explicit numeric score (Usually Critic/Reviewer score)
       const explicitScore = safeGet(r, ['sentiment_score', 'sentimentScore', 'score']);
-      
-      // Text description (DeepAnalysisResult uses 'sentimentDescription' or 'overallSummary')
+      const explicitAudience = safeGet(r, ['audience_sentiment', 'audienceSentiment', 'audienceScore']);
       const textForAnalysis = safeGet(r, ['sentimentDescription', 'sentiment', 'overallSummary', 'summary']) || "";
       
-      // Explicit Audience Score (from comments analysis)
-      const explicitAudience = safeGet(r, ['audience_sentiment', 'audienceSentiment']);
-      
-      // Topics
-      const scanTopics = safeGet(r, ['topics', 'Topics']) || []; // Original schema
-      const insights = r.highQualityInsights || []; // DeepAnalysisResult schema
+      // Determine Scan Mode (Default to Reviewer if missing)
+      const mode = (scan.mode || 'REVIEWER').toUpperCase();
+      const isReviewer = mode === 'REVIEWER' || mode === 'CRITIC';
+      const isAudience = mode === 'AUDIENCE' || mode === 'COMMENTS';
 
-      // --- LOGIC: CRITIC vs AUDIENCE ---
-      
-      // Critic Score: Derived from what the Reviewer said (or the main sentiment of the scan)
-      if (typeof explicitScore === 'number') {
-         let s = explicitScore;
-         if (s <= 10) s *= 10;
-         totalCriticScore += s;
-         criticCount++;
-      } else if (textForAnalysis) {
-         // Fallback: Infer critic score from text summary
-         const { score, label } = analyzeSentimentText(textForAnalysis);
-         totalCriticScore += score;
-         criticCount++;
-         allSentiments.push(label);
+      // --- CRITIC SCORE LOGIC ---
+      // Only count towards critic score if it's a reviewer/critic scan
+      if (isReviewer) {
+          if (typeof explicitScore === 'number') {
+             let s = explicitScore;
+             if (s <= 10) s *= 10;
+             totalCriticScore += s;
+             criticCount++;
+          } else if (textForAnalysis) {
+             const { score, label } = analyzeSentimentText(textForAnalysis);
+             totalCriticScore += score;
+             criticCount++;
+             allSentiments.push(label);
+          }
       }
 
-      // Audience Score: Derived from 'audience_sentiment' OR deep analysis of comments
+      // --- AUDIENCE SCORE LOGIC ---
+      // 1. Use explicit audience score if available (Reviewers sometimes give this)
       if (typeof explicitAudience === 'number') {
         let s = explicitAudience;
         if (s <= 1) s *= 100;
         totalAudienceScore += s;
         audienceCount++;
-      } else {
-        // If we don't have an explicit audience number, but we have a text analysis of comments
-        // (DeepAnalysisResult is fundamentally an analysis of comments/audience)
-        // We can infer the audience score from the text sentiment if the scan mode implies comment analysis.
-        const { score } = analyzeSentimentText(textForAnalysis);
-        totalAudienceScore += score;
-        audienceCount++;
+      } 
+      // 2. If the scan itself is FROM the audience (e.g. comment analysis), use its main score/text
+      else if (isAudience) {
+          if (typeof explicitScore === 'number') {
+             let s = explicitScore;
+             if (s <= 10) s *= 10;
+             totalAudienceScore += s;
+             audienceCount++;
+          } else if (textForAnalysis) {
+             const { score } = analyzeSentimentText(textForAnalysis);
+             totalAudienceScore += score;
+             audienceCount++;
+          }
       }
+      // Note: We DO NOT infer audience score from a Critic's text summary anymore to avoid duplication.
 
       // -- AGGREGATE TOPICS --
+      const scanTopics = safeGet(r, ['topics', 'Topics']) || [];
+      const insights = r.highQualityInsights || [];
+      
       if (Array.isArray(scanTopics)) allTopics.push(...scanTopics);
       if (Array.isArray(insights)) {
          insights.forEach((i: any) => {
@@ -136,19 +143,17 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
     const positiveCount = allSentiments.filter(s => s === 'Positive').length;
     const negativeCount = allSentiments.filter(s => s === 'Negative').length;
     
-    let consensus_line = "No data available.";
-    if (movieScans.length > 0) {
-        if (positiveCount > negativeCount) consensus_line = "Generally Favorable.";
-        else if (negativeCount > positiveCount) consensus_line = "Generally Unfavorable.";
-        else consensus_line = "Reviews are Mixed.";
-    }
+    let consensus_line = "Reviews are Mixed.";
+    if (movieScans.length === 0) consensus_line = "No Data";
+    else if (positiveCount > negativeCount) consensus_line = "Generally Favorable.";
+    else if (negativeCount > positiveCount) consensus_line = "Generally Unfavorable.";
 
     // Top Topics
     const topicFreq: Record<string, number> = {};
-    const stopWords = ['movie', 'film', 'this', 'that', 'with', 'review', 'about', 'really', 'comment', 'watch', 'video'];
+    const stopWords = ['movie', 'film', 'this', 'that', 'with', 'review', 'about', 'really', 'comment', 'watch', 'video', 'story', 'plot'];
     allTopics.forEach(t => {
-      const lowerT = String(t).toLowerCase().replace(/[^a-z]/g, '');
-      if(!lowerT || stopWords.includes(lowerT)) return;
+      const lowerT = String(t).toLowerCase().replace(/[^a-z\s]/g, '').trim();
+      if(!lowerT || stopWords.includes(lowerT) || lowerT.length < 3) return;
       topicFreq[lowerT] = (topicFreq[lowerT] || 0) + 1;
     });
     
@@ -163,18 +168,24 @@ export async function aggregateScans(scans: Scan[], fetchMeta = false): Promise<
         metadata = await fetchMovieMetadata(subject);
     }
 
-    // --- THUMBNAIL LOGIC ---
-    // Priority: TMDB Poster -> First Scan Thumbnail -> Default
-    let poster_url = DEFAULT_POSTER;
-    
+    // --- THUMBNAIL / POSTER LOGIC ---
+    // Priority 1: TMDB Poster
+    let poster_url = "";
     if (metadata?.poster_path) {
         poster_url = `${TMDB_BASE_URL}${metadata.poster_path}`;
-    } else {
-        // Fallback to finding a thumbnail from the scans
+    } 
+    
+    // Priority 2: YouTube/Scan Thumbnail (if TMDB missing)
+    if (!poster_url || poster_url === DEFAULT_POSTER) {
         const scanWithThumb = movieScans.find(s => s.thumbnail && s.thumbnail.startsWith('http'));
-        if (scanWithThumb?.thumbnail) {
-            poster_url = scanWithThumb.thumbnail;
+        if (scanWithThumb) {
+            poster_url = scanWithThumb.thumbnail || "";
         }
+    }
+
+    // Priority 3: Default
+    if (!poster_url) {
+        poster_url = DEFAULT_POSTER;
     }
 
     aggregates.push({

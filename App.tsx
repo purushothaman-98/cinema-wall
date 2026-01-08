@@ -130,6 +130,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             .ilike('subject_name', subjectName);
 
         if (data && data.length > 0) {
+            // Fetch Meta is true to ensure we get TMDB data if available
             const aggs = await aggregateScans(data as Scan[], true);
             if (aggs.length > 0) setMovie(aggs[0]);
         }
@@ -159,14 +160,16 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                     ? JSON.parse(vaultData.summary_report) 
                     : vaultData.summary_report;
                 
-                // Ensure report is an object
-                if (!report || typeof report !== 'object') {
-                   report = { tagline: "Analysis Available", summary: "Review data has been processed." };
+                // Validate report content
+                if (!report || typeof report !== 'object' || !report.summary) {
+                   // If data is corrupted/empty, force regeneration
+                   generateConsensus(movie);
+                } else {
+                   setAiSummary(report);
                 }
-                setAiSummary(report);
             } catch (e) {
-                console.error("Failed to parse vault report", e);
-                setAiSummary({ tagline: "Data Error", summary: "Could not retrieve analysis details." });
+                console.error("Failed to parse vault report, regenerating...", e);
+                generateConsensus(movie);
             }
         } else {
             // Not found, trigger auto-analysis
@@ -178,6 +181,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
 
   const generateConsensus = async (targetMovie: MovieAggregate) => {
     setGenerating(true);
+    setAiSummary(null);
     
     const body = {
         movie: targetMovie.subject_name,
@@ -199,18 +203,18 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             const data = await res.json();
             setAiSummary(data);
             
-            // Auto Save to Vault
-            await supabase.from('memory_vault').insert({
+            // Auto Save to Vault ONLY on success
+            await supabase.from('memory_vault').upsert({
                 movie_name: targetMovie.subject_name,
                 summary_report: JSON.stringify(data)
-            });
+            }, { onConflict: 'movie_name' });
         } else {
              console.warn("AI Generation failed");
-             setAiSummary({ tagline: "Analysis Pending", summary: "The system is currently analyzing the latest reviews." });
+             setAiSummary({ tagline: "Analysis Delayed", summary: "The system is busy or unavailable. Please try again later." });
         }
     } catch (e) {
         console.error("Generation Error", e);
-        setAiSummary({ tagline: "Connection Error", summary: "Could not reach the analysis engine." });
+        setAiSummary({ tagline: "Network Error", summary: "Could not reach the analysis engine." });
     } finally {
         setGenerating(false);
     }
@@ -225,6 +229,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
         <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-1 space-y-6">
                 <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-800">
+                     {/* Use the computed poster_url which handles the fallback logic */}
                     <img src={movie.poster_url} alt={movie.subject_name} className="w-full" />
                 </div>
                 <div className="bg-surface p-4 rounded-lg border border-slate-700">
@@ -236,7 +241,10 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                         </div>
                         <div className="w-px bg-slate-700"></div>
                         <div>
-                            <div className={`text-4xl font-bold ${getScoreColor(movie.audience_score)}`}>{movie.audience_score}%</div>
+                             {/* Show N/A if 0 to indicate lack of data vs actual 0 score */}
+                            <div className={`text-4xl font-bold ${getScoreColor(movie.audience_score)}`}>
+                                {movie.audience_score > 0 ? `${movie.audience_score}%` : 'N/A'}
+                            </div>
                             <div className="text-xs text-gray-500 mt-1">Audience</div>
                         </div>
                     </div>
@@ -269,9 +277,9 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                             AI Consensus Protocol
                             {generating && <span className="text-xs text-gray-400 animate-pulse font-normal">(Analyzing Data...)</span>}
                         </h2>
-                        {!generating && !aiSummary && (
+                        {!generating && (
                              <button onClick={() => generateConsensus(movie)} className="text-xs border border-primary text-primary px-3 py-1 rounded hover:bg-primary hover:text-black">
-                                Force Retry
+                                {aiSummary?.tagline?.includes('Error') || aiSummary?.tagline?.includes('Delayed') ? 'Retry Analysis' : 'Refresh'}
                              </button>
                         )}
                     </div>
@@ -282,11 +290,13 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                         </div>
                     ) : aiSummary ? (
                         <div className="animate-in fade-in duration-500 relative z-10">
-                            <p className="text-2xl font-serif text-white italic mb-6 leading-relaxed">"{aiSummary.tagline || 'No tagline generated.'}"</p>
-                            <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary || 'No summary available.'}</p>
-                            <div className="mt-4 flex items-center gap-2">
-                                <span className="text-xs text-green-400 font-mono">● SAVED TO VAULT</span>
-                            </div>
+                            <p className="text-2xl font-serif text-white italic mb-6 leading-relaxed">"{aiSummary.tagline || 'Pending...'}"</p>
+                            <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary || 'Summary unavailable.'}</p>
+                            {aiSummary.summary && !aiSummary.tagline?.includes('Error') && (
+                                <div className="mt-4 flex items-center gap-2">
+                                    <span className="text-xs text-green-400 font-mono">● SAVED TO VAULT</span>
+                                </div>
+                            )}
                         </div>
                     ) : (
                          <div className="py-8 space-y-3">
@@ -345,7 +355,6 @@ const VaultPage = () => {
                         report = { tagline: "Error parsing report", summary: "Data corruption detected." }; 
                     }
                     
-                    // Fallback object to prevent crashes
                     const safeReport = report || { tagline: "Processing...", summary: "Analysis is queued or unavailable." };
 
                     return (
