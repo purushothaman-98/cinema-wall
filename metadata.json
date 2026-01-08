@@ -1,0 +1,5 @@
+{
+  "name": "Cinema Wall",
+  "description": "An IMDb-style aggregation wall for movie reviews analyzed by AI, featuring sentiment analysis, consensus summaries, and news.",
+  "requestFramePermissions": []
+}
