@@ -347,9 +347,13 @@ const NewsPage = () => {
 
 // MAIN ROUTER
 const App = () => {
-  const [route, setRoute] = useState(window.location.hash || '#/');
+  // FIX: Initialize with string literal to avoid "window is not defined" during SSR build
+  const [route, setRoute] = useState('#/');
 
   useEffect(() => {
+    // Now safe to access window
+    setRoute(window.location.hash || '#/');
+    
     const handleHashChange = () => setRoute(window.location.hash || '#/');
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);

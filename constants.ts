@@ -1,25 +1,8 @@
-// Helper to safely access env vars in various environments
-const getEnv = (key: string) => {
-  try {
-    if (typeof process !== 'undefined' && process.env) {
-      return process.env[key];
-    }
-  } catch (e) {
-    // Ignore reference errors
-  }
-  // Fallback for some client-side bundlers
-  try {
-    // @ts-ignore
-    if (typeof import.meta !== 'undefined' && import.meta.env) {
-      // @ts-ignore
-      return import.meta.env[key];
-    }
-  } catch (e) {}
-  return undefined;
-};
+// Explicit access is required for Next.js to replace variables at build time.
+// Dynamic access (process.env[key]) returns undefined in the browser.
 
-export const SUPABASE_URL = getEnv('NEXT_PUBLIC_SUPABASE_URL') || 'https://placeholder.supabase.co';
-export const SUPABASE_ANON_KEY = getEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY') || 'placeholder';
+export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 export const DEFAULT_POSTER = "https://picsum.photos/300/450?grayscale&blur=2";
 

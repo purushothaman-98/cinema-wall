@@ -3,7 +3,8 @@ import { MovieMetadata } from '../types';
 export async function fetchMovieMetadata(query: string): Promise<MovieMetadata | undefined> {
   try {
     // We now fetch from our own internal API route (/api/metadata)
-    // This keeps the TMDB_API_KEY hidden on the server side
+    // This keeps the TMDB_API_KEY hidden on the server side.
+    // Relative URL works automatically in the browser.
     const searchRes = await fetch(`/api/metadata?query=${encodeURIComponent(query)}`);
     
     if (!searchRes.ok) return undefined;
@@ -17,6 +18,7 @@ export async function fetchMovieMetadata(query: string): Promise<MovieMetadata |
     const detailRes = await fetch(`/api/metadata?id=${firstResult.id}`);
     
     if(!detailRes.ok) {
+        // Fallback to basic info if detail fetch fails
         return {
             poster_path: firstResult.poster_path,
             release_date: firstResult.release_date,
@@ -38,7 +40,7 @@ export async function fetchMovieMetadata(query: string): Promise<MovieMetadata |
     };
 
   } catch (error) {
-    console.error("Metadata Fetch Error:", error);
+    console.warn("Metadata Fetch Warning:", error);
     return undefined;
   }
 }

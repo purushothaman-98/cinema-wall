@@ -1,1 +1,1 @@
-// Deprecated: See app/page.tsx
+// Deprecated. See app/page.tsx
