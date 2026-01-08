@@ -1,17 +1,13 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Retry helper for Free Tier Rate Limits (429)
 async function generateWithRetry(ai: GoogleGenAI, params: any, retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
       return await ai.models.generateContent(params);
     } catch (error: any) {
-      // Check for Rate Limit (429) or Service Unavailable (503)
       if ((error.status === 429 || error.status === 503) && i < retries - 1) {
-        const delay = 1000 * Math.pow(2, i); // Exponential backoff: 1s, 2s, 4s
-        console.warn(`Gemini Rate Limit hit. Retrying in ${delay}ms...`);
+        const delay = 1000 * Math.pow(2, i); 
         await new Promise(r => setTimeout(r, delay));
         continue;
       }
@@ -30,7 +26,6 @@ export async function POST(req: NextRequest) {
   try {
     const { movie, topics, sentiments, reviews } = await req.json();
 
-    // optimized prompt to save input tokens while asking for depth
     const prompt = `
       ANALYST TASK: Generate a deep consensus report for "${movie}".
       
@@ -40,17 +35,16 @@ export async function POST(req: NextRequest) {
       - Sources:
       ${reviews.map((r: any) => `[${r.title}]: ${r.snippet}`).join('\n')}
 
-      REQUIREMENTS:
+      REQUIREMENTS (JSON ONLY):
       1. Tagline: Punchy, 1 sentence.
       2. Summary: High-level verdict (2 sentences).
-      3. Critics vs Audience: Explicitly contrast their viewpoints. Do they agree? If not, why?
-      4. Conflict Matrix: Identify specific plot points, acting, or technical elements where reviewers disagree.
-      5. Comment Vibe: 3-5 adjectives describing the emotional state of the comment section (e.g., "Toxic," "Hype," "Confused").
+      3. Critics vs Audience: Explicitly contrast their viewpoints.
+      4. Conflict Matrix: Identify specific plot points where opinions diverge.
+      5. Comment Vibe: 3 adjectives describing the mood.
     `;
 
     const ai = new GoogleGenAI({ apiKey: apiKey });
 
-    // Use gemini-3-flash-preview for speed and efficiency
     const response = await generateWithRetry(ai, {
       model: "gemini-3-flash-preview",
       contents: prompt,
@@ -61,18 +55,19 @@ export async function POST(req: NextRequest) {
           properties: {
             tagline: { type: Type.STRING },
             summary: { type: Type.STRING },
-            critics_vs_audience: { type: Type.STRING, description: "Analysis of the gap between professional and casual viewers." },
-            conflict_points: { type: Type.STRING, description: "Specific elements (plot/acting) where opinions diverge." },
-            comment_vibe: { type: Type.STRING, description: "Short description of the community mood." }
+            critics_vs_audience: { type: Type.STRING },
+            conflict_points: { type: Type.STRING },
+            comment_vibe: { type: Type.STRING }
           },
           required: ["tagline", "summary", "critics_vs_audience", "conflict_points", "comment_vibe"],
         }
       },
     });
 
-    const text = response?.text;
+    let text = response?.text || "{}";
     
-    if (!text) throw new Error("No response text from AI");
+    // CRITICAL FIX: Strip Markdown backticks if present
+    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
 
     return NextResponse.json(JSON.parse(text));
 

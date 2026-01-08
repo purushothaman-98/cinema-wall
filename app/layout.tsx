@@ -15,12 +15,17 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Google Fonts: Inter */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        
         {/* Force dark mode background immediately to avoid white flash */}
         <style dangerouslySetInnerHTML={{__html: `
           body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: sans-serif;
+            background-color: #0b1121; /* Darker slate */
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             min-height: 100vh;
           }
@@ -31,11 +36,15 @@ export default function RootLayout({
             config: {
               theme: {
                 extend: {
+                  fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                  },
                   colors: {
-                    background: '#0f172a',
-                    surface: '#1e293b',
-                    primary: '#eab308',
-                    secondary: '#64748b',
+                    background: '#0b1121',
+                    surface: '#151e32',
+                    surfaceHighlight: '#1e293b',
+                    primary: '#fbbf24', // Amber-400
+                    secondary: '#94a3b8',
                   }
                 }
               }
@@ -44,7 +53,7 @@ export default function RootLayout({
         `}} />
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body className="bg-background text-white min-h-screen">
+      <body className="bg-background text-white min-h-screen antialiased">
         {children}
       </body>
     </html>
