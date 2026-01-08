@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -112,11 +113,19 @@ const HomePage = () => {
 };
 
 // 2. DETAIL PAGE
+interface AnalysisReport {
+    tagline?: string;
+    summary?: string;
+    critics_vs_audience?: string;
+    conflict_points?: string;
+    comment_vibe?: string;
+}
+
 const MovieDetail = ({ slug }: { slug: string }) => {
   const subjectName = unslugify(slug);
   const [movie, setMovie] = useState<MovieAggregate | null>(null);
   const [loading, setLoading] = useState(true);
-  const [aiSummary, setAiSummary] = useState<{tagline?: string, summary?: string} | null>(null);
+  const [aiSummary, setAiSummary] = useState<AnalysisReport | null>(null);
   const [generating, setGenerating] = useState(false);
   const attemptRef = useRef(false);
 
@@ -130,7 +139,6 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             .ilike('subject_name', subjectName);
 
         if (data && data.length > 0) {
-            // Fetch Meta is true to ensure we get TMDB data if available
             const aggs = await aggregateScans(data as Scan[], true);
             if (aggs.length > 0) setMovie(aggs[0]);
         }
@@ -160,9 +168,8 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                     ? JSON.parse(vaultData.summary_report) 
                     : vaultData.summary_report;
                 
-                // Validate report content
+                // Validate report content (basic check)
                 if (!report || typeof report !== 'object' || !report.summary) {
-                   // If data is corrupted/empty, force regeneration
                    generateConsensus(movie);
                 } else {
                    setAiSummary(report);
@@ -183,14 +190,21 @@ const MovieDetail = ({ slug }: { slug: string }) => {
     setGenerating(true);
     setAiSummary(null);
     
+    // OPTIMIZATION: Reduce payload to save tokens
     const body = {
         movie: targetMovie.subject_name,
         topics: targetMovie.top_topics,
-        sentiments: `Critics: ${targetMovie.critics_score}, Audience: ${targetMovie.audience_score}`,
-        reviews: targetMovie.scans.slice(0, 10).map(s => ({ 
-            title: s.reviewer_name, 
-            snippet: s.result?.summary || s.title 
-        }))
+        sentiments: {
+            critics: targetMovie.critics_score,
+            audience: targetMovie.audience_score
+        },
+        reviews: targetMovie.scans
+            .slice(0, 8) // Limit to 8 relevant reviews
+            .map(s => ({ 
+                title: s.reviewer_name, 
+                // Truncate snippet to 300 chars to save tokens
+                snippet: (s.result?.summary || s.result?.sentimentDescription || s.title).substring(0, 300) 
+            }))
     };
 
     try {
@@ -210,7 +224,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
             }, { onConflict: 'movie_name' });
         } else {
              console.warn("AI Generation failed");
-             setAiSummary({ tagline: "Analysis Delayed", summary: "The system is busy or unavailable. Please try again later." });
+             setAiSummary({ tagline: "Analysis Delayed", summary: "The system is currently maximizing resource usage. Please retry shortly." });
         }
     } catch (e) {
         console.error("Generation Error", e);
@@ -223,13 +237,14 @@ const MovieDetail = ({ slug }: { slug: string }) => {
   if (loading) return <div className="text-center py-20 text-primary">Loading Movie Details...</div>;
   if (!movie) return <div className="text-center py-20 text-red-500">Movie not found.</div>;
 
+  const isPending = aiSummary?.tagline === "Analysis Delayed" || aiSummary?.tagline === "Network Error" || !aiSummary;
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
         <a href="#/" className="text-secondary hover:text-white mb-6 inline-block">&larr; Back to Wall</a>
         <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-1 space-y-6">
                 <div className="rounded-lg overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-800">
-                     {/* Use the computed poster_url which handles the fallback logic */}
                     <img src={movie.poster_url} alt={movie.subject_name} className="w-full" />
                 </div>
                 <div className="bg-surface p-4 rounded-lg border border-slate-700">
@@ -241,7 +256,6 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                         </div>
                         <div className="w-px bg-slate-700"></div>
                         <div>
-                             {/* Show N/A if 0 to indicate lack of data vs actual 0 score */}
                             <div className={`text-4xl font-bold ${getScoreColor(movie.audience_score)}`}>
                                 {movie.audience_score > 0 ? `${movie.audience_score}%` : 'N/A'}
                             </div>
@@ -279,7 +293,7 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                         </h2>
                         {!generating && (
                              <button onClick={() => generateConsensus(movie)} className="text-xs border border-primary text-primary px-3 py-1 rounded hover:bg-primary hover:text-black">
-                                {aiSummary?.tagline?.includes('Error') || aiSummary?.tagline?.includes('Delayed') ? 'Retry Analysis' : 'Refresh'}
+                                {isPending ? 'Retry Analysis' : 'Refresh'}
                              </button>
                         )}
                     </div>
@@ -289,12 +303,35 @@ const MovieDetail = ({ slug }: { slug: string }) => {
                            <p className="text-gray-500 italic">Initializing automated analysis...</p>
                         </div>
                     ) : aiSummary ? (
-                        <div className="animate-in fade-in duration-500 relative z-10">
-                            <p className="text-2xl font-serif text-white italic mb-6 leading-relaxed">"{aiSummary.tagline || 'Pending...'}"</p>
-                            <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary || 'Summary unavailable.'}</p>
-                            {aiSummary.summary && !aiSummary.tagline?.includes('Error') && (
-                                <div className="mt-4 flex items-center gap-2">
-                                    <span className="text-xs text-green-400 font-mono">● SAVED TO VAULT</span>
+                        <div className="animate-in fade-in duration-500 relative z-10 space-y-6">
+                            
+                            {/* Header */}
+                            <div>
+                                <p className="text-2xl font-serif text-white italic mb-2 leading-relaxed">"{aiSummary.tagline || 'Pending...'}"</p>
+                                <p className="text-gray-300 leading-relaxed text-lg">{aiSummary.summary || 'Summary unavailable.'}</p>
+                            </div>
+
+                            {/* Deep Analysis Grid */}
+                            {!isPending && (
+                                <div className="grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-700/50">
+                                    <div className="bg-black/20 p-3 rounded">
+                                        <h4 className="text-xs font-bold text-secondary uppercase mb-1">Critics vs Audience</h4>
+                                        <p className="text-sm text-gray-300">{aiSummary.critics_vs_audience || "Consensus aligned."}</p>
+                                    </div>
+                                    <div className="bg-black/20 p-3 rounded">
+                                        <h4 className="text-xs font-bold text-secondary uppercase mb-1">Conflict Matrix</h4>
+                                        <p className="text-sm text-gray-300">{aiSummary.conflict_points || "No major disagreements."}</p>
+                                    </div>
+                                    <div className="md:col-span-2 bg-black/20 p-3 rounded flex items-center justify-between">
+                                        <span className="text-xs font-bold text-secondary uppercase">Comment Section Vibe:</span>
+                                        <span className="text-sm font-mono text-primary">{aiSummary.comment_vibe || "Neutral"}</span>
+                                    </div>
+                                </div>
+                            )}
+
+                            {!isPending && (
+                                <div className="flex items-center gap-2 mt-2">
+                                    <span className="text-[10px] text-green-400 font-mono tracking-widest border border-green-900 bg-green-900/20 px-2 py-0.5 rounded">● ARCHIVED IN VAULT</span>
                                 </div>
                             )}
                         </div>
@@ -356,6 +393,9 @@ const VaultPage = () => {
                     }
                     
                     const safeReport = report || { tagline: "Processing...", summary: "Analysis is queued or unavailable." };
+                    const isError = safeReport.tagline === "Analysis Delayed" || safeReport.tagline === "Network Error";
+
+                    if (isError) return null; // Don't show failed attempts in Vault
 
                     return (
                         <div key={item.id} className="bg-surface p-6 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors">
@@ -365,6 +405,13 @@ const VaultPage = () => {
                             </div>
                             <p className="text-primary italic text-lg font-serif mb-3">"{safeReport.tagline || 'Pending...'}"</p>
                             <p className="text-gray-400 text-sm line-clamp-2">{safeReport.summary || 'Summary unavailable.'}</p>
+                            
+                            {safeReport.critics_vs_audience && (
+                                <div className="mt-3 text-xs text-gray-500 bg-black/20 p-2 rounded">
+                                   <span className="font-bold">Consensus Gap:</span> {safeReport.critics_vs_audience}
+                                </div>
+                            )}
+
                             <div className="mt-4 pt-4 border-t border-slate-800 text-right">
                                 <a href={`#/movie/${item.movie_name.toLowerCase().replace(/\s+/g, '-')}`} className="text-xs text-white bg-slate-700 px-3 py-1 rounded hover:bg-slate-600">
                                     View Full Analysis
