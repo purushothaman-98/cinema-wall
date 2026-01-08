@@ -13,44 +13,40 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Force dark mode background immediately to avoid white flash */}
+        <style dangerouslySetInnerHTML={{__html: `
+          body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: sans-serif;
+            margin: 0;
+            min-height: 100vh;
+          }
+        `}} />
+        {/* Load Tailwind Config BEFORE the library */}
         <script dangerouslySetInnerHTML={{__html: `
-          tailwind.config = {
-            theme: {
-              extend: {
-                colors: {
-                  background: '#0f172a',
-                  surface: '#1e293b',
-                  primary: '#eab308',
-                  secondary: '#64748b',
+          window.tailwind = {
+            config: {
+              theme: {
+                extend: {
+                  colors: {
+                    background: '#0f172a',
+                    surface: '#1e293b',
+                    primary: '#eab308',
+                    secondary: '#64748b',
+                  }
                 }
               }
             }
           }
         `}} />
-        <style dangerouslySetInnerHTML={{__html: `
-          body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-          }
-          /* Custom Scrollbar */
-          ::-webkit-scrollbar {
-            width: 8px;
-          }
-          ::-webkit-scrollbar-track {
-            background: #0f172a; 
-          }
-          ::-webkit-scrollbar-thumb {
-            background: #334155; 
-            border-radius: 4px;
-          }
-          ::-webkit-scrollbar-thumb:hover {
-            background: #475569; 
-          }
-        `}} />
+        <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body>{children}</body>
+      <body className="bg-background text-white min-h-screen">
+        {children}
+      </body>
     </html>
   );
 }
