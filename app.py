@@ -34,7 +34,7 @@ def top_terms(texts, limit=12):
 frame, videos, meta = get_data()
 with st.sidebar:
     st.title("📡 Tamil Cinema Scanner")
-    st.caption("Automatically refreshed from public discussions")
+    st.caption("Automatically refreshed from the latest GitHub scan")
     if not frame.empty:
         selected_films = st.multiselect("Films on the wall", sorted(frame.film.unique()), default=sorted(frame.film.unique()))
         platforms = st.multiselect("Sources", sorted(frame.platform.unique()), default=sorted(frame.platform.unique()))
