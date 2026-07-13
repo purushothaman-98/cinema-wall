@@ -56,7 +56,7 @@ if frame.empty:
     st.code("TMDB_API_KEY\nYOUTUBE_API_KEY", language=None)
     st.stop()
 
-cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=window)
+cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=int(window))
 filtered = frame[(frame.film.isin(selected_films)) & (frame.platform.isin(platforms)) & (frame.likes >= minimum_likes) & (frame.created_at >= cutoff)].copy()
 if filtered.empty:
     st.info("No scanned comments match these filters."); st.stop()
@@ -81,7 +81,13 @@ with left:
 with right:
     film = st.selectbox("Inspect a film", summary.film.tolist())
     movie = filtered[filtered.film == film]; row = summary[summary.film == film].iloc[0]
-    st.markdown(f'<div class="film-title">{film}</div><div class="subtle">{len(movie):,} comments · last seen {row.last_seen:%d %b}</div>', unsafe_allow_html=True)
+    catalog={item["title"]:item for item in meta.get("movie_catalog",[]) if isinstance(item,dict)}
+    poster=catalog.get(film,{}).get("poster_url")
+    head_left,head_right=st.columns([1,2])
+    with head_left:
+        if poster: st.image(poster,width="stretch")
+    with head_right:
+        st.markdown(f'<div class="film-title">{film}</div><div class="subtle">{len(movie):,} useful comments · last seen {row.last_seen:%d %b}</div>', unsafe_allow_html=True)
     st.metric("Pulse", f"{row.score:.0f}/100", f"{row.weekly_change:+.1f} vs previous week")
     counts = movie.sentiment.value_counts(normalize=True).reindex(["Positive","Neutral","Negative"],fill_value=0)*100
     pie=go.Figure(go.Pie(labels=counts.index,values=counts.values,hole=.64,marker_colors=["#3b8b72","#d2aa52","#c64f44"],textinfo="label+percent"))
@@ -94,12 +100,35 @@ compare=px.bar(platform_scores,x="film",y="score",color="platform",barmode="grou
 compare.update_layout(height=400,yaxis_title="Pulse score",xaxis_title=None,legend_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 st.plotly_chart(compare,width="stretch")
 
+st.subheader("Language and aspect intelligence")
+language_col,aspect_col=st.columns([1,1.4],gap="large")
+with language_col:
+    language_counts=filtered.language.value_counts().reset_index(); language_counts.columns=["Language","Comments"]
+    language_fig=px.pie(language_counts,names="Language",values="Comments",hole=.55,color_discrete_sequence=["#ed5b2f","#3b8b72","#6e77b7","#d2aa52"])
+    language_fig.update_layout(height=340,margin=dict(l=0,r=0,t=10,b=0),legend_title=None,paper_bgcolor="rgba(0,0,0,0)")
+    st.plotly_chart(language_fig,width="stretch")
+with aspect_col:
+    aspect_rows=[]
+    for _,comment in filtered[~filtered.low_information].iterrows():
+        scores=comment.aspect_scores if isinstance(comment.aspect_scores,dict) else {}
+        for aspect,score in scores.items(): aspect_rows.append({"Aspect":aspect,"Score":score,"Weight":comment.analysis_weight})
+    if aspect_rows:
+        aspects=pd.DataFrame(aspect_rows)
+        aspects["Weighted"]=aspects.Score*aspects.Weight
+        aspect_summary=aspects.groupby("Aspect",as_index=False).agg(total=("Weighted","sum"),weight=("Weight","sum"),mentions=("Score","size"))
+        aspect_summary["Pulse"]=aspect_summary.total/aspect_summary.weight
+        aspect_fig=px.bar(aspect_summary.sort_values("Pulse"),x="Pulse",y="Aspect",orientation="h",color="Pulse",
+            range_x=[0,100],hover_data="mentions",color_continuous_scale=[(0,"#c64f44"),(.5,"#d2aa52"),(1,"#3b8b72")])
+        aspect_fig.update_layout(height=340,coloraxis_showscale=False,xaxis_title="Aspect sentiment",yaxis_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(aspect_fig,width="stretch")
+    else: st.info("Aspect scores will appear when story, acting, music, pacing and other film elements are mentioned.")
+
 if not videos.empty:
     st.subheader("Review video signal — views accumulated between scans")
     period_label = st.segmented_control("Growth interval", ["Day", "Week", "Month", "Year"], default="Week")
     days = {"Day": 1, "Week": 7, "Month": 30, "Year": 365}[period_label]
     latest = videos.sort_values("scanned_at").groupby("video_id").tail(1)
-    prior_cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=days)
+    prior_cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=int(days))
     prior = videos[videos.scanned_at <= prior_cutoff].sort_values("scanned_at").groupby("video_id").tail(1)[["video_id","views"]].rename(columns={"views":"prior_views"})
     growth = latest.merge(prior,on="video_id",how="left")
     growth["view_growth"] = (growth.views-growth.prior_views).where(growth.prior_views.notna())
@@ -132,7 +161,7 @@ with st.expander("Open the scanner log and comments"):
     if meta.get("errors"): st.warning("\n".join(meta["errors"]))
     st.markdown("**Monitored Reddit forums:** "+", ".join(meta.get("reddit_forums", [])))
     st.markdown("**Preferred YouTube channels:** "+", ".join(meta.get("youtube_channels", [])))
-    shown=filtered[["film","platform","source","content_type","text","sentiment","sentiment_score","likes","created_at","url"]].sort_values("created_at",ascending=False)
+    shown=filtered[["film","platform","source","content_type","language","text","sentiment","sentiment_score","confidence","likes","created_at","url"]].sort_values("created_at",ascending=False)
     st.dataframe(shown,width="stretch",hide_index=True,column_config={"url":st.column_config.LinkColumn("Source")})
     st.download_button("Download current view",shown.to_csv(index=False),"tamil-film-weekly-scan.csv","text/csv")
 
