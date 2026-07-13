@@ -1,0 +1,9 @@
+{
+  "lookback_days": 120,
+  "max_films": 8,
+  "youtube_videos_per_film": 4,
+  "comments_per_platform": 250,
+  "manual_films": [],
+  "reddit_query_suffix": "review OR discussion",
+  "keep_history_days": 365
+}

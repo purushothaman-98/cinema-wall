@@ -1,6 +1,6 @@
 # Tamil Film Pulse
 
-An open-source Streamlit dashboard for comparing public sentiment around Tamil films across YouTube and Reddit. It supports Tamil, Tanglish and English comments, platform comparison, topic analysis, CSV uploads and optional live collection.
+An automated Streamlit wall that discovers recent Tamil films and refreshes public YouTube and Reddit sentiment every week.
 
 ## Run locally
 
@@ -11,32 +11,21 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The application starts with clearly labelled demonstration data. Upload your own CSV from the sidebar or configure API credentials for collection.
+The dashboard reads the timestamped dataset produced by the scheduled scanner.
 
-## CSV format
-
-Required columns:
-
-| Column | Description |
-|---|---|
-| `film` | Film title |
-| `platform` | `YouTube` or `Reddit` |
-| `text` | Public comment text |
-
-Optional columns: `created_at`, `likes`, `url`, and `author`.
-
-## Live collectors
+## Weekly scanner
 
 Copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` and add credentials:
 
 ```toml
+TMDB_API_KEY = "..."
 YOUTUBE_API_KEY = "..."
 REDDIT_CLIENT_ID = "..."
 REDDIT_CLIENT_SECRET = "..."
 REDDIT_USER_AGENT = "tamil-film-pulse/1.0 by your_username"
 ```
 
-The YouTube collector uses the official YouTube Data API. The Reddit collector uses PRAW and OAuth. API limits and platform terms still apply.
+Add the same five values as GitHub Actions repository secrets. The workflow runs every Sunday, discovers recent Tamil releases through TMDb, finds relevant YouTube reviews, reads official API comments, scans r/kollywood through PRAW, removes duplicates, scores new comments and commits the refreshed dataset. Run it manually once after configuring secrets.
 
 ## Sentiment method
 
@@ -48,4 +37,4 @@ Push the repository to GitHub, create an app at [Streamlit Community Cloud](http
 
 ## Responsible use
 
-Only public comments are collected. The dashboard reports aggregate conversation patterns, not box-office performance or objective film quality. Demo data is explicitly marked in the interface.
+Only public comments are collected. The dashboard reports aggregate conversation patterns, not box-office performance or objective film quality.
