@@ -323,7 +323,8 @@ with tab_overview:
                                    paper_bgcolor="rgba(0,0,0,0)")
         st.plotly_chart(language_fig, width="stretch")
 
-    st.subheader("Video velocity between monitor snapshots")
+    st.subheader("Which review videos are gaining attention?")
+    st.markdown('<div class="section-note">A simple ranking: how many public views each video gained per hour since the previous monitor. Higher means attention is growing faster.</div>', unsafe_allow_html=True)
     if not video_view.empty and video_view.groupby("video_id").size().max() >= 2:
         ordered = video_view.sort_values(["video_id", "scanned_at"])
         latest = ordered.groupby("video_id").tail(1)
@@ -332,28 +333,43 @@ with tab_overview:
             columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
         )
         growth = latest.merge(previous_rows, on="video_id", how="inner")
-        hours = (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(3600).clip(lower=.05)
-        growth["Views / hour"] = (growth["views"] - growth["previous_views"]).clip(lower=0) / hours
-        growth["Comments / hour"] = (growth["comments"] - growth["previous_comments"]).clip(lower=0) / hours
-        growth["Engagement / 1k views"] = (growth["likes"] + growth["comments"]) / growth["views"].clip(lower=1) * 1000
-        growth["Bubble"] = growth["views"].clip(lower=1).map(lambda value: max(8, math.log10(value + 1) ** 3))
-        velocity = px.scatter(
-            growth, x="Views / hour", y="Comments / hour", size="Bubble", color="film",
-            hover_name="title", hover_data=["channel", "views", "comments", "Engagement / 1k views"],
-            color_discrete_sequence=PALETTE, size_max=46,
+        elapsed = (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(3600).clip(lower=.05)
+        growth["Views gained"] = (growth["views"] - growth["previous_views"]).clip(lower=0)
+        growth["New public comments"] = (growth["comments"] - growth["previous_comments"]).clip(lower=0)
+        growth["Views gained / hour"] = growth["Views gained"] / elapsed
+        growth["Label"] = growth.apply(
+            lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1
         )
-        velocity.update_layout(height=470, legend_title=None, paper_bgcolor="rgba(0,0,0,0)",
-                               plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(velocity, width="stretch")
+        ranked = growth.sort_values("Views gained / hour", ascending=False).head(15)
+        gain_fig = px.bar(
+            ranked.sort_values("Views gained / hour"),
+            x="Views gained / hour", y="Label", color="film", orientation="h",
+            text="Views gained", color_discrete_sequence=PALETTE,
+            hover_data=["views", "comments", "New public comments"],
+        )
+        gain_fig.update_traces(texttemplate="+%{text:,.0f} views", textposition="outside")
+        gain_fig.update_layout(height=max(420, len(ranked) * 42), legend_title=None,
+                               xaxis_title="Views gained per hour", yaxis_title=None,
+                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(gain_fig, width="stretch")
+        st.dataframe(
+            ranked[["film", "channel", "title", "views", "Views gained", "Views gained / hour", "New public comments"]],
+            width="stretch", hide_index=True,
+            column_config={"Views gained / hour": st.column_config.NumberColumn("Views/hour", format="%.0f"),
+                           "views": st.column_config.NumberColumn("Current views", format="%d")},
+        )
     elif not latest_videos.empty:
-        st.info("Velocity appears after the second 30-minute snapshot. Current video totals are shown below.")
+        st.info("One snapshot exists. After the next 30-minute monitor, this section will show exactly how many views each video gained.")
+        current = latest_videos.sort_values("views", ascending=False).head(15).copy()
+        current["Label"] = current.apply(lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1)
         reach = px.bar(
-            latest_videos.sort_values("views", ascending=False).head(20),
-            x="views", y="title", color="film", orientation="h",
-            color_discrete_sequence=PALETTE,
+            current.sort_values("views"), x="views", y="Label", orientation="h",
+            color="views", text="views", color_continuous_scale=["#ffd7cc", "#ff4b2b", "#721600"],
         )
-        reach.update_layout(height=500, xaxis_title="Current public views", yaxis_title=None,
-                            legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
+        reach.update_traces(texttemplate="%{text:,.0f}", textposition="outside")
+        reach.update_layout(height=max(420, len(current) * 42), xaxis_title="Current public views",
+                            yaxis_title=None, coloraxis_showscale=False,
+                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
         st.plotly_chart(reach, width="stretch")
 
     topic_col, kind_col = st.columns(2, gap="large")
