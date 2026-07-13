@@ -23,7 +23,8 @@ def collect_youtube(video_ids: list[str], api_key: str, film: str, max_comments:
                 rows.append({"film": film, "platform": "YouTube", "text": top["textDisplay"],
                              "created_at": top["publishedAt"], "likes": top.get("likeCount", 0),
                              "author": top.get("authorDisplayName", ""),
-                             "url": f"https://youtube.com/watch?v={video_id}"})
+                             "url": f"https://youtube.com/watch?v={video_id}",
+                             "source_id": item["snippet"]["topLevelComment"]["id"]})
             token = response.get("nextPageToken")
             if not token:
                 break
@@ -42,7 +43,7 @@ def collect_reddit(query: str, film: str, client_id: str, client_secret: str,
             rows.append({"film": film, "platform": "Reddit", "text": comment.body,
                          "created_at": datetime.fromtimestamp(comment.created_utc, timezone.utc).isoformat(),
                          "likes": max(comment.score, 0), "author": str(comment.author or ""),
-                         "url": f"https://reddit.com{comment.permalink}"})
+                         "url": f"https://reddit.com{comment.permalink}", "source_id": comment.id})
             if len(rows) >= max_comments:
                 return pd.DataFrame(rows)
     return pd.DataFrame(rows)
