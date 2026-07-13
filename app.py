@@ -40,6 +40,19 @@ if not comments.empty:
         comments["video_title"] = ""
     comments["channel"] = comments["channel"].fillna(comments.get("source", "Unknown"))
     comments["likes"] = pd.to_numeric(comments.get("likes", 0), errors="coerce").fillna(0)
+    if "content_format" not in comments:
+        comments["content_format"] = "Unknown"
+    if not videos.empty and "content_format" in videos:
+        format_map = (
+            videos.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+            .set_index("video_id")["content_format"]
+        )
+        inferred = comments["video_id"].astype(str).map(format_map)
+        comments["content_format"] = comments["content_format"].where(
+            comments["content_format"].isin(["Video", "Short"]), inferred
+        ).fillna("Video")
+    else:
+        comments["content_format"] = comments["content_format"].replace("Unknown", "Video").fillna("Video")
 
 catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
 
@@ -186,6 +199,8 @@ with st.sidebar:
         selected_films = st.multiselect("Films", all_films, default=all_films)
         all_channels = sorted(comments["channel"].dropna().unique())
         selected_channels = st.multiselect("Channels", all_channels, default=all_channels)
+        all_formats = [value for value in ["Video", "Short"] if value in comments["content_format"].unique()]
+        selected_formats = st.multiselect("Formats", all_formats, default=all_formats)
         window = st.select_slider(
             "Analysis window",
             options=[6, 12, 24, 72, 168, 720, 2160],
@@ -219,6 +234,7 @@ cutoff = now - pd.Timedelta(hours=int(window))
 filtered = comments[
     comments["film"].isin(selected_films)
     & comments["channel"].isin(selected_channels)
+    & comments["content_format"].isin(selected_formats)
     & comments["created_at"].ge(cutoff)
     & comments["likes"].ge(minimum_likes)
 ].copy()
