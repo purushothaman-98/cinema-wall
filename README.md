@@ -19,8 +19,9 @@ The dashboard deliberately does not calculate a film-quality or sentiment score.
 The GitHub workflow runs at **:10 and :40 UTC every hour**. To stay within the standard YouTube quota:
 
 - known videos, statistics and recent comments refresh every 30 minutes
-- searches for newly published review videos run every six hours
-- up to four active videos per film are monitored each cycle
+- searches for newly published review videos and Shorts run once every 24 hours
+- up to four standard videos and three Shorts per film are monitored each cycle
+- 30-minute view-growth charts show only the change between the two latest snapshots, with standard videos and Shorts shown separately
 - stored records are deduplicated and retained for up to 730 days
 
 GitHub may delay scheduled jobs slightly during periods of high Actions load.
