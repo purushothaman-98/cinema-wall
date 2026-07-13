@@ -1,18 +1,47 @@
 {
-  "lookback_days": 150,
+  "lookback_days": 180,
   "max_films": 10,
-  "youtube_videos_per_film": 12,
-  "comments_per_video": 120,
-  "reddit_posts_per_forum": 12,
+  "video_discovery_hours": 6,
+  "youtube_videos_per_film": 15,
+  "active_videos_per_film": 4,
+  "comments_per_video": 100,
   "keep_history_days": 730,
-  "reddit_forums": ["kollywood", "TamilNadu", "Chennai", "IndianCinema", "IndianOTTbestof"],
   "youtube_review_channels": [
-    "Tamil Talkies", "BehindwoodsTV", "Galatta Tamil", "Cinema Vikatan",
-    "BR South Cinema", "Valai Pechu", "Prashanth Rangaswamy", "Fully Filmy"
+    "Tamil Talkies",
+    "BehindwoodsTV",
+    "Galatta Tamil",
+    "Cinema Vikatan",
+    "BR South Cinema",
+    "Valai Pechu",
+    "Prashanth Rangaswamy",
+    "Fully Filmy",
+    "Movie Crow",
+    "Open Pannaa",
+    "Kodangi",
+    "Abishek Raja"
   ],
   "promotion_terms": [
-    "official trailer", "official teaser", "promo", "sneak peek", "lyric video",
-    "audio launch", "press meet", "success meet", "exclusive interview", "reaction"
+    "official trailer",
+    "official teaser",
+    "promo",
+    "sneak peek",
+    "lyric video",
+    "audio launch",
+    "press meet",
+    "success meet",
+    "exclusive interview",
+    "reaction",
+    "shorts"
   ],
-  "review_terms": ["review", "movie review", "film review", "discussion", "analysis", "public review", "spoiler"]
+  "review_terms": [
+    "review",
+    "movie review",
+    "film review",
+    "discussion",
+    "analysis",
+    "public review",
+    "spoiler",
+    " விமர்சனம்",
+    "திரை விமர்சனம்"
+  ]
 }
