@@ -1,7 +1,7 @@
 {
   "lookback_days": 180,
   "max_films": 10,
-  "video_discovery_hours": 6,
+  "video_discovery_hours": 24,
   "youtube_videos_per_film": 15,
   "active_videos_per_film": 4,
   "comments_per_video": 100,
@@ -30,8 +30,7 @@
     "press meet",
     "success meet",
     "exclusive interview",
-    "reaction",
-    "shorts"
+    "reaction"
   ],
   "review_terms": [
     "review",
@@ -43,5 +42,6 @@
     "spoiler",
     " விமர்சனம்",
     "திரை விமர்சனம்"
-  ]
+  ],
+  "active_shorts_per_film": 3
 }
