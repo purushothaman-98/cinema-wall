@@ -75,9 +75,23 @@ def _rss_entries(url: str, params=None) -> list[dict]:
         "User-Agent": USER_AGENT,
         "Accept": "application/atom+xml, application/rss+xml, text/xml;q=0.9",
     }
-    response = requests.get(url, params=params, headers=headers, timeout=30)
-    response.raise_for_status()
-    root = ET.fromstring(response.content)
+    candidates = [url]
+    if "://www.reddit.com/" in url:
+        candidates.extend([
+            url.replace("://www.reddit.com/", "://old.reddit.com/"),
+            url.replace("://www.reddit.com/", "://reddit.com/"),
+        ])
+    last_error = None
+    for candidate in candidates:
+        try:
+            response = requests.get(candidate, params=params, headers=headers, timeout=30)
+            response.raise_for_status()
+            root = ET.fromstring(response.content)
+            break
+        except (requests.RequestException, ET.ParseError) as exc:
+            last_error = exc
+    else:
+        raise last_error or RuntimeError("Reddit RSS unavailable")
     entries = []
     for entry in root.findall("atom:entry", ATOM):
         link = entry.find("atom:link", ATOM)
