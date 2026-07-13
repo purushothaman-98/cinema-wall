@@ -272,6 +272,7 @@ def main() -> None:
         "last_video_discovery": last_discovery,
         "scan_interval_minutes": 30,
         "video_discovery_hours": CFG["video_discovery_hours"],
+        "keep_history_days": CFG["keep_history_days"],
         "films": films,
         "comments_fetched": int(len(comments)),
         "new_comments_added": new_comments,
