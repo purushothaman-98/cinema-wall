@@ -297,25 +297,52 @@ for start in range(0, len(wall), 5):
 tab_overview, tab_films, tab_comments = st.tabs(["Attention overview", "Film deep dive", "Comment explorer"])
 
 with tab_overview:
-    st.subheader("Comment arrival over time")
-    st.markdown('<div class="section-note">Published comments, grouped by film. This measures conversation activity—not unique viewers.</div>', unsafe_allow_html=True)
-    frequency = "h" if window <= 168 else "D"
-    time_label = "hour" if frequency == "h" else "day"
-    activity = (
-        filtered.assign(period=filtered["created_at"].dt.floor(frequency))
-        .groupby(["period", "film", "content_format"], as_index=False)
-        .size().rename(columns={"size": "comments"})
-    )
-    area = px.area(
-        activity, x="period", y="comments", color="film", facet_row="content_format",
-        color_discrete_sequence=PALETTE,
-        labels={"period": "Published time", "comments": f"Comments per {time_label}",
-                "film": "Film", "content_format": "Format"},
-    )
-    area.for_each_annotation(lambda annotation: annotation.update(text=annotation.text.split("=")[-1]))
-    area.update_layout(height=620, hovermode="x unified", legend_title=None,
-                       paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-    st.plotly_chart(area, width="stretch")
+    st.subheader("Real-time comments gained every 30 minutes")
+    st.markdown('<div class="section-note">Each bar is the exact increase in YouTube’s public comment counter since the preceding monitor—not comments grouped by their original publication date. Monitors are scheduled 30 minutes apart; timestamps are UTC.</div>', unsafe_allow_html=True)
+
+    monitor_activity = pd.DataFrame()
+    if not video_view.empty:
+        monitored = video_view[
+            video_view["channel"].isin(selected_channels)
+            & video_view["content_format"].isin(selected_formats)
+        ].sort_values(["video_id", "scanned_at"]).copy()
+        monitored["previous_comments"] = monitored.groupby("video_id")["comments"].shift(1)
+        monitored["previous_scan"] = monitored.groupby("video_id")["scanned_at"].shift(1)
+        monitored["elapsed_minutes"] = (
+            (monitored["scanned_at"] - monitored["previous_scan"])
+            .dt.total_seconds().div(60)
+        )
+        monitored["comments_gained_30m"] = (
+            monitored["comments"] - monitored["previous_comments"]
+        ).clip(lower=0)
+        monitored = monitored[
+            monitored["previous_comments"].notna()
+            & monitored["scanned_at"].ge(cutoff)
+        ].copy()
+        monitored["period"] = monitored["scanned_at"].dt.floor("30min")
+        monitor_activity = (
+            monitored.groupby(["period", "film", "content_format"], as_index=False)["comments_gained_30m"]
+            .sum()
+        )
+
+    if monitor_activity.empty:
+        st.info("Waiting for two monitor snapshots. The first real 30-minute count appears after the next scheduled scan.")
+    else:
+        activity_chart = px.bar(
+            monitor_activity, x="period", y="comments_gained_30m", color="film",
+            facet_row="content_format", color_discrete_sequence=PALETTE,
+            labels={"period": "Monitor time · UTC", "comments_gained_30m": "New comments / 30 min",
+                    "film": "Film", "content_format": "Format"},
+        )
+        activity_chart.for_each_annotation(
+            lambda annotation: annotation.update(text=annotation.text.split("=")[-1])
+        )
+        activity_chart.update_layout(
+            height=620, hovermode="x unified", barmode="stack", legend_title=None,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+        )
+        activity_chart.update_traces(hovertemplate="%{y:.0f} new comments<extra></extra>")
+        st.plotly_chart(activity_chart, width="stretch")
 
     current_start = now - pd.Timedelta(hours=24)
     previous_start = now - pd.Timedelta(hours=48)
