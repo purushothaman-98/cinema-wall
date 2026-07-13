@@ -3,17 +3,20 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import pandas as pd
+import requests
 
 ROOT = Path(__file__).parent
 LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
 META_FILE = ROOT / "data" / "live" / "scan_metadata.json"
+RAW_ROOT = "https://raw.githubusercontent.com/purushothaman-98/cinema-wall/main/data/live"
 VIDEO_FILE = ROOT / "data" / "live" / "video_snapshots.csv"
 
 
 def load_live() -> pd.DataFrame:
-    if not LIVE_FILE.exists():
+    try:
+        frame = pd.read_csv(LIVE_FILE if LIVE_FILE.exists() else f"{RAW_ROOT}/comments.csv")
+    except Exception:
         return pd.DataFrame()
-    frame = pd.read_csv(LIVE_FILE)
     frame["created_at"] = pd.to_datetime(frame["created_at"], errors="coerce", utc=True)
     frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), errors="coerce", utc=True)
     frame["likes"] = pd.to_numeric(frame.get("likes", 0), errors="coerce").fillna(0)
@@ -21,15 +24,21 @@ def load_live() -> pd.DataFrame:
 
 
 def load_metadata() -> dict:
-    if not META_FILE.exists():
-        return {"status": "waiting", "last_scan": None, "next_scan": None, "films": 0, "comments": 0}
-    return json.loads(META_FILE.read_text(encoding="utf-8"))
+    try:
+        if META_FILE.exists():
+            return json.loads(META_FILE.read_text(encoding="utf-8"))
+        response = requests.get(f"{RAW_ROOT}/scan_metadata.json", timeout=15)
+        response.raise_for_status()
+        return response.json()
+    except Exception:
+        return {"status": "waiting", "last_scan": None, "films": 0, "comments": 0}
 
 
 def load_video_snapshots() -> pd.DataFrame:
-    if not VIDEO_FILE.exists():
+    try:
+        frame = pd.read_csv(VIDEO_FILE if VIDEO_FILE.exists() else f"{RAW_ROOT}/video_snapshots.csv")
+    except Exception:
         return pd.DataFrame()
-    frame = pd.read_csv(VIDEO_FILE)
     frame["scanned_at"] = pd.to_datetime(frame["scanned_at"], errors="coerce", utc=True)
     frame["published_at"] = pd.to_datetime(frame["published_at"], errors="coerce", utc=True)
     for column in ("views", "likes", "comments", "signal_score"):
