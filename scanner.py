@@ -20,7 +20,9 @@ def discover(key):
     today=datetime.now(timezone.utc).date(); start=today-timedelta(days=CFG["lookback_days"])
     r=requests.get("https://api.themoviedb.org/3/discover/movie",params={"api_key":key,"with_original_language":"ta","region":"IN",
         "release_date.gte":start,"release_date.lte":today,"sort_by":"popularity.desc","include_adult":"false"},timeout=30); r.raise_for_status()
-    return [x["title"] for x in r.json().get("results",[])[:CFG["max_films"]]]
+    return [{"title":x["title"],"release_date":x.get("release_date"),"poster_url":
+        f"https://image.tmdb.org/t/p/w500{x['poster_path']}" if x.get("poster_path") else None,
+        "tmdb_id":x.get("id")} for x in r.json().get("results",[])[:CFG["max_films"]]]
 
 def quality(video):
     text=f"{video.get('title','')} {video.get('description','')}".lower(); channel=video.get("channelTitle","")
@@ -36,7 +38,7 @@ def merge(path,fresh,key,days):
     return combined[combined[date_col]>=pd.Timestamp.now(tz="UTC")-pd.Timedelta(days=int(days))]
 
 def main():
-    yt=require("YOUTUBE_API_KEY"); films=discover(require("TMDB_API_KEY")); now=datetime.now(timezone.utc).isoformat()
+    yt=require("YOUTUBE_API_KEY"); catalog=discover(require("TMDB_API_KEY")); films=[x["title"] for x in catalog]; now=datetime.now(timezone.utc).isoformat()
     comment_batches=[]; snapshot_batches=[]; errors=[]
     for film in films:
         try:
@@ -61,6 +63,6 @@ def main():
     merge(COMMENTS,comments,"source_id",CFG["keep_history_days"]).to_csv(COMMENTS,index=False)
     if not snapshots.empty: merge(VIDEOS,snapshots,["video_id","scanned_at"],CFG["keep_history_days"]).to_csv(VIDEOS,index=False)
     META.write_text(json.dumps({"status":"healthy" if not errors else "partial","last_scan":now,"films":films,"comments_added":len(comments),
-        "youtube_channels":CFG["youtube_review_channels"],"reddit_forums":CFG["reddit_forums"],"errors":errors},indent=2))
+        "movie_catalog":catalog,"youtube_channels":CFG["youtube_review_channels"],"reddit_forums":CFG["reddit_forums"],"errors":errors},indent=2))
     print(f"Scanned {len(films)} films, {len(comments)} discussions, {len(snapshots)} video snapshots")
 if __name__=="__main__": main()
