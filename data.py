@@ -56,5 +56,15 @@ def load_video_snapshots() -> pd.DataFrame:
     frame["published_at"] = pd.to_datetime(frame.get("published_at"), errors="coerce", utc=True)
     for column in ("views", "likes", "comments", "signal_score"):
         frame[column] = pd.to_numeric(frame[column], errors="coerce").fillna(0) if column in frame else 0
+    if "description" not in frame:
+        frame["description"] = ""
+    frame["description"] = frame["description"].fillna("").replace({"nan": "", "None": ""})
+    if "thumbnail_url" not in frame:
+        frame["thumbnail_url"] = ""
+    frame["thumbnail_url"] = frame["thumbnail_url"].fillna("")
+    missing_thumbnail = ~frame["thumbnail_url"].astype(str).str.startswith("http")
+    frame.loc[missing_thumbnail, "thumbnail_url"] = (
+        "https://i.ytimg.com/vi/" + frame.loc[missing_thumbnail, "video_id"].astype(str) + "/hqdefault.jpg"
+    )
     frame = frame.dropna(subset=["video_id", "film", "scanned_at"])
     return frame
