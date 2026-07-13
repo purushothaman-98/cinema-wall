@@ -4,3 +4,4 @@ plotly>=5.22,<7
 google-api-python-client>=2.137,<3
 praw>=7.7,<8
 python-dateutil>=2.9,<3
+requests>=2.32,<3
