@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import pandas as pd
 import requests
+from sentiment import add_sentiment
 
 ROOT = Path(__file__).parent
 LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
@@ -20,7 +21,8 @@ def load_live() -> pd.DataFrame:
     frame["created_at"] = pd.to_datetime(frame["created_at"], errors="coerce", utc=True)
     frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), errors="coerce", utc=True)
     frame["likes"] = pd.to_numeric(frame.get("likes", 0), errors="coerce").fillna(0)
-    return frame.dropna(subset=["film", "platform", "text"])
+    frame = frame.dropna(subset=["film", "platform", "text"])
+    return add_sentiment(frame)
 
 
 def load_metadata() -> dict:
@@ -47,13 +49,17 @@ def load_video_snapshots() -> pd.DataFrame:
 
 
 def aggregate(frame: pd.DataFrame) -> pd.DataFrame:
-    current = frame.groupby("film", as_index=False).agg(
-        score=("sentiment_score", "mean"), mentions=("text", "size"),
+    useful = frame[~frame["low_information"]].copy()
+    useful["weighted_score"] = useful.sentiment_score * useful.analysis_weight
+    grouped = useful.groupby("film")
+    current = grouped.agg(
+        weighted_sum=("weighted_score", "sum"), weight_sum=("analysis_weight", "sum"), mentions=("text", "size"),
         positive=("sentiment", lambda s: (s == "Positive").mean() * 100),
         neutral=("sentiment", lambda s: (s == "Neutral").mean() * 100),
         negative=("sentiment", lambda s: (s == "Negative").mean() * 100),
         last_seen=("created_at", "max"), last_scanned=("scanned_at", "max"),
-    )
+    ).reset_index()
+    current["score"] = current.weighted_sum / current.weight_sum.clip(lower=.01)
     cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=7)
     previous_start = cutoff - pd.Timedelta(days=7)
     this_week = frame[frame.created_at >= cutoff].groupby("film").sentiment_score.mean()

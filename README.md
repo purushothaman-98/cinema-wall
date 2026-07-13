@@ -28,7 +28,7 @@ Public Reddit JSON is intentionally treated as best-effort: cloud requests can b
 
 ## Sentiment method
 
-The included scorer is a transparent baseline designed for Tamil-cinema vocabulary. It handles common English, Tamil and Tanglish expressions, negation, repeated emphasis and emoji. It is suitable for an MVP and research inspection, but not presented as a definitive opinion poll. For publication-grade results, validate it on a manually labelled Tamil/Tanglish corpus and replace or ensemble it with a fine-tuned multilingual transformer.
+The analysis layer detects Tamil script, Tanglish and mixed Tamil-English comments; normalizes spelling emphasis; handles local cinema slang, negation, intensifiers and emoji; scores confidence; suppresses low-information comments; caps engagement weighting; and calculates aspect sentiment for story, acting, direction, music, visuals, pacing, comedy and emotion. This transparent hybrid is lightweight enough for free hosting. For publication-grade results, validate it against a manually labelled Tamil/Tanglish set before adding a fine-tuned MuRIL, IndicBERT or TamilBERT classifier.
 
 ## Deploy
 
