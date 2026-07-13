@@ -28,6 +28,16 @@ TOPICS = {
     "Emotion": ["emotion", "emotional", "feel", "heart", "sentiment", "கண்ணீர்", "உணர்வு"],
     "Release & theatre": ["release", "theatre", "theater", "ott", "ticket", "show", "collection", "box office"],
 }
+APPRECIATION = {
+    "good", "great", "excellent", "amazing", "awesome", "best", "super", "mass",
+    "sema", "semma", "nalla", "vera level", "worth", "loved", "love", "beautiful",
+    "engaging", "blockbuster", "sambavam", "arுமை", "அருமை", "நல்ல", "சூப்பர்", "செம",
+}
+CRITICISM = {
+    "bad", "worst", "boring", "bore", "mokka", "mokke", "waste", "cringe", "lag",
+    "drag", "slow", "weak", "disappointed", "flop", "average", "overrated",
+    "மோசம்", "மொக்க", "போர்", "சுமார்", "பிடிக்கல",
+}
 PROMO_PATTERNS = [
     r"https?://", r"subscribe", r"my channel", r"follow me", r"full movie link",
     r"telegram", r"whatsapp", r"earn money", r"giveaway",
@@ -58,6 +68,15 @@ def detect_topic(text: str) -> str:
     topic, score = max(scores.items(), key=lambda item: item[1])
     return topic if score else "General reaction"
 
+def reaction_signal(text: str) -> str:
+    positive = sum(1 for term in APPRECIATION if term in text)
+    negative = sum(1 for term in CRITICISM if term in text)
+    if positive > negative:
+        return "Appreciative"
+    if negative > positive:
+        return "Critical"
+    return "Mixed / unclear"
+
 def comment_kind(text: str, word_count: int) -> str:
     if "?" in text or re.search(r"\b(why|what|when|where|who|how|enna|eppo|yen|என்ன|ஏன்|எப்போது)\b", text):
         return "Question"
@@ -76,6 +95,7 @@ def enrich_comments(frame: pd.DataFrame) -> pd.DataFrame:
     result["word_count"] = clean.map(lambda value: len(re.findall(r"[\w\u0B80-\u0BFF'-]+", value)))
     result["language"] = clean.map(detect_language)
     result["topic"] = clean.map(detect_topic)
+    result["reaction_signal"] = clean.map(reaction_signal)
     result["comment_kind"] = [
         comment_kind(text, int(words)) for text, words in zip(clean, result["word_count"])
     ]
