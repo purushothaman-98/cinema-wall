@@ -55,7 +55,8 @@ if not comments.empty:
     else:
         comments["content_format"] = comments["content_format"].replace("Unknown", "Video").fillna("Video")
 
-catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
+catalog_items = meta.get("movie_catalog_history") or meta.get("movie_catalog", [])
+catalog = {item.get("title"): item for item in catalog_items if isinstance(item, dict)}
 
 def audience_summary(frame: pd.DataFrame) -> str:
     useful = frame[~frame["low_information"]].copy() if not frame.empty else frame
@@ -254,23 +255,34 @@ latest_videos = (
     video_view.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
     if not video_view.empty else video_view
 )
+current_scan_time = videos["scanned_at"].max() if not videos.empty else pd.NaT
+current_scan_videos = (
+    videos[videos["scanned_at"].eq(current_scan_time)].copy()
+    if not videos.empty and pd.notna(current_scan_time) else pd.DataFrame()
+)
+radar_films = list(dict.fromkeys(meta.get("films", [])))
+all_analyzed_films = sorted(
+    set(meta.get("all_films_analyzed", []))
+    | set(comments["film"].dropna().astype(str).unique())
+)
 last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
 last_24 = filtered[filtered["created_at"].ge(now - pd.Timedelta(hours=24))]
 
-metrics = st.columns(6)
-standard_count = int(latest_videos["content_format"].eq("Video").sum()) if not latest_videos.empty else 0
-shorts_count = int(latest_videos["content_format"].eq("Short").sum()) if not latest_videos.empty else 0
-metrics[0].metric("Films on radar", filtered["film"].nunique())
-metrics[1].metric("Standard videos", standard_count)
-metrics[2].metric("Shorts", shorts_count)
-metrics[3].metric("Comments analyzed", f"{len(filtered):,}")
-metrics[4].metric("New comments · 24 h", f"{len(last_24):,}")
-metrics[5].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
+metrics = st.columns(7)
+standard_count = int(current_scan_videos["content_format"].eq("Video").sum()) if not current_scan_videos.empty else 0
+shorts_count = int(current_scan_videos["content_format"].eq("Short").sum()) if not current_scan_videos.empty else 0
+metrics[0].metric("Films analyzed ever", len(all_analyzed_films))
+metrics[1].metric("Films on radar now", len(radar_films))
+metrics[2].metric("Current videos", standard_count)
+metrics[3].metric("Current Shorts", shorts_count)
+metrics[4].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment records stored by the radar; this is not YouTube's public total.")
+metrics[5].metric("New comments · 24 h", f"{len(last_24):,}")
+metrics[6].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
 catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
-st.subheader("Films on the radar")
-st.markdown('<div class="section-note">Release context, collected comments and active review videos.</div>', unsafe_allow_html=True)
-wall = [film for film in selected_films if film in catalog][:10] or selected_films[:10]
+st.subheader("Currently on the radar")
+st.markdown('<div class="section-note">These films are actively checked every 30 minutes. New-film discovery and selection refresh once per day.</div>', unsafe_allow_html=True)
+wall = [film for film in radar_films if film in selected_films][:10] or radar_films[:10]
 for start in range(0, len(wall), 5):
     cols = st.columns(5)
     for col, film in zip(cols, wall[start:start + 5]):
@@ -295,6 +307,39 @@ for start in range(0, len(wall), 5):
                 f'</div></div></a>',
                 unsafe_allow_html=True,
             )
+
+st.subheader("All films analyzed till now")
+st.markdown('<div class="section-note">The permanent analysis history is kept separately from the smaller current radar.</div>', unsafe_allow_html=True)
+all_film_summary = (
+    comments.groupby("film", as_index=False)
+    .agg(
+        collected_comments=("source_id", "nunique"),
+        channels=("channel", "nunique"),
+        first_comment=("created_at", "min"),
+        latest_comment=("created_at", "max"),
+    )
+)
+missing_history = sorted(set(all_analyzed_films) - set(all_film_summary.get("film", [])))
+if missing_history:
+    all_film_summary = pd.concat([
+        all_film_summary,
+        pd.DataFrame({"film": missing_history, "collected_comments": 0, "channels": 0})
+    ], ignore_index=True)
+all_film_summary["Status"] = all_film_summary["film"].map(
+    lambda film: "On radar now" if film in radar_films else "Historical"
+)
+all_film_summary["Release date"] = all_film_summary["film"].map(
+    lambda film: catalog.get(film, {}).get("release_date") or "Unavailable"
+)
+st.dataframe(
+    all_film_summary[["film", "Status", "Release date", "collected_comments", "channels", "latest_comment"]]
+    .sort_values(["Status", "collected_comments"], ascending=[False, False]),
+    width="stretch", hide_index=True,
+    column_config={
+        "film": "Film", "collected_comments": "Comments collected", "channels": "Channels",
+        "latest_comment": st.column_config.DatetimeColumn("Latest published comment", format="DD MMM YYYY"),
+    },
+)
 
 tab_overview, tab_lifetime, tab_films, tab_comments, tab_data = st.tabs([
     "30-minute live", "Lifetime analysis", "Film deep dive", "Comment explorer", "Data archive"
@@ -350,24 +395,8 @@ with tab_overview:
         )
 
     if monitor_activity.empty:
-        st.info("Waiting for two monitor snapshots. The first real 30-minute count appears after the next scheduled scan.")
+        st.warning("No half-hour snapshot rows exist in the last 24 hours. The scanner may have run without persisting its counter archive.")
     else:
-        activity_chart = px.bar(
-            monitor_activity, x="period", y="comments_gained_30m", color="film",
-            facet_row="content_format", color_discrete_sequence=PALETTE,
-            labels={"period": "Monitor time · UTC", "comments_gained_30m": "New comments / 30 min",
-                    "film": "Film", "content_format": "Format"},
-        )
-        activity_chart.for_each_annotation(
-            lambda annotation: annotation.update(text=annotation.text.split("=")[-1])
-        )
-        activity_chart.update_layout(
-            height=620, hovermode="x unified", barmode="stack", legend_title=None,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-        )
-        activity_chart.update_traces(hovertemplate="%{y:.0f} new comments<extra></extra>")
-        st.plotly_chart(activity_chart, width="stretch")
-
         scan_history = (
             monitor_activity.groupby("period", as_index=False)
             .agg(
@@ -378,11 +407,60 @@ with tab_overview:
             .sort_values("period", ascending=False)
         )
         newest = scan_history.iloc[0]
-        scan_metrics = st.columns(4)
+        stored_intervals = int(recent_raw["scanned_at"].nunique())
+        snapshot_lag_minutes = (
+            (last_scan - current_scan_time).total_seconds() / 60
+            if pd.notna(last_scan) and pd.notna(current_scan_time) else float("nan")
+        )
+        scan_metrics = st.columns(5)
         scan_metrics[0].metric("Latest videos fetched", f"{int(newest['videos_fetched']):,}")
         scan_metrics[1].metric("Views gained", f"{int(newest['views_gained']):,}")
         scan_metrics[2].metric("Comments gained", f"{int(newest['comments_gained']):,}")
-        scan_metrics[3].metric("Intervals stored · 24 h", f"{len(scan_history):,}")
+        scan_metrics[3].metric("Snapshots stored · 24 h", f"{stored_intervals:,}")
+        scan_metrics[4].metric(
+            "Archive freshness",
+            "Current" if pd.notna(current_scan_time) and abs(snapshot_lag_minutes) <= 45 else f"{snapshot_lag_minutes:.0f} min behind",
+        )
+        if pd.notna(snapshot_lag_minutes) and snapshot_lag_minutes > 45:
+            st.error(
+                f"Counter archive is stale: scanner metadata reached {last_scan.strftime('%H:%M UTC')}, "
+                f"but the newest stored snapshot is {current_scan_time.strftime('%H:%M UTC')}. "
+                "The repaired scanner will back-check all selected videos on its next run; growth begins from that new snapshot."
+            )
+
+        coverage_tab, views_tab, comments_tab = st.tabs(["Fetch coverage", "View growth", "Comment growth"])
+
+        def live_chart(value: str, label: str, hover: str):
+            figure = px.bar(
+                monitor_activity, x="period", y=value, color="film",
+                facet_row="content_format", color_discrete_sequence=PALETTE,
+                labels={"period": "Monitor time · UTC", value: label,
+                        "film": "Film", "content_format": "Format"},
+            )
+            figure.for_each_annotation(lambda annotation: annotation.update(text=annotation.text.split("=")[-1]))
+            figure.update_layout(
+                height=590, hovermode="x unified", barmode="stack", legend_title=None,
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            )
+            figure.update_traces(hovertemplate=hover)
+            return figure
+
+        with coverage_tab:
+            st.caption("This remains visible even for the first snapshot, before growth can be calculated.")
+            st.plotly_chart(
+                live_chart("videos_fetched", "Videos and Shorts fetched", "%{y:.0f} items fetched<extra></extra>"),
+                width="stretch",
+            )
+        with views_tab:
+            st.plotly_chart(
+                live_chart("views_gained_30m", "Exact new views", "%{y:.0f} new views<extra></extra>"),
+                width="stretch",
+            )
+        with comments_tab:
+            st.plotly_chart(
+                live_chart("comments_gained_30m", "Exact new public comments", "%{y:.0f} new comments<extra></extra>"),
+                width="stretch",
+            )
         with st.expander("See exactly what every monitor fetched", expanded=False):
             latest_monitor_time = raw_monitored["scanned_at"].max()
             latest_items = raw_monitored[raw_monitored["scanned_at"].eq(latest_monitor_time)].copy()
@@ -631,15 +709,24 @@ with tab_lifetime:
 
     first_snapshot = monitor_videos["scanned_at"].min() if not monitor_videos.empty else pd.NaT
     last_snapshot = monitor_videos["scanned_at"].max() if not monitor_videos.empty else pd.NaT
-    lifetime_metrics = st.columns(6)
+    public_comment_total = float(lifetime_latest["comments"].sum()) if not lifetime_latest.empty else 0
+    collection_coverage = len(comments) / public_comment_total if public_comment_total else 0
+    lifetime_metrics = st.columns(7)
     lifetime_metrics[0].metric("Current public views", f"{lifetime_latest['views'].sum():,.0f}" if not lifetime_latest.empty else "0")
-    lifetime_metrics[1].metric("Current public comments", f"{lifetime_latest['comments'].sum():,.0f}" if not lifetime_latest.empty else "0")
-    lifetime_metrics[2].metric("Comments collected", f"{len(comments):,}")
+    lifetime_metrics[1].metric("Current public comments", f"{public_comment_total:,.0f}")
+    lifetime_metrics[2].metric("Unique comments collected", f"{len(comments):,}", delta=f"{collection_coverage:.1%} of public counter")
     lifetime_metrics[3].metric("Videos + Shorts", f"{lifetime_latest['video_id'].nunique():,}" if not lifetime_latest.empty else "0")
-    lifetime_metrics[4].metric("Stored snapshots", f"{len(monitor_videos):,}")
-    lifetime_metrics[5].metric(
+    lifetime_metrics[4].metric("Snapshot rows", f"{len(monitor_videos):,}")
+    lifetime_metrics[5].metric("Distinct monitor runs", f"{monitor_videos['scanned_at'].nunique():,}" if not monitor_videos.empty else "0")
+    lifetime_metrics[6].metric(
         "Monitoring span",
         f"{max(1, (last_snapshot - first_snapshot).days + 1)} days" if pd.notna(first_snapshot) and pd.notna(last_snapshot) else "Pending",
+    )
+    st.info(
+        "Why the two comment numbers differ: **Current public comments** is YouTube’s counter across every tracked video. "
+        "**Unique comments collected** contains individual recent top-level comments actually returned by the API/downloader, "
+        "after deduplication. It does not include every older comment, every reply, deleted/held comments, or comments from videos "
+        "where retrieval is restricted. Live scans fetch the newest 50 per video; the daily backfill requests up to 500 per video."
     )
 
     if interval_history.empty:
