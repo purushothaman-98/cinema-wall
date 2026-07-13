@@ -5,6 +5,7 @@ import re
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import requests
 import streamlit as st
 
 from data import aggregate, load_live, load_metadata, load_video_snapshots
@@ -49,7 +50,26 @@ with st.sidebar:
     st.divider()
     st.markdown("**Scan rhythm**")
     st.caption("Every day at 11:30 UTC. Recent Tamil releases are discovered automatically, then selected review channels and public Reddit JSON discussions are scanned.")
-    if st.button("Refresh dashboard cache"):
+    if st.button("Scan Reddit now", type="primary", width="stretch"):
+        token = st.secrets.get("GITHUB_ACTION_TOKEN", "")
+        if not token:
+            st.error("Add GITHUB_ACTION_TOKEN to Streamlit app secrets to enable this button.")
+        else:
+            response = requests.post(
+                "https://api.github.com/repos/purushothaman-98/cinema-wall/actions/workflows/reddit-scan.yml/dispatches",
+                headers={
+                    "Authorization": f"Bearer {token}",
+                    "Accept": "application/vnd.github+json",
+                    "X-GitHub-Api-Version": "2022-11-28",
+                },
+                json={"ref": "main"},
+                timeout=20,
+            )
+            if response.status_code == 204:
+                st.success("Reddit scan started. Results will appear after the workflow finishes.")
+            else:
+                st.error(f"Could not start scan (GitHub status {response.status_code}). Check token Actions permission.")
+    if st.button("Refresh dashboard cache", width="stretch"):
         st.cache_data.clear(); st.rerun()
 
 status = meta.get("status", "waiting")
