@@ -2,7 +2,7 @@ name: Daily Tamil film scanner
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "30 11 * * *"
   workflow_dispatch:
 
 permissions:
