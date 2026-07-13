@@ -254,12 +254,15 @@ for start in range(0, len(wall), 5):
             else '<div style="aspect-ratio:2/3;background:#e9dfd1"></div>'
         )
         with col:
+            film_url = f"?movie={quote(film)}"
             st.markdown(
+                f'<a href="{film_url}" style="color:inherit;text-decoration:none">'
                 f'<div class="poster-card">{image}<div class="poster-copy">'
-                f'<div class="poster-title">{film}</div>'
+                f'<div class="poster-title">{html.escape(film)}</div>'
                 f'<div class="poster-meta">{item.get("release_date") or "Release date unavailable"}<br>'
                 f'{len(film_comments):,} analyzed · {recent:,} new/24 h · {len(film_videos)} videos</div>'
-                f'</div></div>',
+                f'<div style="margin-top:8px;font-size:11px;font-weight:850;color:#d53c1c">OPEN FILM PAGE →</div>'
+                f'</div></div></a>',
                 unsafe_allow_html=True,
             )
 
