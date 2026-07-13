@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data import aggregate, load_live, load_metadata, load_video_snapshots
-from sentiment import NEGATIVE, POSITIVE
+from sentiment import NEGATIVE, POSITIVE, add_sentiment
 
 st.set_page_config(page_title="Tamil Film Pulse · Daily Scanner", page_icon="📡", layout="wide")
 st.markdown("""<style>
@@ -32,6 +32,9 @@ def top_terms(texts, limit=12):
 
 
 frame, videos, meta = get_data()
+REQUIRED_ANALYSIS_COLUMNS = {"language", "confidence", "low_information", "aspect_scores", "analysis_weight"}
+if not frame.empty and not REQUIRED_ANALYSIS_COLUMNS.issubset(frame.columns):
+    frame = add_sentiment(frame)
 with st.sidebar:
     st.title("📡 Tamil Cinema Scanner")
     st.caption("Automatically refreshed from the latest GitHub scan")
