@@ -2,140 +2,118 @@ from __future__ import annotations
 
 from collections import Counter
 import re
-
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from collectors import collect_reddit, collect_youtube
-from data import aggregate, load_demo, load_upload
-from sentiment import NEGATIVE, POSITIVE, add_sentiment
+from data import aggregate, load_live, load_metadata
+from sentiment import NEGATIVE, POSITIVE
 
-st.set_page_config(page_title="Tamil Film Pulse", page_icon="🎬", layout="wide")
-
-st.markdown("""
-<style>
-.stApp{background:#f3f0e7}.block-container{max-width:1450px;padding-top:1.7rem}
+st.set_page_config(page_title="Tamil Film Pulse · Weekly Scanner", page_icon="📡", layout="wide")
+st.markdown("""<style>
+.stApp{background:#f3f0e7}.block-container{max-width:1450px;padding-top:1.4rem}
 [data-testid="stMetric"]{background:#faf8f2;border:1px solid #d8d3c7;padding:16px;border-radius:12px}
-.hero{border-top:1px solid #d8d3c7;border-bottom:1px solid #d8d3c7;padding:38px 0 32px;margin:4px 0 25px}
-.kicker{font-size:11px;font-weight:800;letter-spacing:.17em;color:#ed5b2f}.hero h1{font-size:58px;line-height:.98;letter-spacing:-.055em;margin:8px 0 16px}.hero p{font-size:17px;color:#686359;max-width:720px}
-.demo{display:inline-block;background:#171713;color:white;padding:7px 11px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.12em}
-.film-title{font-size:30px;font-weight:800;letter-spacing:-.04em}.subtle{color:#777267;font-size:12px}
-.quote{font-family:Georgia,serif;font-size:21px;font-style:italic;border-left:3px solid #ed5b2f;padding-left:16px;margin:16px 0}
-</style>
-""", unsafe_allow_html=True)
+.hero{border-top:1px solid #d8d3c7;border-bottom:1px solid #d8d3c7;padding:35px 0 28px;margin:4px 0 22px}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.17em;color:#ed5b2f}.hero h1{font-size:58px;line-height:.98;letter-spacing:-.055em;margin:8px 0 15px}.hero p{font-size:17px;color:#686359;max-width:760px}
+.status{display:inline-flex;align-items:center;gap:7px;border:1px solid #d8d3c7;background:#faf8f2;padding:7px 11px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.1em}.dot{width:8px;height:8px;border-radius:50%;background:#3b8b72}.waiting{background:#d2aa52}.film-title{font-size:30px;font-weight:800;letter-spacing:-.04em}.subtle{color:#777267;font-size:12px}
+</style>""", unsafe_allow_html=True)
 
 
-@st.cache_data
-def demo_data():
-    return add_sentiment(load_demo())
+@st.cache_data(ttl=900)
+def get_data():
+    return load_live(), load_metadata()
 
 
-def top_terms(texts: pd.Series, limit: int = 12):
-    lexicon = list(POSITIVE) + list(NEGATIVE)
+def top_terms(texts, limit=12):
     joined = " ".join(texts.fillna("").str.lower())
+    lexicon = list(POSITIVE) + list(NEGATIVE)
     return Counter({term: len(re.findall(re.escape(term), joined)) for term in lexicon if term in joined}).most_common(limit)
 
 
+frame, meta = get_data()
 with st.sidebar:
-    st.title("🎬 Tamil Film Pulse")
-    st.caption("Public conversation dashboard")
-    source_mode = st.radio("Data source", ["Demonstration data", "Upload CSV", "Collect from APIs"])
-    frame = None
-    if source_mode == "Upload CSV":
-        upload = st.file_uploader("Comment dataset", type="csv")
-        if upload:
-            try:
-                frame = add_sentiment(load_upload(upload))
-            except ValueError as exc:
-                st.error(str(exc))
-    elif source_mode == "Collect from APIs":
-        film_input = st.text_input("Film title")
-        platform_input = st.selectbox("Platform", ["YouTube", "Reddit"])
-        query_input = st.text_input("YouTube video IDs (comma-separated)" if platform_input == "YouTube" else "Reddit search query")
-        max_comments = st.slider("Maximum comments", 50, 500, 200, 50)
-        if st.button("Collect public comments", type="primary"):
-            try:
-                if platform_input == "YouTube":
-                    frame = collect_youtube([x.strip() for x in query_input.split(",") if x.strip()], st.secrets["YOUTUBE_API_KEY"], film_input, max_comments)
-                else:
-                    frame = collect_reddit(query_input, film_input, st.secrets["REDDIT_CLIENT_ID"], st.secrets["REDDIT_CLIENT_SECRET"], st.secrets["REDDIT_USER_AGENT"], max_comments)
-                frame = add_sentiment(frame)
-                st.session_state["collected"] = frame
-            except Exception as exc:
-                st.error(f"Collection failed: {exc}")
-        frame = st.session_state.get("collected")
-    if frame is None:
-        frame = demo_data()
+    st.title("📡 Weekly Scanner")
+    st.caption("Automatically refreshed from public discussions")
+    if not frame.empty:
+        selected_films = st.multiselect("Films on the wall", sorted(frame.film.unique()), default=sorted(frame.film.unique()))
+        platforms = st.multiselect("Sources", sorted(frame.platform.unique()), default=sorted(frame.platform.unique()))
+        minimum_likes = st.number_input("Minimum likes", 0, value=0)
+        window = st.select_slider("Conversation window", [7, 14, 30, 90, 365], value=90, format_func=lambda x: f"Last {x} days")
     st.divider()
-    platforms = st.multiselect("Platforms", sorted(frame.platform.unique()), default=sorted(frame.platform.unique()))
-    min_likes = st.number_input("Minimum likes", min_value=0, value=0)
-    st.caption("Scores describe the collected conversation, not film quality or box-office success.")
+    st.markdown("**Scan rhythm**")
+    st.caption("Every Sunday at 03:17 UTC. Newly released Tamil films are discovered automatically, then YouTube and r/kollywood discussions are scanned.")
+    if st.button("Refresh dashboard cache"):
+        st.cache_data.clear(); st.rerun()
 
-filtered = frame[frame.platform.isin(platforms) & (frame.likes.fillna(0) >= min_likes)].copy()
-if filtered.empty:
-    st.warning("No comments match the current filters.")
+status = meta.get("status", "waiting")
+last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
+status_text = "SCANNER HEALTHY" if status == "healthy" else "PARTIAL SCAN" if status == "partial" else "WAITING FOR FIRST SCAN"
+st.markdown(f"""<div class="hero"><span class="kicker">THE WEEKLY TAMIL CINEMA RADAR</span><h1>New films in.<br>Audience pulse updated.</h1><p>The wall discovers recent Tamil releases and tracks public YouTube and Reddit conversation week after week.</p><span class="status"><i class="dot {'waiting' if status != 'healthy' else ''}"></i>{status_text}</span></div>""", unsafe_allow_html=True)
+
+if frame.empty:
+    st.warning("The scanner is ready but has not produced its first dataset yet. Add the five repository secrets, then run **Weekly Tamil film scan** once from GitHub Actions.")
+    st.code("TMDB_API_KEY\nYOUTUBE_API_KEY\nREDDIT_CLIENT_ID\nREDDIT_CLIENT_SECRET\nREDDIT_USER_AGENT", language=None)
     st.stop()
 
-st.markdown(f"""<div class="hero"><span class="kicker">THE AUDIENCE, MEASURED</span><h1>What is Tamil cinema<br>really feeling?</h1><p>Compare Tamil, Tanglish and English reactions across YouTube and Reddit.</p>{'<span class="demo">DEMO DATA</span>' if source_mode == 'Demonstration data' else ''}</div>""", unsafe_allow_html=True)
+cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=window)
+filtered = frame[(frame.film.isin(selected_films)) & (frame.platform.isin(platforms)) & (frame.likes >= minimum_likes) & (frame.created_at >= cutoff)].copy()
+if filtered.empty:
+    st.info("No scanned comments match these filters."); st.stop()
 
 summary = aggregate(filtered)
-metric_cols = st.columns(4)
-metric_cols[0].metric("Films tracked", len(summary))
-metric_cols[1].metric("Comments analysed", f"{len(filtered):,}")
-metric_cols[2].metric("Average pulse", f"{filtered.sentiment_score.mean():.0f}/100")
-metric_cols[3].metric("Positive conversation", f"{(filtered.sentiment == 'Positive').mean()*100:.0f}%")
+cols = st.columns(5)
+cols[0].metric("Films on wall", len(summary))
+cols[1].metric("Comments stored", f"{len(frame):,}")
+cols[2].metric("Current view", f"{len(filtered):,}")
+cols[3].metric("Average pulse", f"{filtered.sentiment_score.mean():.0f}/100")
+cols[4].metric("Last scan", last_scan.strftime("%d %b, %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
-st.subheader("Film sentiment ranking")
+st.subheader("This week’s wall")
 left, right = st.columns([1.55, 1], gap="large")
 with left:
-    fig = px.bar(summary.sort_values("score"), x="score", y="film", orientation="h", text="score",
-                 color="score", color_continuous_scale=[(0,"#c64f44"),(.5,"#d2aa52"),(1,"#3b8b72")], range_x=[0,100])
-    fig.update_traces(texttemplate="%{text:.0f}", textposition="outside", hovertemplate="%{y}<br>Pulse %{x:.1f}<extra></extra>")
-    fig.update_layout(height=390, coloraxis_showscale=False, xaxis_title="Pulse score", yaxis_title=None, margin=dict(l=5,r=25,t=10,b=5), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    chart = summary.copy(); chart["change_label"] = chart.weekly_change.map(lambda x: f"{x:+.1f}")
+    fig = px.bar(chart.sort_values("score"), x="score", y="film", orientation="h", color="score", text="score",
+                 color_continuous_scale=[(0,"#c64f44"),(.5,"#d2aa52"),(1,"#3b8b72")], range_x=[0,100], hover_data={"weekly_change":":+.1f","mentions":True})
+    fig.update_traces(texttemplate="%{text:.0f}", textposition="outside")
+    fig.update_layout(height=max(360,len(chart)*62), coloraxis_showscale=False, xaxis_title="Pulse score", yaxis_title=None, margin=dict(l=5,r=25,t=10,b=5), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart(fig, width="stretch")
-
 with right:
     film = st.selectbox("Inspect a film", summary.film.tolist())
-    movie = filtered[filtered.film == film]
-    row = summary[summary.film == film].iloc[0]
-    st.markdown(f'<div class="film-title">{film}</div><div class="subtle">{len(movie):,} public comments in this view</div>', unsafe_allow_html=True)
-    st.progress(float(row.score / 100), text=f"Pulse score · {row.score:.0f}/100")
-    sentiment_counts = movie.sentiment.value_counts(normalize=True).reindex(["Positive","Neutral","Negative"], fill_value=0) * 100
-    pie = go.Figure(go.Pie(labels=sentiment_counts.index, values=sentiment_counts.values, hole=.65, marker_colors=["#3b8b72","#d2aa52","#c64f44"], textinfo="label+percent"))
-    pie.update_layout(height=245, margin=dict(l=0,r=0,t=5,b=0), showlegend=False, paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(pie, width="stretch")
+    movie = filtered[filtered.film == film]; row = summary[summary.film == film].iloc[0]
+    st.markdown(f'<div class="film-title">{film}</div><div class="subtle">{len(movie):,} comments · last seen {row.last_seen:%d %b}</div>', unsafe_allow_html=True)
+    st.metric("Pulse", f"{row.score:.0f}/100", f"{row.weekly_change:+.1f} vs previous week")
+    counts = movie.sentiment.value_counts(normalize=True).reindex(["Positive","Neutral","Negative"],fill_value=0)*100
+    pie=go.Figure(go.Pie(labels=counts.index,values=counts.values,hole=.64,marker_colors=["#3b8b72","#d2aa52","#c64f44"],textinfo="label+percent"))
+    pie.update_layout(height=260,margin=dict(l=0,r=0,t=5,b=0),showlegend=False,paper_bgcolor="rgba(0,0,0,0)")
+    st.plotly_chart(pie,width="stretch")
 
-st.subheader("Platform comparison")
-platform_scores = filtered.groupby(["film","platform"], as_index=False).agg(score=("sentiment_score","mean"), mentions=("text","size"))
-compare = px.bar(platform_scores, x="film", y="score", color="platform", barmode="group", range_y=[0,100], color_discrete_map={"YouTube":"#e8563f","Reddit":"#6e77b7"}, hover_data="mentions")
-compare.update_layout(height=400, yaxis_title="Pulse score", xaxis_title=None, legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-st.plotly_chart(compare, width="stretch")
+st.subheader("YouTube versus Reddit")
+platform_scores=filtered.groupby(["film","platform"],as_index=False).agg(score=("sentiment_score","mean"),mentions=("text","size"))
+compare=px.bar(platform_scores,x="film",y="score",color="platform",barmode="group",range_y=[0,100],color_discrete_map={"YouTube":"#e8563f","Reddit":"#6e77b7"},hover_data="mentions")
+compare.update_layout(height=400,yaxis_title="Pulse score",xaxis_title=None,legend_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+st.plotly_chart(compare,width="stretch")
 
-trend_col, topic_col = st.columns([1.45, 1], gap="large")
+trend_col,term_col=st.columns([1.5,1],gap="large")
 with trend_col:
-    st.subheader("Conversation over time")
-    dated = filtered.dropna(subset=["created_at"]).copy()
-    dated["date"] = pd.to_datetime(dated.created_at, utc=True).dt.date
-    trend = dated.groupby(["date","film"], as_index=False).sentiment_score.mean()
-    trend_fig = px.line(trend, x="date", y="sentiment_score", color="film", markers=True)
-    trend_fig.update_layout(height=365, yaxis_range=[0,100], yaxis_title="Pulse score", xaxis_title=None, legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(trend_fig, width="stretch")
-with topic_col:
-    st.subheader("Tamil-cinema signals")
-    terms = pd.DataFrame(top_terms(filtered.text), columns=["term","mentions"])
+    st.subheader("Pulse history")
+    trend=filtered.assign(date=filtered.created_at.dt.date).groupby(["date","film"],as_index=False).sentiment_score.mean()
+    line=px.line(trend,x="date",y="sentiment_score",color="film",markers=True)
+    line.update_layout(height=370,yaxis_range=[0,100],yaxis_title="Pulse",xaxis_title=None,legend_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    st.plotly_chart(line,width="stretch")
+with term_col:
+    st.subheader("Cinema-language signals")
+    terms=pd.DataFrame(top_terms(filtered.text),columns=["term","mentions"])
     if not terms.empty:
-        term_fig = px.bar(terms.sort_values("mentions"), x="mentions", y="term", orientation="h", color_discrete_sequence=["#ed5b2f"])
-        term_fig.update_layout(height=365, xaxis_title="Occurrences", yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(term_fig, width="stretch")
-    else:
-        st.info("No known Tamil-cinema sentiment terms were detected.")
+        bars=px.bar(terms.sort_values("mentions"),x="mentions",y="term",orientation="h",color_discrete_sequence=["#ed5b2f"])
+        bars.update_layout(height=370,xaxis_title="Occurrences",yaxis_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(bars,width="stretch")
 
-with st.expander("Explore analysed comments"):
-    labels = st.multiselect("Sentiment", ["Positive","Neutral","Negative"], default=["Positive","Neutral","Negative"])
-    shown = filtered[filtered.sentiment.isin(labels)][["film","platform","text","sentiment","sentiment_score","likes","created_at","url"]]
-    st.dataframe(shown.sort_values("likes", ascending=False), width="stretch", hide_index=True, column_config={"url": st.column_config.LinkColumn("Source")})
-    st.download_button("Download analysed CSV", shown.to_csv(index=False), "tamil_film_sentiment.csv", "text/csv")
+with st.expander("Open the scanner log and comments"):
+    st.caption(f"Scanner status: {status}. Source errors: {len(meta.get('errors', []))}.")
+    if meta.get("errors"): st.warning("\n".join(meta["errors"]))
+    shown=filtered[["film","platform","text","sentiment","sentiment_score","likes","created_at","url"]].sort_values("created_at",ascending=False)
+    st.dataframe(shown,width="stretch",hide_index=True,column_config={"url":st.column_config.LinkColumn("Source")})
+    st.download_button("Download current view",shown.to_csv(index=False),"tamil-film-weekly-scan.csv","text/csv")
 
-st.caption("Tamil Film Pulse · Public conversation analysis · Transparent baseline model · API terms and quotas apply")
+st.caption("Tamil Film Pulse · Updated by a scheduled GitHub Action · Public comments only · Conversation signal, not a quality or box-office rating")
