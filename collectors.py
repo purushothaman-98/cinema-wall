@@ -183,6 +183,27 @@ def _archive_rows(film: str, forum: str, items: dict) -> list[dict]:
             })
     return rows
 
+def _archive_comment_rows(film: str, forum: str, items: dict) -> list[dict]:
+    rows = []
+    for item_id, comment in (items or {}).items():
+        comment_id = str(comment.get("id") or item_id).replace("t1_", "")
+        body = comment.get("body", "")
+        if not body or body in ("[deleted]", "[removed]"):
+            continue
+        created = comment.get("created_utc", 0)
+        if isinstance(created, (int, float)):
+            created = datetime.fromtimestamp(created, timezone.utc).isoformat()
+        link_id = str(comment.get("link_id", "")).replace("t3_", "")
+        permalink = comment.get("permalink", "")
+        rows.append({
+            "film": film, "platform": "Reddit", "source": f"r/{forum}",
+            "text": body, "created_at": created,
+            "likes": max(comment.get("score", 0) or 0, 0), "author": comment.get("author", ""),
+            "url": f"https://reddit.com{permalink}" if permalink else f"https://reddit.com/comments/{link_id}",
+            "source_id": f"reddit:{comment_id}", "content_type": "comment", "parent_id": link_id,
+        })
+    return rows
+
 async def _reddit_archive_async(film: str, forums: list[str], posts_per_forum: int) -> pd.DataFrame:
     from BAScraper.BAScraper_async import ArcticShiftAsync, PullPushAsync
     # BAScraper recommends PullPush for complex full-text searches. Keep one worker
@@ -214,6 +235,24 @@ async def _reddit_archive_async(film: str, forums: list[str], posts_per_forum: i
                 sort="desc", file_name=None,
             )
         rows.extend(_archive_rows(film, forum, result))
+        # Direct archive comment search finds film discussions even when the
+        # parent post title does not contain the movie name.
+        try:
+            comments = await pullpush.fetch(
+                mode="comments", subreddit=forum, q=film,
+                after=after, size=100, sort="desc",
+                sort_type="created_utc", file_name=None,
+            )
+            rows.extend(_archive_comment_rows(film, forum, comments))
+        except Exception:
+            try:
+                comments = await arctic.fetch(
+                    mode="comments_search", subreddit=forum, body=film,
+                    after=after, limit=100, sort="desc", file_name=None,
+                )
+                rows.extend(_archive_comment_rows(film, forum, comments))
+            except Exception:
+                pass
     return pd.DataFrame(rows)
 
 def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
@@ -221,8 +260,9 @@ def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12)
     archive_error = None
     try:
         archived = asyncio.run(_reddit_archive_async(film, forums, posts_per_forum))
-        if not archived.empty:
-            return archived
+        # A successful empty archive response means there are no matches; do not
+        # hammer Reddit JSON/RSS afterward and turn that into a misleading 429.
+        return archived
     except Exception as exc:
         archive_error = exc
     try:
