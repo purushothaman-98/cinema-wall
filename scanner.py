@@ -128,7 +128,9 @@ def merge_comments(fresh: pd.DataFrame, now: pd.Timestamp) -> tuple[pd.DataFrame
     if combined.empty:
         return combined, 0
     combined = combined.drop_duplicates("source_id", keep="last")
-    combined["created_at"] = pd.to_datetime(combined["created_at"], errors="coerce", utc=True)
+    combined["created_at"] = pd.to_datetime(
+        combined["created_at"], format="mixed", errors="coerce", utc=True
+    )
     cutoff = now - pd.Timedelta(days=int(CFG["keep_history_days"]))
     combined = combined[combined["created_at"].ge(cutoff)].sort_values("created_at")
     return combined, new_count
@@ -138,7 +140,9 @@ def merge_snapshots(fresh: pd.DataFrame, now: pd.Timestamp) -> pd.DataFrame:
     combined = pd.concat([old, fresh], ignore_index=True)
     if combined.empty:
         return combined
-    combined["scanned_at"] = pd.to_datetime(combined["scanned_at"], errors="coerce", utc=True)
+    combined["scanned_at"] = pd.to_datetime(
+        combined["scanned_at"], format="mixed", errors="coerce", utc=True
+    )
     combined = combined.drop_duplicates(["video_id", "scanned_at"], keep="last")
     cutoff = now - pd.Timedelta(days=int(CFG["keep_history_days"]))
     return combined[combined["scanned_at"].ge(cutoff)].sort_values("scanned_at")
@@ -158,6 +162,7 @@ def main() -> None:
         known = known.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
     do_discovery = discovery_due(metadata, known, now)
     previous_catalog = metadata.get("movie_catalog", [])
+    previous_history = metadata.get("movie_catalog_history", previous_catalog)
     catalog_needs_details = not previous_catalog or any("cast" not in item for item in previous_catalog)
     catalog = discover_films(tmdb_key) if (do_discovery or catalog_needs_details) else previous_catalog
     films = [item["title"] for item in catalog]
@@ -233,9 +238,13 @@ def main() -> None:
             for row in details.itertuples():
                 monitored_video_ids.add(row.video_id)
                 try:
+                    comment_limit = int(
+                        CFG["comments_per_video_daily"] if do_discovery
+                        else CFG["comments_per_video_live"]
+                    )
                     batch = youtube_comments(
                         row.video_id, film, row.channel, row.title, row.content_format,
-                        youtube_key, int(CFG["comments_per_video"]),
+                        youtube_key, comment_limit,
                     )
                     if not batch.empty:
                         comment_batches.append(batch)
@@ -259,6 +268,18 @@ def main() -> None:
     stored_comments, new_comments = merge_comments(comments, now)
     stored_snapshots = merge_snapshots(snapshots, now)
 
+    # A successful statistics fetch must always leave rows carrying this run's
+    # timestamp. Fail loudly instead of silently publishing metadata without
+    # the half-hour snapshot needed by the dashboard.
+    if not snapshots.empty:
+        stored_times = pd.to_datetime(stored_snapshots["scanned_at"], errors="coerce", utc=True)
+        current_rows = int(stored_times.eq(now).sum())
+        expected_current = int(snapshots["video_id"].nunique())
+        if current_rows < expected_current:
+            raise RuntimeError(
+                f"Snapshot persistence check failed: expected {expected_current} current rows, found {current_rows}"
+            )
+
     if not stored_comments.empty:
         stored_comments.to_csv(COMMENTS, index=False)
     if not stored_snapshots.empty:
@@ -266,6 +287,16 @@ def main() -> None:
 
     last_discovery = now_iso if do_discovery else metadata.get("last_video_discovery")
     status = "healthy" if not errors else "partial"
+    catalog_history_map = {
+        item.get("title"): item
+        for item in [*previous_history, *catalog]
+        if isinstance(item, dict) and item.get("title")
+    }
+    all_films_analyzed = sorted(
+        set(metadata.get("all_films_analyzed", []))
+        | set(stored_comments.get("film", pd.Series(dtype=str)).dropna().astype(str))
+        | set(films)
+    )
     META.write_text(json.dumps({
         "status": status,
         "last_scan": now_iso,
@@ -285,6 +316,8 @@ def main() -> None:
             snapshots[snapshots["content_format"].eq("Short")]["video_id"].nunique()
         ) if not snapshots.empty else 0,
         "movie_catalog": catalog,
+        "movie_catalog_history": list(catalog_history_map.values()),
+        "all_films_analyzed": all_films_analyzed,
         "youtube_channels": CFG["youtube_review_channels"],
         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
         "errors": errors,
