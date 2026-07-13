@@ -369,10 +369,11 @@ with tab_overview:
             monitored["views"] - monitored["previous_views"]
         ).clip(lower=0)
         monitor_cutoff = now - pd.Timedelta(hours=24)
-        paired = monitored[
+        candidate_pairs = monitored[
             monitored["previous_comments"].notna()
             & monitored["scanned_at"].ge(monitor_cutoff)
         ].copy()
+        paired = candidate_pairs[candidate_pairs["elapsed_minutes"].between(20, 70)].copy()
         paired["period"] = paired["scanned_at"].dt.floor("30min")
         deltas = (
             paired.groupby(["period", "film", "content_format"], as_index=False)
@@ -426,6 +427,14 @@ with tab_overview:
                 f"Counter archive is stale: scanner metadata reached {last_scan.strftime('%H:%M UTC')}, "
                 f"but the newest stored snapshot is {current_scan_time.strftime('%H:%M UTC')}. "
                 "The repaired scanner will back-check all selected videos on its next run; growth begins from that new snapshot."
+            )
+        nonstandard_intervals = candidate_pairs[
+            ~candidate_pairs["elapsed_minutes"].between(20, 70)
+        ]["scanned_at"].nunique()
+        if nonstandard_intervals:
+            st.warning(
+                f"{nonstandard_intervals} stored interval(s) had a gap outside 20–70 minutes. "
+                "Their coverage is shown, but their growth is excluded from the 30-minute charts so a multi-hour gain is never mislabeled as live half-hour activity."
             )
 
         coverage_tab, views_tab, comments_tab = st.tabs(["Fetch coverage", "View growth", "Comment growth"])
@@ -694,6 +703,9 @@ with tab_lifetime:
         lifetime_pairs["new_views"] = (lifetime_pairs["views"] - lifetime_pairs["previous_views"]).clip(lower=0)
         lifetime_pairs["new_comments"] = (lifetime_pairs["comments"] - lifetime_pairs["previous_comments"]).clip(lower=0)
         lifetime_pairs = lifetime_pairs[lifetime_pairs["previous_scan"].notna()].copy()
+        lifetime_pairs["elapsed_minutes"] = (
+            (lifetime_pairs["scanned_at"] - lifetime_pairs["previous_scan"]).dt.total_seconds() / 60
+        )
         lifetime_pairs["period"] = lifetime_pairs["scanned_at"].dt.floor("30min")
         interval_history = (
             lifetime_pairs.groupby("period", as_index=False)
@@ -701,6 +713,7 @@ with tab_lifetime:
                 views_gained=("new_views", "sum"),
                 comments_gained=("new_comments", "sum"),
                 videos_reporting=("video_id", "nunique"),
+                elapsed_minutes=("elapsed_minutes", "median"),
             )
             .sort_values("period")
         )
@@ -756,17 +769,21 @@ with tab_lifetime:
         interval_col, daily_col = st.columns(2, gap="large")
         with interval_col:
             st.markdown("#### Every stored half-hour interval")
-            interval_fig = px.bar(
-                interval_history.tail(96), x="period", y="views_gained",
-                color="views_gained", color_continuous_scale=["#ffd8ce", "#ff4b2b", "#8f1d08"],
-                hover_data=["comments_gained", "videos_reporting"],
-                labels={"period": "UTC", "views_gained": "New views"},
-            )
-            interval_fig.update_layout(
-                height=400, coloraxis_showscale=False,
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            )
-            st.plotly_chart(interval_fig, width="stretch")
+            regular_intervals = interval_history[interval_history["elapsed_minutes"].between(20, 70)].tail(96)
+            if regular_intervals.empty:
+                st.info("Waiting for the first two normally spaced repaired scans.")
+            else:
+                interval_fig = px.bar(
+                    regular_intervals, x="period", y="views_gained",
+                    color="views_gained", color_continuous_scale=["#ffd8ce", "#ff4b2b", "#8f1d08"],
+                    hover_data=["comments_gained", "videos_reporting", "elapsed_minutes"],
+                    labels={"period": "UTC", "views_gained": "New views"},
+                )
+                interval_fig.update_layout(
+                    height=400, coloraxis_showscale=False,
+                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+                )
+                st.plotly_chart(interval_fig, width="stretch")
         with daily_col:
             st.markdown("#### Daily attention by film")
             film_daily = lifetime_pairs.copy()
