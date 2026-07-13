@@ -547,14 +547,16 @@ with tab_films:
         detail_metrics[2].metric("Questions", f"{film_comments['is_question'].sum():,}")
         detail_metrics[3].metric("Detailed comments", f"{film_comments['comment_kind'].eq('Detailed discussion').sum():,}")
 
+    film_frequency = "30min" if window <= 72 else "h" if window <= 168 else "D"
+    film_time_label = "30 minutes" if film_frequency == "30min" else "hour" if film_frequency == "h" else "day"
     film_timeline = (
-        film_comments.assign(period=film_comments["created_at"].dt.floor(frequency))
+        film_comments.assign(period=film_comments["created_at"].dt.floor(film_frequency))
         .groupby("period", as_index=False).size().rename(columns={"size": "comments"})
     )
     line = px.line(film_timeline, x="period", y="comments", markers=True,
                    color_discrete_sequence=["#ff4b2b"])
     line.update_traces(fill="tozeroy")
-    line.update_layout(height=360, xaxis_title="Published time", yaxis_title=f"Comments per {time_label}",
+    line.update_layout(height=360, xaxis_title="Published time", yaxis_title=f"Comments per {film_time_label}",
                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
     st.plotly_chart(line, width="stretch")
 
