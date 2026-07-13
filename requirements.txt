@@ -1,7 +1,6 @@
-streamlit>=1.36,<2
-pandas>=2.1,<3
-plotly>=5.22,<7
-google-api-python-client>=2.137,<3
+streamlit>=1.45,<2
+pandas>=2.2,<3
+plotly>=6.0,<7
 python-dateutil>=2.9,<3
 requests>=2.32,<3
-BAScraper>=0.2,<0.3
+youtube-comment-downloader>=0.1.76,<0.2
