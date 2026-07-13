@@ -1,7 +1,7 @@
 {
-  "status": "waiting",
-  "last_scan": "2026-07-13T13:40:29.477123+00:00",
-  "last_video_discovery": null,
+  "status": "healthy",
+  "last_scan": "2026-07-13T15:22:45.961728+00:00",
+  "last_video_discovery": "2026-07-13T15:22:45.961728+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 6,
   "films": [
@@ -9,17 +9,17 @@
     "Karuppu",
     "Parimala and Co",
     "Blast",
-    "Gatta Kusthi 2",
     "Kara",
-    "Thaai Kizhavi",
+    "Gatta Kusthi 2",
     "Gandhi Talks",
-    "29",
-    "Youth"
+    "Thaai Kizhavi",
+    "Youth",
+    "TN 2026"
   ],
-  "comments_fetched": 0,
-  "new_comments_added": 0,
-  "stored_comments": 0,
-  "videos_monitored": 0,
+  "comments_fetched": 3236,
+  "new_comments_added": 2983,
+  "stored_comments": 3489,
+  "videos_monitored": 39,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -46,22 +46,16 @@
       "tmdb_id": 1515729
     },
     {
-      "title": "Gatta Kusthi 2",
-      "release_date": "2026-07-03",
-      "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
-      "tmdb_id": 1509599
-    },
-    {
       "title": "Kara",
       "release_date": "2026-04-30",
       "poster_url": "https://image.tmdb.org/t/p/w500/uIrFdMWlJFdc1jPBP9bxeaISCDj.jpg",
       "tmdb_id": 1433117
     },
     {
-      "title": "Thaai Kizhavi",
-      "release_date": "2026-02-27",
-      "poster_url": "https://image.tmdb.org/t/p/w500/21dLAnBhu3dMjQ89UIHGEtkoQ02.jpg",
-      "tmdb_id": 1602783
+      "title": "Gatta Kusthi 2",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
+      "tmdb_id": 1509599
     },
     {
       "title": "Gandhi Talks",
@@ -70,16 +64,22 @@
       "tmdb_id": 786567
     },
     {
-      "title": "29",
-      "release_date": "2026-05-08",
-      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
-      "tmdb_id": 1510769
+      "title": "Thaai Kizhavi",
+      "release_date": "2026-02-27",
+      "poster_url": "https://image.tmdb.org/t/p/w500/21dLAnBhu3dMjQ89UIHGEtkoQ02.jpg",
+      "tmdb_id": 1602783
     },
     {
       "title": "Youth",
       "release_date": "2026-03-19",
       "poster_url": "https://image.tmdb.org/t/p/w500/rNzk0jlGRPnvZ26On5xhTmLaQhO.jpg",
       "tmdb_id": 1542352
+    },
+    {
+      "title": "TN 2026",
+      "release_date": "2026-04-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mAX1ujOROXtKsOuIg5MbJbotOyD.jpg",
+      "tmdb_id": 1556783
     }
   ],
   "youtube_channels": [
@@ -90,14 +90,15 @@
     "BR South Cinema",
     "Valai Pechu",
     "Prashanth Rangaswamy",
-    "Fully Filmy"
+    "Fully Filmy",
+    "Movie Crow",
+    "Open Pannaa",
+    "Kodangi",
+    "Abishek Raja"
   ],
   "collectors": [
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": [],
-  "notes": [
-    "YouTube-only monitoring enabled; first 30-minute scan pending."
-  ]
+  "errors": []
 }
