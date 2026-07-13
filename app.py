@@ -61,12 +61,16 @@ def audience_summary(frame: pd.DataFrame) -> str:
     topic = useful["topic"].value_counts().index[0]
     return f"Audience response is {mood_text}; conversation is led by {topic.lower()} ({len(useful):,} analyzed comments)."
 
+def valid_text(value: object) -> bool:
+    return value is not None and not pd.isna(value) and str(value).strip().lower() not in {"", "nan", "none", "null"}
+
 def reviewer_context(row: pd.Series) -> str:
-    description = str(row.get("description", "") or "").replace("\n", " ").strip()
+    raw = row.get("description", "")
+    description = str(raw).replace("\n", " ").strip() if valid_text(raw) else ""
     description = " ".join(part for part in description.split() if not part.startswith("http"))
     if description:
         return description[:220] + ("…" if len(description) > 220 else "")
-    return f'The video is presented as “{row.get("title", "Tamil film review")}”.'
+    return f'The public review is titled “{row.get("title", "Tamil film review")}”.'
 
 def render_movie_page(movie: str) -> None:
     item = catalog.get(movie, {})
@@ -124,16 +128,18 @@ def render_movie_page(movie: str) -> None:
                 thumb_col, review_col = st.columns([1, 3], gap="large")
                 with thumb_col:
                     thumb = row.get("thumbnail_url")
-                    if isinstance(thumb, str) and thumb.startswith("http"):
-                        st.image(thumb, width="stretch")
+                    if not valid_text(thumb) or not str(thumb).startswith("http"):
+                        thumb = f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg"
+                    st.image(str(thumb), width="stretch")
                 with review_col:
                     st.markdown(f"### [{title}]({url})")
                     st.caption(f"{channel} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
                     st.markdown(f"**How the reviewer frames it:** {reviewer_context(row)}")
                     st.markdown(f"**How this video’s audience responds:** {audience_summary(audience)}")
-                    if not audience.empty:
-                        sample = audience.sort_values(["likes", "created_at"], ascending=False).iloc[0]
-                        st.caption(f'Most-liked collected comment: “{str(sample["text"])[:220]}”')
+                    useful_audience = audience[~audience["low_information"]].copy() if not audience.empty else audience
+                    if not useful_audience.empty:
+                        sample = useful_audience.sort_values(["likes", "created_at"], ascending=False).iloc[0]
+                        st.caption(f'Most-liked useful comment: “{str(sample["text"])[:220]}”')
 
     if not film_comments.empty:
         chart_col, reaction_col = st.columns([1.4, 1], gap="large")
