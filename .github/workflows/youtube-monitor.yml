@@ -1,0 +1,43 @@
+name: Tamil cinema YouTube monitor
+
+on:
+  schedule:
+    - cron: "10,40 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cinema-wall-youtube-monitor
+  cancel-in-progress: false
+
+jobs:
+  youtube-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install scanner
+        run: pip install -r requirements.txt
+      - name: Fetch YouTube comments and statistics
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scanner.py
+      - name: Store time-series data
+        run: |
+          git config user.name "cinema-wall-scanner"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/live/comments.csv data/live/video_snapshots.csv data/live/scan_metadata.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: YouTube monitor $(date -u +'%F %H:%M UTC')"
+            git pull --rebase
+            git push
+          fi
