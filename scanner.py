@@ -216,13 +216,17 @@ def main() -> None:
                 ["trusted_channel", "signal_score", "comments", "published_at"],
                 ascending=[False, False, False, False],
             )
-            standard_videos = details[details["content_format"].eq("Video")].head(
-                int(CFG["active_videos_per_film"])
-            )
-            shorts = details[details["content_format"].eq("Short")].head(
-                int(CFG["active_shorts_per_film"])
-            )
-            details = pd.concat([standard_videos, shorts], ignore_index=True)
+            # Relevance/ranking decisions belong to the once-daily discovery pass.
+            # Every intervening 30-minute run keeps every already selected ID so
+            # the raw counter series cannot disappear because its rank changed.
+            if do_discovery:
+                standard_videos = details[details["content_format"].eq("Video")].head(
+                    int(CFG["active_videos_per_film"])
+                )
+                shorts = details[details["content_format"].eq("Short")].head(
+                    int(CFG["active_shorts_per_film"])
+                )
+                details = pd.concat([standard_videos, shorts], ignore_index=True)
             details["scanned_at"] = now_iso
             snapshot_batches.append(details)
 
