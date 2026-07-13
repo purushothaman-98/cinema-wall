@@ -6,7 +6,6 @@ from pathlib import Path
 import pandas as pd
 import requests
 from collectors import collect_reddit_json, youtube_comments, youtube_details, youtube_search
-from sentiment import add_sentiment
 
 ROOT=Path(__file__).parent; CFG=json.loads((ROOT/"scanner_config.json").read_text()); LIVE=ROOT/"data"/"live"
 COMMENTS=LIVE/"comments.csv"; VIDEOS=LIVE/"video_snapshots.csv"; META=LIVE/"scan_metadata.json"
@@ -78,7 +77,7 @@ def main():
         }, indent=2))
         print(f"Scanned {len(films)} films; no new Reddit matches; stored history preserved")
         return
-    comments["scanned_at"]=now; comments=add_sentiment(comments)
+    comments["scanned_at"]=now
     merge(COMMENTS,comments,"source_id",CFG["keep_history_days"]).to_csv(COMMENTS,index=False)
     if not snapshots.empty: merge(VIDEOS,snapshots,["video_id","scanned_at"],CFG["keep_history_days"]).to_csv(VIDEOS,index=False)
     META.write_text(json.dumps({"status":"healthy" if not errors else "partial","last_scan":now,"films":films,"comments_added":len(comments),
