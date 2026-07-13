@@ -75,6 +75,7 @@ def load_video_snapshots() -> pd.DataFrame:
     if "content_format" not in frame:
         frame["content_format"] = inferred_format
     else:
+        frame["content_format"] = frame["content_format"].astype("object")
         missing_format = frame["content_format"].isna() | ~frame["content_format"].isin(["Video", "Short"])
         frame.loc[missing_format, "content_format"] = inferred_format[missing_format]
     if "description" not in frame:
