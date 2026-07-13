@@ -255,12 +255,15 @@ latest_videos = (
 last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
 last_24 = filtered[filtered["created_at"].ge(now - pd.Timedelta(hours=24))]
 
-metrics = st.columns(5)
+metrics = st.columns(6)
+standard_count = int(latest_videos["content_format"].eq("Video").sum()) if not latest_videos.empty else 0
+shorts_count = int(latest_videos["content_format"].eq("Short").sum()) if not latest_videos.empty else 0
 metrics[0].metric("Films on radar", filtered["film"].nunique())
-metrics[1].metric("Videos monitored", latest_videos["video_id"].nunique() if not latest_videos.empty else 0)
-metrics[2].metric("Comments analyzed", f"{len(filtered):,}")
-metrics[3].metric("New comments · 24 h", f"{len(last_24):,}")
-metrics[4].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
+metrics[1].metric("Standard videos", standard_count)
+metrics[2].metric("Shorts", shorts_count)
+metrics[3].metric("Comments analyzed", f"{len(filtered):,}")
+metrics[4].metric("New comments · 24 h", f"{len(last_24):,}")
+metrics[5].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
 catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
 st.subheader("Films on the radar")
@@ -300,15 +303,17 @@ with tab_overview:
     time_label = "hour" if frequency == "h" else "day"
     activity = (
         filtered.assign(period=filtered["created_at"].dt.floor(frequency))
-        .groupby(["period", "film"], as_index=False)
+        .groupby(["period", "film", "content_format"], as_index=False)
         .size().rename(columns={"size": "comments"})
     )
     area = px.area(
-        activity, x="period", y="comments", color="film",
+        activity, x="period", y="comments", color="film", facet_row="content_format",
         color_discrete_sequence=PALETTE,
-        labels={"period": "Published time", "comments": f"Comments per {time_label}", "film": "Film"},
+        labels={"period": "Published time", "comments": f"Comments per {time_label}",
+                "film": "Film", "content_format": "Format"},
     )
-    area.update_layout(height=460, hovermode="x unified", legend_title=None,
+    area.for_each_annotation(lambda annotation: annotation.update(text=annotation.text.split("=")[-1]))
+    area.update_layout(height=620, hovermode="x unified", legend_title=None,
                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
     st.plotly_chart(area, width="stretch")
 
@@ -414,12 +419,16 @@ with tab_overview:
     topic_col, kind_col = st.columns(2, gap="large")
     with topic_col:
         st.subheader("What viewers discuss")
-        topic = filtered["topic"].value_counts().rename_axis("Topic").reset_index(name="Comments")
+        topic = (
+            filtered.groupby(["topic", "content_format"], as_index=False).size()
+            .rename(columns={"topic": "Topic", "content_format": "Format", "size": "Comments"})
+        )
         topic_fig = px.bar(
             topic.sort_values("Comments"), x="Comments", y="Topic", orientation="h",
-            color="Comments", color_continuous_scale=["#ffd6cc", "#ff4b2b", "#7a1700"],
+            color="Format", barmode="group",
+            color_discrete_map={"Video": "#3a86ff", "Short": "#ff006e"},
         )
-        topic_fig.update_layout(height=430, coloraxis_showscale=False, yaxis_title=None,
+        topic_fig.update_layout(height=430, legend_title=None, yaxis_title=None,
                                 paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
         st.plotly_chart(topic_fig, width="stretch")
     with kind_col:
@@ -503,7 +512,7 @@ with tab_comments:
     explorer = filtered.copy()
     if search:
         explorer = explorer[explorer["text"].str.contains(search, case=False, na=False, regex=False)]
-    columns = ["film", "channel", "video_title", "language", "topic", "comment_kind",
+    columns = ["film", "content_format", "channel", "video_title", "language", "topic", "comment_kind",
                "text", "likes", "reply_count", "created_at", "url"]
     st.dataframe(
         explorer[columns].sort_values(["likes", "created_at"], ascending=[False, False]),
