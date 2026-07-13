@@ -256,24 +256,12 @@ async def _reddit_archive_async(film: str, forums: list[str], posts_per_forum: i
     return pd.DataFrame(rows)
 
 def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
-    """BAScraper/Arctic Shift first; direct JSON and public RSS are fallbacks."""
-    archive_error = None
+    """Collect through BAScraper archives only; never hit rate-limited Reddit hosts."""
     try:
-        archived = asyncio.run(_reddit_archive_async(film, forums, posts_per_forum))
-        # A successful empty archive response means there are no matches; do not
-        # hammer Reddit JSON/RSS afterward and turn that into a misleading 429.
-        return archived
-    except Exception as exc:
-        archive_error = exc
-    try:
-        return _collect_reddit_json_only(film, forums, posts_per_forum)
-    except (requests.RequestException, ValueError):
-        try:
-            return _reddit_rss(film, forums, posts_per_forum)
-        except Exception:
-            if archive_error:
-                raise RuntimeError(f"BAScraper/Arctic Shift failed: {archive_error}")
-            raise
+        return asyncio.run(_reddit_archive_async(film, forums, posts_per_forum))
+    except Exception:
+        # Archive availability must not break the daily YouTube scan or erase history.
+        return pd.DataFrame()
 
 def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
     response = requests.get("https://www.googleapis.com/youtube/v3/search", params={"key": api_key, "part": "snippet",
