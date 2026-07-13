@@ -38,15 +38,44 @@ def discover_films(key: str) -> list[dict]:
         timeout=30,
     )
     response.raise_for_status()
-    return [{
-        "title": item["title"],
-        "release_date": item.get("release_date"),
-        "poster_url": (
-            f"https://image.tmdb.org/t/p/w500{item['poster_path']}"
-            if item.get("poster_path") else None
-        ),
-        "tmdb_id": item.get("id"),
-    } for item in response.json().get("results", [])[:CFG["max_films"]]]
+    catalog = []
+    for item in response.json().get("results", [])[:CFG["max_films"]]:
+        details = {}
+        try:
+            detail_response = requests.get(
+                f"https://api.themoviedb.org/3/movie/{item['id']}",
+                params={"api_key": key, "append_to_response": "credits", "language": "en-IN"},
+                timeout=30,
+            )
+            detail_response.raise_for_status()
+            details = detail_response.json()
+        except Exception:
+            pass
+        credits = details.get("credits", {})
+        director = next(
+            (person.get("name") for person in credits.get("crew", []) if person.get("job") == "Director"),
+            None,
+        )
+        catalog.append({
+            "title": item["title"],
+            "original_title": details.get("original_title") or item.get("original_title"),
+            "release_date": details.get("release_date") or item.get("release_date"),
+            "poster_url": (
+                f"https://image.tmdb.org/t/p/w500{details.get('poster_path') or item.get('poster_path')}"
+                if (details.get("poster_path") or item.get("poster_path")) else None
+            ),
+            "backdrop_url": (
+                f"https://image.tmdb.org/t/p/w1280{details.get('backdrop_path')}"
+                if details.get("backdrop_path") else None
+            ),
+            "tmdb_id": item.get("id"),
+            "overview": details.get("overview") or item.get("overview") or "",
+            "runtime": details.get("runtime"),
+            "genres": [genre.get("name") for genre in details.get("genres", [])],
+            "director": director,
+            "cast": [person.get("name") for person in credits.get("cast", [])[:10]],
+        })
+    return catalog
 
 def quality(video: dict) -> tuple[int, bool, bool]:
     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
@@ -109,14 +138,16 @@ def main() -> None:
     LIVE.mkdir(parents=True, exist_ok=True)
 
     metadata = load_json(META)
-    catalog = discover_films(tmdb_key)
-    films = [item["title"] for item in catalog]
     known = load_csv(VIDEOS)
     if not known.empty:
         known["published_at"] = pd.to_datetime(known.get("published_at"), errors="coerce", utc=True)
         known["scanned_at"] = pd.to_datetime(known.get("scanned_at"), errors="coerce", utc=True)
         known = known.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
     do_discovery = discovery_due(metadata, known, now)
+    previous_catalog = metadata.get("movie_catalog", [])
+    catalog_needs_details = not previous_catalog or any("cast" not in item for item in previous_catalog)
+    catalog = discover_films(tmdb_key) if (do_discovery or catalog_needs_details) else previous_catalog
+    films = [item["title"] for item in catalog]
 
     comment_batches: list[pd.DataFrame] = []
     snapshot_batches: list[pd.DataFrame] = []
