@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import json
 import math
 from urllib.parse import quote
 
@@ -30,7 +31,7 @@ st.markdown("""<style>
 def get_data(schema: str):
     return load_live(), load_video_snapshots(), load_metadata()
 
-comments, videos, meta = get_data("youtube-radar-v2")
+comments, videos, meta = get_data("youtube-radar-v3")
 if not comments.empty:
     if "channel" not in comments:
         comments["channel"] = comments.get("source", "Unknown")
@@ -295,7 +296,9 @@ for start in range(0, len(wall), 5):
                 unsafe_allow_html=True,
             )
 
-tab_overview, tab_films, tab_comments = st.tabs(["Attention overview", "Film deep dive", "Comment explorer"])
+tab_overview, tab_lifetime, tab_films, tab_comments, tab_data = st.tabs([
+    "30-minute live", "Lifetime analysis", "Film deep dive", "Comment explorer", "Data archive"
+])
 
 with tab_overview:
     st.subheader("Unfiltered 30-minute monitor")
@@ -595,6 +598,183 @@ with tab_overview:
     else:
         st.info("Not enough meaningful discussion terms match these filters yet.")
 
+with tab_lifetime:
+    st.subheader("Lifetime public totals and observed growth")
+    st.markdown('<div class="section-note">Public totals are the latest lifetime counters reported by YouTube. Growth is measured only from the first snapshot stored by this radar; no earlier history is estimated.</div>', unsafe_allow_html=True)
+
+    lifetime_latest = (
+        monitor_videos.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+        if not monitor_videos.empty else pd.DataFrame()
+    )
+    lifetime_pairs = pd.DataFrame()
+    interval_history = pd.DataFrame()
+    if not monitor_videos.empty:
+        lifetime_pairs = monitor_videos.sort_values(["video_id", "scanned_at"]).copy()
+        lifetime_pairs["previous_scan"] = lifetime_pairs.groupby("video_id")["scanned_at"].shift(1)
+        lifetime_pairs["previous_views"] = lifetime_pairs.groupby("video_id")["views"].shift(1)
+        lifetime_pairs["previous_comments"] = lifetime_pairs.groupby("video_id")["comments"].shift(1)
+        lifetime_pairs["new_views"] = (lifetime_pairs["views"] - lifetime_pairs["previous_views"]).clip(lower=0)
+        lifetime_pairs["new_comments"] = (lifetime_pairs["comments"] - lifetime_pairs["previous_comments"]).clip(lower=0)
+        lifetime_pairs = lifetime_pairs[lifetime_pairs["previous_scan"].notna()].copy()
+        lifetime_pairs["period"] = lifetime_pairs["scanned_at"].dt.floor("30min")
+        interval_history = (
+            lifetime_pairs.groupby("period", as_index=False)
+            .agg(
+                views_gained=("new_views", "sum"),
+                comments_gained=("new_comments", "sum"),
+                videos_reporting=("video_id", "nunique"),
+            )
+            .sort_values("period")
+        )
+        interval_history["cumulative_views"] = interval_history["views_gained"].cumsum()
+        interval_history["cumulative_comments"] = interval_history["comments_gained"].cumsum()
+
+    first_snapshot = monitor_videos["scanned_at"].min() if not monitor_videos.empty else pd.NaT
+    last_snapshot = monitor_videos["scanned_at"].max() if not monitor_videos.empty else pd.NaT
+    lifetime_metrics = st.columns(6)
+    lifetime_metrics[0].metric("Current public views", f"{lifetime_latest['views'].sum():,.0f}" if not lifetime_latest.empty else "0")
+    lifetime_metrics[1].metric("Current public comments", f"{lifetime_latest['comments'].sum():,.0f}" if not lifetime_latest.empty else "0")
+    lifetime_metrics[2].metric("Comments collected", f"{len(comments):,}")
+    lifetime_metrics[3].metric("Videos + Shorts", f"{lifetime_latest['video_id'].nunique():,}" if not lifetime_latest.empty else "0")
+    lifetime_metrics[4].metric("Stored snapshots", f"{len(monitor_videos):,}")
+    lifetime_metrics[5].metric(
+        "Monitoring span",
+        f"{max(1, (last_snapshot - first_snapshot).days + 1)} days" if pd.notna(first_snapshot) and pd.notna(last_snapshot) else "Pending",
+    )
+
+    if interval_history.empty:
+        st.info("Lifetime growth appears after at least two stored monitor snapshots.")
+    else:
+        st.markdown("#### Growth observed by the radar")
+        cumulative_fig = go.Figure()
+        cumulative_fig.add_trace(go.Scatter(
+            x=interval_history["period"], y=interval_history["cumulative_views"],
+            name="Observed view growth", mode="lines", fill="tozeroy",
+            line=dict(color="#ff4b2b", width=3),
+        ))
+        cumulative_fig.add_trace(go.Scatter(
+            x=interval_history["period"], y=interval_history["cumulative_comments"],
+            name="Observed comment growth", mode="lines", yaxis="y2",
+            line=dict(color="#3a86ff", width=3),
+        ))
+        cumulative_fig.update_layout(
+            height=430, hovermode="x unified", legend=dict(orientation="h", y=1.12),
+            xaxis=dict(title="Stored monitor time · UTC"),
+            yaxis=dict(title="Views gained since monitoring began"),
+            yaxis2=dict(title="Comments gained", overlaying="y", side="right", showgrid=False),
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+        )
+        st.plotly_chart(cumulative_fig, width="stretch")
+
+        interval_col, daily_col = st.columns(2, gap="large")
+        with interval_col:
+            st.markdown("#### Every stored half-hour interval")
+            interval_fig = px.bar(
+                interval_history.tail(96), x="period", y="views_gained",
+                color="views_gained", color_continuous_scale=["#ffd8ce", "#ff4b2b", "#8f1d08"],
+                hover_data=["comments_gained", "videos_reporting"],
+                labels={"period": "UTC", "views_gained": "New views"},
+            )
+            interval_fig.update_layout(
+                height=400, coloraxis_showscale=False,
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            )
+            st.plotly_chart(interval_fig, width="stretch")
+        with daily_col:
+            st.markdown("#### Daily attention by film")
+            film_daily = lifetime_pairs.copy()
+            film_daily["day"] = film_daily["scanned_at"].dt.floor("D")
+            film_daily = film_daily.groupby(["day", "film"], as_index=False)["new_views"].sum()
+            daily_fig = px.area(
+                film_daily, x="day", y="new_views", color="film",
+                color_discrete_sequence=PALETTE,
+                labels={"day": "UTC day", "new_views": "Observed view growth", "film": "Film"},
+            )
+            daily_fig.update_layout(
+                height=400, hovermode="x unified", legend_title=None,
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            )
+            st.plotly_chart(daily_fig, width="stretch")
+
+    if not lifetime_latest.empty:
+        st.markdown("#### Lifetime reach by film")
+        film_lifetime = (
+            lifetime_latest.groupby("film", as_index=False)
+            .agg(
+                public_views=("views", "sum"),
+                public_comments=("comments", "sum"),
+                videos=("video_id", "nunique"),
+            )
+        )
+        film_lifetime["Comments per 1K views"] = (
+            film_lifetime["public_comments"] / film_lifetime["public_views"].replace(0, pd.NA) * 1000
+        ).fillna(0)
+        reach_fig = px.scatter(
+            film_lifetime, x="public_views", y="public_comments", size="videos", color="film",
+            text="film", color_discrete_sequence=PALETTE,
+            hover_data=["Comments per 1K views"],
+            labels={"public_views": "Current lifetime views", "public_comments": "Current lifetime comments"},
+        )
+        reach_fig.update_traces(textposition="top center")
+        reach_fig.update_layout(
+            height=480, showlegend=False,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+        )
+        st.plotly_chart(reach_fig, width="stretch")
+
+        channel_col, format_col = st.columns([1.3, 1], gap="large")
+        with channel_col:
+            st.markdown("#### Channel contribution")
+            channel_summary = (
+                lifetime_latest.groupby("channel", as_index=False)
+                .agg(public_views=("views", "sum"), public_comments=("comments", "sum"), videos=("video_id", "nunique"))
+                .nlargest(15, "public_views")
+            )
+            channel_fig = px.bar(
+                channel_summary.sort_values("public_views"), x="public_views", y="channel",
+                orientation="h", color="public_comments",
+                color_continuous_scale=["#90e0ef", "#3a86ff", "#480ca8"],
+                hover_data=["videos"], labels={"public_views": "Lifetime views", "channel": "Channel"},
+            )
+            channel_fig.update_layout(
+                height=470, coloraxis_colorbar=dict(title="Comments"),
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            )
+            st.plotly_chart(channel_fig, width="stretch")
+        with format_col:
+            st.markdown("#### Video versus Short")
+            format_summary = (
+                lifetime_latest.groupby("content_format", as_index=False)
+                .agg(videos=("video_id", "nunique"), median_views=("views", "median"), median_comments=("comments", "median"))
+                .rename(columns={"content_format": "Format"})
+            )
+            format_fig = px.bar(
+                format_summary, x="Format", y=["median_views", "median_comments"],
+                barmode="group", color_discrete_sequence=["#ff4b2b", "#3a86ff"],
+                labels={"value": "Median public count", "variable": "Measure"},
+            )
+            format_fig.update_layout(
+                height=470, legend_title=None,
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            )
+            st.plotly_chart(format_fig, width="stretch")
+
+    st.markdown("#### Lifetime comment publication history")
+    lifetime_comment_daily = (
+        comments.assign(day=comments["created_at"].dt.floor("D"))
+        .groupby(["day", "film"], as_index=False).size().rename(columns={"size": "Comments"})
+    )
+    comment_history_fig = px.area(
+        lifetime_comment_daily, x="day", y="Comments", color="film",
+        color_discrete_sequence=PALETTE,
+        labels={"day": "Comment publication date", "film": "Film"},
+    )
+    comment_history_fig.update_layout(
+        height=450, hovermode="x unified", legend_title=None,
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+    )
+    st.plotly_chart(comment_history_fig, width="stretch")
+
 with tab_films:
     film = st.selectbox("Choose a film", selected_films)
     film_comments = filtered[filtered["film"].eq(film)].copy()
@@ -665,6 +845,52 @@ with tab_comments:
         explorer[columns].to_csv(index=False),
         "tamil-cinema-youtube-comments.csv", "text/csv",
     )
+
+with tab_data:
+    st.subheader("Complete data archive")
+    st.markdown('<div class="section-note">Download the unfiltered stored counters, the derived half-hour changes, or the complete comment archive. Snapshot rows are the source of truth for monitoring trends.</div>', unsafe_allow_html=True)
+    archive_metrics = st.columns(4)
+    archive_metrics[0].metric("Snapshot rows", f"{len(videos):,}")
+    archive_metrics[1].metric("Half-hour intervals", f"{len(interval_history):,}")
+    archive_metrics[2].metric("Comment rows", f"{len(comments):,}")
+    archive_metrics[3].metric("Retention", f"{meta.get('keep_history_days', 730)} days")
+
+    download_cols = st.columns(4)
+    download_cols[0].download_button(
+        "Download raw snapshots",
+        videos.to_csv(index=False),
+        "cinema-wall-video-snapshots.csv", "text/csv", width="stretch",
+    )
+    download_cols[1].download_button(
+        "Download 30-min series",
+        interval_history.to_csv(index=False),
+        "cinema-wall-30-minute-timeseries.csv", "text/csv", width="stretch",
+        disabled=interval_history.empty,
+    )
+    download_cols[2].download_button(
+        "Download all comments",
+        comments.to_csv(index=False),
+        "cinema-wall-all-comments.csv", "text/csv", width="stretch",
+    )
+    download_cols[3].download_button(
+        "Download scan metadata",
+        json.dumps(meta, indent=2, ensure_ascii=False),
+        "cinema-wall-scan-metadata.json", "application/json", width="stretch",
+    )
+
+    dataset = st.radio(
+        "Preview dataset", ["30-minute time series", "Raw video snapshots", "Collected comments"],
+        horizontal=True,
+    )
+    if dataset == "30-minute time series":
+        preview = interval_history.sort_values("period", ascending=False)
+    elif dataset == "Raw video snapshots":
+        preview = videos.sort_values("scanned_at", ascending=False)
+    else:
+        preview = comments.sort_values("created_at", ascending=False)
+    st.dataframe(preview.head(2000), width="stretch", hide_index=True)
+    if len(preview) > 2000:
+        st.caption(f"Previewing the newest 2,000 of {len(preview):,} rows. The download contains every stored row.")
 
 with st.expander("Monitor health and methodology"):
     st.write(f"Status: **{meta.get('status', 'unknown')}**")
