@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data import aggregate, load_live, load_metadata, load_video_snapshots
-from sentiment import NEGATIVE, POSITIVE, add_sentiment
+from tamil_sentiment_v2 import NEGATIVE, POSITIVE, add_sentiment
 
 st.set_page_config(page_title="Tamil Film Pulse · Daily Scanner", page_icon="📡", layout="wide")
 st.markdown("""<style>
@@ -20,7 +20,7 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 
-ANALYSIS_SCHEMA_VERSION = "tamil-tanglish-v2"
+ANALYSIS_SCHEMA_VERSION = "tamil-tanglish-v3"
 
 @st.cache_data(ttl=900)
 def get_data(schema_version: str):
