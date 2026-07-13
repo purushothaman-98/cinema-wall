@@ -1,210 +1,339 @@
 from __future__ import annotations
 
+import math
 import pandas as pd
 import plotly.express as px
-import requests
+import plotly.graph_objects as go
 import streamlit as st
 
 from data import load_live, load_metadata, load_video_snapshots
+from youtube_analysis import top_terms
 
-st.set_page_config(page_title="Tamil Cinema Discussion Wall", page_icon="🎬", layout="wide")
+st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
+
+PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
 st.markdown("""<style>
-.stApp{background:#f4f1e8}.block-container{max-width:1450px;padding-top:1.5rem}
-.hero{border-bottom:1px solid #d7d1c3;padding:22px 0 28px;margin-bottom:24px}
-.kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#ee5832}
-.hero h1{font-size:52px;line-height:1;letter-spacing:-.05em;margin:8px 0 12px}
-.hero p{font-size:17px;color:#686258;max-width:820px}
-[data-testid="stMetric"]{background:#fbf9f3;border:1px solid #d7d1c3;padding:15px;border-radius:12px}
-.poster-title{font-size:18px;font-weight:800;line-height:1.05;margin-top:8px}
-.poster-meta{font-size:12px;color:#777064;margin-bottom:14px}
+.stApp{background:#f7f3ea}.block-container{max-width:1480px;padding-top:1.3rem}
+.hero{background:linear-gradient(115deg,#141414 0%,#3a1710 54%,#ff4b2b 140%);color:white;padding:42px 46px;border-radius:22px;margin:2px 0 24px;box-shadow:0 18px 45px rgba(55,27,18,.16)}
+.kicker{font-size:11px;font-weight:900;letter-spacing:.19em;color:#ffb39f}.hero h1{font-size:58px;line-height:.96;letter-spacing:-.055em;margin:10px 0 15px}.hero p{font-size:17px;color:#eaded8;max-width:820px;margin:0}
+[data-testid="stMetric"]{background:#fffdf8;border:1px solid #ddd3c3;padding:16px;border-radius:14px;box-shadow:0 5px 16px rgba(46,36,24,.04)}
+.poster-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:14px;overflow:hidden;margin-bottom:12px}
+.poster-card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}.poster-copy{padding:10px 11px 12px}.poster-title{font-size:17px;font-weight:850;line-height:1.05}.poster-meta{font-size:11px;color:#766d61;margin-top:5px;line-height:1.45}
+.section-note{color:#756d62;font-size:13px;margin-top:-8px;margin-bottom:12px}
+.badge{display:inline-block;background:#ffe6df;color:#a22d16;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.05em}
 </style>""", unsafe_allow_html=True)
 
-DATA_SCHEMA = "discussion-wall-v1"
-
-@st.cache_data(ttl=900)
+@st.cache_data(ttl=300)
 def get_data(schema: str):
     return load_live(), load_video_snapshots(), load_metadata()
 
-frame, videos, meta = get_data(DATA_SCHEMA)
+comments, videos, meta = get_data("youtube-radar-v2")
+if not comments.empty:
+    if "channel" not in comments:
+        comments["channel"] = comments.get("source", "Unknown")
+    if "video_id" not in comments:
+        comments["video_id"] = comments.get("parent_id", "")
+    if "video_title" not in comments:
+        comments["video_title"] = ""
+    comments["channel"] = comments["channel"].fillna(comments.get("source", "Unknown"))
+    comments["likes"] = pd.to_numeric(comments.get("likes", 0), errors="coerce").fillna(0)
 
 with st.sidebar:
-    st.title("🎬 Tamil Cinema Wall")
-    st.caption("Daily public discussion scanner")
-    if not frame.empty:
-        films = sorted(frame["film"].dropna().unique())
-        sources = sorted(frame["platform"].dropna().unique())
-        selected_films = st.multiselect("Films", films, default=films)
-        selected_sources = st.multiselect("Sources", sources, default=sources)
-        window = st.select_slider("Conversation window", [7, 14, 30, 90, 365, 730], value=90,
-                                  format_func=lambda x: f"Last {x} days")
-        minimum_likes = st.number_input("Minimum likes", min_value=0, value=0)
+    st.title("▶ Tamil Cinema Radar")
+    st.caption("YouTube monitoring every 30 minutes")
+    if not comments.empty:
+        all_films = sorted(comments["film"].dropna().unique())
+        selected_films = st.multiselect("Films", all_films, default=all_films)
+        all_channels = sorted(comments["channel"].dropna().unique())
+        selected_channels = st.multiselect("Channels", all_channels, default=all_channels)
+        window = st.select_slider(
+            "Analysis window",
+            options=[6, 12, 24, 72, 168, 720, 2160],
+            value=168,
+            format_func=lambda hours: (
+                f"{hours} hours" if hours < 24 else
+                f"{hours // 24} days" if hours < 720 else
+                f"{hours // 720} months"
+            ),
+        )
+        minimum_likes = st.number_input("Minimum comment likes", min_value=0, value=0)
+        include_noise = st.toggle("Include low-information reactions", value=False)
     st.divider()
-    st.markdown("**Scan rhythm**")
-    st.caption("Full YouTube and archive-based Reddit scan every day at 11:30 UTC.")
-    if st.button("Scan Reddit now", type="primary", width="stretch"):
-        token = st.secrets.get("GITHUB_ACTION_TOKEN", "")
-        if not token:
-            st.error("Add a valid GITHUB_ACTION_TOKEN in Streamlit secrets.")
-        else:
-            response = requests.post(
-                "https://api.github.com/repos/purushothaman-98/cinema-wall/actions/workflows/reddit-scan.yml/dispatches",
-                headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
-                         "X-GitHub-Api-Version": "2022-11-28"},
-                json={"ref": "main"}, timeout=20,
-            )
-            if response.status_code == 204:
-                st.success("Reddit archive scan started.")
-            else:
-                st.error(f"GitHub returned {response.status_code}. Check the token's Actions permission.")
+    st.markdown("**Collection rhythm**")
+    st.caption("Known review videos, public statistics and recent comments refresh at :10 and :40 UTC. New video discovery runs every six hours to protect YouTube quota.")
     if st.button("Refresh dashboard data", width="stretch"):
         st.cache_data.clear()
         st.rerun()
 
-st.markdown("""<div class="hero"><span class="kicker">TAMIL FILM CONVERSATION TRACKER</span>
-<h1>What people are discussing.<br>How attention changes.</h1>
-<p>Public YouTube comments and archived Reddit discussions are collected, separated by film and source,
-and shown as activity—not as a review score or quality rating.</p></div>""", unsafe_allow_html=True)
+st.markdown("""<div class="hero"><span class="kicker">TAMIL CINEMA · YOUTUBE INTELLIGENCE</span>
+<h1>Reviews move fast.<br>The radar moves faster.</h1>
+<p>A 30-minute tracker for recent Tamil films: comment velocity, video reach, channel contribution,
+language mix, discussion topics and audience questions—without turning conversation into a quality score.</p></div>""", unsafe_allow_html=True)
 
-if frame.empty:
-    st.warning("No discussion dataset is available yet. Run the daily scanner from GitHub Actions.")
+if comments.empty:
+    st.warning("No YouTube comments are stored yet. Run **Tamil cinema YouTube monitor** once from GitHub Actions.")
     st.stop()
 
-frame["created_at"] = pd.to_datetime(frame["created_at"], errors="coerce", utc=True)
-cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=int(window))
-filtered = frame[
-    frame["film"].isin(selected_films)
-    & frame["platform"].isin(selected_sources)
-    & (pd.to_numeric(frame["likes"], errors="coerce").fillna(0) >= minimum_likes)
-    & (frame["created_at"] >= cutoff)
-].copy()
-if filtered.empty:
-    st.info("No collected discussions match these filters.")
-    st.stop()
-
-last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
-reddit_count = int((filtered["platform"] == "Reddit").sum())
-youtube_count = int((filtered["platform"] == "YouTube").sum())
-metrics = st.columns(5)
-metrics[0].metric("Films tracked", filtered["film"].nunique())
-metrics[1].metric("Comments analyzed", f"{len(filtered):,}")
-metrics[2].metric("YouTube comments", f"{youtube_count:,}")
-metrics[3].metric("Reddit discussions", f"{reddit_count:,}")
-metrics[4].metric("Last scan", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
-
-st.subheader("Films currently on the wall")
-catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
-film_totals = filtered.groupby("film").size().to_dict()
-wall_films = [name for name in selected_films if name in catalog][:10]
-if not wall_films:
-    wall_films = selected_films[:10]
-for start in range(0, len(wall_films), 5):
-    cols = st.columns(5)
-    for col, title in zip(cols, wall_films[start:start + 5]):
-        item = catalog.get(title, {})
-        with col:
-            poster = item.get("poster_url")
-            if isinstance(poster, str) and poster.startswith("https://"):
-                st.markdown(
-                    f'<img src="{poster}" alt="{title} poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:10px">',
-                    unsafe_allow_html=True,
-                )
-            st.markdown(f'<div class="poster-title">{title}</div>', unsafe_allow_html=True)
-            release = item.get("release_date") or "Release date unavailable"
-            st.markdown(f'<div class="poster-meta">{release} · {film_totals.get(title, 0):,} discussions</div>',
-                        unsafe_allow_html=True)
-
-st.subheader("Discussion activity over time")
 now = pd.Timestamp.now(tz="UTC")
-week_start = now - pd.Timedelta(days=7)
-previous_start = now - pd.Timedelta(days=14)
-current_week = filtered[filtered["created_at"] >= week_start]
-previous_week = filtered[(filtered["created_at"] >= previous_start) & (filtered["created_at"] < week_start)]
-week_change = len(current_week) - len(previous_week)
-change_percent = (week_change / len(previous_week) * 100) if len(previous_week) else None
-active_days = filtered["created_at"].dt.floor("D").nunique()
-coverage_days = max(1, min(int(window), (now - filtered["created_at"].min()).days + 1))
+cutoff = now - pd.Timedelta(hours=int(window))
+filtered = comments[
+    comments["film"].isin(selected_films)
+    & comments["channel"].isin(selected_channels)
+    & comments["created_at"].ge(cutoff)
+    & comments["likes"].ge(minimum_likes)
+].copy()
+if not include_noise:
+    filtered = filtered[~filtered["low_information"]].copy()
+if filtered.empty:
+    st.info("No analyzed comments match the current filters.")
+    st.stop()
 
-insight_cols = st.columns(4)
-insight_cols[0].metric("Last 7 days", f"{len(current_week):,}",
-                       f"{week_change:+,} vs previous 7 days")
-insight_cols[1].metric("Weekly change",
-                       f"{change_percent:+.1f}%" if change_percent is not None else "New activity")
-insight_cols[2].metric("Average per active day", f"{len(filtered) / max(active_days, 1):.1f}")
-insight_cols[3].metric("Days with discussion", f"{active_days} of {coverage_days}")
-
-observed = (
-    filtered.dropna(subset=["created_at"])
-    .assign(date=lambda x: x["created_at"].dt.floor("D"))
-    .groupby(["date", "platform"], as_index=False)
-    .size()
-    .rename(columns={"size": "discussions"})
+video_view = videos[videos["film"].isin(selected_films)].copy() if not videos.empty else videos
+latest_videos = (
+    video_view.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+    if not video_view.empty else video_view
 )
-date_index = pd.date_range(
-    filtered["created_at"].min().floor("D"), now.floor("D"), freq="D", tz="UTC"
-)
-complete = pd.MultiIndex.from_product(
-    [date_index, sorted(filtered["platform"].unique())], names=["date", "platform"]
-).to_frame(index=False)
-daily = complete.merge(observed, on=["date", "platform"], how="left")
-daily["discussions"] = daily["discussions"].fillna(0)
-daily["7-day average"] = daily.groupby("platform")["discussions"].transform(
-    lambda values: values.rolling(7, min_periods=1).mean()
-)
-activity = px.line(
-    daily, x="date", y="7-day average", color="platform",
-    color_discrete_map={"YouTube": "#ed5837", "Reddit": "#6874b7"},
-    labels={"date": "Date", "7-day average": "Discussions per day · 7-day average"},
-    hover_data={"discussions": ":.0f", "7-day average": ":.1f"},
-)
-activity.update_layout(height=420, legend_title=None, paper_bgcolor="rgba(0,0,0,0)",
-                       plot_bgcolor="rgba(0,0,0,0)", hovermode="x unified")
-st.plotly_chart(activity, width="stretch")
+last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
+last_24 = filtered[filtered["created_at"].ge(now - pd.Timedelta(hours=24))]
 
-film_current = current_week.groupby("film").size()
-film_previous = previous_week.groupby("film").size()
-momentum = pd.DataFrame({"Last 7 days": film_current, "Previous 7 days": film_previous}).fillna(0)
-momentum["Change"] = momentum["Last 7 days"] - momentum["Previous 7 days"]
-momentum = momentum.reset_index().sort_values(["Last 7 days", "Change"], ascending=False)
-if not momentum.empty:
-    st.caption("Film momentum compares collected discussions in the latest seven days with the preceding seven days.")
-    st.dataframe(momentum, width="stretch", hide_index=True,
-                 column_config={"Change": st.column_config.NumberColumn("Change", format="%+d")})
+metrics = st.columns(5)
+metrics[0].metric("Films on radar", filtered["film"].nunique())
+metrics[1].metric("Videos monitored", latest_videos["video_id"].nunique() if not latest_videos.empty else 0)
+metrics[2].metric("Comments analyzed", f"{len(filtered):,}")
+metrics[3].metric("New comments · 24 h", f"{len(last_24):,}")
+metrics[4].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
-left, right = st.columns([1.35, 1], gap="large")
-with left:
-    st.subheader("Discussion volume by film and source")
-    volume = filtered.groupby(["film", "platform"], as_index=False).size().rename(columns={"size": "discussions"})
-    bars = px.bar(volume, x="film", y="discussions", color="platform", barmode="group",
-                  color_discrete_map={"YouTube": "#ed5837", "Reddit": "#6874b7"})
-    bars.update_layout(height=420, xaxis_title=None, yaxis_title="Collected discussions",
-                       legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(bars, width="stretch")
-with right:
-    st.subheader("What was analyzed")
-    breakdown = filtered.groupby(["platform", "content_type"], as_index=False).size().rename(columns={"size": "items"})
-    fig = px.sunburst(breakdown, path=["platform", "content_type"], values="items",
-                      color="platform", color_discrete_map={"YouTube": "#ed5837", "Reddit": "#6874b7"})
-    fig.update_layout(height=420, margin=dict(l=0, r=0, t=10, b=0), paper_bgcolor="rgba(0,0,0,0)")
-    st.plotly_chart(fig, width="stretch")
+catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
+st.subheader("Films on the radar")
+st.markdown('<div class="section-note">Release context, collected comments and active review videos.</div>', unsafe_allow_html=True)
+wall = [film for film in selected_films if film in catalog][:10] or selected_films[:10]
+for start in range(0, len(wall), 5):
+    cols = st.columns(5)
+    for col, film in zip(cols, wall[start:start + 5]):
+        item = catalog.get(film, {})
+        poster = item.get("poster_url")
+        film_comments = filtered[filtered["film"].eq(film)]
+        film_videos = latest_videos[latest_videos["film"].eq(film)] if not latest_videos.empty else pd.DataFrame()
+        recent = film_comments["created_at"].ge(now - pd.Timedelta(hours=24)).sum()
+        image = (
+            f'<img src="{poster}" alt="{film} poster">' if isinstance(poster, str) and poster.startswith("https://")
+            else '<div style="aspect-ratio:2/3;background:#e9dfd1"></div>'
+        )
+        with col:
+            st.markdown(
+                f'<div class="poster-card">{image}<div class="poster-copy">'
+                f'<div class="poster-title">{film}</div>'
+                f'<div class="poster-meta">{item.get("release_date") or "Release date unavailable"}<br>'
+                f'{len(film_comments):,} analyzed · {recent:,} new/24 h · {len(film_videos)} videos</div>'
+                f'</div></div>',
+                unsafe_allow_html=True,
+            )
 
-st.subheader("Collected comments and discussions")
-table_columns = ["film", "platform", "source", "content_type", "text", "likes", "created_at", "url"]
-shown = filtered[table_columns].sort_values("created_at", ascending=False)
-st.dataframe(shown, width="stretch", hide_index=True,
-             column_config={"url": st.column_config.LinkColumn("Open source"),
-                            "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")})
-st.download_button("Download filtered discussions", shown.to_csv(index=False),
-                   "tamil-cinema-discussions.csv", "text/csv")
+tab_overview, tab_films, tab_comments = st.tabs(["Attention overview", "Film deep dive", "Comment explorer"])
 
-with st.expander("Scanner status and sources"):
+with tab_overview:
+    st.subheader("Comment arrival over time")
+    st.markdown('<div class="section-note">Published comments, grouped by film. This measures conversation activity—not unique viewers.</div>', unsafe_allow_html=True)
+    frequency = "h" if window <= 168 else "D"
+    time_label = "hour" if frequency == "h" else "day"
+    activity = (
+        filtered.assign(period=filtered["created_at"].dt.floor(frequency))
+        .groupby(["period", "film"], as_index=False)
+        .size().rename(columns={"size": "comments"})
+    )
+    area = px.area(
+        activity, x="period", y="comments", color="film",
+        color_discrete_sequence=PALETTE,
+        labels={"period": "Published time", "comments": f"Comments per {time_label}", "film": "Film"},
+    )
+    area.update_layout(height=460, hovermode="x unified", legend_title=None,
+                       paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+    st.plotly_chart(area, width="stretch")
+
+    current_start = now - pd.Timedelta(hours=24)
+    previous_start = now - pd.Timedelta(hours=48)
+    current = filtered[filtered["created_at"].ge(current_start)].groupby("film").size()
+    previous = filtered[
+        filtered["created_at"].ge(previous_start) & filtered["created_at"].lt(current_start)
+    ].groupby("film").size()
+    momentum = pd.DataFrame({"Last 24 h": current, "Previous 24 h": previous}).fillna(0)
+    momentum["Change"] = momentum["Last 24 h"] - momentum["Previous 24 h"]
+    momentum["Direction"] = momentum["Change"].map(lambda value: "Rising" if value > 0 else "Falling" if value < 0 else "Steady")
+    momentum = momentum.reset_index().sort_values(["Last 24 h", "Change"], ascending=False)
+
+    left, right = st.columns([1.25, 1], gap="large")
+    with left:
+        st.subheader("24-hour film momentum")
+        momentum_long = momentum.melt(
+            id_vars=["film"], value_vars=["Last 24 h", "Previous 24 h"],
+            var_name="Window", value_name="Comments",
+        )
+        momentum_fig = px.bar(
+            momentum_long, x="film", y="Comments", color="Window", barmode="group",
+            color_discrete_map={"Last 24 h": "#ff4b2b", "Previous 24 h": "#ffb703"},
+        )
+        momentum_fig.update_layout(height=390, legend_title=None, xaxis_title=None,
+                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(momentum_fig, width="stretch")
+    with right:
+        st.subheader("Language mix")
+        language = filtered["language"].value_counts().rename_axis("Language").reset_index(name="Comments")
+        language_fig = px.pie(
+            language, names="Language", values="Comments", hole=.58,
+            color_discrete_sequence=["#ff4b2b", "#3a86ff", "#2ec4b6", "#8338ec"],
+        )
+        language_fig.update_layout(height=390, legend_title=None, margin=dict(l=0, r=0, t=10, b=0),
+                                   paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(language_fig, width="stretch")
+
+    st.subheader("Video velocity between monitor snapshots")
+    if not video_view.empty and video_view.groupby("video_id").size().max() >= 2:
+        ordered = video_view.sort_values(["video_id", "scanned_at"])
+        latest = ordered.groupby("video_id").tail(1)
+        previous_rows = ordered.groupby("video_id").nth(-2).reset_index()
+        previous_rows = previous_rows[["video_id", "scanned_at", "views", "comments"]].rename(
+            columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
+        )
+        growth = latest.merge(previous_rows, on="video_id", how="inner")
+        hours = (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(3600).clip(lower=.05)
+        growth["Views / hour"] = (growth["views"] - growth["previous_views"]).clip(lower=0) / hours
+        growth["Comments / hour"] = (growth["comments"] - growth["previous_comments"]).clip(lower=0) / hours
+        growth["Engagement / 1k views"] = (growth["likes"] + growth["comments"]) / growth["views"].clip(lower=1) * 1000
+        growth["Bubble"] = growth["views"].clip(lower=1).map(lambda value: max(8, math.log10(value + 1) ** 3))
+        velocity = px.scatter(
+            growth, x="Views / hour", y="Comments / hour", size="Bubble", color="film",
+            hover_name="title", hover_data=["channel", "views", "comments", "Engagement / 1k views"],
+            color_discrete_sequence=PALETTE, size_max=46,
+        )
+        velocity.update_layout(height=470, legend_title=None, paper_bgcolor="rgba(0,0,0,0)",
+                               plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(velocity, width="stretch")
+    elif not latest_videos.empty:
+        st.info("Velocity appears after the second 30-minute snapshot. Current video totals are shown below.")
+        reach = px.bar(
+            latest_videos.sort_values("views", ascending=False).head(20),
+            x="views", y="title", color="film", orientation="h",
+            color_discrete_sequence=PALETTE,
+        )
+        reach.update_layout(height=500, xaxis_title="Current public views", yaxis_title=None,
+                            legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(reach, width="stretch")
+
+    topic_col, kind_col = st.columns(2, gap="large")
+    with topic_col:
+        st.subheader("What viewers discuss")
+        topic = filtered["topic"].value_counts().rename_axis("Topic").reset_index(name="Comments")
+        topic_fig = px.bar(
+            topic.sort_values("Comments"), x="Comments", y="Topic", orientation="h",
+            color="Comments", color_continuous_scale=["#ffd6cc", "#ff4b2b", "#7a1700"],
+        )
+        topic_fig.update_layout(height=430, coloraxis_showscale=False, yaxis_title=None,
+                                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(topic_fig, width="stretch")
+    with kind_col:
+        st.subheader("Depth of participation")
+        kinds = filtered["comment_kind"].value_counts().rename_axis("Type").reset_index(name="Comments")
+        kind_fig = px.bar(
+            kinds, x="Type", y="Comments", color="Type",
+            color_discrete_map={
+                "Detailed discussion": "#8338ec", "Question": "#3a86ff",
+                "Short opinion": "#2ec4b6", "Quick reaction": "#ff9f1c",
+            },
+        )
+        kind_fig.update_layout(height=430, showlegend=False, xaxis_title=None,
+                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(kind_fig, width="stretch")
+
+    term_data = top_terms(filtered["text"], 20)
+    if not term_data.empty:
+        st.subheader("Frequently used discussion terms")
+        term_fig = px.bar(
+            term_data.sort_values("mentions"), x="mentions", y="term", orientation="h",
+            color="mentions", color_continuous_scale=["#90e0ef", "#3a86ff", "#480ca8"],
+        )
+        term_fig.update_layout(height=520, coloraxis_showscale=False, xaxis_title="Mentions",
+                               yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)",
+                               plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(term_fig, width="stretch")
+
+with tab_films:
+    film = st.selectbox("Choose a film", selected_films)
+    film_comments = filtered[filtered["film"].eq(film)].copy()
+    item = catalog.get(film, {})
+    poster_col, info_col = st.columns([1, 3], gap="large")
+    with poster_col:
+        poster = item.get("poster_url")
+        if isinstance(poster, str):
+            st.markdown(f'<img src="{poster}" style="width:100%;border-radius:14px">', unsafe_allow_html=True)
+    with info_col:
+        st.title(film)
+        st.caption(f"Release date: {item.get('release_date') or 'Unavailable'}")
+        detail_metrics = st.columns(4)
+        detail_metrics[0].metric("Analyzed", f"{len(film_comments):,}")
+        detail_metrics[1].metric("Last 24 h", f"{film_comments['created_at'].ge(now - pd.Timedelta(hours=24)).sum():,}")
+        detail_metrics[2].metric("Questions", f"{film_comments['is_question'].sum():,}")
+        detail_metrics[3].metric("Detailed comments", f"{film_comments['comment_kind'].eq('Detailed discussion').sum():,}")
+
+    film_timeline = (
+        film_comments.assign(period=film_comments["created_at"].dt.floor(frequency))
+        .groupby("period", as_index=False).size().rename(columns={"size": "comments"})
+    )
+    line = px.line(film_timeline, x="period", y="comments", markers=True,
+                   color_discrete_sequence=["#ff4b2b"])
+    line.update_traces(fill="tozeroy")
+    line.update_layout(height=360, xaxis_title="Published time", yaxis_title=f"Comments per {time_label}",
+                       paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+    st.plotly_chart(line, width="stretch")
+
+    film_video_table = latest_videos[latest_videos["film"].eq(film)].copy() if not latest_videos.empty else pd.DataFrame()
+    if not film_video_table.empty:
+        film_video_table["url"] = "https://youtube.com/watch?v=" + film_video_table["video_id"].astype(str)
+        st.subheader("Videos being monitored")
+        st.dataframe(
+            film_video_table[["channel", "title", "published_at", "views", "likes", "comments", "url"]]
+            .sort_values("views", ascending=False),
+            width="stretch", hide_index=True,
+            column_config={"url": st.column_config.LinkColumn("Watch"),
+                           "views": st.column_config.NumberColumn("Views", format="%d"),
+                           "published_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY")},
+        )
+
+with tab_comments:
+    included = int((~comments["low_information"]).sum())
+    filtered_out = int(comments["low_information"].sum())
+    quality_cols = st.columns(4)
+    quality_cols[0].metric("Included comments", f"{included:,}")
+    quality_cols[1].metric("Low-information filtered", f"{filtered_out:,}")
+    quality_cols[2].metric("Questions detected", f"{filtered['is_question'].sum():,}")
+    quality_cols[3].metric("Median words", f"{filtered['word_count'].median():.0f}")
+
+    search = st.text_input("Search comment text")
+    explorer = filtered.copy()
+    if search:
+        explorer = explorer[explorer["text"].str.contains(search, case=False, na=False, regex=False)]
+    columns = ["film", "channel", "video_title", "language", "topic", "comment_kind",
+               "text", "likes", "reply_count", "created_at", "url"]
+    st.dataframe(
+        explorer[columns].sort_values(["likes", "created_at"], ascending=[False, False]),
+        width="stretch", hide_index=True,
+        column_config={"url": st.column_config.LinkColumn("Open on YouTube"),
+                       "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")},
+    )
+    st.download_button(
+        "Download analyzed YouTube comments",
+        explorer[columns].to_csv(index=False),
+        "tamil-cinema-youtube-comments.csv", "text/csv",
+    )
+
+with st.expander("Monitor health and methodology"):
     st.write(f"Status: **{meta.get('status', 'unknown')}**")
-    st.write("Reddit forums: " + ", ".join(meta.get("reddit_forums", [])))
-    st.write("YouTube channels: " + ", ".join(meta.get("youtube_channels", [])))
-    for note in meta.get("notes", []):
-        st.info(note)
+    st.write(f"Schedule: every **{meta.get('scan_interval_minutes', 30)} minutes**")
+    st.write(f"New-video discovery: every **{meta.get('video_discovery_hours', 6)} hours**")
+    st.write("Collectors: " + ", ".join(meta.get("collectors", ["YouTube Data API"])))
+    st.write("Noise filtering removes extremely short, link-promotional and non-text reactions from analytical charts; raw stored comments remain available.")
     errors = meta.get("errors", [])
     if errors:
-        st.caption(f"{len(errors)} source warnings from the latest run")
+        st.warning(f"{len(errors)} source warnings occurred in the latest monitor run.")
         st.code("\n".join(errors), language=None)
 
-st.caption("Tamil Cinema Wall · Counts represent collected public discussions, not audience size, film quality or box office.")
+st.caption("Tamil Cinema YouTube Radar · Public YouTube data · Activity signals are not audience size, film quality or box-office estimates.")
