@@ -42,7 +42,7 @@ with st.sidebar:
         window = st.select_slider("Conversation window", [7, 14, 30, 90, 365], value=90, format_func=lambda x: f"Last {x} days")
     st.divider()
     st.markdown("**Scan rhythm**")
-    st.caption("Every day at 03:17 UTC. Recent Tamil releases are discovered automatically, then selected review channels and public Reddit JSON discussions are scanned.")
+    st.caption("Every day at 11:30 UTC. Recent Tamil releases are discovered automatically, then selected review channels and public Reddit JSON discussions are scanned.")
     if st.button("Refresh dashboard cache"):
         st.cache_data.clear(); st.rerun()
 
