@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import html
 import math
+from urllib.parse import quote
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -37,6 +40,137 @@ if not comments.empty:
         comments["video_title"] = ""
     comments["channel"] = comments["channel"].fillna(comments.get("source", "Unknown"))
     comments["likes"] = pd.to_numeric(comments.get("likes", 0), errors="coerce").fillna(0)
+
+catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
+
+def audience_summary(frame: pd.DataFrame) -> str:
+    useful = frame[~frame["low_information"]].copy() if not frame.empty else frame
+    if useful.empty:
+        return "Not enough useful audience comments yet."
+    signalled = useful[useful["reaction_signal"].ne("Mixed / unclear")]
+    if len(signalled) >= 3:
+        shares = signalled["reaction_signal"].value_counts(normalize=True)
+        mood = shares.index[0]
+        mood_text = (
+            "mostly appreciative" if mood == "Appreciative"
+            else "mostly critical" if mood == "Critical"
+            else "mixed"
+        )
+    else:
+        mood_text = "mixed or still developing"
+    topic = useful["topic"].value_counts().index[0]
+    return f"Audience response is {mood_text}; conversation is led by {topic.lower()} ({len(useful):,} analyzed comments)."
+
+def reviewer_context(row: pd.Series) -> str:
+    description = str(row.get("description", "") or "").replace("\n", " ").strip()
+    description = " ".join(part for part in description.split() if not part.startswith("http"))
+    if description:
+        return description[:220] + ("…" if len(description) > 220 else "")
+    return f'The video is presented as “{row.get("title", "Tamil film review")}”.'
+
+def render_movie_page(movie: str) -> None:
+    item = catalog.get(movie, {})
+    film_comments = comments[comments["film"].eq(movie)].copy()
+    film_videos = (
+        videos[videos["film"].eq(movie)].sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+        if not videos.empty else pd.DataFrame()
+    )
+    st.markdown('<a href="./" style="text-decoration:none;font-weight:800;color:#d53c1c">← Back to all films</a>', unsafe_allow_html=True)
+    backdrop = item.get("backdrop_url")
+    if isinstance(backdrop, str):
+        st.markdown(
+            f'<div style="height:260px;border-radius:20px;background:linear-gradient(90deg,rgba(10,10,10,.82),rgba(10,10,10,.18)),url({backdrop}) center/cover;margin:16px 0"></div>',
+            unsafe_allow_html=True,
+        )
+    poster_col, detail_col = st.columns([1, 3], gap="large")
+    with poster_col:
+        poster = item.get("poster_url")
+        if isinstance(poster, str):
+            st.markdown(f'<img src="{poster}" style="width:100%;border-radius:16px">', unsafe_allow_html=True)
+    with detail_col:
+        st.markdown('<span class="badge">FILM PAGE</span>', unsafe_allow_html=True)
+        st.title(movie)
+        original = item.get("original_title")
+        if original and original != movie:
+            st.caption(original)
+        fact_cols = st.columns(3)
+        fact_cols[0].metric("Release date", item.get("release_date") or "Unavailable")
+        fact_cols[1].metric("Runtime", f'{item.get("runtime")} min' if item.get("runtime") else "Unavailable")
+        fact_cols[2].metric("Review videos", len(film_videos))
+        if item.get("overview"):
+            st.write(item["overview"])
+        facts = []
+        if item.get("director"):
+            facts.append(f"**Director:** {item['director']}")
+        if item.get("genres"):
+            facts.append("**Genres:** " + ", ".join(item["genres"]))
+        if facts:
+            st.markdown("  \n".join(facts))
+        if item.get("cast"):
+            st.markdown("**Main cast:** " + ", ".join(item["cast"][:8]))
+
+    st.subheader("What reviewers cover—and how their audiences respond")
+    st.caption("Reviewer wording comes from the public video title/description. Audience response is derived from comments attached to that exact video; no reviewer opinion is invented.")
+    if film_videos.empty:
+        st.info("Reviewer details will appear after the next monitor scan.")
+    else:
+        for _, row in film_videos.sort_values(["views", "comments"], ascending=False).iterrows():
+            video_id = str(row.get("video_id", ""))
+            audience = film_comments[film_comments["video_id"].astype(str).eq(video_id)]
+            title = html.escape(str(row.get("title", "Review video")))
+            channel = html.escape(str(row.get("channel", "Unknown channel")))
+            url = f"https://youtube.com/watch?v={video_id}"
+            with st.container(border=True):
+                thumb_col, review_col = st.columns([1, 3], gap="large")
+                with thumb_col:
+                    thumb = row.get("thumbnail_url")
+                    if isinstance(thumb, str) and thumb.startswith("http"):
+                        st.image(thumb, width="stretch")
+                with review_col:
+                    st.markdown(f"### [{title}]({url})")
+                    st.caption(f"{channel} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
+                    st.markdown(f"**How the reviewer frames it:** {reviewer_context(row)}")
+                    st.markdown(f"**How this video’s audience responds:** {audience_summary(audience)}")
+                    if not audience.empty:
+                        sample = audience.sort_values(["likes", "created_at"], ascending=False).iloc[0]
+                        st.caption(f'Most-liked collected comment: “{str(sample["text"])[:220]}”')
+
+    if not film_comments.empty:
+        chart_col, reaction_col = st.columns([1.4, 1], gap="large")
+        with chart_col:
+            st.subheader("Audience conversation over time")
+            timeline = (
+                film_comments.assign(day=film_comments["created_at"].dt.floor("D"))
+                .groupby("day", as_index=False).size().rename(columns={"size": "Comments"})
+            )
+            fig = px.area(timeline, x="day", y="Comments", color_discrete_sequence=["#ff4b2b"])
+            fig.update_layout(height=350, xaxis_title="Published date", paper_bgcolor="rgba(0,0,0,0)",
+                              plot_bgcolor="rgba(255,255,255,.45)")
+            st.plotly_chart(fig, width="stretch")
+        with reaction_col:
+            st.subheader("Audience reaction signals")
+            reactions = film_comments["reaction_signal"].value_counts().rename_axis("Reaction").reset_index(name="Comments")
+            fig = px.pie(
+                reactions, names="Reaction", values="Comments", hole=.58,
+                color="Reaction", color_discrete_map={
+                    "Appreciative": "#2ec4b6", "Critical": "#ff4b2b", "Mixed / unclear": "#ffb703"
+                },
+            )
+            fig.update_layout(height=350, legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig, width="stretch")
+        st.subheader("Recent audience comments")
+        page_columns = ["channel", "video_title", "topic", "reaction_signal", "text", "likes", "created_at", "url"]
+        st.dataframe(
+            film_comments[page_columns].sort_values(["likes", "created_at"], ascending=False),
+            width="stretch", hide_index=True,
+            column_config={"url": st.column_config.LinkColumn("Open"),
+                           "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")},
+        )
+
+movie_param = st.query_params.get("movie")
+if movie_param:
+    render_movie_page(str(movie_param))
+    st.stop()
 
 with st.sidebar:
     st.title("▶ Tamil Cinema Radar")
