@@ -348,8 +348,10 @@ with tab_overview:
                                    paper_bgcolor="rgba(0,0,0,0)")
         st.plotly_chart(language_fig, width="stretch")
 
-    st.subheader("Which review videos are gaining attention?")
-    st.markdown('<div class="section-note">A simple ranking: how many public views each video gained per hour since the previous monitor. Higher means attention is growing faster.</div>', unsafe_allow_html=True)
+    st.subheader("Views gained in the latest 30-minute window")
+    st.markdown('<div class="section-note">Only new views since the preceding monitor are shown. Lifetime totals are excluded. Small GitHub scheduling delays are normalized to exactly 30 minutes.</div>', unsafe_allow_html=True)
+
+    growth = pd.DataFrame()
     if not video_view.empty and video_view.groupby("video_id").size().max() >= 2:
         ordered = video_view.sort_values(["video_id", "scanned_at"])
         latest = ordered.groupby("video_id").tail(1)
@@ -358,44 +360,56 @@ with tab_overview:
             columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
         )
         growth = latest.merge(previous_rows, on="video_id", how="inner")
-        elapsed = (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(3600).clip(lower=.05)
-        growth["Views gained"] = (growth["views"] - growth["previous_views"]).clip(lower=0)
-        growth["New public comments"] = (growth["comments"] - growth["previous_comments"]).clip(lower=0)
-        growth["Views gained / hour"] = growth["Views gained"] / elapsed
+        elapsed_minutes = (
+            (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(60).clip(lower=1)
+        )
+        growth["Views gained · 30 min"] = (
+            (growth["views"] - growth["previous_views"]).clip(lower=0) * 30 / elapsed_minutes
+        )
+        growth["Comments gained · 30 min"] = (
+            (growth["comments"] - growth["previous_comments"]).clip(lower=0) * 30 / elapsed_minutes
+        )
         growth["Label"] = growth.apply(
             lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1
         )
-        ranked = growth.sort_values("Views gained / hour", ascending=False).head(15)
+
+    def render_format_gain(format_name: str) -> None:
+        if growth.empty:
+            st.info(f"Waiting for two snapshots of {format_name.lower()}s. No lifetime-view chart is shown.")
+            return
+        ranked = growth[growth["content_format"].eq(format_name)].sort_values(
+            "Views gained · 30 min", ascending=False
+        ).head(15)
+        if ranked.empty:
+            st.info(f"No {format_name.lower()} snapshot pair is available yet.")
+            return
         gain_fig = px.bar(
-            ranked.sort_values("Views gained / hour"),
-            x="Views gained / hour", y="Label", color="film", orientation="h",
-            text="Views gained", color_discrete_sequence=PALETTE,
-            hover_data=["views", "comments", "New public comments"],
+            ranked.sort_values("Views gained · 30 min"),
+            x="Views gained · 30 min", y="Label", color="film", orientation="h",
+            text="Views gained · 30 min", color_discrete_sequence=PALETTE,
+            hover_data=["Comments gained · 30 min"],
         )
-        gain_fig.update_traces(texttemplate="+%{text:,.0f} views", textposition="outside")
-        gain_fig.update_layout(height=max(420, len(ranked) * 42), legend_title=None,
-                               xaxis_title="Views gained per hour", yaxis_title=None,
-                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        gain_fig.update_traces(texttemplate="+%{text:,.0f}", textposition="outside")
+        gain_fig.update_layout(
+            height=max(400, len(ranked) * 44), legend_title=None,
+            xaxis_title="New views in 30 minutes", yaxis_title=None,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+        )
         st.plotly_chart(gain_fig, width="stretch")
         st.dataframe(
-            ranked[["film", "channel", "title", "views", "Views gained", "Views gained / hour", "New public comments"]],
+            ranked[["film", "channel", "title", "Views gained · 30 min", "Comments gained · 30 min"]],
             width="stretch", hide_index=True,
-            column_config={"Views gained / hour": st.column_config.NumberColumn("Views/hour", format="%.0f"),
-                           "views": st.column_config.NumberColumn("Current views", format="%d")},
+            column_config={
+                "Views gained · 30 min": st.column_config.NumberColumn("New views / 30 min", format="%.0f"),
+                "Comments gained · 30 min": st.column_config.NumberColumn("New comments / 30 min", format="%.1f"),
+            },
         )
-    elif not latest_videos.empty:
-        st.info("One snapshot exists. After the next 30-minute monitor, this section will show exactly how many views each video gained.")
-        current = latest_videos.sort_values("views", ascending=False).head(15).copy()
-        current["Label"] = current.apply(lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1)
-        reach = px.bar(
-            current.sort_values("views"), x="views", y="Label", orientation="h",
-            color="views", text="views", color_continuous_scale=["#ffd7cc", "#ff4b2b", "#721600"],
-        )
-        reach.update_traces(texttemplate="%{text:,.0f}", textposition="outside")
-        reach.update_layout(height=max(420, len(current) * 42), xaxis_title="Current public views",
-                            yaxis_title=None, coloraxis_showscale=False,
-                            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(reach, width="stretch")
+
+    video_gain_tab, shorts_gain_tab = st.tabs(["Standard videos", "Shorts"])
+    with video_gain_tab:
+        render_format_gain("Video")
+    with shorts_gain_tab:
+        render_format_gain("Short")
 
     topic_col, kind_col = st.columns(2, gap="large")
     with topic_col:
