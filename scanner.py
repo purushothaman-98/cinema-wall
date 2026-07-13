@@ -63,8 +63,22 @@ def main():
         except Exception as exc: errors.append(f"Reddit/{film}: {exc}")
     comments=pd.concat([x for x in comment_batches if not x.empty],ignore_index=True) if comment_batches else pd.DataFrame()
     snapshots=pd.concat(snapshot_batches,ignore_index=True) if snapshot_batches else pd.DataFrame()
-    if comments.empty: raise RuntimeError("No discussions collected: "+"; ".join(errors))
-    comments["scanned_at"]=now; comments=add_sentiment(comments); LIVE.mkdir(parents=True,exist_ok=True)
+    LIVE.mkdir(parents=True,exist_ok=True)
+    if comments.empty:
+        if mode != "reddit":
+            raise RuntimeError("No discussions collected: "+"; ".join(errors))
+        # An empty Reddit search is a valid scan result. Preserve accumulated
+        # comments and record the run instead of failing the workflow.
+        META.write_text(json.dumps({
+            "status": "partial" if errors else "healthy", "last_scan": now,
+            "films": films, "comments_added": 0, "movie_catalog": catalog,
+            "scan_mode": mode, "youtube_channels": CFG["youtube_review_channels"],
+            "reddit_forums": CFG["reddit_forums"], "errors": errors,
+            "notes": ["No matching archived Reddit discussions were returned; existing history was preserved."],
+        }, indent=2))
+        print(f"Scanned {len(films)} films; no new Reddit matches; stored history preserved")
+        return
+    comments["scanned_at"]=now; comments=add_sentiment(comments)
     merge(COMMENTS,comments,"source_id",CFG["keep_history_days"]).to_csv(COMMENTS,index=False)
     if not snapshots.empty: merge(VIDEOS,snapshots,["video_id","scanned_at"],CFG["keep_history_days"]).to_csv(VIDEOS,index=False)
     META.write_text(json.dumps({"status":"healthy" if not errors else "partial","last_scan":now,"films":films,"comments_added":len(comments),
