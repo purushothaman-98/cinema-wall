@@ -443,46 +443,91 @@ with tab_overview:
     with shorts_gain_tab:
         render_format_gain("Short")
 
-    topic_col, kind_col = st.columns(2, gap="large")
+    st.subheader("Conversation intelligence")
+    st.markdown('<div class="section-note">Generic reactions are separated from comments that mention a specific part of the film. Percentages make films and formats comparable even when their comment volumes differ.</div>', unsafe_allow_html=True)
+    specific = filtered[~filtered["topic"].eq("General reaction")]
+    substantive = filtered["comment_kind"].isin(["Detailed discussion", "Question"])
+    signal_cards = st.columns(4)
+    signal_cards[0].metric("Topic-specific comments", f"{len(specific) / len(filtered):.0%}")
+    signal_cards[1].metric("Detailed or questions", f"{substantive.mean():.0%}")
+    signal_cards[2].metric("Audience questions", f"{filtered['is_question'].sum():,}")
+    signal_cards[3].metric("Useful comments shown", f"{len(filtered):,}")
+
+    topic_col, kind_col = st.columns([1.15, 1], gap="large")
     with topic_col:
-        st.subheader("What viewers discuss")
-        topic = (
-            filtered.groupby(["topic", "content_format"], as_index=False).size()
-            .rename(columns={"topic": "Topic", "content_format": "Format", "size": "Comments"})
-        )
-        topic_fig = px.bar(
-            topic.sort_values("Comments"), x="Comments", y="Topic", orientation="h",
-            color="Format", barmode="group",
-            color_discrete_map={"Video": "#3a86ff", "Short": "#ff006e"},
-        )
-        topic_fig.update_layout(height=430, legend_title=None, yaxis_title=None,
-                                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(topic_fig, width="stretch")
+        st.markdown("#### Which film aspects lead each conversation?")
+        if specific.empty:
+            st.info("No aspect-specific comments match these filters yet.")
+        else:
+            topic_counts = specific.groupby(["topic", "film"]).size().unstack(fill_value=0)
+            topic_share = topic_counts.div(topic_counts.sum(axis=0).replace(0, 1), axis=1).mul(100)
+            topic_share = topic_share.loc[topic_share.sum(axis=1).sort_values(ascending=False).index]
+            topic_fig = go.Figure(go.Heatmap(
+                z=topic_share.values, x=topic_share.columns, y=topic_share.index,
+                colorscale=[[0, "#fff4e8"], [.5, "#ff9f1c"], [1, "#d53c1c"]],
+                colorbar=dict(title="Share %"),
+                hovertemplate="%{x}<br>%{y}: %{z:.1f}%<extra></extra>",
+            ))
+            topic_fig.update_layout(
+                height=430, xaxis_title=None, yaxis_title=None,
+                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+                margin=dict(l=10, r=10, t=20, b=70),
+            )
+            st.plotly_chart(topic_fig, width="stretch")
     with kind_col:
-        st.subheader("Depth of participation")
-        kinds = filtered["comment_kind"].value_counts().rename_axis("Type").reset_index(name="Comments")
+        st.markdown("#### Do Shorts and videos produce different responses?")
+        kinds = (
+            filtered.groupby(["content_format", "comment_kind"], as_index=False).size()
+            .rename(columns={"content_format": "Format", "comment_kind": "Response", "size": "Comments"})
+        )
+        kinds["Share"] = kinds["Comments"] / kinds.groupby("Format")["Comments"].transform("sum") * 100
         kind_fig = px.bar(
-            kinds, x="Type", y="Comments", color="Type",
+            kinds, x="Format", y="Share", color="Response", barmode="stack",
+            custom_data=["Comments"],
             color_discrete_map={
                 "Detailed discussion": "#8338ec", "Question": "#3a86ff",
                 "Short opinion": "#2ec4b6", "Quick reaction": "#ff9f1c",
             },
         )
-        kind_fig.update_layout(height=430, showlegend=False, xaxis_title=None,
-                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        kind_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
+        kind_fig.update_layout(
+            height=430, legend_title=None, xaxis_title=None, yaxis_title="Share of comments (%)",
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+        )
         st.plotly_chart(kind_fig, width="stretch")
 
-    term_data = top_terms(filtered["text"], 20)
-    if not term_data.empty:
-        st.subheader("Frequently used discussion terms")
-        term_fig = px.bar(
-            term_data.sort_values("mentions"), x="mentions", y="term", orientation="h",
-            color="mentions", color_continuous_scale=["#90e0ef", "#3a86ff", "#480ca8"],
+    st.markdown("#### Distinctive words by film")
+    st.markdown('<div class="section-note">Tamil, Tanglish and English terms after links, promotion language and common filler words are removed. Darker cells mean the term appears more often for that film.</div>', unsafe_allow_html=True)
+    term_frames = []
+    for film, film_frame in filtered.groupby("film"):
+        film_terms = top_terms(film_frame["text"], 12)
+        if not film_terms.empty:
+            film_terms["film"] = film
+            term_frames.append(film_terms)
+    if term_frames:
+        term_data = pd.concat(term_frames, ignore_index=True)
+        leading_terms = (
+            term_data.groupby("term")["mentions"].sum().nlargest(16).index
         )
-        term_fig.update_layout(height=520, coloraxis_showscale=False, xaxis_title="Mentions",
-                               yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)",
-                               plot_bgcolor="rgba(255,255,255,.45)")
+        term_matrix = (
+            term_data[term_data["term"].isin(leading_terms)]
+            .pivot_table(index="term", columns="film", values="mentions", aggfunc="sum", fill_value=0)
+        )
+        term_matrix = term_matrix.loc[term_matrix.sum(axis=1).sort_values(ascending=False).index]
+        term_fig = go.Figure(go.Heatmap(
+            z=term_matrix.values, x=term_matrix.columns, y=term_matrix.index,
+            colorscale=[[0, "#eef8ff"], [.45, "#55b9f3"], [1, "#480ca8"]],
+            colorbar=dict(title="Mentions"),
+            hovertemplate="%{x}<br>%{y}: %{z:.0f} mentions<extra></extra>",
+        ))
+        term_fig.update_layout(
+            height=520, xaxis_title=None, yaxis_title=None,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
+            margin=dict(l=10, r=10, t=20, b=80),
+        )
         st.plotly_chart(term_fig, width="stretch")
+    else:
+        st.info("Not enough meaningful discussion terms match these filters yet.")
 
 with tab_films:
     film = st.selectbox("Choose a film", selected_films)
