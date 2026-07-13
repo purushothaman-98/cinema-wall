@@ -113,7 +113,9 @@ def render_movie_page(movie: str) -> None:
         fact_cols = st.columns(3)
         fact_cols[0].metric("Release date", item.get("release_date") or "Unavailable")
         fact_cols[1].metric("Runtime", f'{item.get("runtime")} min' if item.get("runtime") else "Unavailable")
-        fact_cols[2].metric("Review videos", len(film_videos))
+        video_count = int(film_videos["content_format"].eq("Video").sum()) if not film_videos.empty else 0
+        short_count = int(film_videos["content_format"].eq("Short").sum()) if not film_videos.empty else 0
+        fact_cols[2].metric("Coverage", f"{video_count} videos · {short_count} Shorts")
         if item.get("overview"):
             st.write(item["overview"])
         facts = []
@@ -146,7 +148,8 @@ def render_movie_page(movie: str) -> None:
                     st.image(str(thumb), width="stretch")
                 with review_col:
                     st.markdown(f"### [{title}]({url})")
-                    st.caption(f"{channel} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
+                    format_name = row.get("content_format", "Video")
+                    st.caption(f"{format_name} · {channel} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
                     st.markdown(f"**How the reviewer frames it:** {reviewer_context(row)}")
                     st.markdown(f"**How this video’s audience responds:** {audience_summary(audience)}")
                     useful_audience = audience[~audience["low_information"]].copy() if not audience.empty else audience
@@ -463,9 +466,9 @@ with tab_films:
     film_video_table = latest_videos[latest_videos["film"].eq(film)].copy() if not latest_videos.empty else pd.DataFrame()
     if not film_video_table.empty:
         film_video_table["url"] = "https://youtube.com/watch?v=" + film_video_table["video_id"].astype(str)
-        st.subheader("Videos being monitored")
+        st.subheader("Videos and Shorts being monitored")
         st.dataframe(
-            film_video_table[["channel", "title", "published_at", "views", "likes", "comments", "url"]]
+            film_video_table[["content_format", "channel", "title", "published_at", "views", "likes", "comments", "url"]]
             .sort_values("views", ascending=False),
             width="stretch", hide_index=True,
             column_config={"url": st.column_config.LinkColumn("Watch"),
