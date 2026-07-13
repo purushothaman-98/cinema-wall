@@ -1,6 +1,6 @@
 {
   "status": "partial",
-  "last_scan": "2026-07-13T11:29:07.942349+00:00",
+  "last_scan": "2026-07-13T13:40:29.477123+00:00",
   "films": [
     "Idhayam Murali",
     "Karuppu",
@@ -13,7 +13,70 @@
     "29",
     "Youth"
   ],
-  "comments_added": 5503,
+  "comments_added": 5240,
+  "movie_catalog": [
+    {
+      "title": "Idhayam Murali",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/iZzR7fYiJ3bGew8liRPxipPDEfj.jpg",
+      "tmdb_id": 1432631
+    },
+    {
+      "title": "Karuppu",
+      "release_date": "2026-05-15",
+      "poster_url": "https://image.tmdb.org/t/p/w500/4KZXlZ5tTT6ghbW77gS4hSLkCd7.jpg",
+      "tmdb_id": 1367220
+    },
+    {
+      "title": "Parimala and Co",
+      "release_date": "2026-06-05",
+      "poster_url": "https://image.tmdb.org/t/p/w500/vN2TOTKin83av7hwYnwAKSd3EG8.jpg",
+      "tmdb_id": 1602337
+    },
+    {
+      "title": "Blast",
+      "release_date": "2026-05-28",
+      "poster_url": "https://image.tmdb.org/t/p/w500/lpsUpXieodUhN6DlK9ZDnjkysLk.jpg",
+      "tmdb_id": 1515729
+    },
+    {
+      "title": "Gatta Kusthi 2",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
+      "tmdb_id": 1509599
+    },
+    {
+      "title": "Kara",
+      "release_date": "2026-04-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uIrFdMWlJFdc1jPBP9bxeaISCDj.jpg",
+      "tmdb_id": 1433117
+    },
+    {
+      "title": "Thaai Kizhavi",
+      "release_date": "2026-02-27",
+      "poster_url": "https://image.tmdb.org/t/p/w500/21dLAnBhu3dMjQ89UIHGEtkoQ02.jpg",
+      "tmdb_id": 1602783
+    },
+    {
+      "title": "Gandhi Talks",
+      "release_date": "2026-01-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
+      "tmdb_id": 786567
+    },
+    {
+      "title": "29",
+      "release_date": "2026-05-08",
+      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
+      "tmdb_id": 1510769
+    },
+    {
+      "title": "Youth",
+      "release_date": "2026-03-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/rNzk0jlGRPnvZ26On5xhTmLaQhO.jpg",
+      "tmdb_id": 1542352
+    }
+  ],
+  "scan_mode": "all",
   "youtube_channels": [
     "Tamil Talkies",
     "BehindwoodsTV",
@@ -32,15 +95,15 @@
     "IndianOTTbestof"
   ],
   "errors": [
-    "Reddit/Idhayam Murali: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Idhayam+Murali%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Karuppu: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Karuppu%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Parimala and Co: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Parimala+and+Co%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Blast: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Blast%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Gatta Kusthi 2: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Gatta+Kusthi+2%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Kara: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Kara%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Thaai Kizhavi: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Thaai+Kizhavi%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Gandhi Talks: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Gandhi+Talks%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/29: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%2229%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1",
-    "Reddit/Youth: 403 Client Error: Blocked for url: https://www.reddit.com/r/kollywood/search.json?q=%22Youth%22&restrict_sr=on&sort=new&t=year&limit=12&raw_json=1"
+    "Reddit/Idhayam Murali: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%22Idhayam+Murali%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Karuppu: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/kollywood/search.rss?q=%22Karuppu%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Parimala and Co: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%22Parimala+and+Co%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Blast: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/kollywood/search.rss?q=%22Blast%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Gatta Kusthi 2: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/kollywood/search.rss?q=%22Gatta+Kusthi+2%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Kara: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%22Kara%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Thaai Kizhavi: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%22Thaai+Kizhavi%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Gandhi Talks: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/kollywood/search.rss?q=%22Gandhi+Talks%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/29: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%2229%22&restrict_sr=on&sort=new&t=year",
+    "Reddit/Youth: 429 Client Error: Too Many Requests for url: https://www.reddit.com/r/TamilNadu/search.rss?q=%22Youth%22&restrict_sr=on&sort=new&t=year"
   ]
 }
