@@ -218,7 +218,7 @@ with st.sidebar:
         include_noise = st.toggle("Include low-information reactions", value=False)
     st.divider()
     st.markdown("**Collection rhythm**")
-    st.caption("Known review videos, public statistics and recent comments refresh at :10 and :40 UTC. New video discovery runs every six hours to protect YouTube quota.")
+    st.caption("Known review videos, public statistics and recent comments refresh at :10 and :40 UTC. New video and Shorts discovery runs once every 24 hours.")
     if st.button("Refresh dashboard data", width="stretch"):
         st.cache_data.clear()
         st.rerun()
