@@ -7,6 +7,7 @@ import pandas as pd
 ROOT = Path(__file__).parent
 LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
 META_FILE = ROOT / "data" / "live" / "scan_metadata.json"
+VIDEO_FILE = ROOT / "data" / "live" / "video_snapshots.csv"
 
 
 def load_live() -> pd.DataFrame:
@@ -23,6 +24,17 @@ def load_metadata() -> dict:
     if not META_FILE.exists():
         return {"status": "waiting", "last_scan": None, "next_scan": None, "films": 0, "comments": 0}
     return json.loads(META_FILE.read_text(encoding="utf-8"))
+
+
+def load_video_snapshots() -> pd.DataFrame:
+    if not VIDEO_FILE.exists():
+        return pd.DataFrame()
+    frame = pd.read_csv(VIDEO_FILE)
+    frame["scanned_at"] = pd.to_datetime(frame["scanned_at"], errors="coerce", utc=True)
+    frame["published_at"] = pd.to_datetime(frame["published_at"], errors="coerce", utc=True)
+    for column in ("views", "likes", "comments", "signal_score"):
+        frame[column] = pd.to_numeric(frame.get(column, 0), errors="coerce").fillna(0)
+    return frame
 
 
 def aggregate(frame: pd.DataFrame) -> pd.DataFrame:
