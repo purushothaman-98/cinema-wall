@@ -33,7 +33,7 @@ def merge(path,fresh,key,days):
     combined=combined.drop_duplicates(key,keep="last")
     date_col="scanned_at" if "scanned_at" in combined else "created_at"
     combined[date_col]=pd.to_datetime(combined[date_col],errors="coerce",utc=True)
-    return combined[combined[date_col]>=pd.Timestamp.now(tz="UTC")-pd.Timedelta(days=days)]
+    return combined[combined[date_col]>=pd.Timestamp.now(tz="UTC")-pd.Timedelta(days=int(days))]
 
 def main():
     yt=require("YOUTUBE_API_KEY"); films=discover(require("TMDB_API_KEY")); now=datetime.now(timezone.utc).isoformat()
