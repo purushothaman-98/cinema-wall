@@ -38,10 +38,14 @@ def merge(path,fresh,key,days):
     return combined[combined[date_col]>=pd.Timestamp.now(tz="UTC")-pd.Timedelta(days=int(days))]
 
 def main():
-    yt=require("YOUTUBE_API_KEY"); catalog=discover(require("TMDB_API_KEY")); films=[x["title"] for x in catalog]; now=datetime.now(timezone.utc).isoformat()
+    mode=os.getenv("SCAN_MODE","all").strip().lower()
+    if mode not in {"all","reddit"}: raise RuntimeError(f"Unsupported SCAN_MODE: {mode}")
+    yt=require("YOUTUBE_API_KEY") if mode=="all" else None
+    catalog=discover(require("TMDB_API_KEY")); films=[x["title"] for x in catalog]; now=datetime.now(timezone.utc).isoformat()
     comment_batches=[]; snapshot_batches=[]; errors=[]
     for film in films:
         try:
+            if mode=="reddit": raise StopIteration
             candidates=youtube_search(film,yt,CFG["youtube_videos_per_film"])
             accepted=[]
             for item in candidates:
@@ -53,6 +57,7 @@ def main():
                 details=details.merge(flags,on="video_id"); details["film"]=film; details["scanned_at"]=now
                 snapshot_batches.append(details)
                 for row in details.itertuples(): comment_batches.append(youtube_comments(row.video_id,film,row.channel,yt,CFG["comments_per_video"]))
+        except StopIteration: pass
         except Exception as exc: errors.append(f"YouTube/{film}: {exc}")
         try: comment_batches.append(collect_reddit_json(film,CFG["reddit_forums"],CFG["reddit_posts_per_forum"]))
         except Exception as exc: errors.append(f"Reddit/{film}: {exc}")
@@ -63,6 +68,6 @@ def main():
     merge(COMMENTS,comments,"source_id",CFG["keep_history_days"]).to_csv(COMMENTS,index=False)
     if not snapshots.empty: merge(VIDEOS,snapshots,["video_id","scanned_at"],CFG["keep_history_days"]).to_csv(VIDEOS,index=False)
     META.write_text(json.dumps({"status":"healthy" if not errors else "partial","last_scan":now,"films":films,"comments_added":len(comments),
-        "movie_catalog":catalog,"youtube_channels":CFG["youtube_review_channels"],"reddit_forums":CFG["reddit_forums"],"errors":errors},indent=2))
+        "movie_catalog":catalog,"scan_mode":mode,"youtube_channels":CFG["youtube_review_channels"],"reddit_forums":CFG["reddit_forums"],"errors":errors},indent=2))
     print(f"Scanned {len(films)} films, {len(comments)} discussions, {len(snapshots)} video snapshots")
 if __name__=="__main__": main()
