@@ -247,6 +247,7 @@ if filtered.empty:
     st.info("No analyzed comments match the current filters.")
     st.stop()
 
+monitor_videos = videos.copy() if not videos.empty else videos
 video_view = videos[videos["film"].isin(selected_films)].copy() if not videos.empty else videos
 latest_videos = (
     video_view.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
@@ -297,16 +298,17 @@ for start in range(0, len(wall), 5):
 tab_overview, tab_films, tab_comments = st.tabs(["Attention overview", "Film deep dive", "Comment explorer"])
 
 with tab_overview:
-    st.subheader("Real-time comments gained every 30 minutes")
-    st.markdown('<div class="section-note">Each bar is the exact increase in YouTube’s public comment counter since the preceding monitor—not comments grouped by their original publication date. Monitors are scheduled 30 minutes apart; timestamps are UTC.</div>', unsafe_allow_html=True)
+    st.subheader("Unfiltered 30-minute monitor")
+    st.markdown('<div class="section-note">Every fetched video and Short is included here, regardless of the sidebar or comment-analysis filters. Each bar is the exact public-counter increase since the preceding run. The deeper relevance and language analysis remains a separate 24-hour view. Times are UTC.</div>', unsafe_allow_html=True)
 
     monitor_activity = pd.DataFrame()
-    if not video_view.empty:
-        monitored = video_view[
-            video_view["channel"].isin(selected_channels)
-            & video_view["content_format"].isin(selected_formats)
-        ].sort_values(["video_id", "scanned_at"]).copy()
+    monitored = pd.DataFrame()
+    raw_monitored = pd.DataFrame()
+    if not monitor_videos.empty:
+        raw_monitored = monitor_videos.sort_values(["video_id", "scanned_at"]).copy()
+        monitored = raw_monitored.copy()
         monitored["previous_comments"] = monitored.groupby("video_id")["comments"].shift(1)
+        monitored["previous_views"] = monitored.groupby("video_id")["views"].shift(1)
         monitored["previous_scan"] = monitored.groupby("video_id")["scanned_at"].shift(1)
         monitored["elapsed_minutes"] = (
             (monitored["scanned_at"] - monitored["previous_scan"])
@@ -315,14 +317,33 @@ with tab_overview:
         monitored["comments_gained_30m"] = (
             monitored["comments"] - monitored["previous_comments"]
         ).clip(lower=0)
-        monitored = monitored[
+        monitored["views_gained_30m"] = (
+            monitored["views"] - monitored["previous_views"]
+        ).clip(lower=0)
+        monitor_cutoff = now - pd.Timedelta(hours=24)
+        paired = monitored[
             monitored["previous_comments"].notna()
-            & monitored["scanned_at"].ge(cutoff)
+            & monitored["scanned_at"].ge(monitor_cutoff)
         ].copy()
-        monitored["period"] = monitored["scanned_at"].dt.floor("30min")
-        monitor_activity = (
-            monitored.groupby(["period", "film", "content_format"], as_index=False)["comments_gained_30m"]
-            .sum()
+        paired["period"] = paired["scanned_at"].dt.floor("30min")
+        deltas = (
+            paired.groupby(["period", "film", "content_format"], as_index=False)
+            .agg(
+                views_gained_30m=("views_gained_30m", "sum"),
+                comments_gained_30m=("comments_gained_30m", "sum"),
+            )
+        )
+        recent_raw = raw_monitored[raw_monitored["scanned_at"].ge(monitor_cutoff)].copy()
+        recent_raw["period"] = recent_raw["scanned_at"].dt.floor("30min")
+        fetched = (
+            recent_raw.groupby(["period", "film", "content_format"], as_index=False)
+            .agg(videos_fetched=("video_id", "nunique"))
+        )
+        monitor_activity = fetched.merge(
+            deltas, on=["period", "film", "content_format"], how="left"
+        )
+        monitor_activity[["views_gained_30m", "comments_gained_30m"]] = (
+            monitor_activity[["views_gained_30m", "comments_gained_30m"]].fillna(0)
         )
 
     if monitor_activity.empty:
@@ -343,6 +364,53 @@ with tab_overview:
         )
         activity_chart.update_traces(hovertemplate="%{y:.0f} new comments<extra></extra>")
         st.plotly_chart(activity_chart, width="stretch")
+
+        scan_history = (
+            monitor_activity.groupby("period", as_index=False)
+            .agg(
+                videos_fetched=("videos_fetched", "sum"),
+                views_gained=("views_gained_30m", "sum"),
+                comments_gained=("comments_gained_30m", "sum"),
+            )
+            .sort_values("period", ascending=False)
+        )
+        newest = scan_history.iloc[0]
+        scan_metrics = st.columns(4)
+        scan_metrics[0].metric("Latest videos fetched", f"{int(newest['videos_fetched']):,}")
+        scan_metrics[1].metric("Views gained", f"{int(newest['views_gained']):,}")
+        scan_metrics[2].metric("Comments gained", f"{int(newest['comments_gained']):,}")
+        scan_metrics[3].metric("Intervals stored · 24 h", f"{len(scan_history):,}")
+        with st.expander("See exactly what every monitor fetched", expanded=False):
+            latest_monitor_time = raw_monitored["scanned_at"].max()
+            latest_items = raw_monitored[raw_monitored["scanned_at"].eq(latest_monitor_time)].copy()
+            latest_deltas = monitored[
+                monitored["scanned_at"].eq(latest_monitor_time)
+            ][["video_id", "views_gained_30m", "comments_gained_30m"]]
+            latest_items = latest_items.merge(latest_deltas, on="video_id", how="left")
+            st.markdown("**Items fetched in the latest completed monitor**")
+            st.dataframe(
+                latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained_30m", "comments_gained_30m"]]
+                .sort_values("views_gained_30m", ascending=False),
+                width="stretch", hide_index=True,
+                column_config={
+                    "film": "Film", "content_format": "Format", "channel": "Channel", "title": "Video",
+                    "views": st.column_config.NumberColumn("Public views", format="%d"),
+                    "comments": st.column_config.NumberColumn("Public comments", format="%d"),
+                    "views_gained_30m": st.column_config.NumberColumn("New views", format="%d"),
+                    "comments_gained_30m": st.column_config.NumberColumn("New comments", format="%d"),
+                },
+            )
+            st.markdown("**Monitor history · last 24 hours**")
+            st.dataframe(
+                scan_history,
+                width="stretch", hide_index=True,
+                column_config={
+                    "period": st.column_config.DatetimeColumn("Monitor · UTC", format="DD MMM HH:mm"),
+                    "videos_fetched": st.column_config.NumberColumn("Videos + Shorts", format="%d"),
+                    "views_gained": st.column_config.NumberColumn("New views", format="%d"),
+                    "comments_gained": st.column_config.NumberColumn("New comments", format="%d"),
+                },
+            )
 
     current_start = now - pd.Timedelta(hours=24)
     previous_start = now - pd.Timedelta(hours=48)
@@ -381,26 +449,24 @@ with tab_overview:
         st.plotly_chart(language_fig, width="stretch")
 
     st.subheader("Views gained in the latest 30-minute window")
-    st.markdown('<div class="section-note">Only new views since the preceding monitor are shown. Lifetime totals are excluded. Small GitHub scheduling delays are normalized to exactly 30 minutes.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-note">Only the exact counter increase since the preceding scheduled monitor is shown. Lifetime totals are excluded, and this ranking is not affected by sidebar analysis filters.</div>', unsafe_allow_html=True)
 
     growth = pd.DataFrame()
-    if not video_view.empty and video_view.groupby("video_id").size().max() >= 2:
-        ordered = video_view.sort_values(["video_id", "scanned_at"])
+    if not monitor_videos.empty and monitor_videos.groupby("video_id").size().max() >= 2:
+        ordered = monitor_videos.sort_values(["video_id", "scanned_at"])
         latest = ordered.groupby("video_id").tail(1)
         previous_rows = ordered.groupby("video_id").nth(-2).reset_index()
         previous_rows = previous_rows[["video_id", "scanned_at", "views", "comments"]].rename(
             columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
         )
         growth = latest.merge(previous_rows, on="video_id", how="inner")
-        elapsed_minutes = (
-            (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(60).clip(lower=1)
-        )
         growth["Views gained · 30 min"] = (
-            (growth["views"] - growth["previous_views"]).clip(lower=0) * 30 / elapsed_minutes
-        )
+            growth["views"] - growth["previous_views"]
+        ).clip(lower=0)
         growth["Comments gained · 30 min"] = (
-            (growth["comments"] - growth["previous_comments"]).clip(lower=0) * 30 / elapsed_minutes
+            growth["comments"] - growth["previous_comments"]
         )
+        growth["Comments gained · 30 min"] = growth["Comments gained · 30 min"].clip(lower=0)
         growth["Label"] = growth.apply(
             lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1
         )
