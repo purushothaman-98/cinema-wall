@@ -52,7 +52,7 @@ def youtube_details(video_ids: list[str], api_key: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 def _api_comments(video_id: str, film: str, channel: str, title: str,
-                  api_key: str, limit: int) -> pd.DataFrame:
+                  content_format: str, api_key: str, limit: int) -> pd.DataFrame:
     rows, token = [], None
     while len(rows) < limit:
         params = {
@@ -70,7 +70,7 @@ def _api_comments(video_id: str, film: str, channel: str, title: str,
             rows.append({
                 "film": film, "platform": "YouTube", "source": channel,
                 "channel": channel, "video_id": video_id, "video_title": title,
-                "text": top.get("textDisplay", ""),
+                "content_format": content_format, "text": top.get("textDisplay", ""),
                 "created_at": top.get("publishedAt"),
                 "updated_at": top.get("updatedAt"),
                 "likes": top.get("likeCount", 0),
@@ -87,7 +87,7 @@ def _api_comments(video_id: str, film: str, channel: str, title: str,
     return pd.DataFrame(rows)
 
 def _downloaded_comments(video_id: str, film: str, channel: str,
-                         title: str, limit: int) -> pd.DataFrame:
+                         title: str, content_format: str, limit: int) -> pd.DataFrame:
     """Fallback powered by egbertbouman/youtube-comment-downloader (MIT)."""
     from youtube_comment_downloader import YoutubeCommentDownloader, SORT_BY_RECENT
     downloader = YoutubeCommentDownloader()
@@ -102,7 +102,7 @@ def _downloaded_comments(video_id: str, film: str, channel: str,
         rows.append({
             "film": film, "platform": "YouTube", "source": channel,
             "channel": channel, "video_id": video_id, "video_title": title,
-            "text": item.get("text", ""), "created_at": item.get("time_parsed") or now,
+            "content_format": content_format, "text": item.get("text", ""), "created_at": item.get("time_parsed") or now,
             "updated_at": item.get("time_parsed") or now,
             "likes": int(votes or 0), "reply_count": 0,
             "author": item.get("author", ""),
@@ -113,14 +113,14 @@ def _downloaded_comments(video_id: str, film: str, channel: str,
     return pd.DataFrame(rows)
 
 def youtube_comments(video_id: str, film: str, channel: str, title: str,
-                     api_key: str, limit: int = 100) -> pd.DataFrame:
+                     content_format: str, api_key: str, limit: int = 100) -> pd.DataFrame:
     try:
-        return _api_comments(video_id, film, channel, title, api_key, limit)
+        return _api_comments(video_id, film, channel, title, content_format, api_key, limit)
     except requests.HTTPError as exc:
         status = exc.response.status_code if exc.response is not None else None
         if status not in (403, 404, 429):
             raise
         try:
-            return _downloaded_comments(video_id, film, channel, title, limit)
+            return _downloaded_comments(video_id, film, channel, title, content_format, limit)
         except Exception:
             return pd.DataFrame()
