@@ -35,8 +35,8 @@ def load_live() -> pd.DataFrame:
         return frame
     if "platform" in frame:
         frame = frame[frame["platform"].eq("YouTube")].copy()
-    frame["created_at"] = pd.to_datetime(frame.get("created_at"), errors="coerce", utc=True)
-    frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), errors="coerce", utc=True)
+    frame["created_at"] = pd.to_datetime(frame.get("created_at"), format="mixed", errors="coerce", utc=True)
+    frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), format="mixed", errors="coerce", utc=True)
     frame["likes"] = pd.to_numeric(frame["likes"], errors="coerce").fillna(0) if "likes" in frame else 0
     frame["reply_count"] = pd.to_numeric(frame["reply_count"], errors="coerce").fillna(0) if "reply_count" in frame else 0
     if "channel" not in frame:
@@ -65,8 +65,8 @@ def load_video_snapshots() -> pd.DataFrame:
     frame = _csv(VIDEO_FILE, "video_snapshots.csv")
     if frame.empty:
         return frame
-    frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), errors="coerce", utc=True)
-    frame["published_at"] = pd.to_datetime(frame.get("published_at"), errors="coerce", utc=True)
+    frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), format="mixed", errors="coerce", utc=True)
+    frame["published_at"] = pd.to_datetime(frame.get("published_at"), format="mixed", errors="coerce", utc=True)
     for column in ("views", "likes", "comments", "signal_score"):
         frame[column] = pd.to_numeric(frame[column], errors="coerce").fillna(0) if column in frame else 0
     inferred_format = frame.apply(
