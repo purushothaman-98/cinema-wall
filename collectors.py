@@ -184,16 +184,35 @@ def _archive_rows(film: str, forum: str, items: dict) -> list[dict]:
     return rows
 
 async def _reddit_archive_async(film: str, forums: list[str], posts_per_forum: int) -> pd.DataFrame:
-    from BAScraper.BAScraper_async import ArcticShiftAsync
-    client = ArcticShiftAsync(log_stream_level="WARNING", task_num=2, sleep_sec=2)
+    from BAScraper.BAScraper_async import ArcticShiftAsync, PullPushAsync
+    # BAScraper recommends PullPush for complex full-text searches. Keep one worker
+    # and a conservative delay because both community archive services are shared.
+    pullpush = PullPushAsync(
+        log_stream_level="WARNING", task_num=1, sleep_sec=4,
+        backoff_sec=10, max_retries=3, timeout=60,
+    )
+    arctic = ArcticShiftAsync(
+        log_stream_level="WARNING", task_num=1, sleep_sec=5,
+        backoff_sec=12, max_retries=2, timeout=60,
+    )
     after = (datetime.now(timezone.utc) - timedelta(days=365)).date().isoformat()
     rows = []
     for forum in forums:
-        result = await client.fetch(
-            mode="submissions_search", subreddit=forum, query=f'"{film}"',
-            get_comments=True, after=after, limit=min(posts_per_forum, 100),
-            sort="desc", file_name=None,
-        )
+        result = {}
+        try:
+            result = await pullpush.fetch(
+                mode="submissions", subreddit=forum, q=f'"{film}"',
+                get_comments=True, after=after, size=min(posts_per_forum, 100),
+                sort="desc", sort_type="created_utc", file_name=None,
+            )
+        except Exception:
+            # Arctic Shift fallback is intentionally lighter: retrieving large
+            # comment trees together with full-text search causes server 422 timeouts.
+            result = await arctic.fetch(
+                mode="submissions_search", subreddit=forum, query=f'"{film}"',
+                get_comments=False, after=after, limit=min(posts_per_forum, 25),
+                sort="desc", file_name=None,
+            )
         rows.extend(_archive_rows(film, forum, result))
     return pd.DataFrame(rows)
 
