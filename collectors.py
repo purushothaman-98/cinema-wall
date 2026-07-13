@@ -1,7 +1,8 @@
 """Public Reddit JSON and official YouTube Data API collectors."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+import asyncio
 import html
 import re
 import time
@@ -148,12 +149,72 @@ def _reddit_rss(film: str, forums: list[str], posts_per_forum: int) -> pd.DataFr
         time.sleep(1)
     return pd.DataFrame(rows)
 
+def _archive_rows(film: str, forum: str, items: dict) -> list[dict]:
+    rows = []
+    for item_id, post in (items or {}).items():
+        post_id = str(post.get("id") or item_id).replace("t3_", "")
+        title = post.get("title", "")
+        body = post.get("selftext", "")
+        permalink = post.get("permalink", "")
+        created = post.get("created_utc", 0)
+        if isinstance(created, (int, float)):
+            created = datetime.fromtimestamp(created, timezone.utc).isoformat()
+        rows.append({
+            "film": film, "platform": "Reddit", "source": f"r/{forum}",
+            "text": f"{title}. {body}".strip(". "), "created_at": created,
+            "likes": max(post.get("score", 0) or 0, 0), "author": post.get("author", ""),
+            "url": f"https://reddit.com{permalink}" if permalink else f"https://reddit.com/comments/{post_id}",
+            "source_id": f"reddit:{post_id}", "content_type": "post", "parent_id": "",
+        })
+        for comment in post.get("comments", []) or []:
+            comment_id = str(comment.get("id", ""))
+            comment_body = comment.get("body", "")
+            if not comment_id or not comment_body or comment_body in ("[deleted]", "[removed]"):
+                continue
+            comment_created = comment.get("created_utc", created)
+            if isinstance(comment_created, (int, float)):
+                comment_created = datetime.fromtimestamp(comment_created, timezone.utc).isoformat()
+            rows.append({
+                "film": film, "platform": "Reddit", "source": f"r/{forum}",
+                "text": comment_body, "created_at": comment_created,
+                "likes": max(comment.get("score", 0) or 0, 0), "author": comment.get("author", ""),
+                "url": f"https://reddit.com{comment.get('permalink', permalink)}",
+                "source_id": f"reddit:{comment_id}", "content_type": "comment", "parent_id": post_id,
+            })
+    return rows
+
+async def _reddit_archive_async(film: str, forums: list[str], posts_per_forum: int) -> pd.DataFrame:
+    from BAScraper.BAScraper_async import ArcticShiftAsync
+    client = ArcticShiftAsync(log_stream_level="WARNING", task_num=2, sleep_sec=2)
+    after = (datetime.now(timezone.utc) - timedelta(days=365)).date().isoformat()
+    rows = []
+    for forum in forums:
+        result = await client.fetch(
+            mode="submissions_search", subreddit=forum, query=f'"{film}"',
+            get_comments=True, after=after, limit=min(posts_per_forum, 100),
+            sort="desc", file_name=None,
+        )
+        rows.extend(_archive_rows(film, forum, result))
+    return pd.DataFrame(rows)
+
 def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
-    """Use public JSON first and automatically fall back to Reddit's public Atom feeds."""
+    """BAScraper/Arctic Shift first; direct JSON and public RSS are fallbacks."""
+    archive_error = None
+    try:
+        archived = asyncio.run(_reddit_archive_async(film, forums, posts_per_forum))
+        if not archived.empty:
+            return archived
+    except Exception as exc:
+        archive_error = exc
     try:
         return _collect_reddit_json_only(film, forums, posts_per_forum)
     except (requests.RequestException, ValueError):
-        return _reddit_rss(film, forums, posts_per_forum)
+        try:
+            return _reddit_rss(film, forums, posts_per_forum)
+        except Exception:
+            if archive_error:
+                raise RuntimeError(f"BAScraper/Arctic Shift failed: {archive_error}")
+            raise
 
 def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
     response = requests.get("https://www.googleapis.com/youtube/v3/search", params={"key": api_key, "part": "snippet",
