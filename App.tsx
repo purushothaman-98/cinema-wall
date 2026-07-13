@@ -1,428 +1,136 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import Navbar from './components/Navbar';
-import { supabase } from './lib/supabase';
-import { aggregateScans } from './lib/aggregate';
-import { MovieAggregate, Scan, NewsItem, VaultItem } from './types';
-import MovieCard from './components/MovieCard';
-import ReviewerCard from './components/ReviewerCard';
-import { DEFAULT_POSTER } from './constants';
-import { unslugify, getScoreColor, formatDate } from './lib/utils';
+import React, { useMemo, useState } from 'react';
 
-// Helper: Robust JSON Parsing for Vault items
-const safeParseJSON = (input: any) => {
-    if (!input) return null;
-    if (typeof input === 'object') return input;
-    try {
-        const parsed = JSON.parse(input);
-        if (typeof parsed === 'string') return JSON.parse(parsed);
-        return parsed;
-    } catch (e) {
-        console.warn("JSON Parse Error:", e);
-        return null;
-    }
+type Platform = 'All sources' | 'YouTube' | 'Reddit';
+
+type Film = {
+  title: string;
+  year: number;
+  score: number;
+  youtube: number;
+  reddit: number;
+  mentions: number;
+  positive: number;
+  neutral: number;
+  negative: number;
+  trend: number[];
+  topics: { label: string; score: number }[];
+  verdict: string;
+  accent: string;
+  tamil: string;
 };
 
-// --- PAGE COMPONENTS ---
+const films: Film[] = [
+  { title: 'Tourist Family', tamil: 'டூரிஸ்ட் ஃபேமிலி', year: 2025, score: 91, youtube: 93, reddit: 86, mentions: 18420, positive: 86, neutral: 9, negative: 5, trend: [55,64,72,78,83,89,91], verdict: 'Warm crowd favourite', accent: '#f6c85f', topics: [{label:'Story',score:94},{label:'Acting',score:91},{label:'Emotion',score:96}] },
+  { title: 'Dragon', tamil: 'டிராகன்', year: 2025, score: 84, youtube: 88, reddit: 76, mentions: 26980, positive: 79, neutral: 13, negative: 8, trend: [61,72,81,86,83,84,84], verdict: 'Youthful & highly engaging', accent: '#ff6b4a', topics: [{label:'Comedy',score:91},{label:'Acting',score:84},{label:'Screenplay',score:79}] },
+  { title: 'Good Bad Ugly', tamil: 'குட் பேட் அக்லி', year: 2025, score: 77, youtube: 84, reddit: 63, mentions: 34120, positive: 70, neutral: 16, negative: 14, trend: [86,88,82,75,72,75,77], verdict: 'Big fan celebration', accent: '#db4b7a', topics: [{label:'Fan moments',score:96},{label:'Music',score:81},{label:'Story',score:57}] },
+  { title: 'Retro', tamil: 'ரெட்ரோ', year: 2025, score: 72, youtube: 75, reddit: 67, mentions: 22160, positive: 63, neutral: 20, negative: 17, trend: [79,81,74,69,68,71,72], verdict: 'Stylish, but divisive', accent: '#58b09c', topics: [{label:'Visuals',score:93},{label:'Music',score:86},{label:'Pacing',score:51}] },
+  { title: 'Vidaamuyarchi', tamil: 'விடாமுயற்சி', year: 2025, score: 65, youtube: 70, reddit: 56, mentions: 29840, positive: 54, neutral: 23, negative: 23, trend: [82,76,68,63,61,64,65], verdict: 'Mixed road thriller', accent: '#7c83fd', topics: [{label:'Performance',score:78},{label:'Visuals',score:73},{label:'Pacing',score:46}] },
+  { title: 'Thug Life', tamil: 'தக் லைஃப்', year: 2025, score: 48, youtube: 52, reddit: 39, mentions: 31750, positive: 35, neutral: 26, negative: 39, trend: [78,71,59,48,44,46,48], verdict: 'Expectations divided', accent: '#d85d5d', topics: [{label:'Acting',score:74},{label:'Music',score:69},{label:'Writing',score:35}] },
+];
 
-const HomePage = () => {
-  const [movies, setMovies] = useState<MovieAggregate[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [filter, setFilter] = useState('trending');
-  const [search, setSearch] = useState('');
+const number = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
 
-  useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-      setErrorMsg(null);
-      try {
-          const { data, error } = await supabase
-            .from('scans')
-            .select('*')
-            .order('created_at', { ascending: false })
-            .limit(1000); 
-
-          if (error) throw error;
-
-          if (data) {
-            const agg = await aggregateScans(data as Scan[], false);
-            setMovies(agg);
-          }
-      } catch (err: any) {
-          setErrorMsg(err.message || "Failed to load data.");
-      } finally {
-          setLoading(false);
-      }
-    };
-    loadData();
-  }, []);
-
-  const filteredMovies = movies
-    .filter(m => m.subject_name.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => {
-        if (filter === 'latest') return new Date(b.last_scanned).getTime() - new Date(a.last_scanned).getTime();
-        if (filter === 'az') return a.subject_name.localeCompare(b.subject_name);
-        return b.reviewers_count - a.reviewers_count;
-    });
-
-  return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Hero Section */}
-      <div className="relative mb-12 p-8 rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/50 overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-          
-          <div className="relative z-10 flex flex-col md:flex-row justify-between items-end gap-6">
-              <div>
-                  <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">INTELLIGENT</span> CINEMA
-                  </h1>
-                  <p className="text-gray-400 max-w-lg text-lg">
-                      AI-aggregated consensus from the web's most trusted critics and comment sections.
-                  </p>
-              </div>
-              
-              <div className="flex gap-3 w-full md:w-auto">
-                  <div className="relative flex-grow md:flex-grow-0">
-                    <input 
-                        type="text"
-                        placeholder="Find a movie..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="w-full md:w-64 bg-black/30 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none placeholder-gray-500"
-                    />
-                    <svg className="w-5 h-5 absolute right-3 top-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                  </div>
-                  <select 
-                      value={filter}
-                      onChange={(e) => setFilter(e.target.value)}
-                      className="bg-black/30 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none cursor-pointer"
-                  >
-                      <option value="trending">Trending</option>
-                      <option value="latest">Latest</option>
-                      <option value="az">A-Z</option>
-                  </select>
-              </div>
-          </div>
-      </div>
-
-      {loading ? (
-         <div className="flex flex-col items-center justify-center py-32 space-y-4">
-             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-             <p className="text-gray-500 text-sm animate-pulse">Synchronizing Data Streams...</p>
-         </div>
-      ) : errorMsg ? (
-        <div className="text-center py-20 bg-red-950/30 border border-red-500/20 rounded-xl">
-            <h3 className="text-red-400 font-bold mb-2">System Offline</h3>
-            <p className="text-gray-500 text-sm">{errorMsg}</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {filteredMovies.map(movie => (
-                <MovieCard key={movie.subject_name} movie={movie} />
-            ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-interface AnalysisReport {
-    tagline?: string;
-    summary?: string;
-    critics_vs_audience?: string;
-    conflict_points?: string;
-    comment_vibe?: string;
+function scoreFor(film: Film, platform: Platform) {
+  return platform === 'YouTube' ? film.youtube : platform === 'Reddit' ? film.reddit : film.score;
 }
 
-const MovieDetail = ({ slug }: { slug: string }) => {
-  const subjectName = unslugify(slug);
-  const [movie, setMovie] = useState<MovieAggregate | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [aiSummary, setAiSummary] = useState<AnalysisReport | null>(null);
-  const [generating, setGenerating] = useState(false);
-  const attemptRef = useRef(false);
+function Sparkline({ values, color }: { values: number[]; color: string }) {
+  const points = values.map((value, index) => `${(index / (values.length - 1)) * 100},${42 - ((value - 35) / 65) * 38}`).join(' ');
+  return (
+    <svg viewBox="0 0 100 44" className="spark" aria-label="Seven day sentiment trend">
+      <path d="M0 42H100" className="spark-grid" />
+      <polyline points={points} fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="100" cy={points.split(' ').at(-1)?.split(',')[1]} r="3.2" fill={color} />
+    </svg>
+  );
+}
 
-  useEffect(() => {
-    const loadDetail = async () => {
-        setLoading(true);
-        const { data } = await supabase
-            .from('scans')
-            .select('*')
-            .ilike('subject_name', subjectName);
+function App() {
+  const [platform, setPlatform] = useState<Platform>('All sources');
+  const [query, setQuery] = useState('');
+  const [selected, setSelected] = useState(films[0]);
+  const [sort, setSort] = useState<'sentiment' | 'mentions'>('sentiment');
 
-        if (data && data.length > 0) {
-            const aggs = await aggregateScans(data as Scan[], true);
-            if (aggs.length > 0) setMovie(aggs[0]);
-        }
-        setLoading(false);
-    };
-    loadDetail();
-  }, [subjectName]);
+  const visible = useMemo(() => films
+    .filter(f => `${f.title} ${f.tamil}`.toLowerCase().includes(query.toLowerCase()))
+    .sort((a,b) => sort === 'mentions' ? b.mentions - a.mentions : scoreFor(b, platform) - scoreFor(a, platform)), [platform, query, sort]);
 
-  useEffect(() => {
-    if (!movie || attemptRef.current) return;
-    
-    const checkVault = async () => {
-        attemptRef.current = true;
-        const { data: vaultData } = await supabase
-            .from('memory_vault')
-            .select('*')
-            .eq('movie_name', movie.subject_name)
-            .maybeSingle();
-
-        if (vaultData) {
-            const report = safeParseJSON(vaultData.summary_report);
-            
-            // CRITICAL: Check if the cached report is actually an error message from a previous failed run
-            // If the tagline contains "Delayed", "Error", or "Failed", we treat it as invalid cache.
-            const isCachedError = report?.tagline?.includes("Delayed") || 
-                                  report?.tagline?.includes("Error") || 
-                                  report?.tagline?.includes("Failed");
-
-            if (report && report.summary && !isCachedError) {
-                setAiSummary(report);
-            } else {
-                // Cache was bad or missing, regenerate
-                generateConsensus(movie);
-            }
-        } else {
-            generateConsensus(movie);
-        }
-    };
-    checkVault();
-  }, [movie]);
-
-  const generateConsensus = async (targetMovie: MovieAggregate) => {
-    setGenerating(true);
-    setAiSummary(null);
-    
-    const body = {
-        movie: targetMovie.subject_name,
-        topics: targetMovie.top_topics,
-        sentiments: {
-            critics: targetMovie.critics_score,
-            audience: targetMovie.audience_score
-        },
-        reviews: targetMovie.scans.slice(0, 8).map(s => ({ 
-            title: s.reviewer_name, 
-            snippet: (s.result?.summary || s.result?.sentimentDescription || s.title).substring(0, 300) 
-        }))
-    };
-
-    try {
-        const res = await fetch('/api/summarize', {
-            method: 'POST',
-            body: JSON.stringify(body),
-        });
-        
-        if (res.ok) {
-            const data = await res.json();
-            setAiSummary(data);
-            await supabase.from('memory_vault').upsert({
-                movie_name: targetMovie.subject_name,
-                summary_report: JSON.stringify(data)
-            }, { onConflict: 'movie_name' });
-        } else {
-             // Retrieve the specific error message from the API
-             const errorData = await res.json().catch(() => ({}));
-             const specificError = errorData.error || "Server is busy. Please check logs.";
-             setAiSummary({ tagline: "Analysis Failed", summary: specificError });
-        }
-    } catch (e: any) {
-        setAiSummary({ tagline: "Connection Error", summary: e.message || "Could not connect to AI service." });
-    } finally {
-        setGenerating(false);
-    }
-  };
-
-  if (loading) return <div className="text-center py-20 text-primary">Loading...</div>;
-  if (!movie) return <div className="text-center py-20 text-red-500">Movie not found.</div>;
-
-  // Check if we are in a failed state (Including legacy "Delayed" messages)
-  const isFailed = aiSummary?.tagline === "Analysis Failed" || 
-                   aiSummary?.tagline === "Connection Error" ||
-                   aiSummary?.tagline?.includes("Delayed");
-                   
-  const isPending = !aiSummary;
+  const totalMentions = films.reduce((sum, film) => sum + film.mentions, 0);
+  const avgScore = Math.round(films.reduce((sum, film) => sum + scoreFor(film, platform), 0) / films.length);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-        <a href="#/" className="text-secondary hover:text-white mb-6 inline-flex items-center gap-2 text-sm bg-surface px-3 py-1 rounded-full border border-slate-700">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
-            Back to Dashboard
-        </a>
-        
-        <div className="grid md:grid-cols-12 gap-8">
-            {/* Sidebar */}
-            <div className="md:col-span-4 lg:col-span-3 space-y-6">
-                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-2xl relative group bg-slate-900">
-                    <img src={movie.poster_url} alt={movie.subject_name} className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
-                </div>
-                
-                <div className="bg-surface p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm">
-                    <h3 className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-4">Metric Analysis</h3>
-                    
-                    {/* Critic Bar */}
-                    <div className="mb-6">
-                        <div className="flex justify-between text-sm mb-2">
-                            <span className="text-gray-300 font-medium">Critics Aggregate</span>
-                            <span className={`font-bold ${getScoreColor(movie.critics_score)}`}>{movie.critics_score}</span>
-                        </div>
-                        <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-yellow-600 to-primary transition-all duration-1000" style={{width: `${movie.critics_score}%`}}></div>
-                        </div>
-                    </div>
+    <main className="shell">
+      <header className="topbar">
+        <a className="brand" href="#top" aria-label="Tamil Film Pulse home"><span className="brand-mark">தி</span><span>TAMIL FILM <b>PULSE</b></span></a>
+        <nav><a href="#rankings">Rankings</a><a href="#compare">Compare</a><a href="#method">Method</a></nav>
+        <div className="live-pill"><i /> DEMO DATA</div>
+      </header>
 
-                    {/* Audience Bar */}
-                    <div>
-                        <div className="flex justify-between text-sm mb-2">
-                            <span className="text-gray-300 font-medium">Audience Sentiment</span>
-                            <span className={`font-bold ${movie.audience_score > 0 ? 'text-blue-400' : 'text-gray-500'}`}>
-                                {movie.audience_score > 0 ? movie.audience_score : 'N/A'}
-                            </span>
-                        </div>
-                        <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-blue-900 to-blue-500 transition-all duration-1000" style={{width: `${movie.audience_score}%`}}></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-surface p-6 rounded-xl border border-slate-700/50">
-                     <h3 className="text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-3">Metadata</h3>
-                     <p className="text-sm text-gray-300 mb-2 flex justify-between">
-                        <span className="text-gray-500">First Upload</span> 
-                        <span>{formatDate(movie.metadata?.release_date || '')}</span>
-                     </p>
-                     <div className="flex flex-wrap gap-2 mt-4">
-                        {/* Fallback to Top Topics as Tags since Genres (TMDB) are removed */}
-                        {(movie.metadata?.genres && movie.metadata.genres.length > 0 
-                            ? movie.metadata.genres.map(g => g.name) 
-                            : movie.top_topics
-                        ).map((tag, i) => (
-                            <span key={i} className="text-[10px] bg-slate-800 text-gray-400 border border-slate-700 px-3 py-1 rounded-full">{tag}</span>
-                        ))}
-                     </div>
-                </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="md:col-span-8 lg:col-span-9 space-y-8">
-                <div>
-                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-2">{movie.subject_name}</h1>
-                     <p className="text-primary font-mono text-sm tracking-widest uppercase">{movie.consensus_line}</p>
-                </div>
-                
-                {/* AI Dashboard */}
-                <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-12 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    
-                    <div className="flex justify-between items-start mb-8 relative z-10">
-                        <h2 className="text-white font-bold tracking-widest text-xs uppercase flex items-center gap-3">
-                            <span className={`w-2 h-2 rounded-full ${generating ? 'bg-yellow-500 animate-ping' : isFailed ? 'bg-red-500' : 'bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]'}`}></span>
-                            Gemini 3 Consensus Protocol
-                        </h2>
-                        {!generating && (
-                            <button 
-                                onClick={() => generateConsensus(movie)} 
-                                className={`text-xs transition-colors border px-3 py-1 rounded-full ${isFailed ? 'text-red-300 border-red-500/50 hover:bg-red-500/20' : 'text-slate-500 border-slate-700 hover:text-white hover:border-slate-500'}`}
-                            >
-                                {isPending ? 'Initialize Analysis' : isFailed ? 'Retry Protocol' : 'Refresh Data'}
-                            </button>
-                        )}
-                    </div>
-
-                    {!aiSummary && !generating ? (
-                         <div className="animate-pulse space-y-4 opacity-50">
-                             <div className="h-6 bg-slate-700 rounded w-1/2"></div>
-                             <div className="h-4 bg-slate-700/50 rounded w-full"></div>
-                             <div className="h-4 bg-slate-700/50 rounded w-3/4"></div>
-                         </div>
-                    ) : aiSummary ? (
-                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-10">
-                            <p className={`text-2xl md:text-3xl font-serif italic mb-6 leading-relaxed ${isFailed ? 'text-red-400' : 'text-white'}`}>
-                                "{aiSummary.tagline || 'Processing Data...'}"
-                            </p>
-                            <p className="text-gray-300 leading-relaxed text-lg mb-8 max-w-3xl">
-                                {aiSummary.summary}
-                            </p>
-
-                            {!isPending && !isFailed && (
-                                <div className="grid md:grid-cols-3 gap-4 border-t border-white/10 pt-6">
-                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Gap Analysis</h4>
-                                        <p className="text-sm text-gray-300 leading-snug">{aiSummary.critics_vs_audience || "N/A"}</p>
-                                    </div>
-                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Major Conflict</h4>
-                                        <p className="text-sm text-gray-300 leading-snug">{aiSummary.conflict_points || "N/A"}</p>
-                                    </div>
-                                    <div className="bg-black/30 p-5 rounded-xl border border-white/5">
-                                        <h4 className="text-[10px] font-bold text-secondary uppercase mb-2 tracking-wider">Community Vibe</h4>
-                                        <p className="text-sm font-mono text-primary">{aiSummary.comment_vibe || "Neutral"}</p>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ) : null}
-                </div>
-
-                {/* Reviewers List */}
-                <div>
-                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3 border-l-4 border-primary pl-4">
-                        Analyst Breakdown 
-                        <span className="text-sm font-normal text-gray-500 bg-slate-800 px-2 py-0.5 rounded-full">{movie.scans.length} Sources</span>
-                    </h3>
-                    <div className="grid gap-4">
-                        {movie.scans.map(scan => <ReviewerCard key={scan.id} scan={scan} />)}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  );
-};
-
-const App: React.FC = () => {
-    const [route, setRoute] = useState<string>('');
-
-    useEffect(() => {
-        // Handle client-side routing via hash
-        const handleHashChange = () => {
-            setRoute(window.location.hash);
-        };
-        
-        // Initial set
-        setRoute(window.location.hash || '#/');
-
-        window.addEventListener('hashchange', handleHashChange);
-        return () => window.removeEventListener('hashchange', handleHashChange);
-    }, []);
-
-    const getComponent = () => {
-        if (route.startsWith('#/movie/')) {
-            const slug = route.replace('#/movie/', '');
-            return <MovieDetail slug={slug} />;
-        }
-        if (route === '#/news') {
-            return <div className="max-w-7xl mx-auto px-4 py-20 text-center text-gray-500">News Feed Module - Coming Soon</div>;
-        }
-        if (route === '#/vault') {
-             return <div className="max-w-7xl mx-auto px-4 py-20 text-center text-gray-500">Memory Vault - Coming Soon</div>;
-        }
-        return <HomePage />;
-    };
-
-    return (
+      <section className="hero" id="top">
         <div>
-            <Navbar />
-            <main>
-                {getComponent()}
-            </main>
+          <p className="eyebrow">THE AUDIENCE, MEASURED</p>
+          <h1>What is Tamil cinema<br/><em>really</em> feeling?</h1>
+          <p className="lede">A single, transparent view of conversations across YouTube and Reddit—built for Tamil, Tanglish and English reactions.</p>
         </div>
-    );
-};
+        <div className="hero-metrics">
+          <div><span>FILMS TRACKED</span><strong>{films.length}</strong><small>Recent releases</small></div>
+          <div><span>PUBLIC MENTIONS</span><strong>{number.format(totalMentions)}</strong><small>Demonstration dataset</small></div>
+          <div><span>MOOD INDEX</span><strong>{avgScore}</strong><small className="up">↑ broadly positive</small></div>
+        </div>
+      </section>
+
+      <section className="controls" id="rankings">
+        <div className="platform-tabs" role="group" aria-label="Choose a source">
+          {(['All sources','YouTube','Reddit'] as Platform[]).map(item => <button key={item} onClick={() => setPlatform(item)} className={platform === item ? 'active' : ''}>{item}</button>)}
+        </div>
+        <label className="search"><span>⌕</span><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search films / திரைப்படம் தேடுக" /></label>
+        <select value={sort} onChange={e => setSort(e.target.value as 'sentiment'|'mentions')} aria-label="Sort films"><option value="sentiment">Highest sentiment</option><option value="mentions">Most discussed</option></select>
+      </section>
+
+      <section className="dashboard-grid">
+        <div className="ranking-panel">
+          <div className="section-title"><div><p>LIVE LEADERBOARD</p><h2>Film sentiment ranking</h2></div><span>Score / 100</span></div>
+          <div className="film-list">
+            {visible.map((film, index) => {
+              const score = scoreFor(film, platform);
+              return <button key={film.title} className={`film-row ${selected.title === film.title ? 'selected' : ''}`} onClick={() => setSelected(film)}>
+                <span className="rank">{String(index + 1).padStart(2,'0')}</span>
+                <span className="poster" style={{'--accent': film.accent} as React.CSSProperties}><b>{film.title.split(' ').map(w=>w[0]).join('').slice(0,3)}</b></span>
+                <span className="film-name"><b>{film.title}</b><small>{film.tamil} · {number.format(film.mentions)} mentions</small></span>
+                <span className="mini-trend"><Sparkline values={film.trend} color={film.accent}/></span>
+                <span className={`score ${score >= 75 ? 'good' : score < 55 ? 'poor' : ''}`}>{score}</span>
+              </button>
+            })}
+          </div>
+          {visible.length === 0 && <div className="empty">No matching film found.</div>}
+        </div>
+
+        <aside className="detail-panel" id="compare">
+          <div className="detail-head"><div><p>SELECTED FILM</p><h2>{selected.title}</h2><span>{selected.tamil}</span></div><div className="big-score" style={{'--score': `${selected.score * 3.6}deg`} as React.CSSProperties}><b>{selected.score}</b><small>Pulse</small></div></div>
+          <p className="verdict">“{selected.verdict}”</p>
+          <div className="platform-compare">
+            <div><span><b className="youtube-dot"/>YouTube</span><strong>{selected.youtube}</strong><i><b style={{width:`${selected.youtube}%`}}/></i></div>
+            <div><span><b className="reddit-dot"/>Reddit</span><strong>{selected.reddit}</strong><i><b style={{width:`${selected.reddit}%`}}/></i></div>
+          </div>
+          <div className="sentiment-split">
+            <p>SENTIMENT MIX</p>
+            <div className="split-bar"><i style={{width:`${selected.positive}%`}}/><i style={{width:`${selected.neutral}%`}}/><i style={{width:`${selected.negative}%`}}/></div>
+            <div className="legend"><span><b className="pos"/>{selected.positive}% Positive</span><span><b className="neu"/>{selected.neutral}% Neutral</span><span><b className="neg"/>{selected.negative}% Negative</span></div>
+          </div>
+          <div className="topics"><p>WHAT PEOPLE TALK ABOUT</p>{selected.topics.map(topic => <div key={topic.label}><span>{topic.label}</span><i><b style={{width:`${topic.score}%`}}/></i><strong>{topic.score}</strong></div>)}</div>
+        </aside>
+      </section>
+
+      <section className="method" id="method">
+        <div><p>HOW TO READ THIS</p><h2>Conversation, not a verdict.</h2></div>
+        <p>The dashboard separates platform scores and shows the share of positive, neutral and negative reactions. Demonstration values are used until the YouTube and Reddit collectors are connected.</p>
+        <div className="method-steps"><span><b>01</b>Collect public comments</span><span><b>02</b>Detect Tamil + Tanglish</span><span><b>03</b>Remove spam and duplicates</span><span><b>04</b>Score sentiment + topics</span></div>
+      </section>
+      <footer><span>TAMIL FILM PULSE · OPEN SENTIMENT DASHBOARD</span><span>Public discussion analysis · Not a box-office rating</span></footer>
+    </main>
+  );
+}
 
 export default App;
