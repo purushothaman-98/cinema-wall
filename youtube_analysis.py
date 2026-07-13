@@ -15,6 +15,8 @@ STOPWORDS = {
     "of", "in", "on", "for", "with", "movie", "film", "video", "review", "tamil",
     "very", "so", "too", "i", "we", "you", "he", "she", "they", "my", "our", "your",
     "bro", "anna", "sir", "please", "from", "at", "be", "have", "has", "had", "but",
+    "good", "love", "super", "time", "feel", "scene", "watch", "waiting", "half", "than",
+    "like", "really", "also", "just", "only", "all", "get", "got", "will", "can", "could",
     "ஒரு", "இந்த", "அந்த", "என்று", "மற்றும்", "படம்", "நல்ல", "ரொம்ப",
 }
 TOPICS = {
@@ -112,5 +114,5 @@ def top_terms(texts: pd.Series, limit: int = 18) -> pd.DataFrame:
     counter = Counter()
     for value in texts.fillna("").map(normalize_text):
         words = re.findall(r"[a-z]{3,}|[\u0B80-\u0BFF]{2,}", value)
-        counter.update(word for word in words if word not in STOPWORDS and word not in TANGLISH)
+        counter.update(word for word in words if word not in STOPWORDS)
     return pd.DataFrame(counter.most_common(limit), columns=["term", "mentions"])
