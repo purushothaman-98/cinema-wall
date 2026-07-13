@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import html
+import re
 import time
+import xml.etree.ElementTree as ET
 from urllib.parse import quote
 import pandas as pd
 import requests
@@ -36,7 +39,7 @@ def _flatten_comments(children, film, forum, post_url, rows, post_id):
             _flatten_comments(replies.get("data", {}).get("children", []), film, forum, post_url, rows, post_id)
 
 
-def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
+def _collect_reddit_json_only(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
     rows = []
     for forum in forums:
         listing = _reddit_get(f"https://www.reddit.com/r/{forum}/search.json", {
@@ -57,6 +60,86 @@ def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12)
         time.sleep(1.5)
     return pd.DataFrame(rows)
 
+
+
+ATOM = {"atom": "http://www.w3.org/2005/Atom"}
+
+def _plain_html(value: str) -> str:
+    value = html.unescape(value or "")
+    value = re.sub(r"<br\s*/?>", " ", value, flags=re.I)
+    value = re.sub(r"<[^>]+>", " ", value)
+    return re.sub(r"\s+", " ", value).strip()
+
+def _rss_entries(url: str, params=None) -> list[dict]:
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/atom+xml, application/rss+xml, text/xml;q=0.9",
+    }
+    response = requests.get(url, params=params, headers=headers, timeout=30)
+    response.raise_for_status()
+    root = ET.fromstring(response.content)
+    entries = []
+    for entry in root.findall("atom:entry", ATOM):
+        link = entry.find("atom:link", ATOM)
+        author = entry.find("atom:author/atom:name", ATOM)
+        content = entry.find("atom:content", ATOM)
+        entries.append({
+            "id": entry.findtext("atom:id", default="", namespaces=ATOM),
+            "title": entry.findtext("atom:title", default="", namespaces=ATOM),
+            "body": _plain_html(content.text if content is not None else ""),
+            "url": link.get("href", "") if link is not None else "",
+            "author": author.text if author is not None else "",
+            "created_at": entry.findtext("atom:updated", default=datetime.now(timezone.utc).isoformat(), namespaces=ATOM),
+        })
+    return entries
+
+def _reddit_rss(film: str, forums: list[str], posts_per_forum: int) -> pd.DataFrame:
+    rows = []
+    needle = re.sub(r"\W+", " ", film).lower().strip()
+    for forum in forums:
+        entries = _rss_entries(
+            f"https://www.reddit.com/r/{forum}/search.rss",
+            {"q": f'"{film}"', "restrict_sr": "on", "sort": "new", "t": "year"},
+        )[:posts_per_forum]
+        # If Reddit search RSS returns nothing, inspect the recent community feed.
+        if not entries:
+            entries = _rss_entries(f"https://www.reddit.com/r/{forum}/new/.rss")[:100]
+            entries = [x for x in entries if needle in re.sub(r"\W+", " ", f"{x['title']} {x['body']}").lower()]
+        for post in entries[:posts_per_forum]:
+            post_id = post["id"].rsplit("/", 1)[-1].replace("t3_", "")
+            rows.append({
+                "film": film, "platform": "Reddit", "source": f"r/{forum}",
+                "text": f"{post['title']}. {post['body']}".strip(". "),
+                "created_at": post["created_at"], "likes": 0, "author": post["author"],
+                "url": post["url"], "source_id": f"reddit:{post_id}",
+                "content_type": "post", "parent_id": "",
+            })
+            if post["url"]:
+                try:
+                    comments = _rss_entries(post["url"].rstrip("/") + "/.rss")
+                    for comment in comments:
+                        comment_id = comment["id"].rsplit("/", 1)[-1]
+                        if comment_id == post_id or not comment["body"]:
+                            continue
+                        rows.append({
+                            "film": film, "platform": "Reddit", "source": f"r/{forum}",
+                            "text": comment["body"], "created_at": comment["created_at"],
+                            "likes": 0, "author": comment["author"], "url": comment["url"] or post["url"],
+                            "source_id": f"reddit:{comment_id}", "content_type": "comment",
+                            "parent_id": post_id,
+                        })
+                except (requests.RequestException, ET.ParseError):
+                    pass
+            time.sleep(.8)
+        time.sleep(1)
+    return pd.DataFrame(rows)
+
+def collect_reddit_json(film: str, forums: list[str], posts_per_forum: int = 12) -> pd.DataFrame:
+    """Use public JSON first and automatically fall back to Reddit's public Atom feeds."""
+    try:
+        return _collect_reddit_json_only(film, forums, posts_per_forum)
+    except (requests.RequestException, ValueError):
+        return _reddit_rss(film, forums, posts_per_forum)
 
 def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
     response = requests.get("https://www.googleapis.com/youtube/v3/search", params={"key": api_key, "part": "snippet",
