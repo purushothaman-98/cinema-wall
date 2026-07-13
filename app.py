@@ -7,10 +7,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from data import aggregate, load_live, load_metadata
+from data import aggregate, load_live, load_metadata, load_video_snapshots
 from sentiment import NEGATIVE, POSITIVE
 
-st.set_page_config(page_title="Tamil Film Pulse · Weekly Scanner", page_icon="📡", layout="wide")
+st.set_page_config(page_title="Tamil Film Pulse · Daily Scanner", page_icon="📡", layout="wide")
 st.markdown("""<style>
 .stApp{background:#f3f0e7}.block-container{max-width:1450px;padding-top:1.4rem}
 [data-testid="stMetric"]{background:#faf8f2;border:1px solid #d8d3c7;padding:16px;border-radius:12px}
@@ -22,7 +22,7 @@ st.markdown("""<style>
 
 @st.cache_data(ttl=900)
 def get_data():
-    return load_live(), load_metadata()
+    return load_live(), load_video_snapshots(), load_metadata()
 
 
 def top_terms(texts, limit=12):
@@ -31,9 +31,9 @@ def top_terms(texts, limit=12):
     return Counter({term: len(re.findall(re.escape(term), joined)) for term in lexicon if term in joined}).most_common(limit)
 
 
-frame, meta = get_data()
+frame, videos, meta = get_data()
 with st.sidebar:
-    st.title("📡 Weekly Scanner")
+    st.title("📡 Tamil Cinema Scanner")
     st.caption("Automatically refreshed from public discussions")
     if not frame.empty:
         selected_films = st.multiselect("Films on the wall", sorted(frame.film.unique()), default=sorted(frame.film.unique()))
@@ -42,18 +42,18 @@ with st.sidebar:
         window = st.select_slider("Conversation window", [7, 14, 30, 90, 365], value=90, format_func=lambda x: f"Last {x} days")
     st.divider()
     st.markdown("**Scan rhythm**")
-    st.caption("Every Sunday at 03:17 UTC. Newly released Tamil films are discovered automatically, then YouTube and r/kollywood discussions are scanned.")
+    st.caption("Every day at 03:17 UTC. Recent Tamil releases are discovered automatically, then selected review channels and public Reddit JSON discussions are scanned.")
     if st.button("Refresh dashboard cache"):
         st.cache_data.clear(); st.rerun()
 
 status = meta.get("status", "waiting")
 last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
 status_text = "SCANNER HEALTHY" if status == "healthy" else "PARTIAL SCAN" if status == "partial" else "WAITING FOR FIRST SCAN"
-st.markdown(f"""<div class="hero"><span class="kicker">THE WEEKLY TAMIL CINEMA RADAR</span><h1>New films in.<br>Audience pulse updated.</h1><p>The wall discovers recent Tamil releases and tracks public YouTube and Reddit conversation week after week.</p><span class="status"><i class="dot {'waiting' if status != 'healthy' else ''}"></i>{status_text}</span></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div class="hero"><span class="kicker">THE DAILY TAMIL CINEMA RADAR</span><h1>Reviews in.<br>Noise filtered out.</h1><p>The wall discovers recent releases, follows established Tamil review channels and reads public Reddit JSON discussions without Reddit OAuth.</p><span class="status"><i class="dot {'waiting' if status != 'healthy' else ''}"></i>{status_text}</span></div>""", unsafe_allow_html=True)
 
 if frame.empty:
-    st.warning("The scanner is ready but has not produced its first dataset yet. Add the five repository secrets, then run **Weekly Tamil film scan** once from GitHub Actions.")
-    st.code("TMDB_API_KEY\nYOUTUBE_API_KEY\nREDDIT_CLIENT_ID\nREDDIT_CLIENT_SECRET\nREDDIT_USER_AGENT", language=None)
+    st.warning("The scanner is ready but has not produced its first dataset yet. Add the two repository secrets, then run **Daily Tamil film scanner** once from GitHub Actions.")
+    st.code("TMDB_API_KEY\nYOUTUBE_API_KEY", language=None)
     st.stop()
 
 cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=window)
@@ -94,6 +94,24 @@ compare=px.bar(platform_scores,x="film",y="score",color="platform",barmode="grou
 compare.update_layout(height=400,yaxis_title="Pulse score",xaxis_title=None,legend_title=None,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
 st.plotly_chart(compare,width="stretch")
 
+if not videos.empty:
+    st.subheader("Review video signal — views accumulated between scans")
+    period_label = st.segmented_control("Growth interval", ["Day", "Week", "Month", "Year"], default="Week")
+    days = {"Day": 1, "Week": 7, "Month": 30, "Year": 365}[period_label]
+    latest = videos.sort_values("scanned_at").groupby("video_id").tail(1)
+    prior_cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=days)
+    prior = videos[videos.scanned_at <= prior_cutoff].sort_values("scanned_at").groupby("video_id").tail(1)[["video_id","views"]].rename(columns={"views":"prior_views"})
+    growth = latest.merge(prior,on="video_id",how="left")
+    growth["view_growth"] = (growth.views-growth.prior_views).where(growth.prior_views.notna())
+    growth["engagement"] = (growth.likes+growth.comments)/growth.views.clip(lower=1)*1000
+    view_chart = px.scatter(growth, x="view_growth", y="engagement", size="views", color="film", hover_name="title",
+        hover_data=["channel","trusted_channel","signal_score"], labels={"view_growth":f"Views gained / {period_label.lower()}","engagement":"Likes + comments per 1,000 views"})
+    view_chart.update_layout(height=430,paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)")
+    if growth.view_growth.notna().any(): st.plotly_chart(view_chart,width="stretch")
+    else: st.info(f"The {period_label.lower()} view-growth signal will appear after enough daily snapshots accumulate. Current public totals are already stored.")
+    st.dataframe(growth[["film","channel","title","views","view_growth","likes","comments","signal_score"]].sort_values("views",ascending=False),
+        width="stretch",hide_index=True,column_config={"view_growth":st.column_config.NumberColumn(f"{period_label} views",format="%.0f")})
+
 trend_col,term_col=st.columns([1.5,1],gap="large")
 with trend_col:
     st.subheader("Pulse history")
@@ -112,8 +130,10 @@ with term_col:
 with st.expander("Open the scanner log and comments"):
     st.caption(f"Scanner status: {status}. Source errors: {len(meta.get('errors', []))}.")
     if meta.get("errors"): st.warning("\n".join(meta["errors"]))
-    shown=filtered[["film","platform","text","sentiment","sentiment_score","likes","created_at","url"]].sort_values("created_at",ascending=False)
+    st.markdown("**Monitored Reddit forums:** "+", ".join(meta.get("reddit_forums", [])))
+    st.markdown("**Preferred YouTube channels:** "+", ".join(meta.get("youtube_channels", [])))
+    shown=filtered[["film","platform","source","content_type","text","sentiment","sentiment_score","likes","created_at","url"]].sort_values("created_at",ascending=False)
     st.dataframe(shown,width="stretch",hide_index=True,column_config={"url":st.column_config.LinkColumn("Source")})
     st.download_button("Download current view",shown.to_csv(index=False),"tamil-film-weekly-scan.csv","text/csv")
 
-st.caption("Tamil Film Pulse · Updated by a scheduled GitHub Action · Public comments only · Conversation signal, not a quality or box-office rating")
+st.caption("Tamil Film Pulse · Daily snapshots · Reddit public JSON + YouTube Data API · Conversation signal, not a quality or box-office rating")

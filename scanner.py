@@ -1,104 +1,66 @@
-"""Weekly Tamil-film discovery and public-comment scanner."""
+"""Daily source-aware Tamil cinema scanner."""
 from __future__ import annotations
-
 from datetime import datetime, timedelta, timezone
-import hashlib
-import json
-import os
+import json, os
 from pathlib import Path
-
 import pandas as pd
 import requests
-
-from collectors import collect_reddit, collect_youtube
+from collectors import collect_reddit_json, youtube_comments, youtube_details, youtube_search
 from sentiment import add_sentiment
 
-ROOT = Path(__file__).parent
-CONFIG = json.loads((ROOT / "scanner_config.json").read_text())
-LIVE_DIR = ROOT / "data" / "live"
-LIVE_FILE = LIVE_DIR / "comments.csv"
-META_FILE = LIVE_DIR / "scan_metadata.json"
+ROOT=Path(__file__).parent; CFG=json.loads((ROOT/"scanner_config.json").read_text()); LIVE=ROOT/"data"/"live"
+COMMENTS=LIVE/"comments.csv"; VIDEOS=LIVE/"video_snapshots.csv"; META=LIVE/"scan_metadata.json"
 
-
-def require(name: str) -> str:
-    value = os.getenv(name, "").strip()
-    if not value:
-        raise RuntimeError(f"Missing required environment variable: {name}")
+def require(name):
+    value=os.getenv(name,"").strip()
+    if not value: raise RuntimeError(f"Missing {name}")
     return value
 
+def discover(key):
+    today=datetime.now(timezone.utc).date(); start=today-timedelta(days=CFG["lookback_days"])
+    r=requests.get("https://api.themoviedb.org/3/discover/movie",params={"api_key":key,"with_original_language":"ta","region":"IN",
+        "release_date.gte":start,"release_date.lte":today,"sort_by":"popularity.desc","include_adult":"false"},timeout=30); r.raise_for_status()
+    return [x["title"] for x in r.json().get("results",[])[:CFG["max_films"]]]
 
-def discover_films(tmdb_key: str) -> list[dict]:
-    today = datetime.now(timezone.utc).date()
-    start = today - timedelta(days=CONFIG["lookback_days"])
-    response = requests.get(
-        "https://api.themoviedb.org/3/discover/movie",
-        params={"api_key": tmdb_key, "with_original_language": "ta", "region": "IN",
-                "release_date.gte": start.isoformat(), "release_date.lte": today.isoformat(),
-                "sort_by": "popularity.desc", "include_adult": "false", "page": 1}, timeout=30,
-    )
-    response.raise_for_status()
-    films = [{"title": item["title"], "release_date": item.get("release_date", ""), "tmdb_id": item["id"]}
-             for item in response.json().get("results", [])[:CONFIG["max_films"]]]
-    for title in CONFIG.get("manual_films", []):
-        if title and title not in {film["title"] for film in films}:
-            films.append({"title": title, "release_date": "", "tmdb_id": None})
-    return films
+def quality(video):
+    text=f"{video.get('title','')} {video.get('description','')}".lower(); channel=video.get("channelTitle","")
+    review=any(x in text for x in CFG["review_terms"]); promo=any(x in text for x in CFG["promotion_terms"])
+    trusted=any(x.lower() in channel.lower() for x in CFG["youtube_review_channels"])
+    return (3 if trusted else 0)+(2 if review else 0)-(4 if promo else 0),trusted,promo
 
-
-def youtube_video_ids(title: str, api_key: str) -> list[str]:
-    response = requests.get("https://www.googleapis.com/youtube/v3/search", params={
-        "key": api_key, "part": "snippet", "type": "video", "maxResults": CONFIG["youtube_videos_per_film"],
-        "q": f'{title} Tamil movie review', "relevanceLanguage": "ta", "regionCode": "IN", "order": "relevance"
-    }, timeout=30)
-    response.raise_for_status()
-    return [item["id"]["videoId"] for item in response.json().get("items", [])]
-
-
-def stable_id(row) -> str:
-    existing = str(row.get("source_id", "")).strip()
-    if existing and existing != "nan":
-        return f'{row.get("platform", "unknown")}:{existing}'
-    raw = f'{row.get("film", "")}|{row.get("platform", "")}|{row.get("text", "")}'
-    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
-
+def merge(path,fresh,key,days):
+    old=pd.read_csv(path) if path.exists() else pd.DataFrame(); combined=pd.concat([old,fresh],ignore_index=True)
+    combined=combined.drop_duplicates(key,keep="last")
+    date_col="scanned_at" if "scanned_at" in combined else "created_at"
+    combined[date_col]=pd.to_datetime(combined[date_col],errors="coerce",utc=True)
+    return combined[combined[date_col]>=pd.Timestamp.now(tz="UTC")-pd.Timedelta(days=days)]
 
 def main():
-    youtube_key = require("YOUTUBE_API_KEY")
-    films = discover_films(require("TMDB_API_KEY"))
-    reddit = {"client_id": require("REDDIT_CLIENT_ID"), "client_secret": require("REDDIT_CLIENT_SECRET"),
-              "user_agent": require("REDDIT_USER_AGENT")}
-    scanned_at = datetime.now(timezone.utc)
-    batches, errors = [], []
+    yt=require("YOUTUBE_API_KEY"); films=discover(require("TMDB_API_KEY")); now=datetime.now(timezone.utc).isoformat()
+    comment_batches=[]; snapshot_batches=[]; errors=[]
     for film in films:
-        title = film["title"]
         try:
-            ids = youtube_video_ids(title, youtube_key)
-            if ids:
-                batches.append(collect_youtube(ids, youtube_key, title, CONFIG["comments_per_platform"]))
-        except Exception as exc:
-            errors.append(f"YouTube/{title}: {exc}")
-        try:
-            batches.append(collect_reddit(f'{title} {CONFIG["reddit_query_suffix"]}', title,
-                           reddit["client_id"], reddit["client_secret"], reddit["user_agent"], CONFIG["comments_per_platform"]))
-        except Exception as exc:
-            errors.append(f"Reddit/{title}: {exc}")
-    fresh = pd.concat([batch for batch in batches if not batch.empty], ignore_index=True) if batches else pd.DataFrame()
-    if fresh.empty:
-        raise RuntimeError("The scan returned no comments. " + "; ".join(errors))
-    fresh["scanned_at"] = scanned_at.isoformat()
-    fresh["source_id"] = fresh.apply(stable_id, axis=1)
-    combined = pd.concat([pd.read_csv(LIVE_FILE), fresh], ignore_index=True) if LIVE_FILE.exists() else fresh
-    combined["created_at"] = pd.to_datetime(combined.created_at, errors="coerce", utc=True)
-    combined = combined[combined.created_at >= scanned_at - timedelta(days=CONFIG["keep_history_days"])]
-    combined = combined.drop_duplicates("source_id", keep="last")
-    combined = add_sentiment(combined).sort_values("created_at", ascending=False)
-    LIVE_DIR.mkdir(parents=True, exist_ok=True)
-    combined.to_csv(LIVE_FILE, index=False)
-    META_FILE.write_text(json.dumps({"status": "healthy" if not errors else "partial", "last_scan": scanned_at.isoformat(),
-        "next_scan": (scanned_at + timedelta(days=7)).isoformat(), "films": len(films), "comments": len(combined),
-        "discovered_films": films, "errors": errors}, indent=2), encoding="utf-8")
-    print(f"Saved {len(combined)} comments across {len(films)} films; {len(errors)} source errors")
-
-
-if __name__ == "__main__":
-    main()
+            candidates=youtube_search(film,yt,CFG["youtube_videos_per_film"])
+            accepted=[]
+            for item in candidates:
+                score,trusted,promo=quality(item); item.update(signal_score=score,trusted_channel=trusted,promotional=promo)
+                if score>=1: accepted.append(item)
+            details=youtube_details([x["video_id"] for x in accepted],yt)
+            if not details.empty:
+                flags=pd.DataFrame(accepted)[["video_id","signal_score","trusted_channel","promotional"]]
+                details=details.merge(flags,on="video_id"); details["film"]=film; details["scanned_at"]=now
+                snapshot_batches.append(details)
+                for row in details.itertuples(): comment_batches.append(youtube_comments(row.video_id,film,row.channel,yt,CFG["comments_per_video"]))
+        except Exception as exc: errors.append(f"YouTube/{film}: {exc}")
+        try: comment_batches.append(collect_reddit_json(film,CFG["reddit_forums"],CFG["reddit_posts_per_forum"]))
+        except Exception as exc: errors.append(f"Reddit/{film}: {exc}")
+    comments=pd.concat([x for x in comment_batches if not x.empty],ignore_index=True) if comment_batches else pd.DataFrame()
+    snapshots=pd.concat(snapshot_batches,ignore_index=True) if snapshot_batches else pd.DataFrame()
+    if comments.empty: raise RuntimeError("No discussions collected: "+"; ".join(errors))
+    comments["scanned_at"]=now; comments=add_sentiment(comments); LIVE.mkdir(parents=True,exist_ok=True)
+    merge(COMMENTS,comments,"source_id",CFG["keep_history_days"]).to_csv(COMMENTS,index=False)
+    if not snapshots.empty: merge(VIDEOS,snapshots,["video_id","scanned_at"],CFG["keep_history_days"]).to_csv(VIDEOS,index=False)
+    META.write_text(json.dumps({"status":"healthy" if not errors else "partial","last_scan":now,"films":films,"comments_added":len(comments),
+        "youtube_channels":CFG["youtube_review_channels"],"reddit_forums":CFG["reddit_forums"],"errors":errors},indent=2))
+    print(f"Scanned {len(films)} films, {len(comments)} discussions, {len(snapshots)} video snapshots")
+if __name__=="__main__": main()

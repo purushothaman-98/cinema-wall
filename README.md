@@ -1,6 +1,6 @@
 # Tamil Film Pulse
 
-An automated Streamlit wall that discovers recent Tamil films and refreshes public YouTube and Reddit sentiment every week.
+An automated Streamlit wall that discovers recent Tamil films and refreshes public YouTube and Reddit sentiment every day.
 
 ## Run locally
 
@@ -20,12 +20,11 @@ Copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` and add cred
 ```toml
 TMDB_API_KEY = "..."
 YOUTUBE_API_KEY = "..."
-REDDIT_CLIENT_ID = "..."
-REDDIT_CLIENT_SECRET = "..."
-REDDIT_USER_AGENT = "tamil-film-pulse/1.0 by your_username"
 ```
 
-Add the same five values as GitHub Actions repository secrets. The workflow runs every Sunday, discovers recent Tamil releases through TMDb, finds relevant YouTube reviews, reads official API comments, scans r/kollywood through PRAW, removes duplicates, scores new comments and commits the refreshed dataset. Run it manually once after configuring secrets.
+Add the two values as GitHub Actions repository secrets. The daily workflow discovers recent Tamil releases through TMDb, prioritizes selected review channels, removes promotional videos, reads YouTube comments through the official API, and scans configured public Reddit `.json` listings without OAuth. It stores video-counter snapshots so day/week/month/year view growth becomes available over time.
+
+Public Reddit JSON is intentionally treated as best-effort: cloud requests can be throttled or blocked. The scanner records partial failures instead of inventing missing data.
 
 ## Sentiment method
 
