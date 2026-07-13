@@ -23,6 +23,8 @@ The GitHub workflow runs at **:10 and :40 UTC every hour**. To stay within the s
 - up to four standard videos and three Shorts per film are monitored each cycle
 - 30-minute view-growth charts show only the change between the two latest snapshots, with standard videos and Shorts shown separately
 - every fetched 30-minute counter snapshot is retained without dashboard filters; relevance ranking is applied only during the daily discovery pass
+- lifetime analysis separates current public YouTube totals from growth actually observed after monitoring began
+- raw snapshots, the derived 30-minute time series, comments and scan metadata can be downloaded from the Data archive tab
 - stored records are deduplicated and retained for up to 730 days
 
 GitHub may delay scheduled jobs slightly during periods of high Actions load.
