@@ -102,30 +102,73 @@ for start in range(0, len(wall_films), 5):
     for col, title in zip(cols, wall_films[start:start + 5]):
         item = catalog.get(title, {})
         with col:
-            if item.get("poster_url"):
-                st.image(item["poster_url"], width="stretch")
+            poster = item.get("poster_url")
+            if isinstance(poster, str) and poster.startswith("https://"):
+                st.markdown(
+                    f'<img src="{poster}" alt="{title} poster" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:10px">',
+                    unsafe_allow_html=True,
+                )
             st.markdown(f'<div class="poster-title">{title}</div>', unsafe_allow_html=True)
             release = item.get("release_date") or "Release date unavailable"
             st.markdown(f'<div class="poster-meta">{release} · {film_totals.get(title, 0):,} discussions</div>',
                         unsafe_allow_html=True)
 
 st.subheader("Discussion activity over time")
-daily = (
+now = pd.Timestamp.now(tz="UTC")
+week_start = now - pd.Timedelta(days=7)
+previous_start = now - pd.Timedelta(days=14)
+current_week = filtered[filtered["created_at"] >= week_start]
+previous_week = filtered[(filtered["created_at"] >= previous_start) & (filtered["created_at"] < week_start)]
+week_change = len(current_week) - len(previous_week)
+change_percent = (week_change / len(previous_week) * 100) if len(previous_week) else None
+active_days = filtered["created_at"].dt.floor("D").nunique()
+coverage_days = max(1, min(int(window), (now - filtered["created_at"].min()).days + 1))
+
+insight_cols = st.columns(4)
+insight_cols[0].metric("Last 7 days", f"{len(current_week):,}",
+                       f"{week_change:+,} vs previous 7 days")
+insight_cols[1].metric("Weekly change",
+                       f"{change_percent:+.1f}%" if change_percent is not None else "New activity")
+insight_cols[2].metric("Average per active day", f"{len(filtered) / max(active_days, 1):.1f}")
+insight_cols[3].metric("Days with discussion", f"{active_days} of {coverage_days}")
+
+observed = (
     filtered.dropna(subset=["created_at"])
     .assign(date=lambda x: x["created_at"].dt.floor("D"))
     .groupby(["date", "platform"], as_index=False)
     .size()
     .rename(columns={"size": "discussions"})
 )
+date_index = pd.date_range(
+    filtered["created_at"].min().floor("D"), now.floor("D"), freq="D", tz="UTC"
+)
+complete = pd.MultiIndex.from_product(
+    [date_index, sorted(filtered["platform"].unique())], names=["date", "platform"]
+).to_frame(index=False)
+daily = complete.merge(observed, on=["date", "platform"], how="left")
+daily["discussions"] = daily["discussions"].fillna(0)
 daily["7-day average"] = daily.groupby("platform")["discussions"].transform(
     lambda values: values.rolling(7, min_periods=1).mean()
 )
-activity = px.line(daily, x="date", y="7-day average", color="platform", markers=True,
-                   color_discrete_map={"YouTube": "#ed5837", "Reddit": "#6874b7"},
-                   labels={"date": None, "7-day average": "Daily discussions · 7-day average"})
+activity = px.line(
+    daily, x="date", y="7-day average", color="platform",
+    color_discrete_map={"YouTube": "#ed5837", "Reddit": "#6874b7"},
+    labels={"date": "Date", "7-day average": "Discussions per day · 7-day average"},
+    hover_data={"discussions": ":.0f", "7-day average": ":.1f"},
+)
 activity.update_layout(height=420, legend_title=None, paper_bgcolor="rgba(0,0,0,0)",
                        plot_bgcolor="rgba(0,0,0,0)", hovermode="x unified")
 st.plotly_chart(activity, width="stretch")
+
+film_current = current_week.groupby("film").size()
+film_previous = previous_week.groupby("film").size()
+momentum = pd.DataFrame({"Last 7 days": film_current, "Previous 7 days": film_previous}).fillna(0)
+momentum["Change"] = momentum["Last 7 days"] - momentum["Previous 7 days"]
+momentum = momentum.reset_index().sort_values(["Last 7 days", "Change"], ascending=False)
+if not momentum.empty:
+    st.caption("Film momentum compares collected discussions in the latest seven days with the preceding seven days.")
+    st.dataframe(momentum, width="stretch", hide_index=True,
+                 column_config={"Change": st.column_config.NumberColumn("Change", format="%+d")})
 
 left, right = st.columns([1.35, 1], gap="large")
 with left:
