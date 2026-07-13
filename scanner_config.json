@@ -4,7 +4,8 @@
   "video_discovery_hours": 24,
   "youtube_videos_per_film": 15,
   "active_videos_per_film": 4,
-  "comments_per_video": 100,
+  "comments_per_video_live": 50,
+  "comments_per_video_daily": 500,
   "keep_history_days": 730,
   "youtube_review_channels": [
     "Tamil Talkies",
