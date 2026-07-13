@@ -20,9 +20,15 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 
+ANALYSIS_SCHEMA_VERSION = "tamil-tanglish-v2"
+
 @st.cache_data(ttl=900)
-def get_data():
-    return load_live(), load_video_snapshots(), load_metadata()
+def get_data(schema_version: str):
+    frame = load_live()
+    # Rebuild derived analysis columns even when the stored CSV predates this schema.
+    if not frame.empty:
+        frame = add_sentiment(frame)
+    return frame, load_video_snapshots(), load_metadata()
 
 
 def top_terms(texts, limit=12):
@@ -31,10 +37,7 @@ def top_terms(texts, limit=12):
     return Counter({term: len(re.findall(re.escape(term), joined)) for term in lexicon if term in joined}).most_common(limit)
 
 
-frame, videos, meta = get_data()
-REQUIRED_ANALYSIS_COLUMNS = {"language", "confidence", "low_information", "aspect_scores", "analysis_weight"}
-if not frame.empty and not REQUIRED_ANALYSIS_COLUMNS.issubset(frame.columns):
-    frame = add_sentiment(frame)
+frame, videos, meta = get_data(ANALYSIS_SCHEMA_VERSION)
 with st.sidebar:
     st.title("📡 Tamil Cinema Scanner")
     st.caption("Automatically refreshed from the latest GitHub scan")
@@ -61,6 +64,8 @@ if frame.empty:
 
 cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=int(window))
 filtered = frame[(frame.film.isin(selected_films)) & (frame.platform.isin(platforms)) & (frame.likes >= minimum_likes) & (frame.created_at >= cutoff)].copy()
+# Keep filtered views schema-safe after old Streamlit cache entries or legacy CSVs.
+filtered = add_sentiment(filtered)
 if filtered.empty:
     st.info("No scanned comments match these filters."); st.stop()
 
@@ -106,15 +111,16 @@ st.plotly_chart(compare,width="stretch")
 st.subheader("Language and aspect intelligence")
 language_col,aspect_col=st.columns([1,1.4],gap="large")
 with language_col:
-    language_counts=filtered.language.value_counts().reset_index(); language_counts.columns=["Language","Comments"]
+    language_counts=filtered["language"].value_counts().reset_index(); language_counts.columns=["Language","Comments"]
     language_fig=px.pie(language_counts,names="Language",values="Comments",hole=.55,color_discrete_sequence=["#ed5b2f","#3b8b72","#6e77b7","#d2aa52"])
     language_fig.update_layout(height=340,margin=dict(l=0,r=0,t=10,b=0),legend_title=None,paper_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart(language_fig,width="stretch")
 with aspect_col:
     aspect_rows=[]
-    for _,comment in filtered[~filtered.low_information].iterrows():
-        scores=comment.aspect_scores if isinstance(comment.aspect_scores,dict) else {}
-        for aspect,score in scores.items(): aspect_rows.append({"Aspect":aspect,"Score":score,"Weight":comment.analysis_weight})
+    for _, comment in filtered[~filtered["low_information"]].iterrows():
+        scores = comment["aspect_scores"] if isinstance(comment["aspect_scores"], dict) else {}
+        for aspect, score in scores.items():
+            aspect_rows.append({"Aspect": aspect, "Score": score, "Weight": comment["analysis_weight"]})
     if aspect_rows:
         aspects=pd.DataFrame(aspect_rows)
         aspects["Weighted"]=aspects.Score*aspects.Weight
