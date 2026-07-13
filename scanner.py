@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 import json
 import os
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -76,6 +77,18 @@ def discover_films(key: str) -> list[dict]:
             "cast": [person.get("name") for person in credits.get("cast", [])[:10]],
         })
     return catalog
+
+def duration_seconds(value: object) -> int:
+    match = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", str(value or ""))
+    if not match:
+        return 0
+    hours, minutes, seconds = (int(part or 0) for part in match.groups())
+    return hours * 3600 + minutes * 60 + seconds
+
+def content_format(row: pd.Series) -> str:
+    seconds = duration_seconds(row.get("duration"))
+    title = str(row.get("title", "")).lower()
+    return "Short" if (0 < seconds <= 60 or "#shorts" in title or "#short" in title) else "Video"
 
 def quality(video: dict) -> tuple[int, bool, bool]:
     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
@@ -198,10 +211,18 @@ def main() -> None:
                 lambda video_id: bool(candidate_map[video_id].get("promotional", False))
             )
             details["published_at"] = pd.to_datetime(details["published_at"], errors="coerce", utc=True)
+            details["content_format"] = details.apply(content_format, axis=1)
             details = details.sort_values(
                 ["trusted_channel", "signal_score", "comments", "published_at"],
                 ascending=[False, False, False, False],
-            ).head(int(CFG["active_videos_per_film"]))
+            )
+            standard_videos = details[details["content_format"].eq("Video")].head(
+                int(CFG["active_videos_per_film"])
+            )
+            shorts = details[details["content_format"].eq("Short")].head(
+                int(CFG["active_shorts_per_film"])
+            )
+            details = pd.concat([standard_videos, shorts], ignore_index=True)
             details["scanned_at"] = now_iso
             snapshot_batches.append(details)
 
@@ -209,7 +230,7 @@ def main() -> None:
                 monitored_video_ids.add(row.video_id)
                 try:
                     batch = youtube_comments(
-                        row.video_id, film, row.channel, row.title,
+                        row.video_id, film, row.channel, row.title, row.content_format,
                         youtube_key, int(CFG["comments_per_video"]),
                     )
                     if not batch.empty:
@@ -252,6 +273,12 @@ def main() -> None:
         "new_comments_added": new_comments,
         "stored_comments": int(len(stored_comments)),
         "videos_monitored": len(monitored_video_ids),
+        "standard_videos_monitored": int(
+            snapshots[snapshots["content_format"].eq("Video")]["video_id"].nunique()
+        ) if not snapshots.empty else 0,
+        "shorts_monitored": int(
+            snapshots[snapshots["content_format"].eq("Short")]["video_id"].nunique()
+        ) if not snapshots.empty else 0,
         "movie_catalog": catalog,
         "youtube_channels": CFG["youtube_review_channels"],
         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
