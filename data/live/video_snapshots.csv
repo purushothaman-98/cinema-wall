@@ -1,114 +1,1980 @@
 video_id,channel,title,published_at,views,likes,comments,signal_score,trusted_channel,promotional,film,scanned_at,channel_id,description,thumbnail_url,duration,content_format
 tKKZGqzZrYM,Tamil Talkies,"IDHAYAM MURALI Review - Atharvaa Murali, Fahadh Faasil - Tamil Talkies",2026-07-10T22:00:12Z,265793,3747,285,5,True,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-K5MWi0ddM-Q,Thi Cinemas,Idhayam Murali Public Review | Atharvaa | Fahadh Faasil | Idhayam Murali Review,2026-07-10T07:06:30Z,164156,2207,89,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-4v6OWiZAv7Q,Filmi craft,Idhayam Murali Movie Review by Filmicraft Arun|Atharvaa|Kayadu Lohar|Preity Mukhundhan,2026-07-10T14:27:12Z,62538,1539,144,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-UU216Zdz2lc,Trendswood Tv,Idhayam Murali - Movie Review & Ratings | Padam WORTH ah ?,2026-07-10T14:16:30Z,46972,3959,120,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-x30_j_7Si8Y,Chennai Bites ,Idhayam Murali Public Review | Idhayam Murali Review | Idhayam Murali Movie Review | Atharva,2026-07-10T00:01:06Z,25860,310,0,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-ghgTkC-SI9U,KaKi's Talkies,"Idhayam Murali - Movie Review | Atharvaa, Fahadh Faasil, Preity, Kayadu | Thaman | KaKis Talkies",2026-07-10T11:25:22Z,48862,1257,100,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-zzWet6khCHE,tamilcinemareview,IDHAYAM MURALI review by prashanth,2026-07-10T13:11:16Z,48613,1012,92,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-uVQanfNtU70,Valai Pechu,Valai Pechu | ❤️ Idhayam Murali Movie Review | Atharvaa | Kayadu Lohar | Video 3285 | 10th July 2026,2026-07-10T13:05:13Z,78637,1654,51,5,True,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-Z1Vld_CNUJo,B5 Voice,Idhayam Murali Movie Explained Story & Review In Tamil / New HD Movies Tamil / Explained Movies ,2026-07-10T11:52:54Z,23637,340,43,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-2ZyWagYyd1M,Chennai Day,IdhayamMurali Review | Idhayam Murali Movie Review | IdhayamMurali Review tamil | IdhayamMurali ! ,2026-07-10T07:31:23Z,8045,205,6,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-OjlO3i690xU,Bingoo Box,❤️❤️ Idhayam Murali Public Review Idhayam Murali Movie Review Idhayam Murali Movie Public Review,2026-07-10T07:44:31Z,57308,982,31,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
-La5WyvyO4HM,Tamil Talkies,"KARUPPU Review - Suriya, Trisha, RJ Balaji - Tamil Talkies",2026-05-15T23:01:29Z,942342,17865,3016,5,True,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-5LA6GUH2pA8,tamilcinemareview,KARUPPU review by prashanth,2026-05-15T11:16:09Z,243935,6960,669,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-3KDXJbHSubM,Filmi craft,Karuppu Movie Review by Filmi craft Arun | Suriya | Trisha Krishnan | RJ Balaji,2026-05-15T08:26:19Z,179787,4264,386,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-dLVO165vC2I,Empty Hand,Karuppu Movie Review - உண்மையா நல்லா இருக்கா? Suriya | RJB | Trisha | ‪Sai Abhyankkar‬ | Tamil,2026-05-15T14:42:16Z,850765,30497,1388,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-CswWdLyJ5uI,Gurubaai,Karuppu Discussion,2026-05-17T07:26:06Z,550837,18855,568,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-ylodPAUV4SI,B5 Voice,Karuppu Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-05-15T12:32:36Z,556900,5294,409,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-zMgM3qKu5oQ,Bingoo Box,Karuppu Public Review | Karuppu Review | Karuppu Movie Review Suriya Karuppu Tamil Cinema Review,2026-05-16T04:42:03Z,18943,525,86,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-RsGnSmmPdkc,VAALIBAN REVIEW ,🔥DAY 6 🔥Karuppu Movie Review |Karuppu Public ReviewKaruppu Review |Surya |RJ Balaji Surya review,2026-05-19T11:14:04Z,6269,193,18,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-q1Yk7mOv2GQ,Tubelight Mind,Karuppu Movie Honest Review 🔥😮 surya comeback? Theatre Vlog 🔥😅Rj balaji / Trisha #movie #surya,2026-05-18T12:22:29Z,1738637,101287,700,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-DE2JuWZH8dE,Engal Movies,"Karuppu Tamil Full Movie 2026 | Suriya | RJ Balaji | Trisha | ‪Karuppu Movie Review, Fact & Analysis",2026-06-27T13:30:02Z,852247,8206,0,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-lvbJI7VzyRU,KaKi's Talkies,"Karuppu - Movie Review | Suriya, Trisha, Indrans | RJ Balaji | Sai Abhyankar | KaKis Talkies",2026-05-15T12:03:15Z,92118,2302,152,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
-LLmkti_XkMk,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-05T22:01:40Z,295475,3841,275,5,True,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-1qP32L5hyO4,Filmi craft,Parimala and Co Movie Review by Filmi craft Arun | Jayaram | Urvashi | Mysskin | Pandiraaj,2026-06-05T10:17:39Z,73587,1612,127,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-haLV011BfjA,Tamil Talkies,"KARA Review - Dhanush, KS Ravi Kumar, Jayaram, GV Prakash, Suraj, Mamitha Baiju - Tamil Talkies",2026-04-30T22:54:37Z,504826,7107,660,5,True,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-z1iWBA43b8g,Makkal Talkies,Kara Movie Public Review | Kara Review Tamil | Dhanush | Suraj | Mamitha | Kara tamilcinemareview,2026-05-02T07:45:08Z,376593,4091,41,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-eHkjU_Fx_9Y,FEATU GADI MEDIA,Parimala and Co Movie Review Telugu | Parimala And Co Telugu Review | Parimala And Co Review,2026-07-11T08:42:15Z,43943,1089,60,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-9prCSA-c38I,The Fencer Show,Parimala And Co Movie Review Tamil | Parimala And Co Review Tamil | Parimala And Co Tamil Review,2026-06-06T11:10:45Z,7605,148,16,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-ra9HyjPiQNc,B5 Voice,Parimala And Co Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-06-05T12:51:35Z,82220,810,85,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-dkOCFL9V0GY,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-08T17:13:21Z,63341,899,7,5,True,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-Pgx3Mw-FpdQ,Second Show,'பரிமளா & கோ' திரைப்பட விமர்சனம் - 'Parimala & Co' Movie Review | Pandiraaj Jayaram Urvashi Mysskin,2026-06-06T07:58:21Z,24500,512,43,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-seluMZhrPxI,Friday Facts,**தா என்னடா படம் இது🤬 PARIMALA AND CO PUBLIC REVIEW | PARIMALA AND CO Movie Review #parimalaandco,2026-06-05T10:30:25Z,198305,2335,47,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-3hUwnHct-xM,Tamil Talkies,"BLAST Review - Arjun, AGS Entertainments, Ravi Basur  - Tamil Talkies",2026-05-28T23:06:49Z,558697,10146,807,5,True,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
--GmXAiBTYBQ,Second Show,"'Blast' Tamil Movie Review | Subash K. Raj - Arjun, Abhirami, Preity Mukhundhan - Ravi Basrur",2026-05-31T14:04:46Z,29903,810,82,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-AvPRJgNnkxc,tamilcinemareview,BLAST review by prashanth,2026-05-29T13:05:01Z,79848,1611,140,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-eoUU6YCNAGs,ZyroFlix,Blast (2026) Tamil Full Movie Arjun Sarja | Abhirami | Prety Mukhundhan | John Kokken |Review & Fact,2026-06-28T10:30:13Z,593283,3621,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-zkQWiCji7Hw,Filmi craft,Blast Movie Review by Filmi craft Arun | Arjun Sarja | Abhirami | Preity Mukhundhan | Subash K. Raj,2026-05-28T07:48:26Z,139510,3179,213,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-u3tOHprtNAI,KaKi's Talkies,"Parimala and Co - Movie Review | Jayaram, Urvasi, Mysskin | Foxn | Pandiraaj | KaKis Talkies",2026-06-05T09:45:55Z,57831,1145,70,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-BmL8FpW59DM,Tube Movies,Blast (2026)| Blast Tamil Full Movie Explain| Arjun | Abhirami | Preity Mukhundhan | Movie Review,2026-07-07T16:30:39Z,78788,336,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-G-PQXCuMTjM,Second Show,"'கட்டா குஸ்தி 2' விமர்சனம் 'Gatta Kusthi 2' Review | Vishnu Vishal, Aishwarya Lekshmi - Sean Roldan",2026-07-09T14:05:56Z,12694,340,53,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-tWfZJPhxo6o,Tamil Talkies,"GATTA KUSTHI ROUND 2 Review - Vishnu Vishal, Aishwarya Lekshmi, Karunas - Tamil Talkies",2026-07-03T22:25:44Z,349730,6047,489,5,True,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-QkGUFx1Ns8Y,Bingoo Box,Gatta Kusthi 2 Public Review | Gatta Kusthi 2 Review | Gatta Kusthi 2 Movie Review | Vishnu Vishal,2026-07-03T07:34:08Z,40939,741,68,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-qYiwgZPiqPk,Trendswood Tv,Gatta Kusthi 2 - Movie Review & Ratings | Padam WORTH ah ?,2026-07-03T02:15:15Z,53575,4176,83,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-5BPzwwcChO4,Thi Cinemas,Gatta Kusthi 2 Public Review | Vishnu Vishal | Gatta Kusthi 2 Review,2026-07-03T07:05:41Z,63672,672,80,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-fNoFDa-QWuo,Azoraho Shoots,Gatta Kusthi 2 Tamil Full Movie (2026) | Vishnu Vishal | Aishwarya Lekshmi |Ajay | Review with Facts,2026-07-09T15:53:12Z,30559,166,0,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-doqGi23QOu4,Uruttu Arafath Voice,Gatta Kusthi 2 Movie Review 😱💥 || Thalapathy Reference 🔥 #gattakusthi2review #vishnuvishal #shorts,2026-07-03T11:41:45Z,408200,21224,123,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
-ccjasf80_dw,tamilcinemareview,KARA review by prashanth,2026-04-30T09:00:34Z,94001,1626,155,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-gDNceT8979U,Shafi Zone,கரசாமி ❌ ஆள விட்றா சாமி ✅ Kara Movie Honest Review 🤔 Shafi Zone,2026-04-30T08:52:19Z,61520,1694,84,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-PneX7CumxoQ,Second Show,"'கர' திரைப்பட விமர்சனம் 'Kara' Movie Review | Vignesh Raja, Dhanush, Mamitha Baiju, GV Prakash Kumar",2026-05-01T15:03:41Z,33122,894,133,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-a28ZC5uxjXU,Varun Talks,Parimala & Co Movie Review | Jayaram | Urvashi | Mysskin | Pandiraj | Yogi Babu | Varun Talks,2026-06-05T07:08:46Z,31230,425,32,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
-2bEBLs858jw,Picture Hype,Blast Full Movie in Tamil 2026 | Arjun Sarja | Preity Mukhundhan | Abhirami G | Commentary & Review,2026-05-30T10:52:57Z,336271,0,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
-vEgYmiOrmtg,KaKi's Talkies,"Kara - Tamil Movie Review | Dhanush, Mamitha, Suraj | Vignesh Raja | GV Prakash | KaKis Talkies",2026-04-30T11:35:41Z,64277,1547,118,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-8bR25N7Tl-Y,Newston Cinema,29 Movie Public Review | 29 Movie Review | 29 Tamil Movie Review | 29 FDFS Review | Preethi Asrani,2026-05-08T11:48:39Z,355052,5524,21,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-rRL7e36tzY0,Makkal Vote,Kara Public Review | Kara Movie Review | Kara Review Tamil | Dhanush Speech | Kara tamilcinemareview,2026-04-30T18:20:00Z,288687,3260,39,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
--6Y2wvKsZwk,Delite Cinemas,"""KARA🔥Movie Review""🍿l Dhanush🔥l Vignesh Raja🔥l By Delite Cinemas 💫",2026-04-30T08:45:53Z,36513,2098,75,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+mLOgiQrhx0g,The Fencer Show,Gandhi Talks Movie Review Tamil | Gandhi Talks Review Tamil | Gandhi Talks Tamil Review,2026-01-29T20:25:26Z,13910,238,17,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+1JAfJ6lazmE,Makkal Talkies,Gandhi Talks Public Review | Gandhi Talks Movie Review | Gandhi Talks Review | tamilcinemareview,2026-01-30T11:41:00Z,142250,864,4,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+iw_OwVt764A,Mr. GK Movie Man,Gandhi Talks Movie Review | Mr.GK Movie Man,2026-01-30T14:06:44Z,7917,198,7,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+cbllSrGPjs0,KaKi's Talkies,"Gandhi Talks - Movie Review | Vijay Sethupathi, Arvind Swamy, Aditi Rao | Kishor | KaKis Talkies",2026-01-30T14:47:05Z,37603,863,29,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+YH_HeVOtpfA,Second Show,"'Gandhi Talks' Movie Review | Kishor Pandurang Belekar - Vijay Sethupathi, Arvind Swamy - A.R.Rahman",2026-02-08T11:21:51Z,18622,427,28,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+nTpsJJG068E,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-01-31T02:52:21Z,256351,3211,216,5,True,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+gIS58gBJVpY,tamilcinemareview,GANDHI TALKS review by prashanth,2026-01-31T17:47:20Z,16343,318,20,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+sX-AyaZtsi4,Filmi craft,Gandhi Talks Movie Review by Filmi craft Arun | Vijay Sethupathi | Arvind Swamy | Aditi Rao Hydari,2026-01-30T05:21:18Z,60431,1224,102,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+udOlKexHZws,Valai Pechu,Valai Pechu | Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Video 3149 | 26th Feb 2026,2026-02-26T15:08:13Z,107308,2095,133,5,True,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+hUkEKgXPFg4,Mr. GK Movie Man,Thaai Kizhavi Movie Review  Mr.GK Movie Man,2026-02-27T16:09:36Z,8908,261,12,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+Toas2mtps7c,Aswanth Kok,Youth Review Malayalam | Ken Karunas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19T17:53:44Z,141676,2669,190,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+hKKNokV3KwM,Thi Cinemas,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radikaa Sarathkumar,2026-02-27T06:34:18Z,73326,807,56,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+3WR4xuFcvc4,Filmi craft,Thaai Kizhavi Movie Review by Filmi craft Arun | Radikaa Sarathkumar| Singampuli|Sivakumar Murugesan,2026-02-27T05:15:35Z,87095,2121,147,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+Jo__DrJMk4M,Trend Talks,Thaai Kizhavi Movie Public Review | Radikaa Sarathkumar l Sivakumar Murugesan | Sivakarthikeyan,2026-02-27T10:04:37Z,13411,84,5,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+aiDE5EQH7VE,Black Pepper News,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radhika Sarathkumar | SK | Sivakumar Murugesan,2026-02-27T03:16:40Z,146159,1011,54,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+ttw1NaUcxb0,KaKi's Talkies,Thaai Kizhavi - Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | KaKis Talkies,2026-02-26T15:30:00Z,72362,1825,99,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+h82wnFt1bsM,Second Show,'தாய் கிழவி' விமர்சனம் - 'Thaai Kizhavi' Movie Review | Sivakumar Murugesan - Radhika Sarathkumar,2026-02-27T00:00:06Z,57405,1441,161,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+Kst9sXhYsZw,Recent Voice,Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | Nivas Prasanna | Review,2026-02-25T18:03:04Z,19751,248,11,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+sGZ_wEjhu5U,Tamil Talkies,"THAAI KIZHAVI Review - Raadhika, Sivakarthikeyan - Tamil Talkies",2026-02-26T21:36:56Z,703261,9707,936,5,True,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+cuRKtVyxAAc,Critics Mohan,Kara Review #dhanush #mamithabaiju Kara Movie Review | CriticsMohan | Kara Tamil Movie ,2026-05-01T07:42:28Z,4257,95,4,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
 IBvWhGDjvqk,"Mr Mus . 1.5 crore views . 1 hour ago
 
 
 
 
 ...",Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,2026-04-29T05:30:15Z,6802,43,0,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-cuRKtVyxAAc,Critics Mohan,Kara Review #dhanush #mamithabaiju Kara Movie Review | CriticsMohan | Kara Tamil Movie ,2026-05-01T07:42:28Z,4257,95,4,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-sGZ_wEjhu5U,Tamil Talkies,"THAAI KIZHAVI Review - Raadhika, Sivakarthikeyan - Tamil Talkies",2026-02-26T21:36:56Z,703261,9707,936,5,True,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-Kst9sXhYsZw,Recent Voice,Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | Nivas Prasanna | Review,2026-02-25T18:03:04Z,19751,248,11,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-h82wnFt1bsM,Second Show,'தாய் கிழவி' விமர்சனம் - 'Thaai Kizhavi' Movie Review | Sivakumar Murugesan - Radhika Sarathkumar,2026-02-27T00:00:06Z,57405,1441,161,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-ttw1NaUcxb0,KaKi's Talkies,Thaai Kizhavi - Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | KaKis Talkies,2026-02-26T15:30:00Z,72362,1825,99,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-aiDE5EQH7VE,Black Pepper News,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radhika Sarathkumar | SK | Sivakumar Murugesan,2026-02-27T03:16:40Z,146159,1011,54,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-Jo__DrJMk4M,Trend Talks,Thaai Kizhavi Movie Public Review | Radikaa Sarathkumar l Sivakumar Murugesan | Sivakarthikeyan,2026-02-27T10:04:37Z,13411,84,5,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-3WR4xuFcvc4,Filmi craft,Thaai Kizhavi Movie Review by Filmi craft Arun | Radikaa Sarathkumar| Singampuli|Sivakumar Murugesan,2026-02-27T05:15:35Z,87095,2121,147,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
+-6Y2wvKsZwk,Delite Cinemas,"""KARA🔥Movie Review""🍿l Dhanush🔥l Vignesh Raja🔥l By Delite Cinemas 💫",2026-04-30T08:45:53Z,36513,2098,75,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
 M-gFUEPTdcM,Sudhir Srinivasan,Sudhir Srinivasan's The Long Review: THAAI KIZHAVI | Radhika | Sivakarthikeyan | Sivakumar Murugesan,2026-02-28T11:00:36Z,16989,332,48,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-hKKNokV3KwM,Thi Cinemas,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radikaa Sarathkumar,2026-02-27T06:34:18Z,73326,807,56,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-hUkEKgXPFg4,Mr. GK Movie Man,Thaai Kizhavi Movie Review  Mr.GK Movie Man,2026-02-27T16:09:36Z,8908,261,12,2,False,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-udOlKexHZws,Valai Pechu,Valai Pechu | Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Video 3149 | 26th Feb 2026,2026-02-26T15:08:13Z,107308,2095,133,5,True,False,Thaai Kizhavi,2026-07-13 11:29:07.942349+00:00,,,,,
-sX-AyaZtsi4,Filmi craft,Gandhi Talks Movie Review by Filmi craft Arun | Vijay Sethupathi | Arvind Swamy | Aditi Rao Hydari,2026-01-30T05:21:18Z,60431,1224,102,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-gIS58gBJVpY,tamilcinemareview,GANDHI TALKS review by prashanth,2026-01-31T17:47:20Z,16343,318,20,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-nTpsJJG068E,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-01-31T02:52:21Z,256351,3211,216,5,True,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-YH_HeVOtpfA,Second Show,"'Gandhi Talks' Movie Review | Kishor Pandurang Belekar - Vijay Sethupathi, Arvind Swamy - A.R.Rahman",2026-02-08T11:21:51Z,18622,427,28,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-cbllSrGPjs0,KaKi's Talkies,"Gandhi Talks - Movie Review | Vijay Sethupathi, Arvind Swamy, Aditi Rao | Kishor | KaKis Talkies",2026-01-30T14:47:05Z,37603,863,29,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-iw_OwVt764A,Mr. GK Movie Man,Gandhi Talks Movie Review | Mr.GK Movie Man,2026-01-30T14:06:44Z,7917,198,7,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-1JAfJ6lazmE,Makkal Talkies,Gandhi Talks Public Review | Gandhi Talks Movie Review | Gandhi Talks Review | tamilcinemareview,2026-01-30T11:41:00Z,142250,864,4,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-mLOgiQrhx0g,The Fencer Show,Gandhi Talks Movie Review Tamil | Gandhi Talks Review Tamil | Gandhi Talks Tamil Review,2026-01-29T20:25:26Z,13910,238,17,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-Toas2mtps7c,Aswanth Kok,Youth Review Malayalam | Ken Karunas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19T17:53:44Z,141676,2669,190,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+rRL7e36tzY0,Makkal Vote,Kara Public Review | Kara Movie Review | Kara Review Tamil | Dhanush Speech | Kara tamilcinemareview,2026-04-30T18:20:00Z,288687,3260,39,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
 jHYMjoqChwY,"Mr Mus . 1.5 crore views . 1 hour ago
 
 
 
 
 ...",Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,2026-03-26T10:48:08Z,21286,80,0,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
-g1UkE6R1YwQ,Filmibeat Tamil,Gandhi Talks Review | Vijay Sethupathi | Arvind Swamy | Aditi Rao | A.R.Rahman |Siddharth J |Kishore,2026-01-30T08:52:09Z,3377,32,0,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
 OuKiix3n8-U,Thi Cinemas,Gandhi Talks Public Review | Vijay Sethupathi | Gandhi Talks Review,2026-01-30T07:40:49Z,75338,614,42,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
-QQWfysygeLQ,KaKi's Talkies,"29 - Tamil Movie Review | Vidhu, Preethi Asrani | Sean Roldan | Rathna Kumar | KaKis Talkies",2026-05-08T13:03:41Z,47381,926,57,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-u7_ZXKuN69o,ennapa comedya,29 Full Movie In Tamil (2026) Vidhu | Preethi Asrani | Leona Lishoy | Mahendran | Review Tamil movie,2026-06-09T15:43:27Z,97977,618,8,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-rZ6TkZABsKA,Filmi craft,29 Movie Review by Filmi craft Arun | Vidhu | Preethi Asrani | Mahendran | Rathna Kumar,2026-05-08T15:46:30Z,59875,1227,86,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-H1udCndPTU0,Second Show,'29' Movie Review - Rathna Kumar Vidhu Preethi Asrani Sean Roldan Lokesh Kanagaraj Karthik Subbaraj,2026-05-09T12:52:46Z,19866,488,103,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-n2oefl9BEeo,The Fencer Show,29 Movie Review Tamil by The Fencer Show | 29 Review Tamil | 29 Tamil Review,2026-05-08T15:30:07Z,16408,260,11,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-NkTEwLHiRFU,Indianfilmyflick ,29 Tamil Full Movie Vidhu | Preethi Asrani | Leona Lishoy | Avinash | Mahendran | Review and facts ,2026-06-09T13:45:06Z,112365,450,0,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-Gn-2a9OQdDM,Sudhir Srinivasan,Sudhir Srinivasan's The Long Review: 29 | Rathna Kumar | Vidhu | Preethi Asrani | Sean Roldan,2026-05-09T14:15:24Z,11316,325,24,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-zeZIjZA_src,tamilcinemareview,29 - A slow and heartfelt review!,2026-06-15T15:19:23Z,13582,431,30,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-pn-laKJkdQw,Galatta Plus,29 Movie Review By Baradwaj Rangan | Vidhu | Preethi Asrani | Sean Roldan | Rathna Kumar,2026-05-11T13:07:45Z,15149,221,18,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-P9wB0hzx57c,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-02-02T18:41:36Z,40697,589,4,5,True,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
--RklEacnCro,Hijack Movies,29 Full Movie in tamil (2026) Vidhu | Preethi Asrani | Leona Lishoy | Full Movie | review & facts ,2026-06-10T13:45:03Z,124691,717,0,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-FoSTbBc2T1A,Jackie Cinemas,"29 Tamil Movie Review | Vidhu, Preethi Asrani | Sean Roldan | Rathna Kumar | jackiecinemas review",2026-06-09T07:11:20Z,2754,111,29,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
-TUfsVzU8yvI,Tamil Talkies,YOUTH Review - GV Prakash - Tamil Talkies,2026-03-19T22:43:50Z,556724,8776,603,5,True,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-j268kVQY98Y,tamilcinemareview,YOUTH review by prashanth,2026-03-20T16:44:24Z,53370,1413,101,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-ECZlvHorom8,KaKi's Talkies,"Youth - Tamil Movie Review | Ken Karunaas, Devadarshini, Suraj | GV Prakash | KaKis Talkies",2026-03-19T12:53:59Z,52629,1236,68,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-QlIBfkb21Mc,Filmi craft,Youth movie Review by Filmi craft Arun | Ken Karunaas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19T10:39:36Z,90879,1877,146,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-5mKThr0YJlI,Thi Cinemas,Youth Public Review | Ken Karunas | Youth Review,2026-03-19T06:59:51Z,397116,6398,196,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-OoMQuy2Pzx0,Valai Pechu,Valai Pechu | Youth Movie Review 😎 | Ken Karunas | GV Prakash Kumar | Video 3170 | 19th Mar 2026,2026-03-19T10:57:12Z,128701,2549,103,5,True,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-dzMotcbkyV0,Vaai Savadaal,YOUTH REVIEW,2026-03-20T13:05:46Z,70934,3739,287,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-xVSWCSc5Er4,Oyster Zone,Youth 2026 Movie Review | Ken Karunas | Anishma Anilkumar | Priyanshi Yadav | Review & Facts,2026-03-30T03:22:21Z,818096,0,0,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-HHu7PHif4mE,Trendswood Tv,YOUTH - Movie Review & Ratings | Padam WORTH ah ?,2026-03-19T07:42:40Z,60884,5171,180,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
-QNMiCPLja_M,Critics Mohan,Gandhi Talks Review Tamil Movie | Vijaysethupathi X Arvindh Swamy X Aditirao | Gandhi Talks Enview ,2026-02-01T03:59:33Z,3742,81,2,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
 3YpXTjfiKJA,Galatta Plus,Youth Movie Review By Baradwaj Rangan | Ken Karunaas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19T09:54:36Z,41524,478,38,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+QNMiCPLja_M,Critics Mohan,Gandhi Talks Review Tamil Movie | Vijaysethupathi X Arvindh Swamy X Aditirao | Gandhi Talks Enview ,2026-02-01T03:59:33Z,3742,81,2,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+HHu7PHif4mE,Trendswood Tv,YOUTH - Movie Review & Ratings | Padam WORTH ah ?,2026-03-19T07:42:40Z,60884,5171,180,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+xVSWCSc5Er4,Oyster Zone,Youth 2026 Movie Review | Ken Karunas | Anishma Anilkumar | Priyanshi Yadav | Review & Facts,2026-03-30T03:22:21Z,818096,0,0,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+dzMotcbkyV0,Vaai Savadaal,YOUTH REVIEW,2026-03-20T13:05:46Z,70934,3739,287,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+OoMQuy2Pzx0,Valai Pechu,Valai Pechu | Youth Movie Review 😎 | Ken Karunas | GV Prakash Kumar | Video 3170 | 19th Mar 2026,2026-03-19T10:57:12Z,128701,2549,103,5,True,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+QlIBfkb21Mc,Filmi craft,Youth movie Review by Filmi craft Arun | Ken Karunaas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19T10:39:36Z,90879,1877,146,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+ECZlvHorom8,KaKi's Talkies,"Youth - Tamil Movie Review | Ken Karunaas, Devadarshini, Suraj | GV Prakash | KaKis Talkies",2026-03-19T12:53:59Z,52629,1236,68,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+j268kVQY98Y,tamilcinemareview,YOUTH review by prashanth,2026-03-20T16:44:24Z,53370,1413,101,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+TUfsVzU8yvI,Tamil Talkies,YOUTH Review - GV Prakash - Tamil Talkies,2026-03-19T22:43:50Z,556724,8776,603,5,True,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+g1UkE6R1YwQ,Filmibeat Tamil,Gandhi Talks Review | Vijay Sethupathi | Arvind Swamy | Aditi Rao | A.R.Rahman |Siddharth J |Kishore,2026-01-30T08:52:09Z,3377,32,0,2,False,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+FoSTbBc2T1A,Jackie Cinemas,"29 Tamil Movie Review | Vidhu, Preethi Asrani | Sean Roldan | Rathna Kumar | jackiecinemas review",2026-06-09T07:11:20Z,2754,111,29,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+P9wB0hzx57c,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-02-02T18:41:36Z,40697,589,4,5,True,False,Gandhi Talks,2026-07-13 11:29:07.942349+00:00,,,,,
+pn-laKJkdQw,Galatta Plus,29 Movie Review By Baradwaj Rangan | Vidhu | Preethi Asrani | Sean Roldan | Rathna Kumar,2026-05-11T13:07:45Z,15149,221,18,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+zeZIjZA_src,tamilcinemareview,29 - A slow and heartfelt review!,2026-06-15T15:19:23Z,13582,431,30,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+Gn-2a9OQdDM,Sudhir Srinivasan,Sudhir Srinivasan's The Long Review: 29 | Rathna Kumar | Vidhu | Preethi Asrani | Sean Roldan,2026-05-09T14:15:24Z,11316,325,24,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+NkTEwLHiRFU,Indianfilmyflick ,29 Tamil Full Movie Vidhu | Preethi Asrani | Leona Lishoy | Avinash | Mahendran | Review and facts ,2026-06-09T13:45:06Z,112365,450,0,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+n2oefl9BEeo,The Fencer Show,29 Movie Review Tamil by The Fencer Show | 29 Review Tamil | 29 Tamil Review,2026-05-08T15:30:07Z,16408,260,11,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+H1udCndPTU0,Second Show,'29' Movie Review - Rathna Kumar Vidhu Preethi Asrani Sean Roldan Lokesh Kanagaraj Karthik Subbaraj,2026-05-09T12:52:46Z,19866,488,103,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+rZ6TkZABsKA,Filmi craft,29 Movie Review by Filmi craft Arun | Vidhu | Preethi Asrani | Mahendran | Rathna Kumar,2026-05-08T15:46:30Z,59875,1227,86,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+u7_ZXKuN69o,ennapa comedya,29 Full Movie In Tamil (2026) Vidhu | Preethi Asrani | Leona Lishoy | Mahendran | Review Tamil movie,2026-06-09T15:43:27Z,97977,618,8,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+QQWfysygeLQ,KaKi's Talkies,"29 - Tamil Movie Review | Vidhu, Preethi Asrani | Sean Roldan | Rathna Kumar | KaKis Talkies",2026-05-08T13:03:41Z,47381,926,57,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+-RklEacnCro,Hijack Movies,29 Full Movie in tamil (2026) Vidhu | Preethi Asrani | Leona Lishoy | Full Movie | review & facts ,2026-06-10T13:45:03Z,124691,717,0,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+8bR25N7Tl-Y,Newston Cinema,29 Movie Public Review | 29 Movie Review | 29 Tamil Movie Review | 29 FDFS Review | Preethi Asrani,2026-05-08T11:48:39Z,355052,5524,21,2,False,False,29,2026-07-13 11:29:07.942349+00:00,,,,,
+5mKThr0YJlI,Thi Cinemas,Youth Public Review | Ken Karunas | Youth Review,2026-03-19T06:59:51Z,397116,6398,196,2,False,False,Youth,2026-07-13 11:29:07.942349+00:00,,,,,
+2bEBLs858jw,Picture Hype,Blast Full Movie in Tamil 2026 | Arjun Sarja | Preity Mukhundhan | Abhirami G | Commentary & Review,2026-05-30T10:52:57Z,336271,0,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+LLmkti_XkMk,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-05T22:01:40Z,295475,3841,275,5,True,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+lvbJI7VzyRU,KaKi's Talkies,"Karuppu - Movie Review | Suriya, Trisha, Indrans | RJ Balaji | Sai Abhyankar | KaKis Talkies",2026-05-15T12:03:15Z,92118,2302,152,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+DE2JuWZH8dE,Engal Movies,"Karuppu Tamil Full Movie 2026 | Suriya | RJ Balaji | Trisha | ‪Karuppu Movie Review, Fact & Analysis",2026-06-27T13:30:02Z,852247,8206,0,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+q1Yk7mOv2GQ,Tubelight Mind,Karuppu Movie Honest Review 🔥😮 surya comeback? Theatre Vlog 🔥😅Rj balaji / Trisha #movie #surya,2026-05-18T12:22:29Z,1738637,101287,700,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+RsGnSmmPdkc,VAALIBAN REVIEW ,🔥DAY 6 🔥Karuppu Movie Review |Karuppu Public ReviewKaruppu Review |Surya |RJ Balaji Surya review,2026-05-19T11:14:04Z,6269,193,18,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+zMgM3qKu5oQ,Bingoo Box,Karuppu Public Review | Karuppu Review | Karuppu Movie Review Suriya Karuppu Tamil Cinema Review,2026-05-16T04:42:03Z,18943,525,86,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+ylodPAUV4SI,B5 Voice,Karuppu Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-05-15T12:32:36Z,556900,5294,409,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+CswWdLyJ5uI,Gurubaai,Karuppu Discussion,2026-05-17T07:26:06Z,550837,18855,568,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+dLVO165vC2I,Empty Hand,Karuppu Movie Review - உண்மையா நல்லா இருக்கா? Suriya | RJB | Trisha | ‪Sai Abhyankkar‬ | Tamil,2026-05-15T14:42:16Z,850765,30497,1388,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+3KDXJbHSubM,Filmi craft,Karuppu Movie Review by Filmi craft Arun | Suriya | Trisha Krishnan | RJ Balaji,2026-05-15T08:26:19Z,179787,4264,386,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+1qP32L5hyO4,Filmi craft,Parimala and Co Movie Review by Filmi craft Arun | Jayaram | Urvashi | Mysskin | Pandiraaj,2026-06-05T10:17:39Z,73587,1612,127,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+5LA6GUH2pA8,tamilcinemareview,KARUPPU review by prashanth,2026-05-15T11:16:09Z,243935,6960,669,2,False,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+OjlO3i690xU,Bingoo Box,❤️❤️ Idhayam Murali Public Review Idhayam Murali Movie Review Idhayam Murali Movie Public Review,2026-07-10T07:44:31Z,57308,982,31,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+2ZyWagYyd1M,Chennai Day,IdhayamMurali Review | Idhayam Murali Movie Review | IdhayamMurali Review tamil | IdhayamMurali ! ,2026-07-10T07:31:23Z,8045,205,6,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+Z1Vld_CNUJo,B5 Voice,Idhayam Murali Movie Explained Story & Review In Tamil / New HD Movies Tamil / Explained Movies ,2026-07-10T11:52:54Z,23637,340,43,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+uVQanfNtU70,Valai Pechu,Valai Pechu | ❤️ Idhayam Murali Movie Review | Atharvaa | Kayadu Lohar | Video 3285 | 10th July 2026,2026-07-10T13:05:13Z,78637,1654,51,5,True,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+zzWet6khCHE,tamilcinemareview,IDHAYAM MURALI review by prashanth,2026-07-10T13:11:16Z,48613,1012,92,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+ghgTkC-SI9U,KaKi's Talkies,"Idhayam Murali - Movie Review | Atharvaa, Fahadh Faasil, Preity, Kayadu | Thaman | KaKis Talkies",2026-07-10T11:25:22Z,48862,1257,100,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+UU216Zdz2lc,Trendswood Tv,Idhayam Murali - Movie Review & Ratings | Padam WORTH ah ?,2026-07-10T14:16:30Z,46972,3959,120,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+4v6OWiZAv7Q,Filmi craft,Idhayam Murali Movie Review by Filmicraft Arun|Atharvaa|Kayadu Lohar|Preity Mukhundhan,2026-07-10T14:27:12Z,62538,1539,144,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+K5MWi0ddM-Q,Thi Cinemas,Idhayam Murali Public Review | Atharvaa | Fahadh Faasil | Idhayam Murali Review,2026-07-10T07:06:30Z,164156,2207,89,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+vEgYmiOrmtg,KaKi's Talkies,"Kara - Tamil Movie Review | Dhanush, Mamitha, Suraj | Vignesh Raja | GV Prakash | KaKis Talkies",2026-04-30T11:35:41Z,64277,1547,118,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+La5WyvyO4HM,Tamil Talkies,"KARUPPU Review - Suriya, Trisha, RJ Balaji - Tamil Talkies",2026-05-15T23:01:29Z,942342,17865,3016,5,True,False,Karuppu,2026-07-13 11:29:07.942349+00:00,,,,,
+haLV011BfjA,Tamil Talkies,"KARA Review - Dhanush, KS Ravi Kumar, Jayaram, GV Prakash, Suraj, Mamitha Baiju - Tamil Talkies",2026-04-30T22:54:37Z,504826,7107,660,5,True,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+x30_j_7Si8Y,Chennai Bites ,Idhayam Murali Public Review | Idhayam Murali Review | Idhayam Murali Movie Review | Atharva,2026-07-10T00:01:06Z,25860,310,0,2,False,False,Idhayam Murali,2026-07-13 11:29:07.942349+00:00,,,,,
+eHkjU_Fx_9Y,FEATU GADI MEDIA,Parimala and Co Movie Review Telugu | Parimala And Co Telugu Review | Parimala And Co Review,2026-07-11T08:42:15Z,43943,1089,60,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+z1iWBA43b8g,Makkal Talkies,Kara Movie Public Review | Kara Review Tamil | Dhanush | Suraj | Mamitha | Kara tamilcinemareview,2026-05-02T07:45:08Z,376593,4091,41,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+PneX7CumxoQ,Second Show,"'கர' திரைப்பட விமர்சனம் 'Kara' Movie Review | Vignesh Raja, Dhanush, Mamitha Baiju, GV Prakash Kumar",2026-05-01T15:03:41Z,33122,894,133,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+gDNceT8979U,Shafi Zone,கரசாமி ❌ ஆள விட்றா சாமி ✅ Kara Movie Honest Review 🤔 Shafi Zone,2026-04-30T08:52:19Z,61520,1694,84,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+a28ZC5uxjXU,Varun Talks,Parimala & Co Movie Review | Jayaram | Urvashi | Mysskin | Pandiraj | Yogi Babu | Varun Talks,2026-06-05T07:08:46Z,31230,425,32,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+doqGi23QOu4,Uruttu Arafath Voice,Gatta Kusthi 2 Movie Review 😱💥 || Thalapathy Reference 🔥 #gattakusthi2review #vishnuvishal #shorts,2026-07-03T11:41:45Z,408200,21224,123,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+fNoFDa-QWuo,Azoraho Shoots,Gatta Kusthi 2 Tamil Full Movie (2026) | Vishnu Vishal | Aishwarya Lekshmi |Ajay | Review with Facts,2026-07-09T15:53:12Z,30559,166,0,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+5BPzwwcChO4,Thi Cinemas,Gatta Kusthi 2 Public Review | Vishnu Vishal | Gatta Kusthi 2 Review,2026-07-03T07:05:41Z,63672,672,80,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+qYiwgZPiqPk,Trendswood Tv,Gatta Kusthi 2 - Movie Review & Ratings | Padam WORTH ah ?,2026-07-03T02:15:15Z,53575,4176,83,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+QkGUFx1Ns8Y,Bingoo Box,Gatta Kusthi 2 Public Review | Gatta Kusthi 2 Review | Gatta Kusthi 2 Movie Review | Vishnu Vishal,2026-07-03T07:34:08Z,40939,741,68,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+tWfZJPhxo6o,Tamil Talkies,"GATTA KUSTHI ROUND 2 Review - Vishnu Vishal, Aishwarya Lekshmi, Karunas - Tamil Talkies",2026-07-03T22:25:44Z,349730,6047,489,5,True,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+G-PQXCuMTjM,Second Show,"'கட்டா குஸ்தி 2' விமர்சனம் 'Gatta Kusthi 2' Review | Vishnu Vishal, Aishwarya Lekshmi - Sean Roldan",2026-07-09T14:05:56Z,12694,340,53,2,False,False,Gatta Kusthi 2,2026-07-13 11:29:07.942349+00:00,,,,,
+ccjasf80_dw,tamilcinemareview,KARA review by prashanth,2026-04-30T09:00:34Z,94001,1626,155,2,False,False,Kara,2026-07-13 11:29:07.942349+00:00,,,,,
+u3tOHprtNAI,KaKi's Talkies,"Parimala and Co - Movie Review | Jayaram, Urvasi, Mysskin | Foxn | Pandiraaj | KaKis Talkies",2026-06-05T09:45:55Z,57831,1145,70,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+BmL8FpW59DM,Tube Movies,Blast (2026)| Blast Tamil Full Movie Explain| Arjun | Abhirami | Preity Mukhundhan | Movie Review,2026-07-07T16:30:39Z,78788,336,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+ra9HyjPiQNc,B5 Voice,Parimala And Co Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-06-05T12:51:35Z,82220,810,85,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+Pgx3Mw-FpdQ,Second Show,'பரிமளா & கோ' திரைப்பட விமர்சனம் - 'Parimala & Co' Movie Review | Pandiraaj Jayaram Urvashi Mysskin,2026-06-06T07:58:21Z,24500,512,43,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+seluMZhrPxI,Friday Facts,**தா என்னடா படம் இது🤬 PARIMALA AND CO PUBLIC REVIEW | PARIMALA AND CO Movie Review #parimalaandco,2026-06-05T10:30:25Z,198305,2335,47,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+3hUwnHct-xM,Tamil Talkies,"BLAST Review - Arjun, AGS Entertainments, Ravi Basur  - Tamil Talkies",2026-05-28T23:06:49Z,558697,10146,807,5,True,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+dkOCFL9V0GY,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-08T17:13:21Z,63341,899,7,5,True,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+-GmXAiBTYBQ,Second Show,"'Blast' Tamil Movie Review | Subash K. Raj - Arjun, Abhirami, Preity Mukhundhan - Ravi Basrur",2026-05-31T14:04:46Z,29903,810,82,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+AvPRJgNnkxc,tamilcinemareview,BLAST review by prashanth,2026-05-29T13:05:01Z,79848,1611,140,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+eoUU6YCNAGs,ZyroFlix,Blast (2026) Tamil Full Movie Arjun Sarja | Abhirami | Prety Mukhundhan | John Kokken |Review & Fact,2026-06-28T10:30:13Z,593283,3621,0,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+zkQWiCji7Hw,Filmi craft,Blast Movie Review by Filmi craft Arun | Arjun Sarja | Abhirami | Preity Mukhundhan | Subash K. Raj,2026-05-28T07:48:26Z,139510,3179,213,2,False,False,Blast,2026-07-13 11:29:07.942349+00:00,,,,,
+9prCSA-c38I,The Fencer Show,Parimala And Co Movie Review Tamil | Parimala And Co Review Tamil | Parimala And Co Tamil Review,2026-06-06T11:10:45Z,7605,148,16,2,False,False,Parimala and Co,2026-07-13 11:29:07.942349+00:00,,,,,
+iw_OwVt764A,Mr. GK Movie Man,Gandhi Talks Movie Review | Mr.GK Movie Man,2026-01-30 14:06:44+00:00,7917,198,7,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UC7SYm9cqxPtun1e5PVpucjw,"Gandhi Talks Movie Review 
+
+Vijay Sethupathi | Aravindswamy | Aditi Rao | AR Rahman
+
+#gandhitalks #vijaysethupathi #aravindswamy #aditiraohydari #arrahman #movie #moviereview #tamilmovie #trending #viral",https://i.ytimg.com/vi/iw_OwVt764A/hqdefault.jpg,PT11M24S,Video
+P9wB0hzx57c,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-02-02 18:41:36+00:00,40699,589,4,5,True,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Twitter - http://www.twitter.com/TamilTalkies
+Facebook - http://www.facebook.com/TamilTalkiesDotNet",https://i.ytimg.com/vi/P9wB0hzx57c/hqdefault.jpg,PT2M57S,Video
+mLOgiQrhx0g,The Fencer Show,Gandhi Talks Movie Review Tamil | Gandhi Talks Review Tamil | Gandhi Talks Tamil Review,2026-01-29 20:25:26+00:00,13910,238,17,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCvpRUvsqFkRpO6gk_vz7mSw,"Gandhi Talks Movie Review Tamil by The Fencer Show | Gandhi Talks Review Tamil | Gandhi Talks Tamil Review | Theatres
+
+Gandhi Talks (2026) is a Tamil Movie releasing in Theatres
+
+#GandhiTalksReview
+#GandhiTalks
+#GandhiTalksTrailer
+#GandhiTalksReviewTamil
+#GandhiTalksMovieReview
+#GandhiTalksTrailerTamil
+#GandhiTalksTamilReview
+#GandhiTalksMovie
+#GandhiTalksTamilMovieReview
+#GandhiTalksTamilMovie
+#GandhiTalksFullMovie
+#GandhiTalksTamilTrailer
+#GandhiTalks2026
+#GandhiTalks2026Review
+#GandhiTalksInTheatres
+
+Gandhi Talks 2026 Tamil Movie Review
+Gandhi Talks Movie Review in Tamil
+Gandhi Talks Review in Tamil
+Gandhi Talks Tamil Review
+Gandhi Talks 2026 Movie Review in Tamil
+Gandhi Talks Trailer Tamil
+Gandhi Talks Trailer
+Gandhi Talks Full Movie
+Gandhi Talks Movie Trailer
+Gandhi Talks Movie Trailer Tamil
+Gandhi Talks Tamil Trailer
+
+Please find below the key social media links of my channel – The Fencer Show 🎬
+📺 YouTube: https://youtube.com/channel/UCvpRUvsqFkRpO6gk_vz7mSw
+🐦 Twitter (X): https://twitter.com/the_fencer_show?s=09
+📸 Instagram: https://instagram.com/the_fencer_show?utm_medium=copy_link",https://i.ytimg.com/vi/mLOgiQrhx0g/hqdefault.jpg,PT3M11S,Video
+gIS58gBJVpY,tamilcinemareview,GANDHI TALKS review by prashanth,2026-01-31 17:47:20+00:00,16343,318,20,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,Review about recently released tamil movie gandhi talks!,https://i.ytimg.com/vi/gIS58gBJVpY/hqdefault.jpg,PT6M13S,Video
+YH_HeVOtpfA,Second Show,"'Gandhi Talks' Movie Review | Kishor Pandurang Belekar - Vijay Sethupathi, Arvind Swamy - A.R.Rahman",2026-02-08 11:21:51+00:00,18622,427,28,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"​​Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join 
+
+For advertisements / business enquiries, do contact tamilsecondshow@gmail.com or Whatsapp @ 9543264797 
+
+~
+
+Review of 'Gandhi Talks' directed by Kishor Pandurang Belekar starring Vijay Sethupathi, Arvind Swamy, Aditi Rao Hydari, Siddharth Jadhav, Mahesh Manjrekar. 
+
+Music - A.R.Rahman
+Cinematography - Karan B. Rawat
+Editing - Ashish Mhatre
+
+Produced by - Zee Studios, Kyoorius & Moviemill
+
+~ 
+
+#GandhiTalksReview
+#GandhiTalks
+#GandhiTalksTamil",https://i.ytimg.com/vi/YH_HeVOtpfA/hqdefault.jpg,PT8M27S,Video
+cbllSrGPjs0,KaKi's Talkies,"Gandhi Talks - Movie Review | Vijay Sethupathi, Arvind Swamy, Aditi Rao | Kishor | KaKis Talkies",2026-01-30 14:47:05+00:00,37603,863,29,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#GandhiTalks #GandhiTalksReview #GandhiTalksMovieReview #VijaySethupathi #ArvindSwamy #AditiRaoHydari #ARRahman #KishorPandurangBalekar #KaKisTalkies 
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian No Dialogues Silent film Gandhi Talks directed by Kishor Pandurang Belekar. The film stars Vijay Sethupathi, Arvind Swamy, Aditi Rao Hydari, and Siddharth Jadhav. It premiered at the International Film Festival of India in 2023, eventually receiving a theatrical release in January 2026. The soundtrack was composed by A. R. Rahman.
+
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/cbllSrGPjs0/hqdefault.jpg,PT6M23S,Video
+OuKiix3n8-U,Thi Cinemas,Gandhi Talks Public Review | Vijay Sethupathi | Gandhi Talks Review,2026-01-30 07:40:49+00:00,75343,614,42,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCrn698AOJJ69zWN9Z_kTAKQ,"Gandhi Talks Public Review | Vijay Sethupathi | Gandhi Talks Review
+
+Watch Gandhi Talks public review.
+Gandhi Talks movie audience response.
+Gandhi Talks movie fdfs review.
+Gandhi Talks public review
+
+Presenting Public review of  Gandhi Talks movie. Gandhi Talks public review is taken from Chennai FDFS.
+
+Gandhi Talks is an 2026 drama film directed by Kishor Pandurang Belekar and produced by Zee Studios and Kyoorius and Moviemill. The film, which has no spoken dialogue, stars Vijay Sethupathi, Arvind Swamy, Aditi Rao Hydari, and Siddharth Jadhav. It premiered at the International Film Festival of India in 2023. The soundtrack was composed by A. R. Rahman.
+
+Gandhi Talks worldwide from today.
+
+#gandhitalksreview
+#gandhitalkspublicreview
+#gandhitalksfdfsreview
+#gandhitalksmoviereview
+
+
+Movie Credits:
+
+Cast - Vijay Sethupathi, Arvind Swami, Aditi Rao Hydari, Siddharth Jadhav
+
+An A.R. Rahman Musical 
+
+Writer & Director - Kishor Pandurang ‘Belekar’
+Producers: Rajesh Kejriwal, Gurpal Sachar
+Producers: Umesh Kumar Bansal, Meerra Chopraa, Kishor P Belekar
+Co-Producer: Anil Bhandari 
+Production House - Zee Studios, Kyoorius, Pincmoon & Moviemill Entertainment
+Creative Producer - Nisheeth Chandra
+Associate Producer - Deepak R. Nangalia
+Director Of Photography - Karan B. Rawat
+Production Designer - Durgaprasad Mahapatra
+Costume Designers - Neetu Bharadwaj, Priyanka Dubey, Kavitha
+Sound Designer - Justin Jose
+Music Supervisor - Shubham Bhat
+Makeup Designer - Rohit Mahadik 
+Editor - Ashish Mhatre
+VFX - Postmen Studios
+DI - Prime Focus Ltd.
+DI Colorist - Ashirwad Hadkar (ISC)
+Post-Production Head - Paras Fulambarkar
+
+
+
+Thi Cinemas Tamil Channel in YouTube . We are committed to Give you an Unbiased, Straightforward and a balanced  knowledge about Cinema programme with credibility. 
+
+We can assure you that we will bring the best of the world in Tamil Cinema ..... "" Be with Us to know the real Truth "" come to us for very day updates
+
+A Complete Portal For Instant  Tamil Cinema Events Updates & FDFS Celebrations , Movie reviews , Public opinions.
+
+----------------------------------------------
+Follow & Subscribe Us On :-
+Subscribe us on YouTube : @Thicinemas
+Like us on Facebook : https://www.facebook.com/thicinemas
+Follow us on Twitter : https://x.com/ThiCinemas
+Follow us on Instagram : https://www.instagram.com/thi.cinemas/
+
+
+gandhi talks, gandhi talks review, gandhi talks fdfs, gandhi talks fdfs review, gandhi talks fdfs public review, gandhi talks fdfs response, gandhi talks fdfs theatre response, gandhi talks fdfs reaction, gandhi talks fdfs review tamil, gandhi talks public review, gandhi talks response, gandhi talks theatre response, gandhi talks reaction, gandhi talks review tamil, gandhi talks public review in tamil, public review gandhi talks, gandhi talks movie public review, gandhi talks movie public review in tamil, gandhi talks movie public talk, gandhi talks movie public opinion, gandhi talks movie review, gandhi talks movie review tamil, public review gandhi talks movie, thi cinemas public opinion, thi cinemas latest public review, thi cinemas public review latest, thi cinemas channel, public review thi cinemas, movie review thi cinemas, gandhi talks thi cinemas, gandhi talks review thi cinemas, gandhi talks public review thi cinemas, thi cinemas gandhi talks review, thi cinemas public reiew gandhi talks, காந்தி டாக்ஸ் படம் எப்படி இருக்கு, காந்தி டாக்ஸ் விமர்சனம், காந்தி டாக்ஸ் மக்கள் கருத்து, காந்தி டாக்ஸ் FDFS, காந்தி டாக்ஸ் FDFS review, காந்தி டாக்ஸ் review, காந்தி டாக்ஸ் public review, காந்தி டாக்ஸ் movie review,",https://i.ytimg.com/vi/OuKiix3n8-U/hqdefault.jpg,PT8M2S,Video
+sX-AyaZtsi4,Filmi craft,Gandhi Talks Movie Review by Filmi craft Arun | Vijay Sethupathi | Arvind Swamy | Aditi Rao Hydari,2026-01-30 05:21:18+00:00,60432,1224,102,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#GandhiTalksReview
+#GandhiTalksMovieReview
+#GandhiTalks
+#GandhiTalksReviewTamil
+#GandhiTalksMovieReviewTamil
+#காந்திடாக்ஸ்
+#காந்திடாக்ஸ்விமர்சனம்
+#காந்திடாக்ஸ்ரிவியூ
+#Filmicraft
+
+Gandhi Talks is a 2026 (2023 - IFFI) Indian drama film directed by Kishor Pandurang Belekar. The film, which has no spoken dialogue, stars Vijay Sethupathi, Arvind Swamy, Aditi Rao Hydari, and Siddharth Jadhav.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/sX-AyaZtsi4/hqdefault.jpg,PT6M28S,Video
+1JAfJ6lazmE,Makkal Talkies,Gandhi Talks Public Review | Gandhi Talks Movie Review | Gandhi Talks Review | tamilcinemareview,2026-01-30 11:41:00+00:00,142256,864,4,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCIuBpQMynXm8st99tttE6uQ,"#GandhiTalksPublicReview #GandhiTalksMovieReview #GandhiTalksReview #GandhiTalksReviewTamil #GandhiTalksReviewMalayalam #vijaysethupathi #arvindswamy #aravindswamy #vijaysethupathy #aditi #hindidubbed #tamildubbedmoviereview #Tamildubbedstory #makkaltalkiesreview #movieratingsystem #mankatharerelease #movierating #thalapathyvijay #jananayaganupdate #ajith #kamalatheatre #ajithkumar #tamilcinema #fdfs  #chennaitheatre #Chennaitheatrereview #fdfspublicreview #fdfsreview #fdfsmoviereview 
+
+Gandhi Talks FDFS Review Tamil, Gandhi Talks Review Tamil, Gandhi Talks Review Malayalam, Gandhi Talks Review Hindi, Gandhi Talks Day2 Review, Gandhi Talks Day3 Review, Gandhi Talks Day4 Review, Gandhi Talks Day5 Review, Gandhi Talks Day6 Review, Gandhi Talks Press Meet Interview, Gandhi Talks Vijay Sethupathi Speech, Gandhi Talks Arvind Swamy Speech, Gandhi Talks 2nd Day Review, Gandhi Talks 3rd Day Review, Gandhi Talks 4th Day Review, Gandhi Talks 5th Day Review, Gandhi Talks 6th Day Review, Gandhi Talks tamil talkies review, MakkalTalkiesReview, makkal talkies review, Gandhi Talks blue sattai review, Gandhi Talks tamilcinemareview, Gandhi Talks No Voice Scene, Gandhi Talks Movie Scene",https://i.ytimg.com/vi/1JAfJ6lazmE/hqdefault.jpg,PT9S,Short
+5BPzwwcChO4,Thi Cinemas,Gatta Kusthi 2 Public Review | Vishnu Vishal | Gatta Kusthi 2 Review,2026-07-03 07:05:41+00:00,63730,674,80,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCrn698AOJJ69zWN9Z_kTAKQ,"Gatta Kusthi 2 Public Review | Vishnu Vishal | Gatta Kusthi 2 Review | 
+
+Watch vishnu vishal Gatta Kusthi 2 public review.
+Gatta Kusthi 2 movie audience response.
+Gatta Kusthi 2 movie fdfs review.
+Gatta Kusthi 2 public review.
+
+Presenting Public review of  Gatta Kusthi 2 movie. Gatta Kusthi 2 public review is taken from Chennai FDFS.
+
+Gatta Kusthi 2 is an 2026 Indian Tamil-language film written and directed by Chella Ayyavu. Produced by Dr. Ishari K. Ganesh under Vels Vels Film International Ltd, Vishnu Vishal Studioz. The film stars Vishnu Vishal, Aishwarya Lekshmi, Ramya Krishnan, Yogi Babu, Karunaas, Muniskanth, Kaali Venkat, Karunakaran, Zara, Mokksha and others. The film has music composed by Sean Roldan, cinematography handled by KM Bhaskaran and editing by Barath Vikraman.
+
+Gatta Kusthi 2 released released worldwide from today.
+
+#gattakusthi2
+#gattakusthi2review
+#gattakusthi2publicreview
+#gattakusthi2fdfsreview
+#gattakusthi2moviereview
+ 
+
+Movie Credits:
+
+Produced by Vels Film International, Vishnu Vishal Studioz. 
+Starring - Vishnu Vishal, Aishwarya Lekshmi, Ramya Krishnan, Yogi Babu, Karunaas, Muniskanth, Kaali Venkat, Karunakaran, Zara, Mokksha and others. 
+Written and Directed by - Chella Ayyavu
+Producers : Dr Ishari K Ganesh & Vishnu Vishal 
+Co- Producers : Shubhra, Aryan Ramesh & Ishan Saksena
+Music : Sean Roldan 
+DOP : KM Bhaskaran 
+Editor : Barath Vikraman
+Art Director : Jayachandran
+Costume designer : Ruchi Munoth
+Subtitles - Sajid Ali 
+Publicity Designer : Viyaki
+Marketing and Promotions : Siddarth Srinivas
+Executive Producer : Seetharam
+Creative Producer : Shravanthi Sainath
+Music Label - Sony Music India Pvt. Ltd.
+
+
+Thi Cinemas Tamil Channel in YouTube . We are committed to Give you an Unbiased, Straightforward and a balanced  knowledge about Cinema programme with credibility. 
+
+We can assure you that we will bring the best of the world in Tamil Cinema ..... "" Be with Us to know the real Truth "" come to us for very day updates
+
+A Complete Portal For Instant  Tamil Cinema Events Updates & FDFS Celebrations , Movie reviews , Public opinions.
+
+----------------------------------------------
+Follow & Subscribe Us On :-
+Subscribe us on YouTube : @Thicinemas
+Like us on Facebook : https://www.facebook.com/thicinemas
+Follow us on Twitter : https://x.com/ThiCinemas
+Follow us on Instagram : https://www.instagram.com/thi.cinemas/
+
+gatta kusthi 2, gatta kusthi 2 review, gatta kusthi 2 fdfs, gatta kusthi 2 fdfs review, gatta kusthi 2 fdfs public review, gatta kusthi 2 fdfs response, gatta kusthi 2 fdfs theatre response, gatta kusthi 2 fdfs reaction, gatta kusthi 2 fdfs review tamil, gatta kusthi 2 public review, gatta kusthi 2 response, gatta kusthi 2 theatre response, gatta kusthi 2 reaction, gatta kusthi 2 review tamil, gatta kusthi 2 public review in tamil, public review gatta kusthi 2, gatta kusthi 2 movie public review, gatta kusthi 2 movie public review in tamil, gatta kusthi 2 movie public talk, gatta kusthi 2 movie public opinion, gatta kusthi 2 movie review, gatta kusthi 2 movie review tamil, public review gatta kusthi 2 movie, thi cinemas public opinion, thi cinemas latest public review, thi cinemas public review latest, thi cinemas channel, public review thi cinemas, movie review thi cinemas, gatta kusthi 2 thi cinemas, gatta kusthi 2 review thi cinemas, gatta kusthi 2 public review thi cinemas, thi cinemas gatta kusthi 2 review, thi cinemas, public reiew gatta kusthi 2, how is the film gatta kusthi 2 review, கட்டா குஸ்தி 2 படம் எப்படி இருக்கு, கட்டா குஸ்தி 2 விமர்சனம், கட்டா குஸ்தி 2 மக்கள் கருத்து, vishnu vishal gatta kusthi 2 review, vishnu vishal gatta kusthi 2 public review,",https://i.ytimg.com/vi/5BPzwwcChO4/hqdefault.jpg,PT10M3S,Video
+fNoFDa-QWuo,Azoraho Shoots,Gatta Kusthi 2 Tamil Full Movie (2026) | Vishnu Vishal | Aishwarya Lekshmi |Ajay | Review with Facts,2026-07-09 15:53:12+00:00,36189,220,0,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCn-jGR4yLLQeBoOJcb5vOXw,"#GattaKusthi2TamilMovie #VishnuVishal #ishwaryaLekshmi
+
+Gatta Kusthi 2 Tamil Full Movie (2026) | Vishnu Vishal | Aishwarya Lekshmi |Ajay | Review with Facts 
+
+Movie Story Short plot : A woman with a secret past struggles for acceptance in a traditional home. But, when threats from her old life emerge, she must protect her skeptical family while keeping her history hidden. 
+
+
+⚠️ NOTE: This video is NOT a full movie.
+This content is only made for Commentary, Review, Entertainment & Educational purposes.
+
+Agar aapko Tamil movies, Bollywood movies, South Indian action films aur movie commentary videos pasand hain to channel ko Subscribe zarur karein ❤️
+
+📌 This video is made only for Entertainment & Educational purposes.
+
+⚠️ Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for “Fair Use” for purposes such as criticism, comment, news reporting, teaching, scholarship and research. Fair use is permitted by copyright statute that might otherwise be infringing.
+
+⚠️ All Images, Clips & Music used in the video belong to their respective owners. No copyright infringement intended. 
+
+Music Attribution: 
+Long Live Death by Audionautix is licensed under a Creative Commons Attribution 4.0 license. https://creativecommons.org/licenses/by/4.0/
+
+
+#GattaKusthi2Movie #Munishkanth #AishwaryaLekshmi #GattaKusthi2FullMovie #GattaKusthi2TamilMovie #LizzieAntony",https://i.ytimg.com/vi/fNoFDa-QWuo/hqdefault.jpg,PT2H26M34S,Video
+G-PQXCuMTjM,Second Show,"'கட்டா குஸ்தி 2' விமர்சனம் 'Gatta Kusthi 2' Review | Vishnu Vishal, Aishwarya Lekshmi - Sean Roldan",2026-07-09 14:05:56+00:00,12871,343,54,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join",https://i.ytimg.com/vi/G-PQXCuMTjM/hqdefault.jpg,PT6M56S,Video
+QkGUFx1Ns8Y,Bingoo Box,Gatta Kusthi 2 Public Review | Gatta Kusthi 2 Review | Gatta Kusthi 2 Movie Review | Vishnu Vishal,2026-07-03 07:34:08+00:00,41019,742,68,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCtuuSv_4r6op5RHDs9HzsqA,"#GattaKusthi2 #GattaKusthi2Reviewtamil #GattaKusthi2Review #GattaKusthi2MovieReview #GattaKusthi2PublicReview  #GattaKusthi2OfficialTrailer #GattaKusthi2Trailer #GattaKusthi2movie #GattaKusthi2tamil #GattaKusthi2TamilTrailer #GattaKusthi2Movie
+
+
+ＬＩＫＥ | ＣＯＭＭＥＮＴ | ＳＨＡＲＥ | ＳＵＢＳＣＲＩＢＥ
+
+Join us 
+Facebook : www.facebook.com/bingoobox 
+Twitter : www.twitter.com/bingoobox
+Instagram : www.instagram.com/bingoobox",https://i.ytimg.com/vi/QkGUFx1Ns8Y/hqdefault.jpg,PT11M22S,Video
+qYiwgZPiqPk,Trendswood Tv,Gatta Kusthi 2 - Movie Review & Ratings | Padam WORTH ah ?,2026-07-03 02:15:15+00:00,53586,4175,83,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCAXxuSl8n8cXU62ZIzFL0qg,Gatta Kusthi 2 - Movie Review & Ratings | Padam WORTH ah ?,https://i.ytimg.com/vi/qYiwgZPiqPk/hqdefault.jpg,PT2M15S,Video
+doqGi23QOu4,Uruttu Arafath Voice,Gatta Kusthi 2 Movie Review 😱💥 || Thalapathy Reference 🔥 #gattakusthi2review #vishnuvishal #shorts,2026-07-03 11:41:45+00:00,409979,21275,123,2,False,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UC4jdvXkem9QuvPR_0NRa31w,,https://i.ytimg.com/vi/doqGi23QOu4/hqdefault.jpg,PT47S,Short
+tWfZJPhxo6o,Tamil Talkies,"GATTA KUSTHI ROUND 2 Review - Vishnu Vishal, Aishwarya Lekshmi, Karunas - Tamil Talkies",2026-07-03 22:25:44+00:00,350833,6057,489,5,True,False,Gatta Kusthi 2,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,#gattakusthi2movieReview #gattakusthi2Review #gattakusthi2,https://i.ytimg.com/vi/tWfZJPhxo6o/hqdefault.jpg,PT5M50S,Video
+jHYMjoqChwY,"Mr Mus . 1.5 crore views . 1 hour ago
+
+
+
+
+...",Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,2026-03-26 10:48:08+00:00,21288,80,0,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCsafkgG-ZkVTrhb0NHTg2Bg,Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,https://i.ytimg.com/vi/jHYMjoqChwY/hqdefault.jpg,PT46S,Short
+IBvWhGDjvqk,"Mr Mus . 1.5 crore views . 1 hour ago
+
+
+
+
+...",Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,2026-04-29 05:30:15+00:00,6802,43,0,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCsafkgG-ZkVTrhb0NHTg2Bg,Kara Public Review | Kara Review | Kara Movie Review | Dhanush | Vignesh raja,https://i.ytimg.com/vi/IBvWhGDjvqk/hqdefault.jpg,PT45S,Short
+cuRKtVyxAAc,Critics Mohan,Kara Review #dhanush #mamithabaiju Kara Movie Review | CriticsMohan | Kara Tamil Movie ,2026-05-01 07:42:28+00:00,4261,95,4,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCTiG1IJdG1EwF2af1Gb71OA,,https://i.ytimg.com/vi/cuRKtVyxAAc/hqdefault.jpg,PT2M53S,Video
+nTpsJJG068E,Tamil Talkies,"GANDHI TALKS Review - Vijay Sethupathi, Arvind Swamy - Tamil Talkies",2026-01-31 02:52:21+00:00,256355,3210,216,5,True,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Download Thatzal App For Drivers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltripdriver
+Download Thatzal App For Passengers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltrip
+Download Thatzal App From App store - https://apps.apple.com/in/app/thatzal-trip/id6747298405",https://i.ytimg.com/vi/nTpsJJG068E/hqdefault.jpg,PT4M47S,Video
+QNMiCPLja_M,Critics Mohan,Gandhi Talks Review Tamil Movie | Vijaysethupathi X Arvindh Swamy X Aditirao | Gandhi Talks Enview ,2026-02-01 03:59:33+00:00,3742,81,2,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UCTiG1IJdG1EwF2af1Gb71OA,"#GandhiTalksReview
+#GandhiTalksMovieReview
+#GandhiTalksTamilMovie
+#GandhiTalksReviewTamil
+#GandhiTalksTamilReview 
+
+Folllow My Instagram Id :-
+https://instagram.com/criticsmohans
+
+Follow OG Salem Page :- 
+https://www.instagram.com/og_salem_
+
+Follow Telegram Channel Link:- https://t.me/CriticsMohans 
+
+
+Follow Telegram Channel Discussion Group Link:-
+https://t.me/CriticsMohansOffical
+
+#jiohotstar #webseries #moviereview #zee5 
+#amazonprime #netflix #criticsmohan #Sonyliv #tamildubbed #thrillermovies #horrormovie 
+#tamilcinema #crimethrillers #actionmovies 
+#suspense #mystery #top10movies #tamilmovie 
+
+Copyright Disclaimer : 
+Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for ""fair use"" for purposes such as criticism, Reviewing, comment, news reporting, teaching, scholarship, and research about cinema.
+
+NOTE:
+Please do not take down the video if there is any Copyright issue. If you have any problem with this content being uploaded please contact me for removal. mohansampath4321@gmail.com
+Will respond immediately",https://i.ytimg.com/vi/QNMiCPLja_M/hqdefault.jpg,PT2M23S,Video
+Kst9sXhYsZw,Recent Voice,Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | Nivas Prasanna | Review,2026-02-25 18:03:04+00:00,19753,248,11,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCOIr_DxqnVaTpdp22xLC8Vw,"Presenting the Review of ""Thaai Kizhavi"" starring Radikaa Sarathkumar, Singam Puli, Arul Doss, Bala Saravanan, Munishkanth, Ilavarasu, George Maryan, Muthukumar, Raichal Rabecca and others. Directed by Sivakumar Murugesan. Music Composed by Nivas K Prasanna
+
+#ThaaiKizhaviMovieReview #ThaaiKizhaviReview #ThaaiKizhaviMovie #RadikaaSarathkumar #SivakumarMurugesan #Sivakarthikeyan #ThaaiKizhaviTrailer #ThaaiKizhaviFDFS
+
+Movie Credits:
+
+Cast: 
+Radikaa Sarathkumar
+Singam Puli
+Arul Doss
+Bala Saravanan
+Munishkanth
+Ilavarasu
+George Maryan
+Muthukumar
+Raichal Rabecca
+
+Banner: Passion Studios - Sivakarthikeyan Productions
+Produced By: Sudhan Sundaram - Sivakarthikeyan
+Co-Produced By: Kalai Arasu
+Written & Directed By: Sivakumar Murugesan
+Music: Nivas K Prasanna
+Editor: San Lokesh
+Director of Photography: Vivek Vijayakumar
+Production Designer: Ramu Thangaraj
+Sound Design: Suren G / S Alagiakoothan
+Sound Mix: Suren G 
+
+Subscribe To : https://www.youtube.com/@RecentVoice/videos
+Follow Twitter : https://twitter.com/recentvoiceoffl
+Follow Facebook : https://www.facebook.com/RecentVoiceOffl
+
+Ajithkumar, Vijay, Rajinikanth, Kamal, Suriya, Vikram, SilambaransanTR, Dhanush, Sivakarthikeyan, Vishal, Karthi, Ravi Mohan, Trisha, Nayanthara, Tamil Cinema, Tamil Cinema Videos, Tamil Latest News, Latest Tamil Reviews, Tamil Movies Latest, Tamil Cinema Latest News, Latest Tamil Releases, Rajini Movies, Ajith Movies, Vijay Movies, Suriya Movies, Dhanush Movies, Sivakarthikeyan Movies, Recent Voice, Recent Voice Video, Recent Voice Interviews",https://i.ytimg.com/vi/Kst9sXhYsZw/hqdefault.jpg,PT10M5S,Video
+sGZ_wEjhu5U,Tamil Talkies,"THAAI KIZHAVI Review - Raadhika, Sivakarthikeyan - Tamil Talkies",2026-02-26 21:36:56+00:00,703279,9708,936,5,True,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Download Thatzal App For Drivers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltripdriver
+Download Thatzal App For Passengers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltrip
+Download Thatzal App From App store - https://apps.apple.com/in/app/thatzal-trip/id6747298405",https://i.ytimg.com/vi/sGZ_wEjhu5U/hqdefault.jpg,PT5M37S,Video
+ECZlvHorom8,KaKi's Talkies,"Youth - Tamil Movie Review | Ken Karunaas, Devadarshini, Suraj | GV Prakash | KaKis Talkies",2026-03-19 12:53:59+00:00,52632,1236,68,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#Youth #YouthReview #YouthTamilMovie #YouthMovieReview #KenKarunaas #Devadarshini SurajVenjaramoodu #anishmaanilkumar #meenakshidinesh #priyanshiyadav #KaKisTalkies 
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil Language Romantic Comedy Film Youth, Starring Ken Karunas, anishma anilkumar, meenakshi dinesh, priyanshi yadav, Suraj Venjaramoodu, Devaradarshini and others. Written, Directed & Performed by - Ken & Gang, Produced by - Karuppiah C. Ram & Sulochana Kumar, A G.V. Prakash Kumar musical, Cinematography - Viki, Editor - Nash
+
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/ECZlvHorom8/hqdefault.jpg,PT5M31S,Video
+rRL7e36tzY0,Makkal Vote,Kara Public Review | Kara Movie Review | Kara Review Tamil | Dhanush Speech | Kara tamilcinemareview,2026-04-30 18:20:00+00:00,288701,3260,39,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCswGBM0SStwwHxJkP-Rlj4Q,"#KaraPublicReview #KaraMovieReview #KaraReview #KaraReviewTamil #KaraReviewTelugu #Kara #KaraMoviePublicReview #dhanush #dhanushkraja #dhanushspeech #mamithabaiju #mamitha #kamalatheatre #tvkvijay #movierating #tamilcinemareview #tamilcinema #moviereview #theatreresponse #makkalvote #makkalvotereview #makkalvotelive #tamildubbedmoviestory #tamildubbedmoviereview #ksravikumar #gvprakash #gvprakashkumar #tvk #ntk #tnelection2026 #tnelectionresults #makkalkaruthu #makkalmandram #KaraFDFSReview 
+
+Kara Movie Public Review, Kara Theatre Response, Kara Day2 Review, Kara Day3 Review, Kara Day4 Review, Kara Day5 Review, Kara 2nd Day Review, Kara 3rd Day Review, Kara 4th Day Review, Kara 5th Day Review, Kara FDFS Review, Kara Review Tamil, Kara Review Telugu, Kara Review Malayalam, Dhanush Speech, Mamitha Baiju Dance, Mamitha Baiju, KS Ravikumar, Karunas Scene, MS Bhaskar Scene in Kara Movie, Vivasayigal content Movie, MakkalVoteReview, makkal vote review, makkal vote live, tamilcinemareview, Kara tamilcinemareview, tamil talkies review, blue sattai review, Review byPrasanth, Kara Dhanush Entry Scene, Kara JaiRam",https://i.ytimg.com/vi/rRL7e36tzY0/hqdefault.jpg,PT16S,Short
+j268kVQY98Y,tamilcinemareview,YOUTH review by prashanth,2026-03-20 16:44:24+00:00,53373,1413,101,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,review about recently released tamil movie youth!,https://i.ytimg.com/vi/j268kVQY98Y/hqdefault.jpg,PT9M33S,Video
+QlIBfkb21Mc,Filmi craft,Youth movie Review by Filmi craft Arun | Ken Karunaas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19 10:39:36+00:00,90881,1877,146,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#YouthReview
+#YouthMovieReview
+#YouthMovie
+#Youth2026
+#YouthMovieReviewTamil
+#யூத்விமர்சனம்
+#யூத்ரிவியூ
+#யூத்மூவி
+#Filmicraft
+
+Youth is a 2026 Indian Tamil-language coming-of-age romantic comedy drama written and directed by Ken Karunaas.
+The film features Ken Karunaas, Suraj Venjaramoodu, Devadarshini, Anishma Anilkumar, Meenakshi Dinesh, and Priyanshi Yadav.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/QlIBfkb21Mc/hqdefault.jpg,PT7M17S,Video
+HHu7PHif4mE,Trendswood Tv,YOUTH - Movie Review & Ratings | Padam WORTH ah ?,2026-03-19 07:42:40+00:00,60886,5171,180,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCAXxuSl8n8cXU62ZIzFL0qg,"YOUTH - Movie Review & Ratings | Padam WORTH ah ?
+
+#Youth #Review #Movie",https://i.ytimg.com/vi/HHu7PHif4mE/hqdefault.jpg,PT2M1S,Video
+Toas2mtps7c,Aswanth Kok,Youth Review Malayalam | Ken Karunas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19 17:53:44+00:00,141685,2669,190,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCr8xb2866oogDXDSN5-2Mxw,,https://i.ytimg.com/vi/Toas2mtps7c/hqdefault.jpg,PT6M8S,Video
+5mKThr0YJlI,Thi Cinemas,Youth Public Review | Ken Karunas | Youth Review,2026-03-19 06:59:51+00:00,397118,6398,196,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCrn698AOJJ69zWN9Z_kTAKQ,"Youth Public Review | Ken Karunas | Youth Review
+
+Watch Youth public review.
+Youth movie audience response.
+Youth movie fdfs review.
+Ken Karunas Youth public review.
+
+Presenting Public review of  Youth movie. Youth public review is taken from Chennai.
+
+Youth is an 2026 Indian Tamil film written and directed by Ken & Gang. Produced by Karuppiah C. Ram & Sulochana Kumar under Paarvathaa Entertainments. The film stars Ken Karunas, Suraj Venjanamodu, Devadharshini, Anishma,Meenakshi Priyanshi, Chinnathamizha. The film has music composed by G.V. Prakash Kumar, cinematography handled by Viki and editing by Nash.
+
+Youth released worldwide from today.
+
+#youthreview
+#youthpublicreview
+#youthfdfsreview
+#youthmoviereview
+#youthmovie
+ 
+
+
+Movie Credits:
+
+Written, Directed & Performed by - Ken & Gang
+Produced by - Karuppiah C. Ram & Sulochana Kumar
+A G.V. Prakash Kumar Magical
+Cinematography - Viki
+Editor - Nash
+Art Director - Ramu Thangaraj
+Costume Designer - Kavya Sriram
+Creative Producer - Vijay MP
+Head of Production - Chelladurai B.
+Executive Producers -Arokia Victor Prince M. 
+Project Consultant - Tejesh Suresh
+Associate Producer - Abdul Rahuman Fahim
+Administration Executive - Suresh Kumar
+Lyrics - Vignesh Srikanth,Ken K,Eshwar Santhanalakshmi
+Stunts - Kalai Kingson
+Choreography - Shobi Paulraj
+Sound Design - Sync Cinema
+Sound Mix - Aravind Menon
+DI - Suresh Ravi (Mango Post)
+VFX - Renderhood
+Co-Directors - Pradeep Devakumar,Joshua Williams
+Direction Team - Lohith,Peter Williams,Srinivasan Aravind,Yogeshwaran R,Rethiesh
+DOP Team - R. A. Prakash, D. Selvam BVA,Vigneshwaran M.
+BTS - The KK
+Stills - Balaji Varadan
+Marketing - Venkat Ramanan,Digitally Powerful
+Posters - Kabilan Chelliah
+PRO - Barani
+
+
+Thi Cinemas Tamil Channel in YouTube. We are committed to Give you an Unbiased, Straightforward and a balanced  knowledge about Cinema programme with credibility. 
+
+We can assure you that we will bring the best of the world in Tamil Cinema ..... "" Be with Us to know the real Truth "" come to us for very day updates
+
+A Complete Portal For Instant  Tamil Cinema Events Updates & FDFS Celebrations , Movie reviews , Public opinions.
+
+----------------------------------------------
+Follow & Subscribe Us On :-
+Subscribe us on YouTube : @Thicinemas
+Like us on Facebook : https://www.facebook.com/thicinemas
+Follow us on Twitter : https://x.com/ThiCinemas
+Follow us on Instagram : https://www.instagram.com/thi.cinemas/
+
+
+youth, youth review, youth fdfs, youth fdfs review, youth fdfs public review, youth fdfs response, youth fdfs theatre response, youth fdfs reaction, youth fdfs review tamil, youth public review, youth response, youth theatre response, youth reaction, youth review tamil, youth public review in tamil, public review youth, youth movie public review, youth movie public review in tamil, youth movie public talk, youth movie public opinion, youth movie review, youth movie review tamil, public review youth movie, thi cinemas public opinion, thi cinemas latest public review, thi cinemas public review latest, thi cinemas channel, public review thi cinemas, movie review thi cinemas, youth thi cinemas, youth review thi cinemas, youth public review thi cinemas, thi cinemas youth review, thi cinemas public reiew youth, how is the film youth review, யூத் படம் எப்படி இருக்கு, யூத் விமர்சனம், யூத் மக்கள் கருத்து, யூத் FDFS, யூத் FDFS review, யூத் review, யூத் public review, யூத் movie review,",https://i.ytimg.com/vi/5mKThr0YJlI/hqdefault.jpg,PT12M39S,Video
+dzMotcbkyV0,Vaai Savadaal,YOUTH REVIEW,2026-03-20 13:05:46+00:00,70937,3739,288,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCU0U7reTj3KykVTxALcEg9Q,"Join Channel: https://bit.ly/JoinVaaisavadaal
+Join Vaai Savadaal Members for EXCLUSIVE Film analysis videos🌝
+
+Do Follow Our INSTAGRAM for more updates: 
+https://bit.ly/cine_fellas_ 
+(cine_fellas_)
+
+Shorts channel: 
+https://youtube.com/@vaaisavadaalshorts
+
+One of our Best video 🥰:
+https://youtu.be/V0l84MDwvHU
+
+# Advertisers and Sponsors can reach us through vaaisavadaalyt@gmail.com or Instagram.
+       
+ENTERTAINING YOU, MAKES US HAPPY. 
+DO SUBSCRIBE AND SUPPORT OUR CHANNEL. 🌝
+
+FAIR USE:
+Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for ""fair use"" for purpose such as criticism, comment, news, reporting, teaching, scholarship and research. Fair use is a use permitted by copyright statute that might otherwise be infringing.
+
+We do not own all material we're posting on this channel. If you are a copyright owner and want your work to be removed from our channel PLEASE contact us via mail or Instagram or leave us a comment here and we will remove your material right away. PLEASE do not opt for a youtube strike.
+
+Yours Sincerely,
+VAAI SAVADAAL 🌝",https://i.ytimg.com/vi/dzMotcbkyV0/hqdefault.jpg,PT5M10S,Video
+OoMQuy2Pzx0,Valai Pechu,Valai Pechu | Youth Movie Review 😎 | Ken Karunas | GV Prakash Kumar | Video 3170 | 19th Mar 2026,2026-03-19 10:57:12+00:00,128701,2549,103,5,True,False,Youth,2026-07-13 18:54:13.202344+00:00,UCRTmSft-1I9f0yzTnz32oMg,"Valai Pechu | Youth Movie Review 😎 | Ken Karunas | GV Prakash Kumar | Anishma Anilkumar | Meenakshi Dinesh | Priyanshi Yadav | Devadarshini Suraj Venjaramoodu | Video 3170 | 19th Mar 2026 
+
+#youth #youthmoviereview #youthmovie #kenkarunas #kenkarunaas #gvprakash #gvprakashkumar #dhanush #devadharshini #anishma #meenakshi #priyanshiyadav #youthmoviereviewtamil #vijay #simbu #silambarasan #silambarasantr #vallavan #moviereview #muttakalakki #youthreviewtamil #youthreview #valaipechu #valaipechuvideo #valaipechuvideos #valaipechuchannel 
+
+==================================
+MAX GOLD 
+Cash For Gold
+Call: 044-45454545 
+https://www.maxgold.co.in
+==================================
+GT Holidays
+No.1 Travel Agency in South India
+Book Your Dream Vacay Today!
+Call: +91 9940882200
+https://www.gtholidays.in
+==================================
+
+FOR ADVERTISEMENT, PLEASE CONTACT 
+Our WhatsApp No: +91 94455 26926¯
+Email: valaipechu@gmail.com
+
+* வலைப்பேச்சு குடும்பத்திலிருந்து புதிய சேனல்கள். வீடியோக்களைப் பார்க்கவும், சேனலை Subscribe பண்ணவும் இங்கே கிளிக் செய்யுங்கள் 
+
+வலைப்பேச்சு அந்தணன் 
+CHANNEL LINK: https://www.youtube.com/valaipechuanthanan
+
+வலைப்பேச்சு வாய்ஸ்
+CHANNEL LINK: https://www.youtube.com/ValaipechuVoice
+
+வலைப்பேச்சு மிக்ஸ்
+CHANNEL LINK: https://www.youtube.com/valaipechumix
+
+==================================",https://i.ytimg.com/vi/OoMQuy2Pzx0/hqdefault.jpg,PT12M32S,Video
+TUfsVzU8yvI,Tamil Talkies,YOUTH Review - GV Prakash - Tamil Talkies,2026-03-19 22:43:50+00:00,556730,8776,603,5,True,False,Youth,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Download Thatzal App For Drivers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltripdriver
+Download Thatzal App For Passengers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltrip
+Download Thatzal App From App store - https://apps.apple.com/in/app/thatzal-trip/id6747298405",https://i.ytimg.com/vi/TUfsVzU8yvI/hqdefault.jpg,PT4M11S,Video
+Jo__DrJMk4M,Trend Talks,Thaai Kizhavi Movie Public Review | Radikaa Sarathkumar l Sivakumar Murugesan | Sivakarthikeyan,2026-02-27 10:04:37+00:00,13412,84,5,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UClj42T5rXaBowqp3zlLBTXg,"#thaaikelavi #thaaikizhavi #moviereview #publicreview 
+
+Follow the Trend Talks channel on WhatsApp: https://whatsapp.com/channel/0029VapVq4v8KMqlVyg8Z62m
+
+Join this channel to get access to perks:
+https://www.youtube.com/channel/UClj42T5rXaBowqp3zlLBTXg/join
+
+For Advertisements & Collaborations : +91 7845967473
+
+Do Follow Us On Social Media Handles, 
+https://www.facebook.com/TrendTalkss
+https://instagram.com/trend__talks
+https://twitter.com/TrendTalkss
+
+copyright disclaimer :
+-----------------------------------
+This video is purely for informational purposes only. We don't own any music's copyright that is used in this video. But we used soundtracks and videos to explain the content for better understanding. The Copyright Act 1976 Under Section 107 says, The CopyRighted content can be used for purposes like criticism, comment, news reporting, teaching, scholarship, and research. We're using these soundtracks and videos to teach people with a better experience. We give full credit to the owners of the content featured. 
+
+If there is any infringement or discrepancy in the video, kindly contact us. We will make sure to get back to you immediately.
+
+Contact : TrendTalksQA@gmail.com",https://i.ytimg.com/vi/Jo__DrJMk4M/hqdefault.jpg,PT9M2S,Video
+hUkEKgXPFg4,Mr. GK Movie Man,Thaai Kizhavi Movie Review  Mr.GK Movie Man,2026-02-27 16:09:36+00:00,8908,261,12,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UC7SYm9cqxPtun1e5PVpucjw,"Thaai Kizhavi Movie Review  Mr.GK Movie Man
+
+Cast: Radhika | Muneeshkanth | Rebeca Racheal | Balasaravana
+Director: Sivakumar Murugesan
+Producer: Sivakarthikeyan
+
+#sivakarthikeyan #radhika #thaaikelavi #thaaikelavilyricvideo #thaaikizhavimovie #thaaikizhavitamil #moviereview #tamilmovie #mrgkmovieman #trending #viral",https://i.ytimg.com/vi/hUkEKgXPFg4/hqdefault.jpg,PT10M,Video
+M-gFUEPTdcM,Sudhir Srinivasan,Sudhir Srinivasan's The Long Review: THAAI KIZHAVI | Radhika | Sivakarthikeyan | Sivakumar Murugesan,2026-02-28 11:00:36+00:00,16990,332,48,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCSHTtPCL2CV5eoj9uMPz_tg,"In this episode of The Looong Review, Sudhir Srinivasan reviews Thaai Kizhavi (2026), directed by Sivakumar Murugesan and headlined by Radhika Sarathkumar — a character-driven rural drama centred on ageing, dignity, and the politics of invisibility.
+
+At its core, Thaai Kizhavi is about a woman society has learned to overlook. What begins as a portrait of a stubborn, sharp-tongued matriarch gradually unfolds into a layered exploration of generational fracture, economic survival, and the quiet resilience of women pushed to the margins.
+
+Does Thaai Kizhavi genuinely centre an ageing woman as subject rather than symbol — or does it ultimately soften its edges to remain palatable? Sudhir evaluates whether the film trusts its protagonist enough to let her exist without simplification.
+
+#thaaikizhavi #radhikasarathkumar #thelongreview 
+
+Business Operator: Legendary Network Pvt Ltd.
+
+For Advertisement Inquiries: +91 88257 88572
+
+For updates, follow along at
+X : https://x.com/sudhirsrinivasn
+Facebook : https://www.facebook.com/sudhirsrinivasanofficial
+Instagram : https://www.instagram.com/sudhir_srinivasan/
+
+Subscribe and enable notifications to stay updated with our latest exclusive content.",https://i.ytimg.com/vi/M-gFUEPTdcM/hqdefault.jpg,PT10M43S,Video
+aiDE5EQH7VE,Black Pepper News,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radhika Sarathkumar | SK | Sivakumar Murugesan,2026-02-27 03:16:40+00:00,146160,1011,54,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCtYWpwLjEakboZegaxgD7EQ,"Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radhika Sarathkumar | SK | Sivakumar Murugesan
+
+#thaaikizhavi #thaaikizhavipublicreview #thaaikizhavireview #radhikasarathkumar #sivakarthikeyan 
+
+For Regular Updates Subscribe  #Blackpeppernews 
+
+Web: http://www.blackpeppernews.com/ 
+
+Facebook - https://www.facebook.com/BlackPeppernewz
+
+Twitter- https://twitter.com/BPNEWZ
+
+instagram - https://instagram.com/blackpeppernews?igshid=YmMyMTA2M2Y=",https://i.ytimg.com/vi/aiDE5EQH7VE/hqdefault.jpg,PT9M48S,Video
+hKKNokV3KwM,Thi Cinemas,Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radikaa Sarathkumar,2026-02-27 06:34:18+00:00,73328,807,56,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCrn698AOJJ69zWN9Z_kTAKQ,"Thaai Kizhavi Public Review | Thaai Kizhavi Review | Radikaa Sarathkumar
+
+Watch Radhika Sarathkumar thaai kizhavi public review.
+Watch Thaai Kizhavi public review.
+Thaai Kizhavi movie review.
+Thaai Kizhavi audience response.
+
+Presenting public review of Thaai Kizhavi movie. Thaai Kizhavi public review is taken from Chennai FDFS.
+
+Thaai Kizhavi is an 2026 Indian Tamil film written and directed by Sivakumar Murugesan. Produced by Sudhan Sundaram,  Sivakarthikeyan under Passion Studios, Sivakarthikeyan Productions. The film stars Radikaa Sarathkumar, Singam Puli, Arul Doss, Bala Saravanan, Munishkanth, Ilavarasu, George Maryan, Muthukumar, Raichal Rabecca. The film has music composed by Nivas K Prasanna, cinematography handled by Vivek Vijayakumar and editing by San Lokesh.
+
+Thaai Kizhavi released worldwide from today.
+
+#thaaikizhavireview
+#thaaikizhavipublicreview
+#thaaikizhavifdfsreview
+#thaaikizhavimoviereview
+#thaaikizhavimovie
+
+
+Movie Credits:
+
+Cast: Radikaa Sarathkumar, Singam Puli, Arul Doss, Bala Saravanan, Munishkanth, Ilavarasu, George Maryan, Muthukumar, Raichal Rabecca
+
+Banner: Passion Studios - Sivakarthikeyan Productions
+Produced By: Sudhan Sundaram - Sivakarthikeyan
+Co-Produced By: Kalai Arasu
+Written & Directed By: Sivakumar Murugesan
+Music: Nivas K Prasanna
+Editor: San Lokesh
+Director of Photography: Vivek Vijayakumar
+Production Designer: Ramu Thangaraj
+Sound Design: Suren G / S Alagiakoothan
+Sound Mix: Suren G
+Prosthetic Makeup: Vineesh Vijayan
+Makeup: N.Chelladurai Alangudi
+Costumer: R.Muruganantham
+Stills: Maniyan
+DI: Promo Works
+Colorist: Adithya Krishnan
+VFX: Focus VFX
+VFX Supervisor: V.Rajkumar
+PRO: Suresh Chandra
+
+
+Thi Cinemas Tamil Channel in YouTube . We are committed to Give you an Unbiased, Straightforward and a balanced  knowledge about Cinema programme with credibility. 
+
+We can assure you that we will bring the best of the world in Tamil Cinema ..... "" Be with Us to know the real Truth "" come to us for very day updates
+
+A Complete Portal For Instant  Tamil Cinema Events Updates & FDFS Celebrations , Movie reviews , Public opinions.
+
+----------------------------------------------
+Follow & Subscribe Us On :-
+Subscribe us on YouTube : @Thicinemas
+Like us on Facebook : https://www.facebook.com/thicinemas
+Follow us on Twitter : https://x.com/ThiCinemas
+Follow us on Instagram : https://www.instagram.com/thi.cinemas/
+
+
+
+thaai kizhavi, thaai kizhavi review, thaai kizhavi fdfs, thaai kizhavi fdfs review, thaai kizhavi fdfs public review, thaai kizhavi fdfs response, thaai kizhavi fdfs theatre response, thaai kizhavi fdfs reaction, thaai kizhavi fdfs review tamil, thaai kizhavi public review, thaai kizhavi response, thaai kizhavi theatre response, thaai kizhavi reaction, thaai kizhavi review tamil, thaai kizhavi public review in tamil, public review thaai kizhavi, thaai kizhavi movie public review, thaai kizhavi movie public review in tamil, thaai kizhavi movie public talk, thaai kizhavi movie public opinion, thaai kizhavi movie review, thaai kizhavi movie review tamil, public review thaai kizhavi movie, thi cinemas public opinion, thi cinemas latest public review, thi cinemas public review latest, thi cinemas channel, public review thi cinemas, movie review thi cinemas, thaai kizhavi thi cinemas, thaai kizhavi review thi cinemas, thaai kizhavi public review thi cinemas, thi cinemas thaai kizhavi review, thi cinemas public reiew thaai kizhavi,  தாய் கிழவி படம் எப்படி இருக்கு, தாய் கிழவி விமர்சனம், தாய் கிழவி மக்கள் கருத்து, தாய் கிழவி FDFS, தாய் கிழவி FDFS review, தாய் கிழவி review, தாய் கிழவி public review, தாய் கிழவி movie review,",https://i.ytimg.com/vi/hKKNokV3KwM/hqdefault.jpg,PT8M34S,Video
+ttw1NaUcxb0,KaKi's Talkies,Thaai Kizhavi - Movie Review | Radikaa Sarathkumar | Sivakumar Murugesan | KaKis Talkies,2026-02-26 15:30:00+00:00,72368,1825,99,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#ThaaiKizhavi #ThaaiKizhaviReview #ThaaiKizhaviMovieReview #RadikaaSarathkumar #RadhikaSarathkumar #Radhika #SivaKarthikeyan #SivakumarMurugesan #NivasKPrasanna #KaKisTalkies 
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil-language comedy drama film Thaai Kizhavi written and directed by Sivakumar Murugesan, in his directorial debut. Produced by Sudhan Sundaram and Sivakarthikeyan under Passion Studios and Sivakarthikeyan Productions, the film stars Radhika Sarathkumar in the titular role, alongside Singampuli, Aruldoss, Munishkanth, Bala Saravanan, and Ilavarasu. Cinematography - Vivek Vijayakumar, Edited by San Lokesh and Music by Nivas K. Prasanna
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/ttw1NaUcxb0/hqdefault.jpg,PT8M38S,Video
+3WR4xuFcvc4,Filmi craft,Thaai Kizhavi Movie Review by Filmi craft Arun | Radikaa Sarathkumar| Singampuli|Sivakumar Murugesan,2026-02-27 05:15:35+00:00,87100,2121,147,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#ThaaiKizhaviReview
+#ThaaiKizhaviMovieReview
+#ThaaiKizhaviTamilMovieReview
+#ThaaiKizhavi
+#ThaaiKizhavi2026
+#தாய்கிழவி
+#தாய்கிழவிவிமர்சனம்
+#தாய்கிழவிரிவியூ
+#Filmicraft
+
+Thaai Kizhavi is a 2026 Tamil-language rural comedy-drama directed by Sivakumar Murugesan.
+The film stars Radikaa Sarathkumar, Singampuli, Bala Saravanan, Munishkanth, Arul Doss, Ilavarasu, Raichal Rabecca, and George Maryan.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/3WR4xuFcvc4/hqdefault.jpg,PT8M13S,Video
+h82wnFt1bsM,Second Show,'தாய் கிழவி' விமர்சனம் - 'Thaai Kizhavi' Movie Review | Sivakumar Murugesan - Radhika Sarathkumar,2026-02-27 00:00:06+00:00,57415,1441,161,2,False,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"​​Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join 
+
+For advertisements / business enquiries, do contact tamilsecondshow@gmail.com or Whatsapp @ 9543264797 
+
+~
+
+Review of Tamil movie 'Thaai Kizhavi' directed by Sivakumar Murugesan starring Radhika Sarathkumar, Bala Saravanan, Raichal Rabecca, Singampuli, Aruldoss, Munishkanth, Ilavarasu, 'Vettai' Muthukumar, George Maryan. 
+
+Music - Nivas K. Prasanna
+Cinematography - Vivek Vijayakumar
+Editing - San Lokesh
+
+Produced by - Passion Studios & Siva Karthikeyan's SK Productions
+
+~ 
+
+#ThaaiKizhaviReview
+#தாய்கிழவி
+#ThaaiKizhavi",https://i.ytimg.com/vi/h82wnFt1bsM/hqdefault.jpg,PT14M40S,Video
+udOlKexHZws,Valai Pechu,Valai Pechu | Thaai Kizhavi Movie Review | Radikaa Sarathkumar | Video 3149 | 26th Feb 2026,2026-02-26 15:08:13+00:00,107308,2095,133,5,True,False,Thaai Kizhavi,2026-07-13 18:54:13.202344+00:00,UCRTmSft-1I9f0yzTnz32oMg,"Valai Pechu | ThaaiKizhavi Movie Review | Thaai Kizhavi | Radikaa Sarathkumar | Sivakumar Murugesan | Nivas K Prasanna | Video 3149 | 26th Feb 2026
+
+#thaaikizhavi #thaaikizhavireview #thaaikizhavimoviereview #thaaikizhavireviewtamil #radikaasarathkumar #sivakumarmurugesan #nivaskprasanna #radikaa #singampuli #aruldoss #balasaravanan #kamal #kamalhaasan #sivakarthikeyan #munishkanth #ilavarasu #georgemaryan #muthukumar #raichalrabecca #moviereview #valaipechu #valaipechuvideo #valaipechuvideos #valaipechuchannel
+
+==================================
+MAX GOLD
+Cash For Gold
+Call: 044-45454545 
+https://www.maxgold.co.in
+==================================
+GT Holidays
+No.1 Travel Agency in South India
+Book Your Dream Vacay Today!
+Call: +91 9940882200
+https://www.gtholidays.in
+==================================
+
+FOR ADVERTISEMENT, PLEASE CONTACT 
+Our WhatsApp No: +91 94455 26926¯
+Email: valaipechu@gmail.com
+
+* வலைப்பேச்சு குடும்பத்திலிருந்து புதிய சேனல்கள். வீடியோக்களைப் பார்க்கவும், சேனலை Subscribe பண்ணவும் இங்கே கிளிக் செய்யுங்கள் 
+
+வலைப்பேச்சு அந்தணன் 
+CHANNEL LINK: https://www.youtube.com/valaipechuanthanan
+
+வலைப்பேச்சு வாய்ஸ்
+CHANNEL LINK: https://www.youtube.com/ValaipechuVoice
+
+வலைப்பேச்சு மிக்ஸ்
+CHANNEL LINK: https://www.youtube.com/valaipechumix
+
+==================================",https://i.ytimg.com/vi/udOlKexHZws/hqdefault.jpg,PT11M32S,Video
+g1UkE6R1YwQ,Filmibeat Tamil,Gandhi Talks Review | Vijay Sethupathi | Arvind Swamy | Aditi Rao | A.R.Rahman |Siddharth J |Kishore,2026-01-30 08:52:09+00:00,3377,32,0,2,False,False,Gandhi Talks,2026-07-13 18:54:13.202344+00:00,UC1Bb-sdTli32QtPyjEXz6KA,"Gandhi Talks is a bold and experimental no-dialogue Tamil movie directed by Kishore Pandurang Belekar, featuring powerful performances by Aravind Swami, Vijay Sethupathi, Aditi Rao Hydari, and Siddharth J. With AR Rahman’s soul-stirring background score, the film speaks volumes without using a single word of dialogue. Watch our complete Gandhi Talks movie review to know whether this unique film succeeds in connecting with the audience and how the performances and music elevate the experience.
+
+---------------------------------------
+
+#GandhiTalks #GandhiTalksReview #AravindSwami #VijaySethupathi #AditiRaoHydari #ARRahman #TamilMovieReview #ExperimentalCinema #IndianCinema #VisualStorytelling #NoDialogueMovie #SilentCinema
+
+----------------------------------------
+👉Like, Share and Subscribe to FilmiBeat Channel for latest updates on movies and related videos.
+-------------------------------------------------------
+
+🌍Visit our website:- https://tamil.filmibeat.com/
+
+-------------------------------------------------------
+📲Stay Updated With Filmibeat Tamil Via Social Media :-
+
+♥ Subscribe : https://www.youtube.com/channel/UC1Bb-sdTli32QtPyjEXz6KA?sub_confirmation=1
+♥ Facebook : https://www.facebook.com/TamilFilmibeat/?fref=ts
+♥ YouTube : https://www.youtube.com/channel/UC1Bb-sdTli32QtPyjEXz6KA
+♥ Twitter : https://x.com/tamil_films
+♥ Instagram : https://www.instagram.com/filmibeattamil/
++IFC 
+-------------------------------------------------------",https://i.ytimg.com/vi/g1UkE6R1YwQ/hqdefault.jpg,PT7M57S,Video
+z1iWBA43b8g,Makkal Talkies,Kara Movie Public Review | Kara Review Tamil | Dhanush | Suraj | Mamitha | Kara tamilcinemareview,2026-05-02 07:45:08+00:00,376797,4092,41,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCIuBpQMynXm8st99tttE6uQ,"#karamovie #karamoviereview #Karatheatreresponse #KaraDhanushMovie #Karareview #Karapublicreview #dhanush #dhanushkraja #makkaltalkiesreview #makkaltalkies #movierating #movie #anirudh #movieratingsystem #moviereview #makkaltalkieslive #tamilcinemareview #gvprakash #gvprakashkumar #rohinitheatre #chennaitheatre #chennai #ArunPandiyan #arunpandian #surajvenjaramoodu #surajvenjaramood #Dhanushson #gvprakashkumar #mamithabaiju #mamitha #KaraPublicReview #KaraMovieReview #KaraReview #KaraReviewTamil #KaraReviewTelugu #Kara #KaraMoviePublicReview #dhanush #dhanushkraja #dhanushspeech #mamithabaiju #mamitha #kamalatheatre #tvkvijay #movierating #tamilcinemareview #tamilcinema #moviereview #theatreresponse  #tamildubbedmoviestory #tamildubbedmoviereview #ksravikumar #gvprakash #gvprakashkumar #tvk #ntk #tnelection2026 #tnelectionresults #makkalkaruthu #makkalmandram #KaraFDFSReview 
+
+Kara Movie Public Review, Kara Theatre Response, Kara Day2 Review, Kara Day3 Review, Kara Day4 Review, Kara Day5 Review, Kara 2nd Day Review, Kara 3rd Day Review, Kara 4th Day Review, Kara 5th Day Review, Kara FDFS Review, Kara Review Tamil, Kara Review Telugu, Kara Review Malayalam, Dhanush Speech, Mamitha Baiju Dance, Mamitha Baiju, KS Ravikumar, Karunas Scene, MS Bhaskar Scene in Kara Movie, Vivasayigal content Movie, MakkalTalkiesReview, makkal talkies review, makkal talkies live, tamilcinemareview, Kara tamilcinemareview, tamil talkies review, blue sattai review, Review byPrasanth, Kara Dhanush Entry Scene, Kara JaiRam
+Kara Movie Theatre Response | Kara Movie Review | Kara Review | Dhanush | Kara tamilcinemareview",https://i.ytimg.com/vi/z1iWBA43b8g/hqdefault.jpg,PT10S,Short
+zMgM3qKu5oQ,Bingoo Box,Karuppu Public Review | Karuppu Review | Karuppu Movie Review Suriya Karuppu Tamil Cinema Review,2026-05-16 04:42:03+00:00,18949,525,86,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCtuuSv_4r6op5RHDs9HzsqA,"#KaruppuPublicReview #KaruppuReview #KaruppuMovieReview #SuriyaKaruppuReview #Suriya #RjBalaji #Trisha #saiabhyankkar #KaruppuMovie #KaruppuReviewTamil #SuriyaMovieReview #SuriyaKaruppuReview 
+
+Karuppu | Suriya | RJ Balaji | Trisha | ‪Sai Abhyankkar‬ | Dream Warrior 
+
+Suriya Karuppu Public Review
+Karuppu Movie Review
+Karuppu Public Review
+Suriya Karuppu Movie Review
+Karuppu Review Tamil
+Karuppu Public Talk
+Karuppu Public Opinion
+Karuppu FDFS Review
+Suriya Movie Review
+
+
+Presenting the Genuine Public Review of Suriya's ""Karuppu"", Starring Suriya, Trisha, Indrans, Natty, Swasika, Sshivadha & Others Music Composed by ‪SaiAbhyankkar‬ , Written & Directed by RJ Balaji.
+
+
+Suriya's ""Karuppu"" Releasing in cinemas worldwide from May 15th  🔥🔥
+
+
+Movie Credits :
+
+
+Cast : Suriya, Trisha, Indrans, Natty, Swasika, Sshivadha, Anagha Maya Ravi, Supreeth Reddy and Others
+Written & Directed by RJ Balaji
+Produced by Dream Warrior Pictures
+Producers : S R Prakash Babu & S R Prabu
+Executive Producer : Aravendraj Baskaran
+Writers : Ashwin Ravichandran - Rahul Raj - T S Gopi Krishnan - Karan Aravind Kumar
+Director of Photography : G K Vishnu
+Music : ‪SaiAbhyankkar‬ 
+Production Designer : Arun Venjaramoodu
+Editor : R Kalaivanan
+Stunts : Vikram Mor
+Production Controller: Rajendran PS
+Choreography : Shobi - Sandy - Anusha Viswanathan
+Lyrics : Pa Vijay - Vivek - Vishnu Edavan - Asal Kolaar - Adesh Krishna - Arun Srinivasan
+Stylist: Praveen Raja - Eka Lakhani - Divya Nagarajan
+Costumes : Perumal Selvam
+Make-up : Vinoth Sukumaran
+Color : Redchillies.color
+Sr.Colortist : Ken Metzker
+VFX Supervisor : Logaraj.C
+VFX studios: Little hippo Studios, Spectre post, halohues studios, EFX magic, Realworks Studios, Sozo VFX, Focus VFX, Bhishma studios, Pix rocks VFX, ADFX Studio(Title animation).
+SFX : Arun S Mani (Oli Sound Labs)
+Sound Mix : Vinay Sridhar
+Stills : D.Narendran
+Publicity Designs: Kabilan
+Associate EP: Allaudin Hussain, ALS Sathappa Srinivasan
+PRO : Sathish S2 
+
+
+
+ＬＩＫＥ | ＣＯＭＭＥＮＴ | ＳＨＡＲＥ | ＳＵＢＳＣＲＩＢＥ
+
+Join us 
+Facebook : www.facebook.com/bingoobox 
+Twitter : www.twitter.com/bingoobox
+Instagram : www.instagram.com/bingoobox
+
+
+
+
+
+
+
+
+
+
+
+
+Karuppu,Karuppu Review,Karuppu movie review,Karuppu Public review,Karuppu public reaction,Karuppu movie reaction,Karuppu public opinion,Karuppu meme review,bingoo box Karuppu,Karuppu tamil cinema review, karuppu kok review, suriya karuppu review, karuppu fdfs review, karuppu frds review,  karuppu movie review, karuppu tamil review, karuppu first review, karuppu review reaction, karuppu public review, karuppu climax review, karuppu pulsar review, karuppu review malayalam, karuppu shazzam review, karuppu review tamil movie, karuppu audience review, suriya karuppu movie review, karuppu movie fdfs review, suriya karuppu public review, karuppu malayalam review,karuppu movie review, karuppu movie review tamil, suriya karuppu movie review, karuppu movie review public, karuppu movie review update, karuppu movie fdfs review, karuppu movie theatre review, karuppu tamil movie review, karuppu movie public review, karuppu movie review malayalam, karuppu review tamil movie, public review on karuppu movie, karuppu movie theatre review tamil, karuppu movie true public review, karuppu movie cancel public review, suriya movie karuppu public review, karuppu movie, karuppu review,karuppu movie review, karuppu movie review tamil, suriya karuppu movie review, karuppu movie review public, karuppu movie review update, karuppu movie fdfs review, karuppu movie theatre review, karuppu tamil movie review, karuppu movie public review, karuppu movie review malayalam, karuppu review tamil movie, public review on karuppu movie, karuppu movie theatre review tamil, karuppu movie true public review, karuppu movie cancel public review, suriya movie karuppu public review, karuppu movie, karuppu review,suriya karuppu review, karuppu fdfs review, fdfs review karuppu, fdfs karuppu review, suriya karuppu movie review, suriya karuppu public review, karuppu movie fdfs review, karuppu fdfs public review, karuppu pulsar fdfs review, surya karuppu review, suriya movie karuppu public review, karuppu pulsar movie fdfs review, karuppu movie fdfs show review public, suriya karuppu movie, suriya karuppu, karuppu review, karuppu frds review, karuppu suriya movie, karuppu suriya, karuppu fdfs, karuppu review tamil,suriya karuppu movie review, suriya karuppu public review, suriya karuppu teaser review, surya karuppu review, suriya karuppu teaser meme review, suriya karuppu teaser public review, suriya movie karuppu public review, surya karuppu teaser review, suriya karuppu, karuppu review, suriya karuppu movie, karuppu suriya movie, karuppu movie suriya, karuppu suriya, fdfs karuppu review, suriya in karuppu movie, karuppu review tamil, karuppu kok review, karuppu review malayalam, suriya karuppu speech, suriya karuppu teaser",https://i.ytimg.com/vi/zMgM3qKu5oQ/hqdefault.jpg,PT12M41S,Video
+gDNceT8979U,Shafi Zone,கரசாமி ❌ ஆள விட்றா சாமி ✅ Kara Movie Honest Review 🤔 Shafi Zone,2026-04-30 08:52:19+00:00,61520,1694,84,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCw5_yzVcT8wDJ3mCbYQBnfg,"#Kara #Karareview #shafizone 
+
+https://maxgold.cash/
+
+Subscribe to my New Vlog Channel 👇 
+https://www.youtube.com/shafizonevlog?sub_confirmation=1
+
+*********************************************************
+
+For Advertisement Contact : 
+Email : Shafizoneofficial@gmail.com
+Whatsapp Number : 7305805205
+
+*********************************************************
+
+Click the below Membership Link to Join :
+https://www.youtube.com/channel/UCw5_yzVcT8wDJ3mCbYQBnfg/join
+
+*********************************************************
+
+My official Social Media Accounts:
+Instagram : https://instagram.com/vjshafi
+Facebook : https://www.facebook.com/shafizone
+
+*********************************************************
+
+CONTENT DISCLAIMER
+The views and opinions expressed in this video are not meant to hurt any individual. we cannot held liable in such situations
+
+COPYRIGHT DISCLAIMER UNDER SECTION 107 OF THE COPYRIGHT ACT 1976
+Copyright Disclaimer Under section 107 of the Copyright act 1976, allowance is made for the ""fair use for purposes such as criticism, comment,news reporting,teaching,scholarship and research. Fair use is a use permitted by Copyright statue that might otherwise be infringing. Non-profit,educational or personal use tips the balance in favor of Fair use.
+
+*********************************************************
+
+Enjoy video by watching till the end. Thumbs up if you like this video and subscribe to continue watching more videos. Don't forget to press the bell icon so that you will not miss any notification from me. 
+
+Thank you & Keep Supporting me
+Ippadikku,
+VJ Shafi
+
+*********************************************************
+© 2020 Shafi Zone",https://i.ytimg.com/vi/gDNceT8979U/hqdefault.jpg,PT8M17S,Video
+3KDXJbHSubM,Filmi craft,Karuppu Movie Review by Filmi craft Arun | Suriya | Trisha Krishnan | RJ Balaji,2026-05-15 08:26:19+00:00,179791,4264,386,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#KaruppuMovieReview
+#Karuppu
+#KaruppuTamilMovieReview
+#KaruppuReview
+#KaruppuReviewTamil
+#கருப்புவிமர்சனம்
+#கருப்புரிவியூ
+#கருப்பு
+#Filmicraft
+
+Karuppu is a 2026 Indian Tamil-language action drama film directed by RJ Balaji from a screenplay he co-wrote with Ashwin Ravichandran, Rahul Raj, T. S. Gopi Krishnan and Karan Aravind Kumar.
+The film stars Suriya, Trisha Krishnan and RJ Balaji, alongside Indrans, Natty Subramaniam, Anagha Maaya Ravi, Aadukalam Naren and Deepa Shankar.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/3KDXJbHSubM/hqdefault.jpg,PT6M35S,Video
+ylodPAUV4SI,B5 Voice,Karuppu Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-05-15 12:32:36+00:00,556936,5294,409,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCxozs5jlRVsSNS6G6X1gdmg,"#karuppu #suriya #rjbalaji 
+
+karuppu Movie Review 
+karuppu Movie Explained 
+karuppu Songs 
+karuppu Full movie hd tamil 
+karuppan movie 
+karuppu climax
+
+#tamilmovie",https://i.ytimg.com/vi/ylodPAUV4SI/hqdefault.jpg,PT22M15S,Video
+CswWdLyJ5uI,Gurubaai,Karuppu Discussion,2026-05-17 07:26:06+00:00,550956,18855,568,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCCZ0fF2hFRrgOwjGvoXlTfg,"Featuring: 
+Gurubaai: https://www.instagram.com/gurubaai
+Sarvs Sagaa: https://www.instagram.com/Sarvs_Sagaa
+
+Contact us:
+Instagram: https://www.instagram.com/gurubaai
+Facebook: https://www.facebook.com/itsgurubaai
+Twitter: https://www.twitter.com/itsgurubaai
+
+Contact us by Mail:
+gurubaai4u@gmail.com
+
+Join Membership:
+https://bit.ly/3eNSR34",https://i.ytimg.com/vi/CswWdLyJ5uI/hqdefault.jpg,PT13M1S,Video
+5LA6GUH2pA8,tamilcinemareview,KARUPPU review by prashanth,2026-05-15 11:16:09+00:00,243945,6960,669,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,"Review about recently released tamil movie Karuppu, which has suriya playing the lead role!  The movie is directed by RJ Balaji !",https://i.ytimg.com/vi/5LA6GUH2pA8/hqdefault.jpg,PT10M23S,Video
+q1Yk7mOv2GQ,Tubelight Mind,Karuppu Movie Honest Review 🔥😮 surya comeback? Theatre Vlog 🔥😅Rj balaji / Trisha #movie #surya,2026-05-18 12:22:29+00:00,1741329,101451,701,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCw72g2VQje20BynmENJ0hOg,"Karuppu Movie Honest Review 🔥😮 | Theatre Vlog
+
+Intha video la naan Karuppu movie pathi full honest review share panniruken 💥  
+Story, action, performances, music, theatre experience ellam epdi irukku nu pesiruken.
+
+🎬 Cast:
+Suriya  
+Trisha  
+Yogi Babu
+
+🔥 Intha video la:
+- Honest movie review
+- Theatre vlog
+- Audience response
+- Worth watching ah illa?
+
+Ungaluku intha movie epdi irundhuchu nu comments la sollunga 👇
+
+👍 Like pannunga  
+💬 Comment pannunga  
+🔔 Subscribe pannunga for more movie reviews & theatre vlogs
+
+#KaruppuMovie #Suriya #MovieReview #KaruppuMovie #Suriya #Trisha #YogiBabu #MovieReview #TheatreVlog #TamilMovie #Kollywood #AudienceResponse #CinemaVlog #Trending #Entertainment",https://i.ytimg.com/vi/q1Yk7mOv2GQ/hqdefault.jpg,PT2M26S,Video
+dLVO165vC2I,Empty Hand,Karuppu Movie Review - உண்மையா நல்லா இருக்கா? Suriya | RJB | Trisha | ‪Sai Abhyankkar‬ | Tamil,2026-05-15 14:42:16+00:00,850939,30503,1388,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UC8_aMwsn53tncdH-5iLu8-w,"*Instagram: https://www.instagram.com/emptyhand_yt
+
+Our New Shorts Channel : https://www.youtube.com/channel/UCi7piZmMfCPsM7RwXk-WTIg
+
+Join With Me Friends... 
+For More  Videos... Subscribe to Empty Hand Youtube Channel",https://i.ytimg.com/vi/dLVO165vC2I/hqdefault.jpg,PT11M29S,Video
+La5WyvyO4HM,Tamil Talkies,"KARUPPU Review - Suriya, Trisha, RJ Balaji - Tamil Talkies",2026-05-15 23:01:29+00:00,942443,17867,3016,5,True,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Get Instant Cash for Your Used/Old Phone @dofy_india
+
+Sell your old phone quickly and easily with Dofy! In just 60 seconds, you can turn your old device into cash.
+
+🔹 Visit our websites:
+
+Play Store :https://play.google.com/store/apps/de...
+
+App store:https://apps.apple.com/us/app/dofy/id...
+
+Website india: https://www.dofy.in
+
+Website dubai:https://www.dofy.ae
+
+📞 Contact Us
+India: +91 9344691460
+Dubai: +971 555596583
+Start selling your old phone and get cash today with Dofy! 💸
+
+Download the Dofy app now!
+
+
+#karuppu #karuppureview #karuppumoviereview",https://i.ytimg.com/vi/La5WyvyO4HM/hqdefault.jpg,PT6M57S,Video
+x30_j_7Si8Y,Chennai Bites ,Idhayam Murali Public Review | Idhayam Murali Review | Idhayam Murali Movie Review | Atharva,2026-07-10 00:01:06+00:00,25936,310,0,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCZwLtsPArpQLbrZHvLYU_dA,"Category :Tamil cinema. kollywood cinema. kollywood news. kollywood.   tamil cinema news. tamil cinema review. public review in tamil. public review. movie review.
+Tags:
+
+#IdhayamMuraliReviewtamil | Idhayam Murali Review | Idhayam Murali Movie Review | Atharvaa
+
+👇👇👇👇👇👇👇👇👇👇
+To Subscribe Us
+CHENNAI BITES
+https://www.youtube.com/channel/UCZwL...
+
+☝☝☝☝☝☝☝☝☝☝☝
+
+
+
+
+===================================================",https://i.ytimg.com/vi/x30_j_7Si8Y/hqdefault.jpg,PT1M44S,Video
+2ZyWagYyd1M,Chennai Day,IdhayamMurali Review | Idhayam Murali Movie Review | IdhayamMurali Review tamil | IdhayamMurali ! ,2026-07-10 07:31:23+00:00,8134,206,6,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCMbiSSXgPUbT-9bbXu0U8NA,"#idhayammurali #idhayammuralireview #chennaiday 
+#idhayammuralipublicreview
+#idhayammuralifdfsreview
+#idhayammuralimoviereview",https://i.ytimg.com/vi/2ZyWagYyd1M/hqdefault.jpg,PT10M53S,Video
+OjlO3i690xU,Bingoo Box,❤️❤️ Idhayam Murali Public Review Idhayam Murali Movie Review Idhayam Murali Movie Public Review,2026-07-10 07:44:31+00:00,58044,991,32,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCtuuSv_4r6op5RHDs9HzsqA,"#IdhayamMurali #IdhayamMuraliReview #IdhayamMuraliMovieReview #Atharvaa #FahadhFaasil #PreityMukundhan #KayaduLohar #Thaman #Niharika #AakashBaskaran #IdhayamMuraliTrailer #tamilcinemanewslatest #cinema #kollywood #tamilnews 
+
+ＬＩＫＥ | ＣＯＭＭＥＮＴ | ＳＨＡＲＥ | ＳＵＢＳＣＲＩＢＥ
+
+Starring: 
+Atharvaa | Preity | Kayadu | Natty | Thaman S | Niharika | Rakshan | Dravid | Angeline | Anju Kurian | Sudhakar | Yashashree | Jonita 
+
+Technician Team: 
+
+Director - Aakash Baskaran 
+Music - Thaman S
+DOP - Manoj Paramahamsa, CH Sai 
+Editor - Pradeep E Ragav
+Production Designer - M.R.Karthik Rajkumar 
+Dialogues - Ramanagirivasan 
+Additional Dialogues - Aakash Baskaran, Dravid Selvam
+Lyrics - Vivek
+Choreographer - Anusha Viswanathan
+Co-Director - LK Senthilkumar 
+Costume Designer - Pallavi Singh & Meenakshi N
+Stills - Jaikumar Vairavan
+VFX Supervisor - Praveen D
+Sound Design - Suen G, Alagiakoothan 
+Post Production Supervisor - Guna
+Publicity Designer - Kabilan
+PRO - Suresh Chandra, Sathish (AIM)  
+Creative Producer - Dev Ramnath 
+Executive Producer - Krishna Chandar Elango  
+Line Producer - Vickys RA
+Production Controller - K. Sridhar Raj, Sadagopan
+Marketing Headed - Manoj Maddy 
+Chief Makeup - Edward Kennedy 
+Costumer - Moorthy 
+
+Direction Team: 
+
+Praveen CS
+Krish Karthik
+Najath Hameed
+Jm Sethu Ramalingam
+S Madhavan
+G Prashanth 
+Nirmalkumar Periyasamy
+
+DOP Team (Manoj P) :  
+
+Ram SP
+J Manoj Kumar 
+Dinesh Babu Valayapathi 
+C.Praveen
+B Rathna Sabapathy
+Mahendran (BVA)
+S Nanadan (BVA)
+K G Venkatesh (2nd Unit) 
+
+Join us 
+Facebook : www.facebook.com/bingoobox 
+Twitter : www.twitter.com/bingoobox
+Instagram : www.instagram.com/bingoobox
+
+idhayam murali public review,idhayam murali movie public review,idhayam murali review,idhayam murali public talk,idhayam murali live review,#idhayam murali review,idhayam murali fdfs review,idhayam murali fans review,idhayam murali meme review,idhayam murali public opinion,idhayam murali movie review,idhayam murali review tamil,idhayam murali tamil review,idhayam murali honest review,idhayam murali movie public opinion,idhayam murali audience review",https://i.ytimg.com/vi/OjlO3i690xU/hqdefault.jpg,PT11M20S,Video
+Z1Vld_CNUJo,B5 Voice,Idhayam Murali Movie Explained Story & Review In Tamil / New HD Movies Tamil / Explained Movies ,2026-07-10 11:52:54+00:00,25470,356,46,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCxozs5jlRVsSNS6G6X1gdmg,"#idhayammurali#b5voice #explainedtamil
+
+Any enquiry 
+Contact: sbkchannel5@gmail.com
+
+Insta ID : https://www.instagram.com/sridhar_sp_17
+
+
+
+Story 
+
+Idhayam Murali follows the emotional journey of a young man named #Murali, whose life revolves around love, friendship, family, and self-discovery. Set against a vibrant urban backdrop, the film explores the innocence of first love and the emotional complexities that come with growing up. As Murali navigates relationships, heartbreak, aspirations, and life's unexpected turns, he gradually learns the true meaning of love and emotional maturity. Balancing #romance with humour, heartfelt family moments, and coming-of-age experiences, the narrative aims to deliver an uplifting and emotionally engaging cinematic experience without relying on conventional romantic formulas. While the makers have kept several plot details under wraps, the film is positioned as a feel-good entertainer that celebrates relationships and human emotions.
+
+
+
+Copyright & Fair Use Disclaimer
+
+This video is an original movie explanation, review, and commentary created for educational and entertainment purposes. All movie images, trailer screenshots, logos, and other copyrighted materials belong to their respective copyright owners.
+
+The content presented in this video includes original narration, analysis, commentary, and interpretation, which are intended to provide viewers with a unique understanding of the film. This video is not a substitute for watching the original movie, and viewers are encouraged to support the official release.
+
+This content is created in accordance with the principles of fair use under applicable copyright laws for purposes such as criticism, commentary, review, education, and research. No copyright infringement is intended.
+
+If you are the copyright owner and have any concerns regarding the content used in this video, please contact me directly before submitting a claim. Any valid concerns will be reviewed and addressed promptly.
+
+
+
+#tamilmovie #explainedtamil  #endingexplained #lovestory",https://i.ytimg.com/vi/Z1Vld_CNUJo/hqdefault.jpg,PT14M32S,Video
+K5MWi0ddM-Q,Thi Cinemas,Idhayam Murali Public Review | Atharvaa | Fahadh Faasil | Idhayam Murali Review,2026-07-10 07:06:30+00:00,166213,2223,92,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCrn698AOJJ69zWN9Z_kTAKQ,"Idhayam Murali Public Review | Atharvaa | Fahadh Faasil | Idhayam Murali Review
+
+Watch Atharvaa Idhayam Murali public review.
+Idhayam Murali movie audience response.
+Idhayam Murali movie fdfs review.
+Idhayam Murali public review.
+
+Presenting Public review of Idhayam Murali movie. Idhayam Murali public review is taken from Chennai FDFS.
+
+Idhayam Murali is an 2026 Indian Tamil film written and directed by Aakash Baskaran. The film stars Atharvaa, Preity, Kayadu, Natty, Thaman S, Niharika, Rakshan, Dravid, Angeline, Anju Kurian, Sudhakar, Yashashree, Jonita. The film has music composed by Thaman S, cinematography handled by Manoj Paramahamsa, CH Sai and editing by Pradeep E Ragav.
+
+Idhayam Murali released worldwide from today.
+
+#idhayammurali
+#idhayammuralireview
+#idhayammuralipublicreview
+#idhayammuralifdfsreview
+#idhayammuralimoviereview
+ 
+
+Movie Credits:
+
+Starring: Atharvaa | Preity | Kayadu | Natty | Thaman S | Niharika | Rakshan | Dravid | Angeline | Anju Kurian | Sudhakar | Yashashree | Jonita 
+
+Director - Aakash Baskaran 
+Music - Thaman S
+DOP - Manoj Paramahamsa, CH Sai 
+Editor - Pradeep E Ragav
+Production Designer  - M.R.Karthik Rajkumar 
+Dialogues - Ramanagirivasan 
+Additional Dialogues - Aakash Baskaran, Dravid Selvam
+Lyrics - Vivek
+Choreographer - Anusha Viswanathan
+Co-Director - LK Senthilkumar 
+Costume Designer - Pallavi Singh & Meenakshi N
+Stills - Jaikumar Vairavan
+VFX Supervisor - Praveen D
+Sound Design - Suen G, Alagiakoothan 
+Post Production Supervisor - Guna
+Publicity Designer - Kabilan
+PRO - Suresh Chandra, Sathish (AIM)  
+Audio Label : Think Music
+
+
+Thi Cinemas Tamil Channel in YouTube. We are committed to Give you an Unbiased, Straightforward and a balanced  knowledge about Cinema programme with credibility. 
+
+We can assure you that we will bring the best of the world in Tamil Cinema ..... "" Be with Us to know the real Truth "" come to us for very day updates
+
+A Complete Portal For Instant  Tamil Cinema Events Updates & FDFS Celebrations , Movie reviews , Public opinions.
+
+----------------------------------------------
+Follow & Subscribe Us On :-
+Subscribe us on YouTube : @Thicinemas
+Like us on Facebook : https://www.facebook.com/thicinemas
+Follow us on Twitter : https://x.com/ThiCinemas
+Follow us on Instagram : https://www.instagram.com/thi.cinemas/
+
+
+idhayam murali, idhayam murali review, idhayam murali fdfs, idhayam murali fdfs review, idhayam murali fdfs public review, idhayam murali fdfs response, idhayam murali fdfs theatre response, idhayam murali fdfs reaction, idhayam murali fdfs review tamil, idhayam murali public review, idhayam murali response, idhayam murali theatre response, idhayam murali reaction, idhayam murali review tamil, idhayam murali public review in tamil, public review idhayam murali, idhayam murali movie public review, idhayam murali movie public review in tamil, idhayam murali movie public talk, idhayam murali movie public opinion, idhayam murali movie review, idhayam murali movie review tamil, public review idhayam murali movie, thi cinemas public opinion, thi cinemas latest public review, thi cinemas public review latest, thi cinemas channel, public review thi cinemas, movie review thi cinemas, idhayam murali thi cinemas, idhayam murali review thi cinemas, idhayam murali public review thi cinemas, thi cinemas idhayam murali review, thi cinemas, public reiew idhayam murali, how is the film idhayam murali review, இதயம் முரளி படம் எப்படி இருக்கு, இதயம் முரளி விமர்சனம், இதயம் முரளி மக்கள் கருத்து, atharvaa idhayam murali review, atharvaa idhayam murali public review,",https://i.ytimg.com/vi/K5MWi0ddM-Q/hqdefault.jpg,PT10M47S,Video
+zzWet6khCHE,tamilcinemareview,IDHAYAM MURALI review by prashanth,2026-07-10 13:11:16+00:00,50182,1043,96,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,review about recently released tamil movie Idhayam Murali !,https://i.ytimg.com/vi/zzWet6khCHE/hqdefault.jpg,PT9M42S,Video
+ghgTkC-SI9U,KaKi's Talkies,"Idhayam Murali - Movie Review | Atharvaa, Fahadh Faasil, Preity, Kayadu | Thaman | KaKis Talkies",2026-07-10 11:25:22+00:00,49364,1267,103,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#IdhayamMurali #IdhayamMuraliReview #IdhayamMuraliMovieReview #IdhayamMuraliMovie #Atharva #FahadhFaasil #PreityMukundhan #KayaduLohar #Thaman #Niharika #Angeline #Jonita #MalavikaMohanan #AnjuKurien #ParithabangalSudhakar #DravidSelvam #Yashashree #KaKisTalkies 
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil-language coming-of-age romantic drama film Idhayam Murali - directed, co-written and produced by Aakash Baskaran under Dawn Pictures. The film stars Atharvaa in titular role, Kayadu Lohar and Preity Mukhundhan alongside Natty Subramaniam, Ramki, Thaman S, Niharika NM, Rakshan, Dravid Selvam, Sudhakar and Anju Kurien. Fahadh Faasil makes a cameo appearance. It is the directorial debut of Aakash and also marks Thaman's return to acting after 22 years.
+
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/ghgTkC-SI9U/hqdefault.jpg,PT6M53S,Video
+UU216Zdz2lc,Trendswood Tv,Idhayam Murali - Movie Review & Ratings | Padam WORTH ah ?,2026-07-10 14:16:30+00:00,47301,3973,123,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCAXxuSl8n8cXU62ZIzFL0qg,Idhayam Murali - Movie Review & Ratings | Padam WORTH ah ?,https://i.ytimg.com/vi/UU216Zdz2lc/hqdefault.jpg,PT2M12S,Video
+4v6OWiZAv7Q,Filmi craft,Idhayam Murali Movie Review by Filmicraft Arun|Atharvaa|Kayadu Lohar|Preity Mukhundhan,2026-07-10 14:27:12+00:00,63475,1569,144,2,False,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#IdhayamMuraliMovieReview
+#IdhayamMurali
+#IdhayamMuraliReview
+#IdhayamMuraliReviewTamil
+#IdhayamMuraliMovieReviewTamil
+#HrudayammuraliReview
+#இதயம்முரளிவிமர்சனம்
+#இதயம்முரளிரிவியூ
+#இதயம்முரளி
+#Filmicraft
+
+Idhayam Murali is a 2026 Indian Tamil-language coming-of-age romantic drama film directed, co-written by Aakash Baskaran.
+The film stars Atharvaa, Kayadu Lohar, Preity Mukhundhan, Natty Subramaniam, Ramki, Thaman S, Niharika NM, Rakshan, Dravid Selvam, Sudhakar, Pragya Nagra and Fahadh Faasil.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/4v6OWiZAv7Q/hqdefault.jpg,PT8M1S,Video
+uVQanfNtU70,Valai Pechu,Valai Pechu | ❤️ Idhayam Murali Movie Review | Atharvaa | Kayadu Lohar | Video 3285 | 10th July 2026,2026-07-10 13:05:13+00:00,79439,1675,51,5,True,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCRTmSft-1I9f0yzTnz32oMg,"Valai Pechu | ❤️ Idhayam Murali Movie Review | Atharvaa | Kayadu Lohar | Preity Mukundhan | Aakash Baskaran | Video 3285 | 10th July 2026
+
+#idhayammurali #idhayammuralireview #idhayammuralimoviereview #idhayammuralitamilreview #atharvaa #atharvaamurali #fahadhfaasil #preitymukundhan #kayadulohar #niharikanm #rakshan #natty #natarajansubramaniam #anjukurian #dravidselvam #pragyanagra #angeline #jonitagandhi #sudhakarjeyaraman #yashashreerao #aakashbaskaran #thamans #dawnpictures #tamilmoviereview #tamilcinema #kollywood #moviereview #valaipechu #valaipechuvideo #valaipechuvideos #valaipechuchannel
+
+==================================
+MAX GOLD  
+Cash For Gold
+Call: 044-45454545 
+https://www.maxgold.co.in
+==================================
+GT Holidays
+No.1 Travel Agency in South India
+Book Your Dream Vacay Today!
+Call: +91 9940882200
+https://www.gtholidays.in
+==================================
+
+FOR ADVERTISEMENT, PLEASE CONTACT 
+Our WhatsApp No: +91 94455 26926¯
+Email: valaipechu@gmail.com
+
+* வலைப்பேச்சு குடும்பத்திலிருந்து புதிய சேனல்கள். வீடியோக்களைப் பார்க்கவும், சேனலை Subscribe பண்ணவும் இங்கே கிளிக் செய்யுங்கள் 
+
+வலைப்பேச்சு அந்தணன் 
+CHANNEL LINK: https://www.youtube.com/valaipechuanthanan
+
+வலைப்பேச்சு வாய்ஸ்
+CHANNEL LINK: https://www.youtube.com/ValaipechuVoice
+
+வலைப்பேச்சு மிக்ஸ்
+CHANNEL LINK: https://www.youtube.com/valaipechumix
+
+==================================
+MAX GOLD  
+Cash For Gold
+Call: 044-45454545 
+https://www.maxgold.co.in
+==================================
+GT Holidays
+No.1 Travel Agency in South India
+Book Your Dream Vacay Today!
+Call: +91 9940882200
+https://www.gtholidays.in
+==================================
+
+FOR ADVERTISEMENT, PLEASE CONTACT 
+Our WhatsApp No: +91 94455 26926¯
+Email: valaipechu@gmail.com
+
+* வலைப்பேச்சு குடும்பத்திலிருந்து புதிய சேனல்கள். வீடியோக்களைப் பார்க்கவும், சேனலை Subscribe பண்ணவும் இங்கே கிளிக் செய்யுங்கள் 
+
+வலைப்பேச்சு அந்தணன் 
+CHANNEL LINK: https://www.youtube.com/valaipechuanthanan
+
+வலைப்பேச்சு வாய்ஸ்
+CHANNEL LINK: https://www.youtube.com/ValaipechuVoice
+
+வலைப்பேச்சு மிக்ஸ்
+CHANNEL LINK: https://www.youtube.com/valaipechumix
+
+==================================",https://i.ytimg.com/vi/uVQanfNtU70/hqdefault.jpg,PT12M48S,Video
+tKKZGqzZrYM,Tamil Talkies,"IDHAYAM MURALI Review - Atharvaa Murali, Fahadh Faasil - Tamil Talkies",2026-07-10 22:00:12+00:00,275704,3846,296,5,True,False,Idhayam Murali,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,#idhayammuralimovieReview #idhayammuraliReview #idhayammurali,https://i.ytimg.com/vi/tKKZGqzZrYM/hqdefault.jpg,PT4M37S,Video
+3YpXTjfiKJA,Galatta Plus,Youth Movie Review By Baradwaj Rangan | Ken Karunaas | Suraj Venjaramoodu | GV Prakash Kumar,2026-03-19 09:54:36+00:00,41527,478,38,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UCTTUsQJAdGSd2mMsGGfvzhQ,"#Galattaplus #YouthMovie #BaradwajRangan #KenKarunaas #SurajVenjaramoodu #GVPrakashKumar #MovieReview #IndianCinema #FilmReview #TamilCinema #MalayalamCinema #CinemaLovers #MovieAnalysis #FilmCriticism #NewMovieReview #MovieBuffs
+--------------------------------------------------------------------------------------------------------
+MCR - PURE COTTON CLUB FORMAL AND CASUAL SHIRTS 
+
+https://mcrshopping.com/
+
+In Association with Divo :
+
+Website   - http://web.divo.in/
+Instagram - https://www.instagram.com/divomovies/
+Facebook  - http://www.facebook.com/divomovies
+Twitter   - https://twitter.com/divomovies",https://i.ytimg.com/vi/3YpXTjfiKJA/hqdefault.jpg,PT3M54S,Video
+lvbJI7VzyRU,KaKi's Talkies,"Karuppu - Movie Review | Suriya, Trisha, Indrans | RJ Balaji | Sai Abhyankar | KaKis Talkies",2026-05-15 12:03:15+00:00,92125,2302,152,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#Karuppu #KaruppuReview #KaruppuMovieReview #Suriya #Trisha #RJBalaji #SaiAbhyankar #Swasika #AnaghaMayaRavi #KaKisTalkies 
+
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil-language action drama film Karuppu directed by RJ Balaji from a screenplay he co-wrote with Ashwin Ravichandran, Rahul Raj, T. S. Gopi Krishnan and Karan Aravind Kumar. Produced by Dream Warrior Pictures, the film stars Suriya, Trisha Krishnan and RJ Balaji, alongside Indrans, Natty Subramaniam, Swasika, Sshivada, Supreeth Reddy and Yogi Babu.
+
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/lvbJI7VzyRU/hqdefault.jpg,PT8M8S,Video
+RsGnSmmPdkc,VAALIBAN REVIEW ,🔥DAY 6 🔥Karuppu Movie Review |Karuppu Public ReviewKaruppu Review |Surya |RJ Balaji Surya review,2026-05-19 11:14:04+00:00,6269,193,18,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UCEyNF7V6r9K1eCRRvghsYNw,"Karuppu FDFS Review
+Karuppu Tamil Movie Theatre Response
+Karuppu Movie Film critics
+Karuppu Review
+Karuppu Suriya Movie
+Karuppu Theatre Reaction
+Karuppu Audience Reaction
+#vaalibanreview 
+
+
+#Karuppu #Suriya #PublicReview 
+
+#Karuppu
+#KaruppuReview
+#KaruppuPublicReview
+#KaruppuTheatreResponse
+#Suriya
+#SuriyaFans
+#AnbaanaFans
+#TamilReview
+#MovieReview
+#PublicOpinion
+#FDFS
+#TamilCinema
+#TheatreCelebration
+#AudienceReaction
+#Kollywood
+#CinemaReview",https://i.ytimg.com/vi/RsGnSmmPdkc/hqdefault.jpg,PT4M10S,Video
+DE2JuWZH8dE,Engal Movies,"Karuppu Tamil Full Movie 2026 | Suriya | RJ Balaji | Trisha | ‪Karuppu Movie Review, Fact & Analysis",2026-06-27 13:30:02+00:00,871750,8381,0,2,False,False,Karuppu,2026-07-13 18:54:13.202344+00:00,UC-jodJDS4tVSY9cuOF4_Q9w,"🎬 Welcome to my complete review of ""Karuppu Tamil Movie""
+
+In this video, I break down everything you need to know about the film — from the story and performances to the hidden meanings behind the scenes.
+
+🔥 What’s inside this review?
+🔍 Full Plot Breakdown — Key moments, twists, and story explanation
+🎭 Character & Performance Analysis — How the cast delivered their roles
+💡 Themes & Hidden Details — Symbolism, deeper meanings & interesting observations
+⭐ Honest Movie Review — What worked, what didn’t, and my final verdict
+
+Whether you’ve already watched ""Karuppu Tamil Movie"" or you’re deciding if it’s worth your time, this video will help you understand the film on a deeper level!
+
+💬 Have you seen ""Karuppu Tamil Movie""?
+Did you love it, hate it, or feel somewhere in between? Share your thoughts in the comments — I’d love to discuss it with you!
+
+🎥 This is more than just a regular movie review — I’ve also included fascinating facts, hidden details, and insights that many viewers may have missed.
+
+👍 If you enjoyed the video, make sure to LIKE 👍, SUBSCRIBE ❤️, and hit the 🔔 Notification Bell so you never miss upcoming movie reviews and entertainment content!
+
+📌 Copyright Disclaimer:
+Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for ""fair use"" for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit, educational or personal use tips the balance in favor of fair use.
+
+Related Keywords:
+tamil movie review,
+tamil movie review 2025,
+tamil movie review 2026,
+latest tamil movie review,
+new tamil movie review,
+tamil cinema review,
+tamil film analysis,
+tamil movie explanation,
+tamil movie breakdown,
+tamil movie public review,
+tamil movie reaction,
+latest tamil movies 2025 review,
+latest tamil movies 2026 review,
+new tamil movies 2025 review,
+new tamil movies 2026 review,
+tamil movie updates,
+tamil movie news,
+tamil movie verdict,
+tamil movie rating,
+new tamil movies 2025 full movie review,
+new tamil movies 2026 full movie review,
+tamil new movies 2025 full movie review,
+tamil new movies 2026 full movie review,
+latest tamil movies 2025 full movie review,
+latest tamil movies 2026 full movie review,
+tamil movies review,
+movies 2025 full movie tamil review,
+movies 2026 full movie tamil review,
+tamil new movies review,
+tamil movies 2025 full movie review,
+tamil movies 2026 full movie review,
+new tamil movies 2026 review,
+latest tamil movies 2025 review,
+latest tamil movies 2026 review,
+new movies 2026 full movie tamil review,
+tamil new movies 2026 full movie latest review,
+movies tamil new 2026 full review,
+tamil latest movies 2026 full length review,
+new movie 2026 tamil full movie review,
+tamil movies new 2026 full movie review,
+tamil full movie 2025 review,
+tamil full movie 2026 review,
+latest tamil movies 2026 full movie new releases review,
+new movies tamil 2025 full movie review,
+new movies tamil 2026 full movie review,
+new tamil full movies review,
+latest movies 2026 full movie tamil review,
+latest tamil full movies review,
+tamil movie 2025 full length movies review,
+tamil movie 2026 full length movies review,
+tamil movies 2026 full length movies new review,
+latest tamil movies review,
+new movies in tamil 2026 full movie review,
+tamil full movies 2025 review,
+tamil full movies 2026 review,
+tamil new movies 2026 full movie hd 1080p review,
+new movies 2026 full movie tamil latest hd review,
+tamil movies 2025 full length movies review,
+tamil movies 2026 full length movies review,
+new movies tamil review,
+new tamil movie 2025 review,
+new tamil movie 2026 review,
+tamil movies 2025 full movie hd review,
+tamil movies 2026 full movie hd review,
+movies tamil review,
+தமிழ் மூவீஸ் 2026 full movie review,
+movies in tamil 2025 full movie review,
+movies in tamil 2026 full movie review,
+new tamil full movie review,
+tamil movies new 2025 full hd review,
+tamil movies new 2026 full hd review,
+movies tamil 2026 full movie review,
+movies 2026 full movie tamil new review,
+tamil movies new review,
+latest tamil full movie review,
+movies 2026 full movie tamil hd review,
+tamil new movies 2026 full movie latest horror review
+#latesttamilmovie #newtamilmovies #latesttamilmovies #tamilmovies",https://i.ytimg.com/vi/DE2JuWZH8dE/hqdefault.jpg,PT2H56M13S,Video
+LLmkti_XkMk,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-05 22:01:40+00:00,296324,3852,275,5,True,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,#parimalaandco #parimalaandcoreview #parimalaandcomoviereview,https://i.ytimg.com/vi/LLmkti_XkMk/hqdefault.jpg,PT5M22S,Video
+vEgYmiOrmtg,KaKi's Talkies,"Kara - Tamil Movie Review | Dhanush, Mamitha, Suraj | Vignesh Raja | GV Prakash | KaKis Talkies",2026-04-30 11:35:41+00:00,64289,1547,118,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#Kara #KaraReview #KaraMovieReview #KaraTamilMovie ##Karasaamy #Karasamy #Dhanush #MamithaBaiju #VigneshRaja #SurajVenjaramoodu #GVPrakash #KaKisTalkies
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil-language heist action thriller film Kara directed by Vignesh Raja from a screenplay he co-wrote with Alfred Prakash. Produced by Vels Film International and Think Studios, the film stars Dhanush in the titular role and Mamitha Baiju, with K. S. Ravikumar, Karunas, Jayaram, Prithvi Rajan, Suraj Venjaramoodu and Sreeja Ravi in supporting roles. The music was composed by G. V. Prakash Kumar, cinematography handled by Theni Eswar and editing by Sreejith Sarang.
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/vEgYmiOrmtg/hqdefault.jpg,PT5M58S,Video
+PneX7CumxoQ,Second Show,"'கர' திரைப்பட விமர்சனம் 'Kara' Movie Review | Vignesh Raja, Dhanush, Mamitha Baiju, GV Prakash Kumar",2026-05-01 15:03:41+00:00,33125,894,133,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"​​Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join 
+
+For advertisements / business enquiries, do contact tamilsecondshow@gmail.com or Whatsapp @ 9543264797 
+
+~
+
+Review of Tamil movie 'Kara' directed by Vignesh Raja starring Dhanush, Mamitha Baiju, K.S.Ravikumar, Suraj Venjaramoodu, Jayaram, Karunas, Prithvi Rajan, Sreeja Ravi, M.S.Bhaskar, 'Aadukalam' Naren. 
+
+Music - G.V.Prakash Kumar
+Cinematography - Theni Eswar
+Editing - Sreejith Sarang
+
+Produced by - Vels Film International & Think Studios 
+
+~ 
+
+#KaraReview
+#கர
+#KaraTamil",https://i.ytimg.com/vi/PneX7CumxoQ/hqdefault.jpg,PT11M46S,Video
+ccjasf80_dw,tamilcinemareview,KARA review by prashanth,2026-04-30 09:00:34+00:00,94001,1626,155,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,"Review about recently released tamil movie KARA, has dhanush and many others playing the lead role! The movie is directed by Vignesh Raja !",https://i.ytimg.com/vi/ccjasf80_dw/hqdefault.jpg,PT9M56S,Video
+haLV011BfjA,Tamil Talkies,"KARA Review - Dhanush, KS Ravi Kumar, Jayaram, GV Prakash, Suraj, Mamitha Baiju - Tamil Talkies",2026-04-30 22:54:37+00:00,504870,7107,660,5,True,False,Kara,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Download Thatzal App For Drivers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltripdriver
+Download Thatzal App For Passengers - https://play.google.com/store/apps/details?id=com.drawaura.thatzaltrip
+Download Thatzal App From App store - https://apps.apple.com/in/app/thatzal-trip/id6747298405
+
+#kara #karaReview #karamoviereview #tamiltalkies #bluesattaimaran",https://i.ytimg.com/vi/haLV011BfjA/hqdefault.jpg,PT6M57S,Video
+2bEBLs858jw,Picture Hype,Blast Full Movie in Tamil 2026 | Arjun Sarja | Preity Mukhundhan | Abhirami G | Commentary & Review,2026-05-30 10:52:57+00:00,336866,0,0,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UCq82lkTVsEsIWfTu6QCQb6A,"━━━━━━━━━━━━━━━
+🎬 Welcome To *Picture Hype* 🍿
+
+🔥 *Blast Full Movie in Tamil 2026 | Arjun Sarja | Preity Mukhundhan | Abhirami G | Commentary & Review*
+
+Is video mein hum baat karenge *Blast (2026)* Tamil movie ke review, story, action scenes, cast performance, suspense moments aur movie se jude interesting facts ke baare mein. 🔥🎬
+
+⚠️ NOTE: This video is NOT a full movie.
+This content is only made for Commentary, Review, Entertainment & Educational purposes.
+
+Agar aapko Tamil movies, South Indian action films aur movie commentary videos pasand hain to channel ko Subscribe zarur karein ❤️
+
+📌 This video is made only for Entertainment & Educational purposes.
+
+⚠️ Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for “Fair Use” for purposes such as criticism, comment, news reporting, teaching, scholarship and research. Fair use is permitted by copyright statute that might otherwise be infringing.
+
+⚠️ All Images, Clips & Music used in the video belong to their respective owners. No copyright infringement intended.
+
+🎥 Channel Name: *Picture Hype*
+
+👉 Don’t Forget To:
+✔ Like 👍
+✔ Share 📲
+✔ Comment 💬
+✔ Subscribe 🔔
+
+━━━━━━━━━━━━━━━
+
+🔍 Keywords:
+Blast movie review, Blast Tamil movie, Arjun Sarja movie review, Preity Mukhundhan movie, Abhirami G film, Tamil movie commentary, South Indian action movie, Blast movie facts, Tamil action thriller review, latest Tamil movie update, Picture Hype, movie explained, entertainment review, South movie commentary, Tamil cinema review
+
+#Blast #ArjunSarja #PreityMukhundhan #AbhiramiG #TamilMovie #SouthMovie #MovieReview #Commentary #PictureHype #Entertainment #ReviewAndFacts #ActionMovie
+━━━━━━━━━━━━━━━",https://i.ytimg.com/vi/2bEBLs858jw/hqdefault.jpg,PT2H24M34S,Video
+eoUU6YCNAGs,ZyroFlix,Blast (2026) Tamil Full Movie Arjun Sarja | Abhirami | Prety Mukhundhan | John Kokken |Review & Fact,2026-06-28 10:30:13+00:00,596819,3638,0,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UC9b3fd4XZo3wpcQdlk9_wIw,"Blast (2026) Tamil Full Movie Arjun Sarja | Abhirami | Prety Mukhundhan | John Kokken |Review & Fact
+
+#blast #blastmovie #arjunsarja #abhirami #moviereview 
+
+⚠️ Disclaimer:
+This video is created only for educational and entertainment purposes. We do not claim ownership of any copyrighted content used in the video. All movie clips, images, and music belong to their respective owners and are used under fair use for review, commentary, and analysis.
+
+This content follows YouTube’s Fair Use Policy and Community Guidelines. This is not the full movie and we do not provide any download links. We encourage viewers to watch the movie through legal and official platforms only.
+
+🙏 Don’t forget to like, share, and subscribe to our channel for more movie reviews and story explanations
+
+Disclaimer:- This channel DOES NOT promote or encourage any illegal activities. All content provided by this channel is meant for EDUCATIONAL and INFORMATIONAL PURPOSE
+only.
+
+Copyright Disclaimer under Section 107 of the Copyright Act 1976:
+This content is made for review, commentary, and educational purposes. Allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, and research.
+Fair use is a use permitted by copyright statute that might otherwise be infringing.
+All content used in this video is for informational and educational purposes only",https://i.ytimg.com/vi/eoUU6YCNAGs/hqdefault.jpg,PT2H29M47S,Video
+BmL8FpW59DM,Tube Movies,Blast (2026)| Blast Tamil Full Movie Explain| Arjun | Abhirami | Preity Mukhundhan | Movie Review,2026-07-07 16:30:39+00:00,81829,351,0,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UCmgglaIvRcBPR7nABdreL3w,"Blast (2026)| Blast Tamil Full Movie Explain| Arjun | Abhirami | Preity Mukhundhan | Movie Review
+
+Important Note:
+
+Friends, this is not the full movie. This video contains only a movie review and complete story explanation.
+
+Welcome to Tube Movies! We create movie reviews, story explanations, box office updates, budget details, interesting facts, and our review of the film. We do not upload full movies on this channel.
+
+If the introduction feels a bit long, you can skip ahead to the main content. In this video, I've explained the entire story in my own style, along with budget details, box office collections, interesting trivia, and a detailed review.
+
+If you enjoy this video, please Like, Share, and Subscribe to Tube Movies for more movie reviews, story explanations, and entertainment updates. Don't forget to press the bell icon so you never miss an upload.
+
+Thank you for watching and supporting the channel!
+
+
+
+Disclaimer
+
+This channel is created solely for educational, informational, and entertainment purposes. We do not promote, support, or encourage any illegal activities. The opinions expressed in our videos are intended for discussion, criticism, commentary, analysis, and review only.
+
+Copyright Disclaimer
+
+All film clips, trailers, images, music, logos, and other copyrighted materials featured in this video belong to their respective copyright owners.
+
+This video is produced under the principles of Fair Use as provided in Section 107 of the U.S. Copyright Act, which permits limited use of copyrighted material for purposes such as criticism, commentary, news reporting, teaching, scholarship, and research.
+
+We do not claim ownership of any third-party copyrighted content used in this video. No copyright infringement is intended. If any copyright owner has concerns regarding the use of their material, please contact us directly, and we will promptly review and resolve the matter.
+
+#blast #blastmovie #arjun #moviereview",https://i.ytimg.com/vi/BmL8FpW59DM/hqdefault.jpg,PT2H33M16S,Video
+-GmXAiBTYBQ,Second Show,"'Blast' Tamil Movie Review | Subash K. Raj - Arjun, Abhirami, Preity Mukhundhan - Ravi Basrur",2026-05-31 14:04:46+00:00,29916,810,82,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join",https://i.ytimg.com/vi/-GmXAiBTYBQ/hqdefault.jpg,PT8M10S,Video
+AvPRJgNnkxc,tamilcinemareview,BLAST review by prashanth,2026-05-29 13:05:01+00:00,79873,1612,140,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UCZVcQLqXTn1DN-UcDwrc1gQ,"review about recently released movie Blast , directed by Subash K Raj !",https://i.ytimg.com/vi/AvPRJgNnkxc/hqdefault.jpg,PT6M20S,Video
+-6Y2wvKsZwk,Delite Cinemas,"""KARA🔥Movie Review""🍿l Dhanush🔥l Vignesh Raja🔥l By Delite Cinemas 💫",2026-04-30 08:45:53+00:00,36514,2098,75,2,False,False,Kara,2026-07-13 18:54:13.202344+00:00,UCAPY9agmayYQ5-tYikGlxhA,"#Kara #Karareview #Karamoviereview
+#Dhanush #Karatamilreview
+#Mamithabaiju
+
+""Kara Trailer Things""🥵
+https://youtu.be/9Ay4MnpcIEU?si=fQipOvy9IePMTOld
+
+""Raaka Telugu Coincidence""🔥
+https://youtu.be/8aP9w90-LfY?si=HPQQWee0Ah04c3Sq
+
+In this video we are going to see about Kara Movie Review.
+
+Follow us on:
+Facebook:
+https://www.facebook.com/Delite-Cinemas-1785665724869975/
+Instagram:
+https://instagram.com/delitecinemas?igshid=13o3o0un19u07
+Twitter:
+https://twitter.com/delitecinemas?s=09
+
+The Images used in this content are as fair use policy of youtube.
+For Reference Purposes and to promote the content we have used only some images from movie trailer clip.
+Other than the above said we have no other intentions.",https://i.ytimg.com/vi/-6Y2wvKsZwk/hqdefault.jpg,PT4M34S,Video
+zkQWiCji7Hw,Filmi craft,Blast Movie Review by Filmi craft Arun | Arjun Sarja | Abhirami | Preity Mukhundhan | Subash K. Raj,2026-05-28 07:48:26+00:00,139530,3179,213,2,False,False,Blast,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#BlastMovieReview
+#Blast2026
+#BlastTamilMovieReview
+#BlastReview
+#KaruppuReviewTamil
+#பிளாஸ்ட்விமர்சனம்
+#பிளாஸ்ட்ரிவியூ
+#பிளாஸ்ட்
+#Filmicraft
+
+Blast is a 2026 Indian Tamil-language action thriller directed by Subash K. Raj. Starring Arjun Sarja, Abhirami Gopikumar , Preity Mukhundhan and John Kokken.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/zkQWiCji7Hw/hqdefault.jpg,PT6M2S,Video
+9prCSA-c38I,The Fencer Show,Parimala And Co Movie Review Tamil | Parimala And Co Review Tamil | Parimala And Co Tamil Review,2026-06-06 11:10:45+00:00,7686,149,16,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCvpRUvsqFkRpO6gk_vz7mSw,"Parimala And Co Movie Review Tamil by The Fencer Show | Parimala And Co Review Tamil | Parimala And Co Tamil Review | Theatres
+
+Parimala And Co (2026) is a Tamil Movie available now in Theatres
+
+#ParimalaAndCoReview
+#ParimalaAndCo
+#ParimalaAndCoTrailer
+#ParimalaAndCoReviewTamil
+#ParimalaAndCoMovieReview
+#ParimalaAndCoTrailerTamil
+#ParimalaAndCoTamilReview
+#ParimalaAndCoMovie
+#ParimalaAndCoTamilMovieReview
+#ParimalaAndCoTamilMovie
+#ParimalaAndCo2026
+#ParimalaAndCoInTheatres
+
+Parimala And Co 2026 Tamil Movie Review
+Parimala And Co Movie Review in Tamil
+Parimala And Co Review in Tamil
+Parimala And Co Tamil Review
+Parimala And Co 2026 Movie Review in Tamil
+Parimala And Co Trailer Tamil
+Parimala And Co Trailer
+Parimala And Co Movie Trailer
+Parimala And Co Movie Trailer Tamil
+Parimala And Co Tamil Trailer
+
+Follow The Fencer Show on Social Media:
+https://www.youtube.com/@TheFencerShow
+https://x.com/the_fencer_show
+https://www.instagram.com/the_fencer_show
+https://www.facebook.com/share/1DbLAaTN2Y/
+
+For Enquiries:
+thefencershow1@gmail.com",https://i.ytimg.com/vi/9prCSA-c38I/hqdefault.jpg,PT2M38S,Video
+a28ZC5uxjXU,Varun Talks,Parimala & Co Movie Review | Jayaram | Urvashi | Mysskin | Pandiraj | Yogi Babu | Varun Talks,2026-06-05 07:08:46+00:00,31259,425,32,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCaYXNPf-LWB545qzV6rA9wQ,"Parimala & Co Movie Review | Jayaram | Urvashi | Mysskin | Pandiraj | Yogi Babu | Varun Talks
+
+Parimala & Co Movie Review in Tamil by Varun Talks. Directed by Pandiraj, this black comedy thriller stars Jayaram, Urvashi, Mysskin, Yogi Babu, Sandy, Santosh Sobhan, Sanjana Krishnamoorthy and Ananthika Sanilkumar. The film starts as a heartwarming family entertainer before transforming into a gripping murder mystery packed with suspense, comedy and unexpected twists. Watch our complete review to know whether Parimala & Co is worth your time and where it stands among the best Tamil movies of 2026.
+
+#ParimalaAndCo #ParimalaAndCoReview #Pandiraj #Jayaram #Urvashi #Mysskin #YogiBabu #TamilMovieReview #Kollywood #VarunTalks
+
+Parimala And Co Review, Parimala And Co Movie Review, Parimala And Co Tamil Review, Pandiraj Movie Review, Jayaram Movie Review, Urvashi Movie Review, Mysskin Comedy Scenes, Yogi Babu Movie, Tamil Movie Review, Tamil Cinema Review, Parimala And Co Public Review, Parimala And Co Explained, Parimala And Co Hit Or Flop, Tamil Thriller Movie, Black Comedy Tamil Movie, Varun Talks, Tamil Movie Updates, Latest Tamil Movies 2026, Tamil Film Review, Kollywood Review#VarunTalks
+------------------------------------------------------------------------------------------
+
+Follow me on
+
+Instagram :
+https://www.instagram.com/listen2varuntalks?igsh=MWNieG4wZXFrYXRiMA==
+
+Facebook :
+https://www.facebook.com/VarunVlogsOfficial?mibextid=ZbWKwL
+
+Twitter:
+https://x.com/VarunSeven1?t=vW20DbhcZDBx5Eana5LgHw#VarunTalk",https://i.ytimg.com/vi/a28ZC5uxjXU/hqdefault.jpg,PT8M45S,Video
+Pgx3Mw-FpdQ,Second Show,'பரிமளா & கோ' திரைப்பட விமர்சனம் - 'Parimala & Co' Movie Review | Pandiraaj Jayaram Urvashi Mysskin,2026-06-06 07:58:21+00:00,24584,514,43,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCDyoch6mtkeC_5lNkI9W2OQ,"​​Join this channel to get access to perks:
+https://www.youtube.com/channel/UCDyoch6mtkeC_5lNkI9W2OQ/join 
+
+For advertisements / business enquiries, do contact tamilsecondshow@gmail.com or Whatsapp @ 9543264797 
+
+~
+
+Review of Tamil movie 'Parimala & Co' directed by Pandiraaj starring Jayaram, Urvashi, Mysskin, Sandy Master, Sanjana Krishnamoorthy, Ananthika Sanilkumar, Santosh Sobhan, Poornima Ravi. 
+
+Music - Foxn
+Cinematography - George C. Williams
+Editing - Pradeep E. Ragav
+
+~ 
+
+#Parimala&CoReview
+#பரிமளா&கோ
+#Parimala&CoTamil",https://i.ytimg.com/vi/Pgx3Mw-FpdQ/hqdefault.jpg,PT9M49S,Video
+seluMZhrPxI,Friday Facts,**தா என்னடா படம் இது🤬 PARIMALA AND CO PUBLIC REVIEW | PARIMALA AND CO Movie Review #parimalaandco,2026-06-05 10:30:25+00:00,201722,2372,48,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCm8FgwSjkRqSDVOfK7mgZBw,"#parimalaandcopublicreview #parimalaandcomoviereview #parimalaandcoreview
+#Fridayfacts #ramcharan #jhanvikapoor #parimalaandco #parimalaandcomovie #parimalaandcopublicreview #parimalaandcopublictalk #parimalaandcofdfdsreview #parimalaandcomoviereview #parimalaandcoreviewtamil #parimalaandcotamilreview #parimalaandcoreview #moviereview #publicreview #publictalk #tamilcinemareview
+
+Friday Facts are committed to give you a Complete Portal For Instant Cinema Events Updates & FDFS Celebration/Public opinion. We assure that we will bring you the latest events in South indian film industry. Be with us for every day to day updates in kollywood cinema.
+
+
+
+Hit the Red Subscribe button for more Kollywood Updates https://goo.gl/hRLevZ
+
+For more
+Subscribe @ https://goo.gl/hRLevZ
+Like us in https://goo.gl/MH3uSK
+Follow Us on https://twitter.com/fridayfacts_
+
+
+
+
+
+
+parimala and co, parimala and co movie, parimala and co public review , parimala and co movie,parimala and co review,parimala and co movie review, parimala and co fdfs review, parimala and co review tamil,parimala and co public talk,parimala and co public review tamil,parimala and co public review today,parimala and co public review troll,parimala and co public talk tamil,parimala and co public talk,parimala and co public opinion tamil,parimala and co public opinion tirunelveli,parimala and co theatre response,parimala and co its prasanth review,tamil talkies review parimala and co,parimala and co review by prasanth,parimala and co review blue sattai,parimala and co public review tamil, parimala and co meme review,parimala and co movie meme review,parimala and co tamil movie public opinion, parimala and co interview, பரிமளா அண்ட் கோ எப்படி இருக்கு? parimala and co public reaction",https://i.ytimg.com/vi/seluMZhrPxI/hqdefault.jpg,PT46S,Short
+eHkjU_Fx_9Y,FEATU GADI MEDIA,Parimala and Co Movie Review Telugu | Parimala And Co Telugu Review | Parimala And Co Review,2026-07-11 08:42:15+00:00,47832,1127,64,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCIIIR-lkJcM6Pi2N7-TxbRA,"#parimalaandco #parimalaandcoreview #parimalaandcomoviereview
+
+
+Fair Use Statement – Featu Gadi Media
+
+Featu Gadi Media produces original, insightful, and engaging movie reviews grounded in Fair Use principles under Section 107 of the U.S. Copyright Act, which allows limited use of copyrighted material for purposes such as criticism, commentary, education, and review.
+
+## 1. Transformative Use of Visual Material
+To support and enhance our commentary, Featu Gadi Media may include limited, highly edited visual snippets from films. These visuals are:
+
+- Significantly transformed with added graphics, black backgrounds, Telugu review stamps, logos, and design enhancements.
+- Cropped, zoomed, stylized, and altered with transitions to highlight specific points of analysis.
+- Used sparingly, strictly for commentary and educational context — not for reproducing or redistributing the original work.
+
+These edits ensure the visuals are transformative and serve a unique purpose within the review.
+
+## 2. Original Commentary & Creative Contribution
+Every video features original voiceover and creative input, including:
+
+- In-depth analysis of story, themes, performances, and technical craftsmanship.
+- Balanced critique covering both strengths and weaknesses.
+- Clear recommendations based on genre, audience, and overall cinematic quality.
+
+This commentary adds substantial new value and perspective, ensuring the content does not act as a substitute for the original film.
+
+## 3. Product Mentions & Transparency
+Some videos may include brief mentions of budget-friendly products (such as food, clothing, or accessories). These mentions:
+
+- Are not paid promotions unless explicitly stated.
+- Are shared only to benefit viewers with helpful discoveries.
+- May appear within the video if platform tagging options are unavailable.
+
+All product mentions are made transparently and in good faith.
+
+## 4. Commitment to Policy Compliance
+Featu Gadi Media strictly follows:
+
+- YouTube’s Fair Use and copyright guidelines
+- Content ID rules
+- Best practices for critical and educational content
+
+We respect original creators and address any copyright concerns professionally and promptly",https://i.ytimg.com/vi/eHkjU_Fx_9Y/hqdefault.jpg,PT2M21S,Video
+u3tOHprtNAI,KaKi's Talkies,"Parimala and Co - Movie Review | Jayaram, Urvasi, Mysskin | Foxn | Pandiraaj | KaKis Talkies",2026-06-05 09:45:55+00:00,57913,1146,71,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UC3Rey0d4AtvWyHVu0SC-VXA,"#Parimalaandco #ParimalaandcoReview #ParimalaandcoMovie #ParimalaandcoMovieReview #Jayaram #Urvasi #Sanjana #Ananthika #Mysskin #Pandiraaj #KaKisTalkies 
+
+KaKi’s Talkies – The Ultimate Movie Review Hub!
+
+India’s No.1 Movie Review Channel? Tamil Nadu’s No.1? Chennai’s No.1? Sounds unbelievable, right? Just like ""Nyaayamaana vilayil, Tharamaana porutkal"", my mission is Neat, Sarcasm-laced Reviews that entertain and provoke thought.
+
+Join me on this channel as we spread tolerance, love, and humor—because agreeing to disagree is an art!
+
+Here is my review of 2026 Indian Tamil-language black comedy thriller film Parimala and Co written and directed by Pandiraaj, who co-produced the film alongside G. K. M. Tamil Kumaran. The film stars an ensemble cast featuring Jayaram, Urvashi, Mysskin, Yogi Babu, Sandy, Santosh Sobhan, Sanjana Krishnamoorthy and Ananthika Sanilkumar. 
+
+
+Advertisers & Sponsors:
+Reach me via my social media handles or at karthick.bbc@gmail.com
+
+Welcome to KaKi’s Talkies!
+This is my narcissistic space—a YouTube channel dedicated to movie reviews, songs, thoughts, and all the other unwanted topics that (hopefully) entertain! Subscribe for Tamil, Telugu, Hindi, Malayalam, English, and any other movie that has subtitles!
+
+🔔 Subscribe, Like, Share, and Comment 👉 https://bit.ly/KaKisTalkies
+
+Follow us on:
+Twitter - https://x.com/karthickkrishna
+Instagram - https://www.instagram.com/kakistalkies/
+Facebook - https://www.facebook.com/kakistalkies
+Threads - https://www.threads.net/@kakistalkies
+
+#KakisTalkies #MovieReviews #TamilCinema #Sarcasm #MalayalamMovies #KarthikKrishna #NewTamilMovies #NewMovies #YouTuber #NewTamilMovie",https://i.ytimg.com/vi/u3tOHprtNAI/hqdefault.jpg,PT6M32S,Video
+ra9HyjPiQNc,B5 Voice,Parimala And Co Movie Explained Story & Review In Tamil / Tamil New Movies / B5 Voice ,2026-06-05 12:51:35+00:00,82508,813,86,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCxozs5jlRVsSNS6G6X1gdmg,"#parimalaandco #tamilmovie #moviereview
+
+
+Parimala And Co Movie Review 
+Parimala And Co Movie Explained 
+Parimala And Co Songs 
+Parimala And Co Full movie hd tamil 
+Parimala And Co movie 
+Parimala And Co climax
+
+#tamilmovie",https://i.ytimg.com/vi/ra9HyjPiQNc/hqdefault.jpg,PT18M20S,Video
+1qP32L5hyO4,Filmi craft,Parimala and Co Movie Review by Filmi craft Arun | Jayaram | Urvashi | Mysskin | Pandiraaj,2026-06-05 10:17:39+00:00,73700,1614,127,2,False,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UClF9UTljviumfJf7t-VR5tg,"#ParimalaandCoMovieReview
+#ParimalaandCoMovie
+#ParimalaandCoMovieTamilMovieReview
+#ParimalaandCoMovieReview
+#பரிமளாஅண்ட்கோவிமர்சனம்
+#பரிமளாஅண்ட்கோரிவியூ
+#பரிமளாஅண்ட்கோ
+#Filmicraft
+
+Parimala and Co is a 2026 Indian Tamil-language black comedy thriller film written and directed by Pandiraaj.
+The film stars an ensemble cast featuring Jayaram, Urvashi, Mysskin, Yogi Babu, Sandy, Santosh Sobhan, Sanjana Krishnamoorthy and Ananthika Sanilkumar.
+
+To support our Channel        -       Click ""Join"" Button near ""Subscribe"" Button to become a Member of Filmi craft Family, if you wish. 
+To know more about ""Join Button"", pls. click the following link - https://youtu.be/nlRf0wpQcnQ.
+
+Subscribe our New channel ""Filmi Craft Corner"" for interesting and infotainment videos using the link - https://youtube.com/channel/UCYwZ32wCr7grmXst_-3pBZA
+
+Contact me at : myfilmicraft@gmail.com
+
+On Facebook  -   https://www.facebook.com/filmi.craft.7
+
+On Twitter  -  https://twitter.com/filmicraft
+
+On Instagram -   https://www.instagram.com/filmicraft/
+
+To download Movie Subtitles, pls. refer the video - https://youtu.be/j06Ug59ajO4",https://i.ytimg.com/vi/1qP32L5hyO4/hqdefault.jpg,PT5M59S,Video
+dkOCFL9V0GY,Tamil Talkies,"PARIMALA AND CO Review - Mysskin, Jayaram, Pandiraaj, Urvashi - Tamil Talkies",2026-06-08 17:13:21+00:00,63578,899,7,5,True,False,Parimala and Co,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,"Twitter - http://www.twitter.com/TamilTalkies
+Facebook - http://www.facebook.com/TamilTalkiesDotNet",https://i.ytimg.com/vi/dkOCFL9V0GY/hqdefault.jpg,PT2M57S,Video
+3hUwnHct-xM,Tamil Talkies,"BLAST Review - Arjun, AGS Entertainments, Ravi Basur  - Tamil Talkies",2026-05-28 23:06:49+00:00,558962,10147,807,5,True,False,Blast,2026-07-13 18:54:13.202344+00:00,UCkI-SYGC8fxPNcp6FsX4SRQ,#blast #blastreview #blastmoviereview,https://i.ytimg.com/vi/3hUwnHct-xM/hqdefault.jpg,PT4M53S,Video
+xVSWCSc5Er4,Oyster Zone,Youth 2026 Movie Review | Ken Karunas | Anishma Anilkumar | Priyanshi Yadav | Review & Facts,2026-03-30 03:22:21+00:00,818210,0,0,2,False,False,Youth,2026-07-13 18:54:13.202344+00:00,UC2NLHArAPg-Xs5NxTvMz75w,"#YouthMovieReview #KenKarunas #PriyanshiYadav
+
+Youth 2026 Movie Review | Ken Karunas | Anishma Anilkumar | Priyanshi Yadav | Review & Facts
+
+Note -  All Pictures, Images, And Some Video Clips Used In This Video Belongs To The Respected Owners.
+
+Disclaimer
+Oyster Zone channel does not promote or encourage any illegal activities
+Our CHANNEL sometimes use Movie clips and movie trailer clips to showcase the Filmy updates & Information but all content provided by this channel is meant for NEWS REPORTING and INFORMATIONAL & EDUCATIONAL PURPOSE  only.
+
+
+Copyright Disclaimer Under Section 107  of the Copyright Act 1976, allowance is made for ""fair use"" for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit educational or personal use tips the balance in favor of fair use.  
+
+
+Thanks For Watching...............👌👌",https://i.ytimg.com/vi/xVSWCSc5Er4/hqdefault.jpg,PT2H36M10S,Video
