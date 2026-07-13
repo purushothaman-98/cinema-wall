@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 import pandas as pd
 import requests
-from sentiment import add_sentiment
 
 ROOT = Path(__file__).parent
 LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
@@ -22,7 +21,7 @@ def load_live() -> pd.DataFrame:
     frame["scanned_at"] = pd.to_datetime(frame.get("scanned_at"), errors="coerce", utc=True)
     frame["likes"] = pd.to_numeric(frame.get("likes", 0), errors="coerce").fillna(0)
     frame = frame.dropna(subset=["film", "platform", "text"])
-    return add_sentiment(frame)
+    return frame
 
 
 def load_metadata() -> dict:
