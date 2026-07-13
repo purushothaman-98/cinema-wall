@@ -268,16 +268,18 @@ all_analyzed_films = sorted(
 last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
 last_24 = filtered[filtered["created_at"].ge(now - pd.Timedelta(hours=24))]
 
-metrics = st.columns(7)
+actively_fetched_films = set(current_scan_videos["film"].dropna().astype(str)) if not current_scan_videos.empty else set()
+metrics = st.columns(8)
 standard_count = int(current_scan_videos["content_format"].eq("Video").sum()) if not current_scan_videos.empty else 0
 shorts_count = int(current_scan_videos["content_format"].eq("Short").sum()) if not current_scan_videos.empty else 0
 metrics[0].metric("Films analyzed ever", len(all_analyzed_films))
-metrics[1].metric("Films on radar now", len(radar_films))
-metrics[2].metric("Current videos", standard_count)
-metrics[3].metric("Current Shorts", shorts_count)
-metrics[4].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment records stored by the radar; this is not YouTube's public total.")
-metrics[5].metric("New comments · 24 h", f"{len(last_24):,}")
-metrics[6].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
+metrics[1].metric("Films scheduled now", len(radar_films))
+metrics[2].metric("Films fetched latest", len(actively_fetched_films))
+metrics[3].metric("Current videos", standard_count)
+metrics[4].metric("Current Shorts", shorts_count)
+metrics[5].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment records stored by the radar; this is not YouTube's public total.")
+metrics[6].metric("New comments · 24 h", f"{len(last_24):,}")
+metrics[7].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
 catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
 st.subheader("Currently on the radar")
@@ -326,7 +328,11 @@ if missing_history:
         pd.DataFrame({"film": missing_history, "collected_comments": 0, "channels": 0})
     ], ignore_index=True)
 all_film_summary["Status"] = all_film_summary["film"].map(
-    lambda film: "On radar now" if film in radar_films else "Historical"
+    lambda film: (
+        "Actively fetched" if film in actively_fetched_films
+        else "Scheduled—awaiting video" if film in radar_films
+        else "Historical"
+    )
 )
 all_film_summary["Release date"] = all_film_summary["film"].map(
     lambda film: catalog.get(film, {}).get("release_date") or "Unavailable"
