@@ -27,6 +27,7 @@ The GitHub workflow runs at **:10 and :40 UTC every hour**. To stay within the s
 - raw snapshots, the derived 30-minute time series, comments and scan metadata can be downloaded from the Data archive tab
 - the homepage separates every historically analyzed film from films actively monitored on the current radar
 - live scans request the newest 50 top-level comments per video; the daily discovery/backfill requests up to 500, while YouTube's public counter can also include comments not individually retrievable by the collector
+- counter gaps outside 20–70 minutes remain visible as fetch coverage but are excluded from half-hour growth charts
 - stored records are deduplicated and retained for up to 730 days
 
 GitHub may delay scheduled jobs slightly during periods of high Actions load.
