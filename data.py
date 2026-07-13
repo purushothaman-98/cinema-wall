@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 import pandas as pd
 import requests
@@ -12,6 +13,15 @@ LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
 META_FILE = ROOT / "data" / "live" / "scan_metadata.json"
 VIDEO_FILE = ROOT / "data" / "live" / "video_snapshots.csv"
 RAW_ROOT = "https://raw.githubusercontent.com/purushothaman-98/cinema-wall/main/data/live"
+
+def _format_from_duration(duration: object, title: object) -> str:
+    match = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", str(duration or ""))
+    seconds = 0
+    if match:
+        hours, minutes, secs = (int(part or 0) for part in match.groups())
+        seconds = hours * 3600 + minutes * 60 + secs
+    lowered = str(title or "").lower()
+    return "Short" if (0 < seconds <= 60 or "#shorts" in lowered or "#short" in lowered) else "Video"
 
 def _csv(local: Path, remote_name: str) -> pd.DataFrame:
     try:
@@ -35,6 +45,9 @@ def load_live() -> pd.DataFrame:
         frame["video_id"] = frame["parent_id"] if "parent_id" in frame else ""
     if "video_title" not in frame:
         frame["video_title"] = ""
+    if "content_format" not in frame:
+        frame["content_format"] = "Unknown"
+    frame["content_format"] = frame["content_format"].fillna("Unknown")
     frame = frame.dropna(subset=["film", "text", "created_at"])
     return enrich_comments(frame)
 
@@ -56,6 +69,14 @@ def load_video_snapshots() -> pd.DataFrame:
     frame["published_at"] = pd.to_datetime(frame.get("published_at"), errors="coerce", utc=True)
     for column in ("views", "likes", "comments", "signal_score"):
         frame[column] = pd.to_numeric(frame[column], errors="coerce").fillna(0) if column in frame else 0
+    inferred_format = frame.apply(
+        lambda row: _format_from_duration(row.get("duration"), row.get("title")), axis=1
+    )
+    if "content_format" not in frame:
+        frame["content_format"] = inferred_format
+    else:
+        missing_format = frame["content_format"].isna() | ~frame["content_format"].isin(["Video", "Short"])
+        frame.loc[missing_format, "content_format"] = inferred_format[missing_format]
     if "description" not in frame:
         frame["description"] = ""
     frame["description"] = frame["description"].fillna("").replace({"nan": "", "None": ""})
