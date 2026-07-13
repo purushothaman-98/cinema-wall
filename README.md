@@ -1,6 +1,40 @@
-# Tamil Film Pulse
+# Tamil Cinema YouTube Radar
 
-An automated Streamlit wall that discovers recent Tamil films and refreshes public YouTube and Reddit sentiment every day.
+A Streamlit dashboard that discovers recent Tamil films and monitors public YouTube review videos and comments every 30 minutes.
+
+## What it tracks
+
+- recent Tamil releases and posters from TMDB
+- selected Tamil cinema review channels and relevant public-review videos
+- public video views, likes and comment totals as timestamped snapshots
+- recent top-level comments through the official YouTube Data API
+- an open-source `youtube-comment-downloader` fallback when API comment retrieval is unavailable
+- language mix, discussion topics, questions, participation depth and low-information filtering
+- comment arrival, film momentum, view velocity and comment velocity over time
+
+The dashboard deliberately does not calculate a film-quality or sentiment score.
+
+## Collection schedule
+
+The GitHub workflow runs at **:10 and :40 UTC every hour**. To stay within the standard YouTube quota:
+
+- known videos, statistics and recent comments refresh every 30 minutes
+- searches for newly published review videos run every six hours
+- up to four active videos per film are monitored each cycle
+- stored records are deduplicated and retained for up to 730 days
+
+GitHub may delay scheduled jobs slightly during periods of high Actions load.
+
+## Required secrets
+
+Add these under **Repository → Settings → Secrets and variables → Actions**:
+
+```text
+TMDB_API_KEY
+YOUTUBE_API_KEY
+```
+
+Do not commit real keys.
 
 ## Run locally
 
@@ -11,29 +45,22 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The dashboard reads the timestamped dataset produced by the scheduled scanner.
+Run one scan with:
 
-## Weekly scanner
-
-Copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` and add credentials:
-
-```toml
-TMDB_API_KEY = "..."
-YOUTUBE_API_KEY = "..."
+```bash
+python scanner.py
 ```
 
-Add the two values as GitHub Actions repository secrets. The daily workflow discovers recent Tamil releases through TMDb, prioritizes selected review channels, removes promotional videos, reads YouTube comments through the official API, and scans configured public Reddit `.json` listings without OAuth. It stores video-counter snapshots so day/week/month/year view growth becomes available over time.
+## Processing method
 
-Public Reddit JSON is intentionally treated as best-effort: cloud requests can be throttled or blocked. The scanner records partial failures instead of inventing missing data.
+The transparent processing layer:
 
-## Sentiment method
-
-The analysis layer detects Tamil script, Tanglish and mixed Tamil-English comments; normalizes spelling emphasis; handles local cinema slang, negation, intensifiers and emoji; scores confidence; suppresses low-information comments; caps engagement weighting; and calculates aspect sentiment for story, acting, direction, music, visuals, pacing, comedy and emotion. This transparent hybrid is lightweight enough for free hosting. For publication-grade results, validate it against a manually labelled Tamil/Tanglish set before adding a fine-tuned MuRIL, IndicBERT or TamilBERT classifier.
-
-## Deploy
-
-Push the repository to GitHub, create an app at [Streamlit Community Cloud](https://streamlit.io/cloud), select `app.py`, and add credentials through the deployment secrets panel. Never commit real keys.
+- distinguishes Tamil script, Tanglish, mixed Tamil-English and English/other
+- labels story, acting, direction, music, visuals, pacing, comedy, emotion and release discussion
+- separates questions, detailed discussion, short opinions and quick reactions
+- filters extremely short, link-promotional and non-text reactions from analytical plots
+- retains source links and raw public comment text for verification
 
 ## Responsible use
 
-Only public comments are collected. The dashboard reports aggregate conversation patterns, not box-office performance or objective film quality.
+Counts describe the collected public sample. They are not unique viewers, representative polling, box-office estimates or objective film ratings.
