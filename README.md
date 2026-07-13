@@ -22,6 +22,7 @@ The GitHub workflow runs at **:10 and :40 UTC every hour**. To stay within the s
 - searches for newly published review videos and Shorts run once every 24 hours
 - up to four standard videos and three Shorts per film are monitored each cycle
 - 30-minute view-growth charts show only the change between the two latest snapshots, with standard videos and Shorts shown separately
+- every fetched 30-minute counter snapshot is retained without dashboard filters; relevance ranking is applied only during the daily discovery pass
 - stored records are deduplicated and retained for up to 730 days
 
 GitHub may delay scheduled jobs slightly during periods of high Actions load.
