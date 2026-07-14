@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-14T20:20:42.102910+00:00",
+  "last_scan": "2026-07-14T21:34:47.881153+00:00",
   "last_video_discovery": "2026-07-14T16:02:00.487347+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -19,7 +19,7 @@
   ],
   "comments_fetched": 3500,
   "new_comments_added": 2,
-  "stored_comments": 9947,
+  "stored_comments": 9949,
   "videos_monitored": 115,
   "standard_videos_monitored": 88,
   "shorts_monitored": 27,
