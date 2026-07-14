@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-14T14:27:05.801121+00:00",
-  "last_video_discovery": "2026-07-13T15:22:45.961728+00:00",
+  "last_scan": "2026-07-14T16:02:00.487347+00:00",
+  "last_video_discovery": "2026-07-14T16:02:00.487347+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
@@ -12,17 +12,17 @@
     "Blast",
     "Kara",
     "Gatta Kusthi 2",
-    "Gandhi Talks",
     "Thaai Kizhavi",
+    "Gandhi Talks",
     "Youth",
-    "TN 2026"
+    "Find Me"
   ],
-  "comments_fetched": 3121,
-  "new_comments_added": 4,
-  "stored_comments": 3624,
-  "videos_monitored": 91,
-  "standard_videos_monitored": 84,
-  "shorts_monitored": 7,
+  "comments_fetched": 8332,
+  "new_comments_added": 6307,
+  "stored_comments": 9931,
+  "videos_monitored": 65,
+  "standard_videos_monitored": 40,
+  "shorts_monitored": 25,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -192,32 +192,6 @@
       ]
     },
     {
-      "title": "Gandhi Talks",
-      "original_title": "Gandhi Talks",
-      "release_date": "2026-01-30",
-      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
-      "tmdb_id": 786567,
-      "overview": "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev\u2019s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
-      "runtime": 133,
-      "genres": [
-        "Comedy"
-      ],
-      "director": "Kishor Pandurang 'Belekar'",
-      "cast": [
-        "Vijay Sethupathi",
-        "Arvind Swamy",
-        "Aditi Rao Hydari",
-        "Divay Dhamija",
-        "Siddharth Jadhav",
-        "Rohini Hattangadi",
-        "Usha Nadkarni",
-        "Zarina Wahab",
-        "Govind Namdeo",
-        "Bagavathi Perumal"
-      ]
-    },
-    {
       "title": "Thaai Kizhavi",
       "original_title": "\u0ba4\u0bbe\u0baf\u0bcd \u0b95\u0bbf\u0bb4\u0bb5\u0bbf",
       "release_date": "2026-02-27",
@@ -242,6 +216,32 @@
         "Ilavarasu",
         "George Mariyan",
         "Hu Chen De"
+      ]
+    },
+    {
+      "title": "Gandhi Talks",
+      "original_title": "Gandhi Talks",
+      "release_date": "2026-01-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
+      "tmdb_id": 786567,
+      "overview": "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev\u2019s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
+      "runtime": 133,
+      "genres": [
+        "Comedy"
+      ],
+      "director": "Kishor Pandurang 'Belekar'",
+      "cast": [
+        "Vijay Sethupathi",
+        "Arvind Swamy",
+        "Aditi Rao Hydari",
+        "Divay Dhamija",
+        "Siddharth Jadhav",
+        "Rohini Hattangadi",
+        "Usha Nadkarni",
+        "Zarina Wahab",
+        "Govind Namdeo",
+        "Bagavathi Perumal"
       ]
     },
     {
@@ -273,30 +273,31 @@
       ]
     },
     {
-      "title": "TN 2026",
-      "original_title": "TN 2026",
-      "release_date": "2026-04-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/mAX1ujOROXtKsOuIg5MbJbotOyD.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hlTs5C7zQ7TrH7REWOkSXzi67p7.jpg",
-      "tmdb_id": 1556783,
-      "overview": "Set in Pollachi, the story follows a powerful landlord, Sivalingam Mandradiyar, who becomes obsessed with a rising actor, Kukanth Kumar, believing he is the next M.G.R. He pours his wealth into shaping the actor's career and political future. But as ambition and fame grow, so does the risk of downfall. Will it lead to power or ruin?",
-      "runtime": 138,
+      "title": "Find Me",
+      "original_title": "Find Me",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7lByW5Hsy1r7NwNNP5B0wECEZTI.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/humuGx6DgniVx6TGkeaIXKd4Bd2.jpg",
+      "tmdb_id": 1724890,
+      "overview": "During the COVID-19 lockdown, a series of mysterious murders spreads fear across the city. As the investigation unfolds, hidden secrets and unexpected twists make it increasingly difficult to identify the killer. Every clue leads to another mystery in this Tamil crime thriller.",
+      "runtime": 160,
       "genres": [
-        "Comedy",
-        "Drama"
+        "Crime",
+        "Thriller",
+        "Mystery"
       ],
-      "director": "Umapathy Ramaiah",
+      "director": "Krithick Krishnan",
       "cast": [
-        "Natarajan Subramaniam",
-        "Thambi Ramaiah",
-        "M. S. Bhaskar",
-        "Ilavarasu",
-        "Shrita Rao",
-        "Yashika Anand",
-        "Chandhini Tamilarasan",
-        "Redin Kingsley",
-        "Viji Chandrasekhar",
-        "Vadivukarasi"
+        "Krithick Krishnan",
+        "Ashwin S A",
+        "John Praveen",
+        "Prabu Murugha",
+        "Kishore A",
+        "Praveen",
+        "Saravana Kumar R",
+        "Akash Gopi",
+        "Vetrivel Manoharan",
+        "Bharath"
       ]
     }
   ],
@@ -575,11 +576,40 @@
         "Viji Chandrasekhar",
         "Vadivukarasi"
       ]
+    },
+    {
+      "title": "Find Me",
+      "original_title": "Find Me",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7lByW5Hsy1r7NwNNP5B0wECEZTI.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/humuGx6DgniVx6TGkeaIXKd4Bd2.jpg",
+      "tmdb_id": 1724890,
+      "overview": "During the COVID-19 lockdown, a series of mysterious murders spreads fear across the city. As the investigation unfolds, hidden secrets and unexpected twists make it increasingly difficult to identify the killer. Every clue leads to another mystery in this Tamil crime thriller.",
+      "runtime": 160,
+      "genres": [
+        "Crime",
+        "Thriller",
+        "Mystery"
+      ],
+      "director": "Krithick Krishnan",
+      "cast": [
+        "Krithick Krishnan",
+        "Ashwin S A",
+        "John Praveen",
+        "Prabu Murugha",
+        "Kishore A",
+        "Praveen",
+        "Saravana Kumar R",
+        "Akash Gopi",
+        "Vetrivel Manoharan",
+        "Bharath"
+      ]
     }
   ],
   "all_films_analyzed": [
     "29",
     "Blast",
+    "Find Me",
     "Gandhi Talks",
     "Gatta Kusthi 2",
     "Idhayam Murali",
