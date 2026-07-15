@@ -44,12 +44,65 @@ PROMO_PATTERNS = [
     r"https?://", r"subscribe", r"my channel", r"follow me", r"full movie link",
     r"telegram", r"whatsapp", r"earn money", r"giveaway",
 ]
+CAUSAL_MARKERS = [
+    "because", "therefore", "however", "although", "but the", "reason", "works because",
+    "doesn't work", "did not work", "why this", "ஆனால்", "ஆனா", "ஏனெனில்", "காரணம்",
+    "அதனால்", "இருந்தாலும்", "ennana", "aana", "yenna na", "karanam",
+]
+HISTORICAL_MARKERS = [
+    "old movie", "older film", "previous film", "earlier movie", "remake", "original film",
+    "copy of", "inspired by", "better than", "worse than", "compared to", "comparison",
+    "80s", "90s", "2000s", "palaya padam", "munnadi padam", "andha padam",
+    "பழைய படம்", "முந்தைய படம்", "அந்த படம்", "ஒப்பிட", "ரீமேக்",
+]
+CONTEMPORARY_MARKERS = [
+    "election", "politics", "government", "current issue", "today's", "nowadays",
+    "social media", "meme", "troll", "reels", "viral", "arasiyal",
+    "இன்றைய", "இப்போதைய", "அரசியல்", "தேர்தல்", "சமூக வலை", "மீம்",
+]
+SARCASM_MARKERS = [
+    "/s", "yeah right", "what a masterpiece", "oscar kudukanum", "award kudukanum",
+    "national award kudukanum", "enna koduma", "enna da idhu", "vera level logic",
+    "சிறப்பான சம்பவம்", "என்ன கொடுமை", "என்னடா இது", "விருது கொடுக்கணும்",
+    "ஆஸ்கார்", "அடேங்கப்பா", "வாழ்க", "போதும்டா", "யாருடா",
+]
 
 def normalize_text(value: object) -> str:
     text = str(value or "").lower()
     text = re.sub(r"https?://\S+|www\.\S+", " ", text)
     text = re.sub(r"(.)\1{4,}", r"\1\1", text)
     return re.sub(r"\s+", " ", text).strip()
+
+def is_promotional(text: str) -> bool:
+    return any(re.search(pattern, text) for pattern in PROMO_PATTERNS)
+
+def cultural_context(text: str) -> list[str]:
+    def present(marker: str) -> bool:
+        if re.fullmatch(r"[a-z0-9 ]+", marker):
+            return bool(re.search(rf"\b{re.escape(marker)}\b", text))
+        return marker in text
+    signals = []
+    if any(present(marker) for marker in HISTORICAL_MARKERS):
+        signals.append("Older-film / historical comparison")
+    if any(present(marker) for marker in CONTEMPORARY_MARKERS):
+        signals.append("Contemporary social reference")
+    return signals
+
+def sarcasm_cues(text: str) -> list[str]:
+    """Return observable cues; this never claims to establish authorial intent."""
+    cues = []
+    if any(marker in text for marker in SARCASM_MARKERS):
+        cues.append("Tamil/Tanglish rhetorical phrase")
+    laughter = bool(re.search(r"😂|🤣|😏|🙃|😅|\b(lol|lmao|haha+)\b", text))
+    criticism = any(term in text for term in CRITICISM)
+    praise = any(term in text for term in APPRECIATION)
+    if laughter and criticism:
+        cues.append("laughter paired with criticism")
+    if praise and criticism:
+        cues.append("contrasting praise and criticism")
+    if re.search(r"[!?]{2,}", text) and (laughter or criticism):
+        cues.append("rhetorical punctuation")
+    return cues
 
 def detect_language(text: str) -> str:
     tamil_chars = len(re.findall(r"[\u0B80-\u0BFF]", text))
