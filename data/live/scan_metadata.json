@@ -1,10 +1,69 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-15T14:24:12.509656+00:00",
-  "last_video_discovery": "2026-07-14T16:02:00.487347+00:00",
+  "last_scan": "2026-07-15T15:53:54.461183+00:00",
+  "last_video_discovery": "2026-07-15T15:53:54.461183+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
+  "selection_version": 2,
+  "active_video_ids": [
+    "-GmXAiBTYBQ",
+    "1qP32L5hyO4",
+    "3WR4xuFcvc4",
+    "3hUwnHct-xM",
+    "4v6OWiZAv7Q",
+    "5GAgwuuIx_I",
+    "5LA6GUH2pA8",
+    "9qO7Xsa2g1A",
+    "AvPRJgNnkxc",
+    "EcIv-ghW3t0",
+    "Ed3JorSD7HE",
+    "G-PQXCuMTjM",
+    "GcHI2mnFcXQ",
+    "H1udCndPTU0",
+    "KbH3Cihy0hA",
+    "LLmkti_XkMk",
+    "La5WyvyO4HM",
+    "OoMQuy2Pzx0",
+    "P9wB0hzx57c",
+    "PneX7CumxoQ",
+    "QQWfysygeLQ",
+    "QkGUFx1Ns8Y",
+    "TUfsVzU8yvI",
+    "Toas2mtps7c",
+    "UU216Zdz2lc",
+    "_vqgR_x1I1Q",
+    "asUbxf6yqBo",
+    "cbllSrGPjs0",
+    "ccjasf80_dw",
+    "dLVO165vC2I",
+    "dkOCFL9V0GY",
+    "doqGi23QOu4",
+    "dzMotcbkyV0",
+    "eICFQfyvItk",
+    "h82wnFt1bsM",
+    "haLV011BfjA",
+    "kiFeXcU-JI4",
+    "nTpsJJG068E",
+    "q1Yk7mOv2GQ",
+    "qYiwgZPiqPk",
+    "rRL7e36tzY0",
+    "rZ6TkZABsKA",
+    "rkIdNZyiGH0",
+    "sGZ_wEjhu5U",
+    "sX-AyaZtsi4",
+    "tKKZGqzZrYM",
+    "tWfZJPhxo6o",
+    "u3tOHprtNAI",
+    "uVQanfNtU70",
+    "udOlKexHZws",
+    "vEgYmiOrmtg",
+    "z1iWBA43b8g",
+    "zMZki9jtpbY",
+    "zeZIjZA_src",
+    "zkQWiCji7Hw"
+  ],
+  "out_of_scope_videos_pruned": 28,
   "films": [
     "Idhayam Murali",
     "Karuppu",
@@ -12,17 +71,17 @@
     "Blast",
     "Kara",
     "Gatta Kusthi 2",
-    "Thaai Kizhavi",
     "Gandhi Talks",
-    "Youth",
-    "Find Me"
+    "Thaai Kizhavi",
+    "29",
+    "Youth"
   ],
-  "comments_fetched": 3514,
-  "new_comments_added": 0,
-  "stored_comments": 9976,
-  "videos_monitored": 115,
-  "standard_videos_monitored": 88,
-  "shorts_monitored": 27,
+  "comments_fetched": 7317,
+  "new_comments_added": 272,
+  "stored_comments": 9319,
+  "videos_monitored": 55,
+  "standard_videos_monitored": 40,
+  "shorts_monitored": 15,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -192,6 +251,32 @@
       ]
     },
     {
+      "title": "Gandhi Talks",
+      "original_title": "Gandhi Talks",
+      "release_date": "2026-01-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
+      "tmdb_id": 786567,
+      "overview": "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev\u2019s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
+      "runtime": 133,
+      "genres": [
+        "Comedy"
+      ],
+      "director": "Kishor Pandurang 'Belekar'",
+      "cast": [
+        "Vijay Sethupathi",
+        "Arvind Swamy",
+        "Aditi Rao Hydari",
+        "Divay Dhamija",
+        "Siddharth Jadhav",
+        "Rohini Hattangadi",
+        "Usha Nadkarni",
+        "Zarina Wahab",
+        "Govind Namdeo",
+        "Bagavathi Perumal"
+      ]
+    },
+    {
       "title": "Thaai Kizhavi",
       "original_title": "\u0ba4\u0bbe\u0baf\u0bcd \u0b95\u0bbf\u0bb4\u0bb5\u0bbf",
       "release_date": "2026-02-27",
@@ -219,29 +304,31 @@
       ]
     },
     {
-      "title": "Gandhi Talks",
-      "original_title": "Gandhi Talks",
-      "release_date": "2026-01-30",
-      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
-      "tmdb_id": 786567,
-      "overview": "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev\u2019s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
-      "runtime": 133,
+      "title": "29",
+      "original_title": "29",
+      "release_date": "2026-05-08",
+      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gzOamXAMuBpWFcCitMdEoAVAjCf.jpg",
+      "tmdb_id": 1510769,
+      "overview": "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and self-discovery. Through hilarious misadventures and chance encounters, he slowly sees life's bigger picture - its surprises, joys, and second chances.",
+      "runtime": 149,
       "genres": [
-        "Comedy"
+        "Romance",
+        "Comedy",
+        "Drama"
       ],
-      "director": "Kishor Pandurang 'Belekar'",
+      "director": "Rathna Kumar",
       "cast": [
-        "Vijay Sethupathi",
-        "Arvind Swamy",
-        "Aditi Rao Hydari",
-        "Divay Dhamija",
-        "Siddharth Jadhav",
-        "Rohini Hattangadi",
-        "Usha Nadkarni",
-        "Zarina Wahab",
-        "Govind Namdeo",
-        "Bagavathi Perumal"
+        "Vidhu",
+        "Preethi Asrani",
+        "Mahendran",
+        "Sindhu Shyam",
+        "Avinash Raghudevan",
+        "Leona Lishoy",
+        "Aadhira Pandilakshmi",
+        "Shenaz Fathima",
+        "Prem",
+        "Sam Santo"
       ]
     },
     {
@@ -270,34 +357,6 @@
         "Sarath",
         "Eshwar Santhanalakshmi",
         "Nalini"
-      ]
-    },
-    {
-      "title": "Find Me",
-      "original_title": "Find Me",
-      "release_date": "2026-07-03",
-      "poster_url": "https://image.tmdb.org/t/p/w500/7lByW5Hsy1r7NwNNP5B0wECEZTI.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/humuGx6DgniVx6TGkeaIXKd4Bd2.jpg",
-      "tmdb_id": 1724890,
-      "overview": "During the COVID-19 lockdown, a series of mysterious murders spreads fear across the city. As the investigation unfolds, hidden secrets and unexpected twists make it increasingly difficult to identify the killer. Every clue leads to another mystery in this Tamil crime thriller.",
-      "runtime": 160,
-      "genres": [
-        "Crime",
-        "Thriller",
-        "Mystery"
-      ],
-      "director": "Krithick Krishnan",
-      "cast": [
-        "Krithick Krishnan",
-        "Ashwin S A",
-        "John Praveen",
-        "Prabu Murugha",
-        "Kishore A",
-        "Praveen",
-        "Saravana Kumar R",
-        "Akash Gopi",
-        "Vetrivel Manoharan",
-        "Bharath"
       ]
     }
   ],
@@ -603,6 +662,34 @@
         "Akash Gopi",
         "Vetrivel Manoharan",
         "Bharath"
+      ]
+    },
+    {
+      "title": "29",
+      "original_title": "29",
+      "release_date": "2026-05-08",
+      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gzOamXAMuBpWFcCitMdEoAVAjCf.jpg",
+      "tmdb_id": 1510769,
+      "overview": "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and self-discovery. Through hilarious misadventures and chance encounters, he slowly sees life's bigger picture - its surprises, joys, and second chances.",
+      "runtime": 149,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Rathna Kumar",
+      "cast": [
+        "Vidhu",
+        "Preethi Asrani",
+        "Mahendran",
+        "Sindhu Shyam",
+        "Avinash Raghudevan",
+        "Leona Lishoy",
+        "Aadhira Pandilakshmi",
+        "Shenaz Fathima",
+        "Prem",
+        "Sam Santo"
       ]
     }
   ],
