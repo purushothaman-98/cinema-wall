@@ -1,6 +1,6 @@
 {
-  "status": "partial",
-  "last_scan": "2026-07-15T00:57:35.984223+00:00",
+  "status": "healthy",
+  "last_scan": "2026-07-15T04:15:26.859178+00:00",
   "last_video_discovery": "2026-07-14T16:02:00.487347+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -17,9 +17,9 @@
     "Youth",
     "Find Me"
   ],
-  "comments_fetched": 3308,
-  "new_comments_added": 0,
-  "stored_comments": 9950,
+  "comments_fetched": 3501,
+  "new_comments_added": 2,
+  "stored_comments": 9952,
   "videos_monitored": 115,
   "standard_videos_monitored": 88,
   "shorts_monitored": 27,
@@ -638,10 +638,5 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": [
-    "Comments/gDNceT8979U: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "Comments/tWfZJPhxo6o: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "Comments/M-gFUEPTdcM: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-    "Comments/dzMotcbkyV0: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
-  ]
+  "errors": []
 }
