@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-15T18:35:28.112147+00:00",
+  "last_scan": "2026-07-15T20:00:01.650114+00:00",
   "last_video_discovery": "2026-07-15T16:06:02.534574+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -249,12 +249,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 435 useful public comments. Of 118 comments with detectable reaction wording, 96 were appreciative and 22 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 435,
-      "explicit_reaction_comments": 118,
+      "summary": "Based on 436 useful public comments. Of 119 comments with detectable reaction wording, 96 were appreciative and 23 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 436,
+      "explicit_reaction_comments": 119,
       "appreciative_signals": 96,
-      "critical_signals": 22,
-      "substantive_share": 0.1816,
+      "critical_signals": 23,
+      "substantive_share": 0.1812,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -272,9 +272,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 295,
+          "useful_comments": 296,
           "appreciative_signals": 66,
-          "critical_signals": 14,
+          "critical_signals": 15,
           "questions": 22,
           "leading_topic": "General reaction"
         },
@@ -321,12 +321,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 534 useful public comments. Of 197 comments with detectable reaction wording, 138 were appreciative and 59 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 534,
+      "summary": "Based on 535 useful public comments. Of 197 comments with detectable reaction wording, 138 were appreciative and 59 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 535,
       "explicit_reaction_comments": 197,
       "appreciative_signals": 138,
       "critical_signals": 59,
-      "substantive_share": 0.2172,
+      "substantive_share": 0.2187,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -360,10 +360,10 @@
         },
         {
           "channel": "Trendswood Tv",
-          "useful_comments": 68,
+          "useful_comments": 69,
           "appreciative_signals": 14,
           "critical_signals": 7,
-          "questions": 4,
+          "questions": 5,
           "leading_topic": "General reaction"
         },
         {
@@ -903,8 +903,8 @@
     "Youth"
   ],
   "comments_fetched": 1975,
-  "new_comments_added": 0,
-  "stored_comments": 8646,
+  "new_comments_added": 2,
+  "stored_comments": 8648,
   "videos_monitored": 54,
   "standard_videos_monitored": 40,
   "shorts_monitored": 14,
