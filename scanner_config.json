@@ -7,6 +7,23 @@
   "comments_per_video_live": 50,
   "comments_per_video_daily": 500,
   "keep_history_days": 730,
+  "selection_version": 2,
+  "scope_exclusion_terms": [
+    "full movie",
+    "movie explained",
+    "story explained",
+    "explained story",
+    "review & fact",
+    "review with facts",
+    "official trailer",
+    "official teaser",
+    "lyric video",
+    "audio launch",
+    "press meet",
+    "success meet",
+    "exclusive interview",
+    "toxic shocking news"
+  ],
   "youtube_review_channels": [
     "Tamil Talkies",
     "BehindwoodsTV",
