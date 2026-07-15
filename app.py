@@ -129,6 +129,38 @@ def render_movie_page(movie: str) -> None:
             st.markdown("  \n".join(facts))
         if item.get("cast"):
             st.markdown("**Main cast:** " + ", ".join(item["cast"][:8]))
+        verified_at = pd.to_datetime(meta.get("last_video_discovery"), errors="coerce", utc=True)
+        tmdb_id = item.get("tmdb_id")
+        verification = verified_at.strftime("%d %b %Y, %H:%M UTC") if pd.notna(verified_at) else "latest discovery"
+        source_link = f"https://www.themoviedb.org/movie/{tmdb_id}" if tmdb_id else "https://www.themoviedb.org/"
+        st.caption(f"Release, runtime, cast and crew facts cross-checked from [TMDB]({source_link}) during {verification}.")
+
+    insight = meta.get("film_insights", {}).get(movie, {})
+    st.subheader("Audience intelligence brief")
+    if insight:
+        st.write(insight.get("summary", ""))
+        brief_metrics = st.columns(4)
+        brief_metrics[0].metric("Useful comments", f"{insight.get('useful_comments', 0):,}")
+        brief_metrics[1].metric("Clear reaction signals", f"{insight.get('explicit_reaction_comments', 0):,}")
+        brief_metrics[2].metric("Appreciative signals", f"{insight.get('appreciative_signals', 0):,}")
+        brief_metrics[3].metric("Detailed or questions", f"{insight.get('substantive_share', 0):.0%}")
+        st.caption("Reaction figures count explicit wording in comments, not viewers and not a film rating. Neutral or ambiguous comments are not forced into positive/negative categories.")
+        reviewer_rows = pd.DataFrame(insight.get("reviewers", []))
+        if not reviewer_rows.empty:
+            st.markdown("#### How each reviewer’s audience responds")
+            reviewer_rows["Audience reading"] = reviewer_rows.apply(
+                lambda row: (
+                    f"{int(row['appreciative_signals'])} appreciative vs {int(row['critical_signals'])} critical signals; "
+                    f"{int(row['questions'])} questions. Leading topic: {str(row['leading_topic']).lower()}."
+                ), axis=1,
+            )
+            st.dataframe(
+                reviewer_rows[["channel", "useful_comments", "Audience reading"]],
+                width="stretch", hide_index=True,
+                column_config={"channel": "Reviewer/channel", "useful_comments": "Useful comments"},
+            )
+    else:
+        st.info("The evidence brief will appear after the next completed scanner run.")
 
     st.subheader("What reviewers cover—and how their audiences respond")
     st.caption("Reviewer wording comes from the public video title/description. Audience response is derived from comments attached to that exact video; no reviewer opinion is invented.")
