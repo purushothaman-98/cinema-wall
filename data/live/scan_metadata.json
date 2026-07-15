@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-15T16:06:02.534574+00:00",
+  "last_scan": "2026-07-15T17:02:11.731654+00:00",
   "last_video_discovery": "2026-07-15T16:06:02.534574+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -62,7 +62,7 @@
     "zeZIjZA_src",
     "zkQWiCji7Hw"
   ],
-  "out_of_scope_videos_pruned": 3,
+  "out_of_scope_videos_pruned": 0,
   "film_insights": {
     "29": {
       "summary": "Based on 164 useful public comments. Of 54 comments with detectable reaction wording, 44 were appreciative and 10 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
@@ -902,9 +902,9 @@
     "29",
     "Youth"
   ],
-  "comments_fetched": 7316,
-  "new_comments_added": 0,
-  "stored_comments": 8645,
+  "comments_fetched": 1975,
+  "new_comments_added": 1,
+  "stored_comments": 8646,
   "videos_monitored": 54,
   "standard_videos_monitored": 40,
   "shorts_monitored": 14,
