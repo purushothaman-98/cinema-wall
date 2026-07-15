@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import math
+import re
 from urllib.parse import quote
 
 import pandas as pd
@@ -11,7 +12,41 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data import load_live, load_metadata, load_video_snapshots
-from youtube_analysis import cultural_context, is_promotional, normalize_text, sarcasm_cues, top_terms
+from youtube_analysis import normalize_text, top_terms
+
+PROMO_CHECKS = [r"https?://", r"subscribe", r"my channel", r"follow me", r"telegram", r"whatsapp", r"giveaway"]
+HISTORY_CHECKS = ["old movie", "older film", "previous film", "remake", "original film", "copy of", "inspired by", "better than", "worse than", "compared to", "80s", "90s", "palaya padam", "munnadi padam", "பழைய படம்", "முந்தைய படம்", "ஒப்பிட", "ரீமேக்"]
+CURRENT_CHECKS = ["election", "politics", "government", "social media", "meme", "troll", "reels", "viral", "arasiyal", "இன்றைய", "இப்போதைய", "அரசியல்", "தேர்தல்", "சமூக வலை", "மீம்"]
+SARCASM_CHECKS = ["/s", "yeah right", "what a masterpiece", "oscar kudukanum", "award kudukanum", "enna koduma", "enna da idhu", "vera level logic", "என்ன கொடுமை", "என்னடா இது", "விருது கொடுக்கணும்", "ஆஸ்கார்", "அடேங்கப்பா", "வாழ்க", "போதும்டா", "யாருடா"]
+
+def is_promotional(text: str) -> bool:
+    return any(re.search(pattern, text) for pattern in PROMO_CHECKS)
+
+def _marker_present(text: str, marker: str) -> bool:
+    return bool(re.search(rf"\b{re.escape(marker)}\b", text)) if re.fullmatch(r"[a-z0-9 ]+", marker) else marker in text
+
+def cultural_context(text: str) -> list[str]:
+    signals = []
+    if any(_marker_present(text, marker) for marker in HISTORY_CHECKS):
+        signals.append("Older-film / historical comparison")
+    if any(_marker_present(text, marker) for marker in CURRENT_CHECKS):
+        signals.append("Contemporary social reference")
+    return signals
+
+def sarcasm_cues(text: str) -> list[str]:
+    cues = []
+    if any(marker in text for marker in SARCASM_CHECKS):
+        cues.append("Tamil/Tanglish rhetorical phrase")
+    laughter = bool(re.search(r"😂|🤣|😏|🙃|😅|\b(lol|lmao|haha+)\b", text))
+    criticism = bool(re.search(r"\b(bad|worst|boring|mokka|waste|cringe|lag|flop|average)\b|மோசம்|மொக்க|போர்|சுமார்", text))
+    praise = bool(re.search(r"\b(good|great|amazing|super|mass|sema|nalla|worth|love)\b|அருமை|நல்ல|சூப்பர்|செம", text))
+    if laughter and criticism:
+        cues.append("laughter paired with criticism")
+    if praise and criticism:
+        cues.append("contrasting praise and criticism")
+    if re.search(r"[!?]{2,}", text) and (laughter or criticism):
+        cues.append("rhetorical punctuation")
+    return cues
 
 st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
 
@@ -685,7 +720,7 @@ with tab_overview:
     ecosystem["exact_repeat"] = ecosystem["normalized_text"].isin(repeated_texts)
     ecosystem["promotional"] = ecosystem["normalized_text"].map(is_promotional)
     ecosystem["emoji_only"] = ecosystem["normalized_text"].map(
-        lambda text: not bool(__import__("re").search(r"[a-z0-9\u0B80-\u0BFF]", text))
+        lambda text: not bool(re.search(r"[a-z0-9\u0B80-\u0BFF]", text))
     )
     ecosystem["one_word"] = ecosystem["word_count"].le(1) & ~ecosystem["emoji_only"]
     ecosystem["context_signals"] = ecosystem["normalized_text"].map(cultural_context)
