@@ -198,7 +198,7 @@ if movie_param:
 
 with st.sidebar:
     st.title("▶ Tamil Cinema Radar")
-    st.caption("YouTube monitoring every 30 minutes")
+    st.caption("Scheduled every 30 minutes · actual timing is measured")
     if not comments.empty:
         all_films = sorted(comments["film"].dropna().unique())
         selected_films = st.multiselect("Films", all_films, default=all_films)
@@ -220,14 +220,14 @@ with st.sidebar:
         include_noise = st.toggle("Include low-information reactions", value=False)
     st.divider()
     st.markdown("**Collection rhythm**")
-    st.caption("Known review videos, public statistics and recent comments refresh at :10 and :40 UTC. New video and Shorts discovery runs once every 24 hours.")
+    st.caption("GitHub schedules a monitor every 30 minutes, but runners can start late. The dashboard measures the actual interval. New video and Shorts selection refreshes once every 24 hours.")
     if st.button("Refresh dashboard data", width="stretch"):
         st.cache_data.clear()
         st.rerun()
 
 st.markdown("""<div class="hero"><span class="kicker">TAMIL CINEMA · YOUTUBE INTELLIGENCE</span>
 <h1>Reviews move fast.<br>The radar moves faster.</h1>
-<p>A 30-minute tracker for recent Tamil films: comment velocity, video reach, channel contribution,
+<p>A continuously archived tracker for recent Tamil films: normalized 30-minute velocity, video reach, channel contribution,
 language mix, discussion topics and audience questions—without turning conversation into a quality score.</p></div>""", unsafe_allow_html=True)
 
 if comments.empty:
@@ -283,7 +283,7 @@ metrics[7].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd
 
 catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
 st.subheader("Currently on the radar")
-st.markdown('<div class="section-note">These films are actively checked every 30 minutes. New-film discovery and selection refresh once per day.</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-note">These films are scheduled for a check every 30 minutes. Actual collection timing is audited below; new-film discovery and selection refresh once per day.</div>', unsafe_allow_html=True)
 wall = [film for film in radar_films if film in selected_films][:10] or radar_films[:10]
 for start in range(0, len(wall), 5):
     cols = st.columns(5)
@@ -352,8 +352,8 @@ tab_overview, tab_lifetime, tab_films, tab_comments, tab_data = st.tabs([
 ])
 
 with tab_overview:
-    st.subheader("Unfiltered 30-minute monitor")
-    st.markdown('<div class="section-note">Every fetched video and Short is included here, regardless of the sidebar or comment-analysis filters. Each bar is the exact public-counter increase since the preceding run. The deeper relevance and language analysis remains a separate 24-hour view. Times are UTC.</div>', unsafe_allow_html=True)
+    st.subheader("Live collection and 30-minute trend")
+    st.markdown('<div class="section-note">Every selected video and Short is included. Exact counter changes are stored for every completed run—even when GitHub starts late. Rates are normalized to 30 minutes so unequal intervals can be compared fairly. Times are UTC.</div>', unsafe_allow_html=True)
 
     monitor_activity = pd.DataFrame()
     monitored = pd.DataFrame()
@@ -368,28 +368,36 @@ with tab_overview:
             (monitored["scanned_at"] - monitored["previous_scan"])
             .dt.total_seconds().div(60)
         )
-        monitored["comments_gained_30m"] = (
+        monitored["comments_gained"] = (
             monitored["comments"] - monitored["previous_comments"]
         ).clip(lower=0)
-        monitored["views_gained_30m"] = (
+        monitored["views_gained"] = (
             monitored["views"] - monitored["previous_views"]
         ).clip(lower=0)
+        valid_elapsed = monitored["elapsed_minutes"].where(monitored["elapsed_minutes"].gt(0))
+        monitored["views_per_30m"] = monitored["views_gained"] * 30 / valid_elapsed
+        monitored["comments_per_30m"] = monitored["comments_gained"] * 30 / valid_elapsed
         monitor_cutoff = now - pd.Timedelta(hours=24)
         candidate_pairs = monitored[
             monitored["previous_comments"].notna()
             & monitored["scanned_at"].ge(monitor_cutoff)
         ].copy()
-        paired = candidate_pairs[candidate_pairs["elapsed_minutes"].between(20, 70)].copy()
-        paired["period"] = paired["scanned_at"].dt.floor("30min")
+        paired = candidate_pairs[candidate_pairs["elapsed_minutes"].gt(0)].copy()
+        paired["period"] = paired["scanned_at"]
+        paired["views_per_30m"] = paired["views_gained"] * 30 / paired["elapsed_minutes"]
+        paired["comments_per_30m"] = paired["comments_gained"] * 30 / paired["elapsed_minutes"]
         deltas = (
             paired.groupby(["period", "film", "content_format"], as_index=False)
             .agg(
-                views_gained_30m=("views_gained_30m", "sum"),
-                comments_gained_30m=("comments_gained_30m", "sum"),
+                views_gained=("views_gained", "sum"),
+                comments_gained=("comments_gained", "sum"),
+                views_per_30m=("views_per_30m", "sum"),
+                comments_per_30m=("comments_per_30m", "sum"),
+                elapsed_minutes=("elapsed_minutes", "median"),
             )
         )
         recent_raw = raw_monitored[raw_monitored["scanned_at"].ge(monitor_cutoff)].copy()
-        recent_raw["period"] = recent_raw["scanned_at"].dt.floor("30min")
+        recent_raw["period"] = recent_raw["scanned_at"]
         fetched = (
             recent_raw.groupby(["period", "film", "content_format"], as_index=False)
             .agg(videos_fetched=("video_id", "nunique"))
@@ -397,8 +405,9 @@ with tab_overview:
         monitor_activity = fetched.merge(
             deltas, on=["period", "film", "content_format"], how="left"
         )
-        monitor_activity[["views_gained_30m", "comments_gained_30m"]] = (
-            monitor_activity[["views_gained_30m", "comments_gained_30m"]].fillna(0)
+        rate_columns = ["views_gained", "comments_gained", "views_per_30m", "comments_per_30m", "elapsed_minutes"]
+        monitor_activity[rate_columns] = (
+            monitor_activity[rate_columns].fillna(0)
         )
 
     if monitor_activity.empty:
@@ -408,8 +417,11 @@ with tab_overview:
             monitor_activity.groupby("period", as_index=False)
             .agg(
                 videos_fetched=("videos_fetched", "sum"),
-                views_gained=("views_gained_30m", "sum"),
-                comments_gained=("comments_gained_30m", "sum"),
+                views_gained=("views_gained", "sum"),
+                comments_gained=("comments_gained", "sum"),
+                views_per_30m=("views_per_30m", "sum"),
+                comments_per_30m=("comments_per_30m", "sum"),
+                elapsed_minutes=("elapsed_minutes", "median"),
             )
             .sort_values("period", ascending=False)
         )
@@ -419,12 +431,17 @@ with tab_overview:
             (last_scan - current_scan_time).total_seconds() / 60
             if pd.notna(last_scan) and pd.notna(current_scan_time) else float("nan")
         )
-        scan_metrics = st.columns(5)
+        unique_scan_times = sorted(recent_raw["scanned_at"].dropna().unique())
+        cadence = pd.Series(unique_scan_times).diff().dt.total_seconds().div(60).dropna()
+        median_cadence = cadence.median() if not cadence.empty else float("nan")
+        on_time_share = cadence.between(20, 70).mean() if not cadence.empty else float("nan")
+        scan_metrics = st.columns(6)
         scan_metrics[0].metric("Latest videos fetched", f"{int(newest['videos_fetched']):,}")
-        scan_metrics[1].metric("Views gained", f"{int(newest['views_gained']):,}")
-        scan_metrics[2].metric("Comments gained", f"{int(newest['comments_gained']):,}")
-        scan_metrics[3].metric("Snapshots stored · 24 h", f"{stored_intervals:,}")
-        scan_metrics[4].metric(
+        scan_metrics[1].metric("Exact views since prior run", f"{int(newest['views_gained']):,}")
+        scan_metrics[2].metric("Exact comments since prior run", f"{int(newest['comments_gained']):,}")
+        scan_metrics[3].metric("Stored runs · 24 h", f"{stored_intervals:,}")
+        scan_metrics[4].metric("Median cadence", f"{median_cadence:.0f} min" if pd.notna(median_cadence) else "Pending")
+        scan_metrics[5].metric(
             "Archive freshness",
             "Current" if pd.notna(current_scan_time) and abs(snapshot_lag_minutes) <= 45 else f"{snapshot_lag_minutes:.0f} min behind",
         )
@@ -434,16 +451,13 @@ with tab_overview:
                 f"but the newest stored snapshot is {current_scan_time.strftime('%H:%M UTC')}. "
                 "The repaired scanner will back-check all selected videos on its next run; growth begins from that new snapshot."
             )
-        nonstandard_intervals = candidate_pairs[
-            ~candidate_pairs["elapsed_minutes"].between(20, 70)
-        ]["scanned_at"].nunique()
-        if nonstandard_intervals:
-            st.warning(
-                f"{nonstandard_intervals} stored interval(s) had a gap outside 20–70 minutes. "
-                "Their coverage is shown, but their growth is excluded from the 30-minute charts so a multi-hour gain is never mislabeled as live half-hour activity."
+        if pd.notna(on_time_share):
+            st.info(
+                f"Collection reliability: {on_time_share:.0%} of recent run gaps were 20–70 minutes. "
+                "Delayed GitHub runs are retained; their exact gains are divided by elapsed time to produce the comparable 30-minute rates below."
             )
 
-        coverage_tab, views_tab, comments_tab = st.tabs(["Fetch coverage", "View growth", "Comment growth"])
+        coverage_tab, views_tab, comments_tab, cadence_tab = st.tabs(["Fetch coverage", "View trend / 30 min", "Comment trend / 30 min", "Scan timing"])
 
         def live_chart(value: str, label: str, hover: str):
             figure = px.bar(
@@ -468,32 +482,44 @@ with tab_overview:
             )
         with views_tab:
             st.plotly_chart(
-                live_chart("views_gained_30m", "Exact new views", "%{y:.0f} new views<extra></extra>"),
+                live_chart("views_per_30m", "Views per 30 minutes", "%{y:.0f} normalized views / 30 min<extra></extra>"),
                 width="stretch",
             )
         with comments_tab:
             st.plotly_chart(
-                live_chart("comments_gained_30m", "Exact new public comments", "%{y:.0f} new comments<extra></extra>"),
+                live_chart("comments_per_30m", "Comments per 30 minutes", "%{y:.1f} normalized comments / 30 min<extra></extra>"),
                 width="stretch",
             )
+        with cadence_tab:
+            cadence_frame = scan_history.sort_values("period")
+            cadence_fig = px.line(
+                cadence_frame, x="period", y="elapsed_minutes", markers=True,
+                labels={"period": "Completed run · UTC", "elapsed_minutes": "Minutes since prior run"},
+                color_discrete_sequence=["#8338ec"],
+            )
+            cadence_fig.add_hline(y=30, line_dash="dash", line_color="#ff4b2b", annotation_text="30-minute target")
+            cadence_fig.update_layout(height=430, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+            st.plotly_chart(cadence_fig, width="stretch")
         with st.expander("See exactly what every monitor fetched", expanded=False):
             latest_monitor_time = raw_monitored["scanned_at"].max()
             latest_items = raw_monitored[raw_monitored["scanned_at"].eq(latest_monitor_time)].copy()
             latest_deltas = monitored[
                 monitored["scanned_at"].eq(latest_monitor_time)
-            ][["video_id", "views_gained_30m", "comments_gained_30m"]]
+            ][["video_id", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m", "comments_per_30m"]]
             latest_items = latest_items.merge(latest_deltas, on="video_id", how="left")
             st.markdown("**Items fetched in the latest completed monitor**")
             st.dataframe(
-                latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained_30m", "comments_gained_30m"]]
-                .sort_values("views_gained_30m", ascending=False),
+                latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]]
+                .sort_values("views_per_30m", ascending=False),
                 width="stretch", hide_index=True,
                 column_config={
                     "film": "Film", "content_format": "Format", "channel": "Channel", "title": "Video",
                     "views": st.column_config.NumberColumn("Public views", format="%d"),
                     "comments": st.column_config.NumberColumn("Public comments", format="%d"),
-                    "views_gained_30m": st.column_config.NumberColumn("New views", format="%d"),
-                    "comments_gained_30m": st.column_config.NumberColumn("New comments", format="%d"),
+                    "views_gained": st.column_config.NumberColumn("Exact new views", format="%d"),
+                    "comments_gained": st.column_config.NumberColumn("Exact new comments", format="%d"),
+                    "elapsed_minutes": st.column_config.NumberColumn("Elapsed min", format="%.0f"),
+                    "views_per_30m": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
                 },
             )
             st.markdown("**Monitor history · last 24 hours**")
@@ -505,6 +531,9 @@ with tab_overview:
                     "videos_fetched": st.column_config.NumberColumn("Videos + Shorts", format="%d"),
                     "views_gained": st.column_config.NumberColumn("New views", format="%d"),
                     "comments_gained": st.column_config.NumberColumn("New comments", format="%d"),
+                    "views_per_30m": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
+                    "comments_per_30m": st.column_config.NumberColumn("Comments / 30 min", format="%.1f"),
+                    "elapsed_minutes": st.column_config.NumberColumn("Elapsed min", format="%.0f"),
                 },
             )
 
@@ -544,8 +573,8 @@ with tab_overview:
                                    paper_bgcolor="rgba(0,0,0,0)")
         st.plotly_chart(language_fig, width="stretch")
 
-    st.subheader("Views gained in the latest 30-minute window")
-    st.markdown('<div class="section-note">Only the exact counter increase since the preceding scheduled monitor is shown. Lifetime totals are excluded, and this ranking is not affected by sidebar analysis filters.</div>', unsafe_allow_html=True)
+    st.subheader("Which videos are gaining attention now?")
+    st.markdown('<div class="section-note">The ranking uses the latest two stored counters. Because GitHub may run late, gains are normalized to a 30-minute rate; the exact elapsed time is shown alongside it. Lifetime totals are excluded.</div>', unsafe_allow_html=True)
 
     growth = pd.DataFrame()
     if not monitor_videos.empty and monitor_videos.groupby("video_id").size().max() >= 2:
@@ -556,13 +585,19 @@ with tab_overview:
             columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
         )
         growth = latest.merge(previous_rows, on="video_id", how="inner")
-        growth["Views gained · 30 min"] = (
+        growth["Elapsed minutes"] = (
+            growth["scanned_at"] - growth["previous_scan"]
+        ).dt.total_seconds().div(60)
+        growth["Exact views gained"] = (
             growth["views"] - growth["previous_views"]
         ).clip(lower=0)
-        growth["Comments gained · 30 min"] = (
+        growth["Exact comments gained"] = (
             growth["comments"] - growth["previous_comments"]
         )
-        growth["Comments gained · 30 min"] = growth["Comments gained · 30 min"].clip(lower=0)
+        growth["Exact comments gained"] = growth["Exact comments gained"].clip(lower=0)
+        growth = growth[growth["Elapsed minutes"].gt(0)].copy()
+        growth["Views / 30 min"] = growth["Exact views gained"] * 30 / growth["Elapsed minutes"]
+        growth["Comments / 30 min"] = growth["Exact comments gained"] * 30 / growth["Elapsed minutes"]
         growth["Label"] = growth.apply(
             lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1
         )
@@ -572,16 +607,16 @@ with tab_overview:
             st.info(f"Waiting for two snapshots of {format_name.lower()}s. No lifetime-view chart is shown.")
             return
         ranked = growth[growth["content_format"].eq(format_name)].sort_values(
-            "Views gained · 30 min", ascending=False
+            "Views / 30 min", ascending=False
         ).head(15)
         if ranked.empty:
             st.info(f"No {format_name.lower()} snapshot pair is available yet.")
             return
         gain_fig = px.bar(
-            ranked.sort_values("Views gained · 30 min"),
-            x="Views gained · 30 min", y="Label", color="film", orientation="h",
-            text="Views gained · 30 min", color_discrete_sequence=PALETTE,
-            hover_data=["Comments gained · 30 min"],
+            ranked.sort_values("Views / 30 min"),
+            x="Views / 30 min", y="Label", color="film", orientation="h",
+            text="Views / 30 min", color_discrete_sequence=PALETTE,
+            hover_data=["Elapsed minutes", "Exact views gained", "Exact comments gained", "Comments / 30 min"],
         )
         gain_fig.update_traces(texttemplate="+%{text:,.0f}", textposition="outside")
         gain_fig.update_layout(
@@ -591,11 +626,14 @@ with tab_overview:
         )
         st.plotly_chart(gain_fig, width="stretch")
         st.dataframe(
-            ranked[["film", "channel", "title", "Views gained · 30 min", "Comments gained · 30 min"]],
+            ranked[["film", "channel", "title", "Elapsed minutes", "Exact views gained", "Exact comments gained", "Views / 30 min", "Comments / 30 min"]],
             width="stretch", hide_index=True,
             column_config={
-                "Views gained · 30 min": st.column_config.NumberColumn("New views / 30 min", format="%.0f"),
-                "Comments gained · 30 min": st.column_config.NumberColumn("New comments / 30 min", format="%.1f"),
+                "Elapsed minutes": st.column_config.NumberColumn("Actual gap", format="%.0f min"),
+                "Exact views gained": st.column_config.NumberColumn("Exact new views", format="%.0f"),
+                "Exact comments gained": st.column_config.NumberColumn("Exact new comments", format="%.0f"),
+                "Views / 30 min": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
+                "Comments / 30 min": st.column_config.NumberColumn("Comments / 30 min", format="%.1f"),
             },
         )
 

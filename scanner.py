@@ -98,6 +98,29 @@ def quality(video: dict) -> tuple[int, bool, bool]:
     trusted = any(term.lower() in channel.lower() for term in CFG["youtube_review_channels"])
     return (3 if trusted else 0) + (2 if review else 0) - (4 if promo else 0), trusted, promo
 
+def out_of_scope(video: dict | pd.Series) -> bool:
+    """Reject formats that are not review/discussion coverage of the film."""
+    text = f"{video.get('title', '')} {video.get('description', '')}".lower()
+    return any(term.lower() in text for term in CFG.get("scope_exclusion_terms", []))
+
+def prune_out_of_scope_archive(
+    snapshots: pd.DataFrame, comments: pd.DataFrame
+) -> tuple[pd.DataFrame, pd.DataFrame, set[str]]:
+    """Remove clearly irrelevant videos and their attached comments from storage."""
+    if snapshots.empty or "video_id" not in snapshots:
+        return snapshots, comments, set()
+    latest = snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+    rejected = {
+        str(row.get("video_id")) for _, row in latest.iterrows()
+        if out_of_scope(row) and row.get("video_id")
+    }
+    if not rejected:
+        return snapshots, comments, rejected
+    snapshots = snapshots[~snapshots["video_id"].astype(str).isin(rejected)].copy()
+    if not comments.empty and "video_id" in comments:
+        comments = comments[~comments["video_id"].astype(str).isin(rejected)].copy()
+    return snapshots, comments, rejected
+
 def load_json(path: Path) -> dict:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -111,6 +134,8 @@ def load_csv(path: Path) -> pd.DataFrame:
         return pd.DataFrame()
 
 def discovery_due(metadata: dict, known_videos: pd.DataFrame, now: pd.Timestamp) -> bool:
+    if int(metadata.get("selection_version", 0)) != int(CFG.get("selection_version", 1)):
+        return True
     if known_videos.empty:
         return True
     last = pd.to_datetime(metadata.get("last_video_discovery"), errors="coerce", utc=True)
@@ -155,12 +180,31 @@ def main() -> None:
     LIVE.mkdir(parents=True, exist_ok=True)
 
     metadata = load_json(META)
-    known = load_csv(VIDEOS)
-    if not known.empty:
-        known["published_at"] = pd.to_datetime(known.get("published_at"), errors="coerce", utc=True)
-        known["scanned_at"] = pd.to_datetime(known.get("scanned_at"), errors="coerce", utc=True)
-        known = known.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+    archive_snapshots = load_csv(VIDEOS)
+    archive_comments = load_csv(COMMENTS)
+    if not archive_snapshots.empty:
+        archive_snapshots["published_at"] = pd.to_datetime(
+            archive_snapshots.get("published_at"), errors="coerce", utc=True
+        )
+        archive_snapshots["scanned_at"] = pd.to_datetime(
+            archive_snapshots.get("scanned_at"), format="mixed", errors="coerce", utc=True
+        )
+    archive_snapshots, archive_comments, pruned_ids = prune_out_of_scope_archive(
+        archive_snapshots, archive_comments
+    )
+    known = archive_snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last") if not archive_snapshots.empty else archive_snapshots
     do_discovery = discovery_due(metadata, known, now)
+    active_ids = {str(value) for value in metadata.get("active_video_ids", []) if value}
+    if not do_discovery:
+        if active_ids:
+            known = known[known["video_id"].astype(str).isin(active_ids)].copy()
+        elif not archive_snapshots.empty:
+            latest_archive_scan = archive_snapshots["scanned_at"].max()
+            latest_ids = set(
+                archive_snapshots.loc[archive_snapshots["scanned_at"].eq(latest_archive_scan), "video_id"]
+                .dropna().astype(str)
+            )
+            known = known[known["video_id"].astype(str).isin(latest_ids)].copy()
     previous_catalog = metadata.get("movie_catalog", [])
     previous_history = metadata.get("movie_catalog_history", previous_catalog)
     catalog_needs_details = not previous_catalog or any("cast" not in item for item in previous_catalog)
@@ -217,6 +261,14 @@ def main() -> None:
             )
             details["published_at"] = pd.to_datetime(details["published_at"], errors="coerce", utc=True)
             details["content_format"] = details.apply(content_format, axis=1)
+            quality_rows = details.apply(
+                lambda row: quality(row.to_dict()), axis=1, result_type="expand"
+            )
+            details[["signal_score", "trusted_channel", "promotional"]] = quality_rows
+            details = details[~details.apply(out_of_scope, axis=1)].copy()
+            details = details[details["signal_score"].ge(1)].copy()
+            if details.empty:
+                continue
             details = details.sort_values(
                 ["trusted_channel", "signal_score", "comments", "published_at"],
                 ascending=[False, False, False, False],
@@ -265,6 +317,16 @@ def main() -> None:
     if not comments.empty:
         comments["scanned_at"] = now_iso
         comments = enrich_comments(comments)
+    # Feed the already-pruned frames into the merge functions without losing
+    # their cleanup when they reload the on-disk archive.
+    if not archive_comments.empty:
+        archive_comments.to_csv(COMMENTS, index=False)
+    elif pruned_ids and COMMENTS.exists():
+        COMMENTS.unlink()
+    if not archive_snapshots.empty:
+        archive_snapshots.to_csv(VIDEOS, index=False)
+    elif pruned_ids and VIDEOS.exists():
+        VIDEOS.unlink()
     stored_comments, new_comments = merge_comments(comments, now)
     stored_snapshots = merge_snapshots(snapshots, now)
 
@@ -304,6 +366,9 @@ def main() -> None:
         "scan_interval_minutes": 30,
         "video_discovery_hours": CFG["video_discovery_hours"],
         "keep_history_days": CFG["keep_history_days"],
+        "selection_version": CFG.get("selection_version", 1),
+        "active_video_ids": sorted(monitored_video_ids),
+        "out_of_scope_videos_pruned": len(pruned_ids),
         "films": films,
         "comments_fetched": int(len(comments)),
         "new_comments_added": new_comments,
