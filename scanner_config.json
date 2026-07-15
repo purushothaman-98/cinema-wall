@@ -7,7 +7,11 @@
   "comments_per_video_live": 50,
   "comments_per_video_daily": 500,
   "keep_history_days": 730,
-  "selection_version": 2,
+  "selection_version": 3,
+  "film_title_aliases": {
+    "Gatta Kusthi 2": ["gatta kusthi 2", "gatta kusthi round 2"],
+    "Parimala and Co": ["parimala and co", "parimala & co"]
+  },
   "scope_exclusion_terms": [
     "full movie",
     "movie explained",

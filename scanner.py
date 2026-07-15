@@ -20,6 +20,16 @@ COMMENTS = LIVE / "comments.csv"
 VIDEOS = LIVE / "video_snapshots.csv"
 META = LIVE / "scan_metadata.json"
 
+def normalized(value: object) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+
+def title_matches_film(video: dict | pd.Series) -> bool:
+    film = str(video.get("film", "")).strip()
+    title = f" {normalized(video.get('title', ''))} "
+    configured = CFG.get("film_title_aliases", {}).get(film, [])
+    aliases = configured or [film]
+    return any(f" {normalized(alias)} " in title for alias in aliases if normalized(alias))
+
 def require(name: str) -> str:
     value = os.getenv(name, "").strip()
     if not value:
@@ -112,14 +122,88 @@ def prune_out_of_scope_archive(
     latest = snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
     rejected = {
         str(row.get("video_id")) for _, row in latest.iterrows()
-        if out_of_scope(row) and row.get("video_id")
+        if (out_of_scope(row) or not title_matches_film(row)) and row.get("video_id")
     }
     if not rejected:
         return snapshots, comments, rejected
     snapshots = snapshots[~snapshots["video_id"].astype(str).isin(rejected)].copy()
     if not comments.empty and "video_id" in comments:
         comments = comments[~comments["video_id"].astype(str).isin(rejected)].copy()
+        retained_ids = set(snapshots["video_id"].dropna().astype(str))
+        comments = comments[comments["video_id"].astype(str).isin(retained_ids)].copy()
     return snapshots, comments, rejected
+
+def build_film_insights(comments: pd.DataFrame) -> dict[str, dict]:
+    """Create conservative, traceable audience summaries from analyzed comments."""
+    insights: dict[str, dict] = {}
+    if comments.empty or "film" not in comments:
+        return insights
+    for film, frame in comments.groupby("film"):
+        useful = frame[~frame.get("low_information", False).fillna(False).astype(bool)].copy()
+        if useful.empty:
+            continue
+        explicit = useful[useful.get("reaction_signal", "Mixed / unclear").ne("Mixed / unclear")]
+        reactions = explicit["reaction_signal"].value_counts()
+        appreciative = int(reactions.get("Appreciative", 0))
+        critical = int(reactions.get("Critical", 0))
+        explicit_total = appreciative + critical
+        aspect_counts = useful[~useful["topic"].eq("General reaction")]["topic"].value_counts()
+        top_aspects = [
+            {"name": str(name), "comments": int(count)}
+            for name, count in aspect_counts.head(3).items()
+        ]
+        depth = useful["comment_kind"].isin(["Detailed discussion", "Question"]).mean()
+        if explicit_total >= 10:
+            positive_share = appreciative / explicit_total
+            balance = (
+                "appreciative signals clearly outweigh critical signals"
+                if positive_share >= .7 else
+                "critical signals outweigh appreciative signals"
+                if positive_share <= .3 else
+                "appreciative and critical signals are mixed"
+            )
+            reaction_sentence = (
+                f"Of {explicit_total:,} comments with detectable reaction wording, "
+                f"{appreciative:,} were appreciative and {critical:,} were critical; {balance}."
+            )
+        else:
+            reaction_sentence = "Too few comments contain clear reaction wording to describe an audience balance reliably."
+        aspect_sentence = (
+            "Beyond general reactions, viewers most often discuss "
+            + ", ".join(item["name"].lower() for item in top_aspects)
+            + "."
+            if top_aspects else
+            "Most collected comments are general reactions rather than discussion of a specific film aspect."
+        )
+        reviewers = []
+        for channel, channel_frame in useful.groupby("channel"):
+            if len(channel_frame) < 10:
+                continue
+            channel_explicit = channel_frame[
+                channel_frame["reaction_signal"].ne("Mixed / unclear")
+            ]["reaction_signal"].value_counts()
+            app = int(channel_explicit.get("Appreciative", 0))
+            crit = int(channel_explicit.get("Critical", 0))
+            reviewers.append({
+                "channel": str(channel),
+                "useful_comments": int(len(channel_frame)),
+                "appreciative_signals": app,
+                "critical_signals": crit,
+                "questions": int(channel_frame.get("is_question", False).fillna(False).astype(bool).sum()),
+                "leading_topic": str(channel_frame["topic"].value_counts().index[0]),
+            })
+        reviewers.sort(key=lambda item: item["useful_comments"], reverse=True)
+        insights[str(film)] = {
+            "summary": f"Based on {len(useful):,} useful public comments. {reaction_sentence} {aspect_sentence}",
+            "useful_comments": int(len(useful)),
+            "explicit_reaction_comments": int(explicit_total),
+            "appreciative_signals": appreciative,
+            "critical_signals": critical,
+            "substantive_share": round(float(depth), 4),
+            "top_aspects": top_aspects,
+            "reviewers": reviewers,
+        }
+    return insights
 
 def load_json(path: Path) -> dict:
     try:
@@ -261,6 +345,7 @@ def main() -> None:
             )
             details["published_at"] = pd.to_datetime(details["published_at"], errors="coerce", utc=True)
             details["content_format"] = details.apply(content_format, axis=1)
+            details = details[details.apply(title_matches_film, axis=1)].copy()
             quality_rows = details.apply(
                 lambda row: quality(row.to_dict()), axis=1, result_type="expand"
             )
@@ -355,10 +440,10 @@ def main() -> None:
         if isinstance(item, dict) and item.get("title")
     }
     all_films_analyzed = sorted(
-        set(metadata.get("all_films_analyzed", []))
-        | set(stored_comments.get("film", pd.Series(dtype=str)).dropna().astype(str))
+        set(stored_comments.get("film", pd.Series(dtype=str)).dropna().astype(str))
         | set(films)
     )
+    film_insights = build_film_insights(stored_comments)
     META.write_text(json.dumps({
         "status": status,
         "last_scan": now_iso,
@@ -369,6 +454,8 @@ def main() -> None:
         "selection_version": CFG.get("selection_version", 1),
         "active_video_ids": sorted(monitored_video_ids),
         "out_of_scope_videos_pruned": len(pruned_ids),
+        "film_insights": film_insights,
+        "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
         "films": films,
         "comments_fetched": int(len(comments)),
         "new_comments_added": new_comments,
