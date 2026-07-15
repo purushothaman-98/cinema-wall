@@ -1,11 +1,11 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-15T15:53:54.461183+00:00",
-  "last_video_discovery": "2026-07-15T15:53:54.461183+00:00",
+  "last_scan": "2026-07-15T16:06:02.534574+00:00",
+  "last_video_discovery": "2026-07-15T16:06:02.534574+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
-  "selection_version": 2,
+  "selection_version": 3,
   "active_video_ids": [
     "-GmXAiBTYBQ",
     "1qP32L5hyO4",
@@ -59,11 +59,837 @@
     "udOlKexHZws",
     "vEgYmiOrmtg",
     "z1iWBA43b8g",
-    "zMZki9jtpbY",
     "zeZIjZA_src",
     "zkQWiCji7Hw"
   ],
-  "out_of_scope_videos_pruned": 28,
+  "out_of_scope_videos_pruned": 3,
+  "film_insights": {
+    "29": {
+      "summary": "Based on 164 useful public comments. Of 54 comments with detectable reaction wording, 44 were appreciative and 10 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 164,
+      "explicit_reaction_comments": 54,
+      "appreciative_signals": 44,
+      "critical_signals": 10,
+      "substantive_share": 0.3293,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 13
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 9
+        },
+        {
+          "name": "Emotion",
+          "comments": 7
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 54,
+          "appreciative_signals": 9,
+          "critical_signals": 1,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 48,
+          "appreciative_signals": 10,
+          "critical_signals": 5,
+          "questions": 12,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 37,
+          "appreciative_signals": 13,
+          "critical_signals": 4,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 25,
+          "appreciative_signals": 12,
+          "critical_signals": 0,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Blast": {
+      "summary": "Based on 700 useful public comments. Of 222 comments with detectable reaction wording, 193 were appreciative and 29 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 700,
+      "explicit_reaction_comments": 222,
+      "appreciative_signals": 193,
+      "critical_signals": 29,
+      "substantive_share": 0.18,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 45
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 21
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 13
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 425,
+          "appreciative_signals": 105,
+          "critical_signals": 24,
+          "questions": 39,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 134,
+          "appreciative_signals": 34,
+          "critical_signals": 2,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 83,
+          "appreciative_signals": 32,
+          "critical_signals": 2,
+          "questions": 11,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 57,
+          "appreciative_signals": 22,
+          "critical_signals": 1,
+          "questions": 6,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Gandhi Talks": {
+      "summary": "Based on 289 useful public comments. Of 64 comments with detectable reaction wording, 44 were appreciative and 20 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, music & sound, story & screenplay.",
+      "useful_comments": 289,
+      "explicit_reaction_comments": 64,
+      "appreciative_signals": 44,
+      "critical_signals": 20,
+      "substantive_share": 0.2111,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 16
+        },
+        {
+          "name": "Music & sound",
+          "comments": 9
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 8
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 134,
+          "appreciative_signals": 15,
+          "critical_signals": 7,
+          "questions": 18,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 71,
+          "appreciative_signals": 18,
+          "critical_signals": 5,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 20,
+          "appreciative_signals": 1,
+          "critical_signals": 1,
+          "questions": 0,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 19,
+          "appreciative_signals": 2,
+          "critical_signals": 2,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Thi Cinemas",
+          "useful_comments": 18,
+          "appreciative_signals": 4,
+          "critical_signals": 3,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 17,
+          "appreciative_signals": 2,
+          "critical_signals": 1,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Gatta Kusthi 2": {
+      "summary": "Based on 435 useful public comments. Of 118 comments with detectable reaction wording, 96 were appreciative and 22 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 435,
+      "explicit_reaction_comments": 118,
+      "appreciative_signals": 96,
+      "critical_signals": 22,
+      "substantive_share": 0.1816,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 15
+        },
+        {
+          "name": "Comedy",
+          "comments": 11
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 6
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 295,
+          "appreciative_signals": 66,
+          "critical_signals": 14,
+          "questions": 22,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Uruttu Arafath Voice",
+          "useful_comments": 40,
+          "appreciative_signals": 7,
+          "critical_signals": 1,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Trendswood Tv",
+          "useful_comments": 36,
+          "appreciative_signals": 7,
+          "critical_signals": 2,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 26,
+          "appreciative_signals": 4,
+          "critical_signals": 1,
+          "questions": 6,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Thi Cinemas",
+          "useful_comments": 21,
+          "appreciative_signals": 7,
+          "critical_signals": 3,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Bingoo Box",
+          "useful_comments": 17,
+          "appreciative_signals": 5,
+          "critical_signals": 1,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Idhayam Murali": {
+      "summary": "Based on 534 useful public comments. Of 197 comments with detectable reaction wording, 138 were appreciative and 59 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 534,
+      "explicit_reaction_comments": 197,
+      "appreciative_signals": 138,
+      "critical_signals": 59,
+      "substantive_share": 0.2172,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 26
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 21
+        },
+        {
+          "name": "Emotion",
+          "comments": 19
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 196,
+          "appreciative_signals": 53,
+          "critical_signals": 18,
+          "questions": 23,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 90,
+          "appreciative_signals": 19,
+          "critical_signals": 7,
+          "questions": 9,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Trendswood Tv",
+          "useful_comments": 68,
+          "appreciative_signals": 14,
+          "critical_signals": 7,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 49,
+          "appreciative_signals": 13,
+          "critical_signals": 8,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 43,
+          "appreciative_signals": 10,
+          "critical_signals": 4,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Thi Cinemas",
+          "useful_comments": 39,
+          "appreciative_signals": 14,
+          "critical_signals": 11,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Valai Pechu",
+          "useful_comments": 28,
+          "appreciative_signals": 6,
+          "critical_signals": 0,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Bingoo Box",
+          "useful_comments": 13,
+          "appreciative_signals": 5,
+          "critical_signals": 4,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Kara": {
+      "summary": "Based on 787 useful public comments. Of 256 comments with detectable reaction wording, 165 were appreciative and 91 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 787,
+      "explicit_reaction_comments": 256,
+      "appreciative_signals": 165,
+      "critical_signals": 91,
+      "substantive_share": 0.2859,
+      "top_aspects": [
+        {
+          "name": "Story & screenplay",
+          "comments": 53
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 39
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 36
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 427,
+          "appreciative_signals": 89,
+          "critical_signals": 55,
+          "questions": 56,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 97,
+          "appreciative_signals": 17,
+          "critical_signals": 9,
+          "questions": 13,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 77,
+          "appreciative_signals": 17,
+          "critical_signals": 5,
+          "questions": 14,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 66,
+          "appreciative_signals": 10,
+          "critical_signals": 6,
+          "questions": 13,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Shafi Zone",
+          "useful_comments": 44,
+          "appreciative_signals": 8,
+          "critical_signals": 3,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Delite Cinemas",
+          "useful_comments": 34,
+          "appreciative_signals": 10,
+          "critical_signals": 5,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Makkal Vote",
+          "useful_comments": 23,
+          "appreciative_signals": 8,
+          "critical_signals": 4,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Makkal Talkies",
+          "useful_comments": 17,
+          "appreciative_signals": 5,
+          "critical_signals": 4,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Karuppu": {
+      "summary": "Based on 1,843 useful public comments. Of 524 comments with detectable reaction wording, 377 were appreciative and 147 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1843,
+      "explicit_reaction_comments": 524,
+      "appreciative_signals": 377,
+      "critical_signals": 147,
+      "substantive_share": 0.2425,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 92
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 76
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 62
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Empty Hand",
+          "useful_comments": 432,
+          "appreciative_signals": 82,
+          "critical_signals": 16,
+          "questions": 39,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 423,
+          "appreciative_signals": 72,
+          "critical_signals": 50,
+          "questions": 45,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 399,
+          "appreciative_signals": 67,
+          "critical_signals": 39,
+          "questions": 49,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Tubelight Mind",
+          "useful_comments": 360,
+          "appreciative_signals": 106,
+          "critical_signals": 16,
+          "questions": 25,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 47,
+          "appreciative_signals": 11,
+          "critical_signals": 5,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 44,
+          "appreciative_signals": 12,
+          "critical_signals": 8,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Gurubaai",
+          "useful_comments": 44,
+          "appreciative_signals": 4,
+          "critical_signals": 4,
+          "questions": 7,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Bingoo Box",
+          "useful_comments": 43,
+          "appreciative_signals": 12,
+          "critical_signals": 5,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Cinema Vikatan",
+          "useful_comments": 29,
+          "appreciative_signals": 7,
+          "critical_signals": 2,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "VAALIBAN REVIEW ",
+          "useful_comments": 16,
+          "appreciative_signals": 3,
+          "critical_signals": 0,
+          "questions": 0,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Parimala and Co": {
+      "summary": "Based on 435 useful public comments. Of 122 comments with detectable reaction wording, 83 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 435,
+      "explicit_reaction_comments": 122,
+      "appreciative_signals": 83,
+      "critical_signals": 39,
+      "substantive_share": 0.2368,
+      "top_aspects": [
+        {
+          "name": "Comedy",
+          "comments": 30
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 15
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 14
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 174,
+          "appreciative_signals": 41,
+          "critical_signals": 14,
+          "questions": 19,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 80,
+          "appreciative_signals": 11,
+          "critical_signals": 8,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 52,
+          "appreciative_signals": 3,
+          "critical_signals": 6,
+          "questions": 6,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "FEATU GADI MEDIA",
+          "useful_comments": 33,
+          "appreciative_signals": 6,
+          "critical_signals": 3,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Friday Facts",
+          "useful_comments": 32,
+          "appreciative_signals": 15,
+          "critical_signals": 1,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 30,
+          "appreciative_signals": 3,
+          "critical_signals": 4,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Varun Talks",
+          "useful_comments": 24,
+          "appreciative_signals": 4,
+          "critical_signals": 2,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "The Fencer Show",
+          "useful_comments": 10,
+          "appreciative_signals": 0,
+          "critical_signals": 1,
+          "questions": 0,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Thaai Kizhavi": {
+      "summary": "Based on 856 useful public comments. Of 240 comments with detectable reaction wording, 203 were appreciative and 37 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 856,
+      "explicit_reaction_comments": 240,
+      "appreciative_signals": 203,
+      "critical_signals": 37,
+      "substantive_share": 0.2383,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 41
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 37
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 29
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 424,
+          "appreciative_signals": 94,
+          "critical_signals": 16,
+          "questions": 53,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 119,
+          "appreciative_signals": 29,
+          "critical_signals": 7,
+          "questions": 10,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 85,
+          "appreciative_signals": 19,
+          "critical_signals": 1,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Valai Pechu",
+          "useful_comments": 69,
+          "appreciative_signals": 2,
+          "critical_signals": 9,
+          "questions": 10,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 44,
+          "appreciative_signals": 13,
+          "critical_signals": 2,
+          "questions": 12,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 39,
+          "appreciative_signals": 14,
+          "critical_signals": 1,
+          "questions": 13,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Black Pepper News",
+          "useful_comments": 34,
+          "appreciative_signals": 13,
+          "critical_signals": 0,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Thi Cinemas",
+          "useful_comments": 22,
+          "appreciative_signals": 12,
+          "critical_signals": 1,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Mr. GK Movie Man",
+          "useful_comments": 11,
+          "appreciative_signals": 3,
+          "critical_signals": 0,
+          "questions": 0,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Youth": {
+      "summary": "Based on 977 useful public comments. Of 282 comments with detectable reaction wording, 212 were appreciative and 70 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 977,
+      "explicit_reaction_comments": 282,
+      "appreciative_signals": 212,
+      "critical_signals": 70,
+      "substantive_share": 0.2538,
+      "top_aspects": [
+        {
+          "name": "Acting & characters",
+          "comments": 40
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 40
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 21
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 388,
+          "appreciative_signals": 82,
+          "critical_signals": 28,
+          "questions": 41,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Vaai Savadaal",
+          "useful_comments": 184,
+          "appreciative_signals": 40,
+          "critical_signals": 14,
+          "questions": 33,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Thi Cinemas",
+          "useful_comments": 84,
+          "appreciative_signals": 23,
+          "critical_signals": 6,
+          "questions": 7,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Aswanth Kok",
+          "useful_comments": 79,
+          "appreciative_signals": 2,
+          "critical_signals": 5,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Valai Pechu",
+          "useful_comments": 53,
+          "appreciative_signals": 14,
+          "critical_signals": 0,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "tamilcinemareview",
+          "useful_comments": 46,
+          "appreciative_signals": 15,
+          "critical_signals": 5,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 43,
+          "appreciative_signals": 12,
+          "critical_signals": 3,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Trendswood Tv",
+          "useful_comments": 41,
+          "appreciative_signals": 10,
+          "critical_signals": 3,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 31,
+          "appreciative_signals": 8,
+          "critical_signals": 3,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Galatta Plus",
+          "useful_comments": 22,
+          "appreciative_signals": 6,
+          "critical_signals": 1,
+          "questions": 7,
+          "leading_topic": "General reaction"
+        }
+      ]
+    }
+  },
+  "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
     "Idhayam Murali",
     "Karuppu",
@@ -76,12 +902,12 @@
     "29",
     "Youth"
   ],
-  "comments_fetched": 7317,
-  "new_comments_added": 272,
-  "stored_comments": 9319,
-  "videos_monitored": 55,
+  "comments_fetched": 7316,
+  "new_comments_added": 0,
+  "stored_comments": 8645,
+  "videos_monitored": 54,
   "standard_videos_monitored": 40,
-  "shorts_monitored": 15,
+  "shorts_monitored": 14,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -696,14 +1522,12 @@
   "all_films_analyzed": [
     "29",
     "Blast",
-    "Find Me",
     "Gandhi Talks",
     "Gatta Kusthi 2",
     "Idhayam Murali",
     "Kara",
     "Karuppu",
     "Parimala and Co",
-    "TN 2026",
     "Thaai Kizhavi",
     "Youth"
   ],
