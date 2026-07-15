@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data import load_live, load_metadata, load_video_snapshots
-from youtube_analysis import top_terms
+from youtube_analysis import normalize_text, top_terms
 
 st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
 
@@ -675,91 +675,113 @@ with tab_overview:
     with shorts_gain_tab:
         render_format_gain("Short")
 
-    st.subheader("Conversation intelligence")
-    st.markdown('<div class="section-note">Generic reactions are separated from comments that mention a specific part of the film. Percentages make films and formats comparable even when their comment volumes differ.</div>', unsafe_allow_html=True)
-    specific = filtered[~filtered["topic"].eq("General reaction")]
-    substantive = filtered["comment_kind"].isin(["Detailed discussion", "Question"])
-    signal_cards = st.columns(4)
-    signal_cards[0].metric("Topic-specific comments", f"{len(specific) / len(filtered):.0%}")
-    signal_cards[1].metric("Detailed or questions", f"{substantive.mean():.0%}")
-    signal_cards[2].metric("Audience questions", f"{filtered['is_question'].sum():,}")
-    signal_cards[3].metric("Useful comments shown", f"{len(filtered):,}")
+    st.subheader("Inside Tamil YouTube comments")
+    st.markdown('<div class="section-note">A corpus-level study of every cleaned comment collected by the radar—not only the films selected in the sidebar. It describes participation patterns, code-mixing, repetition and discussion depth without grading individual people.</div>', unsafe_allow_html=True)
+    ecosystem = comments.copy()
+    ecosystem["normalized_text"] = ecosystem["text"].map(normalize_text)
+    repeatable = ecosystem["normalized_text"].str.len().ge(12)
+    repetitions = ecosystem.loc[repeatable, "normalized_text"].value_counts()
+    repeated_texts = set(repetitions[repetitions.ge(3)].index)
+    ecosystem["exact_repeat"] = ecosystem["normalized_text"].isin(repeated_texts)
+    ecosystem["Participation"] = "Short opinion"
+    ecosystem.loc[ecosystem["comment_kind"].eq("Detailed discussion"), "Participation"] = "Detailed discussion"
+    ecosystem.loc[ecosystem["is_question"], "Participation"] = "Question"
+    ecosystem.loc[ecosystem["comment_kind"].eq("Quick reaction"), "Participation"] = "Quick reaction"
+    ecosystem.loc[ecosystem["low_information"], "Participation"] = "Low-information / promotion"
+    ecosystem.loc[ecosystem["exact_repeat"], "Participation"] = "Repeated / copied text"
+    meaningful = ~ecosystem["Participation"].isin(["Low-information / promotion", "Repeated / copied text"])
+    substantive_all = ecosystem["Participation"].isin(["Detailed discussion", "Question"])
+    study_cards = st.columns(6)
+    study_cards[0].metric("Comments studied", f"{len(ecosystem):,}")
+    study_cards[1].metric("Meaningful text", f"{meaningful.mean():.0%}")
+    study_cards[2].metric("Detailed or questions", f"{substantive_all.mean():.0%}")
+    study_cards[3].metric("Questions", f"{ecosystem['is_question'].sum():,}")
+    study_cards[4].metric("Low-information", f"{ecosystem['low_information'].mean():.0%}")
+    study_cards[5].metric("Exact repeated text", f"{ecosystem['exact_repeat'].mean():.0%}")
 
-    topic_col, kind_col = st.columns([1.15, 1], gap="large")
+    participation_counts = ecosystem["Participation"].value_counts()
+    top_language = ecosystem["language"].value_counts().index[0]
+    st.info(
+        f"**What this corpus says:** {meaningful.mean():.0%} of collected comments contain enough non-promotional text for analysis, "
+        f"while {substantive_all.mean():.0%} develop an idea or ask a question. The largest detected language group is **{top_language}**. "
+        "Exact repetition is measured across the whole archive and is not automatically treated as malicious spam."
+    )
+
+    participation_col, language_col = st.columns(2, gap="large")
+    with participation_col:
+        st.markdown("#### What kind of participation dominates?")
+        participation_data = participation_counts.rename_axis("Participation").reset_index(name="Comments")
+        participation_data["Share"] = participation_data["Comments"] / len(ecosystem) * 100
+        participation_fig = px.bar(
+            participation_data.sort_values("Share"), x="Share", y="Participation", orientation="h",
+            text="Comments", color="Participation", color_discrete_sequence=PALETTE,
+        )
+        participation_fig.update_traces(texttemplate="%{x:.1f}% · %{text:,}", textposition="outside")
+        participation_fig.update_layout(height=420, showlegend=False, xaxis_title="Share of all collected comments (%)", yaxis_title=None,
+                                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(participation_fig, width="stretch")
+    with language_col:
+        st.markdown("#### How multilingual is the discussion?")
+        language_quality = ecosystem.groupby(["language", "Participation"], as_index=False).size().rename(columns={"size": "Comments"})
+        language_quality["Share"] = language_quality["Comments"] / language_quality.groupby("language")["Comments"].transform("sum") * 100
+        language_fig = px.bar(
+            language_quality, x="language", y="Share", color="Participation", barmode="stack",
+            custom_data=["Comments"], color_discrete_sequence=PALETTE,
+        )
+        language_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
+        language_fig.update_layout(height=420, legend_title=None, xaxis_title=None, yaxis_title="Within-language share (%)",
+                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(language_fig, width="stretch")
+
+    format_col, topic_col = st.columns(2, gap="large")
+    with format_col:
+        st.markdown("#### Videos versus Shorts")
+        format_quality = ecosystem.groupby(["content_format", "Participation"], as_index=False).size().rename(columns={"size": "Comments"})
+        format_quality["Share"] = format_quality["Comments"] / format_quality.groupby("content_format")["Comments"].transform("sum") * 100
+        format_fig = px.bar(format_quality, x="content_format", y="Share", color="Participation", barmode="stack",
+                            custom_data=["Comments"], color_discrete_sequence=PALETTE)
+        format_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
+        format_fig.update_layout(height=390, legend_title=None, xaxis_title=None, yaxis_title="Share within format (%)",
+                                 paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(format_fig, width="stretch")
     with topic_col:
-        st.markdown("#### Which film aspects lead each conversation?")
-        if specific.empty:
-            st.info("No aspect-specific comments match these filters yet.")
+        st.markdown("#### What do substantive comments discuss?")
+        topic_data = ecosystem[substantive_all & ~ecosystem["topic"].eq("General reaction")]["topic"].value_counts().rename_axis("Topic").reset_index(name="Comments")
+        if topic_data.empty:
+            st.info("Not enough aspect-specific discussion yet.")
         else:
-            topic_counts = specific.groupby(["topic", "film"]).size().unstack(fill_value=0)
-            topic_share = topic_counts.div(topic_counts.sum(axis=0).replace(0, 1), axis=1).mul(100)
-            topic_share = topic_share.loc[topic_share.sum(axis=1).sort_values(ascending=False).index]
-            topic_fig = go.Figure(go.Heatmap(
-                z=topic_share.values, x=topic_share.columns, y=topic_share.index,
-                colorscale=[[0, "#fff4e8"], [.5, "#ff9f1c"], [1, "#d53c1c"]],
-                colorbar=dict(title="Share %"),
-                hovertemplate="%{x}<br>%{y}: %{z:.1f}%<extra></extra>",
-            ))
-            topic_fig.update_layout(
-                height=430, xaxis_title=None, yaxis_title=None,
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-                margin=dict(l=10, r=10, t=20, b=70),
-            )
+            topic_fig = px.bar(topic_data.sort_values("Comments"), x="Comments", y="Topic", orientation="h",
+                               color="Comments", color_continuous_scale=["#ffd6c9", "#ff4b2b"])
+            topic_fig.update_layout(height=390, coloraxis_showscale=False, xaxis_title="Detailed comments and questions", yaxis_title=None,
+                                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
             st.plotly_chart(topic_fig, width="stretch")
-    with kind_col:
-        st.markdown("#### Do Shorts and videos produce different responses?")
-        kinds = (
-            filtered.groupby(["content_format", "comment_kind"], as_index=False).size()
-            .rename(columns={"content_format": "Format", "comment_kind": "Response", "size": "Comments"})
-        )
-        kinds["Share"] = kinds["Comments"] / kinds.groupby("Format")["Comments"].transform("sum") * 100
-        kind_fig = px.bar(
-            kinds, x="Format", y="Share", color="Response", barmode="stack",
-            custom_data=["Comments"],
-            color_discrete_map={
-                "Detailed discussion": "#8338ec", "Question": "#3a86ff",
-                "Short opinion": "#2ec4b6", "Quick reaction": "#ff9f1c",
-            },
-        )
-        kind_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
-        kind_fig.update_layout(
-            height=430, legend_title=None, xaxis_title=None, yaxis_title="Share of comments (%)",
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-        )
-        st.plotly_chart(kind_fig, width="stretch")
 
-    st.markdown("#### Distinctive words by film")
-    st.markdown('<div class="section-note">Tamil, Tanglish and English terms after links, promotion language and common filler words are removed. Darker cells mean the term appears more often for that film.</div>', unsafe_allow_html=True)
-    term_frames = []
-    for film, film_frame in filtered.groupby("film"):
-        film_terms = top_terms(film_frame["text"], 12)
-        if not film_terms.empty:
-            film_terms["film"] = film
-            term_frames.append(film_terms)
-    if term_frames:
-        term_data = pd.concat(term_frames, ignore_index=True)
-        leading_terms = (
-            term_data.groupby("term")["mentions"].sum().nlargest(16).index
-        )
-        term_matrix = (
-            term_data[term_data["term"].isin(leading_terms)]
-            .pivot_table(index="term", columns="film", values="mentions", aggfunc="sum", fill_value=0)
-        )
-        term_matrix = term_matrix.loc[term_matrix.sum(axis=1).sort_values(ascending=False).index]
-        term_fig = go.Figure(go.Heatmap(
-            z=term_matrix.values, x=term_matrix.columns, y=term_matrix.index,
-            colorscale=[[0, "#eef8ff"], [.45, "#55b9f3"], [1, "#480ca8"]],
-            colorbar=dict(title="Mentions"),
-            hovertemplate="%{x}<br>%{y}: %{z:.0f} mentions<extra></extra>",
-        ))
-        term_fig.update_layout(
-            height=520, xaxis_title=None, yaxis_title=None,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            margin=dict(l=10, r=10, t=20, b=80),
-        )
+    st.markdown("#### Recurring vocabulary in meaningful comments")
+    ecosystem_terms = top_terms(ecosystem.loc[meaningful, "text"], 20)
+    if not ecosystem_terms.empty:
+        term_fig = px.bar(ecosystem_terms.sort_values("mentions"), x="mentions", y="term", orientation="h",
+                          color="mentions", color_continuous_scale=["#9bdaf5", "#480ca8"])
+        term_fig.update_layout(height=520, coloraxis_showscale=False, xaxis_title="Mentions across the corpus", yaxis_title=None,
+                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
         st.plotly_chart(term_fig, width="stretch")
-    else:
-        st.info("Not enough meaningful discussion terms match these filters yet.")
+
+    st.markdown("#### Turning reaction into better conversation")
+    learning_cols = st.columns(3)
+    learning_cols[0].success("**Add the reason.** Instead of only “super” or “waste,” name the scene, performance, music choice or writing decision behind the reaction.")
+    learning_cols[1].success("**Ask a specific question.** Questions create openings for discussion and help other viewers respond with evidence rather than slogans.")
+    learning_cols[2].success("**Avoid copy-paste promotion.** Repeated text and links crowd out original Tamil, Tanglish and English voices; one clear comment carries more information.")
+    with st.expander("Research basis and transparent definitions"):
+        st.markdown(
+            "Tamil social comments frequently mix Tamil script, romanized Tamil, English, emoji and spelling variants. "
+            "This study follows that research direction but uses transparent corpus statistics rather than claiming a perfect classifier. "
+            "See the [DravidianCodeMix dataset](https://github.com/bharathichezhiyan/DravidianCodeMix-Dataset), "
+            "the [Tamil-English corpus paper](https://arxiv.org/abs/2006.00206), and "
+            "[AI4Bharat Indic NLP resources](https://github.com/AI4Bharat/indicnlp_catalog).\n\n"
+            "**Low-information / promotion:** fewer than three detected words, near-empty text, or link/subscription/promotion patterns.  "
+            "**Repeated / copied:** the same normalized text of at least 12 characters appears three or more times.  "
+            "**Detailed discussion:** at least 18 detected words. **Question:** question punctuation or Tamil/Tanglish/English question terms. "
+            "These are descriptive signals, not judgments about a commenter’s intent or character."
+        )
 
 with tab_lifetime:
     st.subheader("Lifetime public totals and observed growth")
