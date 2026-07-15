@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data import load_live, load_metadata, load_video_snapshots
-from youtube_analysis import normalize_text, top_terms
+from youtube_analysis import cultural_context, is_promotional, normalize_text, sarcasm_cues, top_terms
 
 st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
 
@@ -683,28 +683,53 @@ with tab_overview:
     repetitions = ecosystem.loc[repeatable, "normalized_text"].value_counts()
     repeated_texts = set(repetitions[repetitions.ge(3)].index)
     ecosystem["exact_repeat"] = ecosystem["normalized_text"].isin(repeated_texts)
-    ecosystem["Participation"] = "Short opinion"
-    ecosystem.loc[ecosystem["comment_kind"].eq("Detailed discussion"), "Participation"] = "Detailed discussion"
-    ecosystem.loc[ecosystem["is_question"], "Participation"] = "Question"
-    ecosystem.loc[ecosystem["comment_kind"].eq("Quick reaction"), "Participation"] = "Quick reaction"
-    ecosystem.loc[ecosystem["low_information"], "Participation"] = "Low-information / promotion"
-    ecosystem.loc[ecosystem["exact_repeat"], "Participation"] = "Repeated / copied text"
-    meaningful = ~ecosystem["Participation"].isin(["Low-information / promotion", "Repeated / copied text"])
-    substantive_all = ecosystem["Participation"].isin(["Detailed discussion", "Question"])
-    study_cards = st.columns(6)
+    ecosystem["promotional"] = ecosystem["normalized_text"].map(is_promotional)
+    ecosystem["emoji_only"] = ecosystem["normalized_text"].map(
+        lambda text: not bool(__import__("re").search(r"[a-z0-9\u0B80-\u0BFF]", text))
+    )
+    ecosystem["one_word"] = ecosystem["word_count"].le(1) & ~ecosystem["emoji_only"]
+    ecosystem["context_signals"] = ecosystem["normalized_text"].map(cultural_context)
+    ecosystem["sarcasm_signals"] = ecosystem["normalized_text"].map(sarcasm_cues)
+    ecosystem["possible_sarcasm"] = ecosystem["sarcasm_signals"].map(bool)
+    causal_pattern = r"because|therefore|however|although|reason|ஆனால்|ஆனா|ஏனெனில்|காரணம்|அதனால்|karanam"
+    ecosystem["gives_reason"] = ecosystem["normalized_text"].str.contains(causal_pattern, regex=True)
+    ecosystem["specific_aspect"] = ~ecosystem["topic"].eq("General reaction")
+    ecosystem["contextual"] = ecosystem["context_signals"].map(bool)
+    ecosystem["Value class"] = "General opinion"
+    ecosystem.loc[ecosystem["is_question"], "Value class"] = "Useful question"
+    ecosystem.loc[
+        ecosystem["word_count"].ge(8) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]),
+        "Value class",
+    ] = "Reasoned film opinion"
+    ecosystem.loc[
+        ecosystem["word_count"].ge(15) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]),
+        "Value class",
+    ] = "Deep critical analysis"
+    ecosystem.loc[ecosystem["contextual"] & ecosystem["word_count"].ge(6), "Value class"] = "Cultural / historical connection"
+    ecosystem.loc[ecosystem["word_count"].between(2, 5), "Value class"] = "Brief reaction"
+    ecosystem.loc[ecosystem["one_word"], "Value class"] = "One-word reaction"
+    ecosystem.loc[ecosystem["emoji_only"], "Value class"] = "Emoji-only"
+    ecosystem.loc[ecosystem["promotional"], "Value class"] = "Promotional / link spam"
+    ecosystem.loc[ecosystem["exact_repeat"], "Value class"] = "Repeated / copied text"
+    value_adding_classes = ["Useful question", "Reasoned film opinion", "Deep critical analysis", "Cultural / historical connection"]
+    value_adding = ecosystem["Value class"].isin(value_adding_classes)
+    meaningful = ~ecosystem["Value class"].isin(["Emoji-only", "One-word reaction", "Promotional / link spam", "Repeated / copied text"])
+    substantive_all = ecosystem["Value class"].isin(value_adding_classes)
+    study_cards = st.columns(7)
     study_cards[0].metric("Comments studied", f"{len(ecosystem):,}")
-    study_cards[1].metric("Meaningful text", f"{meaningful.mean():.0%}")
-    study_cards[2].metric("Detailed or questions", f"{substantive_all.mean():.0%}")
-    study_cards[3].metric("Questions", f"{ecosystem['is_question'].sum():,}")
-    study_cards[4].metric("Low-information", f"{ecosystem['low_information'].mean():.0%}")
-    study_cards[5].metric("Exact repeated text", f"{ecosystem['exact_repeat'].mean():.0%}")
+    study_cards[1].metric("Adds analytical value", f"{value_adding.mean():.1%}")
+    study_cards[2].metric("Deep analysis", f"{ecosystem['Value class'].eq('Deep critical analysis').mean():.1%}")
+    study_cards[3].metric("Useful questions", f"{ecosystem['Value class'].eq('Useful question').mean():.1%}")
+    study_cards[4].metric("Cultural context", f"{ecosystem['contextual'].mean():.1%}")
+    study_cards[5].metric("Possible sarcasm", f"{ecosystem['possible_sarcasm'].mean():.1%}")
+    study_cards[6].metric("Filtered/noise", f"{(~meaningful).mean():.1%}")
 
-    participation_counts = ecosystem["Participation"].value_counts()
+    participation_counts = ecosystem["Value class"].value_counts()
     top_language = ecosystem["language"].value_counts().index[0]
     st.info(
-        f"**What this corpus says:** {meaningful.mean():.0%} of collected comments contain enough non-promotional text for analysis, "
-        f"while {substantive_all.mean():.0%} develop an idea or ask a question. The largest detected language group is **{top_language}**. "
-        "Exact repetition is measured across the whole archive and is not automatically treated as malicious spam."
+        f"**What this corpus says:** {value_adding.mean():.1%} of all collected comments add identifiable analytical value through a reason, film-specific aspect, substantive question or cultural comparison. "
+        f"Another {ecosystem['Value class'].eq('General opinion').mean():.1%} express an interpretable opinion without enough evidence to call it analysis. "
+        f"The largest detected language group is **{top_language}**. Possible sarcasm is a cue-based reading for human review—not a fact about intent."
     )
 
     participation_col, language_col = st.columns(2, gap="large")
@@ -722,7 +747,7 @@ with tab_overview:
         st.plotly_chart(participation_fig, width="stretch")
     with language_col:
         st.markdown("#### How multilingual is the discussion?")
-        language_quality = ecosystem.groupby(["language", "Participation"], as_index=False).size().rename(columns={"size": "Comments"})
+        language_quality = ecosystem.groupby(["language", "Value class"], as_index=False).size().rename(columns={"Value class": "Participation", "size": "Comments"})
         language_quality["Share"] = language_quality["Comments"] / language_quality.groupby("language")["Comments"].transform("sum") * 100
         language_fig = px.bar(
             language_quality, x="language", y="Share", color="Participation", barmode="stack",
@@ -736,7 +761,7 @@ with tab_overview:
     format_col, topic_col = st.columns(2, gap="large")
     with format_col:
         st.markdown("#### Videos versus Shorts")
-        format_quality = ecosystem.groupby(["content_format", "Participation"], as_index=False).size().rename(columns={"size": "Comments"})
+        format_quality = ecosystem.groupby(["content_format", "Value class"], as_index=False).size().rename(columns={"Value class": "Participation", "size": "Comments"})
         format_quality["Share"] = format_quality["Comments"] / format_quality.groupby("content_format")["Comments"].transform("sum") * 100
         format_fig = px.bar(format_quality, x="content_format", y="Share", color="Participation", barmode="stack",
                             custom_data=["Comments"], color_discrete_sequence=PALETTE)
@@ -755,6 +780,93 @@ with tab_overview:
             topic_fig.update_layout(height=390, coloraxis_showscale=False, xaxis_title="Detailed comments and questions", yaxis_title=None,
                                     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
             st.plotly_chart(topic_fig, width="stretch")
+
+    value_col, tone_col = st.columns(2, gap="large")
+    with value_col:
+        st.markdown("#### Does criticism also add value?")
+        value_tone = (
+            ecosystem.groupby(["Value class", "reaction_signal"], as_index=False).size()
+            .rename(columns={"reaction_signal": "Reaction wording", "size": "Comments"})
+        )
+        value_tone = value_tone[value_tone["Value class"].isin(value_adding_classes)]
+        value_tone_fig = px.bar(
+            value_tone, x="Value class", y="Comments", color="Reaction wording", barmode="stack",
+            color_discrete_map={"Appreciative": "#2ec4b6", "Critical": "#ff4b2b", "Mixed / unclear": "#ffb703"},
+        )
+        value_tone_fig.update_layout(height=420, legend_title=None, xaxis_title=None, yaxis_title="Value-adding comments",
+                                     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(value_tone_fig, width="stretch")
+        st.caption("Value is independent of approval: a well-explained negative reading can contribute as much as praise.")
+    with tone_col:
+        st.markdown("#### Why comments are excluded from the value estimate")
+        excluded = ecosystem[~meaningful]["Value class"].value_counts().rename_axis("Reason").reset_index(name="Comments")
+        excluded["Percent of all"] = excluded["Comments"] / len(ecosystem) * 100
+        excluded_fig = px.bar(excluded.sort_values("Percent of all"), x="Percent of all", y="Reason", orientation="h",
+                              text="Comments", color="Reason", color_discrete_sequence=PALETTE)
+        excluded_fig.update_traces(texttemplate="%{x:.1f}% · %{text:,}", textposition="outside")
+        excluded_fig.update_layout(height=420, showlegend=False, xaxis_title="Share of every collected comment (%)", yaxis_title=None,
+                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(excluded_fig, width="stretch")
+
+    def value_reason(row: pd.Series) -> str:
+        reasons = []
+        if row["specific_aspect"]:
+            reasons.append(f"discusses {str(row['topic']).lower()}")
+        if row["gives_reason"]:
+            reasons.append("gives an explicit reason")
+        if row["is_question"]:
+            reasons.append("asks a substantive question")
+        reasons.extend(row["context_signals"])
+        return "; ".join(reasons) or "develops an extended opinion"
+
+    st.markdown("#### Comments that add the most analytical value")
+    st.caption("Examples are selected by transparent features and engagement—not by whether they praise or criticize the film.")
+    highlights = ecosystem[value_adding].copy()
+    highlights["Why highlighted"] = highlights.apply(value_reason, axis=1)
+    highlights["Comment"] = highlights["text"].astype(str).str.slice(0, 320)
+    highlights = highlights.sort_values(["likes", "word_count"], ascending=False).head(15)
+    if highlights.empty:
+        st.info("No high-value examples are available yet.")
+    else:
+        st.dataframe(
+            highlights[["film", "channel", "Value class", "reaction_signal", "Why highlighted", "Comment", "likes", "url"]],
+            width="stretch", hide_index=True,
+            column_config={"film": "Film", "channel": "Review channel", "reaction_signal": "Reaction wording",
+                           "likes": "Likes", "url": st.column_config.LinkColumn("Open on YouTube")},
+        )
+
+    context_tab, sarcasm_tab = st.tabs(["Historical and contemporary connections", "Possible sarcasm and contextual comedy"])
+    with context_tab:
+        context_examples = ecosystem[ecosystem["contextual"] & meaningful].copy()
+        context_examples["Connection"] = context_examples["context_signals"].map(lambda values: ", ".join(values))
+        context_examples["Comment"] = context_examples["text"].astype(str).str.slice(0, 320)
+        if context_examples.empty:
+            st.info("No explicit older-film or contemporary connections were detected yet.")
+        else:
+            st.dataframe(
+                context_examples.sort_values(["likes", "word_count"], ascending=False)
+                .head(15)[["film", "Connection", "topic", "Comment", "likes", "url"]],
+                width="stretch", hide_index=True,
+                column_config={"film": "Film", "topic": "Film aspect", "likes": "Likes",
+                               "url": st.column_config.LinkColumn("Open on YouTube")},
+            )
+    with sarcasm_tab:
+        sarcasm_examples = ecosystem[
+            ecosystem["possible_sarcasm"] & meaningful & ecosystem["word_count"].ge(3)
+        ].copy()
+        sarcasm_examples["Observed cues"] = sarcasm_examples["sarcasm_signals"].map(lambda values: ", ".join(values))
+        sarcasm_examples["Comment"] = sarcasm_examples["text"].astype(str).str.slice(0, 320)
+        st.warning("These are candidates for human reading. Sarcasm cannot be established from text cues alone, especially in Tamil/Tanglish comedy and fan culture.")
+        if sarcasm_examples.empty:
+            st.info("No comments currently meet the multi-cue sarcasm threshold.")
+        else:
+            st.dataframe(
+                sarcasm_examples.sort_values(["likes", "word_count"], ascending=False)
+                .head(15)[["film", "Observed cues", "reaction_signal", "Comment", "likes", "url"]],
+                width="stretch", hide_index=True,
+                column_config={"film": "Film", "reaction_signal": "Literal reaction wording", "likes": "Likes",
+                               "url": st.column_config.LinkColumn("Open on YouTube")},
+            )
 
     st.markdown("#### Recurring vocabulary in meaningful comments")
     ecosystem_terms = top_terms(ecosystem.loc[meaningful, "text"], 20)
@@ -776,10 +888,15 @@ with tab_overview:
             "This study follows that research direction but uses transparent corpus statistics rather than claiming a perfect classifier. "
             "See the [DravidianCodeMix dataset](https://github.com/bharathichezhiyan/DravidianCodeMix-Dataset), "
             "the [Tamil-English corpus paper](https://arxiv.org/abs/2006.00206), and "
-            "[AI4Bharat Indic NLP resources](https://github.com/AI4Bharat/indicnlp_catalog).\n\n"
-            "**Low-information / promotion:** fewer than three detected words, near-empty text, or link/subscription/promotion patterns.  "
+            "[AI4Bharat Indic NLP resources](https://github.com/AI4Bharat/indicnlp_catalog). "
+            "Recent Tamil-English sarcasm research reports only moderate performance, so this dashboard exposes cues and examples instead of asserting intent: "
+            "[YouTube Comments Decoded](https://arxiv.org/abs/2411.05039).\n\n"
+            "**Adds analytical value:** gives a reason, discusses a film-specific aspect, asks a substantive question, or makes an older-film/contemporary connection. "
+            "Positive and negative opinions use the same standard.  "
+            "**Promotional/link spam:** link, subscribe, channel, giveaway or messaging-app promotion patterns.  "
+            "**Emoji-only:** no detected Tamil, Latin letter or number. **One-word:** one detected word.  "
             "**Repeated / copied:** the same normalized text of at least 12 characters appears three or more times.  "
-            "**Detailed discussion:** at least 18 detected words. **Question:** question punctuation or Tamil/Tanglish/English question terms. "
+            "**Possible sarcasm:** rhetorical Tamil/Tanglish phrases, criticism paired with laughter, conflicting praise/criticism, or rhetorical punctuation. "
             "These are descriptive signals, not judgments about a commenter’s intent or character."
         )
 
