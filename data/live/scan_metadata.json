@@ -1,7 +1,7 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-07-16T15:56:05.259175+00:00",
-  "last_video_discovery": "2026-07-15T16:06:02.534574+00:00",
+  "status": "partial",
+  "last_scan": "2026-07-16T17:02:17.403956+00:00",
+  "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
@@ -20,14 +20,12 @@
     "Ed3JorSD7HE",
     "G-PQXCuMTjM",
     "GcHI2mnFcXQ",
-    "H1udCndPTU0",
     "KbH3Cihy0hA",
     "LLmkti_XkMk",
     "La5WyvyO4HM",
     "OoMQuy2Pzx0",
     "P9wB0hzx57c",
     "PneX7CumxoQ",
-    "QQWfysygeLQ",
     "QkGUFx1Ns8Y",
     "TUfsVzU8yvI",
     "Toas2mtps7c",
@@ -48,7 +46,6 @@
     "q1Yk7mOv2GQ",
     "qYiwgZPiqPk",
     "rRL7e36tzY0",
-    "rZ6TkZABsKA",
     "rkIdNZyiGH0",
     "sGZ_wEjhu5U",
     "sX-AyaZtsi4",
@@ -59,7 +56,6 @@
     "udOlKexHZws",
     "vEgYmiOrmtg",
     "z1iWBA43b8g",
-    "zeZIjZA_src",
     "zkQWiCji7Hw"
   ],
   "out_of_scope_videos_pruned": 0,
@@ -249,12 +245,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 438 useful public comments. Of 119 comments with detectable reaction wording, 96 were appreciative and 23 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 438,
-      "explicit_reaction_comments": 119,
+      "summary": "Based on 439 useful public comments. Of 120 comments with detectable reaction wording, 96 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 439,
+      "explicit_reaction_comments": 120,
       "appreciative_signals": 96,
-      "critical_signals": 23,
-      "substantive_share": 0.1804,
+      "critical_signals": 24,
+      "substantive_share": 0.18,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -272,9 +268,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 298,
+          "useful_comments": 299,
           "appreciative_signals": 66,
-          "critical_signals": 15,
+          "critical_signals": 16,
           "questions": 22,
           "leading_topic": "General reaction"
         },
@@ -321,12 +317,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 540 useful public comments. Of 199 comments with detectable reaction wording, 139 were appreciative and 60 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 540,
-      "explicit_reaction_comments": 199,
+      "summary": "Based on 541 useful public comments. Of 200 comments with detectable reaction wording, 139 were appreciative and 61 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 541,
+      "explicit_reaction_comments": 200,
       "appreciative_signals": 139,
-      "critical_signals": 60,
-      "substantive_share": 0.2204,
+      "critical_signals": 61,
+      "substantive_share": 0.22,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -344,9 +340,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 199,
+          "useful_comments": 200,
           "appreciative_signals": 54,
-          "critical_signals": 18,
+          "critical_signals": 19,
           "questions": 23,
           "leading_topic": "General reaction"
         },
@@ -497,12 +493,12 @@
       ]
     },
     "Karuppu": {
-      "summary": "Based on 1,843 useful public comments. Of 524 comments with detectable reaction wording, 377 were appreciative and 147 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 1843,
+      "summary": "Based on 1,844 useful public comments. Of 524 comments with detectable reaction wording, 377 were appreciative and 147 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1844,
       "explicit_reaction_comments": 524,
       "appreciative_signals": 377,
       "critical_signals": 147,
-      "substantive_share": 0.2425,
+      "substantive_share": 0.2424,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -520,7 +516,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 432,
+          "useful_comments": 433,
           "appreciative_signals": 82,
           "critical_signals": 16,
           "questions": 39,
@@ -899,14 +895,14 @@
     "Gatta Kusthi 2",
     "Gandhi Talks",
     "Thaai Kizhavi",
-    "29",
+    "TN 2026",
     "Youth"
   ],
-  "comments_fetched": 1976,
+  "comments_fetched": 7130,
   "new_comments_added": 3,
-  "stored_comments": 8661,
-  "videos_monitored": 54,
-  "standard_videos_monitored": 40,
+  "stored_comments": 8664,
+  "videos_monitored": 50,
+  "standard_videos_monitored": 36,
   "shorts_monitored": 14,
   "movie_catalog": [
     {
@@ -1130,31 +1126,30 @@
       ]
     },
     {
-      "title": "29",
-      "original_title": "29",
-      "release_date": "2026-05-08",
-      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gzOamXAMuBpWFcCitMdEoAVAjCf.jpg",
-      "tmdb_id": 1510769,
-      "overview": "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and self-discovery. Through hilarious misadventures and chance encounters, he slowly sees life's bigger picture - its surprises, joys, and second chances.",
-      "runtime": 149,
+      "title": "TN 2026",
+      "original_title": "TN 2026",
+      "release_date": "2026-04-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mAX1ujOROXtKsOuIg5MbJbotOyD.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hlTs5C7zQ7TrH7REWOkSXzi67p7.jpg",
+      "tmdb_id": 1556783,
+      "overview": "Set in Pollachi, the story follows a powerful landlord, Sivalingam Mandradiyar, who becomes obsessed with a rising actor, Kukanth Kumar, believing he is the next M.G.R. He pours his wealth into shaping the actor's career and political future. But as ambition and fame grow, so does the risk of downfall. Will it lead to power or ruin?",
+      "runtime": 138,
       "genres": [
-        "Romance",
         "Comedy",
         "Drama"
       ],
-      "director": "Rathna Kumar",
+      "director": "Umapathy Ramaiah",
       "cast": [
-        "Vidhu",
-        "Preethi Asrani",
-        "Mahendran",
-        "Sindhu Shyam",
-        "Avinash Raghudevan",
-        "Leona Lishoy",
-        "Aadhira Pandilakshmi",
-        "Shenaz Fathima",
-        "Prem",
-        "Sam Santo"
+        "Natarajan Subramaniam",
+        "Thambi Ramaiah",
+        "M. S. Bhaskar",
+        "Ilavarasu",
+        "Shrita Rao",
+        "Yashika Anand",
+        "Chandhini Tamilarasan",
+        "Redin Kingsley",
+        "Viji Chandrasekhar",
+        "Vadivukarasi"
       ]
     },
     {
@@ -1528,6 +1523,7 @@
     "Kara",
     "Karuppu",
     "Parimala and Co",
+    "TN 2026",
     "Thaai Kizhavi",
     "Youth"
   ],
@@ -1549,5 +1545,7 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Video statistics/TN 2026: Columns must be same length as key"
+  ]
 }
