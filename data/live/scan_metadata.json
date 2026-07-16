@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-16T14:29:43.840305+00:00",
+  "last_scan": "2026-07-16T15:56:05.259175+00:00",
   "last_video_discovery": "2026-07-15T16:06:02.534574+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -321,12 +321,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 539 useful public comments. Of 198 comments with detectable reaction wording, 139 were appreciative and 59 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 539,
-      "explicit_reaction_comments": 198,
+      "summary": "Based on 540 useful public comments. Of 199 comments with detectable reaction wording, 139 were appreciative and 60 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 540,
+      "explicit_reaction_comments": 199,
       "appreciative_signals": 139,
-      "critical_signals": 59,
-      "substantive_share": 0.2189,
+      "critical_signals": 60,
+      "substantive_share": 0.2204,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -352,10 +352,10 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 91,
+          "useful_comments": 92,
           "appreciative_signals": 19,
-          "critical_signals": 7,
-          "questions": 9,
+          "critical_signals": 8,
+          "questions": 10,
           "leading_topic": "General reaction"
         },
         {
@@ -601,12 +601,12 @@
       ]
     },
     "Parimala and Co": {
-      "summary": "Based on 435 useful public comments. Of 122 comments with detectable reaction wording, 83 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
-      "useful_comments": 435,
+      "summary": "Based on 436 useful public comments. Of 122 comments with detectable reaction wording, 83 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 436,
       "explicit_reaction_comments": 122,
       "appreciative_signals": 83,
       "critical_signals": 39,
-      "substantive_share": 0.2368,
+      "substantive_share": 0.2362,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -624,7 +624,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 174,
+          "useful_comments": 175,
           "appreciative_signals": 41,
           "critical_signals": 14,
           "questions": 19,
@@ -903,8 +903,8 @@
     "Youth"
   ],
   "comments_fetched": 1976,
-  "new_comments_added": 1,
-  "stored_comments": 8658,
+  "new_comments_added": 3,
+  "stored_comments": 8661,
   "videos_monitored": 54,
   "standard_videos_monitored": 40,
   "shorts_monitored": 14,
