@@ -1,6 +1,6 @@
 {
-  "status": "partial",
-  "last_scan": "2026-07-16T17:02:17.403956+00:00",
+  "status": "healthy",
+  "last_scan": "2026-07-16T18:36:52.057117+00:00",
   "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -493,12 +493,12 @@
       ]
     },
     "Karuppu": {
-      "summary": "Based on 1,844 useful public comments. Of 524 comments with detectable reaction wording, 377 were appreciative and 147 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 1844,
-      "explicit_reaction_comments": 524,
+      "summary": "Based on 1,846 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1846,
+      "explicit_reaction_comments": 526,
       "appreciative_signals": 377,
-      "critical_signals": 147,
-      "substantive_share": 0.2424,
+      "critical_signals": 149,
+      "substantive_share": 0.2421,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -516,17 +516,17 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 433,
+          "useful_comments": 434,
           "appreciative_signals": 82,
-          "critical_signals": 16,
+          "critical_signals": 17,
           "questions": 39,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 423,
+          "useful_comments": 424,
           "appreciative_signals": 72,
-          "critical_signals": 50,
+          "critical_signals": 51,
           "questions": 45,
           "leading_topic": "General reaction"
         },
@@ -898,9 +898,9 @@
     "TN 2026",
     "Youth"
   ],
-  "comments_fetched": 7130,
-  "new_comments_added": 3,
-  "stored_comments": 8664,
+  "comments_fetched": 1803,
+  "new_comments_added": 2,
+  "stored_comments": 8666,
   "videos_monitored": 50,
   "standard_videos_monitored": 36,
   "shorts_monitored": 14,
@@ -1545,7 +1545,5 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": [
-    "Video statistics/TN 2026: Columns must be same length as key"
-  ]
+  "errors": []
 }
