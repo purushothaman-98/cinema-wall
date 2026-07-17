@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-17T09:25:27.702159+00:00",
+  "last_scan": "2026-07-17T11:01:07.988289+00:00",
   "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -493,12 +493,12 @@
       ]
     },
     "Karuppu": {
-      "summary": "Based on 1,846 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 1846,
+      "summary": "Based on 1,847 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1847,
       "explicit_reaction_comments": 526,
       "appreciative_signals": 377,
       "critical_signals": 149,
-      "substantive_share": 0.2421,
+      "substantive_share": 0.242,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -540,7 +540,7 @@
         },
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 360,
+          "useful_comments": 361,
           "appreciative_signals": 106,
           "critical_signals": 16,
           "questions": 25,
@@ -899,8 +899,8 @@
     "Youth"
   ],
   "comments_fetched": 1803,
-  "new_comments_added": 2,
-  "stored_comments": 8669,
+  "new_comments_added": 1,
+  "stored_comments": 8670,
   "videos_monitored": 50,
   "standard_videos_monitored": 36,
   "shorts_monitored": 14,
