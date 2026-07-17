@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-17T14:23:31.103604+00:00",
+  "last_scan": "2026-07-17T15:51:51.678924+00:00",
   "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -493,12 +493,12 @@
       ]
     },
     "Karuppu": {
-      "summary": "Based on 1,847 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 1847,
+      "summary": "Based on 1,848 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1848,
       "explicit_reaction_comments": 526,
       "appreciative_signals": 377,
       "critical_signals": 149,
-      "substantive_share": 0.242,
+      "substantive_share": 0.2419,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -524,7 +524,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 424,
+          "useful_comments": 425,
           "appreciative_signals": 72,
           "critical_signals": 51,
           "questions": 45,
@@ -899,8 +899,8 @@
     "Youth"
   ],
   "comments_fetched": 1803,
-  "new_comments_added": 0,
-  "stored_comments": 8671,
+  "new_comments_added": 1,
+  "stored_comments": 8672,
   "videos_monitored": 50,
   "standard_videos_monitored": 36,
   "shorts_monitored": 14,
