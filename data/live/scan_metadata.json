@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-17T11:01:07.988289+00:00",
+  "last_scan": "2026-07-17T12:39:38.348676+00:00",
   "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -597,12 +597,12 @@
       ]
     },
     "Parimala and Co": {
-      "summary": "Based on 439 useful public comments. Of 122 comments with detectable reaction wording, 83 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
-      "useful_comments": 439,
+      "summary": "Based on 440 useful public comments. Of 122 comments with detectable reaction wording, 83 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 440,
       "explicit_reaction_comments": 122,
       "appreciative_signals": 83,
       "critical_signals": 39,
-      "substantive_share": 0.2346,
+      "substantive_share": 0.2341,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -620,7 +620,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 176,
+          "useful_comments": 177,
           "appreciative_signals": 41,
           "critical_signals": 14,
           "questions": 19,
@@ -900,7 +900,7 @@
   ],
   "comments_fetched": 1803,
   "new_comments_added": 1,
-  "stored_comments": 8670,
+  "stored_comments": 8671,
   "videos_monitored": 50,
   "standard_videos_monitored": 36,
   "shorts_monitored": 14,
