@@ -1,7 +1,7 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-07-17T16:57:04.531684+00:00",
-  "last_video_discovery": "2026-07-16T17:02:17.403956+00:00",
+  "status": "partial",
+  "last_scan": "2026-07-17T17:58:39.261177+00:00",
+  "last_video_discovery": "2026-07-17T17:58:39.261177+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
@@ -9,7 +9,6 @@
   "active_video_ids": [
     "-GmXAiBTYBQ",
     "1qP32L5hyO4",
-    "3WR4xuFcvc4",
     "3hUwnHct-xM",
     "4v6OWiZAv7Q",
     "5GAgwuuIx_I",
@@ -20,18 +19,19 @@
     "Ed3JorSD7HE",
     "G-PQXCuMTjM",
     "GcHI2mnFcXQ",
+    "H1udCndPTU0",
     "KbH3Cihy0hA",
     "LLmkti_XkMk",
     "La5WyvyO4HM",
     "OoMQuy2Pzx0",
     "P9wB0hzx57c",
     "PneX7CumxoQ",
+    "QQWfysygeLQ",
     "QkGUFx1Ns8Y",
     "TUfsVzU8yvI",
     "Toas2mtps7c",
     "UU216Zdz2lc",
     "_vqgR_x1I1Q",
-    "asUbxf6yqBo",
     "cbllSrGPjs0",
     "ccjasf80_dw",
     "dLVO165vC2I",
@@ -39,23 +39,21 @@
     "doqGi23QOu4",
     "dzMotcbkyV0",
     "eICFQfyvItk",
-    "h82wnFt1bsM",
     "haLV011BfjA",
     "kiFeXcU-JI4",
     "nTpsJJG068E",
     "q1Yk7mOv2GQ",
     "qYiwgZPiqPk",
     "rRL7e36tzY0",
-    "rkIdNZyiGH0",
-    "sGZ_wEjhu5U",
+    "rZ6TkZABsKA",
     "sX-AyaZtsi4",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
     "u3tOHprtNAI",
     "uVQanfNtU70",
-    "udOlKexHZws",
     "vEgYmiOrmtg",
     "z1iWBA43b8g",
+    "zeZIjZA_src",
     "zkQWiCji7Hw"
   ],
   "out_of_scope_videos_pruned": 0,
@@ -889,21 +887,21 @@
   "films": [
     "Idhayam Murali",
     "Karuppu",
-    "Parimala and Co",
     "Blast",
-    "Kara",
+    "Parimala and Co",
     "Gatta Kusthi 2",
-    "Gandhi Talks",
-    "Thaai Kizhavi",
-    "TN 2026",
-    "Youth"
+    "Kara",
+    "Youth",
+    "29",
+    "Find Me",
+    "Gandhi Talks"
   ],
-  "comments_fetched": 1803,
-  "new_comments_added": 0,
-  "stored_comments": 8672,
-  "videos_monitored": 50,
+  "comments_fetched": 6477,
+  "new_comments_added": 1,
+  "stored_comments": 8673,
+  "videos_monitored": 48,
   "standard_videos_monitored": 36,
-  "shorts_monitored": 14,
+  "shorts_monitored": 12,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -961,6 +959,33 @@
       ]
     },
     {
+      "title": "Blast",
+      "original_title": "\u0baa\u0bbf\u0bb3\u0bbe\u0bb8\u0bcd\u0b9f\u0bcd",
+      "release_date": "2026-05-28",
+      "poster_url": "https://image.tmdb.org/t/p/w500/lpsUpXieodUhN6DlK9ZDnjkysLk.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/xsoKAonKy1zk5XoQoUG1dUXDCKH.jpg",
+      "tmdb_id": 1515729,
+      "overview": "A seemingly ordinary family must unleash their hidden martial arts skills when they clash with a ruthless criminal gang tied to corruption and violence.",
+      "runtime": 143,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Subash K Raj",
+      "cast": [
+        "Arjun Sarja",
+        "Abhirami",
+        "Preity Mukhundhan",
+        "Vivek Prasanna",
+        "John Kokken",
+        "Arjun Chidambaram",
+        "Pawan",
+        "Dhileban",
+        "Vinod Sagar",
+        "Bala Hasan"
+      ]
+    },
+    {
       "title": "Parimala and Co",
       "original_title": "\u0baa\u0bb0\u0bbf\u0bae\u0bb3\u0bbe & \u0b95\u0bcb",
       "release_date": "2026-06-05",
@@ -990,30 +1015,30 @@
       ]
     },
     {
-      "title": "Blast",
-      "original_title": "\u0baa\u0bbf\u0bb3\u0bbe\u0bb8\u0bcd\u0b9f\u0bcd",
-      "release_date": "2026-05-28",
-      "poster_url": "https://image.tmdb.org/t/p/w500/lpsUpXieodUhN6DlK9ZDnjkysLk.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/xsoKAonKy1zk5XoQoUG1dUXDCKH.jpg",
-      "tmdb_id": 1515729,
-      "overview": "A seemingly ordinary family must unleash their hidden martial arts skills when they clash with a ruthless criminal gang tied to corruption and violence.",
-      "runtime": 143,
+      "title": "Gatta Kusthi 2",
+      "original_title": "\u0b95\u0b9f\u0bcd\u0b9f\u0bbe \u0b95\u0bc1\u0bb8\u0bcd\u0ba4\u0bbf 2",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uygLz1ENt12Riv2ppTtdAIBRIT1.jpg",
+      "tmdb_id": 1509599,
+      "overview": "Picks up after the first film, with Veera and Keerthi balancing parenthood and Keerthi's wrestling career, featuring a role reversal where Veera takes on more domestic responsibilities.",
+      "runtime": 153,
       "genres": [
-        "Action",
-        "Thriller"
+        "Comedy",
+        "Drama"
       ],
-      "director": "Subash K Raj",
+      "director": "Chella Ayyavu",
       "cast": [
-        "Arjun Sarja",
-        "Abhirami",
-        "Preity Mukhundhan",
-        "Vivek Prasanna",
-        "John Kokken",
-        "Arjun Chidambaram",
-        "Pawan",
-        "Dhileban",
-        "Vinod Sagar",
-        "Bala Hasan"
+        "Aishwarya Lekshmi",
+        "Vishnu Vishal",
+        "Ramya Krishnan",
+        "Karunas",
+        "Munishkanth",
+        "Kaali Venkat",
+        "Lizzie Antony",
+        "Gajaraj",
+        "Sreeja Ravi",
+        "Karunakaran"
       ]
     },
     {
@@ -1046,30 +1071,87 @@
       ]
     },
     {
-      "title": "Gatta Kusthi 2",
-      "original_title": "\u0b95\u0b9f\u0bcd\u0b9f\u0bbe \u0b95\u0bc1\u0bb8\u0bcd\u0ba4\u0bbf 2",
-      "release_date": "2026-07-03",
-      "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uygLz1ENt12Riv2ppTtdAIBRIT1.jpg",
-      "tmdb_id": 1509599,
-      "overview": "Picks up after the first film, with Veera and Keerthi balancing parenthood and Keerthi's wrestling career, featuring a role reversal where Veera takes on more domestic responsibilities.",
-      "runtime": 153,
+      "title": "Youth",
+      "original_title": "\u0baf\u0bc2\u0ba4\u0bcd",
+      "release_date": "2026-03-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/rNzk0jlGRPnvZ26On5xhTmLaQhO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/eaknBFnMg8fPlwlegBaPtQfhyF8.jpg",
+      "tmdb_id": 1542352,
+      "overview": "Youth follows Praveen, a 15-year-old boy who enters adolescence determined to find true love before school ends. As he goes through multiple relationships and heartbreaks, he slowly begins to understand what love truly means. Along the way, the experiences shape his growth, maturity, and outlook on life.",
+      "runtime": 141,
       "genres": [
+        "Comedy",
+        "Romance",
+        "Drama"
+      ],
+      "director": "Ken Karunaas",
+      "cast": [
+        "Ken Karunaas",
+        "Anishma Anilkumar",
+        "Suraj Venjaramoodu",
+        "Devadarshini",
+        "Meenakshi Dinesh",
+        "Priyanshi Yadav",
+        "Abison Thevarasa",
+        "Sarath",
+        "Eshwar Santhanalakshmi",
+        "Nalini"
+      ]
+    },
+    {
+      "title": "29",
+      "original_title": "29",
+      "release_date": "2026-05-08",
+      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gzOamXAMuBpWFcCitMdEoAVAjCf.jpg",
+      "tmdb_id": 1510769,
+      "overview": "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and self-discovery. Through hilarious misadventures and chance encounters, he slowly sees life's bigger picture - its surprises, joys, and second chances.",
+      "runtime": 149,
+      "genres": [
+        "Romance",
         "Comedy",
         "Drama"
       ],
-      "director": "Chella Ayyavu",
+      "director": "Rathna Kumar",
       "cast": [
-        "Aishwarya Lekshmi",
-        "Vishnu Vishal",
-        "Ramya Krishnan",
-        "Karunas",
-        "Munishkanth",
-        "Kaali Venkat",
-        "Lizzie Antony",
-        "Gajaraj",
-        "Sreeja Ravi",
-        "Karunakaran"
+        "Vidhu",
+        "Preethi Asrani",
+        "Mahendran",
+        "Sindhu Shyam",
+        "Avinash Raghudevan",
+        "Leona Lishoy",
+        "Aadhira Pandilakshmi",
+        "Shenaz Fathima",
+        "Prem",
+        "Sam Santo"
+      ]
+    },
+    {
+      "title": "Find Me",
+      "original_title": "Find Me",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7lByW5Hsy1r7NwNNP5B0wECEZTI.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/humuGx6DgniVx6TGkeaIXKd4Bd2.jpg",
+      "tmdb_id": 1724890,
+      "overview": "During the COVID-19 lockdown, a series of mysterious murders spreads fear across the city. As the investigation unfolds, hidden secrets and unexpected twists make it increasingly difficult to identify the killer. Every clue leads to another mystery in this Tamil crime thriller.",
+      "runtime": 160,
+      "genres": [
+        "Crime",
+        "Thriller",
+        "Mystery"
+      ],
+      "director": "Krithick Krishnan",
+      "cast": [
+        "Krithick Krishnan",
+        "Ashwin S A",
+        "John Praveen",
+        "Prabu Murugha",
+        "Kishore A",
+        "Praveen",
+        "Saravana Kumar R",
+        "Akash Gopi",
+        "Vetrivel Manoharan",
+        "Bharath"
       ]
     },
     {
@@ -1096,88 +1178,6 @@
         "Zarina Wahab",
         "Govind Namdeo",
         "Bagavathi Perumal"
-      ]
-    },
-    {
-      "title": "Thaai Kizhavi",
-      "original_title": "\u0ba4\u0bbe\u0baf\u0bcd \u0b95\u0bbf\u0bb4\u0bb5\u0bbf",
-      "release_date": "2026-02-27",
-      "poster_url": "https://image.tmdb.org/t/p/w500/21dLAnBhu3dMjQ89UIHGEtkoQ02.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uXnVsLFzxt8zTTPgzFhqeSkI3ce.jpg",
-      "tmdb_id": 1602783,
-      "overview": "An elderly and feared moneylender from a village near Madurai falls seriously ill, prompting her estranged sons and extended family to reunite after years of separation. As tensions rise inside the household, hidden motives, family conflicts, and expectations over her wealth turn her uncertain condition into the center of a chaotic family drama.",
-      "runtime": 144,
-      "genres": [
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Sivakumar Murugesan",
-      "cast": [
-        "Radhika Sarathkumar",
-        "Singampuli",
-        "Aruldoss",
-        "Balasaravanan",
-        "Munishkanth",
-        "Muthukumar",
-        "Raichal Rabecca Philip",
-        "Ilavarasu",
-        "George Mariyan",
-        "Hu Chen De"
-      ]
-    },
-    {
-      "title": "TN 2026",
-      "original_title": "TN 2026",
-      "release_date": "2026-04-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/mAX1ujOROXtKsOuIg5MbJbotOyD.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hlTs5C7zQ7TrH7REWOkSXzi67p7.jpg",
-      "tmdb_id": 1556783,
-      "overview": "Set in Pollachi, the story follows a powerful landlord, Sivalingam Mandradiyar, who becomes obsessed with a rising actor, Kukanth Kumar, believing he is the next M.G.R. He pours his wealth into shaping the actor's career and political future. But as ambition and fame grow, so does the risk of downfall. Will it lead to power or ruin?",
-      "runtime": 138,
-      "genres": [
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Umapathy Ramaiah",
-      "cast": [
-        "Natarajan Subramaniam",
-        "Thambi Ramaiah",
-        "M. S. Bhaskar",
-        "Ilavarasu",
-        "Shrita Rao",
-        "Yashika Anand",
-        "Chandhini Tamilarasan",
-        "Redin Kingsley",
-        "Viji Chandrasekhar",
-        "Vadivukarasi"
-      ]
-    },
-    {
-      "title": "Youth",
-      "original_title": "\u0baf\u0bc2\u0ba4\u0bcd",
-      "release_date": "2026-03-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/rNzk0jlGRPnvZ26On5xhTmLaQhO.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/eaknBFnMg8fPlwlegBaPtQfhyF8.jpg",
-      "tmdb_id": 1542352,
-      "overview": "Youth follows Praveen, a 15-year-old boy who enters adolescence determined to find true love before school ends. As he goes through multiple relationships and heartbreaks, he slowly begins to understand what love truly means. Along the way, the experiences shape his growth, maturity, and outlook on life.",
-      "runtime": 141,
-      "genres": [
-        "Comedy",
-        "Romance",
-        "Drama"
-      ],
-      "director": "Ken Karunaas",
-      "cast": [
-        "Ken Karunaas",
-        "Anishma Anilkumar",
-        "Suraj Venjaramoodu",
-        "Devadarshini",
-        "Meenakshi Dinesh",
-        "Priyanshi Yadav",
-        "Abison Thevarasa",
-        "Sarath",
-        "Eshwar Santhanalakshmi",
-        "Nalini"
       ]
     }
   ],
@@ -1517,13 +1517,13 @@
   "all_films_analyzed": [
     "29",
     "Blast",
+    "Find Me",
     "Gandhi Talks",
     "Gatta Kusthi 2",
     "Idhayam Murali",
     "Kara",
     "Karuppu",
     "Parimala and Co",
-    "TN 2026",
     "Thaai Kizhavi",
     "Youth"
   ],
@@ -1545,5 +1545,7 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Video statistics/Find Me: Columns must be same length as key"
+  ]
 }
