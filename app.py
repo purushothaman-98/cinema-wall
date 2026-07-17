@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import html
 import json
-import math
 import re
 from urllib.parse import quote
 
@@ -14,32 +13,56 @@ import streamlit as st
 from data import load_live, load_metadata, load_video_snapshots
 from youtube_analysis import normalize_text, top_terms
 
-PROMO_CHECKS = [r"https?://", r"subscribe", r"my channel", r"follow me", r"telegram", r"whatsapp", r"giveaway"]
-HISTORY_CHECKS = ["old movie", "older film", "previous film", "remake", "original film", "copy of", "inspired by", "better than", "worse than", "compared to", "80s", "90s", "palaya padam", "munnadi padam", "பழைய படம்", "முந்தைய படம்", "ஒப்பிட", "ரீமேக்"]
-CURRENT_CHECKS = ["election", "politics", "government", "social media", "meme", "troll", "reels", "viral", "arasiyal", "இன்றைய", "இப்போதைய", "அரசியல்", "தேர்தல்", "சமூக வலை", "மீம்"]
-SARCASM_CHECKS = ["/s", "yeah right", "what a masterpiece", "oscar kudukanum", "award kudukanum", "enna koduma", "enna da idhu", "vera level logic", "என்ன கொடுமை", "என்னடா இது", "விருது கொடுக்கணும்", "ஆஸ்கார்", "அடேங்கப்பா", "வாழ்க", "போதும்டா", "யாருடா"]
+PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
+PROMO_RE = re.compile(r"https?://|subscribe|my channel|follow me|telegram|whatsapp|giveaway", re.I)
+HISTORY_TERMS = ["old movie", "older film", "previous film", "remake", "original film", "copy of", "inspired by", "better than", "worse than", "compared to", "80s", "90s", "palaya padam", "munnadi padam", "பழைய படம்", "முந்தைய படம்", "ஒப்பிட", "ரீமேக்"]
+CURRENT_TERMS = ["election", "politics", "government", "social media", "meme", "troll", "reels", "viral", "arasiyal", "இன்றைய", "இப்போதைய", "அரசியல்", "தேர்தல்", "சமூக வலை", "மீம்"]
+SARCASM_TERMS = ["/s", "yeah right", "what a masterpiece", "oscar kudukanum", "award kudukanum", "enna koduma", "enna da idhu", "vera level logic", "என்ன கொடுமை", "என்னடா இது", "விருது கொடுக்கணும்", "ஆஸ்கார்", "அடேங்கப்பா", "போதும்டா", "யாருடா"]
 
-def is_promotional(text: str) -> bool:
-    return any(re.search(pattern, text) for pattern in PROMO_CHECKS)
+st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
+st.markdown("""
+<style>
+.stApp{background:#f7f3ea}.block-container{max-width:1480px;padding-top:1.2rem}
+.hero{background:linear-gradient(115deg,#141414 0%,#3a1710 54%,#ff4b2b 140%);color:white;padding:42px 46px;border-radius:18px;margin:0 0 24px;box-shadow:0 18px 45px rgba(55,27,18,.16)}
+.kicker{font-size:11px;font-weight:900;letter-spacing:.19em;color:#ffb39f}.hero h1{font-size:56px;line-height:.96;margin:10px 0 15px}.hero p{font-size:17px;color:#eaded8;max-width:860px;margin:0}
+[data-testid="stMetric"]{background:#fffdf8;border:1px solid #ddd3c3;padding:16px;border-radius:12px;box-shadow:0 5px 16px rgba(46,36,24,.04)}
+.poster-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:12px;overflow:hidden;margin-bottom:12px}.poster-card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}.poster-copy{padding:10px 11px 12px}.poster-title{font-size:17px;font-weight:850;line-height:1.05}.poster-meta{font-size:11px;color:#766d61;margin-top:5px;line-height:1.45}
+.section-note{color:#756d62;font-size:13px;margin-top:-8px;margin-bottom:12px}.badge{display:inline-block;background:#ffe6df;color:#a22d16;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.05em}.insight-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:12px;padding:15px 16px;margin-bottom:12px;min-height:120px}.insight-card .label{font-size:11px;font-weight:850;letter-spacing:.08em;color:#8d8173;text-transform:uppercase}.insight-card .value{font-size:24px;font-weight:900;line-height:1.05;margin-top:8px;color:#15130f}.insight-card .note{font-size:12px;color:#70675d;margin-top:7px;line-height:1.35}
+</style>
+""", unsafe_allow_html=True)
 
-def _marker_present(text: str, marker: str) -> bool:
-    return bool(re.search(rf"\b{re.escape(marker)}\b", text)) if re.fullmatch(r"[a-z0-9 ]+", marker) else marker in text
+@st.cache_data(ttl=300)
+def get_data(schema: str):
+    return load_live(), load_video_snapshots(), load_metadata()
 
-def cultural_context(text: str) -> list[str]:
-    signals = []
-    if any(_marker_present(text, marker) for marker in HISTORY_CHECKS):
-        signals.append("Older-film / historical comparison")
-    if any(_marker_present(text, marker) for marker in CURRENT_CHECKS):
-        signals.append("Contemporary social reference")
-    return signals
+
+def valid_text(value: object) -> bool:
+    return value is not None and not pd.isna(value) and str(value).strip().lower() not in {"", "nan", "none", "null"}
+
+
+def compact(value: object, limit: int = 72) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
+
+
+def classify_context(text: str) -> list[str]:
+    lowered = text.lower()
+    labels = []
+    if any(term in lowered for term in HISTORY_TERMS):
+        labels.append("Older-film / historical comparison")
+    if any(term in lowered for term in CURRENT_TERMS):
+        labels.append("Contemporary social reference")
+    return labels
+
 
 def sarcasm_cues(text: str) -> list[str]:
+    lowered = text.lower()
     cues = []
-    if any(marker in text for marker in SARCASM_CHECKS):
+    if any(term in lowered for term in SARCASM_TERMS):
         cues.append("Tamil/Tanglish rhetorical phrase")
-    laughter = bool(re.search(r"😂|🤣|😏|🙃|😅|\b(lol|lmao|haha+)\b", text))
-    criticism = bool(re.search(r"\b(bad|worst|boring|mokka|waste|cringe|lag|flop|average)\b|மோசம்|மொக்க|போர்|சுமார்", text))
-    praise = bool(re.search(r"\b(good|great|amazing|super|mass|sema|nalla|worth|love)\b|அருமை|நல்ல|சூப்பர்|செம", text))
+    laughter = bool(re.search(r"😂|🤣|😏|🙃|😅|\b(lol|lmao|haha+)\b", lowered))
+    criticism = bool(re.search(r"\b(bad|worst|boring|mokka|waste|cringe|lag|flop|average)\b|மோசம்|மொக்க|போர்|சுமார்", lowered))
+    praise = bool(re.search(r"\b(good|great|amazing|super|mass|sema|nalla|worth|love)\b|அருமை|நல்ல|சூப்பர்|செம", lowered))
     if laughter and criticism:
         cues.append("laughter paired with criticism")
     if praise and criticism:
@@ -48,111 +71,121 @@ def sarcasm_cues(text: str) -> list[str]:
         cues.append("rhetorical punctuation")
     return cues
 
-st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
 
-PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
-st.markdown("""<style>
-.stApp{background:#f7f3ea}.block-container{max-width:1480px;padding-top:1.3rem}
-.hero{background:linear-gradient(115deg,#141414 0%,#3a1710 54%,#ff4b2b 140%);color:white;padding:42px 46px;border-radius:22px;margin:2px 0 24px;box-shadow:0 18px 45px rgba(55,27,18,.16)}
-.kicker{font-size:11px;font-weight:900;letter-spacing:.19em;color:#ffb39f}.hero h1{font-size:58px;line-height:.96;letter-spacing:-.055em;margin:10px 0 15px}.hero p{font-size:17px;color:#eaded8;max-width:820px;margin:0}
-[data-testid="stMetric"]{background:#fffdf8;border:1px solid #ddd3c3;padding:16px;border-radius:14px;box-shadow:0 5px 16px rgba(46,36,24,.04)}
-.poster-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:14px;overflow:hidden;margin-bottom:12px}
-.poster-card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}.poster-copy{padding:10px 11px 12px}.poster-title{font-size:17px;font-weight:850;line-height:1.05}.poster-meta{font-size:11px;color:#766d61;margin-top:5px;line-height:1.45}
-.section-note{color:#756d62;font-size:13px;margin-top:-8px;margin-bottom:12px}
-.badge{display:inline-block;background:#ffe6df;color:#a22d16;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.05em}
-</style>""", unsafe_allow_html=True)
+def card(label: str, value: object, note: str) -> None:
+    st.markdown(
+        f'<div class="insight-card"><div class="label">{html.escape(label)}</div>'
+        f'<div class="value">{html.escape(str(value))}</div><div class="note">{html.escape(note)}</div></div>',
+        unsafe_allow_html=True,
+    )
 
-@st.cache_data(ttl=300)
-def get_data(schema: str):
-    return load_live(), load_video_snapshots(), load_metadata()
 
-comments, videos, meta = get_data("youtube-radar-v3")
-if not comments.empty:
-    if "channel" not in comments:
-        comments["channel"] = comments.get("source", "Unknown")
-    if "video_id" not in comments:
-        comments["video_id"] = comments.get("parent_id", "")
-    if "video_title" not in comments:
-        comments["video_title"] = ""
+def prep_comments(frame: pd.DataFrame, video_frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty:
+        return frame
+    comments = frame.copy()
+    for column, default in {
+        "film": "Unknown", "channel": "Unknown", "video_id": "", "video_title": "",
+        "content_format": "Unknown", "text": "", "language": "Unknown", "topic": "General reaction",
+        "reaction_signal": "Mixed / unclear", "comment_kind": "Quick reaction", "url": "",
+    }.items():
+        if column not in comments:
+            comments[column] = default
     comments["channel"] = comments["channel"].fillna(comments.get("source", "Unknown"))
     comments["likes"] = pd.to_numeric(comments.get("likes", 0), errors="coerce").fillna(0)
-    if "content_format" not in comments:
-        comments["content_format"] = "Unknown"
-    if not videos.empty and "content_format" in videos:
-        format_map = (
-            videos.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
-            .set_index("video_id")["content_format"]
-        )
+    comments["reply_count"] = pd.to_numeric(comments.get("reply_count", 0), errors="coerce").fillna(0)
+    comments["created_at"] = pd.to_datetime(comments.get("created_at"), errors="coerce", utc=True)
+    comments["word_count"] = pd.to_numeric(comments.get("word_count", comments["text"].astype(str).str.split().str.len()), errors="coerce").fillna(0)
+    comments["low_information"] = comments.get("low_information", False).fillna(False).astype(bool)
+    comments["is_question"] = comments.get("is_question", comments["text"].astype(str).str.contains("?", regex=False)).fillna(False).astype(bool)
+    if not video_frame.empty and "content_format" in video_frame:
+        format_map = video_frame.sort_values("scanned_at").drop_duplicates("video_id", keep="last").set_index("video_id")["content_format"]
         inferred = comments["video_id"].astype(str).map(format_map)
-        comments["content_format"] = comments["content_format"].where(
-            comments["content_format"].isin(["Video", "Short"]), inferred
-        ).fillna("Video")
+        comments["content_format"] = comments["content_format"].where(comments["content_format"].isin(["Video", "Short"]), inferred).fillna("Video")
     else:
         comments["content_format"] = comments["content_format"].replace("Unknown", "Video").fillna("Video")
+    return comments
 
-catalog_items = meta.get("movie_catalog_history") or meta.get("movie_catalog", [])
-catalog = {item.get("title"): item for item in catalog_items if isinstance(item, dict)}
+
+def prep_videos(frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty:
+        return frame
+    videos = frame.copy()
+    for column, default in {"film": "Unknown", "channel": "Unknown", "title": "", "content_format": "Video", "video_id": "", "thumbnail_url": ""}.items():
+        if column not in videos:
+            videos[column] = default
+    videos["scanned_at"] = pd.to_datetime(videos.get("scanned_at"), errors="coerce", utc=True)
+    videos["published_at"] = pd.to_datetime(videos.get("published_at"), errors="coerce", utc=True)
+    for column in ["views", "likes", "comments"]:
+        videos[column] = pd.to_numeric(videos.get(column, 0), errors="coerce").fillna(0)
+    videos["content_format"] = videos["content_format"].where(videos["content_format"].isin(["Video", "Short"]), "Video")
+    return videos
+
+
+def latest_video_rows(video_frame: pd.DataFrame) -> pd.DataFrame:
+    if video_frame.empty:
+        return pd.DataFrame()
+    return video_frame.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+
+
+def video_growth(video_frame: pd.DataFrame) -> pd.DataFrame:
+    if video_frame.empty or not {"video_id", "scanned_at", "views", "comments"}.issubset(video_frame.columns):
+        return pd.DataFrame()
+    ordered = video_frame.dropna(subset=["video_id", "scanned_at"]).sort_values(["video_id", "scanned_at"]).copy()
+    ordered = ordered[ordered.groupby("video_id")["video_id"].transform("size").ge(2)].copy()
+    if ordered.empty:
+        return ordered
+    latest = ordered.groupby("video_id").tail(1).copy()
+    previous = ordered.groupby("video_id").nth(-2).reset_index()[["video_id", "scanned_at", "views", "comments"]]
+    previous = previous.rename(columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"})
+    growth = latest.merge(previous, on="video_id", how="inner")
+    growth["elapsed_minutes"] = (growth["scanned_at"] - growth["previous_scan"]).dt.total_seconds().div(60)
+    growth = growth[growth["elapsed_minutes"].gt(0)].copy()
+    if growth.empty:
+        return growth
+    growth["views_gained"] = (growth["views"] - growth["previous_views"]).clip(lower=0)
+    growth["comments_gained"] = (growth["comments"] - growth["previous_comments"]).clip(lower=0)
+    growth["views_per_30m"] = growth["views_gained"] * 30 / growth["elapsed_minutes"]
+    growth["comments_per_30m"] = growth["comments_gained"] * 30 / growth["elapsed_minutes"]
+    return growth
+
 
 def audience_summary(frame: pd.DataFrame) -> str:
-    useful = frame[~frame["low_information"]].copy() if not frame.empty else frame
+    if frame.empty:
+        return "Not enough comments collected yet."
+    useful = frame[~frame["low_information"]].copy()
     if useful.empty:
-        return "Not enough useful audience comments yet."
+        return "Mostly short reactions so far; not enough useful audience text yet."
     signalled = useful[useful["reaction_signal"].ne("Mixed / unclear")]
+    mood = "mixed or still developing"
     if len(signalled) >= 3:
-        shares = signalled["reaction_signal"].value_counts(normalize=True)
-        mood = shares.index[0]
-        mood_text = (
-            "mostly appreciative" if mood == "Appreciative"
-            else "mostly critical" if mood == "Critical"
-            else "mixed"
-        )
-    else:
-        mood_text = "mixed or still developing"
+        leader = signalled["reaction_signal"].value_counts().index[0]
+        mood = "mostly appreciative" if leader == "Appreciative" else "mostly critical" if leader == "Critical" else "mixed"
     topic = useful["topic"].value_counts().index[0]
-    return f"Audience response is {mood_text}; conversation is led by {topic.lower()} ({len(useful):,} analyzed comments)."
+    return f"Audience response is {mood}; discussion is led by {topic.lower()} ({len(useful):,} useful comments)."
 
-def valid_text(value: object) -> bool:
-    return value is not None and not pd.isna(value) and str(value).strip().lower() not in {"", "nan", "none", "null"}
 
-def reviewer_context(row: pd.Series) -> str:
-    raw = row.get("description", "")
-    description = str(raw).replace("\n", " ").strip() if valid_text(raw) else ""
-    description = " ".join(part for part in description.split() if not part.startswith("http"))
-    if description:
-        return description[:220] + ("…" if len(description) > 220 else "")
-    return f'The public review is titled “{row.get("title", "Tamil film review")}”.'
-
-def render_movie_page(movie: str) -> None:
+def render_movie_page(movie: str, comments: pd.DataFrame, videos: pd.DataFrame, meta: dict, catalog: dict[str, dict]) -> None:
     item = catalog.get(movie, {})
     film_comments = comments[comments["film"].eq(movie)].copy()
-    film_videos = (
-        videos[videos["film"].eq(movie)].sort_values("scanned_at").drop_duplicates("video_id", keep="last")
-        if not videos.empty else pd.DataFrame()
-    )
+    film_videos = latest_video_rows(videos[videos["film"].eq(movie)])
     st.markdown('<a href="./" style="text-decoration:none;font-weight:800;color:#d53c1c">← Back to all films</a>', unsafe_allow_html=True)
     backdrop = item.get("backdrop_url")
-    if isinstance(backdrop, str):
-        st.markdown(
-            f'<div style="height:260px;border-radius:20px;background:linear-gradient(90deg,rgba(10,10,10,.82),rgba(10,10,10,.18)),url({backdrop}) center/cover;margin:16px 0"></div>',
-            unsafe_allow_html=True,
-        )
+    if isinstance(backdrop, str) and backdrop.startswith("http"):
+        st.markdown(f'<div style="height:260px;border-radius:18px;background:linear-gradient(90deg,rgba(10,10,10,.82),rgba(10,10,10,.18)),url({backdrop}) center/cover;margin:16px 0"></div>', unsafe_allow_html=True)
     poster_col, detail_col = st.columns([1, 3], gap="large")
     with poster_col:
         poster = item.get("poster_url")
-        if isinstance(poster, str):
-            st.markdown(f'<img src="{poster}" style="width:100%;border-radius:16px">', unsafe_allow_html=True)
+        if isinstance(poster, str) and poster.startswith("http"):
+            st.image(poster, width="stretch")
     with detail_col:
         st.markdown('<span class="badge">FILM PAGE</span>', unsafe_allow_html=True)
         st.title(movie)
-        original = item.get("original_title")
-        if original and original != movie:
-            st.caption(original)
-        fact_cols = st.columns(3)
+        fact_cols = st.columns(4)
         fact_cols[0].metric("Release date", item.get("release_date") or "Unavailable")
         fact_cols[1].metric("Runtime", f'{item.get("runtime")} min' if item.get("runtime") else "Unavailable")
-        video_count = int(film_videos["content_format"].eq("Video").sum()) if not film_videos.empty else 0
-        short_count = int(film_videos["content_format"].eq("Short").sum()) if not film_videos.empty else 0
-        fact_cols[2].metric("Coverage", f"{video_count} videos · {short_count} Shorts")
+        fact_cols[2].metric("Videos", int(film_videos["content_format"].eq("Video").sum()) if not film_videos.empty else 0)
+        fact_cols[3].metric("Shorts", int(film_videos["content_format"].eq("Short").sum()) if not film_videos.empty else 0)
         if item.get("overview"):
             st.write(item["overview"])
         facts = []
@@ -160,197 +193,194 @@ def render_movie_page(movie: str) -> None:
             facts.append(f"**Director:** {item['director']}")
         if item.get("genres"):
             facts.append("**Genres:** " + ", ".join(item["genres"]))
+        if item.get("cast"):
+            facts.append("**Main cast:** " + ", ".join(item["cast"][:8]))
         if facts:
             st.markdown("  \n".join(facts))
-        if item.get("cast"):
-            st.markdown("**Main cast:** " + ", ".join(item["cast"][:8]))
-        verified_at = pd.to_datetime(meta.get("last_video_discovery"), errors="coerce", utc=True)
         tmdb_id = item.get("tmdb_id")
-        verification = verified_at.strftime("%d %b %Y, %H:%M UTC") if pd.notna(verified_at) else "latest discovery"
-        source_link = f"https://www.themoviedb.org/movie/{tmdb_id}" if tmdb_id else "https://www.themoviedb.org/"
-        st.caption(f"Release, runtime, cast and crew facts cross-checked from [TMDB]({source_link}) during {verification}.")
+        source = f"https://www.themoviedb.org/movie/{tmdb_id}" if tmdb_id else "https://www.themoviedb.org/"
+        st.caption(f"Facts cross-checked from [TMDB]({source}). Audience readings use only collected YouTube comments.")
 
-    insight = meta.get("film_insights", {}).get(movie, {})
-    st.subheader("Audience intelligence brief")
-    if insight:
-        st.write(insight.get("summary", ""))
-        brief_metrics = st.columns(4)
-        brief_metrics[0].metric("Useful comments", f"{insight.get('useful_comments', 0):,}")
-        brief_metrics[1].metric("Clear reaction signals", f"{insight.get('explicit_reaction_comments', 0):,}")
-        brief_metrics[2].metric("Appreciative signals", f"{insight.get('appreciative_signals', 0):,}")
-        brief_metrics[3].metric("Detailed or questions", f"{insight.get('substantive_share', 0):.0%}")
-        st.caption("Reaction figures count explicit wording in comments, not viewers and not a film rating. Neutral or ambiguous comments are not forced into positive/negative categories.")
-        reviewer_rows = pd.DataFrame(insight.get("reviewers", []))
-        if not reviewer_rows.empty:
-            st.markdown("#### How each reviewer’s audience responds")
-            reviewer_rows["Audience reading"] = reviewer_rows.apply(
-                lambda row: (
-                    f"{int(row['appreciative_signals'])} appreciative vs {int(row['critical_signals'])} critical signals; "
-                    f"{int(row['questions'])} questions. Leading topic: {str(row['leading_topic']).lower()}."
-                ), axis=1,
-            )
-            st.dataframe(
-                reviewer_rows[["channel", "useful_comments", "Audience reading"]],
-                width="stretch", hide_index=True,
-                column_config={"channel": "Reviewer/channel", "useful_comments": "Useful comments"},
-            )
+    st.subheader("Audience report")
+    if film_comments.empty:
+        st.info("No comments collected for this film yet. If matching videos exist, the next monitor will build the report.")
     else:
-        st.info("The evidence brief will appear after the next completed scanner run.")
+        film_comments["normalized_text"] = film_comments["text"].map(normalize_text)
+        film_comments["promotional"] = film_comments["normalized_text"].str.contains(PROMO_RE, na=False)
+        useful = film_comments[~film_comments["low_information"]].copy()
+        analytical = useful[useful["is_question"] | useful["word_count"].ge(8) | ~useful["topic"].eq("General reaction")].copy()
+        cols = st.columns(5)
+        cols[0].metric("Collected", f"{len(film_comments):,}")
+        cols[1].metric("Useful text", f"{len(useful) / len(film_comments):.0%}")
+        cols[2].metric("Analytical/questions", f"{len(analytical):,}")
+        cols[3].metric("Low-info", f"{film_comments['low_information'].mean():.0%}")
+        cols[4].metric("Promo/link", f"{film_comments['promotional'].mean():.0%}")
+        left, right = st.columns([1, 1.35], gap="large")
+        with left:
+            st.markdown("#### Praise and criticism topics")
+            topic_frames = []
+            for reaction, label in [("Appreciative", "Appreciative wording"), ("Critical", "Critical wording")]:
+                data = useful[useful["reaction_signal"].eq(reaction) & ~useful["topic"].eq("General reaction")]
+                if not data.empty:
+                    table = data["topic"].value_counts().head(5).rename_axis("Topic").reset_index(name="Comments")
+                    table["Signal"] = label
+                    topic_frames.append(table)
+            if topic_frames:
+                st.dataframe(pd.concat(topic_frames)[["Signal", "Topic", "Comments"]], hide_index=True, width="stretch")
+            else:
+                st.caption("Aspect-level praise/criticism is still thin.")
+        with right:
+            st.markdown("#### Useful audience points")
+            examples = analytical.sort_values(["likes", "word_count"], ascending=False).head(10).copy()
+            if examples.empty:
+                st.caption("Not enough detailed comments yet.")
+            else:
+                examples["Why useful"] = examples.apply(lambda r: "Question" if r["is_question"] else str(r["topic"]) if r["topic"] != "General reaction" else "Detailed opinion", axis=1)
+                examples["Comment"] = examples["text"].astype(str).str.slice(0, 260)
+                st.dataframe(examples[["channel", "Why useful", "reaction_signal", "Comment", "likes", "url"]], hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("Open")})
 
-    st.subheader("What reviewers cover—and how their audiences respond")
-    st.caption("Reviewer wording comes from the public video title/description. Audience response is derived from comments attached to that exact video; no reviewer opinion is invented.")
+    st.subheader("Reviewer videos and audience response")
     if film_videos.empty:
         st.info("Reviewer details will appear after the next monitor scan.")
     else:
         for _, row in film_videos.sort_values(["views", "comments"], ascending=False).iterrows():
-            video_id = str(row.get("video_id", ""))
-            audience = film_comments[film_comments["video_id"].astype(str).eq(video_id)]
-            title = html.escape(str(row.get("title", "Review video")))
-            channel = html.escape(str(row.get("channel", "Unknown channel")))
-            url = f"https://youtube.com/watch?v={video_id}"
+            vid = str(row.get("video_id", ""))
+            audience = film_comments[film_comments["video_id"].astype(str).eq(vid)]
             with st.container(border=True):
-                thumb_col, review_col = st.columns([1, 3], gap="large")
+                thumb_col, text_col = st.columns([1, 3], gap="large")
                 with thumb_col:
                     thumb = row.get("thumbnail_url")
                     if not valid_text(thumb) or not str(thumb).startswith("http"):
-                        thumb = f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg"
+                        thumb = f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
                     st.image(str(thumb), width="stretch")
-                with review_col:
-                    st.markdown(f"### [{title}]({url})")
-                    format_name = row.get("content_format", "Video")
-                    st.caption(f"{format_name} · {channel} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
-                    st.markdown(f"**How the reviewer frames it:** {reviewer_context(row)}")
+                with text_col:
+                    url = f"https://youtube.com/watch?v={vid}"
+                    st.markdown(f"### [{html.escape(str(row.get('title', 'Review video')))}]({url})")
+                    st.caption(f"{row.get('content_format', 'Video')} · {row.get('channel', 'Unknown')} · {int(row.get('views', 0)):,} views · {int(row.get('comments', 0)):,} public comments")
+                    description = compact(row.get("description", ""), 220) if valid_text(row.get("description", "")) else f'The public review is titled “{row.get("title", "Tamil film review")}”.'
+                    st.markdown(f"**How the reviewer frames it:** {description}")
                     st.markdown(f"**How this video’s audience responds:** {audience_summary(audience)}")
-                    useful_audience = audience[~audience["low_information"]].copy() if not audience.empty else audience
-                    if not useful_audience.empty:
-                        sample = useful_audience.sort_values(["likes", "created_at"], ascending=False).iloc[0]
-                        st.caption(f'Most-liked useful comment: “{str(sample["text"])[:220]}”')
 
     if not film_comments.empty:
         chart_col, reaction_col = st.columns([1.4, 1], gap="large")
         with chart_col:
-            st.subheader("Audience conversation over time")
-            timeline = (
-                film_comments.assign(day=film_comments["created_at"].dt.floor("D"))
-                .groupby("day", as_index=False).size().rename(columns={"size": "Comments"})
-            )
+            timeline = film_comments.assign(day=film_comments["created_at"].dt.floor("D")).groupby("day", as_index=False).size().rename(columns={"size": "Comments"})
             fig = px.area(timeline, x="day", y="Comments", color_discrete_sequence=["#ff4b2b"])
-            fig.update_layout(height=350, xaxis_title="Published date", paper_bgcolor="rgba(0,0,0,0)",
-                              plot_bgcolor="rgba(255,255,255,.45)")
+            fig.update_layout(height=350, xaxis_title="Published date", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
             st.plotly_chart(fig, width="stretch")
         with reaction_col:
-            st.subheader("Audience reaction signals")
             reactions = film_comments["reaction_signal"].value_counts().rename_axis("Reaction").reset_index(name="Comments")
-            fig = px.pie(
-                reactions, names="Reaction", values="Comments", hole=.58,
-                color="Reaction", color_discrete_map={
-                    "Appreciative": "#2ec4b6", "Critical": "#ff4b2b", "Mixed / unclear": "#ffb703"
-                },
-            )
+            fig = px.pie(reactions, names="Reaction", values="Comments", hole=.58, color_discrete_sequence=PALETTE)
             fig.update_layout(height=350, legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
             st.plotly_chart(fig, width="stretch")
-        st.subheader("Recent audience comments")
-        page_columns = ["channel", "video_title", "topic", "reaction_signal", "text", "likes", "created_at", "url"]
-        st.dataframe(
-            film_comments[page_columns].sort_values(["likes", "created_at"], ascending=False),
-            width="stretch", hide_index=True,
-            column_config={"url": st.column_config.LinkColumn("Open"),
-                           "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")},
-        )
+
+comments, videos, meta = get_data("youtube-radar-v4")
+videos = prep_videos(videos)
+comments = prep_comments(comments, videos)
+catalog_items = meta.get("movie_catalog_history") or meta.get("movie_catalog", [])
+catalog = {item.get("title"): item for item in catalog_items if isinstance(item, dict)}
 
 movie_param = st.query_params.get("movie")
 if movie_param:
-    render_movie_page(str(movie_param))
+    render_movie_page(str(movie_param), comments, videos, meta, catalog)
     st.stop()
 
 with st.sidebar:
     st.title("▶ Tamil Cinema Radar")
     st.caption("Scheduled every 30 minutes · actual timing is measured")
     if not comments.empty:
-        all_films = sorted(comments["film"].dropna().unique())
+        all_films = sorted(set(comments["film"].dropna().astype(str)) | set(str(f) for f in meta.get("films", []) if f) | set(str(f) for f in meta.get("all_films_analyzed", []) if f))
         selected_films = st.multiselect("Films", all_films, default=all_films)
-        all_channels = sorted(comments["channel"].dropna().unique())
-        selected_channels = st.multiselect("Channels", all_channels, default=all_channels)
-        all_formats = [value for value in ["Video", "Short"] if value in comments["content_format"].unique()]
-        selected_formats = st.multiselect("Formats", all_formats, default=all_formats)
-        window = st.select_slider(
-            "Analysis window",
-            options=[6, 12, 24, 72, 168, 720, 2160],
-            value=168,
-            format_func=lambda hours: (
-                f"{hours} hours" if hours < 24 else
-                f"{hours // 24} days" if hours < 720 else
-                f"{hours // 720} months"
-            ),
-        )
-        minimum_likes = st.number_input("Minimum comment likes", min_value=0, value=0)
+        selected_channels = st.multiselect("Channels", sorted(comments["channel"].dropna().unique()), default=sorted(comments["channel"].dropna().unique()))
+        formats = [v for v in ["Video", "Short"] if v in set(comments["content_format"].dropna())]
+        selected_formats = st.multiselect("Formats", formats, default=formats)
+        window = st.select_slider("Analysis window", options=[6, 12, 24, 72, 168, 720, 2160], value=168, format_func=lambda h: f"{h} hours" if h < 24 else f"{h // 24} days" if h < 720 else f"{h // 720} months")
+        min_likes = st.number_input("Minimum comment likes", min_value=0, value=0)
         include_noise = st.toggle("Include low-information reactions", value=False)
     st.divider()
     st.markdown("**Collection rhythm**")
-    st.caption("GitHub schedules a monitor every 30 minutes, but runners can start late. The dashboard measures the actual interval. New video and Shorts selection refreshes once every 24 hours.")
+    st.caption("Counters are scheduled every 30 minutes. New video discovery is daily. GitHub runner delays are measured and normalized.")
     if st.button("Refresh dashboard data", width="stretch"):
         st.cache_data.clear()
         st.rerun()
 
 st.markdown("""<div class="hero"><span class="kicker">TAMIL CINEMA · YOUTUBE INTELLIGENCE</span>
 <h1>Reviews move fast.<br>The radar moves faster.</h1>
-<p>A continuously archived tracker for recent Tamil films: normalized 30-minute velocity, video reach, channel contribution,
-language mix, discussion topics and audience questions—without turning conversation into a quality score.</p></div>""", unsafe_allow_html=True)
+<p>A public-data dashboard for recent Tamil films: half-hour velocity, lifetime reach, reviewer coverage, language mix, discussion quality and audience questions without turning comments into a fake rating score.</p></div>""", unsafe_allow_html=True)
 
 if comments.empty:
-    st.warning("No YouTube comments are stored yet. Run **Tamil cinema YouTube monitor** once from GitHub Actions.")
+    st.warning("No YouTube comments are stored yet. Run the YouTube monitor once from GitHub Actions.")
     st.stop()
 
 now = pd.Timestamp.now(tz="UTC")
 cutoff = now - pd.Timedelta(hours=int(window))
-filtered = comments[
-    comments["film"].isin(selected_films)
-    & comments["channel"].isin(selected_channels)
-    & comments["content_format"].isin(selected_formats)
-    & comments["created_at"].ge(cutoff)
-    & comments["likes"].ge(minimum_likes)
-].copy()
+filtered = comments[comments["film"].isin(selected_films) & comments["channel"].isin(selected_channels) & comments["content_format"].isin(selected_formats) & comments["created_at"].ge(cutoff) & comments["likes"].ge(min_likes)].copy()
 if not include_noise:
     filtered = filtered[~filtered["low_information"]].copy()
 if filtered.empty:
     st.info("No analyzed comments match the current filters.")
     st.stop()
 
-monitor_videos = videos.copy() if not videos.empty else videos
-video_view = videos[videos["film"].isin(selected_films)].copy() if not videos.empty else videos
-latest_videos = (
-    video_view.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
-    if not video_view.empty else video_view
-)
+latest_videos = latest_video_rows(videos[videos["film"].isin(selected_films)])
 current_scan_time = videos["scanned_at"].max() if not videos.empty else pd.NaT
-current_scan_videos = (
-    videos[videos["scanned_at"].eq(current_scan_time)].copy()
-    if not videos.empty and pd.notna(current_scan_time) else pd.DataFrame()
-)
+current_scan_videos = videos[videos["scanned_at"].eq(current_scan_time)].copy() if pd.notna(current_scan_time) else pd.DataFrame()
+latest_growth = video_growth(videos[videos["film"].isin(selected_films)])
+if not latest_growth.empty and pd.notna(current_scan_time):
+    latest_growth = latest_growth[latest_growth["scanned_at"].eq(current_scan_time)].copy()
 radar_films = list(dict.fromkeys(meta.get("films", [])))
-all_analyzed_films = sorted(
-    set(meta.get("all_films_analyzed", []))
-    | set(comments["film"].dropna().astype(str).unique())
-)
+all_analyzed_films = sorted(set(meta.get("all_films_analyzed", [])) | set(comments["film"].dropna().astype(str).unique()))
 last_scan = pd.to_datetime(meta.get("last_scan"), errors="coerce", utc=True)
 last_24 = filtered[filtered["created_at"].ge(now - pd.Timedelta(hours=24))]
-
 actively_fetched_films = set(current_scan_videos["film"].dropna().astype(str)) if not current_scan_videos.empty else set()
+
 metrics = st.columns(8)
-standard_count = int(current_scan_videos["content_format"].eq("Video").sum()) if not current_scan_videos.empty else 0
-shorts_count = int(current_scan_videos["content_format"].eq("Short").sum()) if not current_scan_videos.empty else 0
 metrics[0].metric("Films analyzed ever", len(all_analyzed_films))
 metrics[1].metric("Films scheduled now", len(radar_films))
 metrics[2].metric("Films fetched latest", len(actively_fetched_films))
-metrics[3].metric("Current videos", standard_count)
-metrics[4].metric("Current Shorts", shorts_count)
-metrics[5].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment records stored by the radar; this is not YouTube's public total.")
+metrics[3].metric("Current videos", int(current_scan_videos["content_format"].eq("Video").sum()) if not current_scan_videos.empty else 0)
+metrics[4].metric("Current Shorts", int(current_scan_videos["content_format"].eq("Short").sum()) if not current_scan_videos.empty else 0)
+metrics[5].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment rows stored by the radar, not YouTube's public total.")
 metrics[6].metric("New comments · 24 h", f"{len(last_24):,}")
 metrics[7].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
 
-catalog = {item.get("title"): item for item in meta.get("movie_catalog", []) if isinstance(item, dict)}
+scan_times = pd.Series(sorted(videos["scanned_at"].dropna().unique())) if not videos.empty else pd.Series(dtype="datetime64[ns, UTC]")
+last_gap = scan_times.diff().dt.total_seconds().div(60).dropna().iloc[-1] if len(scan_times) >= 2 else float("nan")
+last_age = (now - current_scan_time).total_seconds() / 60 if pd.notna(current_scan_time) else float("nan")
+health = "Current" if pd.notna(current_scan_time) and last_age <= 75 else "Delayed" if pd.notna(current_scan_time) else "Waiting"
+health_note = f"Last snapshot {last_age:.0f} min old; previous gap {last_gap:.0f} min." if pd.notna(current_scan_time) and pd.notna(last_gap) else "Waiting for at least two snapshots."
+
+st.subheader("What changed in the latest monitor?")
+st.markdown('<div class="section-note">Exact gains are calculated against the previous successful scan. Rates are normalized to 30 minutes so delayed GitHub runs remain comparable.</div>', unsafe_allow_html=True)
+change_cols = st.columns(6)
+with change_cols[0]:
+    card("Scan health", health, health_note)
+if latest_growth.empty:
+    for col, label in zip(change_cols[1:], ["Views", "Comments", "Channel", "Video", "Short"]):
+        with col:
+            card(label, "Pending", "Needs two stored snapshots for the same video.")
+else:
+    film_growth = latest_growth.groupby("film", as_index=False).agg(views_gained=("views_gained", "sum"), comments_gained=("comments_gained", "sum"), views_per_30m=("views_per_30m", "sum"), comments_per_30m=("comments_per_30m", "sum"))
+    top_view = film_growth.sort_values("views_per_30m", ascending=False).iloc[0]
+    top_comment = film_growth.sort_values("comments_per_30m", ascending=False).iloc[0]
+    channel_growth = latest_growth.groupby("channel", as_index=False).agg(comments_gained=("comments_gained", "sum"), views_gained=("views_gained", "sum")).sort_values(["comments_gained", "views_gained"], ascending=False)
+    with change_cols[1]:
+        card("Fastest film by views", top_view["film"], f"+{top_view['views_gained']:,.0f} exact views; {top_view['views_per_30m']:,.0f} / 30 min.")
+    with change_cols[2]:
+        card("Fastest film by comments", top_comment["film"], f"+{top_comment['comments_gained']:,.0f} exact comments; {top_comment['comments_per_30m']:,.1f} / 30 min.")
+    with change_cols[3]:
+        row = channel_growth.iloc[0]
+        card("Most active channel", compact(row.get("channel"), 42), f"+{row.get('comments_gained', 0):,.0f} comments and +{row.get('views_gained', 0):,.0f} views.")
+    for col, fmt, label in [(change_cols[4], "Video", "Top standard video"), (change_cols[5], "Short", "Top Short")]:
+        with col:
+            ranked = latest_growth[latest_growth["content_format"].eq(fmt)].sort_values("views_per_30m", ascending=False)
+            if ranked.empty:
+                card(label, "Pending", f"No {fmt.lower()} pair in latest archive.")
+            else:
+                row = ranked.iloc[0]
+                card(label, compact(row.get("film"), 36), f"{compact(row.get('title'), 58)} · +{row['views_gained']:,.0f} views.")
+
 st.subheader("Currently on the radar")
-st.markdown('<div class="section-note">These films are scheduled for a check every 30 minutes. Actual collection timing is audited below; new-film discovery and selection refresh once per day.</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-note">Films scheduled for 30-minute counter checks. Open a film page for cast, release details, reviewer coverage and audience examples.</div>', unsafe_allow_html=True)
 wall = [film for film in radar_films if film in selected_films][:10] or radar_films[:10]
 for start in range(0, len(wall), 5):
     cols = st.columns(5)
@@ -359,899 +389,264 @@ for start in range(0, len(wall), 5):
         poster = item.get("poster_url")
         film_comments = filtered[filtered["film"].eq(film)]
         film_videos = latest_videos[latest_videos["film"].eq(film)] if not latest_videos.empty else pd.DataFrame()
-        recent = film_comments["created_at"].ge(now - pd.Timedelta(hours=24)).sum()
-        image = (
-            f'<img src="{poster}" alt="{film} poster">' if isinstance(poster, str) and poster.startswith("https://")
-            else '<div style="aspect-ratio:2/3;background:#e9dfd1"></div>'
-        )
+        recent = int(film_comments["created_at"].ge(now - pd.Timedelta(hours=24)).sum())
+        status = f"{len(film_comments):,} analyzed · {recent:,} new/24 h · {len(film_videos)} videos" if not film_videos.empty else "Awaiting matching review videos"
+        image = f'<img src="{poster}" alt="{html.escape(film)} poster">' if isinstance(poster, str) and poster.startswith("http") else '<div style="aspect-ratio:2/3;background:#e9dfd1"></div>'
         with col:
-            film_url = f"?movie={quote(film)}"
-            st.markdown(
-                f'<a href="{film_url}" style="color:inherit;text-decoration:none">'
-                f'<div class="poster-card">{image}<div class="poster-copy">'
-                f'<div class="poster-title">{html.escape(film)}</div>'
-                f'<div class="poster-meta">{item.get("release_date") or "Release date unavailable"}<br>'
-                f'{len(film_comments):,} analyzed · {recent:,} new/24 h · {len(film_videos)} videos</div>'
-                f'<div style="margin-top:8px;font-size:11px;font-weight:850;color:#d53c1c">OPEN FILM PAGE →</div>'
-                f'</div></div></a>',
-                unsafe_allow_html=True,
-            )
+            st.markdown(f'<a href="?movie={quote(film)}" style="color:inherit;text-decoration:none"><div class="poster-card">{image}<div class="poster-copy"><div class="poster-title">{html.escape(film)}</div><div class="poster-meta">{item.get("release_date") or "Release date unavailable"}<br>{html.escape(status)}</div><div style="margin-top:8px;font-size:11px;font-weight:850;color:#d53c1c">OPEN FILM PAGE →</div></div></div></a>', unsafe_allow_html=True)
 
 st.subheader("All films analyzed till now")
-st.markdown('<div class="section-note">The permanent analysis history is kept separately from the smaller current radar.</div>', unsafe_allow_html=True)
-all_film_summary = (
-    comments.groupby("film", as_index=False)
-    .agg(
-        collected_comments=("source_id", "nunique"),
-        channels=("channel", "nunique"),
-        first_comment=("created_at", "min"),
-        latest_comment=("created_at", "max"),
-    )
-)
-missing_history = sorted(set(all_analyzed_films) - set(all_film_summary.get("film", [])))
-if missing_history:
-    all_film_summary = pd.concat([
-        all_film_summary,
-        pd.DataFrame({"film": missing_history, "collected_comments": 0, "channels": 0})
-    ], ignore_index=True)
-all_film_summary["Status"] = all_film_summary["film"].map(
-    lambda film: (
-        "Actively fetched" if film in actively_fetched_films
-        else "Scheduled—awaiting video" if film in radar_films
-        else "Historical"
-    )
-)
-all_film_summary["Release date"] = all_film_summary["film"].map(
-    lambda film: catalog.get(film, {}).get("release_date") or "Unavailable"
-)
-st.dataframe(
-    all_film_summary[["film", "Status", "Release date", "collected_comments", "channels", "latest_comment"]]
-    .sort_values(["Status", "collected_comments"], ascending=[False, False]),
-    width="stretch", hide_index=True,
-    column_config={
-        "film": "Film", "collected_comments": "Comments collected", "channels": "Channels",
-        "latest_comment": st.column_config.DatetimeColumn("Latest published comment", format="DD MMM YYYY"),
-    },
-)
+summary = comments.groupby("film", as_index=False).agg(collected_comments=("source_id", "nunique"), channels=("channel", "nunique"), latest_comment=("created_at", "max"))
+missing = sorted(set(all_analyzed_films) - set(summary["film"]))
+if missing:
+    summary = pd.concat([summary, pd.DataFrame({"film": missing, "collected_comments": 0, "channels": 0})], ignore_index=True)
+summary["Status"] = summary["film"].map(lambda f: "Actively fetched" if f in actively_fetched_films else "Scheduled - awaiting video" if f in radar_films else "Historical")
+summary["Release date"] = summary["film"].map(lambda f: catalog.get(f, {}).get("release_date") or "Unavailable")
+rank = {"Actively fetched": 0, "Scheduled - awaiting video": 1, "Historical": 2}
+summary["_rank"] = summary["Status"].map(rank).fillna(3)
+st.dataframe(summary.sort_values(["_rank", "collected_comments"], ascending=[True, False])[["film", "Status", "Release date", "collected_comments", "channels", "latest_comment"]], hide_index=True, width="stretch", column_config={"film": "Film", "collected_comments": "Comments collected", "latest_comment": st.column_config.DatetimeColumn("Latest published comment", format="DD MMM YYYY")})
 
-tab_overview, tab_lifetime, tab_films, tab_comments, tab_data = st.tabs([
-    "30-minute live", "Lifetime analysis", "Film deep dive", "Comment explorer", "Data archive"
-])
+tab_live, tab_lifetime, tab_film, tab_comments, tab_data = st.tabs(["30-minute live", "Lifetime analysis", "Film deep dive", "Comment explorer", "Data archive"])
 
-with tab_overview:
+with tab_live:
     st.subheader("Live collection and 30-minute trend")
-    st.markdown('<div class="section-note">Every selected video and Short is included. Exact counter changes are stored for every completed run—even when GitHub starts late. Rates are normalized to 30 minutes so unequal intervals can be compared fairly. Times are UTC.</div>', unsafe_allow_html=True)
-
-    monitor_activity = pd.DataFrame()
     monitored = pd.DataFrame()
-    raw_monitored = pd.DataFrame()
-    if not monitor_videos.empty:
-        raw_monitored = monitor_videos.sort_values(["video_id", "scanned_at"]).copy()
-        monitored = raw_monitored.copy()
-        monitored["previous_comments"] = monitored.groupby("video_id")["comments"].shift(1)
-        monitored["previous_views"] = monitored.groupby("video_id")["views"].shift(1)
+    activity = pd.DataFrame()
+    if not videos.empty:
+        raw = videos.sort_values(["video_id", "scanned_at"]).copy()
+        monitored = raw.copy()
         monitored["previous_scan"] = monitored.groupby("video_id")["scanned_at"].shift(1)
-        monitored["elapsed_minutes"] = (
-            (monitored["scanned_at"] - monitored["previous_scan"])
-            .dt.total_seconds().div(60)
-        )
-        monitored["comments_gained"] = (
-            monitored["comments"] - monitored["previous_comments"]
-        ).clip(lower=0)
-        monitored["views_gained"] = (
-            monitored["views"] - monitored["previous_views"]
-        ).clip(lower=0)
+        monitored["previous_views"] = monitored.groupby("video_id")["views"].shift(1)
+        monitored["previous_comments"] = monitored.groupby("video_id")["comments"].shift(1)
+        monitored["elapsed_minutes"] = (monitored["scanned_at"] - monitored["previous_scan"]).dt.total_seconds().div(60)
+        monitored["views_gained"] = (monitored["views"] - monitored["previous_views"]).clip(lower=0)
+        monitored["comments_gained"] = (monitored["comments"] - monitored["previous_comments"]).clip(lower=0)
         valid_elapsed = monitored["elapsed_minutes"].where(monitored["elapsed_minutes"].gt(0))
         monitored["views_per_30m"] = monitored["views_gained"] * 30 / valid_elapsed
         monitored["comments_per_30m"] = monitored["comments_gained"] * 30 / valid_elapsed
-        monitor_cutoff = now - pd.Timedelta(hours=24)
-        candidate_pairs = monitored[
-            monitored["previous_comments"].notna()
-            & monitored["scanned_at"].ge(monitor_cutoff)
-        ].copy()
-        paired = candidate_pairs[candidate_pairs["elapsed_minutes"].gt(0)].copy()
-        paired["period"] = paired["scanned_at"]
-        paired["views_per_30m"] = paired["views_gained"] * 30 / paired["elapsed_minutes"]
-        paired["comments_per_30m"] = paired["comments_gained"] * 30 / paired["elapsed_minutes"]
-        deltas = (
-            paired.groupby(["period", "film", "content_format"], as_index=False)
-            .agg(
-                views_gained=("views_gained", "sum"),
-                comments_gained=("comments_gained", "sum"),
-                views_per_30m=("views_per_30m", "sum"),
-                comments_per_30m=("comments_per_30m", "sum"),
-                elapsed_minutes=("elapsed_minutes", "median"),
-            )
-        )
-        recent_raw = raw_monitored[raw_monitored["scanned_at"].ge(monitor_cutoff)].copy()
-        recent_raw["period"] = recent_raw["scanned_at"]
-        fetched = (
-            recent_raw.groupby(["period", "film", "content_format"], as_index=False)
-            .agg(videos_fetched=("video_id", "nunique"))
-        )
-        monitor_activity = fetched.merge(
-            deltas, on=["period", "film", "content_format"], how="left"
-        )
-        rate_columns = ["views_gained", "comments_gained", "views_per_30m", "comments_per_30m", "elapsed_minutes"]
-        monitor_activity[rate_columns] = (
-            monitor_activity[rate_columns].fillna(0)
-        )
-
-    if monitor_activity.empty:
-        st.warning("No half-hour snapshot rows exist in the last 24 hours. The scanner may have run without persisting its counter archive.")
+        recent_raw = raw[raw["scanned_at"].ge(now - pd.Timedelta(hours=24))].copy()
+        fetched = recent_raw.groupby(["scanned_at", "film", "content_format"], as_index=False).agg(videos_fetched=("video_id", "nunique"))
+        deltas = monitored[monitored["previous_scan"].notna() & monitored["scanned_at"].ge(now - pd.Timedelta(hours=24))].groupby(["scanned_at", "film", "content_format"], as_index=False).agg(views_gained=("views_gained", "sum"), comments_gained=("comments_gained", "sum"), views_per_30m=("views_per_30m", "sum"), comments_per_30m=("comments_per_30m", "sum"), elapsed_minutes=("elapsed_minutes", "median"))
+        activity = fetched.merge(deltas, on=["scanned_at", "film", "content_format"], how="left").fillna(0).rename(columns={"scanned_at": "period"})
+    if activity.empty:
+        st.warning("No snapshot rows exist in the last 24 hours. The scanner may have run without persisting counters.")
     else:
-        scan_history = (
-            monitor_activity.groupby("period", as_index=False)
-            .agg(
-                videos_fetched=("videos_fetched", "sum"),
-                views_gained=("views_gained", "sum"),
-                comments_gained=("comments_gained", "sum"),
-                views_per_30m=("views_per_30m", "sum"),
-                comments_per_30m=("comments_per_30m", "sum"),
-                elapsed_minutes=("elapsed_minutes", "median"),
-            )
-            .sort_values("period", ascending=False)
-        )
+        scan_history = activity.groupby("period", as_index=False).agg(videos_fetched=("videos_fetched", "sum"), views_gained=("views_gained", "sum"), comments_gained=("comments_gained", "sum"), views_per_30m=("views_per_30m", "sum"), comments_per_30m=("comments_per_30m", "sum"), elapsed_minutes=("elapsed_minutes", "median")).sort_values("period", ascending=False)
         newest = scan_history.iloc[0]
-        stored_intervals = int(recent_raw["scanned_at"].nunique())
-        snapshot_lag_minutes = (
-            (last_scan - current_scan_time).total_seconds() / 60
-            if pd.notna(last_scan) and pd.notna(current_scan_time) else float("nan")
-        )
-        unique_scan_times = sorted(recent_raw["scanned_at"].dropna().unique())
-        cadence = pd.Series(unique_scan_times).diff().dt.total_seconds().div(60).dropna()
-        median_cadence = cadence.median() if not cadence.empty else float("nan")
-        on_time_share = cadence.between(20, 70).mean() if not cadence.empty else float("nan")
-        scan_metrics = st.columns(6)
-        scan_metrics[0].metric("Latest videos fetched", f"{int(newest['videos_fetched']):,}")
-        scan_metrics[1].metric("Exact views since prior run", f"{int(newest['views_gained']):,}")
-        scan_metrics[2].metric("Exact comments since prior run", f"{int(newest['comments_gained']):,}")
-        scan_metrics[3].metric("Stored runs · 24 h", f"{stored_intervals:,}")
-        scan_metrics[4].metric("Median cadence", f"{median_cadence:.0f} min" if pd.notna(median_cadence) else "Pending")
-        scan_metrics[5].metric(
-            "Archive freshness",
-            "Current" if pd.notna(current_scan_time) and abs(snapshot_lag_minutes) <= 45 else f"{snapshot_lag_minutes:.0f} min behind",
-        )
-        if pd.notna(snapshot_lag_minutes) and snapshot_lag_minutes > 45:
-            st.error(
-                f"Counter archive is stale: scanner metadata reached {last_scan.strftime('%H:%M UTC')}, "
-                f"but the newest stored snapshot is {current_scan_time.strftime('%H:%M UTC')}. "
-                "The repaired scanner will back-check all selected videos on its next run; growth begins from that new snapshot."
-            )
-        if pd.notna(on_time_share):
-            st.info(
-                f"Collection reliability: {on_time_share:.0%} of recent run gaps were 20–70 minutes. "
-                "Delayed GitHub runs are retained; their exact gains are divided by elapsed time to produce the comparable 30-minute rates below."
-            )
-
-        coverage_tab, views_tab, comments_tab, cadence_tab = st.tabs(["Fetch coverage", "View trend / 30 min", "Comment trend / 30 min", "Scan timing"])
-
-        def live_chart(value: str, label: str, hover: str):
-            figure = px.bar(
-                monitor_activity, x="period", y=value, color="film",
-                facet_row="content_format", color_discrete_sequence=PALETTE,
-                labels={"period": "Monitor time · UTC", value: label,
-                        "film": "Film", "content_format": "Format"},
-            )
-            figure.for_each_annotation(lambda annotation: annotation.update(text=annotation.text.split("=")[-1]))
-            figure.update_layout(
-                height=590, hovermode="x unified", barmode="stack", legend_title=None,
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            )
-            figure.update_traces(hovertemplate=hover)
-            return figure
-
+        cadence = pd.Series(sorted(activity["period"].dropna().unique())).diff().dt.total_seconds().div(60).dropna()
+        cols = st.columns(6)
+        cols[0].metric("Latest videos fetched", f"{int(newest['videos_fetched']):,}")
+        cols[1].metric("Exact views since prior", f"{int(newest['views_gained']):,}")
+        cols[2].metric("Exact comments since prior", f"{int(newest['comments_gained']):,}")
+        cols[3].metric("Stored runs · 24 h", f"{activity['period'].nunique():,}")
+        cols[4].metric("Median cadence", f"{cadence.median():.0f} min" if not cadence.empty else "Pending")
+        cols[5].metric("Archive freshness", "Current" if pd.notna(current_scan_time) and last_age <= 75 else f"{last_age:.0f} min old")
+        st.info("The dashboard keeps exact delayed-run gains and also shows normalized 30-minute rates. This avoids pretending GitHub Actions always starts exactly on time.")
+        coverage_tab, views_tab, comments_tab, timing_tab = st.tabs(["Fetch coverage", "View trend / 30 min", "Comment trend / 30 min", "Scan timing"])
+        def live_chart(value: str, label: str):
+            fig = px.bar(activity, x="period", y=value, color="film", facet_row="content_format", color_discrete_sequence=PALETTE, labels={"period": "Monitor time · UTC", value: label})
+            fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+            fig.update_layout(height=590, barmode="stack", hovermode="x unified", legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+            return fig
         with coverage_tab:
-            st.caption("This remains visible even for the first snapshot, before growth can be calculated.")
-            st.plotly_chart(
-                live_chart("videos_fetched", "Videos and Shorts fetched", "%{y:.0f} items fetched<extra></extra>"),
-                width="stretch",
-            )
+            st.plotly_chart(live_chart("videos_fetched", "Videos and Shorts fetched"), width="stretch")
         with views_tab:
-            st.plotly_chart(
-                live_chart("views_per_30m", "Views per 30 minutes", "%{y:.0f} normalized views / 30 min<extra></extra>"),
-                width="stretch",
-            )
+            st.plotly_chart(live_chart("views_per_30m", "Views per 30 minutes"), width="stretch")
         with comments_tab:
-            st.plotly_chart(
-                live_chart("comments_per_30m", "Comments per 30 minutes", "%{y:.1f} normalized comments / 30 min<extra></extra>"),
-                width="stretch",
-            )
-        with cadence_tab:
-            cadence_frame = scan_history.sort_values("period")
-            cadence_fig = px.line(
-                cadence_frame, x="period", y="elapsed_minutes", markers=True,
-                labels={"period": "Completed run · UTC", "elapsed_minutes": "Minutes since prior run"},
-                color_discrete_sequence=["#8338ec"],
-            )
-            cadence_fig.add_hline(y=30, line_dash="dash", line_color="#ff4b2b", annotation_text="30-minute target")
-            cadence_fig.update_layout(height=430, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-            st.plotly_chart(cadence_fig, width="stretch")
-        with st.expander("See exactly what every monitor fetched", expanded=False):
-            latest_monitor_time = raw_monitored["scanned_at"].max()
-            latest_items = raw_monitored[raw_monitored["scanned_at"].eq(latest_monitor_time)].copy()
-            latest_deltas = monitored[
-                monitored["scanned_at"].eq(latest_monitor_time)
-            ][["video_id", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m", "comments_per_30m"]]
-            latest_items = latest_items.merge(latest_deltas, on="video_id", how="left")
-            st.markdown("**Items fetched in the latest completed monitor**")
-            st.dataframe(
-                latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]]
-                .sort_values("views_per_30m", ascending=False),
-                width="stretch", hide_index=True,
-                column_config={
-                    "film": "Film", "content_format": "Format", "channel": "Channel", "title": "Video",
-                    "views": st.column_config.NumberColumn("Public views", format="%d"),
-                    "comments": st.column_config.NumberColumn("Public comments", format="%d"),
-                    "views_gained": st.column_config.NumberColumn("Exact new views", format="%d"),
-                    "comments_gained": st.column_config.NumberColumn("Exact new comments", format="%d"),
-                    "elapsed_minutes": st.column_config.NumberColumn("Elapsed min", format="%.0f"),
-                    "views_per_30m": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
-                },
-            )
-            st.markdown("**Monitor history · last 24 hours**")
-            st.dataframe(
-                scan_history,
-                width="stretch", hide_index=True,
-                column_config={
-                    "period": st.column_config.DatetimeColumn("Monitor · UTC", format="DD MMM HH:mm"),
-                    "videos_fetched": st.column_config.NumberColumn("Videos + Shorts", format="%d"),
-                    "views_gained": st.column_config.NumberColumn("New views", format="%d"),
-                    "comments_gained": st.column_config.NumberColumn("New comments", format="%d"),
-                    "views_per_30m": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
-                    "comments_per_30m": st.column_config.NumberColumn("Comments / 30 min", format="%.1f"),
-                    "elapsed_minutes": st.column_config.NumberColumn("Elapsed min", format="%.0f"),
-                },
-            )
-
-    current_start = now - pd.Timedelta(hours=24)
-    previous_start = now - pd.Timedelta(hours=48)
-    current = filtered[filtered["created_at"].ge(current_start)].groupby("film").size()
-    previous = filtered[
-        filtered["created_at"].ge(previous_start) & filtered["created_at"].lt(current_start)
-    ].groupby("film").size()
-    momentum = pd.DataFrame({"Last 24 h": current, "Previous 24 h": previous}).fillna(0)
-    momentum["Change"] = momentum["Last 24 h"] - momentum["Previous 24 h"]
-    momentum["Direction"] = momentum["Change"].map(lambda value: "Rising" if value > 0 else "Falling" if value < 0 else "Steady")
-    momentum = momentum.reset_index().sort_values(["Last 24 h", "Change"], ascending=False)
-
-    left, right = st.columns([1.25, 1], gap="large")
-    with left:
-        st.subheader("24-hour film momentum")
-        momentum_long = momentum.melt(
-            id_vars=["film"], value_vars=["Last 24 h", "Previous 24 h"],
-            var_name="Window", value_name="Comments",
-        )
-        momentum_fig = px.bar(
-            momentum_long, x="film", y="Comments", color="Window", barmode="group",
-            color_discrete_map={"Last 24 h": "#ff4b2b", "Previous 24 h": "#ffb703"},
-        )
-        momentum_fig.update_layout(height=390, legend_title=None, xaxis_title=None,
-                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(momentum_fig, width="stretch")
-    with right:
-        st.subheader("Language mix")
-        language = filtered["language"].value_counts().rename_axis("Language").reset_index(name="Comments")
-        language_fig = px.pie(
-            language, names="Language", values="Comments", hole=.58,
-            color_discrete_sequence=["#ff4b2b", "#3a86ff", "#2ec4b6", "#8338ec"],
-        )
-        language_fig.update_layout(height=390, legend_title=None, margin=dict(l=0, r=0, t=10, b=0),
-                                   paper_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(language_fig, width="stretch")
+            st.plotly_chart(live_chart("comments_per_30m", "Comments per 30 minutes"), width="stretch")
+        with timing_tab:
+            fig = px.line(scan_history.sort_values("period"), x="period", y="elapsed_minutes", markers=True, labels={"period": "Completed run · UTC", "elapsed_minutes": "Minutes since prior run"}, color_discrete_sequence=["#8338ec"])
+            fig.add_hline(y=30, line_dash="dash", line_color="#ff4b2b", annotation_text="30-minute target")
+            fig.update_layout(height=430, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+            st.plotly_chart(fig, width="stretch")
+        with st.expander("Exactly what the latest monitor fetched"):
+            latest_time = videos["scanned_at"].max()
+            latest_items = videos[videos["scanned_at"].eq(latest_time)].merge(monitored[monitored["scanned_at"].eq(latest_time)][["video_id", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]], on="video_id", how="left")
+            st.dataframe(latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]].sort_values("views_per_30m", ascending=False), hide_index=True, width="stretch")
 
     st.subheader("Which videos are gaining attention now?")
-    st.markdown('<div class="section-note">The ranking uses the latest two stored counters. Because GitHub may run late, gains are normalized to a 30-minute rate; the exact elapsed time is shown alongside it. Lifetime totals are excluded.</div>', unsafe_allow_html=True)
-
-    growth = pd.DataFrame()
-    if not monitor_videos.empty and monitor_videos.groupby("video_id").size().max() >= 2:
-        ordered = monitor_videos.sort_values(["video_id", "scanned_at"])
-        latest = ordered.groupby("video_id").tail(1)
-        previous_rows = ordered.groupby("video_id").nth(-2).reset_index()
-        previous_rows = previous_rows[["video_id", "scanned_at", "views", "comments"]].rename(
-            columns={"scanned_at": "previous_scan", "views": "previous_views", "comments": "previous_comments"}
-        )
-        growth = latest.merge(previous_rows, on="video_id", how="inner")
-        growth["Elapsed minutes"] = (
-            growth["scanned_at"] - growth["previous_scan"]
-        ).dt.total_seconds().div(60)
-        growth["Exact views gained"] = (
-            growth["views"] - growth["previous_views"]
-        ).clip(lower=0)
-        growth["Exact comments gained"] = (
-            growth["comments"] - growth["previous_comments"]
-        )
-        growth["Exact comments gained"] = growth["Exact comments gained"].clip(lower=0)
-        growth = growth[growth["Elapsed minutes"].gt(0)].copy()
-        growth["Views / 30 min"] = growth["Exact views gained"] * 30 / growth["Elapsed minutes"]
-        growth["Comments / 30 min"] = growth["Exact comments gained"] * 30 / growth["Elapsed minutes"]
-        growth["Label"] = growth.apply(
-            lambda row: f'{row["channel"]} · {str(row["title"])[:58]}', axis=1
-        )
-
-    def render_format_gain(format_name: str) -> None:
-        if growth.empty:
-            st.info(f"Waiting for two snapshots of {format_name.lower()}s. No lifetime-view chart is shown.")
-            return
-        ranked = growth[growth["content_format"].eq(format_name)].sort_values(
-            "Views / 30 min", ascending=False
-        ).head(15)
+    growth = video_growth(videos)
+    def gain_chart(format_name: str):
+        ranked = growth[growth["content_format"].eq(format_name)].sort_values("views_per_30m", ascending=False).head(15) if not growth.empty else pd.DataFrame()
         if ranked.empty:
-            st.info(f"No {format_name.lower()} snapshot pair is available yet.")
+            st.info(f"Waiting for two snapshots of {format_name.lower()}s.")
             return
-        gain_fig = px.bar(
-            ranked.sort_values("Views / 30 min"),
-            x="Views / 30 min", y="Label", color="film", orientation="h",
-            text="Views / 30 min", color_discrete_sequence=PALETTE,
-            hover_data=["Elapsed minutes", "Exact views gained", "Exact comments gained", "Comments / 30 min"],
-        )
-        gain_fig.update_traces(texttemplate="+%{text:,.0f}", textposition="outside")
-        gain_fig.update_layout(
-            height=max(400, len(ranked) * 44), legend_title=None,
-            xaxis_title="New views in 30 minutes", yaxis_title=None,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-        )
-        st.plotly_chart(gain_fig, width="stretch")
-        st.dataframe(
-            ranked[["film", "channel", "title", "Elapsed minutes", "Exact views gained", "Exact comments gained", "Views / 30 min", "Comments / 30 min"]],
-            width="stretch", hide_index=True,
-            column_config={
-                "Elapsed minutes": st.column_config.NumberColumn("Actual gap", format="%.0f min"),
-                "Exact views gained": st.column_config.NumberColumn("Exact new views", format="%.0f"),
-                "Exact comments gained": st.column_config.NumberColumn("Exact new comments", format="%.0f"),
-                "Views / 30 min": st.column_config.NumberColumn("Views / 30 min", format="%.0f"),
-                "Comments / 30 min": st.column_config.NumberColumn("Comments / 30 min", format="%.1f"),
-            },
-        )
-
-    video_gain_tab, shorts_gain_tab = st.tabs(["Standard videos", "Shorts"])
-    with video_gain_tab:
-        render_format_gain("Video")
-    with shorts_gain_tab:
-        render_format_gain("Short")
+        ranked["Label"] = ranked.apply(lambda r: f"{r['channel']} · {compact(r['title'], 58)}", axis=1)
+        fig = px.bar(ranked.sort_values("views_per_30m"), x="views_per_30m", y="Label", color="film", orientation="h", text="views_per_30m", color_discrete_sequence=PALETTE, hover_data=["elapsed_minutes", "views_gained", "comments_gained"])
+        fig.update_traces(texttemplate="+%{text:,.0f}", textposition="outside")
+        fig.update_layout(height=max(400, len(ranked) * 44), legend_title=None, xaxis_title="Normalized new views / 30 min", yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+    video_tab, short_tab = st.tabs(["Standard videos", "Shorts"])
+    with video_tab:
+        gain_chart("Video")
+    with short_tab:
+        gain_chart("Short")
 
     st.subheader("Inside Tamil YouTube comments")
-    st.markdown('<div class="section-note">A corpus-level study of every cleaned comment collected by the radar—not only the films selected in the sidebar. It describes participation patterns, code-mixing, repetition and discussion depth without grading individual people.</div>', unsafe_allow_html=True)
     ecosystem = comments.copy()
     ecosystem["normalized_text"] = ecosystem["text"].map(normalize_text)
-    repeatable = ecosystem["normalized_text"].str.len().ge(12)
-    repetitions = ecosystem.loc[repeatable, "normalized_text"].value_counts()
-    repeated_texts = set(repetitions[repetitions.ge(3)].index)
-    ecosystem["exact_repeat"] = ecosystem["normalized_text"].isin(repeated_texts)
-    ecosystem["promotional"] = ecosystem["normalized_text"].map(is_promotional)
-    ecosystem["emoji_only"] = ecosystem["normalized_text"].map(
-        lambda text: not bool(re.search(r"[a-z0-9\u0B80-\u0BFF]", text))
-    )
+    repetitions = ecosystem.loc[ecosystem["normalized_text"].str.len().ge(12), "normalized_text"].value_counts()
+    repeated = set(repetitions[repetitions.ge(3)].index)
+    ecosystem["exact_repeat"] = ecosystem["normalized_text"].isin(repeated)
+    ecosystem["promotional"] = ecosystem["normalized_text"].str.contains(PROMO_RE, na=False)
+    ecosystem["emoji_only"] = ecosystem["normalized_text"].map(lambda t: not bool(re.search(r"[a-z0-9\u0B80-\u0BFF]", t)))
     ecosystem["one_word"] = ecosystem["word_count"].le(1) & ~ecosystem["emoji_only"]
-    ecosystem["context_signals"] = ecosystem["normalized_text"].map(cultural_context)
+    ecosystem["context_signals"] = ecosystem["normalized_text"].map(classify_context)
     ecosystem["sarcasm_signals"] = ecosystem["normalized_text"].map(sarcasm_cues)
     ecosystem["possible_sarcasm"] = ecosystem["sarcasm_signals"].map(bool)
-    causal_pattern = r"because|therefore|however|although|reason|ஆனால்|ஆனா|ஏனெனில்|காரணம்|அதனால்|karanam"
-    ecosystem["gives_reason"] = ecosystem["normalized_text"].str.contains(causal_pattern, regex=True)
+    ecosystem["gives_reason"] = ecosystem["normalized_text"].str.contains(r"because|therefore|however|although|reason|ஆனால்|ஆனா|ஏனெனில்|காரணம்|அதனால்|karanam", regex=True, na=False)
     ecosystem["specific_aspect"] = ~ecosystem["topic"].eq("General reaction")
-    ecosystem["contextual"] = ecosystem["context_signals"].map(bool)
     ecosystem["Value class"] = "General opinion"
     ecosystem.loc[ecosystem["is_question"], "Value class"] = "Useful question"
-    ecosystem.loc[
-        ecosystem["word_count"].ge(8) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]),
-        "Value class",
-    ] = "Reasoned film opinion"
-    ecosystem.loc[
-        ecosystem["word_count"].ge(15) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]),
-        "Value class",
-    ] = "Deep critical analysis"
-    ecosystem.loc[ecosystem["contextual"] & ecosystem["word_count"].ge(6), "Value class"] = "Cultural / historical connection"
+    ecosystem.loc[ecosystem["word_count"].ge(8) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]), "Value class"] = "Reasoned film opinion"
+    ecosystem.loc[ecosystem["word_count"].ge(15) & (ecosystem["specific_aspect"] | ecosystem["gives_reason"]), "Value class"] = "Deep critical analysis"
+    ecosystem.loc[ecosystem["context_signals"].map(bool) & ecosystem["word_count"].ge(6), "Value class"] = "Cultural / historical connection"
     ecosystem.loc[ecosystem["word_count"].between(2, 5), "Value class"] = "Brief reaction"
     ecosystem.loc[ecosystem["one_word"], "Value class"] = "One-word reaction"
     ecosystem.loc[ecosystem["emoji_only"], "Value class"] = "Emoji-only"
     ecosystem.loc[ecosystem["promotional"], "Value class"] = "Promotional / link spam"
     ecosystem.loc[ecosystem["exact_repeat"], "Value class"] = "Repeated / copied text"
-    value_adding_classes = ["Useful question", "Reasoned film opinion", "Deep critical analysis", "Cultural / historical connection"]
-    value_adding = ecosystem["Value class"].isin(value_adding_classes)
+    value_classes = ["Useful question", "Reasoned film opinion", "Deep critical analysis", "Cultural / historical connection"]
+    value_adding = ecosystem["Value class"].isin(value_classes)
     meaningful = ~ecosystem["Value class"].isin(["Emoji-only", "One-word reaction", "Promotional / link spam", "Repeated / copied text"])
-    substantive_all = ecosystem["Value class"].isin(value_adding_classes)
-    study_cards = st.columns(7)
-    study_cards[0].metric("Comments studied", f"{len(ecosystem):,}")
-    study_cards[1].metric("Adds analytical value", f"{value_adding.mean():.1%}")
-    study_cards[2].metric("Deep analysis", f"{ecosystem['Value class'].eq('Deep critical analysis').mean():.1%}")
-    study_cards[3].metric("Useful questions", f"{ecosystem['Value class'].eq('Useful question').mean():.1%}")
-    study_cards[4].metric("Cultural context", f"{ecosystem['contextual'].mean():.1%}")
-    study_cards[5].metric("Possible sarcasm", f"{ecosystem['possible_sarcasm'].mean():.1%}")
-    study_cards[6].metric("Filtered/noise", f"{(~meaningful).mean():.1%}")
-
-    participation_counts = ecosystem["Value class"].value_counts()
-    top_language = ecosystem["language"].value_counts().index[0]
-    st.info(
-        f"**What this corpus says:** {value_adding.mean():.1%} of all collected comments add identifiable analytical value through a reason, film-specific aspect, substantive question or cultural comparison. "
-        f"Another {ecosystem['Value class'].eq('General opinion').mean():.1%} express an interpretable opinion without enough evidence to call it analysis. "
-        f"The largest detected language group is **{top_language}**. Possible sarcasm is a cue-based reading for human review—not a fact about intent."
-    )
-
-    participation_col, language_col = st.columns(2, gap="large")
-    with participation_col:
-        st.markdown("#### What kind of participation dominates?")
-        participation_data = participation_counts.rename_axis("Participation").reset_index(name="Comments")
-        participation_data["Share"] = participation_data["Comments"] / len(ecosystem) * 100
-        participation_fig = px.bar(
-            participation_data.sort_values("Share"), x="Share", y="Participation", orientation="h",
-            text="Comments", color="Participation", color_discrete_sequence=PALETTE,
-        )
-        participation_fig.update_traces(texttemplate="%{x:.1f}% · %{text:,}", textposition="outside")
-        participation_fig.update_layout(height=420, showlegend=False, xaxis_title="Share of all collected comments (%)", yaxis_title=None,
-                                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(participation_fig, width="stretch")
-    with language_col:
-        st.markdown("#### How multilingual is the discussion?")
-        language_quality = ecosystem.groupby(["language", "Value class"], as_index=False).size().rename(columns={"Value class": "Participation", "size": "Comments"})
-        language_quality["Share"] = language_quality["Comments"] / language_quality.groupby("language")["Comments"].transform("sum") * 100
-        language_fig = px.bar(
-            language_quality, x="language", y="Share", color="Participation", barmode="stack",
-            custom_data=["Comments"], color_discrete_sequence=PALETTE,
-        )
-        language_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
-        language_fig.update_layout(height=420, legend_title=None, xaxis_title=None, yaxis_title="Within-language share (%)",
-                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(language_fig, width="stretch")
-
-    format_col, topic_col = st.columns(2, gap="large")
-    with format_col:
-        st.markdown("#### Videos versus Shorts")
-        format_quality = ecosystem.groupby(["content_format", "Value class"], as_index=False).size().rename(columns={"Value class": "Participation", "size": "Comments"})
-        format_quality["Share"] = format_quality["Comments"] / format_quality.groupby("content_format")["Comments"].transform("sum") * 100
-        format_fig = px.bar(format_quality, x="content_format", y="Share", color="Participation", barmode="stack",
-                            custom_data=["Comments"], color_discrete_sequence=PALETTE)
-        format_fig.update_traces(hovertemplate="%{fullData.name}: %{y:.1f}% (%{customdata[0]} comments)<extra></extra>")
-        format_fig.update_layout(height=390, legend_title=None, xaxis_title=None, yaxis_title="Share within format (%)",
-                                 paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(format_fig, width="stretch")
-    with topic_col:
-        st.markdown("#### What do substantive comments discuss?")
-        topic_data = ecosystem[substantive_all & ~ecosystem["topic"].eq("General reaction")]["topic"].value_counts().rename_axis("Topic").reset_index(name="Comments")
-        if topic_data.empty:
-            st.info("Not enough aspect-specific discussion yet.")
-        else:
-            topic_fig = px.bar(topic_data.sort_values("Comments"), x="Comments", y="Topic", orientation="h",
-                               color="Comments", color_continuous_scale=["#ffd6c9", "#ff4b2b"])
-            topic_fig.update_layout(height=390, coloraxis_showscale=False, xaxis_title="Detailed comments and questions", yaxis_title=None,
-                                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-            st.plotly_chart(topic_fig, width="stretch")
-
-    value_col, tone_col = st.columns(2, gap="large")
-    with value_col:
-        st.markdown("#### Does criticism also add value?")
-        value_tone = (
-            ecosystem.groupby(["Value class", "reaction_signal"], as_index=False).size()
-            .rename(columns={"reaction_signal": "Reaction wording", "size": "Comments"})
-        )
-        value_tone = value_tone[value_tone["Value class"].isin(value_adding_classes)]
-        value_tone_fig = px.bar(
-            value_tone, x="Value class", y="Comments", color="Reaction wording", barmode="stack",
-            color_discrete_map={"Appreciative": "#2ec4b6", "Critical": "#ff4b2b", "Mixed / unclear": "#ffb703"},
-        )
-        value_tone_fig.update_layout(height=420, legend_title=None, xaxis_title=None, yaxis_title="Value-adding comments",
-                                     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(value_tone_fig, width="stretch")
-        st.caption("Value is independent of approval: a well-explained negative reading can contribute as much as praise.")
-    with tone_col:
-        st.markdown("#### Why comments are excluded from the value estimate")
-        excluded = ecosystem[~meaningful]["Value class"].value_counts().rename_axis("Reason").reset_index(name="Comments")
-        excluded["Percent of all"] = excluded["Comments"] / len(ecosystem) * 100
-        excluded_fig = px.bar(excluded.sort_values("Percent of all"), x="Percent of all", y="Reason", orientation="h",
-                              text="Comments", color="Reason", color_discrete_sequence=PALETTE)
-        excluded_fig.update_traces(texttemplate="%{x:.1f}% · %{text:,}", textposition="outside")
-        excluded_fig.update_layout(height=420, showlegend=False, xaxis_title="Share of every collected comment (%)", yaxis_title=None,
-                                   paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(excluded_fig, width="stretch")
-
-    def value_reason(row: pd.Series) -> str:
-        reasons = []
-        if row["specific_aspect"]:
-            reasons.append(f"discusses {str(row['topic']).lower()}")
-        if row["gives_reason"]:
-            reasons.append("gives an explicit reason")
-        if row["is_question"]:
-            reasons.append("asks a substantive question")
-        reasons.extend(row["context_signals"])
-        return "; ".join(reasons) or "develops an extended opinion"
-
-    st.markdown("#### Comments that add the most analytical value")
-    st.caption("Examples are selected by transparent features and engagement—not by whether they praise or criticize the film.")
-    highlights = ecosystem[value_adding].copy()
-    highlights["Why highlighted"] = highlights.apply(value_reason, axis=1)
-    highlights["Comment"] = highlights["text"].astype(str).str.slice(0, 320)
-    highlights = highlights.sort_values(["likes", "word_count"], ascending=False).head(15)
-    if highlights.empty:
-        st.info("No high-value examples are available yet.")
-    else:
-        st.dataframe(
-            highlights[["film", "channel", "Value class", "reaction_signal", "Why highlighted", "Comment", "likes", "url"]],
-            width="stretch", hide_index=True,
-            column_config={"film": "Film", "channel": "Review channel", "reaction_signal": "Reaction wording",
-                           "likes": "Likes", "url": st.column_config.LinkColumn("Open on YouTube")},
-        )
-
-    context_tab, sarcasm_tab = st.tabs(["Historical and contemporary connections", "Possible sarcasm and contextual comedy"])
+    cols = st.columns(7)
+    cols[0].metric("Comments studied", f"{len(ecosystem):,}")
+    cols[1].metric("Adds analytical value", f"{value_adding.mean():.1%}")
+    cols[2].metric("Deep analysis", f"{ecosystem['Value class'].eq('Deep critical analysis').mean():.1%}")
+    cols[3].metric("Useful questions", f"{ecosystem['Value class'].eq('Useful question').mean():.1%}")
+    cols[4].metric("Cultural context", f"{ecosystem['context_signals'].map(bool).mean():.1%}")
+    cols[5].metric("Possible sarcasm", f"{ecosystem['possible_sarcasm'].mean():.1%}")
+    cols[6].metric("Filtered/noise", f"{(~meaningful).mean():.1%}")
+    st.info(f"{value_adding.mean():.1%} of collected comments add identifiable analytical value through a reason, film-specific aspect, substantive question or cultural comparison. Possible sarcasm is cue-based and should be read as a candidate, not a fact about intent.")
+    left, right = st.columns(2, gap="large")
+    with left:
+        participation = ecosystem["Value class"].value_counts().rename_axis("Participation").reset_index(name="Comments")
+        participation["Share"] = participation["Comments"] / len(ecosystem) * 100
+        fig = px.bar(participation.sort_values("Share"), x="Share", y="Participation", orientation="h", text="Comments", color="Participation", color_discrete_sequence=PALETTE)
+        fig.update_traces(texttemplate="%{x:.1f}% · %{text:,}", textposition="outside")
+        fig.update_layout(height=430, showlegend=False, xaxis_title="Share of all collected comments (%)", yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+    with right:
+        language = ecosystem.groupby(["language", "Value class"], as_index=False).size().rename(columns={"Value class": "Participation", "size": "Comments"})
+        language["Share"] = language["Comments"] / language.groupby("language")["Comments"].transform("sum") * 100
+        fig = px.bar(language, x="language", y="Share", color="Participation", barmode="stack", custom_data=["Comments"], color_discrete_sequence=PALETTE)
+        fig.update_layout(height=430, legend_title=None, xaxis_title=None, yaxis_title="Within-language share (%)", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+    st.markdown("#### Comments that add analytical value")
+    examples = ecosystem[value_adding].copy()
+    examples["Why highlighted"] = examples.apply(lambda r: "question" if r["is_question"] else "; ".join(r["context_signals"]) or str(r["topic"]), axis=1)
+    examples["Comment"] = examples["text"].astype(str).str.slice(0, 320)
+    st.dataframe(examples.sort_values(["likes", "word_count"], ascending=False).head(15)[["film", "channel", "Value class", "reaction_signal", "Why highlighted", "Comment", "likes", "url"]], hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("Open")})
+    context_tab, sarcasm_tab = st.tabs(["Historical/contemporary connections", "Possible sarcasm/comedy cues"])
     with context_tab:
-        context_examples = ecosystem[ecosystem["contextual"] & meaningful].copy()
-        context_examples["Connection"] = context_examples["context_signals"].map(lambda values: ", ".join(values))
+        context_examples = ecosystem[ecosystem["context_signals"].map(bool) & meaningful].copy()
+        context_examples["Connection"] = context_examples["context_signals"].map(lambda v: ", ".join(v))
         context_examples["Comment"] = context_examples["text"].astype(str).str.slice(0, 320)
-        if context_examples.empty:
-            st.info("No explicit older-film or contemporary connections were detected yet.")
-        else:
-            st.dataframe(
-                context_examples.sort_values(["likes", "word_count"], ascending=False)
-                .head(15)[["film", "Connection", "topic", "Comment", "likes", "url"]],
-                width="stretch", hide_index=True,
-                column_config={"film": "Film", "topic": "Film aspect", "likes": "Likes",
-                               "url": st.column_config.LinkColumn("Open on YouTube")},
-            )
+        st.dataframe(context_examples.sort_values(["likes", "word_count"], ascending=False).head(15)[["film", "Connection", "topic", "Comment", "likes", "url"]], hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("Open")})
     with sarcasm_tab:
-        sarcasm_examples = ecosystem[
-            ecosystem["possible_sarcasm"] & meaningful & ecosystem["word_count"].ge(3)
-        ].copy()
-        sarcasm_examples["Observed cues"] = sarcasm_examples["sarcasm_signals"].map(lambda values: ", ".join(values))
+        sarcasm_examples = ecosystem[ecosystem["possible_sarcasm"] & meaningful & ecosystem["word_count"].ge(3)].copy()
+        sarcasm_examples["Observed cues"] = sarcasm_examples["sarcasm_signals"].map(lambda v: ", ".join(v))
         sarcasm_examples["Comment"] = sarcasm_examples["text"].astype(str).str.slice(0, 320)
-        st.warning("These are candidates for human reading. Sarcasm cannot be established from text cues alone, especially in Tamil/Tanglish comedy and fan culture.")
-        if sarcasm_examples.empty:
-            st.info("No comments currently meet the multi-cue sarcasm threshold.")
-        else:
-            st.dataframe(
-                sarcasm_examples.sort_values(["likes", "word_count"], ascending=False)
-                .head(15)[["film", "Observed cues", "reaction_signal", "Comment", "likes", "url"]],
-                width="stretch", hide_index=True,
-                column_config={"film": "Film", "reaction_signal": "Literal reaction wording", "likes": "Likes",
-                               "url": st.column_config.LinkColumn("Open on YouTube")},
-            )
-
-    st.markdown("#### Recurring vocabulary in meaningful comments")
-    ecosystem_terms = top_terms(ecosystem.loc[meaningful, "text"], 20)
-    if not ecosystem_terms.empty:
-        term_fig = px.bar(ecosystem_terms.sort_values("mentions"), x="mentions", y="term", orientation="h",
-                          color="mentions", color_continuous_scale=["#9bdaf5", "#480ca8"])
-        term_fig.update_layout(height=520, coloraxis_showscale=False, xaxis_title="Mentions across the corpus", yaxis_title=None,
-                               paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-        st.plotly_chart(term_fig, width="stretch")
-
-    st.markdown("#### Turning reaction into better conversation")
-    learning_cols = st.columns(3)
-    learning_cols[0].success("**Add the reason.** Instead of only “super” or “waste,” name the scene, performance, music choice or writing decision behind the reaction.")
-    learning_cols[1].success("**Ask a specific question.** Questions create openings for discussion and help other viewers respond with evidence rather than slogans.")
-    learning_cols[2].success("**Avoid copy-paste promotion.** Repeated text and links crowd out original Tamil, Tanglish and English voices; one clear comment carries more information.")
-    with st.expander("Research basis and transparent definitions"):
-        st.markdown(
-            "Tamil social comments frequently mix Tamil script, romanized Tamil, English, emoji and spelling variants. "
-            "This study follows that research direction but uses transparent corpus statistics rather than claiming a perfect classifier. "
-            "See the [DravidianCodeMix dataset](https://github.com/bharathichezhiyan/DravidianCodeMix-Dataset), "
-            "the [Tamil-English corpus paper](https://arxiv.org/abs/2006.00206), and "
-            "[AI4Bharat Indic NLP resources](https://github.com/AI4Bharat/indicnlp_catalog). "
-            "Recent Tamil-English sarcasm research reports only moderate performance, so this dashboard exposes cues and examples instead of asserting intent: "
-            "[YouTube Comments Decoded](https://arxiv.org/abs/2411.05039).\n\n"
-            "**Adds analytical value:** gives a reason, discusses a film-specific aspect, asks a substantive question, or makes an older-film/contemporary connection. "
-            "Positive and negative opinions use the same standard.  "
-            "**Promotional/link spam:** link, subscribe, channel, giveaway or messaging-app promotion patterns.  "
-            "**Emoji-only:** no detected Tamil, Latin letter or number. **One-word:** one detected word.  "
-            "**Repeated / copied:** the same normalized text of at least 12 characters appears three or more times.  "
-            "**Possible sarcasm:** rhetorical Tamil/Tanglish phrases, criticism paired with laughter, conflicting praise/criticism, or rhetorical punctuation. "
-            "These are descriptive signals, not judgments about a commenter’s intent or character."
-        )
+        st.warning("These are candidates for human reading. Tamil/Tanglish sarcasm cannot be proven from text cues alone.")
+        st.dataframe(sarcasm_examples.sort_values(["likes", "word_count"], ascending=False).head(15)[["film", "Observed cues", "reaction_signal", "Comment", "likes", "url"]], hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("Open")})
+    terms = top_terms(ecosystem.loc[meaningful, "text"], 20)
+    if not terms.empty:
+        fig = px.bar(terms.sort_values("mentions"), x="mentions", y="term", orientation="h", color="mentions", color_continuous_scale=["#9bdaf5", "#480ca8"])
+        fig.update_layout(height=500, coloraxis_showscale=False, xaxis_title="Mentions across corpus", yaxis_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+    with st.expander("Definitions and research basis"):
+        st.markdown("Tamil YouTube comments mix Tamil script, romanized Tamil, English, emoji and spelling variants. This dashboard uses transparent rules and corpus statistics rather than claiming a perfect classifier. Useful references: [DravidianCodeMix](https://github.com/bharathichezhiyan/DravidianCodeMix-Dataset), [Tamil-English corpus](https://arxiv.org/abs/2006.00206), [AI4Bharat Indic NLP](https://github.com/AI4Bharat/indicnlp_catalog), and [Tamil-English sarcasm research](https://arxiv.org/abs/2411.05039).")
 
 with tab_lifetime:
     st.subheader("Lifetime public totals and observed growth")
-    st.markdown('<div class="section-note">Public totals are the latest lifetime counters reported by YouTube. Growth is measured only from the first snapshot stored by this radar; no earlier history is estimated.</div>', unsafe_allow_html=True)
+    latest = latest_video_rows(videos)
+    pairs = video_growth(videos)
+    public_comments = float(latest["comments"].sum()) if not latest.empty else 0
+    coverage = len(comments) / public_comments if public_comments else 0
+    cols = st.columns(7)
+    cols[0].metric("Current public views", f"{latest['views'].sum():,.0f}" if not latest.empty else "0")
+    cols[1].metric("Current public comments", f"{public_comments:,.0f}")
+    cols[2].metric("Unique comments collected", f"{len(comments):,}", delta=f"{coverage:.1%} of public counter")
+    cols[3].metric("Videos + Shorts", f"{latest['video_id'].nunique():,}" if not latest.empty else "0")
+    cols[4].metric("Snapshot rows", f"{len(videos):,}")
+    cols[5].metric("Distinct monitor runs", f"{videos['scanned_at'].nunique():,}" if not videos.empty else "0")
+    span = videos["scanned_at"].max() - videos["scanned_at"].min() if not videos.empty else pd.NaT
+    cols[6].metric("Monitoring span", f"{max(1, span.days + 1)} days" if pd.notna(span) else "Pending")
+    st.info("Public comments are YouTube's lifetime counters. Collected comments are individual recent top-level comments actually returned and deduplicated by the scanner.")
+    if not pairs.empty:
+        pairs["period"] = pairs["scanned_at"].dt.floor("30min")
+        history = pairs.groupby("period", as_index=False).agg(views_gained=("views_gained", "sum"), comments_gained=("comments_gained", "sum"), elapsed_minutes=("elapsed_minutes", "median"))
+        history["cumulative_views"] = history["views_gained"].cumsum()
+        history["cumulative_comments"] = history["comments_gained"].cumsum()
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=history["period"], y=history["cumulative_views"], name="Observed view growth", mode="lines", fill="tozeroy", line=dict(color="#ff4b2b", width=3)))
+        fig.add_trace(go.Scatter(x=history["period"], y=history["cumulative_comments"], name="Observed comment growth", mode="lines", yaxis="y2", line=dict(color="#3a86ff", width=3)))
+        fig.update_layout(height=430, hovermode="x unified", legend=dict(orientation="h", y=1.12), yaxis=dict(title="Views gained since monitoring began"), yaxis2=dict(title="Comments gained", overlaying="y", side="right", showgrid=False), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+        left, right = st.columns(2, gap="large")
+        with left:
+            recent = history[history["elapsed_minutes"].between(20, 70)].tail(96)
+            fig = px.bar(recent, x="period", y="views_gained", color="views_gained", color_continuous_scale=["#ffd8ce", "#ff4b2b", "#8f1d08"])
+            fig.update_layout(height=400, coloraxis_showscale=False, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+            st.plotly_chart(fig, width="stretch")
+        with right:
+            daily = pairs.assign(day=pairs["scanned_at"].dt.floor("D")).groupby(["day", "film"], as_index=False)["views_gained"].sum()
+            fig = px.area(daily, x="day", y="views_gained", color="film", color_discrete_sequence=PALETTE)
+            fig.update_layout(height=400, hovermode="x unified", legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+            st.plotly_chart(fig, width="stretch")
+    if not latest.empty:
+        reach = latest.groupby("film", as_index=False).agg(public_views=("views", "sum"), public_comments=("comments", "sum"), videos=("video_id", "nunique"))
+        fig = px.scatter(reach, x="public_views", y="public_comments", size="videos", color="film", text="film", color_discrete_sequence=PALETTE)
+        fig.update_traces(textposition="top center")
+        fig.update_layout(height=470, showlegend=False, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
 
-    lifetime_latest = (
-        monitor_videos.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
-        if not monitor_videos.empty else pd.DataFrame()
-    )
-    lifetime_pairs = pd.DataFrame()
-    interval_history = pd.DataFrame()
-    if not monitor_videos.empty:
-        lifetime_pairs = monitor_videos.sort_values(["video_id", "scanned_at"]).copy()
-        lifetime_pairs["previous_scan"] = lifetime_pairs.groupby("video_id")["scanned_at"].shift(1)
-        lifetime_pairs["previous_views"] = lifetime_pairs.groupby("video_id")["views"].shift(1)
-        lifetime_pairs["previous_comments"] = lifetime_pairs.groupby("video_id")["comments"].shift(1)
-        lifetime_pairs["new_views"] = (lifetime_pairs["views"] - lifetime_pairs["previous_views"]).clip(lower=0)
-        lifetime_pairs["new_comments"] = (lifetime_pairs["comments"] - lifetime_pairs["previous_comments"]).clip(lower=0)
-        lifetime_pairs = lifetime_pairs[lifetime_pairs["previous_scan"].notna()].copy()
-        lifetime_pairs["elapsed_minutes"] = (
-            (lifetime_pairs["scanned_at"] - lifetime_pairs["previous_scan"]).dt.total_seconds() / 60
-        )
-        lifetime_pairs["period"] = lifetime_pairs["scanned_at"].dt.floor("30min")
-        interval_history = (
-            lifetime_pairs.groupby("period", as_index=False)
-            .agg(
-                views_gained=("new_views", "sum"),
-                comments_gained=("new_comments", "sum"),
-                videos_reporting=("video_id", "nunique"),
-                elapsed_minutes=("elapsed_minutes", "median"),
-            )
-            .sort_values("period")
-        )
-        interval_history["cumulative_views"] = interval_history["views_gained"].cumsum()
-        interval_history["cumulative_comments"] = interval_history["comments_gained"].cumsum()
-
-    first_snapshot = monitor_videos["scanned_at"].min() if not monitor_videos.empty else pd.NaT
-    last_snapshot = monitor_videos["scanned_at"].max() if not monitor_videos.empty else pd.NaT
-    public_comment_total = float(lifetime_latest["comments"].sum()) if not lifetime_latest.empty else 0
-    collection_coverage = len(comments) / public_comment_total if public_comment_total else 0
-    lifetime_metrics = st.columns(7)
-    lifetime_metrics[0].metric("Current public views", f"{lifetime_latest['views'].sum():,.0f}" if not lifetime_latest.empty else "0")
-    lifetime_metrics[1].metric("Current public comments", f"{public_comment_total:,.0f}")
-    lifetime_metrics[2].metric("Unique comments collected", f"{len(comments):,}", delta=f"{collection_coverage:.1%} of public counter")
-    lifetime_metrics[3].metric("Videos + Shorts", f"{lifetime_latest['video_id'].nunique():,}" if not lifetime_latest.empty else "0")
-    lifetime_metrics[4].metric("Snapshot rows", f"{len(monitor_videos):,}")
-    lifetime_metrics[5].metric("Distinct monitor runs", f"{monitor_videos['scanned_at'].nunique():,}" if not monitor_videos.empty else "0")
-    lifetime_metrics[6].metric(
-        "Monitoring span",
-        f"{max(1, (last_snapshot - first_snapshot).days + 1)} days" if pd.notna(first_snapshot) and pd.notna(last_snapshot) else "Pending",
-    )
-    st.info(
-        "Why the two comment numbers differ: **Current public comments** is YouTube’s counter across every tracked video. "
-        "**Unique comments collected** contains individual recent top-level comments actually returned by the API/downloader, "
-        "after deduplication. It does not include every older comment, every reply, deleted/held comments, or comments from videos "
-        "where retrieval is restricted. Live scans fetch the newest 50 per video; the daily backfill requests up to 500 per video."
-    )
-
-    if interval_history.empty:
-        st.info("Lifetime growth appears after at least two stored monitor snapshots.")
-    else:
-        st.markdown("#### Growth observed by the radar")
-        cumulative_fig = go.Figure()
-        cumulative_fig.add_trace(go.Scatter(
-            x=interval_history["period"], y=interval_history["cumulative_views"],
-            name="Observed view growth", mode="lines", fill="tozeroy",
-            line=dict(color="#ff4b2b", width=3),
-        ))
-        cumulative_fig.add_trace(go.Scatter(
-            x=interval_history["period"], y=interval_history["cumulative_comments"],
-            name="Observed comment growth", mode="lines", yaxis="y2",
-            line=dict(color="#3a86ff", width=3),
-        ))
-        cumulative_fig.update_layout(
-            height=430, hovermode="x unified", legend=dict(orientation="h", y=1.12),
-            xaxis=dict(title="Stored monitor time · UTC"),
-            yaxis=dict(title="Views gained since monitoring began"),
-            yaxis2=dict(title="Comments gained", overlaying="y", side="right", showgrid=False),
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-        )
-        st.plotly_chart(cumulative_fig, width="stretch")
-
-        interval_col, daily_col = st.columns(2, gap="large")
-        with interval_col:
-            st.markdown("#### Every stored half-hour interval")
-            regular_intervals = interval_history[interval_history["elapsed_minutes"].between(20, 70)].tail(96)
-            if regular_intervals.empty:
-                st.info("Waiting for the first two normally spaced repaired scans.")
-            else:
-                interval_fig = px.bar(
-                    regular_intervals, x="period", y="views_gained",
-                    color="views_gained", color_continuous_scale=["#ffd8ce", "#ff4b2b", "#8f1d08"],
-                    hover_data=["comments_gained", "videos_reporting", "elapsed_minutes"],
-                    labels={"period": "UTC", "views_gained": "New views"},
-                )
-                interval_fig.update_layout(
-                    height=400, coloraxis_showscale=False,
-                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-                )
-                st.plotly_chart(interval_fig, width="stretch")
-        with daily_col:
-            st.markdown("#### Daily attention by film")
-            film_daily = lifetime_pairs.copy()
-            film_daily["day"] = film_daily["scanned_at"].dt.floor("D")
-            film_daily = film_daily.groupby(["day", "film"], as_index=False)["new_views"].sum()
-            daily_fig = px.area(
-                film_daily, x="day", y="new_views", color="film",
-                color_discrete_sequence=PALETTE,
-                labels={"day": "UTC day", "new_views": "Observed view growth", "film": "Film"},
-            )
-            daily_fig.update_layout(
-                height=400, hovermode="x unified", legend_title=None,
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            )
-            st.plotly_chart(daily_fig, width="stretch")
-
-    if not lifetime_latest.empty:
-        st.markdown("#### Lifetime reach by film")
-        film_lifetime = (
-            lifetime_latest.groupby("film", as_index=False)
-            .agg(
-                public_views=("views", "sum"),
-                public_comments=("comments", "sum"),
-                videos=("video_id", "nunique"),
-            )
-        )
-        film_lifetime["Comments per 1K views"] = (
-            film_lifetime["public_comments"] / film_lifetime["public_views"].replace(0, pd.NA) * 1000
-        ).fillna(0)
-        reach_fig = px.scatter(
-            film_lifetime, x="public_views", y="public_comments", size="videos", color="film",
-            text="film", color_discrete_sequence=PALETTE,
-            hover_data=["Comments per 1K views"],
-            labels={"public_views": "Current lifetime views", "public_comments": "Current lifetime comments"},
-        )
-        reach_fig.update_traces(textposition="top center")
-        reach_fig.update_layout(
-            height=480, showlegend=False,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-        )
-        st.plotly_chart(reach_fig, width="stretch")
-
-        channel_col, format_col = st.columns([1.3, 1], gap="large")
-        with channel_col:
-            st.markdown("#### Channel contribution")
-            channel_summary = (
-                lifetime_latest.groupby("channel", as_index=False)
-                .agg(public_views=("views", "sum"), public_comments=("comments", "sum"), videos=("video_id", "nunique"))
-                .nlargest(15, "public_views")
-            )
-            channel_fig = px.bar(
-                channel_summary.sort_values("public_views"), x="public_views", y="channel",
-                orientation="h", color="public_comments",
-                color_continuous_scale=["#90e0ef", "#3a86ff", "#480ca8"],
-                hover_data=["videos"], labels={"public_views": "Lifetime views", "channel": "Channel"},
-            )
-            channel_fig.update_layout(
-                height=470, coloraxis_colorbar=dict(title="Comments"),
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            )
-            st.plotly_chart(channel_fig, width="stretch")
-        with format_col:
-            st.markdown("#### Video versus Short")
-            format_summary = (
-                lifetime_latest.groupby("content_format", as_index=False)
-                .agg(videos=("video_id", "nunique"), median_views=("views", "median"), median_comments=("comments", "median"))
-                .rename(columns={"content_format": "Format"})
-            )
-            format_fig = px.bar(
-                format_summary, x="Format", y=["median_views", "median_comments"],
-                barmode="group", color_discrete_sequence=["#ff4b2b", "#3a86ff"],
-                labels={"value": "Median public count", "variable": "Measure"},
-            )
-            format_fig.update_layout(
-                height=470, legend_title=None,
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-            )
-            st.plotly_chart(format_fig, width="stretch")
-
-    st.markdown("#### Lifetime comment publication history")
-    lifetime_comment_daily = (
-        comments.assign(day=comments["created_at"].dt.floor("D"))
-        .groupby(["day", "film"], as_index=False).size().rename(columns={"size": "Comments"})
-    )
-    comment_history_fig = px.area(
-        lifetime_comment_daily, x="day", y="Comments", color="film",
-        color_discrete_sequence=PALETTE,
-        labels={"day": "Comment publication date", "film": "Film"},
-    )
-    comment_history_fig.update_layout(
-        height=450, hovermode="x unified", legend_title=None,
-        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)",
-    )
-    st.plotly_chart(comment_history_fig, width="stretch")
-
-with tab_films:
+with tab_film:
     film = st.selectbox("Choose a film", selected_films)
-    film_comments = filtered[filtered["film"].eq(film)].copy()
-    item = catalog.get(film, {})
-    poster_col, info_col = st.columns([1, 3], gap="large")
-    with poster_col:
-        poster = item.get("poster_url")
-        if isinstance(poster, str):
-            st.markdown(f'<img src="{poster}" style="width:100%;border-radius:14px">', unsafe_allow_html=True)
-    with info_col:
-        st.title(film)
-        st.caption(f"Release date: {item.get('release_date') or 'Unavailable'}")
-        detail_metrics = st.columns(4)
-        detail_metrics[0].metric("Analyzed", f"{len(film_comments):,}")
-        detail_metrics[1].metric("Last 24 h", f"{film_comments['created_at'].ge(now - pd.Timedelta(hours=24)).sum():,}")
-        detail_metrics[2].metric("Questions", f"{film_comments['is_question'].sum():,}")
-        detail_metrics[3].metric("Detailed comments", f"{film_comments['comment_kind'].eq('Detailed discussion').sum():,}")
-
-    film_frequency = "30min" if window <= 72 else "h" if window <= 168 else "D"
-    film_time_label = "30 minutes" if film_frequency == "30min" else "hour" if film_frequency == "h" else "day"
-    film_timeline = (
-        film_comments.assign(period=film_comments["created_at"].dt.floor(film_frequency))
-        .groupby("period", as_index=False).size().rename(columns={"size": "comments"})
-    )
-    line = px.line(film_timeline, x="period", y="comments", markers=True,
-                   color_discrete_sequence=["#ff4b2b"])
-    line.update_traces(fill="tozeroy")
-    line.update_layout(height=360, xaxis_title="Published time", yaxis_title=f"Comments per {film_time_label}",
-                       paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
-    st.plotly_chart(line, width="stretch")
-
-    film_video_table = latest_videos[latest_videos["film"].eq(film)].copy() if not latest_videos.empty else pd.DataFrame()
-    if not film_video_table.empty:
-        film_video_table["url"] = "https://youtube.com/watch?v=" + film_video_table["video_id"].astype(str)
-        st.subheader("Videos and Shorts being monitored")
-        st.dataframe(
-            film_video_table[["content_format", "channel", "title", "published_at", "views", "likes", "comments", "url"]]
-            .sort_values("views", ascending=False),
-            width="stretch", hide_index=True,
-            column_config={"url": st.column_config.LinkColumn("Watch"),
-                           "views": st.column_config.NumberColumn("Views", format="%d"),
-                           "published_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY")},
-        )
+    render_movie_page(film, filtered, videos, meta, catalog)
 
 with tab_comments:
-    included = int((~comments["low_information"]).sum())
-    filtered_out = int(comments["low_information"].sum())
-    quality_cols = st.columns(4)
-    quality_cols[0].metric("Included comments", f"{included:,}")
-    quality_cols[1].metric("Low-information filtered", f"{filtered_out:,}")
-    quality_cols[2].metric("Questions detected", f"{filtered['is_question'].sum():,}")
-    quality_cols[3].metric("Median words", f"{filtered['word_count'].median():.0f}")
-
+    st.subheader("Comment explorer")
+    cols = st.columns(4)
+    cols[0].metric("Included comments", f"{(~comments['low_information']).sum():,}")
+    cols[1].metric("Low-information filtered", f"{comments['low_information'].sum():,}")
+    cols[2].metric("Questions detected", f"{filtered['is_question'].sum():,}")
+    cols[3].metric("Median words", f"{filtered['word_count'].median():.0f}")
     search = st.text_input("Search comment text")
     explorer = filtered.copy()
     if search:
         explorer = explorer[explorer["text"].str.contains(search, case=False, na=False, regex=False)]
-    columns = ["film", "content_format", "channel", "video_title", "language", "topic", "comment_kind",
-               "text", "likes", "reply_count", "created_at", "url"]
-    st.dataframe(
-        explorer[columns].sort_values(["likes", "created_at"], ascending=[False, False]),
-        width="stretch", hide_index=True,
-        column_config={"url": st.column_config.LinkColumn("Open on YouTube"),
-                       "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")},
-    )
-    st.download_button(
-        "Download analyzed YouTube comments",
-        explorer[columns].to_csv(index=False),
-        "tamil-cinema-youtube-comments.csv", "text/csv",
-    )
+    columns = ["film", "content_format", "channel", "video_title", "language", "topic", "comment_kind", "text", "likes", "reply_count", "created_at", "url"]
+    st.dataframe(explorer[columns].sort_values(["likes", "created_at"], ascending=[False, False]), hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("Open on YouTube"), "created_at": st.column_config.DatetimeColumn("Published", format="DD MMM YYYY, HH:mm")})
+    st.download_button("Download analyzed YouTube comments", explorer[columns].to_csv(index=False), "tamil-cinema-youtube-comments.csv", "text/csv")
 
 with tab_data:
     st.subheader("Complete data archive")
-    st.markdown('<div class="section-note">Download the unfiltered stored counters, the derived half-hour changes, or the complete comment archive. Snapshot rows are the source of truth for monitoring trends.</div>', unsafe_allow_html=True)
-    archive_metrics = st.columns(4)
-    archive_metrics[0].metric("Snapshot rows", f"{len(videos):,}")
-    archive_metrics[1].metric("Half-hour intervals", f"{len(interval_history):,}")
-    archive_metrics[2].metric("Comment rows", f"{len(comments):,}")
-    archive_metrics[3].metric("Retention", f"{meta.get('keep_history_days', 730)} days")
-
-    download_cols = st.columns(4)
-    download_cols[0].download_button(
-        "Download raw snapshots",
-        videos.to_csv(index=False),
-        "cinema-wall-video-snapshots.csv", "text/csv", width="stretch",
-    )
-    download_cols[1].download_button(
-        "Download 30-min series",
-        interval_history.to_csv(index=False),
-        "cinema-wall-30-minute-timeseries.csv", "text/csv", width="stretch",
-        disabled=interval_history.empty,
-    )
-    download_cols[2].download_button(
-        "Download all comments",
-        comments.to_csv(index=False),
-        "cinema-wall-all-comments.csv", "text/csv", width="stretch",
-    )
-    download_cols[3].download_button(
-        "Download scan metadata",
-        json.dumps(meta, indent=2, ensure_ascii=False),
-        "cinema-wall-scan-metadata.json", "application/json", width="stretch",
-    )
-
-    dataset = st.radio(
-        "Preview dataset", ["30-minute time series", "Raw video snapshots", "Collected comments"],
-        horizontal=True,
-    )
-    if dataset == "30-minute time series":
-        preview = interval_history.sort_values("period", ascending=False)
-    elif dataset == "Raw video snapshots":
-        preview = videos.sort_values("scanned_at", ascending=False)
+    pairs = video_growth(videos)
+    if not pairs.empty:
+        pairs["period"] = pairs["scanned_at"].dt.floor("30min")
+        interval_history = pairs.groupby("period", as_index=False).agg(views_gained=("views_gained", "sum"), comments_gained=("comments_gained", "sum"), videos_reporting=("video_id", "nunique"), elapsed_minutes=("elapsed_minutes", "median"))
     else:
-        preview = comments.sort_values("created_at", ascending=False)
-    st.dataframe(preview.head(2000), width="stretch", hide_index=True)
-    if len(preview) > 2000:
-        st.caption(f"Previewing the newest 2,000 of {len(preview):,} rows. The download contains every stored row.")
+        interval_history = pd.DataFrame()
+    cols = st.columns(4)
+    cols[0].metric("Snapshot rows", f"{len(videos):,}")
+    cols[1].metric("Half-hour intervals", f"{len(interval_history):,}")
+    cols[2].metric("Comment rows", f"{len(comments):,}")
+    cols[3].metric("Retention", f"{meta.get('keep_history_days', 730)} days")
+    dl = st.columns(4)
+    dl[0].download_button("Download raw snapshots", videos.to_csv(index=False), "cinema-wall-video-snapshots.csv", "text/csv", width="stretch")
+    dl[1].download_button("Download 30-min series", interval_history.to_csv(index=False), "cinema-wall-30-minute-timeseries.csv", "text/csv", width="stretch", disabled=interval_history.empty)
+    dl[2].download_button("Download all comments", comments.to_csv(index=False), "cinema-wall-all-comments.csv", "text/csv", width="stretch")
+    dl[3].download_button("Download scan metadata", json.dumps(meta, indent=2, ensure_ascii=False), "cinema-wall-scan-metadata.json", "application/json", width="stretch")
+    dataset = st.radio("Preview dataset", ["30-minute time series", "Raw video snapshots", "Collected comments"], horizontal=True)
+    preview = interval_history.sort_values("period", ascending=False) if dataset == "30-minute time series" else videos.sort_values("scanned_at", ascending=False) if dataset == "Raw video snapshots" else comments.sort_values("created_at", ascending=False)
+    st.dataframe(preview.head(2000), hide_index=True, width="stretch")
 
 with st.expander("Monitor health and methodology"):
     st.write(f"Status: **{meta.get('status', 'unknown')}**")
     st.write(f"Schedule: every **{meta.get('scan_interval_minutes', 30)} minutes**")
-    st.write(f"New-video discovery: every **{meta.get('video_discovery_hours', 6)} hours**")
+    st.write(f"New-video discovery: every **{meta.get('video_discovery_hours', 24)} hours**")
     st.write("Collectors: " + ", ".join(meta.get("collectors", ["YouTube Data API"])))
-    st.write("Noise filtering removes extremely short, link-promotional and non-text reactions from analytical charts; raw stored comments remain available.")
     errors = meta.get("errors", [])
     if errors:
         st.warning(f"{len(errors)} source warnings occurred in the latest monitor run.")
