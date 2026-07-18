@@ -44,6 +44,11 @@ PROMO_PATTERNS = [
     r"https?://", r"subscribe", r"my channel", r"follow me", r"full movie link",
     r"telegram", r"whatsapp", r"earn money", r"giveaway",
 ]
+SCAM_PATTERNS = [
+    r"full movie link", r"watch here", r"download now", r"telegram", r"whatsapp",
+    r"free recharge", r"earn money", r"giveaway", r"prize", r"investment",
+    r"crypto", r"loan approved", r"work from home",
+]
 CAUSAL_MARKERS = [
     "because", "therefore", "however", "although", "but the", "reason", "works because",
     "doesn't work", "did not work", "why this", "ஆனால்", "ஆனா", "ஏனெனில்", "காரணம்",
@@ -75,6 +80,14 @@ def normalize_text(value: object) -> str:
 
 def is_promotional(text: str) -> bool:
     return any(re.search(pattern, text) for pattern in PROMO_PATTERNS)
+
+def scam_risk(text: str) -> str:
+    matches = sum(1 for pattern in SCAM_PATTERNS if re.search(pattern, text))
+    if matches >= 2:
+        return "High"
+    if matches == 1:
+        return "Medium"
+    return "Low"
 
 def cultural_context(text: str) -> list[str]:
     def present(marker: str) -> bool:
@@ -156,11 +169,32 @@ def enrich_comments(frame: pd.DataFrame) -> pd.DataFrame:
     ]
     result["is_question"] = result["comment_kind"].eq("Question")
     promo = clean.map(lambda value: any(re.search(pattern, value) for pattern in PROMO_PATTERNS))
+    scam = clean.map(scam_risk)
     repeated = clean.str.replace(r"[^\w\u0B80-\u0BFF]", "", regex=True).str.len().lt(3)
+    context = clean.map(cultural_context)
+    sarcasm = clean.map(sarcasm_cues)
+    reasoned = (
+        clean.map(lambda value: any(marker in value for marker in CAUSAL_MARKERS))
+        | (~result["topic"].eq("General reaction") & result["word_count"].ge(8))
+    )
     result["low_information"] = result["word_count"].lt(3) | repeated | promo
     result["analysis_status"] = result["low_information"].map(
         {True: "Filtered as low-information", False: "Included in analysis"}
     )
+    result["promotional_flag"] = promo
+    result["scam_risk"] = scam
+    result["context_signals"] = context.map(lambda values: "; ".join(values))
+    result["possible_sarcasm"] = sarcasm.map(bool)
+    result["sarcasm_cues"] = sarcasm.map(lambda values: "; ".join(values))
+    result["audience_value"] = "General opinion"
+    result.loc[result["is_question"], "audience_value"] = "Useful question"
+    result.loc[reasoned, "audience_value"] = "Reasoned film opinion"
+    result.loc[result["word_count"].ge(18) & reasoned, "audience_value"] = "Deep critical analysis"
+    result.loc[context.map(bool) & result["word_count"].ge(6), "audience_value"] = "Cultural / historical connection"
+    result.loc[result["word_count"].between(2, 5), "audience_value"] = "Brief reaction"
+    result.loc[result["word_count"].le(1), "audience_value"] = "One-word / emoji reaction"
+    result.loc[promo, "audience_value"] = "Promotional / link pattern"
+    result.loc[scam.isin(["Medium", "High"]), "audience_value"] = "Scam-risk pattern"
     return result
 
 def top_terms(texts: pd.Series, limit: int = 18) -> pd.DataFrame:
