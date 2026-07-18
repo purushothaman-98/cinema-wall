@@ -1,13 +1,24 @@
 {
   "lookback_days": 180,
-  "max_films": 10,
+  "max_films": 12,
   "video_discovery_hours": 24,
-  "youtube_videos_per_film": 15,
-  "active_videos_per_film": 4,
+  "youtube_videos_per_film": 20,
+  "active_videos_per_film": 6,
+  "trusted_videos_per_film": 5,
+  "public_review_videos_per_film": 3,
+  "organic_videos_per_film": 2,
   "comments_per_video_live": 50,
   "comments_per_video_daily": 500,
   "keep_history_days": 730,
-  "selection_version": 3,
+  "selection_version": 4,
+  "manual_films": [],
+  "youtube_discovery_queries": [
+    "new tamil movie review today",
+    "tamil cinema public review today",
+    "new tamil movie vimarsanam",
+    "tamil movie விமர்சனம்",
+    "this week tamil movie review"
+  ],
   "film_title_aliases": {
     "Gatta Kusthi 2": ["gatta kusthi 2", "gatta kusthi round 2"],
     "Parimala and Co": ["parimala and co", "parimala & co"]
@@ -65,5 +76,5 @@
     " விமர்சனம்",
     "திரை விமர்சனம்"
   ],
-  "active_shorts_per_film": 3
+  "active_shorts_per_film": 4
 }
