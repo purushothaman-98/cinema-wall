@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-18T12:44:20.615962+00:00",
-  "last_video_discovery": "2026-07-18T11:25:42.862955+00:00",
+  "last_scan": "2026-07-18T13:19:01.183817+00:00",
+  "last_video_discovery": "2026-07-18T13:19:01.183817+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -10,125 +10,142 @@
     "primary_release_date.desc"
   ],
   "keep_history_days": 730,
-  "selection_version": 5,
+  "selection_version": 6,
   "active_video_ids": [
-    "-2VNIdBAx3c",
-    "-GmXAiBTYBQ",
-    "-PsNSivis9w",
-    "05gc4H7ejZo",
-    "232Dh6lXQ8o",
-    "2AdZXTYvwVI",
-    "3hUwnHct-xM",
-    "3oalZmBxYTU",
-    "4udZ1BAow8Y",
+    "-U9HzhHWSYI",
+    "-kGabMiAGkA",
+    "02LIHFCYLFY",
+    "0AN7JaQ7RL0",
+    "1-YnMIxRPCU",
+    "11FVrNlirV0",
+    "4D7clYHEcSo",
+    "4_F7rsUQt5w",
     "4v6OWiZAv7Q",
-    "5GAgwuuIx_I",
-    "6DQ-onPfoXM",
-    "6s8EUL6Z8q0",
-    "7Qno-0za-TM",
-    "82QPBkIrpo0",
-    "9MCtq1wzpl0",
-    "9qO7Xsa2g1A",
-    "ABEw1SBvaiY",
-    "AvPRJgNnkxc",
-    "Cr4fNditLIc",
-    "Dap4CW9f0lM",
-    "E25qRxvvIYc",
-    "EaJqiDm1-QQ",
-    "Ed3JorSD7HE",
-    "EqhOWuDRaUI",
-    "FoSTbBc2T1A",
+    "5gLXPD4lV3s",
+    "6gmlfPEhaPo",
+    "772yoe3x_Ng",
+    "8HSLGSq5jgM",
+    "8KI7aZ5A9_I",
+    "9UmC0sRxGIE",
+    "9yr2IPl0XgE",
+    "ADIMIfJ-z0Q",
+    "BiI-53i7NVI",
+    "D96FUzC5bx8",
+    "DBgpVx6utuU",
+    "Dmw2-tr7Xl0",
+    "Eai1avWhY7w",
     "FufQWpyXXUc",
-    "GcHI2mnFcXQ",
-    "Gw4bk81zurM",
-    "H1udCndPTU0",
-    "JOJdw6IJq4k",
-    "JPZa5mxdA90",
-    "Jo__DrJMk4M",
-    "KL5ZhG5dm30",
-    "KbH3Cihy0hA",
-    "KkHP4aoU8ng",
-    "LLmkti_XkMk",
-    "La5WyvyO4HM",
-    "M7lFLW8GmGY",
-    "NKrb-_qKqtQ",
+    "G-PQXCuMTjM",
+    "GTYU2NvzzKM",
+    "HUTzU5Yd-qg",
+    "HkHXpy6kQcI",
+    "HzhLqaggnHM",
+    "ITEyLaOOwZ0",
+    "Ij1k80SeJOU",
+    "IjKRg3FcS2o",
+    "K0J8RCeuk5c",
+    "KIlj5fsPiIg",
+    "Km3-cWPD8hA",
+    "Lmk7NMvKkys",
+    "MH7jdniLG5o",
+    "MpOLjhV3doE",
+    "NTUlBdX1zmo",
+    "NcvGH-vUS3o",
+    "OQacFyXLUps",
     "OjlO3i690xU",
-    "OoMQuy2Pzx0",
-    "P9wB0hzx57c",
-    "PneX7CumxoQ",
-    "QQWfysygeLQ",
-    "QjMnu5lNv6s",
+    "Q0EuAzjV7N8",
+    "QcD3ctRrKnw",
     "QkGUFx1Ns8Y",
-    "RkeoklKcklY",
-    "SiNEiQSr66A",
-    "TUfsVzU8yvI",
-    "Toas2mtps7c",
-    "U9-SoJfP4sw",
-    "YH_HeVOtpfA",
-    "_-pyMZMGv3k",
-    "_vqgR_x1I1Q",
-    "a28ZC5uxjXU",
-    "aiDE5EQH7VE",
-    "asUbxf6yqBo",
-    "b8qQ_0JSMxU",
-    "bmbwo_2_iwI",
-    "cbllSrGPjs0",
-    "ccjasf80_dw",
-    "dLVO165vC2I",
-    "dkOCFL9V0GY",
+    "Qm6wSNrF-K0",
+    "R3WI0NEZ5Xo",
+    "S2Rcjbjeywk",
+    "SoXeVln4TDk",
+    "TJQqXe8Jc0w",
+    "TanDK1_9kfI",
+    "TsEghKWeDRA",
+    "UnvKStEdTHs",
+    "V3XUN49lxUM",
+    "VWfXQbilQ-w",
+    "VX92wzfjJeM",
+    "V_Hvrq-Xtjs",
+    "VfwRqHAvVOQ",
+    "VgC5hOmEzYA",
+    "X030fOP0e0A",
+    "XuTfJU1Wz9Y",
+    "YeH-S-6UVsw",
+    "Z2-q3a28ZXg",
+    "ZjKkkomxdw4",
+    "_Z5LvDYvvtc",
+    "_sP8WpalSdw",
+    "bBjaajEGSUE",
+    "cZERSnAE9hE",
+    "c_epeBnEeZg",
+    "d8zmPYBDYG8",
+    "dH0h0bMF-20",
     "doqGi23QOu4",
-    "dzMotcbkyV0",
-    "eICFQfyvItk",
-    "eMSdfuiOrmY",
-    "h6P5Lj-TQF4",
-    "hOZpPJE0XzE",
-    "haLV011BfjA",
-    "k5YtkpFCzsc",
-    "k5m5ZsR9IIU",
-    "karQTqzP1lo",
+    "f9vSQANdQ8Y",
+    "fn4eo2Yw8L4",
+    "gW-OYoO9xW4",
+    "ghgTkC-SI9U",
+    "hdOtL7CHS2k",
+    "jQlyBUEdWyI",
+    "kM1KK42ngzY",
+    "kP8UgzHSxgQ",
     "kiFeXcU-JI4",
-    "nTpsJJG068E",
-    "ockg8Fx0L2c",
+    "kpxThIe1jZ4",
+    "m_kxIfJmqfI",
+    "mplpkZXBxhI",
+    "nexvxuuP2eg",
+    "o5Zs13c_cTM",
+    "oFX2kvxUJR4",
+    "ofZYmfnDvx0",
     "oiDfyURQOeE",
+    "on9CuThxzYE",
+    "pawx3mfvsyE",
     "pi52Pq_k4D4",
-    "q1Yk7mOv2GQ",
-    "q5YrcsKrke4",
-    "qUDayTlaWfM",
-    "qYiwgZPiqPk",
-    "rRL7e36tzY0",
-    "rZ6TkZABsKA",
-    "rexCk0gQNHA",
-    "rkIdNZyiGH0",
-    "sGZ_wEjhu5U",
-    "sX-AyaZtsi4",
+    "puJzHA82-FQ",
+    "qPd-sy5PXEg",
+    "r1t7U2qui7Q",
+    "su4btTY6Z5U",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
-    "tXvh8JgIj-E",
-    "uL7XCVLOLTI",
-    "uVQanfNtU70",
-    "udOlKexHZws",
-    "vEgYmiOrmtg",
-    "v_xiKt7Ksqs",
+    "tY2ZtHLqRCg",
+    "tfnh11wjo5o",
+    "uSiNOekvOuY",
+    "uY-RLAlSr5w",
+    "vAeDM3Uduxo",
     "vmIVxWqIqPo",
-    "wdg72YqzetM",
-    "x30_j_7Si8Y",
-    "xTOF1N9cBew",
+    "w90XD6kUaV8",
+    "wvWd-V4-LUA",
+    "xHFuhhzH7CE",
+    "xX8nMqCjtZY",
     "y7tfv_IsCek",
-    "yeubRFzbENs",
-    "z1iWBA43b8g",
-    "zeZIjZA_src",
-    "zkQWiCji7Hw"
+    "yk4D0rNz2No",
+    "zCYcvKSkBAQ",
+    "zTAqIoV2nc8",
+    "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
     "new tamil movie vimarsanam",
     "tamil movie \u0bb5\u0bbf\u0bae\u0bb0\u0bcd\u0b9a\u0ba9\u0bae\u0bcd",
-    "this week tamil movie review"
+    "this week tamil movie review",
+    "KaKi's Talkies tamil movie review",
+    "Sudhir Srinivasan tamil movie review",
+    "Galatta Plus Baradwaj Rangan tamil review",
+    "Second Show tamil movie review",
+    "Delite Cinemas tamil movie review",
+    "Filmi Craft Arun tamil movie review",
+    "Nona Prince tamil cinema review",
+    "Tamil Talkies tamil movie review",
+    "Plip Plip tamil movie review",
+    "Empty Hand tamil movie review",
+    "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 288,
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -209,6 +226,81 @@
         }
       ]
     },
+    "Anbe Diana": {
+      "summary": "Based on 140 useful public comments. Of 27 comments with detectable reaction wording, 27 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 140,
+      "explicit_reaction_comments": 27,
+      "appreciative_signals": 27,
+      "critical_signals": 0,
+      "substantive_share": 0.1929,
+      "top_aspects": [
+        {
+          "name": "Comedy",
+          "comments": 3
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 3
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 3
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 49,
+          "appreciative_signals": 9,
+          "critical_signals": 0,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 46,
+          "appreciative_signals": 9,
+          "critical_signals": 0,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 24,
+          "appreciative_signals": 5,
+          "critical_signals": 0,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 20,
+          "appreciative_signals": 4,
+          "critical_signals": 0,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Angikaaram": {
+      "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 8,
+      "explicit_reaction_comments": 0,
+      "appreciative_signals": 0,
+      "critical_signals": 0,
+      "substantive_share": 0.25,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 5
+        },
+        {
+          "name": "Emotion",
+          "comments": 1
+        }
+      ],
+      "reviewers": []
+    },
     "Anthony": {
       "summary": "Based on 5 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss direction & making.",
       "useful_comments": 5,
@@ -223,6 +315,46 @@
         }
       ],
       "reviewers": []
+    },
+    "Arulvaan": {
+      "summary": "Based on 86 useful public comments. Of 10 comments with detectable reaction wording, 9 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss emotion, release & theatre, acting & characters.",
+      "useful_comments": 86,
+      "explicit_reaction_comments": 10,
+      "appreciative_signals": 9,
+      "critical_signals": 1,
+      "substantive_share": 0.1977,
+      "top_aspects": [
+        {
+          "name": "Emotion",
+          "comments": 1
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 1
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 1
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 42,
+          "appreciative_signals": 3,
+          "critical_signals": 1,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Tubelight Mind",
+          "useful_comments": 42,
+          "appreciative_signals": 6,
+          "critical_signals": 0,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
     },
     "Blast": {
       "summary": "Based on 702 useful public comments. Of 224 comments with detectable reaction wording, 195 were appreciative and 29 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
@@ -280,6 +412,44 @@
         }
       ]
     },
+    "Con City": {
+      "summary": "Based on 15 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss pacing & runtime, story & screenplay.",
+      "useful_comments": 15,
+      "explicit_reaction_comments": 7,
+      "appreciative_signals": 5,
+      "critical_signals": 2,
+      "substantive_share": 0.4,
+      "top_aspects": [
+        {
+          "name": "Pacing & runtime",
+          "comments": 2
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 1
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Second Show",
+          "useful_comments": 15,
+          "appreciative_signals": 5,
+          "critical_signals": 2,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Dark Giant": {
+      "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 9,
+      "explicit_reaction_comments": 7,
+      "appreciative_signals": 2,
+      "critical_signals": 5,
+      "substantive_share": 0.0,
+      "top_aspects": [],
+      "reviewers": []
+    },
     "Double Occupancy": {
       "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss story & screenplay.",
       "useful_comments": 9,
@@ -291,6 +461,21 @@
         {
           "name": "Story & screenplay",
           "comments": 1
+        }
+      ],
+      "reviewers": []
+    },
+    "Find Me": {
+      "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss acting & characters.",
+      "useful_comments": 8,
+      "explicit_reaction_comments": 3,
+      "appreciative_signals": 3,
+      "critical_signals": 0,
+      "substantive_share": 0.125,
+      "top_aspects": [
+        {
+          "name": "Acting & characters",
+          "comments": 2
         }
       ],
       "reviewers": []
@@ -368,12 +553,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 442 useful public comments. Of 120 comments with detectable reaction wording, 96 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 442,
-      "explicit_reaction_comments": 120,
-      "appreciative_signals": 96,
+      "summary": "Based on 446 useful public comments. Of 121 comments with detectable reaction wording, 97 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 446,
+      "explicit_reaction_comments": 121,
+      "appreciative_signals": 97,
       "critical_signals": 24,
-      "substantive_share": 0.1787,
+      "substantive_share": 0.1794,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -454,6 +639,46 @@
       ],
       "reviewers": []
     },
+    "Habeebi": {
+      "summary": "Based on 113 useful public comments. Of 30 comments with detectable reaction wording, 29 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, direction & making.",
+      "useful_comments": 113,
+      "explicit_reaction_comments": 30,
+      "appreciative_signals": 29,
+      "critical_signals": 1,
+      "substantive_share": 0.4336,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 10
+        },
+        {
+          "name": "Emotion",
+          "comments": 6
+        },
+        {
+          "name": "Direction & making",
+          "comments": 4
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 55,
+          "appreciative_signals": 10,
+          "critical_signals": 1,
+          "questions": 18,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 51,
+          "appreciative_signals": 19,
+          "critical_signals": 0,
+          "questions": 7,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
     "Happy Raj": {
       "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
       "useful_comments": 8,
@@ -464,13 +689,32 @@
       "top_aspects": [],
       "reviewers": []
     },
+    "Heartin": {
+      "summary": "Based on 4 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 4,
+      "explicit_reaction_comments": 0,
+      "appreciative_signals": 0,
+      "critical_signals": 0,
+      "substantive_share": 0.25,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 3
+        },
+        {
+          "name": "Emotion",
+          "comments": 1
+        }
+      ],
+      "reviewers": []
+    },
     "Idhayam Murali": {
-      "summary": "Based on 593 useful public comments. Of 217 comments with detectable reaction wording, 153 were appreciative and 64 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 593,
-      "explicit_reaction_comments": 217,
-      "appreciative_signals": 153,
-      "critical_signals": 64,
-      "substantive_share": 0.2091,
+      "summary": "Based on 601 useful public comments. Of 221 comments with detectable reaction wording, 154 were appreciative and 67 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 601,
+      "explicit_reaction_comments": 221,
+      "appreciative_signals": 154,
+      "critical_signals": 67,
+      "substantive_share": 0.208,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -478,7 +722,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 25
+          "comments": 26
         },
         {
           "name": "Emotion",
@@ -496,9 +740,9 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 92,
-          "appreciative_signals": 19,
-          "critical_signals": 8,
+          "useful_comments": 98,
+          "appreciative_signals": 20,
+          "critical_signals": 10,
           "questions": 10,
           "leading_topic": "General reaction"
         },
@@ -744,6 +988,91 @@
         }
       ]
     },
+    "Lakshmikanthan Kolai Vazhakku": {
+      "summary": "Based on 15 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss acting & characters, story & screenplay.",
+      "useful_comments": 15,
+      "explicit_reaction_comments": 4,
+      "appreciative_signals": 4,
+      "critical_signals": 0,
+      "substantive_share": 0.4,
+      "top_aspects": [
+        {
+          "name": "Acting & characters",
+          "comments": 1
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 1
+        }
+      ],
+      "reviewers": []
+    },
+    "Love Oh Love": {
+      "summary": "Based on 97 useful public comments. Of 25 comments with detectable reaction wording, 17 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 97,
+      "explicit_reaction_comments": 25,
+      "appreciative_signals": 17,
+      "critical_signals": 8,
+      "substantive_share": 0.2062,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 5
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 3
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 2
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 39,
+          "appreciative_signals": 10,
+          "critical_signals": 6,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 33,
+          "appreciative_signals": 4,
+          "critical_signals": 1,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 13,
+          "appreciative_signals": 3,
+          "critical_signals": 1,
+          "questions": 2,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Galatta Plus",
+          "useful_comments": 12,
+          "appreciative_signals": 0,
+          "critical_signals": 0,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Moondram Kan": {
+      "summary": "Based on 15 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 15,
+      "explicit_reaction_comments": 5,
+      "appreciative_signals": 3,
+      "critical_signals": 2,
+      "substantive_share": 0.1333,
+      "top_aspects": [],
+      "reviewers": []
+    },
     "Mr. X": {
       "summary": "Based on 10 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
       "useful_comments": 10,
@@ -753,6 +1082,48 @@
       "substantive_share": 0.3,
       "top_aspects": [],
       "reviewers": []
+    },
+    "Nizhal": {
+      "summary": "Based on 5 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 5,
+      "explicit_reaction_comments": 1,
+      "appreciative_signals": 1,
+      "critical_signals": 0,
+      "substantive_share": 0.0,
+      "top_aspects": [],
+      "reviewers": []
+    },
+    "Nooru Sami": {
+      "summary": "Based on 52 useful public comments. Of 13 comments with detectable reaction wording, 13 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss direction & making, release & theatre, acting & characters.",
+      "useful_comments": 52,
+      "explicit_reaction_comments": 13,
+      "appreciative_signals": 13,
+      "critical_signals": 0,
+      "substantive_share": 0.4038,
+      "top_aspects": [
+        {
+          "name": "Direction & making",
+          "comments": 3
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 3
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 2
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Valai Pechu",
+          "useful_comments": 47,
+          "appreciative_signals": 9,
+          "critical_signals": 0,
+          "questions": 9,
+          "leading_topic": "General reaction"
+        }
+      ]
     },
     "Parimala and Co": {
       "summary": "Based on 442 useful public comments. Of 124 comments with detectable reaction wording, 85 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
@@ -938,6 +1309,16 @@
         }
       ]
     },
+    "Valluvan": {
+      "summary": "Based on 1 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 1,
+      "explicit_reaction_comments": 1,
+      "appreciative_signals": 0,
+      "critical_signals": 1,
+      "substantive_share": 0.0,
+      "top_aspects": [],
+      "reviewers": []
+    },
     "Youth": {
       "summary": "Based on 1,092 useful public comments. Of 305 comments with detectable reaction wording, 229 were appreciative and 76 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
       "useful_comments": 1092,
@@ -1045,41 +1426,117 @@
   },
   "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
-    "Idhayam Murali",
-    "Karuppu",
-    "Parimala and Co",
-    "Blast",
-    "Kara",
-    "Gatta Kusthi 2",
-    "With Love",
-    "Thaai Kizhavi",
-    "Gandhi Talks",
-    "Youth",
-    "29",
-    "TN 2026",
-    "Mr. X",
-    "Granny",
     "Arjunan Per Paththu",
-    "Double Occupancy",
-    "Neelira",
-    "Happy Raj",
+    "Anbe Diana",
+    "Arulvaan",
+    "Idhayam Murali",
+    "Love Oh Love",
+    "Lakshmikanthan Kolai Vazhakku",
+    "Unsaid",
+    "Gatta Kusthi 2",
     "Find Me",
-    "Anthony"
+    "Con City",
+    "Heartin",
+    "Angikaaram",
+    "Suitcased",
+    "Dark Giant",
+    "Nooru Sami",
+    "Double Occupancy",
+    "Moondram Kan",
+    "Habeebi",
+    "Nizhal",
+    "Valluvan"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1926,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 112,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 29,
-    "public_comment_count_unchanged": 77
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
-  "stored_comments": 9751,
-  "videos_monitored": 106,
-  "standard_videos_monitored": 77,
-  "shorts_monitored": 29,
+  "new_comments_added": 1040,
+  "stored_comments": 10504,
+  "videos_monitored": 112,
+  "standard_videos_monitored": 84,
+  "shorts_monitored": 28,
   "movie_catalog": [
+    {
+      "title": "Arjunan Per Paththu",
+      "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pZiRQ7hVuDzFkCVmzw9slhjSLhO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bI9hY9LOpegpsDCXq4B4UFf5ukr.jpg",
+      "tmdb_id": 1607621,
+      "overview": "Arjunan, who witnessed his parents being killed by lightning in front of his eyes, cannot bear the shock and arrives in Chennai from his hometown Madurai. Arjunan, who joined a kayalang shop in Chennai, starts to love a woman. Before marrying that woman, he was a worker and wanted to become an entrepreneur. He gave away all the money he had saved up until then and bought an old Tata Ace and married the woman he loved. Arjuna happily starts driving the vehicle, thinking that his life has become as happy as he thought it would be. Arjuna, who has been facing constant problems with that old vehicle, realizes that he has been completely cheated in buying the vehicle. He brings together all those who have been affected like him and exposes all the frauds in buying and selling old vehicles, seeking justice for himself and all those who have been cheated like him.",
+      "runtime": 0,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "R Rajmohan",
+      "cast": [
+        "Yogi Babu",
+        "Anamika Mahi",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Kaali Venkat",
+        "Aruldoss",
+        "Sentrayan",
+        "Subramaniam Siva",
+        "Lenin Bharathi",
+        "Myna Nandhini",
+        "M. Soundarya Saravanan"
+      ]
+    },
+    {
+      "title": "Anbe Diana",
+      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bc7 \u0b9f\u0baf\u0bbe\u0ba9\u0bbe",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1607634,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Pari Elavazhagan",
+      "cast": [
+        "Pari Elavazhagan",
+        "Ramya Ranganathan",
+        "Chetan",
+        "Roja Selvamani",
+        "Gopi Aravindh",
+        "Cell Murugan",
+        "Nikhila Sankar",
+        "Ismath Banu",
+        "Sudharshan Gandhy"
+      ]
+    },
+    {
+      "title": "Arulvaan",
+      "original_title": "\u0b85\u0bb0\u0bc1\u0bb3\u0bcd\u0bb5\u0bbe\u0ba9\u0bcd",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mAL7zUkSoHVl5LzjpuhBuzhJztk.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1616237,
+      "overview": "Follows Muthuvel, a resolute collector who overcomes all obstacles to educate a tribal girl and provide school access for the entire forest community.",
+      "runtime": 109,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Ganesh Vinayak",
+      "cast": [
+        "Arulnithi",
+        "Aarav Kizar",
+        "Ramya Pandian",
+        "Krithika",
+        "Kaali Venkat",
+        "John Vijay",
+        "VTV Ganesh"
+      ]
+    },
     {
       "title": "Idhayam Murali",
       "original_title": "\u0b87\u0ba4\u0baf\u0bae\u0bcd \u0bae\u0bc1\u0bb0\u0bb3\u0bbf",
@@ -1109,115 +1566,75 @@
       ]
     },
     {
-      "title": "Karuppu",
-      "original_title": "\u0b95\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1",
-      "release_date": "2026-05-14",
-      "poster_url": "https://image.tmdb.org/t/p/w500/4KZXlZ5tTT6ghbW77gS4hSLkCd7.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/1eAuwNBy34kkM3xkl202z4f1NiI.jpg",
-      "tmdb_id": 1367220,
-      "overview": "In a world where justice falters, guardian deity Vettai Karuppu takes the guise of a lawyer to battle a corrupt legal system preying on the powerless.",
-      "runtime": 152,
+      "title": "Love Oh Love",
+      "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1579405,
+      "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
+      "runtime": 130,
       "genres": [
-        "Action",
-        "Fantasy"
+        "Romance",
+        "Comedy"
       ],
-      "director": "RJ Balaji",
+      "director": "Magesh Rajendran",
       "cast": [
-        "Suriya",
-        "Trisha Krishnan",
-        "RJ Balaji",
-        "Indrans",
-        "Anagha Maya Ravi",
-        "Swasika",
-        "Sshivada",
-        "Natarajan Subramaniam",
-        "Supreet",
-        "Poobalam Pragatheeswaran"
-      ]
-    },
-    {
-      "title": "Parimala and Co",
-      "original_title": "\u0baa\u0bb0\u0bbf\u0bae\u0bb3\u0bbe & \u0b95\u0bcb",
-      "release_date": "2026-06-05",
-      "poster_url": "https://image.tmdb.org/t/p/w500/vN2TOTKin83av7hwYnwAKSd3EG8.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hcQ9Kcmc34yYElii4fjFxABQYqq.jpg",
-      "tmdb_id": 1602337,
-      "overview": "A dark comedy centered around a chaotic family whose tangled relationships and unpredictable situations lead to emotionally charged and absurd moments, blending humor with underlying tension and drama.",
-      "runtime": 138,
-      "genres": [
-        "Crime",
-        "Comedy",
-        "Mystery",
-        "Thriller"
-      ],
-      "director": "Pandiraj",
-      "cast": [
-        "Jayaram",
-        "Urvashi",
-        "Sanjana Krishnamoorthy",
-        "Ananthika Sanilkumar",
-        "Mysskin",
-        "Yogi Babu",
-        "Sandy",
-        "Santosh Shoban",
-        "G. K. M. Tamil Kumaran",
-        "Swasika"
-      ]
-    },
-    {
-      "title": "Blast",
-      "original_title": "\u0baa\u0bbf\u0bb3\u0bbe\u0bb8\u0bcd\u0b9f\u0bcd",
-      "release_date": "2026-05-28",
-      "poster_url": "https://image.tmdb.org/t/p/w500/lpsUpXieodUhN6DlK9ZDnjkysLk.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/xsoKAonKy1zk5XoQoUG1dUXDCKH.jpg",
-      "tmdb_id": 1515729,
-      "overview": "A seemingly ordinary family must unleash their hidden martial arts skills when they clash with a ruthless criminal gang tied to corruption and violence.",
-      "runtime": 143,
-      "genres": [
-        "Action",
-        "Thriller"
-      ],
-      "director": "Subash K Raj",
-      "cast": [
-        "Arjun Sarja",
-        "Abhirami",
-        "Preity Mukhundhan",
-        "Vivek Prasanna",
-        "John Kokken",
-        "Arjun Chidambaram",
-        "Pawan",
-        "Dhileban",
-        "Vinod Sagar",
-        "Bala Hasan"
-      ]
-    },
-    {
-      "title": "Kara",
-      "original_title": "\u0b95\u0bb0",
-      "release_date": "2026-04-30",
-      "poster_url": "https://image.tmdb.org/t/p/w500/uIrFdMWlJFdc1jPBP9bxeaISCDj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/e5IdZ1OEWMYxTeu51tI67gXvfpn.jpg",
-      "tmdb_id": 1433117,
-      "overview": "A thief tries to go straight, but when predatory banks trap his father in debt, he returns to crime \u2014 with a determined cop closing in on his trail.",
-      "runtime": 161,
-      "genres": [
-        "Crime",
-        "Drama",
-        "Thriller",
-        "Action"
-      ],
-      "director": "Vignesh Raja",
-      "cast": [
-        "Dhanush",
-        "Mamitha Baiju",
+        "Pavish Narayanan",
+        "Naga Durga",
+        "Selvaraghavan",
+        "Vanitha Vijayakumar",
         "K. S. Ravikumar",
-        "Suraj Venjaramoodu",
-        "Karunas",
-        "Jayaram",
-        "M. S. Bhaskar",
-        "Prithvi Pandiarajan",
-        "Sreeja Ravi",
-        "Dhanesh Koliyat"
+        "Adithya Kathir",
+        "M. Soundarya Saravanan",
+        "Ashwath",
+        "Ramya Subramanian"
+      ]
+    },
+    {
+      "title": "Lakshmikanthan Kolai Vazhakku",
+      "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pGS1KRODHNYzR35slcgJp9NzMiP.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1620357,
+      "overview": "A young man convicted of murder awaits execution, while a conflicted judge, an aging hangman, and a morally torn jailer confront the weight of justice, guilt, and humanity in the final hours before dawn.",
+      "runtime": 107,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "Dayal Padmanabhan",
+      "cast": [
+        "Vetri",
+        "Brigida Saga",
+        "Rangaraj Pandey",
+        "Subramaniam Siva",
+        "Saravanan",
+        "Lollu Sabha Maaran",
+        "Lizzie Antony",
+        "Kanya Bharathi",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Unsaid",
+      "original_title": "Unsaid",
+      "release_date": "2026-07-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/tAWIXhjYgf6lruQ6j4Hdza3x8RW.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/3wVePcLPeq8XDpRsXcHpgi2fdBZ.jpg",
+      "tmdb_id": 1731710,
+      "overview": "After missing the chance to express his feelings, a young aspiring writer begins crafting the story he wishes he had lived. As fiction, UNSAID explores love, regret, and the quiet weight of words left unspoken.",
+      "runtime": 12,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Manoj Sukrith",
+      "cast": [
+        "Jaikanth",
+        "Yogesh",
+        "Monisha",
+        "Manoj Sukrith"
       ]
     },
     {
@@ -1245,327 +1662,6 @@
         "Gajaraj",
         "Sreeja Ravi",
         "Karunakaran"
-      ]
-    },
-    {
-      "title": "With Love",
-      "original_title": "\u0bb5\u0bbf\u0ba4\u0bcd \u0bb2\u0bb5\u0bcd",
-      "release_date": "2026-02-06",
-      "poster_url": "https://image.tmdb.org/t/p/w500/84rCbRiY7cXwDO8lAXp5MIxuok5.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6YWf1MOdFZyecWmsvl1J44tFG7y.jpg",
-      "tmdb_id": 1508564,
-      "overview": "Sathya reluctantly agrees to a blind date arranged by his sister and meets Monisha. They discover they attended the same school years ago. Bonding over shared memories and old crushes, they reconnect with their past and grow closer.",
-      "runtime": 141,
-      "genres": [
-        "Romance",
-        "Comedy"
-      ],
-      "director": "Madhan",
-      "cast": [
-        "Abishan Jeevinth",
-        "Anaswara Rajan",
-        "Harish Kumar",
-        "Kavya Anil",
-        "Sacchin Nachiappan",
-        "Saravanan",
-        "Theni Murugan",
-        "RJ Ananthi",
-        "Sudharshan Gandhy",
-        "Sachana Namidass"
-      ]
-    },
-    {
-      "title": "Thaai Kizhavi",
-      "original_title": "\u0ba4\u0bbe\u0baf\u0bcd \u0b95\u0bbf\u0bb4\u0bb5\u0bbf",
-      "release_date": "2026-02-27",
-      "poster_url": "https://image.tmdb.org/t/p/w500/21dLAnBhu3dMjQ89UIHGEtkoQ02.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uXnVsLFzxt8zTTPgzFhqeSkI3ce.jpg",
-      "tmdb_id": 1602783,
-      "overview": "An elderly and feared moneylender from a village near Madurai falls seriously ill, prompting her estranged sons and extended family to reunite after years of separation. As tensions rise inside the household, hidden motives, family conflicts, and expectations over her wealth turn her uncertain condition into the center of a chaotic family drama.",
-      "runtime": 144,
-      "genres": [
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Sivakumar Murugesan",
-      "cast": [
-        "Radhika Sarathkumar",
-        "Singampuli",
-        "Aruldoss",
-        "Balasaravanan",
-        "Munishkanth",
-        "Muthukumar",
-        "Raichal Rabecca Philip",
-        "Ilavarasu",
-        "George Mariyan",
-        "Hu Chen De"
-      ]
-    },
-    {
-      "title": "Gandhi Talks",
-      "original_title": "Gandhi Talks",
-      "release_date": "2026-01-30",
-      "poster_url": "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
-      "tmdb_id": 786567,
-      "overview": "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev\u2019s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
-      "runtime": 133,
-      "genres": [
-        "Comedy"
-      ],
-      "director": "Kishor Pandurang 'Belekar'",
-      "cast": [
-        "Vijay Sethupathi",
-        "Arvind Swamy",
-        "Aditi Rao Hydari",
-        "Divay Dhamija",
-        "Siddharth Jadhav",
-        "Rohini Hattangadi",
-        "Usha Nadkarni",
-        "Zarina Wahab",
-        "Govind Namdeo",
-        "Bagavathi Perumal"
-      ]
-    },
-    {
-      "title": "Youth",
-      "original_title": "\u0baf\u0bc2\u0ba4\u0bcd",
-      "release_date": "2026-03-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/rNzk0jlGRPnvZ26On5xhTmLaQhO.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/eaknBFnMg8fPlwlegBaPtQfhyF8.jpg",
-      "tmdb_id": 1542352,
-      "overview": "Youth follows Praveen, a 15-year-old boy who enters adolescence determined to find true love before school ends. As he goes through multiple relationships and heartbreaks, he slowly begins to understand what love truly means. Along the way, the experiences shape his growth, maturity, and outlook on life.",
-      "runtime": 141,
-      "genres": [
-        "Comedy",
-        "Romance",
-        "Drama"
-      ],
-      "director": "Ken Karunaas",
-      "cast": [
-        "Ken Karunaas",
-        "Anishma Anilkumar",
-        "Suraj Venjaramoodu",
-        "Devadarshini",
-        "Meenakshi Dinesh",
-        "Priyanshi Yadav",
-        "Abison Thevarasa",
-        "Sarath",
-        "Eshwar Santhanalakshmi",
-        "Nalini"
-      ]
-    },
-    {
-      "title": "29",
-      "original_title": "29",
-      "release_date": "2026-05-08",
-      "poster_url": "https://image.tmdb.org/t/p/w500/aQZ4OxzaYTN7cRN7fALi9BhPucp.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gzOamXAMuBpWFcCitMdEoAVAjCf.jpg",
-      "tmdb_id": 1510769,
-      "overview": "A quirky 29-year-old named Sathya embarks on an unexpected journey of laughter, unlikely friendships, and self-discovery. Through hilarious misadventures and chance encounters, he slowly sees life's bigger picture - its surprises, joys, and second chances.",
-      "runtime": 149,
-      "genres": [
-        "Romance",
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Rathna Kumar",
-      "cast": [
-        "Vidhu",
-        "Preethi Asrani",
-        "Mahendran",
-        "Sindhu Shyam",
-        "Avinash Raghudevan",
-        "Leona Lishoy",
-        "Aadhira Pandilakshmi",
-        "Shenaz Fathima",
-        "Prem",
-        "Sam Santo"
-      ]
-    },
-    {
-      "title": "TN 2026",
-      "original_title": "TN 2026",
-      "release_date": "2026-04-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/mAX1ujOROXtKsOuIg5MbJbotOyD.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hlTs5C7zQ7TrH7REWOkSXzi67p7.jpg",
-      "tmdb_id": 1556783,
-      "overview": "Set in Pollachi, the story follows a powerful landlord, Sivalingam Mandradiyar, who becomes obsessed with a rising actor, Kukanth Kumar, believing he is the next M.G.R. He pours his wealth into shaping the actor's career and political future. But as ambition and fame grow, so does the risk of downfall. Will it lead to power or ruin?",
-      "runtime": 138,
-      "genres": [
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Umapathy Ramaiah",
-      "cast": [
-        "Natarajan Subramaniam",
-        "Thambi Ramaiah",
-        "M. S. Bhaskar",
-        "Ilavarasu",
-        "Shrita Rao",
-        "Yashika Anand",
-        "Chandhini Tamilarasan",
-        "Redin Kingsley",
-        "Viji Chandrasekhar",
-        "Vadivukarasi"
-      ]
-    },
-    {
-      "title": "Mr. X",
-      "original_title": "\u0bae\u0bbf\u0bb8\u0bcd\u0b9f\u0bb0\u0bcd. \u0b8e\u0b95\u0bcd\u0bb8\u0bcd",
-      "release_date": "2026-04-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/7aqx7T9FNu1HPCyb0CBjJtjshoU.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/pHYVsFUjKnYpHmhvTILd3XqXwRM.jpg",
-      "tmdb_id": 1126723,
-      "overview": "Centers on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
-      "runtime": 153,
-      "genres": [
-        "Action",
-        "Thriller"
-      ],
-      "director": "Manu Anand",
-      "cast": [
-        "Arya",
-        "Gautham Ram Karthik",
-        "Manju Warrier",
-        "R. Sarathkumar",
-        "Anagha",
-        "Athulya Ravi",
-        "Raiza Wilson",
-        "Jayaprakash",
-        "Kaali Venkat",
-        "Tara Amala Joseph"
-      ]
-    },
-    {
-      "title": "Granny",
-      "original_title": "\u0b95\u0bcd\u0bb0\u0bbe\u0ba3\u0bbf",
-      "release_date": "2026-01-30",
-      "poster_url": "https://image.tmdb.org/t/p/w500/eaeKmjzKOKFOGmXOoURrVsLncqF.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fKusVXla3cZ2JM40vlYJT86ft2D.jpg",
-      "tmdb_id": 1623927,
-      "overview": "Granny is an upcoming film directed by Vijaya Kumara, starring Vadivukkarasi, Dhileepan, Singampuli, Gaja Raja, Ananthu Nag, and Aparna in prominent roles.",
-      "runtime": 124,
-      "genres": [
-        "Horror"
-      ],
-      "director": "Vijaya Kumaran",
-      "cast": [
-        "Vadivukarasi",
-        "Dhileban",
-        "Gajaraj",
-        "Ananth Nag",
-        "Aparna",
-        "Ghanshyam",
-        "Sandrea"
-      ]
-    },
-    {
-      "title": "Arjunan Per Paththu",
-      "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
-      "release_date": "2026-07-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/pZiRQ7hVuDzFkCVmzw9slhjSLhO.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bI9hY9LOpegpsDCXq4B4UFf5ukr.jpg",
-      "tmdb_id": 1607621,
-      "overview": "Arjunan, who witnessed his parents being killed by lightning in front of his eyes, cannot bear the shock and arrives in Chennai from his hometown Madurai. Arjunan, who joined a kayalang shop in Chennai, starts to love a woman. Before marrying that woman, he was a worker and wanted to become an entrepreneur. He gave away all the money he had saved up until then and bought an old Tata Ace and married the woman he loved. Arjuna happily starts driving the vehicle, thinking that his life has become as happy as he thought it would be. Arjuna, who has been facing constant problems with that old vehicle, realizes that he has been completely cheated in buying the vehicle. He brings together all those who have been affected like him and exposes all the frauds in buying and selling old vehicles, seeking justice for himself and all those who have been cheated like him.",
-      "runtime": 0,
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "director": "R Rajmohan",
-      "cast": [
-        "Yogi Babu",
-        "Anamika Mahi",
-        "Madhan Kumar Dhakshinamoorthy",
-        "Kaali Venkat",
-        "Aruldoss",
-        "Sentrayan",
-        "Subramaniam Siva",
-        "Lenin Bharathi",
-        "Myna Nandhini",
-        "M. Soundarya Saravanan"
-      ]
-    },
-    {
-      "title": "Double Occupancy",
-      "original_title": "\u0b9f\u0baa\u0bc1\u0bb2\u0bcd \u0b86\u0b95\u0bcd\u0b95\u0bc1\u0baa\u0ba3\u0bcd\u0b9a\u0bbf",
-      "release_date": "2026-06-12",
-      "poster_url": "https://image.tmdb.org/t/p/w500/m0rN6dUnvAAjIwKDLRSIdkrZcBA.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yxKw7DH4aqexI1rBkUnG5rtwaiL.jpg",
-      "tmdb_id": 1565790,
-      "overview": "Rajini transforms between woman by day and man by night, hiding this gender swap from partners creating tangled complications.",
-      "runtime": 132,
-      "genres": [
-        "Romance",
-        "Drama",
-        "Fantasy"
-      ],
-      "director": "Aswin Kandasamy",
-      "cast": [
-        "Santhosh",
-        "Reshma Venkatesh",
-        "Samyuktha Viola Viswanathan",
-        "Vinoth Kishan",
-        "VTV Ganesh",
-        "Bagavathi Perumal",
-        "Vichu Vishwanath",
-        "Bose Venkat",
-        "Vinodhini Vaidyanathan"
-      ]
-    },
-    {
-      "title": "Neelira",
-      "original_title": "\u0ba8\u0bc0\u0bb3\u0bbf\u0bb0\u0bbe",
-      "release_date": "2026-04-03",
-      "poster_url": "https://image.tmdb.org/t/p/w500/a8HvmTThFuE4lbQ8zCdm7tySgpU.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6vjDCzUILv7T7NGNzaZKMHk0CJF.jpg",
-      "tmdb_id": 1652180,
-      "overview": "A wedding eve in 1988 Sri Lanka turns into a hostage standoff when Indian Army soldiers occupy a family's home overnight.",
-      "runtime": 92,
-      "genres": [
-        "Thriller",
-        "War"
-      ],
-      "director": "Someetharan",
-      "cast": [
-        "Naveen Chandra",
-        "Sananth",
-        "Kapila Venu",
-        "Roopa Koduvayur",
-        "Vidhu",
-        "Sidhu kumaresan",
-        "Vincent Nakul",
-        "Tharmeega Manimaran",
-        "Gajaraj"
-      ]
-    },
-    {
-      "title": "Happy Raj",
-      "original_title": "\u0bb9\u0bc7\u0baa\u0bcd\u0baa\u0bbf \u0bb0\u0bbe\u0b9c\u0bcd",
-      "release_date": "2026-03-27",
-      "poster_url": "https://image.tmdb.org/t/p/w500/8hmB6KNUFFzChYJxngIp063H2YR.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fug20H3qffP941XVDJCnpY61GVn.jpg",
-      "tmdb_id": 1518247,
-      "overview": "A city romance meets a rural family invasion. What follows is chaos, comedy, and heartfelt moments. The story unfolds as a joyful entertainer that explores love, cultural clashes, and the importance of family bonds.",
-      "runtime": 159,
-      "genres": [
-        "Romance",
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Maria Raja Elenchezhian",
-      "cast": [
-        "G. V. Prakash Kumar",
-        "Sri Gouri Priya Reddy",
-        "Abbas",
-        "George Mariyan",
-        "Geetha Kailasam",
-        "Prathana Nathan",
-        "Madurai Muthu",
-        "Adhirchi Arun",
-        "Muhammad Rasool",
-        "Akhilan"
       ]
     },
     {
@@ -1597,28 +1693,279 @@
       ]
     },
     {
-      "title": "Anthony",
-      "original_title": "\u0b85\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bbf",
-      "release_date": "2026-03-13",
-      "poster_url": "https://image.tmdb.org/t/p/w500/iSTE5UGlQ5YlPiMdsuCOAnChY9X.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/qNEwPLOkD6VbNh8iUS4kRzNSZF6.jpg",
-      "tmdb_id": 1642665,
-      "overview": "Set along the coastal shores of Jaffna, the story follows a fisherman and his family  whose lives are inseparably tied to the sea. As he struggles to balance his responsibilities toward his profession and his family, a tender love story unfolds, shaping his choices and testing his values. Daily life within the fishing community  its hardships, traditions, and unspoken bonds, forms the backdrop of the narrative. When personal desires begin to clash with family expectations, the protagonist is forced to confront sacrifice, loyalty, and the true meaning of love. Through moments of romance, conflict, and emotional depth, the film reveals the  strength of family ties and the resilience of a community that survives by trusting the sea and each other.",
-      "runtime": 136,
+      "title": "Con City",
+      "original_title": "\u0b95\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pJ4UwvLpek1jK8d540Ho8xI08iL.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/jzDjIHDknKz9jhTvBF9aSeoax1V.jpg",
+      "tmdb_id": 1596008,
+      "overview": "Follows a struggling family whose lives change when a receipt printer starts generating money after a lightning strike, leading to public chaos when society discovers the money-making machine.",
+      "runtime": 150,
       "genres": [
-        "Family",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy"
+      ],
+      "director": "Harish Durairaj",
+      "cast": [
+        "Arjun Das",
+        "Anna Ben",
+        "Yogi Babu",
+        "Vadivukarasi",
+        "Thambi Ramaiah",
+        "Ramesh Thilak",
+        "Imman Annachi",
+        "Bharadwaj Rangan",
+        "Ponvannan",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Heartin",
+      "original_title": "\u0bb9\u0bbe\u0bb0\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7xvMocNLZov64aOU1X3BRWawjD7.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ufVCGoqEHOCahpXwDguGIq8CxAP.jpg",
+      "tmdb_id": 1434102,
+      "overview": "Fate tosses a couple into an unexpected situation with an ex-girlfriend in the mix.",
+      "runtime": 119,
+      "genres": [
+        "Comedy",
+        "Romance",
         "Drama"
       ],
-      "director": "Sukirthan Christhuraja",
+      "director": "Kishore kumar",
       "cast": [
-        "Vincent Nakul",
-        "TJ Bhanu",
-        "Sudharshan Raveendran",
-        "Saumi Munasin",
-        "Ashana Julius Kanistan",
-        "Aruldoss",
-        "Nizhalgal Ravi",
-        "Kalaivalarai Saga Ramanathas"
+        "Madonna Sebastian",
+        "Sananth",
+        "Emaya T",
+        "Whatsapp Mani",
+        "Debnita Kar",
+        "Pragathi Mahavadi",
+        "Uma Padmanabhan",
+        "Ajit Koshy",
+        "Mathew Varghese"
+      ]
+    },
+    {
+      "title": "Angikaaram",
+      "original_title": "\u0b85\u0b99\u0bcd\u0b95\u0bc0\u0b95\u0bbe\u0bb0\u0bae\u0bcd",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/rRyz56Fubfwmre6F5QiYyIzKmnT.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/w5EprlCldSQ5lPTHFmhvXAsb8VB.jpg",
+      "tmdb_id": 1485325,
+      "overview": "Inspired by true events, this film follows the journey of a man who has had enough, fights for recognition against a system shaped strictly by politics and power.",
+      "runtime": 140,
+      "genres": [
+        "Drama",
+        "Action"
+      ],
+      "director": "JP Thenpathiyan",
+      "cast": [
+        "Kotapadi J Rajesh",
+        "Sindhoori Vishwanath",
+        "Mansoor Ali Khan",
+        "Rangaraj Pandey",
+        "Viji Venkatesh",
+        "Rama",
+        "Mohan Raman"
+      ]
+    },
+    {
+      "title": "Suitcased",
+      "original_title": "Suitcased",
+      "release_date": "2026-06-25",
+      "poster_url": "https://image.tmdb.org/t/p/w500/xlvXWWT7XSdLeu2Q107vNEVeZDJ.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/k3MXJpgXxW5mO8yxhwsZgoONVHL.jpg",
+      "tmdb_id": 1719774,
+      "overview": "When a struggling student discovers his late father left him a locked pendrive containing a massive fortune in Bitcoin, he and his friends must crack a highly secure password with only one attempt remaining\u2014unknowingly holding the key to a long-buried family secret.",
+      "runtime": 7,
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Family"
+      ],
+      "director": "Bharath Rikkesh",
+      "cast": [
+        "Krishanth",
+        "Varun",
+        "Yogesh SD"
+      ]
+    },
+    {
+      "title": "Dark Giant",
+      "original_title": "Dark Giant",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
+      "tmdb_id": 1715800,
+      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
+      "runtime": 0,
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "director": "KS Kishaan",
+      "cast": [
+        "Sonia Agarwal",
+        "K. Bhagyaraj",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Jovita Livingston",
+        "Livingston",
+        "Amudhavanan",
+        "Rafiq Batcha",
+        "Adarsh Madhikanth"
+      ]
+    },
+    {
+      "title": "Nooru Sami",
+      "original_title": "\u0ba8\u0bc2\u0bb1\u0bc1 \u0b9a\u0bbe\u0bae\u0bbf",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/r9mX5R4jsrospJlWrOE8WqzktnH.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/h4j6jcnQDCepz2dzLmWaoRPveEo.jpg",
+      "tmdb_id": 1544326,
+      "overview": "Selvi, a widowed mother, devotes her life to raising her two sons in a conservative village. Years later, unfulfilled life comes back into focus, challenging deep-rooted traditions. As family and society strongly oppose change, Selvi must choose between societal expectations and her own happiness.",
+      "runtime": 131,
+      "genres": [
+        "Drama",
+        "Family"
+      ],
+      "director": "Sasi",
+      "cast": [
+        "Swasika",
+        "Vijay Antony",
+        "Lijomol Jose",
+        "Ajay Dhisan",
+        "Kavya Anil",
+        "Karunas",
+        "Sakthi Raj",
+        "Balaji Sakthivel",
+        "Padine Kumar",
+        "Aruldoss"
+      ]
+    },
+    {
+      "title": "Double Occupancy",
+      "original_title": "\u0b9f\u0baa\u0bc1\u0bb2\u0bcd \u0b86\u0b95\u0bcd\u0b95\u0bc1\u0baa\u0ba3\u0bcd\u0b9a\u0bbf",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/m0rN6dUnvAAjIwKDLRSIdkrZcBA.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yxKw7DH4aqexI1rBkUnG5rtwaiL.jpg",
+      "tmdb_id": 1565790,
+      "overview": "Rajini transforms between woman by day and man by night, hiding this gender swap from partners creating tangled complications.",
+      "runtime": 132,
+      "genres": [
+        "Romance",
+        "Drama",
+        "Fantasy"
+      ],
+      "director": "Aswin Kandasamy",
+      "cast": [
+        "Santhosh",
+        "Reshma Venkatesh",
+        "Samyuktha Viola Viswanathan",
+        "Vinoth Kishan",
+        "VTV Ganesh",
+        "Bagavathi Perumal",
+        "Vichu Vishwanath",
+        "Bose Venkat",
+        "Vinodhini Vaidyanathan"
+      ]
+    },
+    {
+      "title": "Moondram Kan",
+      "original_title": "\u0bae\u0bc2\u0ba9\u0bcd\u0bb1\u0bbe\u0bae\u0bcd \u0b95\u0ba3\u0bcd",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/zScF00DoAaZoTxysoxTQk7aUge4.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/i24a2DQNM12AAZczm4Ju04Wesdn.jpg",
+      "tmdb_id": 1686580,
+      "overview": "Follows the investigation of a factory general manager's murder, where four workers\u2014a mechanic, assistant manager, owner, and new recruit\u2014become the primary suspects.",
+      "runtime": 115,
+      "genres": [
+        "Thriller",
+        "Drama",
+        "Crime"
+      ],
+      "director": "Sago Ganesan",
+      "cast": [
+        "Vidharth",
+        "Kalaiyarasan",
+        "Santhosh Prathap",
+        "Thrigun",
+        "Teju Ashwini",
+        "Athulya Chandra",
+        "John Vijay",
+        "Radha",
+        "KPY Sarath Raj",
+        "Swetha Dorathy"
+      ]
+    },
+    {
+      "title": "Habeebi",
+      "original_title": "\u0bb9\u0baa\u0bc0\u0baa\u0bbf",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/kHU73XK0DHhphgo7U6MUQz8ADYv.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hdQRhWMUg6cKSWcTCCyqWXcv8Ly.jpg",
+      "tmdb_id": 1655049,
+      "overview": "Follows a boy and girl in a Muslim neighbourhood in southern Tamil Nadu whose romance divides their community.",
+      "runtime": 150,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Meera Kathiravan",
+      "cast": [
+        "Kasthoori Raja",
+        "Esha M",
+        "Malavika Manoj",
+        "Dhanasree Sudhakaran",
+        "Anusreya Rajan",
+        "Ismath Banu",
+        "Rekha Kumanan",
+        "Jayasree Binuraj"
+      ]
+    },
+    {
+      "title": "Nizhal",
+      "original_title": "Nizhal",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/sqdnjFOemwhDe6Jeu9K51J8E5RE.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/zCI2BleOTvbqqEj9Za7Wr8tDC2q.jpg",
+      "tmdb_id": 1710563,
+      "overview": "NIZHAL follows twin sisters Ramya and Saranya. Saranya is a trainee doctor, and Ramya helps their vendor parents. Tragedy strikes when Saranya\u2019s friend Lakshmi is brutally murdered in the hospital lab by Guna, the CEO's son, and his gang. Ramya witnesses the crime and narrowly survives a deadly attack by them. Driven by fury, Saranya seeks vengeance and puts the killers on their deathbeds. Ironically, her lover Raghu takes charge as the sub-inspector for this very case. When Raghu uncovers the truth, a gripping battle begins between law, love, and ultimate justice.",
+      "runtime": 101,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "AK Kumar",
+      "cast": [
+        "Janany Kunaseelan",
+        "Vishakan",
+        "Divya Krishnan",
+        "Kaushik Gopalan"
+      ]
+    },
+    {
+      "title": "Valluvan",
+      "original_title": "\u0bb5\u0bb3\u0bcd\u0bb3\u0bc1\u0bb5\u0ba9\u0bcd",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/iq9HZqIhcUe3eYwUdiWxqmGzxSu.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1595789,
+      "overview": "When a string of high-profile murders rocks the city, investigators uncover a dark secret linking the victims to an unspeakable crime. But even after the alleged killer is caught, the killings don\u2019t stop\u2014revealing a far deeper conspiracy where justice comes at a deadly price.",
+      "runtime": 0,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Shankar Sarathi",
+      "cast": [
+        "Chethan Cheenu",
+        "Ashna Zaveri",
+        "Boxer Dheena",
+        "Prem Kumar",
+        "Karate Raja",
+        "'Meesai' Rajendran"
       ]
     }
   ],
@@ -2163,43 +2510,624 @@
         "Nizhalgal Ravi",
         "Kalaivalarai Saga Ramanathas"
       ]
+    },
+    {
+      "title": "Anbe Diana",
+      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bc7 \u0b9f\u0baf\u0bbe\u0ba9\u0bbe",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1607634,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Pari Elavazhagan",
+      "cast": [
+        "Pari Elavazhagan",
+        "Ramya Ranganathan",
+        "Chetan",
+        "Roja Selvamani",
+        "Gopi Aravindh",
+        "Cell Murugan",
+        "Nikhila Sankar",
+        "Ismath Banu",
+        "Sudharshan Gandhy"
+      ]
+    },
+    {
+      "title": "Arulvaan",
+      "original_title": "\u0b85\u0bb0\u0bc1\u0bb3\u0bcd\u0bb5\u0bbe\u0ba9\u0bcd",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mAL7zUkSoHVl5LzjpuhBuzhJztk.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1616237,
+      "overview": "Follows Muthuvel, a resolute collector who overcomes all obstacles to educate a tribal girl and provide school access for the entire forest community.",
+      "runtime": 109,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Ganesh Vinayak",
+      "cast": [
+        "Arulnithi",
+        "Aarav Kizar",
+        "Ramya Pandian",
+        "Krithika",
+        "Kaali Venkat",
+        "John Vijay",
+        "VTV Ganesh"
+      ]
+    },
+    {
+      "title": "Love Oh Love",
+      "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1579405,
+      "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
+      "runtime": 130,
+      "genres": [
+        "Romance",
+        "Comedy"
+      ],
+      "director": "Magesh Rajendran",
+      "cast": [
+        "Pavish Narayanan",
+        "Naga Durga",
+        "Selvaraghavan",
+        "Vanitha Vijayakumar",
+        "K. S. Ravikumar",
+        "Adithya Kathir",
+        "M. Soundarya Saravanan",
+        "Ashwath",
+        "Ramya Subramanian"
+      ]
+    },
+    {
+      "title": "Lakshmikanthan Kolai Vazhakku",
+      "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pGS1KRODHNYzR35slcgJp9NzMiP.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1620357,
+      "overview": "A young man convicted of murder awaits execution, while a conflicted judge, an aging hangman, and a morally torn jailer confront the weight of justice, guilt, and humanity in the final hours before dawn.",
+      "runtime": 107,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "Dayal Padmanabhan",
+      "cast": [
+        "Vetri",
+        "Brigida Saga",
+        "Rangaraj Pandey",
+        "Subramaniam Siva",
+        "Saravanan",
+        "Lollu Sabha Maaran",
+        "Lizzie Antony",
+        "Kanya Bharathi",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Unsaid",
+      "original_title": "Unsaid",
+      "release_date": "2026-07-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/tAWIXhjYgf6lruQ6j4Hdza3x8RW.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/3wVePcLPeq8XDpRsXcHpgi2fdBZ.jpg",
+      "tmdb_id": 1731710,
+      "overview": "After missing the chance to express his feelings, a young aspiring writer begins crafting the story he wishes he had lived. As fiction, UNSAID explores love, regret, and the quiet weight of words left unspoken.",
+      "runtime": 12,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Manoj Sukrith",
+      "cast": [
+        "Jaikanth",
+        "Yogesh",
+        "Monisha",
+        "Manoj Sukrith"
+      ]
+    },
+    {
+      "title": "Con City",
+      "original_title": "\u0b95\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pJ4UwvLpek1jK8d540Ho8xI08iL.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/jzDjIHDknKz9jhTvBF9aSeoax1V.jpg",
+      "tmdb_id": 1596008,
+      "overview": "Follows a struggling family whose lives change when a receipt printer starts generating money after a lightning strike, leading to public chaos when society discovers the money-making machine.",
+      "runtime": 150,
+      "genres": [
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy"
+      ],
+      "director": "Harish Durairaj",
+      "cast": [
+        "Arjun Das",
+        "Anna Ben",
+        "Yogi Babu",
+        "Vadivukarasi",
+        "Thambi Ramaiah",
+        "Ramesh Thilak",
+        "Imman Annachi",
+        "Bharadwaj Rangan",
+        "Ponvannan",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Heartin",
+      "original_title": "\u0bb9\u0bbe\u0bb0\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7xvMocNLZov64aOU1X3BRWawjD7.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ufVCGoqEHOCahpXwDguGIq8CxAP.jpg",
+      "tmdb_id": 1434102,
+      "overview": "Fate tosses a couple into an unexpected situation with an ex-girlfriend in the mix.",
+      "runtime": 119,
+      "genres": [
+        "Comedy",
+        "Romance",
+        "Drama"
+      ],
+      "director": "Kishore kumar",
+      "cast": [
+        "Madonna Sebastian",
+        "Sananth",
+        "Emaya T",
+        "Whatsapp Mani",
+        "Debnita Kar",
+        "Pragathi Mahavadi",
+        "Uma Padmanabhan",
+        "Ajit Koshy",
+        "Mathew Varghese"
+      ]
+    },
+    {
+      "title": "Angikaaram",
+      "original_title": "\u0b85\u0b99\u0bcd\u0b95\u0bc0\u0b95\u0bbe\u0bb0\u0bae\u0bcd",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/rRyz56Fubfwmre6F5QiYyIzKmnT.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/w5EprlCldSQ5lPTHFmhvXAsb8VB.jpg",
+      "tmdb_id": 1485325,
+      "overview": "Inspired by true events, this film follows the journey of a man who has had enough, fights for recognition against a system shaped strictly by politics and power.",
+      "runtime": 140,
+      "genres": [
+        "Drama",
+        "Action"
+      ],
+      "director": "JP Thenpathiyan",
+      "cast": [
+        "Kotapadi J Rajesh",
+        "Sindhoori Vishwanath",
+        "Mansoor Ali Khan",
+        "Rangaraj Pandey",
+        "Viji Venkatesh",
+        "Rama",
+        "Mohan Raman"
+      ]
+    },
+    {
+      "title": "Suitcased",
+      "original_title": "Suitcased",
+      "release_date": "2026-06-25",
+      "poster_url": "https://image.tmdb.org/t/p/w500/xlvXWWT7XSdLeu2Q107vNEVeZDJ.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/k3MXJpgXxW5mO8yxhwsZgoONVHL.jpg",
+      "tmdb_id": 1719774,
+      "overview": "When a struggling student discovers his late father left him a locked pendrive containing a massive fortune in Bitcoin, he and his friends must crack a highly secure password with only one attempt remaining\u2014unknowingly holding the key to a long-buried family secret.",
+      "runtime": 7,
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Family"
+      ],
+      "director": "Bharath Rikkesh",
+      "cast": [
+        "Krishanth",
+        "Varun",
+        "Yogesh SD"
+      ]
+    },
+    {
+      "title": "Dark Giant",
+      "original_title": "Dark Giant",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
+      "tmdb_id": 1715800,
+      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
+      "runtime": 0,
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "director": "KS Kishaan",
+      "cast": [
+        "Sonia Agarwal",
+        "K. Bhagyaraj",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Jovita Livingston",
+        "Livingston",
+        "Amudhavanan",
+        "Rafiq Batcha",
+        "Adarsh Madhikanth"
+      ]
+    },
+    {
+      "title": "Nooru Sami",
+      "original_title": "\u0ba8\u0bc2\u0bb1\u0bc1 \u0b9a\u0bbe\u0bae\u0bbf",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/r9mX5R4jsrospJlWrOE8WqzktnH.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/h4j6jcnQDCepz2dzLmWaoRPveEo.jpg",
+      "tmdb_id": 1544326,
+      "overview": "Selvi, a widowed mother, devotes her life to raising her two sons in a conservative village. Years later, unfulfilled life comes back into focus, challenging deep-rooted traditions. As family and society strongly oppose change, Selvi must choose between societal expectations and her own happiness.",
+      "runtime": 131,
+      "genres": [
+        "Drama",
+        "Family"
+      ],
+      "director": "Sasi",
+      "cast": [
+        "Swasika",
+        "Vijay Antony",
+        "Lijomol Jose",
+        "Ajay Dhisan",
+        "Kavya Anil",
+        "Karunas",
+        "Sakthi Raj",
+        "Balaji Sakthivel",
+        "Padine Kumar",
+        "Aruldoss"
+      ]
+    },
+    {
+      "title": "Moondram Kan",
+      "original_title": "\u0bae\u0bc2\u0ba9\u0bcd\u0bb1\u0bbe\u0bae\u0bcd \u0b95\u0ba3\u0bcd",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/zScF00DoAaZoTxysoxTQk7aUge4.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/i24a2DQNM12AAZczm4Ju04Wesdn.jpg",
+      "tmdb_id": 1686580,
+      "overview": "Follows the investigation of a factory general manager's murder, where four workers\u2014a mechanic, assistant manager, owner, and new recruit\u2014become the primary suspects.",
+      "runtime": 115,
+      "genres": [
+        "Thriller",
+        "Drama",
+        "Crime"
+      ],
+      "director": "Sago Ganesan",
+      "cast": [
+        "Vidharth",
+        "Kalaiyarasan",
+        "Santhosh Prathap",
+        "Thrigun",
+        "Teju Ashwini",
+        "Athulya Chandra",
+        "John Vijay",
+        "Radha",
+        "KPY Sarath Raj",
+        "Swetha Dorathy"
+      ]
+    },
+    {
+      "title": "Habeebi",
+      "original_title": "\u0bb9\u0baa\u0bc0\u0baa\u0bbf",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/kHU73XK0DHhphgo7U6MUQz8ADYv.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/hdQRhWMUg6cKSWcTCCyqWXcv8Ly.jpg",
+      "tmdb_id": 1655049,
+      "overview": "Follows a boy and girl in a Muslim neighbourhood in southern Tamil Nadu whose romance divides their community.",
+      "runtime": 150,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Meera Kathiravan",
+      "cast": [
+        "Kasthoori Raja",
+        "Esha M",
+        "Malavika Manoj",
+        "Dhanasree Sudhakaran",
+        "Anusreya Rajan",
+        "Ismath Banu",
+        "Rekha Kumanan",
+        "Jayasree Binuraj"
+      ]
+    },
+    {
+      "title": "Nizhal",
+      "original_title": "Nizhal",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/sqdnjFOemwhDe6Jeu9K51J8E5RE.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/zCI2BleOTvbqqEj9Za7Wr8tDC2q.jpg",
+      "tmdb_id": 1710563,
+      "overview": "NIZHAL follows twin sisters Ramya and Saranya. Saranya is a trainee doctor, and Ramya helps their vendor parents. Tragedy strikes when Saranya\u2019s friend Lakshmi is brutally murdered in the hospital lab by Guna, the CEO's son, and his gang. Ramya witnesses the crime and narrowly survives a deadly attack by them. Driven by fury, Saranya seeks vengeance and puts the killers on their deathbeds. Ironically, her lover Raghu takes charge as the sub-inspector for this very case. When Raghu uncovers the truth, a gripping battle begins between law, love, and ultimate justice.",
+      "runtime": 101,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "AK Kumar",
+      "cast": [
+        "Janany Kunaseelan",
+        "Vishakan",
+        "Divya Krishnan",
+        "Kaushik Gopalan"
+      ]
+    },
+    {
+      "title": "Valluvan",
+      "original_title": "\u0bb5\u0bb3\u0bcd\u0bb3\u0bc1\u0bb5\u0ba9\u0bcd",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/iq9HZqIhcUe3eYwUdiWxqmGzxSu.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1595789,
+      "overview": "When a string of high-profile murders rocks the city, investigators uncover a dark secret linking the victims to an unspeakable crime. But even after the alleged killer is caught, the killings don\u2019t stop\u2014revealing a far deeper conspiracy where justice comes at a deadly price.",
+      "runtime": 0,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Shankar Sarathi",
+      "cast": [
+        "Chethan Cheenu",
+        "Ashna Zaveri",
+        "Boxer Dheena",
+        "Prem Kumar",
+        "Karate Raja",
+        "'Meesai' Rajendran"
+      ]
     }
   ],
   "all_films_analyzed": [
     "29",
+    "Anbe Diana",
+    "Angikaaram",
     "Anthony",
     "Arjunan Per Paththu",
+    "Arulvaan",
     "Blast",
+    "Con City",
+    "Dark Giant",
     "Double Occupancy",
     "Find Me",
     "Gandhi Talks",
     "Gatta Kusthi 2",
     "Granny",
+    "Habeebi",
     "Happy Raj",
+    "Heartin",
     "Idhayam Murali",
     "Kara",
     "Karuppu",
+    "Lakshmikanthan Kolai Vazhakku",
+    "Love Oh Love",
+    "Moondram Kan",
     "Mr. X",
     "Neelira",
+    "Nizhal",
+    "Nooru Sami",
     "Parimala and Co",
-    "TN 2026",
+    "Suitcased",
     "Thaai Kizhavi",
-    "With Love",
+    "Unsaid",
+    "Valluvan",
     "Youth"
   ],
   "youtube_channels": [
+    "KaKi's Talkies",
+    "Sudhir Srinivasan",
+    "Galatta Plus",
+    "Second Show",
+    "Delite Cinemas",
+    "Filmi Craft",
+    "Nona Prince",
     "Tamil Talkies",
+    "Plip Plip",
+    "Empty Hand",
+    "Kodangi",
+    "Touring Talkies",
     "BehindwoodsTV",
     "Galatta Tamil",
     "Cinema Vikatan",
-    "BR South Cinema",
     "Valai Pechu",
-    "Prashanth Rangaswamy",
     "Fully Filmy",
     "Movie Crow",
     "Open Pannaa",
-    "Kodangi",
     "Abishek Raja"
+  ],
+  "source_taxonomy": [
+    {
+      "name": "KaKi's Talkies",
+      "aliases": [
+        "KaKi's Talkies",
+        "Kakis Talkies"
+      ],
+      "source_category": "general_review",
+      "critic_weight": 1.0,
+      "engagement_weight": 0.9
+    },
+    {
+      "name": "Sudhir Srinivasan",
+      "aliases": [
+        "Sudhir Srinivasan"
+      ],
+      "source_category": "critic_review",
+      "critic_weight": 1.0,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Galatta Plus",
+      "aliases": [
+        "Galatta Plus",
+        "Baradwaj Rangan",
+        "BR South Cinema"
+      ],
+      "source_category": "critic_review",
+      "critic_weight": 0.95,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Second Show",
+      "aliases": [
+        "Second Show"
+      ],
+      "source_category": "general_review",
+      "critic_weight": 0.85,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Delite Cinemas",
+      "aliases": [
+        "Delite Cinemas"
+      ],
+      "source_category": "general_review",
+      "critic_weight": 0.82,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Filmi Craft",
+      "aliases": [
+        "Filmi Craft",
+        "Filmi Craft Arun"
+      ],
+      "source_category": "general_review",
+      "critic_weight": 0.78,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Nona Prince",
+      "aliases": [
+        "Nona Prince"
+      ],
+      "source_category": "deep_analysis",
+      "critic_weight": 0.75,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "Tamil Talkies",
+      "aliases": [
+        "Tamil Talkies",
+        "Blue Sattai"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.4,
+      "engagement_weight": 1.0
+    },
+    {
+      "name": "Plip Plip",
+      "aliases": [
+        "Plip Plip"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.95
+    },
+    {
+      "name": "Empty Hand",
+      "aliases": [
+        "Empty Hand"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.95
+    },
+    {
+      "name": "Kodangi",
+      "aliases": [
+        "Kodangi",
+        "V Studio Kodangi"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Touring Talkies",
+      "aliases": [
+        "Touring Talkies"
+      ],
+      "source_category": "interview_archive",
+      "critic_weight": 0.5,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "BehindwoodsTV",
+      "aliases": [
+        "BehindwoodsTV",
+        "Behindwoods"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Galatta Tamil",
+      "aliases": [
+        "Galatta Tamil"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Cinema Vikatan",
+      "aliases": [
+        "Cinema Vikatan"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.6,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Valai Pechu",
+      "aliases": [
+        "Valai Pechu"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Fully Filmy",
+      "aliases": [
+        "Fully Filmy"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.7
+    },
+    {
+      "name": "Movie Crow",
+      "aliases": [
+        "Movie Crow",
+        "Moviecrow"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.5,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "Open Pannaa",
+      "aliases": [
+        "Open Pannaa"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Abishek Raja",
+      "aliases": [
+        "Abishek Raja"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.7
+    }
   ],
   "collectors": [
     "YouTube Data API",
