@@ -1,7 +1,7 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-07-18T13:19:01.183817+00:00",
-  "last_video_discovery": "2026-07-18T13:19:01.183817+00:00",
+  "status": "partial",
+  "last_scan": "2026-07-18T13:25:27.255401+00:00",
+  "last_video_discovery": "2026-07-18T13:25:27.255401+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -10,7 +10,7 @@
     "primary_release_date.desc"
   ],
   "keep_history_days": 730,
-  "selection_version": 6,
+  "selection_version": 7,
   "active_video_ids": [
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
@@ -145,7 +145,7 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 288,
+  "broad_discovery_video_hits": 162,
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -317,19 +317,19 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 86 useful public comments. Of 10 comments with detectable reaction wording, 9 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss emotion, release & theatre, acting & characters.",
-      "useful_comments": 86,
+      "summary": "Based on 88 useful public comments. Of 10 comments with detectable reaction wording, 9 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, acting & characters.",
+      "useful_comments": 88,
       "explicit_reaction_comments": 10,
       "appreciative_signals": 9,
       "critical_signals": 1,
-      "substantive_share": 0.1977,
+      "substantive_share": 0.1932,
       "top_aspects": [
         {
-          "name": "Emotion",
-          "comments": 1
+          "name": "Release & theatre",
+          "comments": 2
         },
         {
-          "name": "Release & theatre",
+          "name": "Emotion",
           "comments": 1
         },
         {
@@ -340,7 +340,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 42,
+          "useful_comments": 43,
           "appreciative_signals": 3,
           "critical_signals": 1,
           "questions": 4,
@@ -348,7 +348,7 @@
         },
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 42,
+          "useful_comments": 43,
           "appreciative_signals": 6,
           "critical_signals": 0,
           "questions": 1,
@@ -1447,7 +1447,7 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 1926,
+  "comments_fetched": 1928,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 112,
     "new_or_unknown_video": 0,
@@ -1455,8 +1455,8 @@
     "periodic_comment_refresh": 0,
     "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 1040,
-  "stored_comments": 10504,
+  "new_comments_added": 289,
+  "stored_comments": 10506,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
@@ -3133,5 +3133,30 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Broad discovery/this week tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=this+week+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/KaKi's Talkies tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=KaKi%27s+Talkies+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/Sudhir Srinivasan tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=Sudhir+Srinivasan+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/Second Show tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=Second+Show+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/Filmi Craft Arun tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=Filmi+Craft+Arun+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/Nona Prince tamil cinema review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=Nona+Prince+tamil+cinema+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/Tamil Talkies tamil movie review: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=Tamil+Talkies+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Arjunan Per Paththu: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Arjunan+Per+Paththu%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Arulvaan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Arulvaan%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Idhayam Murali: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Idhayam+Murali%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Love Oh Love: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Love+Oh+Love%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Lakshmikanthan Kolai Vazhakku: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Lakshmikanthan+Kolai+Vazhakku%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Gatta Kusthi 2: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Gatta+Kusthi+2%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Find Me: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Find+Me%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Con City: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Con+City%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Heartin: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Heartin%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Angikaaram: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Angikaaram%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Suitcased: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Suitcased%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Dark Giant: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Dark+Giant%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Nooru Sami: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Nooru+Sami%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Double Occupancy: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Double+Occupancy%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Moondram Kan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Moondram+Kan%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Nizhal: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Nizhal%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Valluvan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=AIzaSyBexI0OtMkyhI8-zrlaLQlVo4LQRE1ACg8&part=snippet&type=video&maxResults=18&q=%22Valluvan%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none"
+  ]
 }
