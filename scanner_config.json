@@ -1,16 +1,22 @@
 {
   "lookback_days": 180,
-  "max_films": 12,
+  "max_films": 20,
+  "tmdb_discovery_pages": 3,
+  "tmdb_sort_orders": [
+    "popularity.desc",
+    "primary_release_date.desc"
+  ],
   "video_discovery_hours": 24,
-  "youtube_videos_per_film": 20,
-  "active_videos_per_film": 6,
-  "trusted_videos_per_film": 5,
+  "youtube_videos_per_film": 18,
+  "active_videos_per_film": 5,
+  "trusted_videos_per_film": 4,
   "public_review_videos_per_film": 3,
   "organic_videos_per_film": 2,
   "comments_per_video_live": 50,
-  "comments_per_video_daily": 500,
+  "comments_per_video_daily": 300,
+  "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 4,
+  "selection_version": 5,
   "manual_films": [],
   "youtube_discovery_queries": [
     "new tamil movie review today",
@@ -76,5 +82,5 @@
     " விமர்சனம்",
     "திரை விமர்சனம்"
   ],
-  "active_shorts_per_film": 4
+  "active_shorts_per_film": 3
 }
