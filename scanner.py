@@ -375,6 +375,24 @@ def should_fetch_comments(
         return True, "periodic_comment_refresh"
     return False, "public_comment_count_unchanged"
 
+def preserve_archive_guard(
+    archive_comments: pd.DataFrame,
+    archive_snapshots: pd.DataFrame,
+    stored_comments: pd.DataFrame,
+    stored_snapshots: pd.DataFrame,
+    fresh_comments: pd.DataFrame,
+    fresh_snapshots: pd.DataFrame,
+) -> None:
+    """Fail before writing if a run would accidentally erase existing history."""
+    if not archive_comments.empty and stored_comments.empty and fresh_comments.empty:
+        raise RuntimeError(
+            "Archive safety check failed: refusing to replace non-empty comments.csv with empty output"
+        )
+    if not archive_snapshots.empty and stored_snapshots.empty and fresh_snapshots.empty:
+        raise RuntimeError(
+            "Archive safety check failed: refusing to replace non-empty video_snapshots.csv with empty output"
+        )
+
 def main() -> None:
     youtube_key = require("YOUTUBE_API_KEY")
     tmdb_key = require("TMDB_API_KEY")
@@ -550,18 +568,17 @@ def main() -> None:
     if not comments.empty:
         comments["scanned_at"] = now_iso
         comments = enrich_comments(comments)
-    # Feed the already-pruned frames into the merge functions without losing
-    # their cleanup when they reload the on-disk archive.
+    # Feed already-pruned frames into the merge functions without deleting the
+    # archive when a transient API failure returns no fresh rows.
     if not archive_comments.empty:
         archive_comments.to_csv(COMMENTS, index=False)
-    elif pruned_ids and COMMENTS.exists():
-        COMMENTS.unlink()
     if not archive_snapshots.empty:
         archive_snapshots.to_csv(VIDEOS, index=False)
-    elif pruned_ids and VIDEOS.exists():
-        VIDEOS.unlink()
     stored_comments, new_comments = merge_comments(comments, now)
     stored_snapshots = merge_snapshots(snapshots, now)
+    preserve_archive_guard(
+        archive_comments, archive_snapshots, stored_comments, stored_snapshots, comments, snapshots
+    )
 
     # A successful statistics fetch must always leave rows carrying this run's
     # timestamp. Fail loudly instead of silently publishing metadata without
