@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-18T11:07:35.267934+00:00",
+  "model": "deepseek-v4-flash",
+  "method": "Cached DeepSeek summaries from representative stored YouTube comments",
+  "films": {},
+  "errors": [
+    "29: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Blast: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Gandhi Talks: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Gatta Kusthi 2: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Idhayam Murali: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Kara: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Karuppu: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Parimala and Co: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Thaai Kizhavi: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions",
+    "Youth: 402 Client Error: Payment Required for url: https://api.deepseek.com/chat/completions"
+  ]
+}
