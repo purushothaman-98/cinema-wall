@@ -50,18 +50,35 @@ def require(name: str) -> str:
 def discover_films(key: str) -> list[dict]:
     today = datetime.now(timezone.utc).date()
     start = today - timedelta(days=CFG["lookback_days"])
-    response = requests.get(
-        "https://api.themoviedb.org/3/discover/movie",
-        params={
-            "api_key": key, "with_original_language": "ta", "region": "IN",
-            "release_date.gte": start, "release_date.lte": today,
-            "sort_by": "popularity.desc", "include_adult": "false",
-        },
-        timeout=30,
+    raw_items: dict[int, dict] = {}
+    pages = max(1, int(CFG.get("tmdb_discovery_pages", 1)))
+    sort_orders = CFG.get("tmdb_sort_orders", ["popularity.desc"])
+    for sort_order in sort_orders:
+        for page in range(1, pages + 1):
+            response = requests.get(
+                "https://api.themoviedb.org/3/discover/movie",
+                params={
+                    "api_key": key, "with_original_language": "ta", "region": "IN",
+                    "release_date.gte": start, "release_date.lte": today,
+                    "sort_by": sort_order, "include_adult": "false", "page": page,
+                },
+                timeout=30,
+            )
+            response.raise_for_status()
+            for item in response.json().get("results", []):
+                if item.get("id") and item["id"] not in raw_items:
+                    raw_items[item["id"]] = item
+    candidates = list(raw_items.values())
+    candidates.sort(
+        key=lambda item: (
+            item.get("release_date") or "",
+            float(item.get("popularity") or 0),
+            int(item.get("vote_count") or 0),
+        ),
+        reverse=True,
     )
-    response.raise_for_status()
     catalog = []
-    for item in response.json().get("results", [])[:CFG["max_films"]]:
+    for item in candidates[:CFG["max_films"]]:
         details = {}
         try:
             detail_response = requests.get(
@@ -314,6 +331,50 @@ def merge_snapshots(fresh: pd.DataFrame, now: pd.Timestamp) -> pd.DataFrame:
     cutoff = now - pd.Timedelta(days=int(CFG["keep_history_days"]))
     return combined[combined["scanned_at"].ge(cutoff)].sort_values("scanned_at")
 
+def latest_public_comment_counts(snapshots: pd.DataFrame) -> dict[str, int]:
+    if snapshots.empty or "video_id" not in snapshots or "comments" not in snapshots:
+        return {}
+    latest = snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+    counts = pd.to_numeric(latest.get("comments"), errors="coerce")
+    return {
+        str(video_id): int(count)
+        for video_id, count in zip(latest["video_id"], counts)
+        if str(video_id) and pd.notna(count)
+    }
+
+def latest_comment_fetch_times(comments: pd.DataFrame) -> dict[str, pd.Timestamp]:
+    if comments.empty or "video_id" not in comments or "scanned_at" not in comments:
+        return {}
+    frame = comments.copy()
+    frame["scanned_at"] = pd.to_datetime(
+        frame["scanned_at"], format="mixed", errors="coerce", utc=True
+    )
+    latest = frame.dropna(subset=["scanned_at"]).groupby("video_id")["scanned_at"].max()
+    return {str(video_id): timestamp for video_id, timestamp in latest.items()}
+
+def should_fetch_comments(
+    row: pd.Series,
+    previous_counts: dict[str, int],
+    previous_fetch_times: dict[str, pd.Timestamp],
+    now: pd.Timestamp,
+    do_discovery: bool,
+) -> tuple[bool, str]:
+    """Fetch comment bodies only when useful; always keep video counters live."""
+    if do_discovery:
+        return True, "daily_discovery_refresh"
+    video_id = str(row.get("video_id", ""))
+    current_count = pd.to_numeric(row.get("comments"), errors="coerce")
+    previous_count = previous_counts.get(video_id)
+    if previous_count is None or pd.isna(current_count):
+        return True, "new_or_unknown_video"
+    if int(current_count) > int(previous_count):
+        return True, "public_comment_count_increased"
+    last_fetch = previous_fetch_times.get(video_id)
+    refresh_hours = int(CFG.get("comment_refresh_hours", 6))
+    if last_fetch is None or now - last_fetch >= pd.Timedelta(hours=refresh_hours):
+        return True, "periodic_comment_refresh"
+    return False, "public_comment_count_unchanged"
+
 def main() -> None:
     youtube_key = require("YOUTUBE_API_KEY")
     tmdb_key = require("TMDB_API_KEY")
@@ -334,6 +395,8 @@ def main() -> None:
     archive_snapshots, archive_comments, pruned_ids = prune_out_of_scope_archive(
         archive_snapshots, archive_comments
     )
+    prior_comment_counts = latest_public_comment_counts(archive_snapshots)
+    prior_comment_fetches = latest_comment_fetch_times(archive_comments)
     known = archive_snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last") if not archive_snapshots.empty else archive_snapshots
     do_discovery = discovery_due(metadata, known, now)
     active_ids = {str(value) for value in metadata.get("active_video_ids", []) if value}
@@ -354,6 +417,13 @@ def main() -> None:
     snapshot_batches: list[pd.DataFrame] = []
     errors: list[str] = []
     monitored_video_ids: set[str] = set()
+    comment_fetch_decisions = {
+        "daily_discovery_refresh": 0,
+        "new_or_unknown_video": 0,
+        "public_comment_count_increased": 0,
+        "periodic_comment_refresh": 0,
+        "public_comment_count_unchanged": 0,
+    }
 
     catalog = discover_films(tmdb_key) if (do_discovery or catalog_needs_details) else previous_catalog
     films = [item["title"] for item in catalog]
@@ -445,6 +515,13 @@ def main() -> None:
 
             for row in details.itertuples():
                 monitored_video_ids.add(row.video_id)
+                row_series = pd.Series(row._asdict())
+                fetch_comments, fetch_reason = should_fetch_comments(
+                    row_series, prior_comment_counts, prior_comment_fetches, now, do_discovery
+                )
+                comment_fetch_decisions[fetch_reason] = comment_fetch_decisions.get(fetch_reason, 0) + 1
+                if not fetch_comments:
+                    continue
                 try:
                     comment_limit = int(
                         CFG["comments_per_video_daily"] if do_discovery
@@ -521,6 +598,8 @@ def main() -> None:
         "last_video_discovery": last_discovery,
         "scan_interval_minutes": 30,
         "video_discovery_hours": CFG["video_discovery_hours"],
+        "tmdb_discovery_pages": CFG.get("tmdb_discovery_pages", 1),
+        "tmdb_sort_orders": CFG.get("tmdb_sort_orders", ["popularity.desc"]),
         "keep_history_days": CFG["keep_history_days"],
         "selection_version": CFG.get("selection_version", 1),
         "active_video_ids": sorted(monitored_video_ids),
@@ -539,6 +618,7 @@ def main() -> None:
         "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
         "films": films,
         "comments_fetched": int(len(comments)),
+        "comment_fetch_decisions": comment_fetch_decisions,
         "new_comments_added": new_comments,
         "stored_comments": int(len(stored_comments)),
         "videos_monitored": len(monitored_video_ids),
