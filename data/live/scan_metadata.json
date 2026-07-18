@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-18T07:23:52.563416+00:00",
+  "last_scan": "2026-07-18T09:06:28.407192+00:00",
   "last_video_discovery": "2026-07-17T17:58:39.261177+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -491,12 +491,12 @@
       ]
     },
     "Karuppu": {
-      "summary": "Based on 1,848 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 1848,
+      "summary": "Based on 1,849 useful public comments. Of 526 comments with detectable reaction wording, 377 were appreciative and 149 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 1849,
       "explicit_reaction_comments": 526,
       "appreciative_signals": 377,
       "critical_signals": 149,
-      "substantive_share": 0.2419,
+      "substantive_share": 0.2418,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -538,7 +538,7 @@
         },
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 361,
+          "useful_comments": 362,
           "appreciative_signals": 106,
           "critical_signals": 16,
           "questions": 25,
@@ -595,16 +595,16 @@
       ]
     },
     "Parimala and Co": {
-      "summary": "Based on 441 useful public comments. Of 123 comments with detectable reaction wording, 84 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
-      "useful_comments": 441,
-      "explicit_reaction_comments": 123,
-      "appreciative_signals": 84,
+      "summary": "Based on 442 useful public comments. Of 124 comments with detectable reaction wording, 85 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 442,
+      "explicit_reaction_comments": 124,
+      "appreciative_signals": 85,
       "critical_signals": 39,
-      "substantive_share": 0.2336,
+      "substantive_share": 0.2353,
       "top_aspects": [
         {
           "name": "Comedy",
-          "comments": 30
+          "comments": 31
         },
         {
           "name": "Story & screenplay",
@@ -634,10 +634,10 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 54,
-          "appreciative_signals": 3,
+          "useful_comments": 55,
+          "appreciative_signals": 4,
           "critical_signals": 6,
-          "questions": 6,
+          "questions": 7,
           "leading_topic": "General reaction"
         },
         {
@@ -897,8 +897,8 @@
     "Gandhi Talks"
   ],
   "comments_fetched": 1776,
-  "new_comments_added": 0,
-  "stored_comments": 8675,
+  "new_comments_added": 2,
+  "stored_comments": 8677,
   "videos_monitored": 48,
   "standard_videos_monitored": 36,
   "shorts_monitored": 12,
