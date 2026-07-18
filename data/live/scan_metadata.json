@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-18T20:35:39.500288+00:00",
+  "last_scan": "2026-07-18T21:38:38.003831+00:00",
   "last_video_discovery": "2026-07-18T14:13:47.126970+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -235,20 +235,20 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 158 useful public comments. Of 34 comments with detectable reaction wording, 34 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, release & theatre.",
-      "useful_comments": 158,
-      "explicit_reaction_comments": 34,
-      "appreciative_signals": 34,
+      "summary": "Based on 161 useful public comments. Of 36 comments with detectable reaction wording, 36 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, release & theatre.",
+      "useful_comments": 161,
+      "explicit_reaction_comments": 36,
+      "appreciative_signals": 36,
       "critical_signals": 0,
-      "substantive_share": 0.2342,
+      "substantive_share": 0.2422,
       "top_aspects": [
         {
           "name": "Comedy",
-          "comments": 5
+          "comments": 6
         },
         {
           "name": "Acting & characters",
-          "comments": 4
+          "comments": 5
         },
         {
           "name": "Release & theatre",
@@ -258,10 +258,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 63,
-          "appreciative_signals": 15,
+          "useful_comments": 64,
+          "appreciative_signals": 16,
           "critical_signals": 0,
-          "questions": 4,
+          "questions": 5,
           "leading_topic": "General reaction"
         },
         {
@@ -274,8 +274,8 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 25,
-          "appreciative_signals": 5,
+          "useful_comments": 27,
+          "appreciative_signals": 6,
           "critical_signals": 0,
           "questions": 5,
           "leading_topic": "General reaction"
@@ -1455,16 +1455,16 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 932,
+  "comments_fetched": 229,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 6,
-    "periodic_comment_refresh": 102,
-    "public_comment_count_unchanged": 4
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 53,
+    "public_comment_count_unchanged": 56
   },
-  "new_comments_added": 42,
-  "stored_comments": 10561,
+  "new_comments_added": 4,
+  "stored_comments": 10565,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
