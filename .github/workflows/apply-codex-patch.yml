@@ -1,0 +1,31 @@
+name: Apply Codex patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".codex-patches/poster-list.patch"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Apply patch
+        run: |
+          git config user.name "codex-patch-applier"
+          git config user.email "actions@users.noreply.github.com"
+          git apply --check .codex-patches/poster-list.patch
+          git apply .codex-patches/poster-list.patch
+          python -m py_compile app.py scanner.py collectors.py data.py youtube_analysis.py
+          rm -f .codex-patches/poster-list.patch .github/workflows/apply-codex-patch.yml
+          git add app.py scanner.py .codex-patches/poster-list.patch .github/workflows/apply-codex-patch.yml
+          git commit -m "Improve film poster list and archive safety"
+          git pull --rebase
+          git push
