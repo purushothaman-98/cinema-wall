@@ -17,6 +17,8 @@
   "channel_matrix_max_queries": 60,
   "channel_matrix_channels_per_film": 3,
   "channel_matrix_min_review_videos": 4,
+  "broad_discovery_max_queries": 8,
+  "youtube_search_pause_seconds": 1.25,
   "channel_matrix_source_categories": [
     "critic_review",
     "general_review",
