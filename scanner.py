@@ -418,6 +418,67 @@ def latest_comment_fetch_times(comments: pd.DataFrame) -> dict[str, pd.Timestamp
     latest = frame.dropna(subset=["scanned_at"]).groupby("video_id")["scanned_at"].max()
     return {str(video_id): timestamp for video_id, timestamp in latest.items()}
 
+def review_video_counts_by_film(known: pd.DataFrame) -> dict[str, int]:
+    if known.empty or "film" not in known:
+        return {}
+    frame = known.copy()
+    if "content_format" not in frame:
+        frame["content_format"] = "Video"
+    if "review_evidence" in frame:
+        evidence = frame["review_evidence"].fillna(True).astype(bool)
+    elif "video_intent" in frame:
+        evidence = frame["video_intent"].fillna("film_discussion").isin(
+            ["review", "short_review", "public_review", "deep_analysis", "roast_commentary", "film_discussion"]
+        )
+    else:
+        evidence = pd.Series(True, index=frame.index)
+    frame = frame[evidence & frame["content_format"].eq("Video")].copy()
+    if frame.empty:
+        return {}
+    return frame.groupby("film")["video_id"].nunique().astype(int).to_dict()
+
+def channel_matrix_profiles() -> list[dict]:
+    allowed = set(CFG.get("channel_matrix_source_categories", []))
+    profiles = [
+        profile for profile in CFG.get("source_channels", [])
+        if profile.get("source_category") in allowed
+    ]
+    profiles.sort(
+        key=lambda item: (
+            float(item.get("critic_weight", 0)),
+            float(item.get("engagement_weight", 0)),
+        ),
+        reverse=True,
+    )
+    return profiles
+
+def film_channel_queries(films: list[str], known: pd.DataFrame) -> list[tuple[str, str, str]]:
+    """Build a quota-bounded audit matrix: weak films first, then trusted channels."""
+    if not CFG.get("channel_matrix_enabled", True):
+        return []
+    counts = review_video_counts_by_film(known)
+    min_reviews = int(CFG.get("channel_matrix_min_review_videos", 4))
+    channels_per_film = int(CFG.get("channel_matrix_channels_per_film", 3))
+    max_queries = int(CFG.get("channel_matrix_max_queries", 60))
+    profiles = channel_matrix_profiles()
+    prioritized_films = sorted(
+        films,
+        key=lambda film: (counts.get(film, 0), normalized(film)),
+    )
+    queries: list[tuple[str, str, str]] = []
+    for film in prioritized_films:
+        if counts.get(film, 0) >= min_reviews and len(queries) >= max_queries // 2:
+            continue
+        aliases = film_aliases(film)
+        film_query = aliases[0]
+        for profile in profiles[:channels_per_film]:
+            channel_name = profile.get("name", "")
+            query = f'"{film_query}" "{channel_name}" tamil movie review'
+            queries.append((film, channel_name, query))
+            if len(queries) >= max_queries:
+                return queries
+    return queries
+
 def should_fetch_comments(
     row: pd.Series,
     previous_counts: dict[str, int],
@@ -513,6 +574,9 @@ def main() -> None:
     films = [item["title"] for item in catalog]
     broad_candidates: dict[str, list[dict]] = {film: [] for film in films}
     discovery_video_hits = 0
+    channel_matrix_candidates: dict[str, list[dict]] = {film: [] for film in films}
+    channel_matrix_hits = 0
+    channel_matrix_queries: list[dict] = []
     if do_discovery:
         for query in CFG.get("youtube_discovery_queries", []):
             try:
@@ -523,6 +587,25 @@ def main() -> None:
                             broad_candidates.setdefault(film, []).append(item)
             except Exception as exc:
                 errors.append(f"Broad discovery/{query}: {exc}")
+        for film, channel_name, query in film_channel_queries(films, known):
+            query_hits = 0
+            matched_hits = 0
+            try:
+                for item in youtube_search_query(query, youtube_key, max(8, CFG["youtube_videos_per_film"] // 2)):
+                    query_hits += 1
+                    channel_matrix_hits += 1
+                    if video_mentions_film(item, film):
+                        matched_hits += 1
+                        channel_matrix_candidates.setdefault(film, []).append(item)
+            except Exception as exc:
+                errors.append(f"Channel matrix/{film}/{channel_name}: {exc}")
+            channel_matrix_queries.append({
+                "film": film,
+                "channel": channel_name,
+                "query": query,
+                "hits": query_hits,
+                "matched_hits": matched_hits,
+            })
 
     for film in films:
         candidates: list[dict] = []
@@ -551,6 +634,13 @@ def main() -> None:
                 if score >= 1:
                     candidates.append({
                         "video_id": item["video_id"], "signal_score": score,
+                        "trusted_channel": trusted, "promotional": promo,
+                    })
+            for item in channel_matrix_candidates.get(film, []):
+                score, trusted, promo = quality(item)
+                if score >= 1:
+                    candidates.append({
+                        "video_id": item["video_id"], "signal_score": score + 1,
                         "trusted_channel": trusted, "promotional": promo,
                     })
 
@@ -707,6 +797,11 @@ def main() -> None:
         "discovery_mode": "daily_tmdb_plus_broad_youtube" if do_discovery else "monitor_existing_selection",
         "broad_discovery_queries": CFG.get("youtube_discovery_queries", []),
         "broad_discovery_video_hits": discovery_video_hits,
+        "channel_matrix_enabled": CFG.get("channel_matrix_enabled", True),
+        "channel_matrix_queries_run": len(channel_matrix_queries),
+        "channel_matrix_video_hits": channel_matrix_hits,
+        "channel_matrix_matched_hits": int(sum(item["matched_hits"] for item in channel_matrix_queries)),
+        "channel_matrix_queries": channel_matrix_queries,
         "manual_films_configured": len(CFG.get("manual_films", [])),
         "video_selection_buckets": {
             "trusted_videos_per_film": CFG.get("trusted_videos_per_film"),
