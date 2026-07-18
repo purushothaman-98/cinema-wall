@@ -13,11 +13,21 @@
   "public_review_videos_per_film": 3,
   "organic_videos_per_film": 2,
   "context_videos_per_film": 1,
+  "channel_matrix_enabled": true,
+  "channel_matrix_max_queries": 60,
+  "channel_matrix_channels_per_film": 3,
+  "channel_matrix_min_review_videos": 4,
+  "channel_matrix_source_categories": [
+    "critic_review",
+    "general_review",
+    "deep_analysis",
+    "roast_commentary"
+  ],
   "comments_per_video_live": 50,
   "comments_per_video_daily": 300,
   "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 6,
+  "selection_version": 7,
   "manual_films": [],
   "youtube_discovery_queries": [
     "new tamil movie review today",
