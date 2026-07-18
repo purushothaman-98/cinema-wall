@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -46,6 +47,17 @@ def require(name: str) -> str:
     if not value:
         raise RuntimeError(f"Missing {name}")
     return value
+
+def safe_error(exc: Exception) -> str:
+    text = str(exc)
+    text = re.sub(r"([?&]key=)[^&\\s]+", r"\1***", text)
+    text = re.sub(r"(Authorization:\\s*Bearer\\s+)[^\\s]+", r"\1***", text, flags=re.I)
+    return text
+
+def pause_after_search() -> None:
+    delay = float(CFG.get("youtube_search_pause_seconds", 0))
+    if delay > 0:
+        time.sleep(delay)
 
 def discover_films(key: str) -> list[dict]:
     today = datetime.now(timezone.utc).date()
@@ -578,15 +590,16 @@ def main() -> None:
     channel_matrix_hits = 0
     channel_matrix_queries: list[dict] = []
     if do_discovery:
-        for query in CFG.get("youtube_discovery_queries", []):
+        for query in CFG.get("youtube_discovery_queries", [])[: int(CFG.get("broad_discovery_max_queries", 8))]:
             try:
                 for item in youtube_search_query(query, youtube_key, CFG["youtube_videos_per_film"]):
                     discovery_video_hits += 1
                     for film in films:
                         if video_mentions_film(item, film):
                             broad_candidates.setdefault(film, []).append(item)
+                pause_after_search()
             except Exception as exc:
-                errors.append(f"Broad discovery/{query}: {exc}")
+                errors.append(f"Broad discovery/{query}: {safe_error(exc)}")
         for film, channel_name, query in film_channel_queries(films, known):
             query_hits = 0
             matched_hits = 0
@@ -597,8 +610,9 @@ def main() -> None:
                     if video_mentions_film(item, film):
                         matched_hits += 1
                         channel_matrix_candidates.setdefault(film, []).append(item)
+                pause_after_search()
             except Exception as exc:
-                errors.append(f"Channel matrix/{film}/{channel_name}: {exc}")
+                errors.append(f"Channel matrix/{film}/{channel_name}: {safe_error(exc)}")
             channel_matrix_queries.append({
                 "film": film,
                 "channel": channel_name,
@@ -627,8 +641,9 @@ def main() -> None:
                             "video_id": item["video_id"], "signal_score": score,
                             "trusted_channel": trusted, "promotional": promo,
                         })
+                pause_after_search()
             except Exception as exc:
-                errors.append(f"Discovery/{film}: {exc}")
+                errors.append(f"Discovery/{film}: {safe_error(exc)}")
             for item in broad_candidates.get(film, []):
                 score, trusted, promo = quality(item)
                 if score >= 1:
@@ -725,9 +740,9 @@ def main() -> None:
                     if not batch.empty:
                         comment_batches.append(batch)
                 except Exception as exc:
-                    errors.append(f"Comments/{row.video_id}: {exc}")
+                    errors.append(f"Comments/{row.video_id}: {safe_error(exc)}")
         except Exception as exc:
-            errors.append(f"Video statistics/{film}: {exc}")
+            errors.append(f"Video statistics/{film}: {safe_error(exc)}")
 
     comments = (
         pd.concat(comment_batches, ignore_index=True)
