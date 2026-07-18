@@ -1,6 +1,6 @@
 {
-  "status": "partial",
-  "last_scan": "2026-07-18T10:52:01.765350+00:00",
+  "status": "healthy",
+  "last_scan": "2026-07-18T10:54:25.616636+00:00",
   "last_video_discovery": "2026-07-18T10:52:01.765350+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -88,6 +88,22 @@
     "zzWet6khCHE"
   ],
   "out_of_scope_videos_pruned": 0,
+  "discovery_mode": "monitor_existing_selection",
+  "broad_discovery_queries": [
+    "new tamil movie review today",
+    "tamil cinema public review today",
+    "new tamil movie vimarsanam",
+    "tamil movie \u0bb5\u0bbf\u0bae\u0bb0\u0bcd\u0b9a\u0ba9\u0bae\u0bcd",
+    "this week tamil movie review"
+  ],
+  "broad_discovery_video_hits": 0,
+  "manual_films_configured": 0,
+  "video_selection_buckets": {
+    "trusted_videos_per_film": 5,
+    "public_review_videos_per_film": 3,
+    "organic_videos_per_film": 2,
+    "active_shorts_per_film": 4
+  },
   "film_insights": {
     "29": {
       "summary": "Based on 215 useful public comments. Of 75 comments with detectable reaction wording, 63 were appreciative and 12 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
@@ -945,8 +961,8 @@
     "29",
     "TN 2026"
   ],
-  "comments_fetched": 8878,
-  "new_comments_added": 993,
+  "comments_fetched": 2608,
+  "new_comments_added": 0,
   "stored_comments": 9670,
   "videos_monitored": 79,
   "standard_videos_monitored": 60,
@@ -1675,7 +1691,5 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": [
-    "Video statistics/TN 2026: Columns must be same length as key"
-  ]
+  "errors": []
 }
