@@ -1,0 +1,475 @@
+diff --git a/app.py b/app.py
+index 64244be..580393b 100644
+--- a/app.py
++++ b/app.py
+@@ -148,6 +148,7 @@ def prep_comments(frame: pd.DataFrame, video_frame: pd.DataFrame) -> pd.DataFram
+         "film": "Unknown", "channel": "Unknown", "video_id": "", "video_title": "",
+         "content_format": "Unknown", "text": "", "language": "Unknown", "topic": "General reaction",
+         "reaction_signal": "Mixed / unclear", "comment_kind": "Quick reaction", "url": "",
++        "source_category": "open_youtube", "video_intent": "film_discussion",
+     }.items():
+         if column not in comments:
+             comments[column] = default
+@@ -171,7 +172,12 @@ def prep_videos(frame: pd.DataFrame) -> pd.DataFrame:
+     if frame.empty:
+         return frame
+     videos = frame.copy()
+-    for column, default in {"film": "Unknown", "channel": "Unknown", "title": "", "content_format": "Video", "video_id": "", "thumbnail_url": ""}.items():
++    for column, default in {
++        "film": "Unknown", "channel": "Unknown", "title": "", "content_format": "Video",
++        "video_id": "", "thumbnail_url": "", "source_category": "open_youtube",
++        "source_profile": "Open YouTube", "video_intent": "film_discussion",
++        "review_evidence": True,
++    }.items():
+         if column not in videos:
+             videos[column] = default
+     videos["scanned_at"] = pd.to_datetime(videos.get("scanned_at"), errors="coerce", utc=True)
+@@ -354,6 +360,8 @@ with st.sidebar:
+         selected_channels = st.multiselect("Channels", sorted(comments["channel"].dropna().unique()), default=sorted(comments["channel"].dropna().unique()))
+         formats = [v for v in ["Video", "Short"] if v in set(comments["content_format"].dropna())]
+         selected_formats = st.multiselect("Formats", formats, default=formats)
++        intent_options = sorted(comments["video_intent"].dropna().astype(str).unique())
++        selected_intents = st.multiselect("Video intent", intent_options, default=intent_options)
+         window = st.select_slider("Analysis window", options=[6, 12, 24, 72, 168, 720, 2160], value=168, format_func=lambda h: f"{h} hours" if h < 24 else f"{h // 24} days" if h < 720 else f"{h // 720} months")
+         min_likes = st.number_input("Minimum comment likes", min_value=0, value=0)
+         include_noise = st.toggle("Include low-information reactions", value=False)
+@@ -374,7 +382,14 @@ if comments.empty:
+ 
+ now = pd.Timestamp.now(tz="UTC")
+ cutoff = now - pd.Timedelta(hours=int(window))
+-filtered = comments[comments["film"].isin(selected_films) & comments["channel"].isin(selected_channels) & comments["content_format"].isin(selected_formats) & comments["created_at"].ge(cutoff) & comments["likes"].ge(min_likes)].copy()
++filtered = comments[
++    comments["film"].isin(selected_films)
++    & comments["channel"].isin(selected_channels)
++    & comments["content_format"].isin(selected_formats)
++    & comments["video_intent"].isin(selected_intents)
++    & comments["created_at"].ge(cutoff)
++    & comments["likes"].ge(min_likes)
++].copy()
+ if not include_noise:
+     filtered = filtered[~filtered["low_information"]].copy()
+ if filtered.empty:
+@@ -602,7 +617,7 @@ with tab_live:
+         with st.expander("Exactly what the latest monitor fetched"):
+             latest_time = videos["scanned_at"].max()
+             latest_items = videos[videos["scanned_at"].eq(latest_time)].merge(monitored[monitored["scanned_at"].eq(latest_time)][["video_id", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]], on="video_id", how="left")
+-            st.dataframe(latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]].sort_values("views_per_30m", ascending=False), hide_index=True, width="stretch")
++            st.dataframe(latest_items[["film", "content_format", "video_intent", "source_category", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]].sort_values("views_per_30m", ascending=False), hide_index=True, width="stretch")
+ 
+     st.subheader("Which videos are gaining attention now?")
+     growth = video_growth(videos)
+diff --git a/collectors.py b/collectors.py
+index 5153842..d760917 100644
+--- a/collectors.py
++++ b/collectors.py
+@@ -55,7 +55,9 @@ def youtube_details(video_ids: list[str], api_key: str) -> pd.DataFrame:
+     return pd.DataFrame(rows)
+ 
+ def _api_comments(video_id: str, film: str, channel: str, title: str,
+-                  content_format: str, api_key: str, limit: int) -> pd.DataFrame:
++                  content_format: str, api_key: str, limit: int,
++                  source_category: str = "open_youtube",
++                  video_intent: str = "film_discussion") -> pd.DataFrame:
+     rows, token = [], None
+     while len(rows) < limit:
+         params = {
+@@ -73,7 +75,8 @@ def _api_comments(video_id: str, film: str, channel: str, title: str,
+             rows.append({
+                 "film": film, "platform": "YouTube", "source": channel,
+                 "channel": channel, "video_id": video_id, "video_title": title,
+-                "content_format": content_format, "text": top.get("textDisplay", ""),
++                "content_format": content_format, "source_category": source_category,
++                "video_intent": video_intent, "text": top.get("textDisplay", ""),
+                 "created_at": top.get("publishedAt"),
+                 "updated_at": top.get("updatedAt"),
+                 "likes": top.get("likeCount", 0),
+@@ -90,7 +93,9 @@ def _api_comments(video_id: str, film: str, channel: str, title: str,
+     return pd.DataFrame(rows)
+ 
+ def _downloaded_comments(video_id: str, film: str, channel: str,
+-                         title: str, content_format: str, limit: int) -> pd.DataFrame:
++                         title: str, content_format: str, limit: int,
++                         source_category: str = "open_youtube",
++                         video_intent: str = "film_discussion") -> pd.DataFrame:
+     """Fallback powered by egbertbouman/youtube-comment-downloader (MIT)."""
+     from youtube_comment_downloader import YoutubeCommentDownloader, SORT_BY_RECENT
+     downloader = YoutubeCommentDownloader()
+@@ -105,7 +110,9 @@ def _downloaded_comments(video_id: str, film: str, channel: str,
+         rows.append({
+             "film": film, "platform": "YouTube", "source": channel,
+             "channel": channel, "video_id": video_id, "video_title": title,
+-            "content_format": content_format, "text": item.get("text", ""), "created_at": item.get("time_parsed") or now,
++            "content_format": content_format, "source_category": source_category,
++            "video_intent": video_intent, "text": item.get("text", ""),
++            "created_at": item.get("time_parsed") or now,
+             "updated_at": item.get("time_parsed") or now,
+             "likes": int(votes or 0), "reply_count": 0,
+             "author": item.get("author", ""),
+@@ -116,14 +123,22 @@ def _downloaded_comments(video_id: str, film: str, channel: str,
+     return pd.DataFrame(rows)
+ 
+ def youtube_comments(video_id: str, film: str, channel: str, title: str,
+-                     content_format: str, api_key: str, limit: int = 100) -> pd.DataFrame:
++                     content_format: str, api_key: str, limit: int = 100,
++                     source_category: str = "open_youtube",
++                     video_intent: str = "film_discussion") -> pd.DataFrame:
+     try:
+-        return _api_comments(video_id, film, channel, title, content_format, api_key, limit)
++        return _api_comments(
++            video_id, film, channel, title, content_format, api_key, limit,
++            source_category, video_intent,
++        )
+     except requests.HTTPError as exc:
+         status = exc.response.status_code if exc.response is not None else None
+         if status not in (403, 404, 429):
+             raise
+         try:
+-            return _downloaded_comments(video_id, film, channel, title, content_format, limit)
++            return _downloaded_comments(
++                video_id, film, channel, title, content_format, limit,
++                source_category, video_intent,
++            )
+         except Exception:
+             return pd.DataFrame()
+diff --git a/data.py b/data.py
+index c3832bf..6db24c4 100644
+--- a/data.py
++++ b/data.py
+@@ -48,6 +48,12 @@ def load_live() -> pd.DataFrame:
+     if "content_format" not in frame:
+         frame["content_format"] = "Unknown"
+     frame["content_format"] = frame["content_format"].fillna("Unknown")
++    if "source_category" not in frame:
++        frame["source_category"] = "open_youtube"
++    if "video_intent" not in frame:
++        frame["video_intent"] = "film_discussion"
++    frame["source_category"] = frame["source_category"].fillna("open_youtube")
++    frame["video_intent"] = frame["video_intent"].fillna("film_discussion")
+     frame = frame.dropna(subset=["film", "text", "created_at"])
+     return enrich_comments(frame)
+ 
+@@ -81,6 +87,16 @@ def load_video_snapshots() -> pd.DataFrame:
+     if "description" not in frame:
+         frame["description"] = ""
+     frame["description"] = frame["description"].fillna("").replace({"nan": "", "None": ""})
++    for column, default in {
++        "source_category": "open_youtube",
++        "source_profile": "Open YouTube",
++        "video_intent": "film_discussion",
++        "review_evidence": True,
++    }.items():
++        if column not in frame:
++            frame[column] = default
++        else:
++            frame[column] = frame[column].fillna(default)
+     if "thumbnail_url" not in frame:
+         frame["thumbnail_url"] = ""
+     frame["thumbnail_url"] = frame["thumbnail_url"].fillna("")
+diff --git a/scanner.py b/scanner.py
+index 6206e2c..6300602 100644
+--- a/scanner.py
++++ b/scanner.py
+@@ -148,17 +148,72 @@ def content_format(row: pd.Series) -> str:
+     title = str(row.get("title", "")).lower()
+     return "Short" if (0 < seconds <= 60 or "#shorts" in title or "#short" in title) else "Video"
+ 
++def source_profile(channel: object) -> dict:
++    channel_text = normalized(channel)
++    for profile in CFG.get("source_channels", []):
++        aliases = [profile.get("name", ""), *profile.get("aliases", [])]
++        if any(normalized(alias) and normalized(alias) in channel_text for alias in aliases):
++            return profile
++    return {
++        "name": str(channel or "Open YouTube"),
++        "source_category": "open_youtube",
++        "critic_weight": 0.5,
++        "engagement_weight": 0.6,
++    }
++
++def video_intent(row: dict | pd.Series) -> str:
++    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
++    fmt = str(row.get("content_format", "Video"))
++    if any(term in text for term in ["official trailer", "official teaser", "lyric video", "sneak peek"]):
++        return "promo_material"
++    if any(term.lower() in text for term in CFG.get("interview_terms", [])):
++        return "interview_archive"
++    if "public review" in text or "people review" in text or "audience review" in text:
++        return "public_review"
++    if any(term.lower() in text for term in CFG.get("news_terms", [])):
++        return "news_update"
++    if "roast" in text or "troll" in text or "comedy" in text:
++        return "roast_commentary"
++    if "analysis" in text or "breakdown" in text or "explained" in text or "hidden details" in text:
++        return "deep_analysis"
++    if any(term in text for term in CFG["review_terms"]):
++        return "short_review" if fmt == "Short" else "review"
++    profile = source_profile(row.get("channelTitle", row.get("channel", "")))
++    if profile.get("source_category") == "roast_commentary":
++        return "roast_commentary"
++    return "film_discussion"
++
++def review_evidence(row: dict | pd.Series) -> bool:
++    return str(row.get("video_intent", video_intent(row))) in {
++        "review", "short_review", "public_review", "deep_analysis",
++        "roast_commentary", "film_discussion",
++    }
++
+ def quality(video: dict) -> tuple[int, bool, bool]:
+     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
+     channel = video.get("channelTitle", video.get("channel", ""))
++    profile = source_profile(channel)
++    intent = video_intent(video)
+     review = any(term in text for term in CFG["review_terms"])
+     promo = any(term in text for term in CFG["promotion_terms"])
+-    trusted = any(term.lower() in channel.lower() for term in CFG["youtube_review_channels"])
+-    return (3 if trusted else 0) + (2 if review else 0) - (4 if promo else 0), trusted, promo
++    trusted = profile.get("source_category") in {
++        "critic_review", "general_review", "deep_analysis", "roast_commentary"
++    }
++    intent_bonus = {
++        "review": 3,
++        "short_review": 2,
++        "public_review": 3,
++        "deep_analysis": 2,
++        "roast_commentary": 1,
++        "film_discussion": 1,
++        "interview_archive": 0,
++        "news_update": -1,
++        "promo_material": -5,
++    }.get(intent, 0)
++    return (3 if trusted else 0) + (2 if review else 0) + intent_bonus - (4 if promo else 0), trusted, promo
+ 
+ def public_review_video(row: pd.Series) -> bool:
+-    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
+-    return "public review" in text or "people review" in text or "audience review" in text
++    return str(row.get("video_intent", video_intent(row))) == "public_review"
+ 
+ def select_daily_videos(details: pd.DataFrame) -> pd.DataFrame:
+     """Keep a balanced daily set without changing 30-minute monitor behavior."""
+@@ -166,26 +221,37 @@ def select_daily_videos(details: pd.DataFrame) -> pd.DataFrame:
+         return details
+     standard = details[details["content_format"].eq("Video")].copy()
+     shorts = details[details["content_format"].eq("Short")].copy()
+-    trusted = standard[standard["trusted_channel"]].head(int(CFG.get("trusted_videos_per_film", 5)))
++    review_pool = standard[standard["review_evidence"]].copy()
++    trusted = review_pool[review_pool["trusted_channel"]].head(int(CFG.get("trusted_videos_per_film", 5)))
++    selected_ids = set(trusted["video_id"].dropna().astype(str))
+     public = standard[
+-        ~standard["video_id"].isin(trusted["video_id"]) & standard.apply(public_review_video, axis=1)
++        ~standard["video_id"].astype(str).isin(selected_ids) & standard.apply(public_review_video, axis=1)
+     ].head(int(CFG.get("public_review_videos_per_film", 3)))
+-    organic = standard[
+-        ~standard["video_id"].isin(pd.concat([trusted, public], ignore_index=True)["video_id"])
++    selected_ids.update(public["video_id"].dropna().astype(str))
++    organic = review_pool[
++        ~review_pool["video_id"].astype(str).isin(selected_ids)
+     ].head(int(CFG.get("organic_videos_per_film", 2)))
+     standard_selected = pd.concat([trusted, public, organic], ignore_index=True)
++    selected_ids.update(organic["video_id"].dropna().astype(str))
+     if len(standard_selected) < int(CFG["active_videos_per_film"]):
+-        fill = standard[
+-            ~standard["video_id"].isin(standard_selected["video_id"])
++        fill = review_pool[
++            ~review_pool["video_id"].astype(str).isin(selected_ids)
+         ].head(int(CFG["active_videos_per_film"]) - len(standard_selected))
+         standard_selected = pd.concat([standard_selected, fill], ignore_index=True)
++        selected_ids.update(fill["video_id"].dropna().astype(str))
+     standard_selected = standard_selected.head(int(CFG["active_videos_per_film"]))
+-    shorts_selected = shorts.head(int(CFG["active_shorts_per_film"]))
+-    return pd.concat([standard_selected, shorts_selected], ignore_index=True)
++    context = standard[
++        ~standard["video_id"].astype(str).isin(selected_ids)
++        & standard["video_intent"].isin(["interview_archive", "news_update"])
++    ].head(int(CFG.get("context_videos_per_film", 0)))
++    shorts_selected = shorts[shorts["review_evidence"]].head(int(CFG["active_shorts_per_film"]))
++    return pd.concat([standard_selected, context, shorts_selected], ignore_index=True)
+ 
+ def out_of_scope(video: dict | pd.Series) -> bool:
+     """Reject formats that are not review/discussion coverage of the film."""
+     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
++    if str(video.get("video_intent", video_intent(video))) == "promo_material":
++        return True
+     return any(term.lower() in text for term in CFG.get("scope_exclusion_terms", []))
+ 
+ def prune_out_of_scope_archive(
+@@ -511,17 +577,34 @@ def main() -> None:
+             details["published_at"] = pd.to_datetime(details["published_at"], errors="coerce", utc=True)
+             details["content_format"] = details.apply(content_format, axis=1)
+             details = details[details.apply(title_matches_film, axis=1)].copy()
++            details["source_category"] = details["channel"].map(
++                lambda channel: source_profile(channel).get("source_category", "open_youtube")
++            )
++            details["source_profile"] = details["channel"].map(
++                lambda channel: source_profile(channel).get("name", channel)
++            )
++            details["critic_weight"] = details["channel"].map(
++                lambda channel: float(source_profile(channel).get("critic_weight", 0.5))
++            )
++            details["engagement_weight"] = details["channel"].map(
++                lambda channel: float(source_profile(channel).get("engagement_weight", 0.6))
++            )
++            details["video_intent"] = details.apply(video_intent, axis=1)
++            details["review_evidence"] = details.apply(review_evidence, axis=1)
+             quality_rows = details.apply(
+                 lambda row: quality(row.to_dict()), axis=1, result_type="expand"
+             )
+             details[["signal_score", "trusted_channel", "promotional"]] = quality_rows
+             details = details[~details.apply(out_of_scope, axis=1)].copy()
+-            details = details[details["signal_score"].ge(1)].copy()
++            details = details[
++                details["signal_score"].ge(1)
++                | details["video_intent"].isin(["interview_archive", "news_update"])
++            ].copy()
+             if details.empty:
+                 continue
+             details = details.sort_values(
+-                ["trusted_channel", "signal_score", "comments", "published_at"],
+-                ascending=[False, False, False, False],
++                ["review_evidence", "trusted_channel", "signal_score", "comments", "published_at"],
++                ascending=[False, False, False, False, False],
+             )
+             # Relevance/ranking decisions belong to the once-daily discovery pass.
+             # Every intervening 30-minute run keeps every already selected ID so
+@@ -547,7 +630,7 @@ def main() -> None:
+                     )
+                     batch = youtube_comments(
+                         row.video_id, film, row.channel, row.title, row.content_format,
+-                        youtube_key, comment_limit,
++                        youtube_key, comment_limit, row.source_category, row.video_intent,
+                     )
+                     if not batch.empty:
+                         comment_batches.append(batch)
+@@ -648,7 +731,8 @@ def main() -> None:
+         "movie_catalog": catalog,
+         "movie_catalog_history": list(catalog_history_map.values()),
+         "all_films_analyzed": all_films_analyzed,
+-        "youtube_channels": CFG["youtube_review_channels"],
++        "youtube_channels": [profile.get("name") for profile in CFG.get("source_channels", [])],
++        "source_taxonomy": CFG.get("source_channels", []),
+         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
+         "errors": errors,
+     }, indent=2), encoding="utf-8")
+diff --git a/scanner_config.json b/scanner_config.json
+index 67c43a9..e727ca8 100644
+--- a/scanner_config.json
++++ b/scanner_config.json
+@@ -12,18 +12,30 @@
+   "trusted_videos_per_film": 4,
+   "public_review_videos_per_film": 3,
+   "organic_videos_per_film": 2,
++  "context_videos_per_film": 1,
+   "comments_per_video_live": 50,
+   "comments_per_video_daily": 300,
+   "comment_refresh_hours": 6,
+   "keep_history_days": 730,
+-  "selection_version": 5,
++  "selection_version": 6,
+   "manual_films": [],
+   "youtube_discovery_queries": [
+     "new tamil movie review today",
+     "tamil cinema public review today",
+     "new tamil movie vimarsanam",
+     "tamil movie விமர்சனம்",
+-    "this week tamil movie review"
++    "this week tamil movie review",
++    "KaKi's Talkies tamil movie review",
++    "Sudhir Srinivasan tamil movie review",
++    "Galatta Plus Baradwaj Rangan tamil review",
++    "Second Show tamil movie review",
++    "Delite Cinemas tamil movie review",
++    "Filmi Craft Arun tamil movie review",
++    "Nona Prince tamil cinema review",
++    "Tamil Talkies tamil movie review",
++    "Plip Plip tamil movie review",
++    "Empty Hand tamil movie review",
++    "Touring Talkies tamil cinema interview"
+   ],
+   "film_title_aliases": {
+     "Gatta Kusthi 2": ["gatta kusthi 2", "gatta kusthi round 2"],
+@@ -31,33 +43,35 @@
+   },
+   "scope_exclusion_terms": [
+     "full movie",
+-    "movie explained",
+-    "story explained",
+-    "explained story",
+-    "review & fact",
+-    "review with facts",
+     "official trailer",
+     "official teaser",
+     "lyric video",
+     "audio launch",
+     "press meet",
+     "success meet",
+-    "exclusive interview",
+     "toxic shocking news"
+   ],
+-  "youtube_review_channels": [
+-    "Tamil Talkies",
+-    "BehindwoodsTV",
+-    "Galatta Tamil",
+-    "Cinema Vikatan",
+-    "BR South Cinema",
+-    "Valai Pechu",
+-    "Prashanth Rangaswamy",
+-    "Fully Filmy",
+-    "Movie Crow",
+-    "Open Pannaa",
+-    "Kodangi",
+-    "Abishek Raja"
++  "source_channels": [
++    {"name": "KaKi's Talkies", "aliases": ["KaKi's Talkies", "Kakis Talkies"], "source_category": "general_review", "critic_weight": 1.0, "engagement_weight": 0.9},
++    {"name": "Sudhir Srinivasan", "aliases": ["Sudhir Srinivasan"], "source_category": "critic_review", "critic_weight": 1.0, "engagement_weight": 0.75},
++    {"name": "Galatta Plus", "aliases": ["Galatta Plus", "Baradwaj Rangan", "BR South Cinema"], "source_category": "critic_review", "critic_weight": 0.95, "engagement_weight": 0.75},
++    {"name": "Second Show", "aliases": ["Second Show"], "source_category": "general_review", "critic_weight": 0.85, "engagement_weight": 0.85},
++    {"name": "Delite Cinemas", "aliases": ["Delite Cinemas"], "source_category": "general_review", "critic_weight": 0.82, "engagement_weight": 0.85},
++    {"name": "Filmi Craft", "aliases": ["Filmi Craft", "Filmi Craft Arun"], "source_category": "general_review", "critic_weight": 0.78, "engagement_weight": 0.8},
++    {"name": "Nona Prince", "aliases": ["Nona Prince"], "source_category": "deep_analysis", "critic_weight": 0.75, "engagement_weight": 0.65},
++    {"name": "Tamil Talkies", "aliases": ["Tamil Talkies", "Blue Sattai"], "source_category": "roast_commentary", "critic_weight": 0.4, "engagement_weight": 1.0},
++    {"name": "Plip Plip", "aliases": ["Plip Plip"], "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
++    {"name": "Empty Hand", "aliases": ["Empty Hand"], "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
++    {"name": "Kodangi", "aliases": ["Kodangi", "V Studio Kodangi"], "source_category": "roast_commentary", "critic_weight": 0.45, "engagement_weight": 0.85},
++    {"name": "Touring Talkies", "aliases": ["Touring Talkies"], "source_category": "interview_archive", "critic_weight": 0.5, "engagement_weight": 0.65},
++    {"name": "BehindwoodsTV", "aliases": ["BehindwoodsTV", "Behindwoods"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
++    {"name": "Galatta Tamil", "aliases": ["Galatta Tamil"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
++    {"name": "Cinema Vikatan", "aliases": ["Cinema Vikatan"], "source_category": "mixed_media", "critic_weight": 0.6, "engagement_weight": 0.75},
++    {"name": "Valai Pechu", "aliases": ["Valai Pechu"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
++    {"name": "Fully Filmy", "aliases": ["Fully Filmy"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.7},
++    {"name": "Movie Crow", "aliases": ["Movie Crow", "Moviecrow"], "source_category": "mixed_media", "critic_weight": 0.5, "engagement_weight": 0.65},
++    {"name": "Open Pannaa", "aliases": ["Open Pannaa"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
++    {"name": "Abishek Raja", "aliases": ["Abishek Raja"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.7}
+   ],
+   "promotion_terms": [
+     "official trailer",
+@@ -71,6 +85,24 @@
+     "exclusive interview",
+     "reaction"
+   ],
++  "interview_terms": [
++    "interview",
++    "exclusive interview",
++    "roundtable",
++    "conversation with",
++    "press meet",
++    "success meet",
++    "audio launch",
++    "trailer launch"
++  ],
++  "news_terms": [
++    "update",
++    "box office",
++    "collection",
++    "breaking",
++    "latest news",
++    "controversy"
++  ],
+   "review_terms": [
+     "review",
+     "movie review",
+@@ -83,4 +115,4 @@
+     "திரை விமர்சனம்"
+   ],
+   "active_shorts_per_film": 3
+-}
+\ No newline at end of file
++}
