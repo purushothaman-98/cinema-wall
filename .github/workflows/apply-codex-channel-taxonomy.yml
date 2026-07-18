@@ -1,0 +1,47 @@
+name: Apply Codex channel taxonomy patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".codex-patches/channel-taxonomy.patch"
+      - ".github/workflows/apply-codex-channel-taxonomy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: codex-channel-taxonomy-patch
+  cancel-in-progress: false
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Apply patch and validate
+        run: |
+          if [ ! -f .codex-patches/channel-taxonomy.patch ]; then
+            echo "Patch file is not present yet; waiting for patch commit."
+            exit 0
+          fi
+          git apply --check .codex-patches/channel-taxonomy.patch
+          git apply .codex-patches/channel-taxonomy.patch
+          python -m py_compile app.py scanner.py collectors.py data.py youtube_analysis.py
+      - name: Commit real changes and remove temporary files
+        run: |
+          git config user.name "codex"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f .codex-patches/channel-taxonomy.patch
+          rmdir .codex-patches 2>/dev/null || true
+          rm -f .github/workflows/apply-codex-channel-taxonomy.yml
+          git add app.py scanner.py collectors.py data.py scanner_config.json .github/workflows/apply-codex-channel-taxonomy.yml .codex-patches/channel-taxonomy.patch
+          git commit -m "Classify Tamil cinema source channels"
+          git pull --rebase
+          git push
