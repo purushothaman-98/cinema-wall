@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-18T18:14:41.052597+00:00",
+  "last_scan": "2026-07-18T19:38:14.571071+00:00",
   "last_video_discovery": "2026-07-18T14:13:47.126970+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -235,13 +235,17 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 155 useful public comments. Of 32 comments with detectable reaction wording, 32 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 155,
-      "explicit_reaction_comments": 32,
-      "appreciative_signals": 32,
+      "summary": "Based on 157 useful public comments. Of 34 comments with detectable reaction wording, 34 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, release & theatre.",
+      "useful_comments": 157,
+      "explicit_reaction_comments": 34,
+      "appreciative_signals": 34,
       "critical_signals": 0,
-      "substantive_share": 0.2258,
+      "substantive_share": 0.2293,
       "top_aspects": [
+        {
+          "name": "Comedy",
+          "comments": 4
+        },
         {
           "name": "Acting & characters",
           "comments": 4
@@ -249,17 +253,13 @@
         {
           "name": "Release & theatre",
           "comments": 4
-        },
-        {
-          "name": "Story & screenplay",
-          "comments": 4
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 60,
-          "appreciative_signals": 13,
+          "useful_comments": 62,
+          "appreciative_signals": 15,
           "critical_signals": 0,
           "questions": 4,
           "leading_topic": "General reaction"
@@ -1455,16 +1455,16 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 155,
+  "comments_fetched": 50,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 51,
-    "public_comment_count_unchanged": 57
+    "public_comment_count_unchanged": 60
   },
-  "new_comments_added": 7,
-  "stored_comments": 10554,
+  "new_comments_added": 2,
+  "stored_comments": 10556,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
