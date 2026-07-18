@@ -12,15 +12,18 @@ def _youtube_get(endpoint: str, params: dict) -> dict:
     response.raise_for_status()
     return response.json()
 
-def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
+def youtube_search_query(query: str, api_key: str, max_results: int = 12) -> list[dict]:
     payload = _youtube_get("search", {
         "key": api_key, "part": "snippet", "type": "video",
         "maxResults": min(max_results, 50),
-        "q": f'"{film}" Tamil movie review public review',
+        "q": query,
         "relevanceLanguage": "ta", "regionCode": "IN", "order": "date",
         "safeSearch": "none",
     })
     return [{"video_id": item["id"]["videoId"], **item["snippet"]} for item in payload.get("items", [])]
+
+def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
+    return youtube_search_query(f'"{film}" Tamil movie review public review', api_key, max_results)
 
 def youtube_details(video_ids: list[str], api_key: str) -> pd.DataFrame:
     unique_ids = list(dict.fromkeys(video_ids))
