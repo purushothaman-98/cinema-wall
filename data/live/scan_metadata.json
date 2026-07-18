@@ -1,54 +1,72 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-07-18T11:19:25.278660+00:00",
-  "last_video_discovery": "2026-07-18T10:52:01.765350+00:00",
+  "status": "partial",
+  "last_scan": "2026-07-18T11:25:42.862955+00:00",
+  "last_video_discovery": "2026-07-18T11:25:42.862955+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "keep_history_days": 730,
-  "selection_version": 4,
+  "selection_version": 5,
   "active_video_ids": [
+    "-2VNIdBAx3c",
     "-GmXAiBTYBQ",
-    "1qP32L5hyO4",
+    "-PsNSivis9w",
+    "05gc4H7ejZo",
     "232Dh6lXQ8o",
-    "3KDXJbHSubM",
-    "3WR4xuFcvc4",
+    "2AdZXTYvwVI",
     "3hUwnHct-xM",
+    "3oalZmBxYTU",
+    "4udZ1BAow8Y",
     "4v6OWiZAv7Q",
     "5GAgwuuIx_I",
-    "5LA6GUH2pA8",
+    "6DQ-onPfoXM",
+    "6s8EUL6Z8q0",
+    "7Qno-0za-TM",
+    "82QPBkIrpo0",
+    "9MCtq1wzpl0",
     "9qO7Xsa2g1A",
+    "ABEw1SBvaiY",
     "AvPRJgNnkxc",
     "Cr4fNditLIc",
-    "CswWdLyJ5uI",
-    "EcIv-ghW3t0",
+    "Dap4CW9f0lM",
+    "E25qRxvvIYc",
+    "EaJqiDm1-QQ",
     "Ed3JorSD7HE",
+    "EqhOWuDRaUI",
     "FoSTbBc2T1A",
-    "G-PQXCuMTjM",
+    "FufQWpyXXUc",
     "GcHI2mnFcXQ",
+    "Gw4bk81zurM",
     "H1udCndPTU0",
-    "HHu7PHif4mE",
-    "IYpfXjFFJt0",
+    "JOJdw6IJq4k",
     "JPZa5mxdA90",
+    "Jo__DrJMk4M",
+    "KL5ZhG5dm30",
     "KbH3Cihy0hA",
+    "KkHP4aoU8ng",
     "LLmkti_XkMk",
     "La5WyvyO4HM",
+    "M7lFLW8GmGY",
     "NKrb-_qKqtQ",
-    "O_Sc3nBYM_0",
+    "OjlO3i690xU",
     "OoMQuy2Pzx0",
     "P9wB0hzx57c",
-    "Pgx3Mw-FpdQ",
     "PneX7CumxoQ",
     "QQWfysygeLQ",
+    "QjMnu5lNv6s",
     "QkGUFx1Ns8Y",
-    "QlIBfkb21Mc",
+    "RkeoklKcklY",
+    "SiNEiQSr66A",
     "TUfsVzU8yvI",
     "Toas2mtps7c",
-    "UU216Zdz2lc",
+    "U9-SoJfP4sw",
     "YH_HeVOtpfA",
+    "_-pyMZMGv3k",
     "_vqgR_x1I1Q",
     "a28ZC5uxjXU",
     "aiDE5EQH7VE",
     "asUbxf6yqBo",
+    "b8qQ_0JSMxU",
+    "bmbwo_2_iwI",
     "cbllSrGPjs0",
     "ccjasf80_dw",
     "dLVO165vC2I",
@@ -56,39 +74,48 @@
     "doqGi23QOu4",
     "dzMotcbkyV0",
     "eICFQfyvItk",
-    "gDNceT8979U",
-    "gIS58gBJVpY",
-    "ghgTkC-SI9U",
+    "eMSdfuiOrmY",
     "h6P5Lj-TQF4",
-    "h82wnFt1bsM",
+    "hOZpPJE0XzE",
     "haLV011BfjA",
+    "k5YtkpFCzsc",
+    "k5m5ZsR9IIU",
+    "karQTqzP1lo",
     "kiFeXcU-JI4",
     "nTpsJJG068E",
+    "ockg8Fx0L2c",
+    "oiDfyURQOeE",
     "pi52Pq_k4D4",
     "q1Yk7mOv2GQ",
+    "q5YrcsKrke4",
     "qUDayTlaWfM",
     "qYiwgZPiqPk",
     "rRL7e36tzY0",
     "rZ6TkZABsKA",
+    "rexCk0gQNHA",
     "rkIdNZyiGH0",
     "sGZ_wEjhu5U",
     "sX-AyaZtsi4",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
-    "ttw1NaUcxb0",
-    "u3tOHprtNAI",
+    "tXvh8JgIj-E",
+    "uL7XCVLOLTI",
     "uVQanfNtU70",
     "udOlKexHZws",
     "vEgYmiOrmtg",
+    "v_xiKt7Ksqs",
     "vmIVxWqIqPo",
+    "wdg72YqzetM",
+    "x30_j_7Si8Y",
+    "xTOF1N9cBew",
+    "y7tfv_IsCek",
+    "yeubRFzbENs",
     "z1iWBA43b8g",
-    "zIwNKmWknNY",
     "zeZIjZA_src",
-    "zkQWiCji7Hw",
-    "zzWet6khCHE"
+    "zkQWiCji7Hw"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -96,13 +123,13 @@
     "tamil movie \u0bb5\u0bbf\u0bae\u0bb0\u0bcd\u0b9a\u0ba9\u0bae\u0bcd",
     "this week tamil movie review"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 90,
   "manual_films_configured": 0,
   "video_selection_buckets": {
-    "trusted_videos_per_film": 5,
+    "trusted_videos_per_film": 4,
     "public_review_videos_per_film": 3,
     "organic_videos_per_film": 2,
-    "active_shorts_per_film": 4
+    "active_shorts_per_film": 3
   },
   "film_insights": {
     "29": {
@@ -177,6 +204,21 @@
         }
       ]
     },
+    "Anthony": {
+      "summary": "Based on 5 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss direction & making.",
+      "useful_comments": 5,
+      "explicit_reaction_comments": 0,
+      "appreciative_signals": 0,
+      "critical_signals": 0,
+      "substantive_share": 0.0,
+      "top_aspects": [
+        {
+          "name": "Direction & making",
+          "comments": 1
+        }
+      ],
+      "reviewers": []
+    },
     "Blast": {
       "summary": "Based on 702 useful public comments. Of 224 comments with detectable reaction wording, 195 were appreciative and 29 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
       "useful_comments": 702,
@@ -232,6 +274,21 @@
           "leading_topic": "General reaction"
         }
       ]
+    },
+    "Double Occupancy": {
+      "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss story & screenplay.",
+      "useful_comments": 9,
+      "explicit_reaction_comments": 2,
+      "appreciative_signals": 1,
+      "critical_signals": 1,
+      "substantive_share": 0.2222,
+      "top_aspects": [
+        {
+          "name": "Story & screenplay",
+          "comments": 1
+        }
+      ],
+      "reviewers": []
     },
     "Gandhi Talks": {
       "summary": "Based on 289 useful public comments. Of 64 comments with detectable reaction wording, 44 were appreciative and 20 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, music & sound, story & screenplay.",
@@ -377,17 +434,42 @@
         }
       ]
     },
+    "Granny": {
+      "summary": "Based on 16 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss pacing & runtime.",
+      "useful_comments": 16,
+      "explicit_reaction_comments": 5,
+      "appreciative_signals": 2,
+      "critical_signals": 3,
+      "substantive_share": 0.0,
+      "top_aspects": [
+        {
+          "name": "Pacing & runtime",
+          "comments": 2
+        }
+      ],
+      "reviewers": []
+    },
+    "Happy Raj": {
+      "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 8,
+      "explicit_reaction_comments": 3,
+      "appreciative_signals": 3,
+      "critical_signals": 0,
+      "substantive_share": 0.125,
+      "top_aspects": [],
+      "reviewers": []
+    },
     "Idhayam Murali": {
-      "summary": "Based on 590 useful public comments. Of 215 comments with detectable reaction wording, 151 were appreciative and 64 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 590,
-      "explicit_reaction_comments": 215,
-      "appreciative_signals": 151,
+      "summary": "Based on 593 useful public comments. Of 217 comments with detectable reaction wording, 153 were appreciative and 64 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 593,
+      "explicit_reaction_comments": 217,
+      "appreciative_signals": 153,
       "critical_signals": 64,
-      "substantive_share": 0.2085,
+      "substantive_share": 0.2091,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 30
+          "comments": 31
         },
         {
           "name": "Acting & characters",
@@ -466,12 +548,12 @@
       ]
     },
     "Kara": {
-      "summary": "Based on 806 useful public comments. Of 259 comments with detectable reaction wording, 167 were appreciative and 92 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
-      "useful_comments": 806,
+      "summary": "Based on 807 useful public comments. Of 259 comments with detectable reaction wording, 167 were appreciative and 92 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 807,
       "explicit_reaction_comments": 259,
       "appreciative_signals": 167,
       "critical_signals": 92,
-      "substantive_share": 0.2829,
+      "substantive_share": 0.2838,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -656,6 +738,16 @@
           "leading_topic": "General reaction"
         }
       ]
+    },
+    "Mr. X": {
+      "summary": "Based on 10 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 10,
+      "explicit_reaction_comments": 2,
+      "appreciative_signals": 2,
+      "critical_signals": 0,
+      "substantive_share": 0.3,
+      "top_aspects": [],
+      "reviewers": []
     },
     "Parimala and Co": {
       "summary": "Based on 442 useful public comments. Of 124 comments with detectable reaction wording, 85 were appreciative and 39 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
@@ -959,14 +1051,22 @@
     "Gandhi Talks",
     "Youth",
     "29",
-    "TN 2026"
+    "TN 2026",
+    "Mr. X",
+    "Granny",
+    "Arjunan Per Paththu",
+    "Double Occupancy",
+    "Neelira",
+    "Happy Raj",
+    "Find Me",
+    "Anthony"
   ],
-  "comments_fetched": 2608,
-  "new_comments_added": 0,
-  "stored_comments": 9670,
-  "videos_monitored": 79,
-  "standard_videos_monitored": 60,
-  "shorts_monitored": 19,
+  "comments_fetched": 5151,
+  "new_comments_added": 81,
+  "stored_comments": 9751,
+  "videos_monitored": 106,
+  "standard_videos_monitored": 77,
+  "shorts_monitored": 29,
   "movie_catalog": [
     {
       "title": "Idhayam Murali",
@@ -1296,6 +1396,217 @@
         "Redin Kingsley",
         "Viji Chandrasekhar",
         "Vadivukarasi"
+      ]
+    },
+    {
+      "title": "Mr. X",
+      "original_title": "\u0bae\u0bbf\u0bb8\u0bcd\u0b9f\u0bb0\u0bcd. \u0b8e\u0b95\u0bcd\u0bb8\u0bcd",
+      "release_date": "2026-04-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7aqx7T9FNu1HPCyb0CBjJtjshoU.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/pHYVsFUjKnYpHmhvTILd3XqXwRM.jpg",
+      "tmdb_id": 1126723,
+      "overview": "Centers on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "runtime": 153,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Manu Anand",
+      "cast": [
+        "Arya",
+        "Gautham Ram Karthik",
+        "Manju Warrier",
+        "R. Sarathkumar",
+        "Anagha",
+        "Athulya Ravi",
+        "Raiza Wilson",
+        "Jayaprakash",
+        "Kaali Venkat",
+        "Tara Amala Joseph"
+      ]
+    },
+    {
+      "title": "Granny",
+      "original_title": "\u0b95\u0bcd\u0bb0\u0bbe\u0ba3\u0bbf",
+      "release_date": "2026-01-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/eaeKmjzKOKFOGmXOoURrVsLncqF.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fKusVXla3cZ2JM40vlYJT86ft2D.jpg",
+      "tmdb_id": 1623927,
+      "overview": "Granny is an upcoming film directed by Vijaya Kumara, starring Vadivukkarasi, Dhileepan, Singampuli, Gaja Raja, Ananthu Nag, and Aparna in prominent roles.",
+      "runtime": 124,
+      "genres": [
+        "Horror"
+      ],
+      "director": "Vijaya Kumaran",
+      "cast": [
+        "Vadivukarasi",
+        "Dhileban",
+        "Gajaraj",
+        "Ananth Nag",
+        "Aparna",
+        "Ghanshyam",
+        "Sandrea"
+      ]
+    },
+    {
+      "title": "Arjunan Per Paththu",
+      "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pZiRQ7hVuDzFkCVmzw9slhjSLhO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bI9hY9LOpegpsDCXq4B4UFf5ukr.jpg",
+      "tmdb_id": 1607621,
+      "overview": "Arjunan, who witnessed his parents being killed by lightning in front of his eyes, cannot bear the shock and arrives in Chennai from his hometown Madurai. Arjunan, who joined a kayalang shop in Chennai, starts to love a woman. Before marrying that woman, he was a worker and wanted to become an entrepreneur. He gave away all the money he had saved up until then and bought an old Tata Ace and married the woman he loved. Arjuna happily starts driving the vehicle, thinking that his life has become as happy as he thought it would be. Arjuna, who has been facing constant problems with that old vehicle, realizes that he has been completely cheated in buying the vehicle. He brings together all those who have been affected like him and exposes all the frauds in buying and selling old vehicles, seeking justice for himself and all those who have been cheated like him.",
+      "runtime": 0,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "R Rajmohan",
+      "cast": [
+        "Yogi Babu",
+        "Anamika Mahi",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Kaali Venkat",
+        "Aruldoss",
+        "Sentrayan",
+        "Subramaniam Siva",
+        "Lenin Bharathi",
+        "Myna Nandhini",
+        "M. Soundarya Saravanan"
+      ]
+    },
+    {
+      "title": "Double Occupancy",
+      "original_title": "\u0b9f\u0baa\u0bc1\u0bb2\u0bcd \u0b86\u0b95\u0bcd\u0b95\u0bc1\u0baa\u0ba3\u0bcd\u0b9a\u0bbf",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/m0rN6dUnvAAjIwKDLRSIdkrZcBA.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yxKw7DH4aqexI1rBkUnG5rtwaiL.jpg",
+      "tmdb_id": 1565790,
+      "overview": "Rajini transforms between woman by day and man by night, hiding this gender swap from partners creating tangled complications.",
+      "runtime": 132,
+      "genres": [
+        "Romance",
+        "Drama",
+        "Fantasy"
+      ],
+      "director": "Aswin Kandasamy",
+      "cast": [
+        "Santhosh",
+        "Reshma Venkatesh",
+        "Samyuktha Viola Viswanathan",
+        "Vinoth Kishan",
+        "VTV Ganesh",
+        "Bagavathi Perumal",
+        "Vichu Vishwanath",
+        "Bose Venkat",
+        "Vinodhini Vaidyanathan"
+      ]
+    },
+    {
+      "title": "Neelira",
+      "original_title": "\u0ba8\u0bc0\u0bb3\u0bbf\u0bb0\u0bbe",
+      "release_date": "2026-04-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/a8HvmTThFuE4lbQ8zCdm7tySgpU.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6vjDCzUILv7T7NGNzaZKMHk0CJF.jpg",
+      "tmdb_id": 1652180,
+      "overview": "A wedding eve in 1988 Sri Lanka turns into a hostage standoff when Indian Army soldiers occupy a family's home overnight.",
+      "runtime": 92,
+      "genres": [
+        "Thriller",
+        "War"
+      ],
+      "director": "Someetharan",
+      "cast": [
+        "Naveen Chandra",
+        "Sananth",
+        "Kapila Venu",
+        "Roopa Koduvayur",
+        "Vidhu",
+        "Sidhu kumaresan",
+        "Vincent Nakul",
+        "Tharmeega Manimaran",
+        "Gajaraj"
+      ]
+    },
+    {
+      "title": "Happy Raj",
+      "original_title": "\u0bb9\u0bc7\u0baa\u0bcd\u0baa\u0bbf \u0bb0\u0bbe\u0b9c\u0bcd",
+      "release_date": "2026-03-27",
+      "poster_url": "https://image.tmdb.org/t/p/w500/8hmB6KNUFFzChYJxngIp063H2YR.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fug20H3qffP941XVDJCnpY61GVn.jpg",
+      "tmdb_id": 1518247,
+      "overview": "A city romance meets a rural family invasion. What follows is chaos, comedy, and heartfelt moments. The story unfolds as a joyful entertainer that explores love, cultural clashes, and the importance of family bonds.",
+      "runtime": 159,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Maria Raja Elenchezhian",
+      "cast": [
+        "G. V. Prakash Kumar",
+        "Sri Gouri Priya Reddy",
+        "Abbas",
+        "George Mariyan",
+        "Geetha Kailasam",
+        "Prathana Nathan",
+        "Madurai Muthu",
+        "Adhirchi Arun",
+        "Muhammad Rasool",
+        "Akhilan"
+      ]
+    },
+    {
+      "title": "Find Me",
+      "original_title": "Find Me",
+      "release_date": "2026-07-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7lByW5Hsy1r7NwNNP5B0wECEZTI.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/humuGx6DgniVx6TGkeaIXKd4Bd2.jpg",
+      "tmdb_id": 1724890,
+      "overview": "During the COVID-19 lockdown, a series of mysterious murders spreads fear across the city. As the investigation unfolds, hidden secrets and unexpected twists make it increasingly difficult to identify the killer. Every clue leads to another mystery in this Tamil crime thriller.",
+      "runtime": 160,
+      "genres": [
+        "Crime",
+        "Thriller",
+        "Mystery"
+      ],
+      "director": "Krithick Krishnan",
+      "cast": [
+        "Krithick Krishnan",
+        "Ashwin S A",
+        "John Praveen",
+        "Prabu Murugha",
+        "Kishore A",
+        "Praveen",
+        "Saravana Kumar R",
+        "Akash Gopi",
+        "Vetrivel Manoharan",
+        "Bharath"
+      ]
+    },
+    {
+      "title": "Anthony",
+      "original_title": "\u0b85\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bbf",
+      "release_date": "2026-03-13",
+      "poster_url": "https://image.tmdb.org/t/p/w500/iSTE5UGlQ5YlPiMdsuCOAnChY9X.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/qNEwPLOkD6VbNh8iUS4kRzNSZF6.jpg",
+      "tmdb_id": 1642665,
+      "overview": "Set along the coastal shores of Jaffna, the story follows a fisherman and his family  whose lives are inseparably tied to the sea. As he struggles to balance his responsibilities toward his profession and his family, a tender love story unfolds, shaping his choices and testing his values. Daily life within the fishing community  its hardships, traditions, and unspoken bonds, forms the backdrop of the narrative. When personal desires begin to clash with family expectations, the protagonist is forced to confront sacrifice, loyalty, and the true meaning of love. Through moments of romance, conflict, and emotional depth, the film reveals the  strength of family ties and the resilience of a community that survives by trusting the sea and each other.",
+      "runtime": 136,
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "director": "Sukirthan Christhuraja",
+      "cast": [
+        "Vincent Nakul",
+        "TJ Bhanu",
+        "Sudharshan Raveendran",
+        "Saumi Munasin",
+        "Ashana Julius Kanistan",
+        "Aruldoss",
+        "Nizhalgal Ravi",
+        "Kalaivalarai Saga Ramanathas"
       ]
     }
   ],
@@ -1657,16 +1968,207 @@
         "Sudharshan Gandhy",
         "Sachana Namidass"
       ]
+    },
+    {
+      "title": "Mr. X",
+      "original_title": "\u0bae\u0bbf\u0bb8\u0bcd\u0b9f\u0bb0\u0bcd. \u0b8e\u0b95\u0bcd\u0bb8\u0bcd",
+      "release_date": "2026-04-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7aqx7T9FNu1HPCyb0CBjJtjshoU.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/pHYVsFUjKnYpHmhvTILd3XqXwRM.jpg",
+      "tmdb_id": 1126723,
+      "overview": "Centers on secret intelligence agency cases involving five major national threats that were thwarted through covert operations.",
+      "runtime": 153,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Manu Anand",
+      "cast": [
+        "Arya",
+        "Gautham Ram Karthik",
+        "Manju Warrier",
+        "R. Sarathkumar",
+        "Anagha",
+        "Athulya Ravi",
+        "Raiza Wilson",
+        "Jayaprakash",
+        "Kaali Venkat",
+        "Tara Amala Joseph"
+      ]
+    },
+    {
+      "title": "Granny",
+      "original_title": "\u0b95\u0bcd\u0bb0\u0bbe\u0ba3\u0bbf",
+      "release_date": "2026-01-30",
+      "poster_url": "https://image.tmdb.org/t/p/w500/eaeKmjzKOKFOGmXOoURrVsLncqF.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fKusVXla3cZ2JM40vlYJT86ft2D.jpg",
+      "tmdb_id": 1623927,
+      "overview": "Granny is an upcoming film directed by Vijaya Kumara, starring Vadivukkarasi, Dhileepan, Singampuli, Gaja Raja, Ananthu Nag, and Aparna in prominent roles.",
+      "runtime": 124,
+      "genres": [
+        "Horror"
+      ],
+      "director": "Vijaya Kumaran",
+      "cast": [
+        "Vadivukarasi",
+        "Dhileban",
+        "Gajaraj",
+        "Ananth Nag",
+        "Aparna",
+        "Ghanshyam",
+        "Sandrea"
+      ]
+    },
+    {
+      "title": "Arjunan Per Paththu",
+      "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pZiRQ7hVuDzFkCVmzw9slhjSLhO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bI9hY9LOpegpsDCXq4B4UFf5ukr.jpg",
+      "tmdb_id": 1607621,
+      "overview": "Arjunan, who witnessed his parents being killed by lightning in front of his eyes, cannot bear the shock and arrives in Chennai from his hometown Madurai. Arjunan, who joined a kayalang shop in Chennai, starts to love a woman. Before marrying that woman, he was a worker and wanted to become an entrepreneur. He gave away all the money he had saved up until then and bought an old Tata Ace and married the woman he loved. Arjuna happily starts driving the vehicle, thinking that his life has become as happy as he thought it would be. Arjuna, who has been facing constant problems with that old vehicle, realizes that he has been completely cheated in buying the vehicle. He brings together all those who have been affected like him and exposes all the frauds in buying and selling old vehicles, seeking justice for himself and all those who have been cheated like him.",
+      "runtime": 0,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "R Rajmohan",
+      "cast": [
+        "Yogi Babu",
+        "Anamika Mahi",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Kaali Venkat",
+        "Aruldoss",
+        "Sentrayan",
+        "Subramaniam Siva",
+        "Lenin Bharathi",
+        "Myna Nandhini",
+        "M. Soundarya Saravanan"
+      ]
+    },
+    {
+      "title": "Double Occupancy",
+      "original_title": "\u0b9f\u0baa\u0bc1\u0bb2\u0bcd \u0b86\u0b95\u0bcd\u0b95\u0bc1\u0baa\u0ba3\u0bcd\u0b9a\u0bbf",
+      "release_date": "2026-06-12",
+      "poster_url": "https://image.tmdb.org/t/p/w500/m0rN6dUnvAAjIwKDLRSIdkrZcBA.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yxKw7DH4aqexI1rBkUnG5rtwaiL.jpg",
+      "tmdb_id": 1565790,
+      "overview": "Rajini transforms between woman by day and man by night, hiding this gender swap from partners creating tangled complications.",
+      "runtime": 132,
+      "genres": [
+        "Romance",
+        "Drama",
+        "Fantasy"
+      ],
+      "director": "Aswin Kandasamy",
+      "cast": [
+        "Santhosh",
+        "Reshma Venkatesh",
+        "Samyuktha Viola Viswanathan",
+        "Vinoth Kishan",
+        "VTV Ganesh",
+        "Bagavathi Perumal",
+        "Vichu Vishwanath",
+        "Bose Venkat",
+        "Vinodhini Vaidyanathan"
+      ]
+    },
+    {
+      "title": "Neelira",
+      "original_title": "\u0ba8\u0bc0\u0bb3\u0bbf\u0bb0\u0bbe",
+      "release_date": "2026-04-03",
+      "poster_url": "https://image.tmdb.org/t/p/w500/a8HvmTThFuE4lbQ8zCdm7tySgpU.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6vjDCzUILv7T7NGNzaZKMHk0CJF.jpg",
+      "tmdb_id": 1652180,
+      "overview": "A wedding eve in 1988 Sri Lanka turns into a hostage standoff when Indian Army soldiers occupy a family's home overnight.",
+      "runtime": 92,
+      "genres": [
+        "Thriller",
+        "War"
+      ],
+      "director": "Someetharan",
+      "cast": [
+        "Naveen Chandra",
+        "Sananth",
+        "Kapila Venu",
+        "Roopa Koduvayur",
+        "Vidhu",
+        "Sidhu kumaresan",
+        "Vincent Nakul",
+        "Tharmeega Manimaran",
+        "Gajaraj"
+      ]
+    },
+    {
+      "title": "Happy Raj",
+      "original_title": "\u0bb9\u0bc7\u0baa\u0bcd\u0baa\u0bbf \u0bb0\u0bbe\u0b9c\u0bcd",
+      "release_date": "2026-03-27",
+      "poster_url": "https://image.tmdb.org/t/p/w500/8hmB6KNUFFzChYJxngIp063H2YR.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fug20H3qffP941XVDJCnpY61GVn.jpg",
+      "tmdb_id": 1518247,
+      "overview": "A city romance meets a rural family invasion. What follows is chaos, comedy, and heartfelt moments. The story unfolds as a joyful entertainer that explores love, cultural clashes, and the importance of family bonds.",
+      "runtime": 159,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Maria Raja Elenchezhian",
+      "cast": [
+        "G. V. Prakash Kumar",
+        "Sri Gouri Priya Reddy",
+        "Abbas",
+        "George Mariyan",
+        "Geetha Kailasam",
+        "Prathana Nathan",
+        "Madurai Muthu",
+        "Adhirchi Arun",
+        "Muhammad Rasool",
+        "Akhilan"
+      ]
+    },
+    {
+      "title": "Anthony",
+      "original_title": "\u0b85\u0ba8\u0bcd\u0ba4\u0bcb\u0ba9\u0bbf",
+      "release_date": "2026-03-13",
+      "poster_url": "https://image.tmdb.org/t/p/w500/iSTE5UGlQ5YlPiMdsuCOAnChY9X.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/qNEwPLOkD6VbNh8iUS4kRzNSZF6.jpg",
+      "tmdb_id": 1642665,
+      "overview": "Set along the coastal shores of Jaffna, the story follows a fisherman and his family  whose lives are inseparably tied to the sea. As he struggles to balance his responsibilities toward his profession and his family, a tender love story unfolds, shaping his choices and testing his values. Daily life within the fishing community  its hardships, traditions, and unspoken bonds, forms the backdrop of the narrative. When personal desires begin to clash with family expectations, the protagonist is forced to confront sacrifice, loyalty, and the true meaning of love. Through moments of romance, conflict, and emotional depth, the film reveals the  strength of family ties and the resilience of a community that survives by trusting the sea and each other.",
+      "runtime": 136,
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "director": "Sukirthan Christhuraja",
+      "cast": [
+        "Vincent Nakul",
+        "TJ Bhanu",
+        "Sudharshan Raveendran",
+        "Saumi Munasin",
+        "Ashana Julius Kanistan",
+        "Aruldoss",
+        "Nizhalgal Ravi",
+        "Kalaivalarai Saga Ramanathas"
+      ]
     }
   ],
   "all_films_analyzed": [
     "29",
+    "Anthony",
+    "Arjunan Per Paththu",
     "Blast",
+    "Double Occupancy",
+    "Find Me",
     "Gandhi Talks",
     "Gatta Kusthi 2",
+    "Granny",
+    "Happy Raj",
     "Idhayam Murali",
     "Kara",
     "Karuppu",
+    "Mr. X",
+    "Neelira",
     "Parimala and Co",
     "TN 2026",
     "Thaai Kizhavi",
@@ -1691,5 +2193,7 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Video statistics/TN 2026: Columns must be same length as key"
+  ]
 }
