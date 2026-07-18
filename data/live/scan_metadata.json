@@ -1,6 +1,6 @@
 {
-  "status": "partial",
-  "last_scan": "2026-07-18T14:13:47.126970+00:00",
+  "status": "healthy",
+  "last_scan": "2026-07-18T15:26:57.250710+00:00",
   "last_video_discovery": "2026-07-18T14:13:47.126970+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -126,7 +126,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -147,63 +147,13 @@
   ],
   "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 6,
-  "direct_film_discovery_films": [
-    "Arjunan Per Paththu",
-    "Find Me",
-    "Suitcased",
-    "Unsaid",
-    "Angikaaram",
-    "Con City"
-  ],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 6,
+  "channel_matrix_queries_run": 0,
   "channel_matrix_video_hits": 0,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "KaKi's Talkies",
-      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "KaKi's Talkies",
-      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Suitcased",
-      "channel": "KaKi's Talkies",
-      "query": "\"Suitcased\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Suitcased",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Suitcased\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -285,13 +235,17 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 145 useful public comments. Of 30 comments with detectable reaction wording, 30 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, comedy, acting & characters.",
-      "useful_comments": 145,
-      "explicit_reaction_comments": 30,
-      "appreciative_signals": 30,
+      "summary": "Based on 150 useful public comments. Of 32 comments with detectable reaction wording, 32 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, story & screenplay, comedy.",
+      "useful_comments": 150,
+      "explicit_reaction_comments": 32,
+      "appreciative_signals": 32,
       "critical_signals": 0,
-      "substantive_share": 0.2,
+      "substantive_share": 0.2133,
       "top_aspects": [
+        {
+          "name": "Acting & characters",
+          "comments": 4
+        },
         {
           "name": "Story & screenplay",
           "comments": 4
@@ -299,24 +253,20 @@
         {
           "name": "Comedy",
           "comments": 3
-        },
-        {
-          "name": "Acting & characters",
-          "comments": 3
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 53,
-          "appreciative_signals": 11,
+          "useful_comments": 57,
+          "appreciative_signals": 13,
           "critical_signals": 0,
-          "questions": 3,
+          "questions": 4,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 47,
+          "useful_comments": 48,
           "appreciative_signals": 10,
           "critical_signals": 0,
           "questions": 3,
@@ -375,12 +325,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 91 useful public comments. Of 10 comments with detectable reaction wording, 9 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, acting & characters.",
-      "useful_comments": 91,
+      "summary": "Based on 93 useful public comments. Of 10 comments with detectable reaction wording, 9 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, acting & characters.",
+      "useful_comments": 93,
       "explicit_reaction_comments": 10,
       "appreciative_signals": 9,
       "critical_signals": 1,
-      "substantive_share": 0.2088,
+      "substantive_share": 0.2043,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -398,7 +348,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 45,
+          "useful_comments": 47,
           "appreciative_signals": 6,
           "critical_signals": 0,
           "questions": 3,
@@ -611,12 +561,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 446 useful public comments. Of 121 comments with detectable reaction wording, 97 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 446,
-      "explicit_reaction_comments": 121,
-      "appreciative_signals": 97,
+      "summary": "Based on 447 useful public comments. Of 122 comments with detectable reaction wording, 98 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 447,
+      "explicit_reaction_comments": 122,
+      "appreciative_signals": 98,
       "critical_signals": 24,
-      "substantive_share": 0.1794,
+      "substantive_share": 0.179,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -634,8 +584,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 299,
-          "appreciative_signals": 66,
+          "useful_comments": 300,
+          "appreciative_signals": 67,
           "critical_signals": 16,
           "questions": 22,
           "leading_topic": "General reaction"
@@ -1505,16 +1455,16 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 1937,
+  "comments_fetched": 250,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 112,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 51,
+    "public_comment_count_unchanged": 56
   },
-  "new_comments_added": 296,
-  "stored_comments": 10515,
+  "new_comments_added": 9,
+  "stored_comments": 10524,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
@@ -3191,21 +3141,5 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": [
-    "Broad discovery/new tamil movie review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=new+tamil+movie+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Broad discovery/tamil cinema public review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=tamil+cinema+public+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Broad discovery/new tamil movie vimarsanam: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=new+tamil+movie+vimarsanam&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Arjunan Per Paththu/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Arjunan+Per+Paththu%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Arjunan Per Paththu/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Arjunan+Per+Paththu%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Find Me/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Find+Me%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Find Me/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Find+Me%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Suitcased/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Suitcased%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Suitcased/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Suitcased%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Arjunan Per Paththu: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Arjunan+Per+Paththu%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Unsaid: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Unsaid%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Find Me: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Find+Me%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Con City: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Con+City%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Angikaaram: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Angikaaram%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Discovery/Suitcased: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Suitcased%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none"
-  ]
+  "errors": []
 }
