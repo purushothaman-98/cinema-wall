@@ -10,7 +10,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-from collectors import youtube_comments, youtube_details, youtube_search
+from collectors import youtube_comments, youtube_details, youtube_search, youtube_search_query
 from youtube_analysis import enrich_comments
 
 ROOT = Path(__file__).parent
@@ -26,9 +26,20 @@ def normalized(value: object) -> str:
 def title_matches_film(video: dict | pd.Series) -> bool:
     film = str(video.get("film", "")).strip()
     title = f" {normalized(video.get('title', ''))} "
-    configured = CFG.get("film_title_aliases", {}).get(film, [])
-    aliases = configured or [film]
+    aliases = film_aliases(film)
     return any(f" {normalized(alias)} " in title for alias in aliases if normalized(alias))
+
+def film_aliases(film: str) -> list[str]:
+    aliases = [film]
+    aliases.extend(CFG.get("film_title_aliases", {}).get(film, []))
+    for item in CFG.get("manual_films", []):
+        if str(item.get("title", "")).strip() == film:
+            aliases.extend(item.get("aliases", []))
+    return list(dict.fromkeys(alias for alias in aliases if str(alias).strip()))
+
+def video_mentions_film(video: dict | pd.Series, film: str) -> bool:
+    text = f" {normalized(video.get('title', ''))} {normalized(video.get('description', ''))} "
+    return any(f" {normalized(alias)} " in text for alias in film_aliases(film) if normalized(alias))
 
 def require(name: str) -> str:
     value = os.getenv(name, "").strip()
@@ -86,7 +97,27 @@ def discover_films(key: str) -> list[dict]:
             "director": director,
             "cast": [person.get("name") for person in credits.get("cast", [])[:10]],
         })
-    return catalog
+    manual = []
+    known_titles = {item["title"] for item in catalog}
+    for item in CFG.get("manual_films", []):
+        title = str(item.get("title", "")).strip()
+        if not title or title in known_titles:
+            continue
+        manual.append({
+            "title": title,
+            "original_title": item.get("original_title") or title,
+            "release_date": item.get("release_date"),
+            "poster_url": item.get("poster_url"),
+            "backdrop_url": item.get("backdrop_url"),
+            "tmdb_id": item.get("tmdb_id"),
+            "overview": item.get("overview", "Manual watchlist film awaiting TMDB enrichment."),
+            "runtime": item.get("runtime"),
+            "genres": item.get("genres", []),
+            "director": item.get("director"),
+            "cast": item.get("cast", []),
+            "source": "manual_watchlist",
+        })
+    return catalog + manual
 
 def duration_seconds(value: object) -> int:
     match = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", str(value or ""))
@@ -107,6 +138,33 @@ def quality(video: dict) -> tuple[int, bool, bool]:
     promo = any(term in text for term in CFG["promotion_terms"])
     trusted = any(term.lower() in channel.lower() for term in CFG["youtube_review_channels"])
     return (3 if trusted else 0) + (2 if review else 0) - (4 if promo else 0), trusted, promo
+
+def public_review_video(row: pd.Series) -> bool:
+    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
+    return "public review" in text or "people review" in text or "audience review" in text
+
+def select_daily_videos(details: pd.DataFrame) -> pd.DataFrame:
+    """Keep a balanced daily set without changing 30-minute monitor behavior."""
+    if details.empty:
+        return details
+    standard = details[details["content_format"].eq("Video")].copy()
+    shorts = details[details["content_format"].eq("Short")].copy()
+    trusted = standard[standard["trusted_channel"]].head(int(CFG.get("trusted_videos_per_film", 5)))
+    public = standard[
+        ~standard["video_id"].isin(trusted["video_id"]) & standard.apply(public_review_video, axis=1)
+    ].head(int(CFG.get("public_review_videos_per_film", 3)))
+    organic = standard[
+        ~standard["video_id"].isin(pd.concat([trusted, public], ignore_index=True)["video_id"])
+    ].head(int(CFG.get("organic_videos_per_film", 2)))
+    standard_selected = pd.concat([trusted, public, organic], ignore_index=True)
+    if len(standard_selected) < int(CFG["active_videos_per_film"]):
+        fill = standard[
+            ~standard["video_id"].isin(standard_selected["video_id"])
+        ].head(int(CFG["active_videos_per_film"]) - len(standard_selected))
+        standard_selected = pd.concat([standard_selected, fill], ignore_index=True)
+    standard_selected = standard_selected.head(int(CFG["active_videos_per_film"]))
+    shorts_selected = shorts.head(int(CFG["active_shorts_per_film"]))
+    return pd.concat([standard_selected, shorts_selected], ignore_index=True)
 
 def out_of_scope(video: dict | pd.Series) -> bool:
     """Reject formats that are not review/discussion coverage of the film."""
@@ -292,13 +350,25 @@ def main() -> None:
     previous_catalog = metadata.get("movie_catalog", [])
     previous_history = metadata.get("movie_catalog_history", previous_catalog)
     catalog_needs_details = not previous_catalog or any("cast" not in item for item in previous_catalog)
-    catalog = discover_films(tmdb_key) if (do_discovery or catalog_needs_details) else previous_catalog
-    films = [item["title"] for item in catalog]
-
     comment_batches: list[pd.DataFrame] = []
     snapshot_batches: list[pd.DataFrame] = []
     errors: list[str] = []
     monitored_video_ids: set[str] = set()
+
+    catalog = discover_films(tmdb_key) if (do_discovery or catalog_needs_details) else previous_catalog
+    films = [item["title"] for item in catalog]
+    broad_candidates: dict[str, list[dict]] = {film: [] for film in films}
+    discovery_video_hits = 0
+    if do_discovery:
+        for query in CFG.get("youtube_discovery_queries", []):
+            try:
+                for item in youtube_search_query(query, youtube_key, CFG["youtube_videos_per_film"]):
+                    discovery_video_hits += 1
+                    for film in films:
+                        if video_mentions_film(item, film):
+                            broad_candidates.setdefault(film, []).append(item)
+            except Exception as exc:
+                errors.append(f"Broad discovery/{query}: {exc}")
 
     for film in films:
         candidates: list[dict] = []
@@ -322,6 +392,13 @@ def main() -> None:
                         })
             except Exception as exc:
                 errors.append(f"Discovery/{film}: {exc}")
+            for item in broad_candidates.get(film, []):
+                score, trusted, promo = quality(item)
+                if score >= 1:
+                    candidates.append({
+                        "video_id": item["video_id"], "signal_score": score,
+                        "trusted_channel": trusted, "promotional": promo,
+                    })
 
         candidate_map = {
             str(item["video_id"]): item for item in candidates if item.get("video_id")
@@ -362,13 +439,7 @@ def main() -> None:
             # Every intervening 30-minute run keeps every already selected ID so
             # the raw counter series cannot disappear because its rank changed.
             if do_discovery:
-                standard_videos = details[details["content_format"].eq("Video")].head(
-                    int(CFG["active_videos_per_film"])
-                )
-                shorts = details[details["content_format"].eq("Short")].head(
-                    int(CFG["active_shorts_per_film"])
-                )
-                details = pd.concat([standard_videos, shorts], ignore_index=True)
+                details = select_daily_videos(details)
             details["scanned_at"] = now_iso
             snapshot_batches.append(details)
 
@@ -454,6 +525,16 @@ def main() -> None:
         "selection_version": CFG.get("selection_version", 1),
         "active_video_ids": sorted(monitored_video_ids),
         "out_of_scope_videos_pruned": len(pruned_ids),
+        "discovery_mode": "daily_tmdb_plus_broad_youtube" if do_discovery else "monitor_existing_selection",
+        "broad_discovery_queries": CFG.get("youtube_discovery_queries", []),
+        "broad_discovery_video_hits": discovery_video_hits,
+        "manual_films_configured": len(CFG.get("manual_films", [])),
+        "video_selection_buckets": {
+            "trusted_videos_per_film": CFG.get("trusted_videos_per_film"),
+            "public_review_videos_per_film": CFG.get("public_review_videos_per_film"),
+            "organic_videos_per_film": CFG.get("organic_videos_per_film"),
+            "active_shorts_per_film": CFG.get("active_shorts_per_film"),
+        },
         "film_insights": film_insights,
         "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
         "films": films,
