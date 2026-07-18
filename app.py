@@ -148,6 +148,7 @@ def prep_comments(frame: pd.DataFrame, video_frame: pd.DataFrame) -> pd.DataFram
         "film": "Unknown", "channel": "Unknown", "video_id": "", "video_title": "",
         "content_format": "Unknown", "text": "", "language": "Unknown", "topic": "General reaction",
         "reaction_signal": "Mixed / unclear", "comment_kind": "Quick reaction", "url": "",
+        "source_category": "open_youtube", "video_intent": "film_discussion",
     }.items():
         if column not in comments:
             comments[column] = default
@@ -171,7 +172,12 @@ def prep_videos(frame: pd.DataFrame) -> pd.DataFrame:
     if frame.empty:
         return frame
     videos = frame.copy()
-    for column, default in {"film": "Unknown", "channel": "Unknown", "title": "", "content_format": "Video", "video_id": "", "thumbnail_url": ""}.items():
+    for column, default in {
+        "film": "Unknown", "channel": "Unknown", "title": "", "content_format": "Video",
+        "video_id": "", "thumbnail_url": "", "source_category": "open_youtube",
+        "source_profile": "Open YouTube", "video_intent": "film_discussion",
+        "review_evidence": True,
+    }.items():
         if column not in videos:
             videos[column] = default
     videos["scanned_at"] = pd.to_datetime(videos.get("scanned_at"), errors="coerce", utc=True)
@@ -354,6 +360,8 @@ with st.sidebar:
         selected_channels = st.multiselect("Channels", sorted(comments["channel"].dropna().unique()), default=sorted(comments["channel"].dropna().unique()))
         formats = [v for v in ["Video", "Short"] if v in set(comments["content_format"].dropna())]
         selected_formats = st.multiselect("Formats", formats, default=formats)
+        intent_options = sorted(comments["video_intent"].dropna().astype(str).unique())
+        selected_intents = st.multiselect("Video intent", intent_options, default=intent_options)
         window = st.select_slider("Analysis window", options=[6, 12, 24, 72, 168, 720, 2160], value=168, format_func=lambda h: f"{h} hours" if h < 24 else f"{h // 24} days" if h < 720 else f"{h // 720} months")
         min_likes = st.number_input("Minimum comment likes", min_value=0, value=0)
         include_noise = st.toggle("Include low-information reactions", value=False)
@@ -374,7 +382,14 @@ if comments.empty:
 
 now = pd.Timestamp.now(tz="UTC")
 cutoff = now - pd.Timedelta(hours=int(window))
-filtered = comments[comments["film"].isin(selected_films) & comments["channel"].isin(selected_channels) & comments["content_format"].isin(selected_formats) & comments["created_at"].ge(cutoff) & comments["likes"].ge(min_likes)].copy()
+filtered = comments[
+    comments["film"].isin(selected_films)
+    & comments["channel"].isin(selected_channels)
+    & comments["content_format"].isin(selected_formats)
+    & comments["video_intent"].isin(selected_intents)
+    & comments["created_at"].ge(cutoff)
+    & comments["likes"].ge(min_likes)
+].copy()
 if not include_noise:
     filtered = filtered[~filtered["low_information"]].copy()
 if filtered.empty:
@@ -602,7 +617,7 @@ with tab_live:
         with st.expander("Exactly what the latest monitor fetched"):
             latest_time = videos["scanned_at"].max()
             latest_items = videos[videos["scanned_at"].eq(latest_time)].merge(monitored[monitored["scanned_at"].eq(latest_time)][["video_id", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]], on="video_id", how="left")
-            st.dataframe(latest_items[["film", "content_format", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]].sort_values("views_per_30m", ascending=False), hide_index=True, width="stretch")
+            st.dataframe(latest_items[["film", "content_format", "video_intent", "source_category", "channel", "title", "views", "comments", "views_gained", "comments_gained", "elapsed_minutes", "views_per_30m"]].sort_values("views_per_30m", ascending=False), hide_index=True, width="stretch")
 
     st.subheader("Which videos are gaining attention now?")
     growth = video_growth(videos)

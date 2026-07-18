@@ -48,6 +48,12 @@ def load_live() -> pd.DataFrame:
     if "content_format" not in frame:
         frame["content_format"] = "Unknown"
     frame["content_format"] = frame["content_format"].fillna("Unknown")
+    if "source_category" not in frame:
+        frame["source_category"] = "open_youtube"
+    if "video_intent" not in frame:
+        frame["video_intent"] = "film_discussion"
+    frame["source_category"] = frame["source_category"].fillna("open_youtube")
+    frame["video_intent"] = frame["video_intent"].fillna("film_discussion")
     frame = frame.dropna(subset=["film", "text", "created_at"])
     return enrich_comments(frame)
 
@@ -81,6 +87,16 @@ def load_video_snapshots() -> pd.DataFrame:
     if "description" not in frame:
         frame["description"] = ""
     frame["description"] = frame["description"].fillna("").replace({"nan": "", "None": ""})
+    for column, default in {
+        "source_category": "open_youtube",
+        "source_profile": "Open YouTube",
+        "video_intent": "film_discussion",
+        "review_evidence": True,
+    }.items():
+        if column not in frame:
+            frame[column] = default
+        else:
+            frame[column] = frame[column].fillna(default)
     if "thumbnail_url" not in frame:
         frame["thumbnail_url"] = ""
     frame["thumbnail_url"] = frame["thumbnail_url"].fillna("")

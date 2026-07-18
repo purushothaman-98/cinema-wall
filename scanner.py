@@ -148,17 +148,72 @@ def content_format(row: pd.Series) -> str:
     title = str(row.get("title", "")).lower()
     return "Short" if (0 < seconds <= 60 or "#shorts" in title or "#short" in title) else "Video"
 
+def source_profile(channel: object) -> dict:
+    channel_text = normalized(channel)
+    for profile in CFG.get("source_channels", []):
+        aliases = [profile.get("name", ""), *profile.get("aliases", [])]
+        if any(normalized(alias) and normalized(alias) in channel_text for alias in aliases):
+            return profile
+    return {
+        "name": str(channel or "Open YouTube"),
+        "source_category": "open_youtube",
+        "critic_weight": 0.5,
+        "engagement_weight": 0.6,
+    }
+
+def video_intent(row: dict | pd.Series) -> str:
+    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
+    fmt = str(row.get("content_format", "Video"))
+    if any(term in text for term in ["official trailer", "official teaser", "lyric video", "sneak peek"]):
+        return "promo_material"
+    if any(term.lower() in text for term in CFG.get("interview_terms", [])):
+        return "interview_archive"
+    if "public review" in text or "people review" in text or "audience review" in text:
+        return "public_review"
+    if any(term.lower() in text for term in CFG.get("news_terms", [])):
+        return "news_update"
+    if "roast" in text or "troll" in text or "comedy" in text:
+        return "roast_commentary"
+    if "analysis" in text or "breakdown" in text or "explained" in text or "hidden details" in text:
+        return "deep_analysis"
+    if any(term in text for term in CFG["review_terms"]):
+        return "short_review" if fmt == "Short" else "review"
+    profile = source_profile(row.get("channelTitle", row.get("channel", "")))
+    if profile.get("source_category") == "roast_commentary":
+        return "roast_commentary"
+    return "film_discussion"
+
+def review_evidence(row: dict | pd.Series) -> bool:
+    return str(row.get("video_intent", video_intent(row))) in {
+        "review", "short_review", "public_review", "deep_analysis",
+        "roast_commentary", "film_discussion",
+    }
+
 def quality(video: dict) -> tuple[int, bool, bool]:
     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
     channel = video.get("channelTitle", video.get("channel", ""))
+    profile = source_profile(channel)
+    intent = video_intent(video)
     review = any(term in text for term in CFG["review_terms"])
     promo = any(term in text for term in CFG["promotion_terms"])
-    trusted = any(term.lower() in channel.lower() for term in CFG["youtube_review_channels"])
-    return (3 if trusted else 0) + (2 if review else 0) - (4 if promo else 0), trusted, promo
+    trusted = profile.get("source_category") in {
+        "critic_review", "general_review", "deep_analysis", "roast_commentary"
+    }
+    intent_bonus = {
+        "review": 3,
+        "short_review": 2,
+        "public_review": 3,
+        "deep_analysis": 2,
+        "roast_commentary": 1,
+        "film_discussion": 1,
+        "interview_archive": 0,
+        "news_update": -1,
+        "promo_material": -5,
+    }.get(intent, 0)
+    return (3 if trusted else 0) + (2 if review else 0) + intent_bonus - (4 if promo else 0), trusted, promo
 
 def public_review_video(row: pd.Series) -> bool:
-    text = f"{row.get('title', '')} {row.get('description', '')}".lower()
-    return "public review" in text or "people review" in text or "audience review" in text
+    return str(row.get("video_intent", video_intent(row))) == "public_review"
 
 def select_daily_videos(details: pd.DataFrame) -> pd.DataFrame:
     """Keep a balanced daily set without changing 30-minute monitor behavior."""
@@ -166,26 +221,37 @@ def select_daily_videos(details: pd.DataFrame) -> pd.DataFrame:
         return details
     standard = details[details["content_format"].eq("Video")].copy()
     shorts = details[details["content_format"].eq("Short")].copy()
-    trusted = standard[standard["trusted_channel"]].head(int(CFG.get("trusted_videos_per_film", 5)))
+    review_pool = standard[standard["review_evidence"]].copy()
+    trusted = review_pool[review_pool["trusted_channel"]].head(int(CFG.get("trusted_videos_per_film", 5)))
+    selected_ids = set(trusted["video_id"].dropna().astype(str))
     public = standard[
-        ~standard["video_id"].isin(trusted["video_id"]) & standard.apply(public_review_video, axis=1)
+        ~standard["video_id"].astype(str).isin(selected_ids) & standard.apply(public_review_video, axis=1)
     ].head(int(CFG.get("public_review_videos_per_film", 3)))
-    organic = standard[
-        ~standard["video_id"].isin(pd.concat([trusted, public], ignore_index=True)["video_id"])
+    selected_ids.update(public["video_id"].dropna().astype(str))
+    organic = review_pool[
+        ~review_pool["video_id"].astype(str).isin(selected_ids)
     ].head(int(CFG.get("organic_videos_per_film", 2)))
     standard_selected = pd.concat([trusted, public, organic], ignore_index=True)
+    selected_ids.update(organic["video_id"].dropna().astype(str))
     if len(standard_selected) < int(CFG["active_videos_per_film"]):
-        fill = standard[
-            ~standard["video_id"].isin(standard_selected["video_id"])
+        fill = review_pool[
+            ~review_pool["video_id"].astype(str).isin(selected_ids)
         ].head(int(CFG["active_videos_per_film"]) - len(standard_selected))
         standard_selected = pd.concat([standard_selected, fill], ignore_index=True)
+        selected_ids.update(fill["video_id"].dropna().astype(str))
     standard_selected = standard_selected.head(int(CFG["active_videos_per_film"]))
-    shorts_selected = shorts.head(int(CFG["active_shorts_per_film"]))
-    return pd.concat([standard_selected, shorts_selected], ignore_index=True)
+    context = standard[
+        ~standard["video_id"].astype(str).isin(selected_ids)
+        & standard["video_intent"].isin(["interview_archive", "news_update"])
+    ].head(int(CFG.get("context_videos_per_film", 0)))
+    shorts_selected = shorts[shorts["review_evidence"]].head(int(CFG["active_shorts_per_film"]))
+    return pd.concat([standard_selected, context, shorts_selected], ignore_index=True)
 
 def out_of_scope(video: dict | pd.Series) -> bool:
     """Reject formats that are not review/discussion coverage of the film."""
     text = f"{video.get('title', '')} {video.get('description', '')}".lower()
+    if str(video.get("video_intent", video_intent(video))) == "promo_material":
+        return True
     return any(term.lower() in text for term in CFG.get("scope_exclusion_terms", []))
 
 def prune_out_of_scope_archive(
@@ -511,17 +577,34 @@ def main() -> None:
             details["published_at"] = pd.to_datetime(details["published_at"], errors="coerce", utc=True)
             details["content_format"] = details.apply(content_format, axis=1)
             details = details[details.apply(title_matches_film, axis=1)].copy()
+            details["source_category"] = details["channel"].map(
+                lambda channel: source_profile(channel).get("source_category", "open_youtube")
+            )
+            details["source_profile"] = details["channel"].map(
+                lambda channel: source_profile(channel).get("name", channel)
+            )
+            details["critic_weight"] = details["channel"].map(
+                lambda channel: float(source_profile(channel).get("critic_weight", 0.5))
+            )
+            details["engagement_weight"] = details["channel"].map(
+                lambda channel: float(source_profile(channel).get("engagement_weight", 0.6))
+            )
+            details["video_intent"] = details.apply(video_intent, axis=1)
+            details["review_evidence"] = details.apply(review_evidence, axis=1)
             quality_rows = details.apply(
                 lambda row: quality(row.to_dict()), axis=1, result_type="expand"
             )
             details[["signal_score", "trusted_channel", "promotional"]] = quality_rows
             details = details[~details.apply(out_of_scope, axis=1)].copy()
-            details = details[details["signal_score"].ge(1)].copy()
+            details = details[
+                details["signal_score"].ge(1)
+                | details["video_intent"].isin(["interview_archive", "news_update"])
+            ].copy()
             if details.empty:
                 continue
             details = details.sort_values(
-                ["trusted_channel", "signal_score", "comments", "published_at"],
-                ascending=[False, False, False, False],
+                ["review_evidence", "trusted_channel", "signal_score", "comments", "published_at"],
+                ascending=[False, False, False, False, False],
             )
             # Relevance/ranking decisions belong to the once-daily discovery pass.
             # Every intervening 30-minute run keeps every already selected ID so
@@ -547,7 +630,7 @@ def main() -> None:
                     )
                     batch = youtube_comments(
                         row.video_id, film, row.channel, row.title, row.content_format,
-                        youtube_key, comment_limit,
+                        youtube_key, comment_limit, row.source_category, row.video_intent,
                     )
                     if not batch.empty:
                         comment_batches.append(batch)
@@ -648,7 +731,8 @@ def main() -> None:
         "movie_catalog": catalog,
         "movie_catalog_history": list(catalog_history_map.values()),
         "all_films_analyzed": all_films_analyzed,
-        "youtube_channels": CFG["youtube_review_channels"],
+        "youtube_channels": [profile.get("name") for profile in CFG.get("source_channels", [])],
+        "source_taxonomy": CFG.get("source_channels", []),
         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
         "errors": errors,
     }, indent=2), encoding="utf-8")
