@@ -491,6 +491,16 @@ def film_channel_queries(films: list[str], known: pd.DataFrame) -> list[tuple[st
                 return queries
     return queries
 
+def direct_discovery_films(films: list[str], known: pd.DataFrame) -> list[str]:
+    """Search specific film names only for the weakest covered films."""
+    max_queries = int(CFG.get("direct_film_discovery_max_queries", len(films)))
+    counts = review_video_counts_by_film(known)
+    prioritized = sorted(
+        films,
+        key=lambda film: (counts.get(film, 0), normalized(film)),
+    )
+    return prioritized[:max(0, max_queries)]
+
 def should_fetch_comments(
     row: pd.Series,
     previous_counts: dict[str, int],
@@ -590,6 +600,7 @@ def main() -> None:
     channel_matrix_hits = 0
     channel_matrix_queries: list[dict] = []
     if do_discovery:
+        direct_films = set(direct_discovery_films(films, known))
         for query in CFG.get("youtube_discovery_queries", [])[: int(CFG.get("broad_discovery_max_queries", 8))]:
             try:
                 for item in youtube_search_query(query, youtube_key, CFG["youtube_videos_per_film"]):
@@ -633,17 +644,18 @@ def main() -> None:
                 })
 
         if do_discovery:
-            try:
-                for item in youtube_search(film, youtube_key, CFG["youtube_videos_per_film"]):
-                    score, trusted, promo = quality(item)
-                    if score >= 1:
-                        candidates.append({
-                            "video_id": item["video_id"], "signal_score": score,
-                            "trusted_channel": trusted, "promotional": promo,
-                        })
-                pause_after_search()
-            except Exception as exc:
-                errors.append(f"Discovery/{film}: {safe_error(exc)}")
+            if film in direct_films:
+                try:
+                    for item in youtube_search(film, youtube_key, CFG["youtube_videos_per_film"]):
+                        score, trusted, promo = quality(item)
+                        if score >= 1:
+                            candidates.append({
+                                "video_id": item["video_id"], "signal_score": score,
+                                "trusted_channel": trusted, "promotional": promo,
+                            })
+                    pause_after_search()
+                except Exception as exc:
+                    errors.append(f"Discovery/{film}: {safe_error(exc)}")
             for item in broad_candidates.get(film, []):
                 score, trusted, promo = quality(item)
                 if score >= 1:
@@ -812,6 +824,12 @@ def main() -> None:
         "discovery_mode": "daily_tmdb_plus_broad_youtube" if do_discovery else "monitor_existing_selection",
         "broad_discovery_queries": CFG.get("youtube_discovery_queries", []),
         "broad_discovery_video_hits": discovery_video_hits,
+        "broad_discovery_queries_run": min(
+            len(CFG.get("youtube_discovery_queries", [])),
+            int(CFG.get("broad_discovery_max_queries", 8)),
+        ),
+        "direct_film_discovery_queries_run": len(direct_discovery_films(films, known)) if do_discovery else 0,
+        "direct_film_discovery_films": direct_discovery_films(films, known) if do_discovery else [],
         "channel_matrix_enabled": CFG.get("channel_matrix_enabled", True),
         "channel_matrix_queries_run": len(channel_matrix_queries),
         "channel_matrix_video_hits": channel_matrix_hits,

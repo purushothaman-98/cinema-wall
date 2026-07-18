@@ -4,14 +4,6 @@ on:
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "scanner.py"
-      - "scanner_config.json"
-      - "collectors.py"
-      - "youtube_analysis.py"
-      - ".github/workflows/youtube-monitor.yml"
 
 permissions:
   contents: write

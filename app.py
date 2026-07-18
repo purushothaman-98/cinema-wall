@@ -756,6 +756,117 @@ with tab_lifetime:
         fig.update_layout(height=470, showlegend=False, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
         st.plotly_chart(fig, width="stretch")
 
+    st.subheader("YouTube channel evaluation")
+    st.markdown(
+        '<div class="section-note">This evaluates source usefulness for the tracker, not moral quality or movie-rating accuracy. It uses only videos and comments already collected.</div>',
+        unsafe_allow_html=True,
+    )
+    if latest.empty:
+        st.info("No video snapshots are available for channel evaluation yet.")
+    else:
+        latest_eval = latest.copy()
+        for column, default in {"source_category": "open_youtube", "video_intent": "film_discussion"}.items():
+            if column not in latest_eval:
+                latest_eval[column] = default
+            latest_eval[column] = latest_eval[column].fillna(default)
+        taxonomy = meta.get("source_taxonomy", [])
+        def infer_source_category(channel: object, current: object) -> str:
+            current_text = str(current or "")
+            if current_text and current_text != "open_youtube" and current_text.lower() != "nan":
+                return current_text
+            lowered = str(channel or "").lower()
+            for profile in taxonomy:
+                aliases = [profile.get("name", ""), *profile.get("aliases", [])]
+                if any(str(alias).lower() and str(alias).lower() in lowered for alias in aliases):
+                    return str(profile.get("source_category", "open_youtube"))
+            return "open_youtube"
+        latest_eval["source_category"] = latest_eval.apply(
+            lambda row: infer_source_category(row.get("channel"), row.get("source_category")),
+            axis=1,
+        )
+        channel_video = latest_eval.groupby("channel", as_index=False).agg(
+            films_covered=("film", "nunique"),
+            tracked_items=("video_id", "nunique"),
+            public_views=("views", "sum"),
+            public_comments=("comments", "sum"),
+            videos=("content_format", lambda values: int((values == "Video").sum())),
+            shorts=("content_format", lambda values: int((values == "Short").sum())),
+            review_items=("video_intent", lambda values: int(pd.Series(values).isin(["review", "short_review", "public_review", "deep_analysis", "roast_commentary", "film_discussion"]).sum())),
+            context_items=("video_intent", lambda values: int(pd.Series(values).isin(["interview_archive", "news_update"]).sum())),
+            source_category=("source_category", lambda values: str(pd.Series(values).mode().iloc[0]) if len(pd.Series(values).mode()) else "open_youtube"),
+        )
+        comment_eval = comments.copy()
+        if not comment_eval.empty:
+            comment_eval["useful_comment"] = ~comment_eval["low_information"].fillna(False).astype(bool)
+            comment_eval["question_comment"] = comment_eval["is_question"].fillna(False).astype(bool)
+            comment_eval["detailed_comment"] = comment_eval["comment_kind"].isin(["Detailed discussion", "Question"])
+            channel_comments = comment_eval.groupby("channel", as_index=False).agg(
+                stored_comments=("source_id", "nunique"),
+                useful_comments=("useful_comment", "sum"),
+                questions=("question_comment", "sum"),
+                detailed_or_questions=("detailed_comment", "sum"),
+            )
+        else:
+            channel_comments = pd.DataFrame(columns=["channel", "stored_comments", "useful_comments", "questions", "detailed_or_questions"])
+        channel_eval = channel_video.merge(channel_comments, on="channel", how="left").fillna(0)
+        channel_eval["useful_share"] = channel_eval["useful_comments"] / channel_eval["stored_comments"].where(channel_eval["stored_comments"].gt(0), pd.NA)
+        channel_eval["question_share"] = channel_eval["questions"] / channel_eval["stored_comments"].where(channel_eval["stored_comments"].gt(0), pd.NA)
+        channel_eval["comments_per_item"] = channel_eval["stored_comments"] / channel_eval["tracked_items"].where(channel_eval["tracked_items"].gt(0), pd.NA)
+        channel_eval["review_share"] = channel_eval["review_items"] / channel_eval["tracked_items"].where(channel_eval["tracked_items"].gt(0), pd.NA)
+        channel_eval["tracker_value"] = (
+            channel_eval["films_covered"].clip(upper=6) * 8
+            + channel_eval["review_share"].fillna(0) * 25
+            + channel_eval["useful_share"].fillna(0) * 25
+            + channel_eval["stored_comments"].clip(upper=500) / 20
+            + channel_eval["public_comments"].clip(upper=1500) / 100
+        )
+        channel_eval = channel_eval.sort_values(["tracker_value", "stored_comments", "public_comments"], ascending=False)
+        summary_cols = st.columns(5)
+        summary_cols[0].metric("Channels evaluated", f"{len(channel_eval):,}")
+        summary_cols[1].metric("Known-source items", f"{channel_eval[channel_eval['source_category'].ne('open_youtube')]['tracked_items'].sum():,.0f}")
+        summary_cols[2].metric("Open YouTube items", f"{channel_eval[channel_eval['source_category'].eq('open_youtube')]['tracked_items'].sum():,.0f}")
+        summary_cols[3].metric("Review evidence items", f"{channel_eval['review_items'].sum():,.0f}")
+        summary_cols[4].metric("Context items", f"{channel_eval['context_items'].sum():,.0f}")
+        fig = px.scatter(
+            channel_eval.head(35),
+            x="stored_comments",
+            y="useful_share",
+            size="public_comments",
+            color="source_category",
+            hover_name="channel",
+            hover_data=["films_covered", "tracked_items", "review_share", "questions"],
+            color_discrete_sequence=PALETTE,
+            labels={"stored_comments": "Stored comments", "useful_share": "Useful-comment share"},
+        )
+        fig.update_layout(height=470, legend_title=None, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(255,255,255,.45)")
+        st.plotly_chart(fig, width="stretch")
+        display = channel_eval.rename(columns={
+            "channel": "Channel",
+            "source_category": "Category",
+            "films_covered": "Films covered",
+            "tracked_items": "Videos + Shorts",
+            "review_items": "Review/discussion items",
+            "context_items": "Context items",
+            "stored_comments": "Stored comments",
+            "public_comments": "Public comments",
+            "useful_share": "Useful share",
+            "question_share": "Question share",
+            "comments_per_item": "Comments/item",
+            "tracker_value": "Tracker value",
+        })
+        for column in ["Useful share", "Question share"]:
+            display[column] = pd.to_numeric(display[column], errors="coerce").fillna(0) * 100
+        st.dataframe(
+            display[["Channel", "Category", "Films covered", "Videos + Shorts", "Review/discussion items", "Context items", "Stored comments", "Public comments", "Useful share", "Question share", "Comments/item", "Tracker value"]].head(60),
+            hide_index=True,
+            width="stretch",
+            column_config={
+                "Useful share": st.column_config.NumberColumn("Useful share", format="%.1f%%"),
+                "Question share": st.column_config.NumberColumn("Question share", format="%.1f%%"),
+                "Tracker value": st.column_config.NumberColumn("Tracker value", format="%.1f"),
+            },
+        )
+
 with tab_film:
     film = st.selectbox("Choose a film", selected_films)
     render_movie_page(film, filtered, videos, meta, catalog)
