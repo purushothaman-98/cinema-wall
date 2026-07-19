@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-19T10:49:35.812745+00:00",
+  "last_scan": "2026-07-19T11:47:45.354345+00:00",
   "last_video_discovery": "2026-07-18T14:13:47.126970+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -235,12 +235,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 172 useful public comments. Of 39 comments with detectable reaction wording, 38 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, story & screenplay.",
-      "useful_comments": 172,
-      "explicit_reaction_comments": 39,
-      "appreciative_signals": 38,
+      "summary": "Based on 175 useful public comments. Of 40 comments with detectable reaction wording, 39 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, story & screenplay.",
+      "useful_comments": 175,
+      "explicit_reaction_comments": 40,
+      "appreciative_signals": 39,
       "critical_signals": 1,
-      "substantive_share": 0.2326,
+      "substantive_share": 0.2286,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -258,8 +258,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 71,
-          "appreciative_signals": 17,
+          "useful_comments": 73,
+          "appreciative_signals": 18,
           "critical_signals": 0,
           "questions": 6,
           "leading_topic": "General reaction"
@@ -274,7 +274,7 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 29,
+          "useful_comments": 30,
           "appreciative_signals": 6,
           "critical_signals": 1,
           "questions": 5,
@@ -325,12 +325,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 130 useful public comments. Of 24 comments with detectable reaction wording, 21 were appreciative and 3 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, emotion.",
-      "useful_comments": 130,
+      "summary": "Based on 132 useful public comments. Of 24 comments with detectable reaction wording, 21 were appreciative and 3 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, emotion.",
+      "useful_comments": 132,
       "explicit_reaction_comments": 24,
       "appreciative_signals": 21,
       "critical_signals": 3,
-      "substantive_share": 0.2308,
+      "substantive_share": 0.2273,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -348,7 +348,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 66,
+          "useful_comments": 67,
           "appreciative_signals": 13,
           "critical_signals": 0,
           "questions": 7,
@@ -356,7 +356,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 58,
+          "useful_comments": 59,
           "appreciative_signals": 8,
           "critical_signals": 3,
           "questions": 6,
@@ -1455,16 +1455,16 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 1056,
+  "comments_fetched": 183,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 5,
-    "periodic_comment_refresh": 104,
-    "public_comment_count_unchanged": 3
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 51,
+    "public_comment_count_unchanged": 57
   },
-  "new_comments_added": 43,
-  "stored_comments": 10607,
+  "new_comments_added": 5,
+  "stored_comments": 10612,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
