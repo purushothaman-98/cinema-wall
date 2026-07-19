@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-18T23:40:26.425193+00:00",
+  "last_scan": "2026-07-19T01:21:02.641144+00:00",
   "last_video_discovery": "2026-07-18T14:13:47.126970+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -325,12 +325,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 114 useful public comments. Of 17 comments with detectable reaction wording, 15 were appreciative and 2 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, emotion.",
-      "useful_comments": 114,
+      "summary": "Based on 115 useful public comments. Of 17 comments with detectable reaction wording, 15 were appreciative and 2 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, emotion.",
+      "useful_comments": 115,
       "explicit_reaction_comments": 17,
       "appreciative_signals": 15,
       "critical_signals": 2,
-      "substantive_share": 0.2281,
+      "substantive_share": 0.2261,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -698,16 +698,16 @@
       "reviewers": []
     },
     "Heartin": {
-      "summary": "Based on 4 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
-      "useful_comments": 4,
+      "summary": "Based on 5 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 5,
       "explicit_reaction_comments": 0,
       "appreciative_signals": 0,
       "critical_signals": 0,
-      "substantive_share": 0.25,
+      "substantive_share": 0.2,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 3
+          "comments": 4
         },
         {
           "name": "Emotion",
@@ -1455,16 +1455,16 @@
     "Nizhal",
     "Valluvan"
   ],
-  "comments_fetched": 76,
+  "comments_fetched": 11,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 52,
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 51,
     "public_comment_count_unchanged": 59
   },
-  "new_comments_added": 0,
-  "stored_comments": 10566,
+  "new_comments_added": 2,
+  "stored_comments": 10568,
   "videos_monitored": 112,
   "standard_videos_monitored": 84,
   "shorts_monitored": 28,
