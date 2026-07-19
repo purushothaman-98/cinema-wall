@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-19T16:26:44.690898+00:00",
+  "last_scan": "2026-07-19T17:30:21.216217+00:00",
   "last_video_discovery": "2026-07-19T14:18:17.998238+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -229,12 +229,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 190 useful public comments. Of 47 comments with detectable reaction wording, 46 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
-      "useful_comments": 190,
-      "explicit_reaction_comments": 47,
+      "summary": "Based on 192 useful public comments. Of 48 comments with detectable reaction wording, 46 were appreciative and 2 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
+      "useful_comments": 192,
+      "explicit_reaction_comments": 48,
       "appreciative_signals": 46,
-      "critical_signals": 1,
-      "substantive_share": 0.2263,
+      "critical_signals": 2,
+      "substantive_share": 0.2292,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -252,10 +252,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 86,
+          "useful_comments": 88,
           "appreciative_signals": 24,
-          "critical_signals": 0,
-          "questions": 6,
+          "critical_signals": 1,
+          "questions": 7,
           "leading_topic": "General reaction"
         },
         {
@@ -319,12 +319,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 173 useful public comments. Of 35 comments with detectable reaction wording, 32 were appreciative and 3 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 173,
-      "explicit_reaction_comments": 35,
+      "summary": "Based on 176 useful public comments. Of 36 comments with detectable reaction wording, 32 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 176,
+      "explicit_reaction_comments": 36,
       "appreciative_signals": 32,
-      "critical_signals": 3,
-      "substantive_share": 0.237,
+      "critical_signals": 4,
+      "substantive_share": 0.2443,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -350,10 +350,10 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 64,
+          "useful_comments": 67,
           "appreciative_signals": 12,
-          "critical_signals": 3,
-          "questions": 6,
+          "critical_signals": 4,
+          "questions": 7,
           "leading_topic": "General reaction"
         },
         {
@@ -1457,7 +1457,7 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 136,
+  "comments_fetched": 150,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1465,8 +1465,8 @@
     "periodic_comment_refresh": 46,
     "public_comment_count_unchanged": 57
   },
-  "new_comments_added": 3,
-  "stored_comments": 10679,
+  "new_comments_added": 6,
+  "stored_comments": 10685,
   "videos_monitored": 106,
   "standard_videos_monitored": 78,
   "shorts_monitored": 28,
