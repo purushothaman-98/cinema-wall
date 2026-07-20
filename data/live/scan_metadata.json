@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-20T10:38:14.283449+00:00",
+  "last_scan": "2026-07-20T12:59:54.132330+00:00",
   "last_video_discovery": "2026-07-19T14:18:17.998238+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -229,12 +229,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 203 useful public comments. Of 53 comments with detectable reaction wording, 49 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, story & screenplay.",
-      "useful_comments": 203,
-      "explicit_reaction_comments": 53,
-      "appreciative_signals": 49,
+      "summary": "Based on 205 useful public comments. Of 55 comments with detectable reaction wording, 51 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, story & screenplay.",
+      "useful_comments": 205,
+      "explicit_reaction_comments": 55,
+      "appreciative_signals": 51,
       "critical_signals": 4,
-      "substantive_share": 0.2315,
+      "substantive_share": 0.2293,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -252,8 +252,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 94,
-          "appreciative_signals": 27,
+          "useful_comments": 96,
+          "appreciative_signals": 29,
           "critical_signals": 2,
           "questions": 8,
           "leading_topic": "General reaction"
@@ -719,12 +719,12 @@
       "reviewers": []
     },
     "Idhayam Murali": {
-      "summary": "Based on 608 useful public comments. Of 224 comments with detectable reaction wording, 157 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 608,
+      "summary": "Based on 609 useful public comments. Of 224 comments with detectable reaction wording, 157 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 609,
       "explicit_reaction_comments": 224,
       "appreciative_signals": 157,
       "critical_signals": 67,
-      "substantive_share": 0.2072,
+      "substantive_share": 0.2069,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -742,7 +742,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 207,
+          "useful_comments": 208,
           "appreciative_signals": 57,
           "critical_signals": 19,
           "questions": 23,
@@ -1457,16 +1457,16 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 107,
+  "comments_fetched": 929,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
-    "periodic_comment_refresh": 45,
-    "public_comment_count_unchanged": 57
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 97,
+    "public_comment_count_unchanged": 7
   },
-  "new_comments_added": 3,
-  "stored_comments": 10708,
+  "new_comments_added": 41,
+  "stored_comments": 10712,
   "videos_monitored": 106,
   "standard_videos_monitored": 78,
   "shorts_monitored": 28,
