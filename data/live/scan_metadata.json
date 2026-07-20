@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-20T04:58:17.481045+00:00",
+  "last_scan": "2026-07-20T07:55:02.251262+00:00",
   "last_video_discovery": "2026-07-19T14:18:17.998238+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -229,38 +229,38 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 197 useful public comments. Of 52 comments with detectable reaction wording, 49 were appreciative and 3 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
-      "useful_comments": 197,
-      "explicit_reaction_comments": 52,
+      "summary": "Based on 202 useful public comments. Of 53 comments with detectable reaction wording, 49 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, story & screenplay.",
+      "useful_comments": 202,
+      "explicit_reaction_comments": 53,
       "appreciative_signals": 49,
-      "critical_signals": 3,
-      "substantive_share": 0.2284,
+      "critical_signals": 4,
+      "substantive_share": 0.2327,
       "top_aspects": [
         {
           "name": "Comedy",
-          "comments": 10
+          "comments": 11
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 6
         },
         {
           "name": "Story & screenplay",
           "comments": 6
-        },
-        {
-          "name": "Acting & characters",
-          "comments": 5
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 91,
+          "useful_comments": 93,
           "appreciative_signals": 27,
-          "critical_signals": 1,
-          "questions": 7,
+          "critical_signals": 2,
+          "questions": 8,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 52,
+          "useful_comments": 53,
           "appreciative_signals": 12,
           "critical_signals": 0,
           "questions": 3,
@@ -319,12 +319,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 179 useful public comments. Of 37 comments with detectable reaction wording, 33 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 179,
-      "explicit_reaction_comments": 37,
-      "appreciative_signals": 33,
+      "summary": "Based on 180 useful public comments. Of 38 comments with detectable reaction wording, 34 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 180,
+      "explicit_reaction_comments": 38,
+      "appreciative_signals": 34,
       "critical_signals": 4,
-      "substantive_share": 0.2402,
+      "substantive_share": 0.2389,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -342,8 +342,8 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 72,
-          "appreciative_signals": 14,
+          "useful_comments": 73,
+          "appreciative_signals": 15,
           "critical_signals": 0,
           "questions": 7,
           "leading_topic": "General reaction"
@@ -1457,16 +1457,16 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 1083,
+  "comments_fetched": 203,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
-    "periodic_comment_refresh": 100,
-    "public_comment_count_unchanged": 2
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 46,
+    "public_comment_count_unchanged": 55
   },
-  "new_comments_added": 41,
-  "stored_comments": 10696,
+  "new_comments_added": 9,
+  "stored_comments": 10705,
   "videos_monitored": 106,
   "standard_videos_monitored": 78,
   "shorts_monitored": 28,
