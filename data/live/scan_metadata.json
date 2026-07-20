@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-20T01:24:32.784313+00:00",
+  "last_scan": "2026-07-20T04:58:17.481045+00:00",
   "last_video_discovery": "2026-07-19T14:18:17.998238+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -229,12 +229,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 194 useful public comments. Of 49 comments with detectable reaction wording, 47 were appreciative and 2 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
-      "useful_comments": 194,
-      "explicit_reaction_comments": 49,
-      "appreciative_signals": 47,
-      "critical_signals": 2,
-      "substantive_share": 0.2268,
+      "summary": "Based on 197 useful public comments. Of 52 comments with detectable reaction wording, 49 were appreciative and 3 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
+      "useful_comments": 197,
+      "explicit_reaction_comments": 52,
+      "appreciative_signals": 49,
+      "critical_signals": 3,
+      "substantive_share": 0.2284,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -252,8 +252,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 89,
-          "appreciative_signals": 25,
+          "useful_comments": 91,
+          "appreciative_signals": 27,
           "critical_signals": 1,
           "questions": 7,
           "leading_topic": "General reaction"
@@ -268,9 +268,9 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 31,
+          "useful_comments": 32,
           "appreciative_signals": 6,
-          "critical_signals": 1,
+          "critical_signals": 2,
           "questions": 5,
           "leading_topic": "General reaction"
         },
@@ -319,12 +319,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 178 useful public comments. Of 37 comments with detectable reaction wording, 33 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 178,
+      "summary": "Based on 179 useful public comments. Of 37 comments with detectable reaction wording, 33 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 179,
       "explicit_reaction_comments": 37,
       "appreciative_signals": 33,
       "critical_signals": 4,
-      "substantive_share": 0.2416,
+      "substantive_share": 0.2402,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -358,7 +358,7 @@
         },
         {
           "channel": "Trendswood Tv",
-          "useful_comments": 30,
+          "useful_comments": 31,
           "appreciative_signals": 5,
           "critical_signals": 0,
           "questions": 3,
@@ -1457,16 +1457,16 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 51,
+  "comments_fetched": 1083,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 58
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 100,
+    "public_comment_count_unchanged": 2
   },
-  "new_comments_added": 1,
-  "stored_comments": 10692,
+  "new_comments_added": 41,
+  "stored_comments": 10696,
   "videos_monitored": 106,
   "standard_videos_monitored": 78,
   "shorts_monitored": 28,
