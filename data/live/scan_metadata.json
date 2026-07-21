@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-21T04:39:46.442454+00:00",
+  "last_scan": "2026-07-21T07:26:24.977322+00:00",
   "last_video_discovery": "2026-07-20T15:11:35.227695+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -320,12 +320,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 195 useful public comments. Of 44 comments with detectable reaction wording, 40 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 195,
-      "explicit_reaction_comments": 44,
-      "appreciative_signals": 40,
+      "summary": "Based on 198 useful public comments. Of 46 comments with detectable reaction wording, 42 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 198,
+      "explicit_reaction_comments": 46,
+      "appreciative_signals": 42,
       "critical_signals": 4,
-      "substantive_share": 0.2462,
+      "substantive_share": 0.2424,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -343,15 +343,15 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 85,
-          "appreciative_signals": 20,
+          "useful_comments": 87,
+          "appreciative_signals": 22,
           "critical_signals": 0,
           "questions": 7,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 71,
+          "useful_comments": 72,
           "appreciative_signals": 13,
           "critical_signals": 4,
           "questions": 9,
@@ -564,12 +564,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 449 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 449,
+      "summary": "Based on 450 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 450,
       "explicit_reaction_comments": 123,
       "appreciative_signals": 99,
       "critical_signals": 24,
-      "substantive_share": 0.1782,
+      "substantive_share": 0.1778,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -587,7 +587,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 301,
+          "useful_comments": 302,
           "appreciative_signals": 67,
           "critical_signals": 16,
           "questions": 22,
@@ -1458,16 +1458,16 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 967,
+  "comments_fetched": 274,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 99,
-    "public_comment_count_unchanged": 5
+    "periodic_comment_refresh": 49,
+    "public_comment_count_unchanged": 55
   },
-  "new_comments_added": 45,
-  "stored_comments": 10739,
+  "new_comments_added": 4,
+  "stored_comments": 10743,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
