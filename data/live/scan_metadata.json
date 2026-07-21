@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-21T01:21:00.790443+00:00",
+  "last_scan": "2026-07-21T04:39:46.442454+00:00",
   "last_video_discovery": "2026-07-20T15:11:35.227695+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -230,30 +230,30 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 209 useful public comments. Of 57 comments with detectable reaction wording, 52 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, acting & characters, release & theatre.",
-      "useful_comments": 209,
+      "summary": "Based on 211 useful public comments. Of 57 comments with detectable reaction wording, 52 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, acting & characters.",
+      "useful_comments": 211,
       "explicit_reaction_comments": 57,
       "appreciative_signals": 52,
       "critical_signals": 5,
-      "substantive_share": 0.2297,
+      "substantive_share": 0.2275,
       "top_aspects": [
         {
           "name": "Comedy",
           "comments": 11
         },
         {
-          "name": "Acting & characters",
-          "comments": 6
+          "name": "Story & screenplay",
+          "comments": 7
         },
         {
-          "name": "Release & theatre",
+          "name": "Acting & characters",
           "comments": 6
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 99,
+          "useful_comments": 100,
           "appreciative_signals": 30,
           "critical_signals": 2,
           "questions": 8,
@@ -320,20 +320,20 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 190 useful public comments. Of 42 comments with detectable reaction wording, 38 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 190,
-      "explicit_reaction_comments": 42,
-      "appreciative_signals": 38,
+      "summary": "Based on 195 useful public comments. Of 44 comments with detectable reaction wording, 40 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 195,
+      "explicit_reaction_comments": 44,
+      "appreciative_signals": 40,
       "critical_signals": 4,
-      "substantive_share": 0.2474,
+      "substantive_share": 0.2462,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 8
+          "comments": 9
         },
         {
           "name": "Story & screenplay",
-          "comments": 6
+          "comments": 7
         },
         {
           "name": "Acting & characters",
@@ -343,8 +343,8 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 80,
-          "appreciative_signals": 18,
+          "useful_comments": 85,
+          "appreciative_signals": 20,
           "critical_signals": 0,
           "questions": 7,
           "leading_topic": "General reaction"
@@ -1458,16 +1458,16 @@
     "Habeebi",
     "Nizhal"
   ],
-  "comments_fetched": 51,
+  "comments_fetched": 967,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 99,
+    "public_comment_count_unchanged": 5
   },
-  "new_comments_added": 0,
-  "stored_comments": 10731,
+  "new_comments_added": 45,
+  "stored_comments": 10739,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
