@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-22T14:52:56.051013+00:00",
-  "last_video_discovery": "2026-07-21T15:20:54.991251+00:00",
+  "last_scan": "2026-07-22T16:12:31.292800+00:00",
+  "last_video_discovery": "2026-07-22T16:12:31.292800+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -121,7 +121,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -140,15 +140,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Unsaid",
+    "Angikaaram"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Suitcased",
+      "channel": "KaKi's Talkies",
+      "query": "\"Suitcased\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Suitcased",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Suitcased\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -230,12 +280,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 221 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
-      "useful_comments": 221,
+      "summary": "Based on 222 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 222,
       "explicit_reaction_comments": 60,
       "appreciative_signals": 54,
       "critical_signals": 6,
-      "substantive_share": 0.2217,
+      "substantive_share": 0.2207,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -253,7 +303,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 107,
+          "useful_comments": 108,
           "appreciative_signals": 32,
           "critical_signals": 3,
           "questions": 9,
@@ -320,12 +370,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 236 useful public comments. Of 54 comments with detectable reaction wording, 50 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 236,
-      "explicit_reaction_comments": 54,
-      "appreciative_signals": 50,
+      "summary": "Based on 239 useful public comments. Of 56 comments with detectable reaction wording, 52 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 239,
+      "explicit_reaction_comments": 56,
+      "appreciative_signals": 52,
       "critical_signals": 4,
-      "substantive_share": 0.2373,
+      "substantive_share": 0.2343,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -333,7 +383,7 @@
         },
         {
           "name": "Story & screenplay",
-          "comments": 8
+          "comments": 9
         },
         {
           "name": "Acting & characters",
@@ -343,16 +393,16 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 120,
-          "appreciative_signals": 30,
+          "useful_comments": 122,
+          "appreciative_signals": 31,
           "critical_signals": 0,
           "questions": 9,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 76,
-          "appreciative_signals": 13,
+          "useful_comments": 77,
+          "appreciative_signals": 14,
           "critical_signals": 4,
           "questions": 10,
           "leading_topic": "General reaction"
@@ -1458,16 +1508,16 @@
     "Moondram Kan",
     "Valluvan"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 2216,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 107,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 3,
-  "stored_comments": 10810,
+  "new_comments_added": 291,
+  "stored_comments": 10814,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
@@ -1898,16 +1948,16 @@
       ],
       "director": "Aswin Kandasamy",
       "cast": [
-        "Santhosh",
+        "Santhosh Sreeram",
         "Reshma Venkatesh",
         "Samyuktha Viola Viswanathan",
         "Vinoth Kishan",
         "VTV Ganesh",
         "Bagavathi Perumal",
-        "Vichu Vishwanath",
         "Bose Venkat",
         "Vinodhini Vaidyanathan",
-        "Jeeva Subramanian"
+        "Vichu Vishwanath",
+        "Kenneth"
       ]
     },
     {
@@ -2438,16 +2488,16 @@
       ],
       "director": "Aswin Kandasamy",
       "cast": [
-        "Santhosh",
+        "Santhosh Sreeram",
         "Reshma Venkatesh",
         "Samyuktha Viola Viswanathan",
         "Vinoth Kishan",
         "VTV Ganesh",
         "Bagavathi Perumal",
-        "Vichu Vishwanath",
         "Bose Venkat",
         "Vinodhini Vaidyanathan",
-        "Jeeva Subramanian"
+        "Vichu Vishwanath",
+        "Kenneth"
       ]
     },
     {
