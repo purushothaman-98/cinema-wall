@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-22T00:13:25.760587+00:00",
+  "last_scan": "2026-07-22T03:53:51.371958+00:00",
   "last_video_discovery": "2026-07-21T15:20:54.991251+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -286,16 +286,16 @@
       ]
     },
     "Angikaaram": {
-      "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
-      "useful_comments": 8,
-      "explicit_reaction_comments": 0,
-      "appreciative_signals": 0,
+      "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 9,
+      "explicit_reaction_comments": 1,
+      "appreciative_signals": 1,
       "critical_signals": 0,
-      "substantive_share": 0.25,
+      "substantive_share": 0.2222,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 5
+          "comments": 6
         },
         {
           "name": "Emotion",
@@ -320,12 +320,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 211 useful public comments. Of 48 comments with detectable reaction wording, 44 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 211,
-      "explicit_reaction_comments": 48,
-      "appreciative_signals": 44,
+      "summary": "Based on 218 useful public comments. Of 49 comments with detectable reaction wording, 45 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 218,
+      "explicit_reaction_comments": 49,
+      "appreciative_signals": 45,
       "critical_signals": 4,
-      "substantive_share": 0.237,
+      "substantive_share": 0.2339,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -343,15 +343,15 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 97,
-          "appreciative_signals": 24,
+          "useful_comments": 103,
+          "appreciative_signals": 25,
           "critical_signals": 0,
           "questions": 8,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 74,
+          "useful_comments": 75,
           "appreciative_signals": 13,
           "critical_signals": 4,
           "questions": 10,
@@ -701,16 +701,16 @@
       "reviewers": []
     },
     "Heartin": {
-      "summary": "Based on 5 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
-      "useful_comments": 5,
-      "explicit_reaction_comments": 0,
-      "appreciative_signals": 0,
+      "summary": "Based on 6 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 6,
+      "explicit_reaction_comments": 1,
+      "appreciative_signals": 1,
       "critical_signals": 0,
-      "substantive_share": 0.2,
+      "substantive_share": 0.1667,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 4
+          "comments": 5
         },
         {
           "name": "Emotion",
@@ -720,12 +720,12 @@
       "reviewers": []
     },
     "Idhayam Murali": {
-      "summary": "Based on 609 useful public comments. Of 224 comments with detectable reaction wording, 157 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 609,
-      "explicit_reaction_comments": 224,
-      "appreciative_signals": 157,
+      "summary": "Based on 610 useful public comments. Of 225 comments with detectable reaction wording, 158 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 610,
+      "explicit_reaction_comments": 225,
+      "appreciative_signals": 158,
       "critical_signals": 67,
-      "substantive_share": 0.2069,
+      "substantive_share": 0.2066,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -743,8 +743,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 208,
-          "appreciative_signals": 57,
+          "useful_comments": 209,
+          "appreciative_signals": 58,
           "critical_signals": 19,
           "questions": 23,
           "leading_topic": "General reaction"
@@ -1458,16 +1458,16 @@
     "Moondram Kan",
     "Valluvan"
   ],
-  "comments_fetched": 7,
+  "comments_fetched": 220,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 6,
     "periodic_comment_refresh": 47,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_unchanged": 54
   },
-  "new_comments_added": 0,
-  "stored_comments": 10766,
+  "new_comments_added": 13,
+  "stored_comments": 10779,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
