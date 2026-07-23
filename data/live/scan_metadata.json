@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T13:19:18.480784+00:00",
+  "last_scan": "2026-07-23T15:30:14.583990+00:00",
   "last_video_discovery": "2026-07-22T16:12:31.292800+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -230,12 +230,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 234 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 234,
+      "summary": "Based on 238 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 238,
       "explicit_reaction_comments": 60,
       "appreciative_signals": 54,
       "critical_signals": 6,
-      "substantive_share": 0.2222,
+      "substantive_share": 0.2185,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -253,7 +253,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 120,
+          "useful_comments": 124,
           "appreciative_signals": 32,
           "critical_signals": 3,
           "questions": 10,
@@ -452,8 +452,8 @@
       ]
     },
     "Dark Giant": {
-      "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
-      "useful_comments": 9,
+      "summary": "Based on 10 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 10,
       "explicit_reaction_comments": 7,
       "appreciative_signals": 2,
       "critical_signals": 5,
@@ -1105,23 +1105,23 @@
       "reviewers": []
     },
     "Nooru Sami": {
-      "summary": "Based on 53 useful public comments. Of 14 comments with detectable reaction wording, 14 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss direction & making, release & theatre, emotion.",
-      "useful_comments": 53,
-      "explicit_reaction_comments": 14,
-      "appreciative_signals": 14,
+      "summary": "Based on 54 useful public comments. Of 15 comments with detectable reaction wording, 15 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss emotion, release & theatre, direction & making.",
+      "useful_comments": 54,
+      "explicit_reaction_comments": 15,
+      "appreciative_signals": 15,
       "critical_signals": 0,
-      "substantive_share": 0.3962,
+      "substantive_share": 0.3889,
       "top_aspects": [
         {
-          "name": "Direction & making",
-          "comments": 3
+          "name": "Emotion",
+          "comments": 4
         },
         {
           "name": "Release & theatre",
           "comments": 3
         },
         {
-          "name": "Emotion",
+          "name": "Direction & making",
           "comments": 3
         }
       ],
@@ -1458,16 +1458,16 @@
     "Moondram Kan",
     "Valluvan"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 995,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 45,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 101,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 2,
-  "stored_comments": 10848,
+  "new_comments_added": 43,
+  "stored_comments": 10854,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
