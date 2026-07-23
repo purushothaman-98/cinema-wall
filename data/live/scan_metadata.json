@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T21:54:23.518779+00:00",
+  "last_scan": "2026-07-23T22:44:30.554408+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1492,15 +1492,15 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 58,
+  "comments_fetched": 0,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 0,
     "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 61
+    "public_comment_count_unchanged": 63
   },
-  "new_comments_added": 4,
+  "new_comments_added": 0,
   "stored_comments": 11002,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
