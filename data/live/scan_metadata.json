@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T16:58:16.749325+00:00",
+  "last_scan": "2026-07-23T18:10:08.448256+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -123,7 +123,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -142,65 +142,15 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 36,
+  "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 6,
-  "direct_film_discovery_films": [
-    "Arjunan Per Paththu",
-    "Find Me",
-    "Jana Nayagan",
-    "Suitcased",
-    "Sweet Rogue Killer",
-    "Unsaid"
-  ],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 6,
-  "channel_matrix_video_hits": 26,
-  "channel_matrix_matched_hits": 9,
-  "channel_matrix_queries": [
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "KaKi's Talkies",
-      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "KaKi's Talkies",
-      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Jana Nayagan",
-      "channel": "KaKi's Talkies",
-      "query": "\"Jana Nayagan\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 2
-    },
-    {
-      "film": "Jana Nayagan",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Jana Nayagan\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 7
-    }
-  ],
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
+  "channel_matrix_matched_hits": 0,
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -282,12 +232,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 239 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 239,
+      "summary": "Based on 242 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 242,
       "explicit_reaction_comments": 60,
       "appreciative_signals": 54,
       "critical_signals": 6,
-      "substantive_share": 0.2176,
+      "substantive_share": 0.2149,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -305,7 +255,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 125,
+          "useful_comments": 128,
           "appreciative_signals": 32,
           "critical_signals": 3,
           "questions": 10,
@@ -372,12 +322,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 251 useful public comments. Of 61 comments with detectable reaction wording, 57 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 251,
+      "summary": "Based on 253 useful public comments. Of 61 comments with detectable reaction wording, 57 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 253,
       "explicit_reaction_comments": 61,
       "appreciative_signals": 57,
       "critical_signals": 4,
-      "substantive_share": 0.239,
+      "substantive_share": 0.2372,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -395,7 +345,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 130,
+          "useful_comments": 132,
           "appreciative_signals": 34,
           "critical_signals": 0,
           "questions": 11,
@@ -860,20 +810,20 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 96 useful public comments. Of 21 comments with detectable reaction wording, 17 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 96,
-      "explicit_reaction_comments": 21,
+      "summary": "Based on 102 useful public comments. Of 22 comments with detectable reaction wording, 17 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 102,
+      "explicit_reaction_comments": 22,
       "appreciative_signals": 17,
-      "critical_signals": 4,
-      "substantive_share": 0.2917,
+      "critical_signals": 5,
+      "substantive_share": 0.2745,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 8
+          "comments": 9
         },
         {
           "name": "Story & screenplay",
-          "comments": 3
+          "comments": 4
         },
         {
           "name": "Pacing & runtime",
@@ -883,7 +833,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 90,
+          "useful_comments": 94,
           "appreciative_signals": 17,
           "critical_signals": 3,
           "questions": 14,
@@ -1542,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 2375,
+  "comments_fetched": 153,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 109,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 46,
+    "public_comment_count_unchanged": 59
   },
-  "new_comments_added": 408,
-  "stored_comments": 10975,
+  "new_comments_added": 12,
+  "stored_comments": 10987,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
