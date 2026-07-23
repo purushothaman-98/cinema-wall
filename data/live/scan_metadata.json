@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T01:27:03.803741+00:00",
+  "last_scan": "2026-07-23T04:46:17.121796+00:00",
   "last_video_discovery": "2026-07-22T16:12:31.292800+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -320,12 +320,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 243 useful public comments. Of 59 comments with detectable reaction wording, 55 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 243,
+      "summary": "Based on 247 useful public comments. Of 59 comments with detectable reaction wording, 55 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 247,
       "explicit_reaction_comments": 59,
       "appreciative_signals": 55,
       "critical_signals": 4,
-      "substantive_share": 0.2387,
+      "substantive_share": 0.2429,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -343,18 +343,18 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 125,
+          "useful_comments": 128,
           "appreciative_signals": 33,
           "critical_signals": 0,
-          "questions": 10,
+          "questions": 11,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 78,
+          "useful_comments": 79,
           "appreciative_signals": 15,
           "critical_signals": 4,
-          "questions": 11,
+          "questions": 12,
           "leading_topic": "General reaction"
         },
         {
@@ -1458,16 +1458,16 @@
     "Moondram Kan",
     "Valluvan"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 160,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 47,
-    "public_comment_count_unchanged": 59
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 46,
+    "public_comment_count_unchanged": 57
   },
-  "new_comments_added": 1,
-  "stored_comments": 10824,
+  "new_comments_added": 5,
+  "stored_comments": 10829,
   "videos_monitored": 107,
   "standard_videos_monitored": 79,
   "shorts_monitored": 28,
