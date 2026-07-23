@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T20:49:12.264643+00:00",
+  "last_scan": "2026-07-23T21:54:23.518779+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -288,16 +288,16 @@
       ]
     },
     "Angikaaram": {
-      "summary": "Based on 9 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
-      "useful_comments": 9,
+      "summary": "Based on 10 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 10,
       "explicit_reaction_comments": 1,
       "appreciative_signals": 1,
       "critical_signals": 0,
-      "substantive_share": 0.2222,
+      "substantive_share": 0.2,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 6
+          "comments": 7
         },
         {
           "name": "Emotion",
@@ -810,12 +810,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 108 useful public comments. Of 25 comments with detectable reaction wording, 19 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 108,
+      "summary": "Based on 110 useful public comments. Of 25 comments with detectable reaction wording, 19 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 110,
       "explicit_reaction_comments": 25,
       "appreciative_signals": 19,
       "critical_signals": 6,
-      "substantive_share": 0.2778,
+      "substantive_share": 0.2727,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -833,7 +833,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 100,
+          "useful_comments": 102,
           "appreciative_signals": 19,
           "critical_signals": 4,
           "questions": 15,
@@ -1492,7 +1492,7 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 58,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1500,8 +1500,8 @@
     "periodic_comment_refresh": 46,
     "public_comment_count_unchanged": 61
   },
-  "new_comments_added": 2,
-  "stored_comments": 10998,
+  "new_comments_added": 4,
+  "stored_comments": 11002,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
