@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-23T22:44:30.554408+00:00",
+  "last_scan": "2026-07-23T23:46:51.938287+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -232,12 +232,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 244 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 244,
+      "summary": "Based on 245 useful public comments. Of 60 comments with detectable reaction wording, 54 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 245,
       "explicit_reaction_comments": 60,
       "appreciative_signals": 54,
       "critical_signals": 6,
-      "substantive_share": 0.2131,
+      "substantive_share": 0.2122,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -255,7 +255,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 130,
+          "useful_comments": 131,
           "appreciative_signals": 32,
           "critical_signals": 3,
           "questions": 10,
@@ -1492,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1157,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 63
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 104,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 0,
-  "stored_comments": 11002,
+  "new_comments_added": 38,
+  "stored_comments": 11003,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
