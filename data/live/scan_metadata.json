@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T17:56:57.009137+00:00",
+  "last_scan": "2026-07-24T19:14:19.016342+00:00",
   "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -114,7 +114,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -133,65 +133,15 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 36,
+  "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 6,
-  "direct_film_discovery_films": [
-    "Arjunan Per Paththu",
-    "Find Me",
-    "Sathyavan Savithiri",
-    "Suitcased",
-    "Sweet Rogue Killer",
-    "Unsaid"
-  ],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 6,
-  "channel_matrix_video_hits": 16,
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "KaKi's Talkies",
-      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "KaKi's Talkies",
-      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Sathyavan Savithiri",
-      "channel": "KaKi's Talkies",
-      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Sathyavan Savithiri",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -363,12 +313,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 261 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 261,
+      "summary": "Based on 262 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 262,
       "explicit_reaction_comments": 63,
       "appreciative_signals": 59,
       "critical_signals": 4,
-      "substantive_share": 0.2375,
+      "substantive_share": 0.2366,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -386,7 +336,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 138,
+          "useful_comments": 139,
           "appreciative_signals": 36,
           "critical_signals": 0,
           "questions": 11,
@@ -851,12 +801,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 136 useful public comments. Of 31 comments with detectable reaction wording, 23 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 136,
-      "explicit_reaction_comments": 31,
+      "summary": "Based on 138 useful public comments. Of 32 comments with detectable reaction wording, 23 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 138,
+      "explicit_reaction_comments": 32,
       "appreciative_signals": 23,
-      "critical_signals": 8,
-      "substantive_share": 0.2721,
+      "critical_signals": 9,
+      "substantive_share": 0.2681,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1533,16 +1483,16 @@
     "Double Occupancy",
     "Habeebi"
   ],
-  "comments_fetched": 2440,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 100,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 58
   },
-  "new_comments_added": 311,
-  "stored_comments": 11065,
+  "new_comments_added": 3,
+  "stored_comments": 11068,
   "videos_monitored": 100,
   "standard_videos_monitored": 73,
   "shorts_monitored": 27,
