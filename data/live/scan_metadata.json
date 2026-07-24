@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T01:22:52.355766+00:00",
+  "last_scan": "2026-07-24T04:41:21.459553+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -232,12 +232,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 249 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 249,
+      "summary": "Based on 257 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 257,
       "explicit_reaction_comments": 61,
       "appreciative_signals": 55,
       "critical_signals": 6,
-      "substantive_share": 0.2129,
+      "substantive_share": 0.2101,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -255,7 +255,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 135,
+          "useful_comments": 143,
           "appreciative_signals": 33,
           "critical_signals": 3,
           "questions": 11,
@@ -322,12 +322,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 255 useful public comments. Of 61 comments with detectable reaction wording, 57 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 255,
+      "summary": "Based on 257 useful public comments. Of 61 comments with detectable reaction wording, 57 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 257,
       "explicit_reaction_comments": 61,
       "appreciative_signals": 57,
       "critical_signals": 4,
-      "substantive_share": 0.2353,
+      "substantive_share": 0.2374,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -345,7 +345,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 134,
+          "useful_comments": 135,
           "appreciative_signals": 34,
           "critical_signals": 0,
           "questions": 11,
@@ -353,7 +353,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 80,
+          "useful_comments": 81,
           "appreciative_signals": 15,
           "critical_signals": 4,
           "questions": 12,
@@ -566,16 +566,16 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 452 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 452,
+      "summary": "Based on 453 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 453,
       "explicit_reaction_comments": 123,
       "appreciative_signals": 99,
       "critical_signals": 24,
-      "substantive_share": 0.1792,
+      "substantive_share": 0.1788,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 16
+          "comments": 17
         },
         {
           "name": "Comedy",
@@ -810,16 +810,16 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 111 useful public comments. Of 25 comments with detectable reaction wording, 19 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 111,
-      "explicit_reaction_comments": 25,
+      "summary": "Based on 116 useful public comments. Of 26 comments with detectable reaction wording, 19 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 116,
+      "explicit_reaction_comments": 26,
       "appreciative_signals": 19,
-      "critical_signals": 6,
-      "substantive_share": 0.2703,
+      "critical_signals": 7,
+      "substantive_share": 0.2672,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 11
+          "comments": 13
         },
         {
           "name": "Story & screenplay",
@@ -827,13 +827,13 @@
         },
         {
           "name": "Pacing & runtime",
-          "comments": 2
+          "comments": 3
         }
       ],
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 103,
+          "useful_comments": 107,
           "appreciative_signals": 19,
           "critical_signals": 4,
           "questions": 15,
@@ -1053,12 +1053,12 @@
       "reviewers": []
     },
     "Love Oh Love": {
-      "summary": "Based on 98 useful public comments. Of 25 comments with detectable reaction wording, 17 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 98,
+      "summary": "Based on 99 useful public comments. Of 25 comments with detectable reaction wording, 17 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 99,
       "explicit_reaction_comments": 25,
       "appreciative_signals": 17,
       "critical_signals": 8,
-      "substantive_share": 0.2041,
+      "substantive_share": 0.202,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1076,7 +1076,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 40,
+          "useful_comments": 41,
           "appreciative_signals": 10,
           "critical_signals": 6,
           "questions": 5,
@@ -1492,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 103,
+  "comments_fetched": 269,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 7,
     "periodic_comment_refresh": 47,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_unchanged": 55
   },
-  "new_comments_added": 5,
-  "stored_comments": 11008,
+  "new_comments_added": 19,
+  "stored_comments": 11027,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
