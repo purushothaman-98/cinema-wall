@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T07:24:20.985798+00:00",
+  "last_scan": "2026-07-24T09:41:30.013372+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -810,12 +810,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 118 useful public comments. Of 27 comments with detectable reaction wording, 19 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 118,
+      "summary": "Based on 119 useful public comments. Of 27 comments with detectable reaction wording, 19 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 119,
       "explicit_reaction_comments": 27,
       "appreciative_signals": 19,
       "critical_signals": 8,
-      "substantive_share": 0.2712,
+      "substantive_share": 0.2689,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -833,7 +833,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 109,
+          "useful_comments": 110,
           "appreciative_signals": 19,
           "critical_signals": 5,
           "questions": 16,
@@ -1492,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 1051,
+  "comments_fetched": 104,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 101,
-    "public_comment_count_unchanged": 6
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 46,
+    "public_comment_count_unchanged": 60
   },
-  "new_comments_added": 43,
-  "stored_comments": 11033,
+  "new_comments_added": 2,
+  "stored_comments": 11035,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
