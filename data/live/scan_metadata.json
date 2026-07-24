@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T14:44:31.499355+00:00",
-  "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
+  "last_scan": "2026-07-24T17:56:57.009137+00:00",
+  "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -15,7 +15,6 @@
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
     "02LIHFCYLFY",
-    "1-YnMIxRPCU",
     "4D7clYHEcSo",
     "4_F7rsUQt5w",
     "4v6OWiZAv7Q",
@@ -26,15 +25,13 @@
     "8snjk__6u_M",
     "9UmC0sRxGIE",
     "9yr2IPl0XgE",
+    "ACIapYHzUaM",
     "BiI-53i7NVI",
     "D96FUzC5bx8",
-    "DBgpVx6utuU",
     "Dmw2-tr7Xl0",
     "Eai1avWhY7w",
-    "FbU0jmaftgM",
     "FufQWpyXXUc",
     "G-PQXCuMTjM",
-    "GTYU2NvzzKM",
     "HkHXpy6kQcI",
     "HzhLqaggnHM",
     "ITEyLaOOwZ0",
@@ -51,6 +48,7 @@
     "NcvGH-vUS3o",
     "OQacFyXLUps",
     "OjlO3i690xU",
+    "P5d440kliRw",
     "Pt9SIzWMrAg",
     "Q0EuAzjV7N8",
     "QcD3ctRrKnw",
@@ -59,34 +57,30 @@
     "R3WI0NEZ5Xo",
     "TJQqXe8Jc0w",
     "TanDK1_9kfI",
-    "TsEghKWeDRA",
-    "VF5hjhlB1bQ",
     "VWfXQbilQ-w",
-    "VX92wzfjJeM",
     "V_Hvrq-Xtjs",
     "VfwRqHAvVOQ",
     "VgC5hOmEzYA",
     "X030fOP0e0A",
-    "XuTfJU1Wz9Y",
     "Y53oAxxbIRQ",
     "YeH-S-6UVsw",
     "Z2-q3a28ZXg",
     "ZjKkkomxdw4",
     "_Z5LvDYvvtc",
     "_sP8WpalSdw",
+    "bB60mZk40nA",
     "bBjaajEGSUE",
     "cULfT3sfuPk",
     "cZERSnAE9hE",
     "c_epeBnEeZg",
-    "dH0h0bMF-20",
     "doqGi23QOu4",
+    "e3j_b8sH1tw",
     "f-HWdoIsZ0o",
     "f9vSQANdQ8Y",
     "gW-OYoO9xW4",
     "ghgTkC-SI9U",
     "hIChhoB54bc",
     "hdOtL7CHS2k",
-    "j8uKuDQaTI0",
     "jQlyBUEdWyI",
     "kM1KK42ngzY",
     "kP8UgzHSxgQ",
@@ -104,10 +98,8 @@
     "qGP9BhjEYjM",
     "qPd-sy5PXEg",
     "su4btTY6Z5U",
-    "t0dGUj1Gb3A",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
-    "tY2ZtHLqRCg",
     "tfnh11wjo5o",
     "uSiNOekvOuY",
     "uY-RLAlSr5w",
@@ -115,7 +107,6 @@
     "vmIVxWqIqPo",
     "w90XD6kUaV8",
     "wvWd-V4-LUA",
-    "xHFuhhzH7CE",
     "xX8nMqCjtZY",
     "y7tfv_IsCek",
     "yk4D0rNz2No",
@@ -123,7 +114,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -142,15 +133,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Unsaid"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -232,12 +273,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 258 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 258,
+      "summary": "Based on 259 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 259,
       "explicit_reaction_comments": 61,
       "appreciative_signals": 55,
       "critical_signals": 6,
-      "substantive_share": 0.2132,
+      "substantive_share": 0.2162,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -255,7 +296,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 143,
+          "useful_comments": 144,
           "appreciative_signals": 33,
           "critical_signals": 3,
           "questions": 11,
@@ -653,12 +694,12 @@
       "reviewers": []
     },
     "Habeebi": {
-      "summary": "Based on 113 useful public comments. Of 30 comments with detectable reaction wording, 29 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, direction & making.",
-      "useful_comments": 113,
+      "summary": "Based on 114 useful public comments. Of 30 comments with detectable reaction wording, 29 were appreciative and 1 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, emotion, direction & making.",
+      "useful_comments": 114,
       "explicit_reaction_comments": 30,
       "appreciative_signals": 29,
       "critical_signals": 1,
-      "substantive_share": 0.4336,
+      "substantive_share": 0.4298,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -670,13 +711,13 @@
         },
         {
           "name": "Direction & making",
-          "comments": 4
+          "comments": 5
         }
       ],
       "reviewers": [
         {
           "channel": "Sudhir Srinivasan",
-          "useful_comments": 55,
+          "useful_comments": 56,
           "appreciative_signals": 10,
           "critical_signals": 1,
           "questions": 18,
@@ -810,12 +851,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 120 useful public comments. Of 27 comments with detectable reaction wording, 19 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 120,
-      "explicit_reaction_comments": 27,
-      "appreciative_signals": 19,
+      "summary": "Based on 136 useful public comments. Of 31 comments with detectable reaction wording, 23 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 136,
+      "explicit_reaction_comments": 31,
+      "appreciative_signals": 23,
       "critical_signals": 8,
-      "substantive_share": 0.2667,
+      "substantive_share": 0.2721,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1471,6 +1512,7 @@
   },
   "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
+    "Sathyavan Savithiri",
     "Jana Nayagan",
     "Sweet Rogue Killer",
     "Anbe Diana",
@@ -1489,27 +1531,50 @@
     "Dark Giant",
     "Nooru Sami",
     "Double Occupancy",
-    "Habeebi",
-    "Moondram Kan"
+    "Habeebi"
   ],
-  "comments_fetched": 1101,
+  "comments_fetched": 2440,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 100,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
-    "periodic_comment_refresh": 100,
-    "public_comment_count_unchanged": 5
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 40,
-  "stored_comments": 11041,
-  "videos_monitored": 109,
-  "standard_videos_monitored": 79,
-  "shorts_monitored": 30,
+  "new_comments_added": 311,
+  "stored_comments": 11065,
+  "videos_monitored": 100,
+  "standard_videos_monitored": 73,
+  "shorts_monitored": 27,
   "movie_catalog": [
+    {
+      "title": "Sathyavan Savithiri",
+      "original_title": "\u0b9a\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bb5\u0bbe\u0ba9\u0bcd \u0b9a\u0bbe\u0bb5\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bbf",
+      "release_date": "2026-07-24",
+      "poster_url": "https://image.tmdb.org/t/p/w500/6CTZmOW9YrHxxaYjK56rB8DvefR.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1540824,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "director": "Praveen S Vijaay",
+      "cast": [
+        "Keerthy Suresh",
+        "Mysskin",
+        "Shilpa Manjunath",
+        "Balasaravanan",
+        "Thangapandiyan",
+        "Sundarrajan",
+        "Uma Ramachandran"
+      ]
+    },
     {
       "title": "Jana Nayagan",
       "original_title": "\u0b9c\u0ba9 \u0ba8\u0bbe\u0baf\u0b95\u0ba9\u0bcd",
-      "release_date": "2026-07-23",
+      "release_date": "2026-07-22",
       "poster_url": "https://image.tmdb.org/t/p/w500/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
       "tmdb_id": 1235877,
@@ -1803,8 +1868,7 @@
       "genres": [
         "Comedy",
         "Crime",
-        "Drama",
-        "Fantasy"
+        "Drama"
       ],
       "director": "Harish Durairaj",
       "cast": [
@@ -1994,34 +2058,6 @@
         "Ismath Banu",
         "Rekha Kumanan",
         "Jayasree Binuraj"
-      ]
-    },
-    {
-      "title": "Moondram Kan",
-      "original_title": "\u0bae\u0bc2\u0ba9\u0bcd\u0bb1\u0bbe\u0bae\u0bcd \u0b95\u0ba3\u0bcd",
-      "release_date": "2026-06-12",
-      "poster_url": "https://image.tmdb.org/t/p/w500/zScF00DoAaZoTxysoxTQk7aUge4.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/i24a2DQNM12AAZczm4Ju04Wesdn.jpg",
-      "tmdb_id": 1686580,
-      "overview": "Follows the investigation of a factory general manager's murder, where four workers\u2014a mechanic, assistant manager, owner, and new recruit\u2014become the primary suspects.",
-      "runtime": 115,
-      "genres": [
-        "Thriller",
-        "Drama",
-        "Crime"
-      ],
-      "director": "Sago Ganesan",
-      "cast": [
-        "Vidharth",
-        "Kalaiyarasan",
-        "Santhosh Prathap",
-        "Thrigun",
-        "Teju Ashwini",
-        "Athulya Chandra",
-        "John Vijay",
-        "Radha",
-        "KPY Sarath Raj",
-        "Swetha Dorathy"
       ]
     }
   ],
@@ -2701,8 +2737,7 @@
       "genres": [
         "Comedy",
         "Crime",
-        "Drama",
-        "Fantasy"
+        "Drama"
       ],
       "director": "Harish Durairaj",
       "cast": [
@@ -2967,7 +3002,7 @@
     {
       "title": "Jana Nayagan",
       "original_title": "\u0b9c\u0ba9 \u0ba8\u0bbe\u0baf\u0b95\u0ba9\u0bcd",
-      "release_date": "2026-07-23",
+      "release_date": "2026-07-22",
       "poster_url": "https://image.tmdb.org/t/p/w500/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
       "tmdb_id": 1235877,
@@ -2990,6 +3025,30 @@
         "Narain",
         "Nassar",
         "Sunil Varma"
+      ]
+    },
+    {
+      "title": "Sathyavan Savithiri",
+      "original_title": "\u0b9a\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bb5\u0bbe\u0ba9\u0bcd \u0b9a\u0bbe\u0bb5\u0bbf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bbf",
+      "release_date": "2026-07-24",
+      "poster_url": "https://image.tmdb.org/t/p/w500/6CTZmOW9YrHxxaYjK56rB8DvefR.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1540824,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "director": "Praveen S Vijaay",
+      "cast": [
+        "Keerthy Suresh",
+        "Mysskin",
+        "Shilpa Manjunath",
+        "Balasaravanan",
+        "Thangapandiyan",
+        "Sundarrajan",
+        "Uma Ramachandran"
       ]
     }
   ],
@@ -3023,6 +3082,7 @@
     "Nizhal",
     "Nooru Sami",
     "Parimala and Co",
+    "Sathyavan Savithiri",
     "Suitcased",
     "Sweet Rogue Killer",
     "Thaai Kizhavi",
