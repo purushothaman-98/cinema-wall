@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T04:41:21.459553+00:00",
+  "last_scan": "2026-07-24T07:24:20.985798+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -322,12 +322,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 257 useful public comments. Of 61 comments with detectable reaction wording, 57 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 257,
-      "explicit_reaction_comments": 61,
-      "appreciative_signals": 57,
+      "summary": "Based on 260 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 260,
+      "explicit_reaction_comments": 63,
+      "appreciative_signals": 59,
       "critical_signals": 4,
-      "substantive_share": 0.2374,
+      "substantive_share": 0.2385,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -345,8 +345,8 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 135,
-          "appreciative_signals": 34,
+          "useful_comments": 138,
+          "appreciative_signals": 36,
           "critical_signals": 0,
           "questions": 11,
           "leading_topic": "General reaction"
@@ -810,12 +810,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 116 useful public comments. Of 26 comments with detectable reaction wording, 19 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 116,
-      "explicit_reaction_comments": 26,
+      "summary": "Based on 118 useful public comments. Of 27 comments with detectable reaction wording, 19 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 118,
+      "explicit_reaction_comments": 27,
       "appreciative_signals": 19,
-      "critical_signals": 7,
-      "substantive_share": 0.2672,
+      "critical_signals": 8,
+      "substantive_share": 0.2712,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -833,10 +833,10 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 107,
+          "useful_comments": 109,
           "appreciative_signals": 19,
-          "critical_signals": 4,
-          "questions": 15,
+          "critical_signals": 5,
+          "questions": 16,
           "leading_topic": "General reaction"
         }
       ]
@@ -1492,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 269,
+  "comments_fetched": 1051,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 7,
-    "periodic_comment_refresh": 47,
-    "public_comment_count_unchanged": 55
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 101,
+    "public_comment_count_unchanged": 6
   },
-  "new_comments_added": 19,
-  "stored_comments": 11027,
+  "new_comments_added": 43,
+  "stored_comments": 11033,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
