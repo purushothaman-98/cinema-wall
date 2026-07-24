@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-24T12:56:17.647493+00:00",
+  "last_scan": "2026-07-24T14:44:31.499355+00:00",
   "last_video_discovery": "2026-07-23T16:58:16.749325+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -232,12 +232,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 257 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 257,
+      "summary": "Based on 258 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 258,
       "explicit_reaction_comments": 61,
       "appreciative_signals": 55,
       "critical_signals": 6,
-      "substantive_share": 0.2101,
+      "substantive_share": 0.2132,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -263,7 +263,7 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 55,
+          "useful_comments": 56,
           "appreciative_signals": 12,
           "critical_signals": 0,
           "questions": 3,
@@ -322,12 +322,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 260 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 260,
+      "summary": "Based on 261 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 261,
       "explicit_reaction_comments": 63,
       "appreciative_signals": 59,
       "critical_signals": 4,
-      "substantive_share": 0.2385,
+      "substantive_share": 0.2375,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -353,7 +353,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 81,
+          "useful_comments": 82,
           "appreciative_signals": 15,
           "critical_signals": 4,
           "questions": 12,
@@ -1492,16 +1492,16 @@
     "Habeebi",
     "Moondram Kan"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 1101,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 46,
-    "public_comment_count_unchanged": 61
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 100,
+    "public_comment_count_unchanged": 5
   },
-  "new_comments_added": 2,
-  "stored_comments": 11038,
+  "new_comments_added": 40,
+  "stored_comments": 11041,
   "videos_monitored": 109,
   "standard_videos_monitored": 79,
   "shorts_monitored": 30,
