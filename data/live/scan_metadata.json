@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-25T01:23:42.498761+00:00",
+  "last_scan": "2026-07-25T04:36:39.380351+00:00",
   "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -313,12 +313,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 262 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 262,
+      "summary": "Based on 263 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 263,
       "explicit_reaction_comments": 63,
       "appreciative_signals": 59,
       "critical_signals": 4,
-      "substantive_share": 0.2366,
+      "substantive_share": 0.2357,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -344,7 +344,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 82,
+          "useful_comments": 83,
           "appreciative_signals": 15,
           "critical_signals": 4,
           "questions": 12,
@@ -801,12 +801,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 143 useful public comments. Of 34 comments with detectable reaction wording, 25 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 143,
+      "summary": "Based on 145 useful public comments. Of 34 comments with detectable reaction wording, 25 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 145,
       "explicit_reaction_comments": 34,
       "appreciative_signals": 25,
       "critical_signals": 9,
-      "substantive_share": 0.2797,
+      "substantive_share": 0.2759,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -824,7 +824,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 111,
+          "useful_comments": 113,
           "appreciative_signals": 19,
           "critical_signals": 5,
           "questions": 16,
@@ -1483,16 +1483,16 @@
     "Double Occupancy",
     "Habeebi"
   ],
-  "comments_fetched": 1157,
+  "comments_fetched": 154,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 95,
-    "public_comment_count_unchanged": 3
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 39,
+    "public_comment_count_unchanged": 57
   },
-  "new_comments_added": 39,
-  "stored_comments": 11074,
+  "new_comments_added": 3,
+  "stored_comments": 11077,
   "videos_monitored": 100,
   "standard_videos_monitored": 73,
   "shorts_monitored": 27,
