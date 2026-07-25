@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-25T12:57:13.546407+00:00",
+  "last_scan": "2026-07-25T14:27:32.731902+00:00",
   "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -801,12 +801,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 153 useful public comments. Of 36 comments with detectable reaction wording, 27 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 153,
+      "summary": "Based on 154 useful public comments. Of 36 comments with detectable reaction wording, 27 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 154,
       "explicit_reaction_comments": 36,
       "appreciative_signals": 27,
       "critical_signals": 9,
-      "substantive_share": 0.268,
+      "substantive_share": 0.2662,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -832,7 +832,7 @@
         },
         {
           "channel": "Shruti TV",
-          "useful_comments": 12,
+          "useful_comments": 13,
           "appreciative_signals": 1,
           "critical_signals": 1,
           "questions": 2,
@@ -1491,16 +1491,16 @@
     "Double Occupancy",
     "Habeebi"
   ],
-  "comments_fetched": 57,
+  "comments_fetched": 75,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 40,
+    "public_comment_count_unchanged": 59
   },
-  "new_comments_added": 1,
-  "stored_comments": 11089,
+  "new_comments_added": 2,
+  "stored_comments": 11091,
   "videos_monitored": 100,
   "standard_videos_monitored": 73,
   "shorts_monitored": 27,
