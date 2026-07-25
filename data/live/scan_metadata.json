@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-25T09:16:11.175154+00:00",
+  "last_scan": "2026-07-25T10:49:57.311235+00:00",
   "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -557,12 +557,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 453 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 453,
+      "summary": "Based on 454 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 454,
       "explicit_reaction_comments": 123,
       "appreciative_signals": 99,
       "critical_signals": 24,
-      "substantive_share": 0.1788,
+      "substantive_share": 0.1784,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -801,12 +801,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 150 useful public comments. Of 35 comments with detectable reaction wording, 26 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 150,
-      "explicit_reaction_comments": 35,
-      "appreciative_signals": 26,
+      "summary": "Based on 152 useful public comments. Of 36 comments with detectable reaction wording, 27 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 152,
+      "explicit_reaction_comments": 36,
+      "appreciative_signals": 27,
       "critical_signals": 9,
-      "substantive_share": 0.2733,
+      "substantive_share": 0.2697,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -832,7 +832,7 @@
         },
         {
           "channel": "Shruti TV",
-          "useful_comments": 10,
+          "useful_comments": 11,
           "appreciative_signals": 1,
           "critical_signals": 1,
           "questions": 2,
@@ -1491,16 +1491,16 @@
     "Double Occupancy",
     "Habeebi"
   ],
-  "comments_fetched": 1080,
+  "comments_fetched": 124,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 93,
-    "public_comment_count_unchanged": 5
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 41,
+    "public_comment_count_unchanged": 56
   },
-  "new_comments_added": 39,
-  "stored_comments": 11083,
+  "new_comments_added": 3,
+  "stored_comments": 11086,
   "videos_monitored": 100,
   "standard_videos_monitored": 73,
   "shorts_monitored": 27,
