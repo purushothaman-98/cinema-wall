@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-25T15:36:45.295841+00:00",
+  "last_scan": "2026-07-25T16:42:24.408051+00:00",
   "last_video_discovery": "2026-07-24T17:56:57.009137+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -279,16 +279,16 @@
       ]
     },
     "Angikaaram": {
-      "summary": "Based on 10 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
-      "useful_comments": 10,
+      "summary": "Based on 11 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
+      "useful_comments": 11,
       "explicit_reaction_comments": 1,
       "appreciative_signals": 1,
       "critical_signals": 0,
-      "substantive_share": 0.2,
+      "substantive_share": 0.2727,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 7
+          "comments": 8
         },
         {
           "name": "Emotion",
@@ -801,12 +801,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 155 useful public comments. Of 36 comments with detectable reaction wording, 27 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 155,
+      "summary": "Based on 156 useful public comments. Of 36 comments with detectable reaction wording, 27 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 156,
       "explicit_reaction_comments": 36,
       "appreciative_signals": 27,
       "critical_signals": 9,
-      "substantive_share": 0.271,
+      "substantive_share": 0.2692,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -824,7 +824,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 115,
+          "useful_comments": 116,
           "appreciative_signals": 20,
           "critical_signals": 5,
           "questions": 17,
@@ -1491,16 +1491,16 @@
     "Double Occupancy",
     "Habeebi"
   ],
-  "comments_fetched": 1052,
+  "comments_fetched": 59,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 91,
-    "public_comment_count_unchanged": 8
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 60
   },
-  "new_comments_added": 38,
-  "stored_comments": 11092,
+  "new_comments_added": 2,
+  "stored_comments": 11094,
   "videos_monitored": 100,
   "standard_videos_monitored": 73,
   "shorts_monitored": 27,
