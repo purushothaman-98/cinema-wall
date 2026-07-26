@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T12:34:55.657980+00:00",
+  "last_scan": "2026-07-26T14:22:16.376729+00:00",
   "last_video_discovery": "2026-07-25T18:46:25.303329+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -316,12 +316,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 264 useful public comments. Of 64 comments with detectable reaction wording, 60 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 264,
-      "explicit_reaction_comments": 64,
-      "appreciative_signals": 60,
+      "summary": "Based on 265 useful public comments. Of 65 comments with detectable reaction wording, 61 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 265,
+      "explicit_reaction_comments": 65,
+      "appreciative_signals": 61,
       "critical_signals": 4,
-      "substantive_share": 0.2348,
+      "substantive_share": 0.234,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -339,8 +339,8 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 140,
-          "appreciative_signals": 37,
+          "useful_comments": 141,
+          "appreciative_signals": 38,
           "critical_signals": 0,
           "questions": 11,
           "leading_topic": "General reaction"
@@ -1517,16 +1517,16 @@
     "Nooru Sami",
     "Double Occupancy"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1082,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 65
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 99,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 0,
-  "stored_comments": 11123,
+  "new_comments_added": 38,
+  "stored_comments": 11124,
   "videos_monitored": 103,
   "standard_videos_monitored": 75,
   "shorts_monitored": 28,
