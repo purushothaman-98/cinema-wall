@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T21:15:59.074156+00:00",
+  "last_scan": "2026-07-26T22:26:44.543798+00:00",
   "last_video_discovery": "2026-07-26T18:51:47.485065+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -836,12 +836,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 167 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 167,
+      "summary": "Based on 168 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 168,
       "explicit_reaction_comments": 41,
       "appreciative_signals": 30,
       "critical_signals": 11,
-      "substantive_share": 0.2635,
+      "substantive_share": 0.2679,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1526,16 +1526,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 10,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 64
+    "public_comment_count_unchanged": 63
   },
-  "new_comments_added": 0,
-  "stored_comments": 11142,
+  "new_comments_added": 1,
+  "stored_comments": 11143,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
   "shorts_monitored": 28,
