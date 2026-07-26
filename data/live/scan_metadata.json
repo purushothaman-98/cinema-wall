@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T01:04:11.868258+00:00",
+  "last_scan": "2026-07-26T04:50:06.520088+00:00",
   "last_video_discovery": "2026-07-25T18:46:25.303329+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -316,12 +316,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 263 useful public comments. Of 63 comments with detectable reaction wording, 59 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 263,
-      "explicit_reaction_comments": 63,
-      "appreciative_signals": 59,
+      "summary": "Based on 264 useful public comments. Of 64 comments with detectable reaction wording, 60 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 264,
+      "explicit_reaction_comments": 64,
+      "appreciative_signals": 60,
       "critical_signals": 4,
-      "substantive_share": 0.2357,
+      "substantive_share": 0.2348,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -339,8 +339,8 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 139,
-          "appreciative_signals": 36,
+          "useful_comments": 140,
+          "appreciative_signals": 37,
           "critical_signals": 0,
           "questions": 11,
           "leading_topic": "General reaction"
@@ -739,12 +739,12 @@
       "reviewers": []
     },
     "Idhayam Murali": {
-      "summary": "Based on 611 useful public comments. Of 225 comments with detectable reaction wording, 158 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 611,
+      "summary": "Based on 612 useful public comments. Of 225 comments with detectable reaction wording, 158 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 612,
       "explicit_reaction_comments": 225,
       "appreciative_signals": 158,
       "critical_signals": 67,
-      "substantive_share": 0.2062,
+      "substantive_share": 0.2059,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -762,7 +762,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 210,
+          "useful_comments": 211,
           "appreciative_signals": 58,
           "critical_signals": 19,
           "questions": 23,
@@ -1517,16 +1517,16 @@
     "Nooru Sami",
     "Double Occupancy"
   ],
-  "comments_fetched": 1036,
+  "comments_fetched": 158,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 100,
-    "public_comment_count_unchanged": 3
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 39,
+    "public_comment_count_unchanged": 60
   },
-  "new_comments_added": 37,
-  "stored_comments": 11114,
+  "new_comments_added": 5,
+  "stored_comments": 11119,
   "videos_monitored": 103,
   "standard_videos_monitored": 75,
   "shorts_monitored": 28,
