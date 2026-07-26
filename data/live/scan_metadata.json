@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T20:02:48.404250+00:00",
+  "last_scan": "2026-07-26T21:15:59.074156+00:00",
   "last_video_discovery": "2026-07-26T18:51:47.485065+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1526,15 +1526,15 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 87,
+  "comments_fetched": 0,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 0,
     "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 62
+    "public_comment_count_unchanged": 64
   },
-  "new_comments_added": 2,
+  "new_comments_added": 0,
   "stored_comments": 11142,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
