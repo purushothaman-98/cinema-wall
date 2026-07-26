@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T18:51:47.485065+00:00",
+  "last_scan": "2026-07-26T20:02:48.404250+00:00",
   "last_video_discovery": "2026-07-26T18:51:47.485065+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,65 +135,15 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 36,
+  "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 6,
-  "direct_film_discovery_films": [
-    "Andharan",
-    "Arjunan Per Paththu",
-    "Find Me",
-    "Sathyavan Savithiri",
-    "Suitcased",
-    "Sweet Rogue Killer"
-  ],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 6,
-  "channel_matrix_video_hits": 16,
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [
-    {
-      "film": "Andharan",
-      "channel": "KaKi's Talkies",
-      "query": "\"Andharan\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Andharan",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Andharan\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "KaKi's Talkies",
-      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "KaKi's Talkies",
-      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -275,12 +225,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 260 useful public comments. Of 62 comments with detectable reaction wording, 56 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 260,
-      "explicit_reaction_comments": 62,
-      "appreciative_signals": 56,
+      "summary": "Based on 261 useful public comments. Of 63 comments with detectable reaction wording, 57 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 261,
+      "explicit_reaction_comments": 63,
+      "appreciative_signals": 57,
       "critical_signals": 6,
-      "substantive_share": 0.2154,
+      "substantive_share": 0.2146,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -314,8 +264,8 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 33,
-          "appreciative_signals": 6,
+          "useful_comments": 34,
+          "appreciative_signals": 7,
           "critical_signals": 3,
           "questions": 5,
           "leading_topic": "General reaction"
@@ -1576,16 +1526,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 2361,
+  "comments_fetched": 87,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 102,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 62
   },
-  "new_comments_added": 300,
-  "stored_comments": 11140,
+  "new_comments_added": 2,
+  "stored_comments": 11142,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
   "shorts_monitored": 28,
