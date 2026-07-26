@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T17:51:56.018952+00:00",
-  "last_video_discovery": "2026-07-25T18:46:25.303329+00:00",
+  "last_scan": "2026-07-26T18:51:47.485065+00:00",
+  "last_video_discovery": "2026-07-26T18:51:47.485065+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -32,14 +32,12 @@
     "D96FUzC5bx8",
     "Dmw2-tr7Xl0",
     "Eai1avWhY7w",
-    "FufQWpyXXUc",
     "G-PQXCuMTjM",
     "HkHXpy6kQcI",
     "HsIyY-PQIrA",
     "HzhLqaggnHM",
     "ITEyLaOOwZ0",
     "Ij1k80SeJOU",
-    "ItTghwJm_0s",
     "K0J8RCeuk5c",
     "KIlj5fsPiIg",
     "Km3-cWPD8hA",
@@ -54,7 +52,6 @@
     "OjlO3i690xU",
     "P5d440kliRw",
     "PAqQtvmxyCo",
-    "Pt9SIzWMrAg",
     "QkGUFx1Ns8Y",
     "Qm6wSNrF-K0",
     "R3WI0NEZ5Xo",
@@ -78,6 +75,8 @@
     "doqGi23QOu4",
     "f-HWdoIsZ0o",
     "f9vSQANdQ8Y",
+    "fE3-pZ7KNdU",
+    "fsb95BIYrDk",
     "gW-OYoO9xW4",
     "ghgTkC-SI9U",
     "hIChhoB54bc",
@@ -101,6 +100,7 @@
     "qGP9BhjEYjM",
     "qPd-sy5PXEg",
     "sCKnGrHZrlo",
+    "sq-JYRSvoXo",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
     "tfnh11wjo5o",
@@ -111,13 +111,12 @@
     "wvWd-V4-LUA",
     "xEX8rriniKA",
     "xX8nMqCjtZY",
-    "y7tfv_IsCek",
     "yk4D0rNz2No",
     "zTAqIoV2nc8",
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -136,15 +135,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Andharan",
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Andharan",
+      "channel": "KaKi's Talkies",
+      "query": "\"Andharan\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Andharan",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Andharan\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -226,12 +275,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 259 useful public comments. Of 61 comments with detectable reaction wording, 55 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 259,
-      "explicit_reaction_comments": 61,
-      "appreciative_signals": 55,
+      "summary": "Based on 260 useful public comments. Of 62 comments with detectable reaction wording, 56 were appreciative and 6 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 260,
+      "explicit_reaction_comments": 62,
+      "appreciative_signals": 56,
       "critical_signals": 6,
-      "substantive_share": 0.2162,
+      "substantive_share": 0.2154,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -273,13 +322,23 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 21,
-          "appreciative_signals": 4,
+          "useful_comments": 22,
+          "appreciative_signals": 5,
           "critical_signals": 0,
           "questions": 3,
           "leading_topic": "General reaction"
         }
       ]
+    },
+    "Andharan": {
+      "summary": "Based on 8 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 8,
+      "explicit_reaction_comments": 3,
+      "appreciative_signals": 2,
+      "critical_signals": 1,
+      "substantive_share": 0.25,
+      "top_aspects": [],
+      "reviewers": []
     },
     "Angikaaram": {
       "summary": "Based on 11 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, emotion.",
@@ -827,12 +886,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 166 useful public comments. Of 40 comments with detectable reaction wording, 29 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 166,
-      "explicit_reaction_comments": 40,
-      "appreciative_signals": 29,
+      "summary": "Based on 167 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 167,
+      "explicit_reaction_comments": 41,
+      "appreciative_signals": 30,
       "critical_signals": 11,
-      "substantive_share": 0.2651,
+      "substantive_share": 0.2635,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -858,8 +917,8 @@
         },
         {
           "channel": "Shruti TV",
-          "useful_comments": 19,
-          "appreciative_signals": 3,
+          "useful_comments": 20,
+          "appreciative_signals": 4,
           "critical_signals": 1,
           "questions": 2,
           "leading_topic": "General reaction"
@@ -1512,23 +1571,23 @@
     "Con City",
     "Heartin",
     "Angikaaram",
+    "Andharan",
     "Suitcased",
-    "Dark Giant",
     "Nooru Sami",
-    "Double Occupancy"
+    "Dark Giant"
   ],
-  "comments_fetched": 51,
+  "comments_fetched": 2361,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 102,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 63
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 1,
-  "stored_comments": 11127,
-  "videos_monitored": 103,
-  "standard_videos_monitored": 75,
+  "new_comments_added": 300,
+  "stored_comments": 11140,
+  "videos_monitored": 102,
+  "standard_videos_monitored": 74,
   "shorts_monitored": 28,
   "movie_catalog": [
     {
@@ -1937,6 +1996,24 @@
       ]
     },
     {
+      "title": "Andharan",
+      "original_title": "Andharan",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3cy5aVMPcIkEn99lDbgnH7j4QOj.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/kaTGifoQW0qpR2ryK9Yy0iGoQgF.jpg",
+      "tmdb_id": 1738076,
+      "overview": "Karthika's fianc\u00e9s mysteriously die before marriage. Officer Chezhiyan investigates the deaths and discovers dark secrets from her past, revealing the hidden forces haunting her life as truth and fear collide.",
+      "runtime": 125,
+      "genres": [
+        "Thriller"
+      ],
+      "director": null,
+      "cast": [
+        "Prajin Padmanabhan",
+        "Anupama Kumar"
+      ]
+    },
+    {
       "title": "Suitcased",
       "original_title": "Suitcased",
       "release_date": "2026-06-25",
@@ -1955,31 +2032,6 @@
         "Krishanth",
         "Varun",
         "Yogesh SD"
-      ]
-    },
-    {
-      "title": "Dark Giant",
-      "original_title": "Dark Giant",
-      "release_date": "2026-06-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
-      "tmdb_id": 1715800,
-      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
-      "runtime": 0,
-      "genres": [
-        "Horror",
-        "Thriller"
-      ],
-      "director": "KS Kishaan",
-      "cast": [
-        "Sonia Agarwal",
-        "K. Bhagyaraj",
-        "Madhan Kumar Dhakshinamoorthy",
-        "Jovita Livingston",
-        "Livingston",
-        "Amudhavanan",
-        "Rafiq Batcha",
-        "Adarsh Madhikanth"
       ]
     },
     {
@@ -2010,31 +2062,28 @@
       ]
     },
     {
-      "title": "Double Occupancy",
-      "original_title": "Double Occupancy",
-      "release_date": "2026-06-12",
-      "poster_url": "https://image.tmdb.org/t/p/w500/afwvI8D1SLSMqINJbq0Wi9eCBWt.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/v4Fkzv4wrlGzF3af60Xwxpb5tJk.jpg",
-      "tmdb_id": 1565790,
-      "overview": "Rajini transforms between woman by day and man by night, hiding this gender swap from partners creating tangled complications.",
-      "runtime": 132,
+      "title": "Dark Giant",
+      "original_title": "Dark Giant",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
+      "tmdb_id": 1715800,
+      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
+      "runtime": 0,
       "genres": [
-        "Romance",
-        "Drama",
-        "Fantasy"
+        "Horror",
+        "Thriller"
       ],
-      "director": "Aswin Kandasamy",
+      "director": "KS Kishaan",
       "cast": [
-        "Santhosh Sreeram",
-        "Reshma Venkatesh",
-        "Samyuktha Viola Viswanathan",
-        "Vinoth Kishan",
-        "VTV Ganesh",
-        "Bagavathi Perumal",
-        "Bose Venkat",
-        "Vinodhini Vaidyanathan",
-        "Vichu Vishwanath",
-        "Kenneth"
+        "Sonia Agarwal",
+        "K. Bhagyaraj",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Jovita Livingston",
+        "Livingston",
+        "Amudhavanan",
+        "Rafiq Batcha",
+        "Adarsh Madhikanth"
       ]
     }
   ],
@@ -3044,11 +3093,30 @@
         "Chappani Boys Murali",
         "Kavitha Ramesh"
       ]
+    },
+    {
+      "title": "Andharan",
+      "original_title": "Andharan",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3cy5aVMPcIkEn99lDbgnH7j4QOj.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/kaTGifoQW0qpR2ryK9Yy0iGoQgF.jpg",
+      "tmdb_id": 1738076,
+      "overview": "Karthika's fianc\u00e9s mysteriously die before marriage. Officer Chezhiyan investigates the deaths and discovers dark secrets from her past, revealing the hidden forces haunting her life as truth and fear collide.",
+      "runtime": 125,
+      "genres": [
+        "Thriller"
+      ],
+      "director": null,
+      "cast": [
+        "Prajin Padmanabhan",
+        "Anupama Kumar"
+      ]
     }
   ],
   "all_films_analyzed": [
     "29",
     "Anbe Diana",
+    "Andharan",
     "Angikaaram",
     "Anthony",
     "Arjunan Per Paththu",
