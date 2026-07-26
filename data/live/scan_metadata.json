@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-26T04:50:06.520088+00:00",
+  "last_scan": "2026-07-26T07:29:37.493182+00:00",
   "last_video_discovery": "2026-07-25T18:46:25.303329+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -583,12 +583,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 455 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 455,
+      "summary": "Based on 456 useful public comments. Of 123 comments with detectable reaction wording, 99 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 456,
       "explicit_reaction_comments": 123,
       "appreciative_signals": 99,
       "critical_signals": 24,
-      "substantive_share": 0.178,
+      "substantive_share": 0.1776,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -827,12 +827,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 162 useful public comments. Of 39 comments with detectable reaction wording, 28 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 162,
+      "summary": "Based on 163 useful public comments. Of 39 comments with detectable reaction wording, 28 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 163,
       "explicit_reaction_comments": 39,
       "appreciative_signals": 28,
       "critical_signals": 11,
-      "substantive_share": 0.2654,
+      "substantive_share": 0.2699,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -850,7 +850,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 118,
+          "useful_comments": 119,
           "appreciative_signals": 20,
           "critical_signals": 7,
           "questions": 17,
@@ -1517,16 +1517,16 @@
     "Nooru Sami",
     "Double Occupancy"
   ],
-  "comments_fetched": 158,
+  "comments_fetched": 1082,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 60
+    "public_comment_count_increased": 3,
+    "periodic_comment_refresh": 97,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 5,
-  "stored_comments": 11119,
+  "new_comments_added": 39,
+  "stored_comments": 11121,
   "videos_monitored": 103,
   "standard_videos_monitored": 75,
   "shorts_monitored": 28,
