@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-27T18:52:52.047019+00:00",
+  "last_scan": "2026-07-27T20:12:44.927393+00:00",
   "last_video_discovery": "2026-07-27T18:52:52.047019+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,65 +135,15 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 36,
+  "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 6,
-  "direct_film_discovery_films": [
-    "Arjunan Per Paththu",
-    "Find Me",
-    "Sathyavan Savithiri",
-    "Suitcased",
-    "Sweet Rogue Killer",
-    "Unsaid"
-  ],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 6,
-  "channel_matrix_video_hits": 16,
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "KaKi's Talkies",
-      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arjunan Per Paththu",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "KaKi's Talkies",
-      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Find Me",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Sathyavan Savithiri",
-      "channel": "KaKi's Talkies",
-      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Sathyavan Savithiri",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1588,15 +1538,15 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 2370,
+  "comments_fetched": 0,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 102,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 64
   },
-  "new_comments_added": 287,
+  "new_comments_added": 0,
   "stored_comments": 11149,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
