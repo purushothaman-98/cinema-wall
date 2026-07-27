@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-27T17:14:39.382562+00:00",
-  "last_video_discovery": "2026-07-26T18:51:47.485065+00:00",
+  "last_scan": "2026-07-27T18:52:52.047019+00:00",
+  "last_video_discovery": "2026-07-27T18:52:52.047019+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -75,12 +75,12 @@
     "doqGi23QOu4",
     "f-HWdoIsZ0o",
     "f9vSQANdQ8Y",
-    "fE3-pZ7KNdU",
     "fsb95BIYrDk",
     "gW-OYoO9xW4",
     "ghgTkC-SI9U",
     "hIChhoB54bc",
     "hdOtL7CHS2k",
+    "iGQMB_Q1riI",
     "jQlyBUEdWyI",
     "kM1KK42ngzY",
     "kP8UgzHSxgQ",
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,15 +135,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Unsaid"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1525,8 +1575,8 @@
     "Arjunan Per Paththu",
     "Arulvaan",
     "Idhayam Murali",
-    "Love Oh Love",
     "Lakshmikanthan Kolai Vazhakku",
+    "Love Oh Love",
     "Unsaid",
     "Gatta Kusthi 2",
     "Find Me",
@@ -1538,15 +1588,15 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 2370,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 102,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 62
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 1,
+  "new_comments_added": 287,
   "stored_comments": 11149,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
@@ -1752,32 +1802,6 @@
       ]
     },
     {
-      "title": "Love Oh Love",
-      "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
-      "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1579405,
-      "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
-      "runtime": 130,
-      "genres": [
-        "Romance",
-        "Comedy"
-      ],
-      "director": "Magesh Rajendran",
-      "cast": [
-        "Pavish Narayanan",
-        "Naga Durga",
-        "Selvaraghavan",
-        "Vanitha Vijayakumar",
-        "K. S. Ravikumar",
-        "Adithya Kathir",
-        "M. Soundarya Saravanan",
-        "Ashwath",
-        "Ramya Subramanian"
-      ]
-    },
-    {
       "title": "Lakshmikanthan Kolai Vazhakku",
       "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
       "release_date": "2026-07-10",
@@ -1801,6 +1825,32 @@
         "Lizzie Antony",
         "Kanya Bharathi",
         "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Love Oh Love",
+      "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1579405,
+      "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
+      "runtime": 130,
+      "genres": [
+        "Romance",
+        "Comedy"
+      ],
+      "director": "Magesh Rajendran",
+      "cast": [
+        "Pavish Narayanan",
+        "Naga Durga",
+        "Selvaraghavan",
+        "Vanitha Vijayakumar",
+        "K. S. Ravikumar",
+        "Adithya Kathir",
+        "M. Soundarya Saravanan",
+        "Ashwath",
+        "Ramya Subramanian"
       ]
     },
     {
