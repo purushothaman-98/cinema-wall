@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-28T12:18:36.140250+00:00",
+  "last_scan": "2026-07-28T14:55:41.615335+00:00",
   "last_video_discovery": "2026-07-27T18:52:52.047019+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -325,12 +325,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 270 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 270,
+      "summary": "Based on 271 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 271,
       "explicit_reaction_comments": 67,
       "appreciative_signals": 63,
       "critical_signals": 4,
-      "substantive_share": 0.237,
+      "substantive_share": 0.2399,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -348,10 +348,10 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 144,
+          "useful_comments": 145,
           "appreciative_signals": 39,
           "critical_signals": 0,
-          "questions": 13,
+          "questions": 14,
           "leading_topic": "General reaction"
         },
         {
@@ -844,12 +844,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 169 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 169,
+      "summary": "Based on 170 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 170,
       "explicit_reaction_comments": 41,
       "appreciative_signals": 30,
       "critical_signals": 11,
-      "substantive_share": 0.2722,
+      "substantive_share": 0.2765,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -867,7 +867,7 @@
       "reviewers": [
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 121,
+          "useful_comments": 122,
           "appreciative_signals": 20,
           "critical_signals": 7,
           "questions": 17,
@@ -1538,16 +1538,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 59,
+  "comments_fetched": 1035,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 62
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 97,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 0,
-  "stored_comments": 11152,
+  "new_comments_added": 39,
+  "stored_comments": 11154,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
   "shorts_monitored": 28,
