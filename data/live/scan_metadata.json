@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-28T17:51:01.996041+00:00",
-  "last_video_discovery": "2026-07-27T18:52:52.047019+00:00",
+  "last_scan": "2026-07-28T19:02:49.640076+00:00",
+  "last_video_discovery": "2026-07-28T19:02:49.640076+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,15 +135,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Unsaid"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -325,12 +375,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 271 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 271,
+      "summary": "Based on 272 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 272,
       "explicit_reaction_comments": 67,
       "appreciative_signals": 63,
       "critical_signals": 4,
-      "substantive_share": 0.2399,
+      "substantive_share": 0.239,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -348,7 +398,7 @@
       "reviewers": [
         {
           "channel": "Tubelight Mind",
-          "useful_comments": 145,
+          "useful_comments": 146,
           "appreciative_signals": 39,
           "critical_signals": 0,
           "questions": 14,
@@ -844,12 +894,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 170 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 170,
+      "summary": "Based on 171 useful public comments. Of 41 comments with detectable reaction wording, 30 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
+      "useful_comments": 171,
       "explicit_reaction_comments": 41,
       "appreciative_signals": 30,
       "critical_signals": 11,
-      "substantive_share": 0.2765,
+      "substantive_share": 0.2807,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -875,10 +925,10 @@
         },
         {
           "channel": "Shruti TV",
-          "useful_comments": 20,
+          "useful_comments": 21,
           "appreciative_signals": 4,
           "critical_signals": 1,
-          "questions": 2,
+          "questions": 3,
           "leading_topic": "General reaction"
         }
       ]
@@ -1525,8 +1575,8 @@
     "Arjunan Per Paththu",
     "Arulvaan",
     "Idhayam Murali",
-    "Lakshmikanthan Kolai Vazhakku",
     "Love Oh Love",
+    "Lakshmikanthan Kolai Vazhakku",
     "Unsaid",
     "Gatta Kusthi 2",
     "Find Me",
@@ -1538,16 +1588,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 2376,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 102,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 38,
-    "public_comment_count_unchanged": 63
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
-  "stored_comments": 11154,
+  "new_comments_added": 289,
+  "stored_comments": 11156,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
   "shorts_monitored": 28,
@@ -1752,32 +1802,6 @@
       ]
     },
     {
-      "title": "Lakshmikanthan Kolai Vazhakku",
-      "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
-      "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/pGS1KRODHNYzR35slcgJp9NzMiP.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1620357,
-      "overview": "A young man convicted of murder awaits execution, while a conflicted judge, an aging hangman, and a morally torn jailer confront the weight of justice, guilt, and humanity in the final hours before dawn.",
-      "runtime": 107,
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "director": "Dayal Padmanabhan",
-      "cast": [
-        "Vetri",
-        "Brigida Saga",
-        "Rangaraj Pandey",
-        "Subramaniam Siva",
-        "Saravanan",
-        "Lollu Sabha Maaran",
-        "Lizzie Antony",
-        "Kanya Bharathi",
-        "Madhan Kumar Dhakshinamoorthy"
-      ]
-    },
-    {
       "title": "Love Oh Love",
       "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
       "release_date": "2026-07-10",
@@ -1801,6 +1825,32 @@
         "M. Soundarya Saravanan",
         "Ashwath",
         "Ramya Subramanian"
+      ]
+    },
+    {
+      "title": "Lakshmikanthan Kolai Vazhakku",
+      "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
+      "release_date": "2026-07-10",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pGS1KRODHNYzR35slcgJp9NzMiP.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1620357,
+      "overview": "A young man convicted of murder awaits execution, while a conflicted judge, an aging hangman, and a morally torn jailer confront the weight of justice, guilt, and humanity in the final hours before dawn.",
+      "runtime": 107,
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "director": "Dayal Padmanabhan",
+      "cast": [
+        "Vetri",
+        "Brigida Saga",
+        "Rangaraj Pandey",
+        "Subramaniam Siva",
+        "Saravanan",
+        "Lollu Sabha Maaran",
+        "Lizzie Antony",
+        "Kanya Bharathi",
+        "Madhan Kumar Dhakshinamoorthy"
       ]
     },
     {
