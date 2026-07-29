@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-29T18:50:22.774953+00:00",
-  "last_video_discovery": "2026-07-28T19:02:49.640076+00:00",
+  "last_scan": "2026-07-29T20:06:30.496608+00:00",
+  "last_video_discovery": "2026-07-29T20:06:30.496608+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,15 +135,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Unsaid"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 8,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1521,8 +1571,8 @@
     "Ego Raman",
     "Jana Nayagan",
     "Sweet Rogue Killer",
-    "Anbe Diana",
     "Arjunan Per Paththu",
+    "Anbe Diana",
     "Arulvaan",
     "Idhayam Murali",
     "Love Oh Love",
@@ -1538,15 +1588,15 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 2377,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 102,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 63
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
+  "new_comments_added": 287,
   "stored_comments": 11161,
   "videos_monitored": 102,
   "standard_videos_monitored": 74,
@@ -1648,32 +1698,6 @@
       ]
     },
     {
-      "title": "Anbe Diana",
-      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bc7 \u0b9f\u0baf\u0bbe\u0ba9\u0bbe",
-      "release_date": "2026-07-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1607634,
-      "overview": "",
-      "runtime": 0,
-      "genres": [
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Pari Elavazhagan",
-      "cast": [
-        "Pari Elavazhagan",
-        "Ramya Ranganathan",
-        "Chetan",
-        "Roja Selvamani",
-        "Gopi Aravindh",
-        "Cell Murugan",
-        "Nikhila Sankar",
-        "Ismath Banu",
-        "Sudharshan Gandhy"
-      ]
-    },
-    {
       "title": "Arjunan Per Paththu",
       "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
       "release_date": "2026-07-17",
@@ -1698,6 +1722,32 @@
         "Lenin Bharathi",
         "Myna Nandhini",
         "M. Soundarya Saravanan"
+      ]
+    },
+    {
+      "title": "Anbe Diana",
+      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bc7 \u0b9f\u0baf\u0bbe\u0ba9\u0bbe",
+      "release_date": "2026-07-17",
+      "poster_url": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1607634,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Pari Elavazhagan",
+      "cast": [
+        "Pari Elavazhagan",
+        "Ramya Ranganathan",
+        "Chetan",
+        "Roja Selvamani",
+        "Gopi Aravindh",
+        "Cell Murugan",
+        "Nikhila Sankar",
+        "Ismath Banu",
+        "Sudharshan Gandhy"
       ]
     },
     {
@@ -1828,7 +1878,7 @@
       "original_title": "\u0b95\u0b9f\u0bcd\u0b9f\u0bbe \u0b95\u0bc1\u0bb8\u0bcd\u0ba4\u0bbf 2",
       "release_date": "2026-07-03",
       "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uygLz1ENt12Riv2ppTtdAIBRIT1.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/nLMUoZn09tjeqae7lzK3x9Wf84V.jpg",
       "tmdb_id": 1509599,
       "overview": "Picks up after the first film, with Veera and Keerthi balancing parenthood and Keerthi's wrestling career, featuring a role reversal where Veera takes on more domestic responsibilities.",
       "runtime": 153,
@@ -1882,7 +1932,7 @@
       "title": "Con City",
       "original_title": "\u0b95\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
       "release_date": "2026-06-26",
-      "poster_url": "https://image.tmdb.org/t/p/w500/vUsDcZkFTDoqthmxQ7SKnrVGb3V.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pJ4UwvLpek1jK8d540Ho8xI08iL.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/jzDjIHDknKz9jhTvBF9aSeoax1V.jpg",
       "tmdb_id": 1596008,
       "overview": "Follows a struggling family whose lives change when a receipt printer starts generating money after a lightning strike, leading to public chaos when society discovers the money-making machine.",
@@ -2000,8 +2050,8 @@
       "title": "Nooru Sami",
       "original_title": "\u0ba8\u0bc2\u0bb1\u0bc1 \u0b9a\u0bbe\u0bae\u0bbf",
       "release_date": "2026-06-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/r9mX5R4jsrospJlWrOE8WqzktnH.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/h4j6jcnQDCepz2dzLmWaoRPveEo.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/1dKmZB9KVSOA6mq6Oa2t6HYd8E1.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bRhPcbtPfnrfJPllQtYY7SWoLbu.jpg",
       "tmdb_id": 1544326,
       "overview": "Selvi, a widowed mother, devotes her life to raising her two sons in a conservative village. Years later, unfulfilled life comes back into focus, challenging deep-rooted traditions. As family and society strongly oppose change, Selvi must choose between societal expectations and her own happiness.",
       "runtime": 131,
@@ -2195,7 +2245,7 @@
       "original_title": "\u0b95\u0b9f\u0bcd\u0b9f\u0bbe \u0b95\u0bc1\u0bb8\u0bcd\u0ba4\u0bbf 2",
       "release_date": "2026-07-03",
       "poster_url": "https://image.tmdb.org/t/p/w500/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/uygLz1ENt12Riv2ppTtdAIBRIT1.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/nLMUoZn09tjeqae7lzK3x9Wf84V.jpg",
       "tmdb_id": 1509599,
       "overview": "Picks up after the first film, with Veera and Keerthi balancing parenthood and Keerthi's wrestling career, featuring a role reversal where Veera takes on more domestic responsibilities.",
       "runtime": 153,
@@ -2717,7 +2767,7 @@
       "title": "Con City",
       "original_title": "\u0b95\u0bbe\u0ba9\u0bcd \u0b9a\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
       "release_date": "2026-06-26",
-      "poster_url": "https://image.tmdb.org/t/p/w500/vUsDcZkFTDoqthmxQ7SKnrVGb3V.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pJ4UwvLpek1jK8d540Ho8xI08iL.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/jzDjIHDknKz9jhTvBF9aSeoax1V.jpg",
       "tmdb_id": 1596008,
       "overview": "Follows a struggling family whose lives change when a receipt printer starts generating money after a lightning strike, leading to public chaos when society discovers the money-making machine.",
@@ -2842,8 +2892,8 @@
       "title": "Nooru Sami",
       "original_title": "\u0ba8\u0bc2\u0bb1\u0bc1 \u0b9a\u0bbe\u0bae\u0bbf",
       "release_date": "2026-06-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/r9mX5R4jsrospJlWrOE8WqzktnH.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/h4j6jcnQDCepz2dzLmWaoRPveEo.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/1dKmZB9KVSOA6mq6Oa2t6HYd8E1.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bRhPcbtPfnrfJPllQtYY7SWoLbu.jpg",
       "tmdb_id": 1544326,
       "overview": "Selvi, a widowed mother, devotes her life to raising her two sons in a conservative village. Years later, unfulfilled life comes back into focus, challenging deep-rooted traditions. As family and society strongly oppose change, Selvi must choose between societal expectations and her own happiness.",
       "runtime": 131,
