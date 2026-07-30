@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-30T19:58:37.151149+00:00",
-  "last_video_discovery": "2026-07-29T20:06:30.496608+00:00",
+  "last_scan": "2026-07-30T21:03:53.464331+00:00",
+  "last_video_discovery": "2026-07-30T21:03:53.464331+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -12,7 +12,6 @@
   "keep_history_days": 730,
   "selection_version": 8,
   "active_video_ids": [
-    "-1RKqw28gE4",
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
     "02LIHFCYLFY",
@@ -22,13 +21,11 @@
     "8HSLGSq5jgM",
     "8KI7aZ5A9_I",
     "8YezgDADO7o",
-    "8qgMHcjgFsA",
     "8snjk__6u_M",
     "9UmC0sRxGIE",
     "9yr2IPl0XgE",
     "ACIapYHzUaM",
     "BiI-53i7NVI",
-    "C9fxpfLV6ko",
     "D96FUzC5bx8",
     "Dmw2-tr7Xl0",
     "Eai1avWhY7w",
@@ -46,12 +43,10 @@
     "MSgVwrO8rZ0",
     "MU-5IC-nDso",
     "MpOLjhV3doE",
-    "NXrP2KMxXGM",
     "NcvGH-vUS3o",
     "OQacFyXLUps",
     "OjlO3i690xU",
     "P5d440kliRw",
-    "PAqQtvmxyCo",
     "QkGUFx1Ns8Y",
     "Qm6wSNrF-K0",
     "R3WI0NEZ5Xo",
@@ -84,9 +79,7 @@
     "jQlyBUEdWyI",
     "kM1KK42ngzY",
     "kP8UgzHSxgQ",
-    "kdKcpdl0OR4",
     "kiFeXcU-JI4",
-    "kjHafSxtYFs",
     "kpxThIe1jZ4",
     "m_kxIfJmqfI",
     "mplpkZXBxhI",
@@ -99,7 +92,6 @@
     "pi52Pq_k4D4",
     "qGP9BhjEYjM",
     "qPd-sy5PXEg",
-    "sCKnGrHZrlo",
     "sq-JYRSvoXo",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
@@ -109,14 +101,13 @@
     "vmIVxWqIqPo",
     "w90XD6kUaV8",
     "wvWd-V4-LUA",
-    "xEX8rriniKA",
     "xX8nMqCjtZY",
     "yk4D0rNz2No",
     "zTAqIoV2nc8",
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,15 +126,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Tholaivil Oru Kadhal"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1527,12 +1568,12 @@
   "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
     "Sathyavan Savithiri",
-    "Ego Raman",
     "Jana Nayagan",
     "Sweet Rogue Killer",
     "Arjunan Per Paththu",
     "Anbe Diana",
     "Arulvaan",
+    "Tholaivil Oru Kadhal",
     "Idhayam Murali",
     "Love Oh Love",
     "Lakshmikanthan Kolai Vazhakku",
@@ -1547,19 +1588,19 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 60,
+  "comments_fetched": 2368,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 93,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 40,
-    "public_comment_count_unchanged": 62
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
+  "new_comments_added": 287,
   "stored_comments": 11163,
-  "videos_monitored": 102,
-  "standard_videos_monitored": 74,
-  "shorts_monitored": 28,
+  "videos_monitored": 93,
+  "standard_videos_monitored": 68,
+  "shorts_monitored": 25,
   "movie_catalog": [
     {
       "title": "Sathyavan Savithiri",
@@ -1583,24 +1624,6 @@
         "Thangapandiyan",
         "Sundarrajan",
         "Uma Ramachandran"
-      ]
-    },
-    {
-      "title": "Ego Raman",
-      "original_title": "Ego Raman",
-      "release_date": "2026-07-24",
-      "poster_url": "https://image.tmdb.org/t/p/w500/xHfrl3LNJBWho5Thsofdy8VBfHh.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/sRphVl1MoUc9lggaZlRqBYXa9hW.jpg",
-      "tmdb_id": 1737178,
-      "overview": "Follows the toxic relationship between a prospective civil servant and a conceited school principal, which intensifies when a Yamaha motorbike enters the narrative.",
-      "runtime": 117,
-      "genres": [],
-      "director": null,
-      "cast": [
-        "Robo Shankar",
-        "Ciby Bhuvana Chandran",
-        "Chappani Boys Murali",
-        "Kavitha Ramesh"
       ]
     },
     {
@@ -1731,6 +1754,19 @@
         "John Vijay",
         "VTV Ganesh"
       ]
+    },
+    {
+      "title": "Tholaivil Oru Kadhal",
+      "original_title": "Tholaivil Oru Kadhal",
+      "release_date": "2026-07-16",
+      "poster_url": null,
+      "backdrop_url": null,
+      "tmdb_id": 1740386,
+      "overview": "Love, gossip, and misunderstandings collide at a Tamil-run tech company in the US as four lives become tangled in unexpected ways.",
+      "runtime": 95,
+      "genres": [],
+      "director": null,
+      "cast": []
     },
     {
       "title": "Idhayam Murali",
@@ -3082,6 +3118,19 @@
         "Prajin Padmanabhan",
         "Anupama Kumar"
       ]
+    },
+    {
+      "title": "Tholaivil Oru Kadhal",
+      "original_title": "Tholaivil Oru Kadhal",
+      "release_date": "2026-07-16",
+      "poster_url": null,
+      "backdrop_url": null,
+      "tmdb_id": 1740386,
+      "overview": "Love, gossip, and misunderstandings collide at a Tamil-run tech company in the US as four lives become tangled in unexpected ways.",
+      "runtime": 95,
+      "genres": [],
+      "director": null,
+      "cast": []
     }
   ],
   "all_films_analyzed": [
@@ -3120,6 +3169,7 @@
     "Suitcased",
     "Sweet Rogue Killer",
     "Thaai Kizhavi",
+    "Tholaivil Oru Kadhal",
     "Unsaid",
     "Valluvan",
     "Youth"
