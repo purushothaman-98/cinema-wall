@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-07-31T01:27:04.209447+00:00",
+  "last_scan": "2026-07-31T04:53:59.228256+00:00",
   "last_video_discovery": "2026-07-30T21:03:53.464331+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -325,12 +325,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 272 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 272,
+      "summary": "Based on 273 useful public comments. Of 67 comments with detectable reaction wording, 63 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 273,
       "explicit_reaction_comments": 67,
       "appreciative_signals": 63,
       "critical_signals": 4,
-      "substantive_share": 0.239,
+      "substantive_share": 0.2381,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -356,7 +356,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 85,
+          "useful_comments": 86,
           "appreciative_signals": 16,
           "critical_signals": 4,
           "questions": 12,
@@ -1538,16 +1538,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1135,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 58
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 92,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
-  "stored_comments": 11163,
+  "new_comments_added": 38,
+  "stored_comments": 11164,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
   "shorts_monitored": 25,
