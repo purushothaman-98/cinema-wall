@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-01T09:30:02.422185+00:00",
+  "last_scan": "2026-08-01T10:58:19.259356+00:00",
   "last_video_discovery": "2026-07-31T22:29:52.694787+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1099,12 +1099,12 @@
       "reviewers": []
     },
     "Love Oh Love": {
-      "summary": "Based on 103 useful public comments. Of 26 comments with detectable reaction wording, 18 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 103,
+      "summary": "Based on 104 useful public comments. Of 26 comments with detectable reaction wording, 18 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 104,
       "explicit_reaction_comments": 26,
       "appreciative_signals": 18,
       "critical_signals": 8,
-      "substantive_share": 0.2136,
+      "substantive_share": 0.2212,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1146,10 +1146,10 @@
         },
         {
           "channel": "Galatta Plus",
-          "useful_comments": 12,
+          "useful_comments": 13,
           "appreciative_signals": 0,
           "critical_signals": 0,
-          "questions": 1,
+          "questions": 2,
           "leading_topic": "General reaction"
         }
       ]
@@ -1538,16 +1538,16 @@
     "Dark Giant",
     "Nooru Sami"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1059,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 34,
-    "public_comment_count_unchanged": 59
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 88,
+    "public_comment_count_unchanged": 3
   },
-  "new_comments_added": 0,
-  "stored_comments": 11172,
+  "new_comments_added": 39,
+  "stored_comments": 11174,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
   "shorts_monitored": 25,
