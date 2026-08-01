@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-01T22:23:41.620097+00:00",
-  "last_video_discovery": "2026-07-31T22:29:52.694787+00:00",
+  "last_scan": "2026-08-01T23:24:59.587208+00:00",
+  "last_video_discovery": "2026-08-01T23:24:59.587208+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -107,7 +107,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -126,15 +126,65 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 36,
   "broad_discovery_queries_run": 3,
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "direct_film_discovery_queries_run": 6,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased",
+    "Sweet Rogue Killer",
+    "Tholaivil Oru Kadhal"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 6,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sathyavan Savithiri\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sathyavan Savithiri",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sathyavan Savithiri\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1532,21 +1582,21 @@
     "Find Me",
     "Con City",
     "Heartin",
-    "Angikaaram",
     "Andharan",
+    "Angikaaram",
     "Suitcased",
-    "Dark Giant",
-    "Nooru Sami"
+    "Nooru Sami",
+    "Dark Giant"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 2380,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 93,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 58
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
+  "new_comments_added": 287,
   "stored_comments": 11176,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
@@ -1750,7 +1800,7 @@
       "title": "Love Oh Love",
       "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
       "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/37svY2bwI83NSHuR6KSQeBhjgOt.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/dfoDrbAaeACqYxdMULEHFCpR9us.jpg",
       "tmdb_id": 1579405,
       "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
@@ -1833,16 +1883,16 @@
       ],
       "director": "Chella Ayyavu",
       "cast": [
-        "Aishwarya Lekshmi",
         "Vishnu Vishal",
-        "Ramya Krishnan",
+        "Aishwarya Lekshmi",
         "Karunas",
         "Munishkanth",
         "Kaali Venkat",
         "Lizzie Antony",
         "Gajaraj",
         "Sreeja Ravi",
-        "Karunakaran"
+        "Karunakaran",
+        "Tarak Ponnappa"
       ]
     },
     {
@@ -1929,6 +1979,24 @@
       ]
     },
     {
+      "title": "Andharan",
+      "original_title": "Andharan",
+      "release_date": "2026-06-26",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3cy5aVMPcIkEn99lDbgnH7j4QOj.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/kaTGifoQW0qpR2ryK9Yy0iGoQgF.jpg",
+      "tmdb_id": 1738076,
+      "overview": "Karthika's fianc\u00e9s mysteriously die before marriage. Officer Chezhiyan investigates the deaths and discovers dark secrets from her past, revealing the hidden forces haunting her life as truth and fear collide.",
+      "runtime": 125,
+      "genres": [
+        "Thriller"
+      ],
+      "director": null,
+      "cast": [
+        "Prajin Padmanabhan",
+        "Anupama Kumar"
+      ]
+    },
+    {
       "title": "Angikaaram",
       "original_title": "\u0b85\u0b99\u0bcd\u0b95\u0bc0\u0b95\u0bbe\u0bb0\u0bae\u0bcd",
       "release_date": "2026-06-26",
@@ -1953,24 +2021,6 @@
       ]
     },
     {
-      "title": "Andharan",
-      "original_title": "Andharan",
-      "release_date": "2026-06-26",
-      "poster_url": "https://image.tmdb.org/t/p/w500/3cy5aVMPcIkEn99lDbgnH7j4QOj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/kaTGifoQW0qpR2ryK9Yy0iGoQgF.jpg",
-      "tmdb_id": 1738076,
-      "overview": "Karthika's fianc\u00e9s mysteriously die before marriage. Officer Chezhiyan investigates the deaths and discovers dark secrets from her past, revealing the hidden forces haunting her life as truth and fear collide.",
-      "runtime": 125,
-      "genres": [
-        "Thriller"
-      ],
-      "director": null,
-      "cast": [
-        "Prajin Padmanabhan",
-        "Anupama Kumar"
-      ]
-    },
-    {
       "title": "Suitcased",
       "original_title": "Suitcased",
       "release_date": "2026-06-25",
@@ -1989,31 +2039,6 @@
         "Krishanth",
         "Varun",
         "Yogesh SD"
-      ]
-    },
-    {
-      "title": "Dark Giant",
-      "original_title": "Dark Giant",
-      "release_date": "2026-06-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
-      "tmdb_id": 1715800,
-      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
-      "runtime": 0,
-      "genres": [
-        "Horror",
-        "Thriller"
-      ],
-      "director": "KS Kishaan",
-      "cast": [
-        "Sonia Agarwal",
-        "K. Bhagyaraj",
-        "Madhan Kumar Dhakshinamoorthy",
-        "Jovita Livingston",
-        "Livingston",
-        "Amudhavanan",
-        "Rafiq Batcha",
-        "Adarsh Madhikanth"
       ]
     },
     {
@@ -2041,6 +2066,31 @@
         "Balaji Sakthivel",
         "Padine Kumar",
         "Aruldoss"
+      ]
+    },
+    {
+      "title": "Dark Giant",
+      "original_title": "Dark Giant",
+      "release_date": "2026-06-19",
+      "poster_url": "https://image.tmdb.org/t/p/w500/jKeyjIdRacMd3iDvSVhdRtF4GJY.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/6iJo5yTh2lEqOWL8TZkpKvH8ZSO.jpg",
+      "tmdb_id": 1715800,
+      "overview": "Dark Giant is a Supernatural Horror and Psychological Family Drama. It Explores How Greed, Guilt, and Generational Trauma Can Manifest as a Literal Curse, Destroying a Family From the Inside Out",
+      "runtime": 0,
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "director": "KS Kishaan",
+      "cast": [
+        "Sonia Agarwal",
+        "K. Bhagyaraj",
+        "Madhan Kumar Dhakshinamoorthy",
+        "Jovita Livingston",
+        "Livingston",
+        "Amudhavanan",
+        "Rafiq Batcha",
+        "Adarsh Madhikanth"
       ]
     }
   ],
@@ -2200,16 +2250,16 @@
       ],
       "director": "Chella Ayyavu",
       "cast": [
-        "Aishwarya Lekshmi",
         "Vishnu Vishal",
-        "Ramya Krishnan",
+        "Aishwarya Lekshmi",
         "Karunas",
         "Munishkanth",
         "Kaali Venkat",
         "Lizzie Antony",
         "Gajaraj",
         "Sreeja Ravi",
-        "Karunakaran"
+        "Karunakaran",
+        "Tarak Ponnappa"
       ]
     },
     {
@@ -2640,7 +2690,7 @@
       "title": "Love Oh Love",
       "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
       "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/37svY2bwI83NSHuR6KSQeBhjgOt.jpg",
       "backdrop_url": "https://image.tmdb.org/t/p/w1280/dfoDrbAaeACqYxdMULEHFCpR9us.jpg",
       "tmdb_id": 1579405,
       "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
