@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-02T04:46:22.096845+00:00",
+  "last_scan": "2026-08-02T07:26:01.714124+00:00",
   "last_video_discovery": "2026-08-01T23:24:59.587208+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1099,20 +1099,20 @@
       "reviewers": []
     },
     "Love Oh Love": {
-      "summary": "Based on 104 useful public comments. Of 26 comments with detectable reaction wording, 18 were appreciative and 8 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 104,
-      "explicit_reaction_comments": 26,
-      "appreciative_signals": 18,
+      "summary": "Based on 107 useful public comments. Of 29 comments with detectable reaction wording, 21 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 107,
+      "explicit_reaction_comments": 29,
+      "appreciative_signals": 21,
       "critical_signals": 8,
-      "substantive_share": 0.2212,
+      "substantive_share": 0.215,
       "top_aspects": [
         {
-          "name": "Release & theatre",
+          "name": "Story & screenplay",
           "comments": 5
         },
         {
-          "name": "Story & screenplay",
-          "comments": 3
+          "name": "Release & theatre",
+          "comments": 5
         },
         {
           "name": "Acting & characters",
@@ -1122,16 +1122,16 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 42,
-          "appreciative_signals": 10,
+          "useful_comments": 44,
+          "appreciative_signals": 12,
           "critical_signals": 6,
           "questions": 5,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 34,
-          "appreciative_signals": 4,
+          "useful_comments": 35,
+          "appreciative_signals": 5,
           "critical_signals": 1,
           "questions": 6,
           "leading_topic": "General reaction"
@@ -1538,16 +1538,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 1092,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 34,
-    "public_comment_count_unchanged": 58
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 90,
+    "public_comment_count_unchanged": 1
   },
-  "new_comments_added": 1,
-  "stored_comments": 11177,
+  "new_comments_added": 40,
+  "stored_comments": 11180,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
   "shorts_monitored": 25,
