@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-02T01:02:28.422593+00:00",
+  "last_scan": "2026-08-02T04:46:22.096845+00:00",
   "last_video_discovery": "2026-08-01T23:24:59.587208+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -216,12 +216,12 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 266 useful public comments. Of 65 comments with detectable reaction wording, 58 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 266,
+      "summary": "Based on 267 useful public comments. Of 65 comments with detectable reaction wording, 58 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
+      "useful_comments": 267,
       "explicit_reaction_comments": 65,
       "appreciative_signals": 58,
       "critical_signals": 7,
-      "substantive_share": 0.2143,
+      "substantive_share": 0.2172,
       "top_aspects": [
         {
           "name": "Comedy",
@@ -239,7 +239,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 147,
+          "useful_comments": 148,
           "appreciative_signals": 34,
           "critical_signals": 3,
           "questions": 11,
@@ -1538,16 +1538,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 50,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 34,
-    "public_comment_count_unchanged": 59
+    "public_comment_count_unchanged": 58
   },
-  "new_comments_added": 0,
-  "stored_comments": 11176,
+  "new_comments_added": 1,
+  "stored_comments": 11177,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
   "shorts_monitored": 25,
