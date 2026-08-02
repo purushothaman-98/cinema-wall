@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-02T14:45:31.710471+00:00",
+  "last_scan": "2026-08-02T15:50:40.929580+00:00",
   "last_video_discovery": "2026-08-01T23:24:59.587208+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1099,12 +1099,12 @@
       "reviewers": []
     },
     "Love Oh Love": {
-      "summary": "Based on 108 useful public comments. Of 29 comments with detectable reaction wording, 21 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
-      "useful_comments": 108,
+      "summary": "Based on 109 useful public comments. Of 29 comments with detectable reaction wording, 21 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 109,
       "explicit_reaction_comments": 29,
       "appreciative_signals": 21,
       "critical_signals": 8,
-      "substantive_share": 0.213,
+      "substantive_share": 0.211,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1138,7 +1138,7 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 15,
+          "useful_comments": 16,
           "appreciative_signals": 4,
           "critical_signals": 1,
           "questions": 3,
@@ -1538,16 +1538,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 992,
+  "comments_fetched": 170,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 89,
-    "public_comment_count_unchanged": 3
+    "periodic_comment_refresh": 37,
+    "public_comment_count_unchanged": 55
   },
-  "new_comments_added": 37,
-  "stored_comments": 11182,
+  "new_comments_added": 1,
+  "stored_comments": 11183,
   "videos_monitored": 93,
   "standard_videos_monitored": 68,
   "shorts_monitored": 25,
