@@ -1023,9 +1023,12 @@ def main() -> None:
         "discovery_mode": "daily_tmdb_plus_broad_youtube" if do_discovery else "monitor_existing_selection",
         "broad_discovery_queries": CFG.get("youtube_discovery_queries", []),
         "broad_discovery_video_hits": discovery_video_hits,
-        "broad_discovery_queries_run": min(
-            len(CFG.get("youtube_discovery_queries", [])),
-            int(CFG.get("broad_discovery_max_queries", 8)),
+        "broad_discovery_queries_run": (
+            min(
+                len(CFG.get("youtube_discovery_queries", [])),
+                int(CFG.get("broad_discovery_max_queries", 8)),
+            )
+            if do_discovery else 0
         ),
         "source_channel_queries_run": len(source_channel_queries),
         "source_channel_video_hits": source_channel_hits,
