@@ -47,7 +47,7 @@
   "comments_per_video_daily": 300,
   "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 10,
+  "selection_version": 11,
   "top_channel_coverage_channels": [
     "Tamil Talkies",
     "KaKi's Talkies",
@@ -78,8 +78,19 @@
     "Touring Talkies tamil cinema interview"
   ],
   "film_title_aliases": {
-    "Gatta Kusthi 2": ["gatta kusthi 2", "gatta kusthi round 2"],
-    "Parimala and Co": ["parimala and co", "parimala & co"]
+    "Gatta Kusthi 2": [
+      "gatta kusthi 2",
+      "gatta kusthi round 2"
+    ],
+    "Parimala and Co": [
+      "parimala and co",
+      "parimala & co"
+    ],
+    "Jana Nayagan": [
+      "Jananayagan",
+      "Jana Nayakan",
+      "Jananayakan"
+    ]
   },
   "scope_exclusion_terms": [
     "full movie",
@@ -96,26 +107,204 @@
     "toxic shocking news"
   ],
   "source_channels": [
-    {"name": "KaKi's Talkies", "aliases": ["KaKi's Talkies", "Kakis Talkies"], "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA", "source_category": "general_review", "critic_weight": 1.0, "engagement_weight": 0.9},
-    {"name": "Sudhir Srinivasan", "aliases": ["Sudhir Srinivasan"], "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg", "source_category": "critic_review", "critic_weight": 1.0, "engagement_weight": 0.75},
-    {"name": "Galatta Plus", "aliases": ["Galatta Plus", "Baradwaj Rangan", "BR South Cinema"], "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ", "source_category": "critic_review", "critic_weight": 0.95, "engagement_weight": 0.75},
-    {"name": "Second Show", "aliases": ["Second Show"], "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ", "source_category": "general_review", "critic_weight": 0.85, "engagement_weight": 0.85},
-    {"name": "Delite Cinemas", "aliases": ["Delite Cinemas"], "channel_id": "UCAPY9agmayYQ5-tYikGlxhA", "source_category": "general_review", "critic_weight": 0.82, "engagement_weight": 0.85},
-    {"name": "Filmi Craft", "aliases": ["Filmi Craft", "Filmi Craft Arun"], "channel_id": "UClF9UTljviumfJf7t-VR5tg", "source_category": "general_review", "critic_weight": 0.78, "engagement_weight": 0.8},
-    {"name": "Nona Prince", "aliases": ["Nona Prince"], "source_category": "deep_analysis", "critic_weight": 0.75, "engagement_weight": 0.65},
-    {"name": "Tamil Talkies", "aliases": ["Tamil Talkies", "Blue Sattai"], "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ", "source_category": "roast_commentary", "critic_weight": 0.4, "engagement_weight": 1.0},
-    {"name": "Plip Plip", "aliases": ["Plip Plip"], "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
-    {"name": "Empty Hand", "aliases": ["Empty Hand"], "channel_id": "UC8_aMwsn53tncdH-5iLu8-w", "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
-    {"name": "Kodangi", "aliases": ["Kodangi", "V Studio Kodangi"], "source_category": "roast_commentary", "critic_weight": 0.45, "engagement_weight": 0.85},
-    {"name": "Touring Talkies", "aliases": ["Touring Talkies"], "source_category": "interview_archive", "critic_weight": 0.5, "engagement_weight": 0.65},
-    {"name": "BehindwoodsTV", "aliases": ["BehindwoodsTV", "Behindwoods"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
-    {"name": "Galatta Tamil", "aliases": ["Galatta Tamil"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
-    {"name": "Cinema Vikatan", "aliases": ["Cinema Vikatan"], "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA", "source_category": "mixed_media", "critic_weight": 0.6, "engagement_weight": 0.75},
-    {"name": "Valai Pechu", "aliases": ["Valai Pechu"], "channel_id": "UCRTmSft-1I9f0yzTnz32oMg", "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
-    {"name": "Fully Filmy", "aliases": ["Fully Filmy"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.7},
-    {"name": "Movie Crow", "aliases": ["Movie Crow", "Moviecrow"], "source_category": "mixed_media", "critic_weight": 0.5, "engagement_weight": 0.65},
-    {"name": "Open Pannaa", "aliases": ["Open Pannaa"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
-    {"name": "Abishek Raja", "aliases": ["Abishek Raja"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.7}
+    {
+      "name": "KaKi's Talkies",
+      "aliases": [
+        "KaKi's Talkies",
+        "Kakis Talkies"
+      ],
+      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
+      "source_category": "general_review",
+      "critic_weight": 1,
+      "engagement_weight": 0.9
+    },
+    {
+      "name": "Sudhir Srinivasan",
+      "aliases": [
+        "Sudhir Srinivasan"
+      ],
+      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
+      "source_category": "critic_review",
+      "critic_weight": 1,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Galatta Plus",
+      "aliases": [
+        "Galatta Plus",
+        "Baradwaj Rangan",
+        "BR South Cinema"
+      ],
+      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
+      "source_category": "critic_review",
+      "critic_weight": 0.95,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Second Show",
+      "aliases": [
+        "Second Show"
+      ],
+      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
+      "source_category": "general_review",
+      "critic_weight": 0.85,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Delite Cinemas",
+      "aliases": [
+        "Delite Cinemas"
+      ],
+      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
+      "source_category": "general_review",
+      "critic_weight": 0.82,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Filmi Craft",
+      "aliases": [
+        "Filmi Craft",
+        "Filmi Craft Arun"
+      ],
+      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
+      "source_category": "general_review",
+      "critic_weight": 0.78,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Nona Prince",
+      "aliases": [
+        "Nona Prince"
+      ],
+      "source_category": "deep_analysis",
+      "critic_weight": 0.75,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "Tamil Talkies",
+      "aliases": [
+        "Tamil Talkies",
+        "Blue Sattai"
+      ],
+      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
+      "source_category": "roast_commentary",
+      "critic_weight": 0.4,
+      "engagement_weight": 1
+    },
+    {
+      "name": "Plip Plip",
+      "aliases": [
+        "Plip Plip"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.95
+    },
+    {
+      "name": "Empty Hand",
+      "aliases": [
+        "Empty Hand"
+      ],
+      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
+      "source_category": "roast_commentary",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.95
+    },
+    {
+      "name": "Kodangi",
+      "aliases": [
+        "Kodangi",
+        "V Studio Kodangi"
+      ],
+      "source_category": "roast_commentary",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.85
+    },
+    {
+      "name": "Touring Talkies",
+      "aliases": [
+        "Touring Talkies"
+      ],
+      "source_category": "interview_archive",
+      "critic_weight": 0.5,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "BehindwoodsTV",
+      "aliases": [
+        "BehindwoodsTV",
+        "Behindwoods"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Galatta Tamil",
+      "aliases": [
+        "Galatta Tamil"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.8
+    },
+    {
+      "name": "Cinema Vikatan",
+      "aliases": [
+        "Cinema Vikatan"
+      ],
+      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
+      "source_category": "mixed_media",
+      "critic_weight": 0.6,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Valai Pechu",
+      "aliases": [
+        "Valai Pechu"
+      ],
+      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Fully Filmy",
+      "aliases": [
+        "Fully Filmy"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.35,
+      "engagement_weight": 0.7
+    },
+    {
+      "name": "Movie Crow",
+      "aliases": [
+        "Movie Crow",
+        "Moviecrow"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.5,
+      "engagement_weight": 0.65
+    },
+    {
+      "name": "Open Pannaa",
+      "aliases": [
+        "Open Pannaa"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.75
+    },
+    {
+      "name": "Abishek Raja",
+      "aliases": [
+        "Abishek Raja"
+      ],
+      "source_category": "mixed_media",
+      "critic_weight": 0.45,
+      "engagement_weight": 0.7
+    }
   ],
   "promotion_terms": [
     "official trailer",
