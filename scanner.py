@@ -11,7 +11,13 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-from collectors import youtube_comments, youtube_details, youtube_search, youtube_search_query
+from collectors import (
+    youtube_channel_uploads,
+    youtube_comments,
+    youtube_details,
+    youtube_search,
+    youtube_search_query,
+)
 from youtube_analysis import enrich_comments
 
 ROOT = Path(__file__).parent
@@ -480,6 +486,26 @@ def source_channel_discovery_profiles() -> list[dict]:
     )
     return profiles[: int(CFG.get("source_channel_discovery_max_queries", 0))]
 
+def upload_feed_profiles() -> list[dict]:
+    """Known channel-ID sources whose recent uploads can be checked cheaply."""
+    allowed = set(CFG.get("upload_feed_source_categories", []))
+    profiles = [
+        profile for profile in CFG.get("source_channels", [])
+        if profile.get("channel_id")
+        and (
+            not allowed
+            or profile.get("source_category") in allowed
+        )
+    ]
+    profiles.sort(
+        key=lambda item: (
+            float(item.get("critic_weight", 0)),
+            float(item.get("engagement_weight", 0)),
+        ),
+        reverse=True,
+    )
+    return profiles[: int(CFG.get("upload_feed_max_channels", len(profiles)))]
+
 def source_channel_query(profile: dict) -> str:
     aliases = [profile.get("name", ""), *profile.get("aliases", [])]
     channel_name = next((str(alias).strip() for alias in aliases if str(alias).strip()), "")
@@ -707,12 +733,42 @@ def main() -> None:
     discovery_video_hits = 0
     source_channel_hits = 0
     source_channel_matches = 0
+    upload_feed_hits = 0
+    upload_feed_matches = 0
+    upload_feed_queries: list[dict] = []
     source_channel_queries: list[dict] = []
     channel_matrix_candidates: dict[str, list[dict]] = {film: [] for film in films}
     channel_matrix_hits = 0
     channel_matrix_queries: list[dict] = []
     if do_discovery:
         direct_films = set(direct_discovery_films(films, known))
+        for profile in upload_feed_profiles():
+            channel_id = str(profile.get("channel_id", "")).strip()
+            if not channel_id:
+                continue
+            query_hits = 0
+            matched_hits = 0
+            try:
+                for item in youtube_channel_uploads(
+                    channel_id,
+                    youtube_key,
+                    int(CFG.get("upload_feed_videos_per_channel", 25)),
+                ):
+                    query_hits += 1
+                    upload_feed_hits += 1
+                    for film in films:
+                        if video_mentions_film(item, film):
+                            matched_hits += 1
+                            upload_feed_matches += 1
+                            broad_candidates.setdefault(film, []).append(item)
+            except Exception as exc:
+                errors.append(f"Upload feed/{profile.get('name', 'unknown')}: {safe_error(exc)}")
+            upload_feed_queries.append({
+                "channel": profile.get("name"),
+                "channel_id": channel_id,
+                "hits": query_hits,
+                "matched_hits": matched_hits,
+            })
         for profile in source_channel_discovery_profiles():
             query = source_channel_query(profile)
             if not query.strip('" '):
@@ -971,6 +1027,10 @@ def main() -> None:
         "source_channel_video_hits": source_channel_hits,
         "source_channel_matched_hits": source_channel_matches,
         "source_channel_queries": source_channel_queries,
+        "upload_feed_channels_run": len(upload_feed_queries),
+        "upload_feed_video_hits": upload_feed_hits,
+        "upload_feed_matched_hits": upload_feed_matches,
+        "upload_feed_queries": upload_feed_queries,
         "direct_film_discovery_queries_run": len(direct_discovery_films(films, known)) if do_discovery else 0,
         "direct_film_discovery_films": direct_discovery_films(films, known) if do_discovery else [],
         "channel_matrix_enabled": CFG.get("channel_matrix_enabled", True),

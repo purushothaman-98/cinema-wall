@@ -25,6 +25,47 @@ def youtube_search_query(query: str, api_key: str, max_results: int = 12) -> lis
 def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
     return youtube_search_query(f'"{film}" Tamil movie review public review', api_key, max_results)
 
+def youtube_channel_uploads(channel_id: str, api_key: str, max_results: int = 25) -> list[dict]:
+    """Fetch recent uploads from a known channel ID without spending search quota."""
+    if not str(channel_id or "").strip():
+        return []
+    channel_payload = _youtube_get("channels", {
+        "key": api_key, "part": "contentDetails", "id": channel_id,
+    })
+    uploads = None
+    for item in channel_payload.get("items", []):
+        uploads = (
+            item.get("contentDetails", {})
+            .get("relatedPlaylists", {})
+            .get("uploads")
+        )
+        if uploads:
+            break
+    if not uploads:
+        return []
+    payload = _youtube_get("playlistItems", {
+        "key": api_key,
+        "part": "snippet,contentDetails",
+        "playlistId": uploads,
+        "maxResults": min(max_results, 50),
+    })
+    rows = []
+    for item in payload.get("items", []):
+        snippet = item.get("snippet", {})
+        content = item.get("contentDetails", {})
+        video_id = content.get("videoId")
+        if not video_id:
+            continue
+        rows.append({
+            "video_id": video_id,
+            "channelTitle": snippet.get("channelTitle", ""),
+            "channelId": snippet.get("channelId", channel_id),
+            "title": snippet.get("title", ""),
+            "description": snippet.get("description", ""),
+            "publishedAt": snippet.get("publishedAt") or content.get("videoPublishedAt"),
+        })
+    return rows
+
 def youtube_details(video_ids: list[str], api_key: str) -> pd.DataFrame:
     unique_ids = list(dict.fromkeys(video_ids))
     rows = []
