@@ -43,18 +43,39 @@ def text_contains_alias(text: object, alias: object) -> bool:
     compact_alias = compact_normalized(alias)
     return bool(compact_alias and compact_alias in compact_normalized(text))
 
+def generated_title_aliases(title: object) -> list[str]:
+    """Create conservative title variants for YouTube spacing/punctuation drift."""
+    raw = str(title or "").strip()
+    spaced = normalized(raw)
+    if not spaced:
+        return []
+    variants = [raw, spaced, compact_normalized(raw)]
+    connector_variants = {
+        spaced.replace(" and ", " & "),
+        spaced.replace(" & ", " and "),
+        spaced.replace(" part ", " "),
+    }
+    variants.extend(connector_variants)
+    tokens = spaced.split()
+    if len(tokens) > 1:
+        variants.append("".join(tokens))
+    return list(dict.fromkeys(alias for alias in variants if str(alias).strip()))
+
 def title_matches_film(video: dict | pd.Series) -> bool:
     film = str(video.get("film", "")).strip()
     aliases = film_aliases(film)
     return any(text_contains_alias(video.get("title", ""), alias) for alias in aliases)
 
 def film_aliases(film: str) -> list[str]:
-    aliases = [film]
+    aliases = generated_title_aliases(film)
     aliases.extend(CFG.get("film_title_aliases", {}).get(film, []))
     for item in CFG.get("manual_films", []):
         if str(item.get("title", "")).strip() == film:
             aliases.extend(item.get("aliases", []))
-    return list(dict.fromkeys(alias for alias in aliases if str(alias).strip()))
+    expanded: list[str] = []
+    for alias in aliases:
+        expanded.extend(generated_title_aliases(alias))
+    return list(dict.fromkeys(alias for alias in expanded if str(alias).strip()))
 
 def video_mentions_film(video: dict | pd.Series, film: str) -> bool:
     text = f"{video.get('title', '')} {video.get('description', '')}"
