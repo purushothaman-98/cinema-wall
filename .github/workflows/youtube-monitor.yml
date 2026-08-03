@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/youtube-monitor-trigger'
 
 permissions:
   contents: write
