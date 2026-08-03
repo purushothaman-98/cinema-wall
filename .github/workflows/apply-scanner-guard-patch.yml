@@ -1,0 +1,32 @@
+name: Apply scanner guard patch
+
+on:
+  push:
+    paths:
+      - .github/patches/scanner-empty-details-guard.patch
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Apply patch
+        run: |
+          git apply .github/patches/scanner-empty-details-guard.patch
+          python -m py_compile scanner.py collectors.py data.py app.py youtube_analysis.py
+      - name: Commit real change
+        run: |
+          git config user.name "cinema-wall-maintainer"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f .github/patches/scanner-empty-details-guard.patch .github/workflows/apply-scanner-guard-patch.yml
+          git add scanner.py .github/patches/scanner-empty-details-guard.patch .github/workflows/apply-scanner-guard-patch.yml
+          git commit -m "Skip empty YouTube detail matches"
+          git push
