@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "cinema-wall-scanner"
           git config user.email "actions@users.noreply.github.com"
-          git add data/live/comments.csv data/live/video_snapshots.csv data/live/scan_metadata.json
+          git add data/live/comments.csv data/live/video_snapshots.csv data/live/scan_metadata.json data/live/channel_evaluation.csv
           if ! git diff --cached --quiet; then
             git commit -m "data: YouTube monitor $(date -u +'%F %H:%M UTC')"
             git pull --rebase
