@@ -1,0 +1,33 @@
+name: Apply YouTube workflow doc patch
+
+on:
+  push:
+    paths:
+      - .github/patches/youtube-workflow-counter.patch
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Apply patch
+        run: git apply .github/patches/youtube-workflow-counter.patch
+      - name: Validate Python
+        run: python -m py_compile scanner.py collectors.py data.py app.py youtube_analysis.py
+      - name: Commit patch and cleanup
+        run: |
+          git config user.name "cinema-wall-scanner"
+          git config user.email "actions@users.noreply.github.com"
+          git rm -f .github/workflows/apply-youtube-workflow-doc-20260803.yml .github/patches/youtube-workflow-counter.patch
+          git add scanner.py YOUTUBE_COLLECTION_WORKFLOW.md
+          git commit -m "Document YouTube collection workflow"
+          git pull --rebase
+          git push
