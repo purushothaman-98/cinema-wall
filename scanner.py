@@ -35,13 +35,40 @@ def normalized(value: object) -> str:
 def compact_normalized(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", "", str(value or "").lower())
 
+def bool_series(frame: pd.DataFrame, column: str, default: bool = False) -> pd.Series:
+    if column not in frame:
+        return pd.Series(default, index=frame.index)
+    values = frame[column]
+    if values.dtype == bool:
+        return values.fillna(default)
+    normalized_values = values.astype(str).str.strip().str.lower()
+    parsed = normalized_values.map({
+        "true": True,
+        "1": True,
+        "yes": True,
+        "y": True,
+        "false": False,
+        "0": False,
+        "no": False,
+        "n": False,
+        "nan": default,
+        "none": default,
+        "": default,
+    })
+    return parsed.fillna(default).astype(bool)
+
 def text_contains_alias(text: object, alias: object) -> bool:
     spaced_text = f" {normalized(text)} "
     spaced_alias = normalized(alias)
     if spaced_alias and f" {spaced_alias} " in spaced_text:
         return True
     compact_alias = compact_normalized(alias)
-    return bool(compact_alias and compact_alias in compact_normalized(text))
+    min_compact = int(CFG.get("min_compact_alias_length", 6))
+    return bool(
+        compact_alias
+        and len(compact_alias) >= min_compact
+        and compact_alias in compact_normalized(text)
+    )
 
 def generated_title_aliases(title: object) -> list[str]:
     """Create conservative title variants for YouTube spacing/punctuation drift."""
@@ -479,7 +506,7 @@ def review_video_counts_by_film(known: pd.DataFrame) -> dict[str, int]:
     if "content_format" not in frame:
         frame["content_format"] = "Video"
     if "review_evidence" in frame:
-        evidence = frame["review_evidence"].fillna(True).astype(bool)
+        evidence = bool_series(frame, "review_evidence", True)
     elif "video_intent" in frame:
         evidence = frame["video_intent"].fillna("film_discussion").isin(
             ["review", "short_review", "public_review", "deep_analysis", "roast_commentary", "film_discussion"]
@@ -513,7 +540,7 @@ def review_snapshot_frame(snapshots: pd.DataFrame) -> pd.DataFrame:
     if "content_format" not in frame:
         frame["content_format"] = "Video"
     if "review_evidence" in frame:
-        evidence = frame["review_evidence"].fillna(True).astype(bool)
+        evidence = bool_series(frame, "review_evidence", True)
     else:
         evidence = pd.Series(True, index=frame.index)
     frame = frame[evidence & frame["content_format"].eq("Video")].copy()
@@ -565,6 +592,12 @@ def build_top_channel_coverage(
             elif not profile.get("channel_id"):
                 status = "needs_channel_id"
                 note = "Add exact YouTube channel ID before low-quota upload-feed checks."
+            elif channel in checked_channels and coverage_count > 0:
+                status = "checked_needs_search_retry"
+                note = (
+                    "Upload feed was checked, but other top channels already show coverage; "
+                    "targeted search should keep retrying this pair."
+                )
             elif channel in checked_channels:
                 status = "checked_no_recent_match"
                 note = "Exact upload feed checked in this discovery run; no recent matching title found."
@@ -605,14 +638,17 @@ def missing_top_channel_pairs(
     ledger = build_top_channel_coverage(films, known, comments)
     if ledger.empty:
         return []
-    retryable = ledger[ledger["status"].eq("missing_needs_retry")].copy()
+    retryable_statuses = {"missing_needs_retry", "checked_needs_search_retry"}
+    retryable = ledger[ledger["status"].isin(retryable_statuses)].copy()
     if retryable.empty:
         return []
     interest = pd.DataFrame(columns=["film", "public_comments", "public_views"])
     review_frame = review_snapshot_frame(known)
     if not review_frame.empty:
         for column in ["comments", "views"]:
-            review_frame[column] = pd.to_numeric(review_frame.get(column, 0), errors="coerce").fillna(0)
+            if column not in review_frame:
+                review_frame[column] = 0
+            review_frame[column] = pd.to_numeric(review_frame[column], errors="coerce").fillna(0)
         interest = review_frame.groupby("film", as_index=False).agg(
             public_comments=("comments", "sum"),
             public_views=("views", "sum"),
@@ -784,14 +820,8 @@ def build_channel_evaluation(snapshots: pd.DataFrame, comments: pd.DataFrame) ->
     comment_counts = pd.DataFrame()
     if not comments.empty and "channel" in comments:
         comment_frame = comments.copy()
-        comment_frame["low_information"] = (
-            comment_frame.get("low_information", False).fillna(False).astype(bool)
-            if "low_information" in comment_frame else False
-        )
-        comment_frame["is_question"] = (
-            comment_frame.get("is_question", False).fillna(False).astype(bool)
-            if "is_question" in comment_frame else False
-        )
+        comment_frame["low_information"] = bool_series(comment_frame, "low_information", False)
+        comment_frame["is_question"] = bool_series(comment_frame, "is_question", False)
         comment_counts = comment_frame.groupby("channel").agg(
             stored_comments=("text", "count"),
             useful_comments=("low_information", lambda values: int((~values).sum())),
