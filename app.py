@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from data import load_channel_evaluation, load_live, load_metadata, load_video_snapshots
+from data import load_channel_evaluation, load_live, load_metadata, load_top_channel_coverage, load_video_snapshots
 from youtube_analysis import normalize_text, top_terms
 
 PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
@@ -40,7 +40,7 @@ st.markdown("""
 
 @st.cache_data(ttl=300)
 def get_data(schema: str):
-    return load_live(), load_video_snapshots(), load_metadata(), load_channel_evaluation()
+    return load_live(), load_video_snapshots(), load_metadata(), load_channel_evaluation(), load_top_channel_coverage()
 
 
 def valid_text(value: object) -> bool:
@@ -684,7 +684,7 @@ def render_movie_page(movie: str, comments: pd.DataFrame, videos: pd.DataFrame, 
             fig.update_layout(height=350, legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
             st.plotly_chart(fig, width="stretch")
 
-comments, videos, meta, saved_channel_evaluation = get_data("youtube-radar-v5")
+comments, videos, meta, saved_channel_evaluation, top_channel_coverage = get_data("youtube-radar-v5")
 videos = prep_videos(videos)
 comments = prep_comments(comments, videos)
 catalog_items = meta.get("movie_catalog_history") or meta.get("movie_catalog", [])
@@ -925,6 +925,61 @@ with gap_tab:
                 "Useful share": st.column_config.NumberColumn("Useful share", format="%.1f%%"),
                 "Evidence score": st.column_config.NumberColumn("Evidence score", format="%.1f"),
                 "status": "Monitor status",
+            },
+        )
+    st.markdown("#### Top-8 Tamil review-channel ledger")
+    st.markdown(
+        '<div class="section-note">This is the operational truth table: one row per film and major review/commentary channel. Missing rows feed the next daily targeted retry queue.</div>',
+        unsafe_allow_html=True,
+    )
+    if top_channel_coverage.empty:
+        st.info("The top-channel coverage ledger will appear after the next daily discovery run.")
+    else:
+        ledger = top_channel_coverage.copy()
+        if selected_films:
+            ledger = ledger[ledger["film"].isin(selected_films)]
+        status_order = {
+            "missing_needs_retry": 0,
+            "tracked_no_comments": 1,
+            "checked_no_recent_match": 2,
+            "needs_channel_id": 3,
+            "fetched_with_comments": 4,
+        }
+        ledger["_status_rank"] = ledger["status"].map(status_order).fillna(9)
+        missing_count = int(ledger["status"].isin(["missing_needs_retry", "needs_channel_id"]).sum())
+        fetched_count = int(ledger["status"].eq("fetched_with_comments").sum())
+        checked_count = int(ledger["status"].eq("checked_no_recent_match").sum())
+        cols = st.columns(4)
+        cols[0].metric("Top-channel rows", f"{len(ledger):,}")
+        cols[1].metric("Fetched with comments", f"{fetched_count:,}")
+        cols[2].metric("Checked no recent match", f"{checked_count:,}")
+        cols[3].metric("Missing / needs ID", f"{missing_count:,}")
+        st.download_button(
+            "Download top-channel coverage ledger",
+            ledger.drop(columns=["_status_rank"], errors="ignore").to_csv(index=False),
+            "cinema-wall-top-channel-coverage.csv",
+            "text/csv",
+            width="stretch",
+        )
+        display = ledger.sort_values(["_status_rank", "top_channels_present_for_film", "film", "channel_rank"])
+        st.dataframe(
+            display[[
+                "film", "channel", "status", "top_channels_present_for_film",
+                "top_channels_total", "tracked_review_videos", "stored_comments",
+                "channel_id", "note"
+            ]].head(160),
+            hide_index=True,
+            width="stretch",
+            column_config={
+                "film": "Film",
+                "channel": "Top channel",
+                "status": "Status",
+                "top_channels_present_for_film": "Present",
+                "top_channels_total": "Total",
+                "tracked_review_videos": "Tracked videos",
+                "stored_comments": "Stored comments",
+                "channel_id": "Channel ID",
+                "note": "Meaning",
             },
         )
 
@@ -1354,12 +1409,13 @@ with tab_data:
     cols[1].metric("Half-hour intervals", f"{len(interval_history):,}")
     cols[2].metric("Comment rows", f"{len(comments):,}")
     cols[3].metric("Retention", f"{meta.get('keep_history_days', 730)} days")
-    dl = st.columns(5)
+    dl = st.columns(6)
     dl[0].download_button("Download raw snapshots", videos.to_csv(index=False), "cinema-wall-video-snapshots.csv", "text/csv", width="stretch")
     dl[1].download_button("Download 30-min series", interval_history.to_csv(index=False), "cinema-wall-30-minute-timeseries.csv", "text/csv", width="stretch", disabled=interval_history.empty)
     dl[2].download_button("Download all comments", comments.to_csv(index=False), "cinema-wall-all-comments.csv", "text/csv", width="stretch")
     dl[3].download_button("Download scan metadata", json.dumps(meta, indent=2, ensure_ascii=False), "cinema-wall-scan-metadata.json", "application/json", width="stretch")
     dl[4].download_button("Download channel evaluation", saved_channel_evaluation.to_csv(index=False), "cinema-wall-channel-evaluation.csv", "text/csv", width="stretch", disabled=saved_channel_evaluation.empty)
+    dl[5].download_button("Download top-channel ledger", top_channel_coverage.to_csv(index=False), "cinema-wall-top-channel-coverage.csv", "text/csv", width="stretch", disabled=top_channel_coverage.empty)
     dataset = st.radio("Preview dataset", ["30-minute time series", "Raw video snapshots", "Collected comments"], horizontal=True)
     preview = interval_history.sort_values("period", ascending=False) if dataset == "30-minute time series" else videos.sort_values("scanned_at", ascending=False) if dataset == "Raw video snapshots" else comments.sort_values("created_at", ascending=False)
     st.dataframe(preview.head(2000), hide_index=True, width="stretch")
