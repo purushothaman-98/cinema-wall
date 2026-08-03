@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import re
+from pathlib import Path
 from urllib.parse import quote
 
 import pandas as pd
@@ -10,14 +11,34 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from data import load_channel_evaluation, load_live, load_metadata, load_top_channel_coverage, load_video_snapshots
+from data import load_channel_evaluation, load_live, load_metadata, load_video_snapshots
 from youtube_analysis import normalize_text, top_terms
 
 PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
+ROOT = Path(__file__).parent
+TOP_CHANNEL_COVERAGE_FILE = ROOT / "data" / "live" / "top_channel_coverage.csv"
+RAW_ROOT = "https://raw.githubusercontent.com/purushothaman-98/cinema-wall/main/data/live"
 PROMO_RE = re.compile(r"https?://|subscribe|my channel|follow me|telegram|whatsapp|giveaway", re.I)
 HISTORY_TERMS = ["old movie", "older film", "previous film", "remake", "original film", "copy of", "inspired by", "better than", "worse than", "compared to", "80s", "90s", "palaya padam", "munnadi padam", "பழைய படம்", "முந்தைய படம்", "ஒப்பிட", "ரீமேக்"]
 CURRENT_TERMS = ["election", "politics", "government", "social media", "meme", "troll", "reels", "viral", "arasiyal", "இன்றைய", "இப்போதைய", "அரசியல்", "தேர்தல்", "சமூக வலை", "மீம்"]
 SARCASM_TERMS = ["/s", "yeah right", "what a masterpiece", "oscar kudukanum", "award kudukanum", "enna koduma", "enna da idhu", "vera level logic", "என்ன கொடுமை", "என்னடா இது", "விருது கொடுக்கணும்", "ஆஸ்கார்", "அடேங்கப்பா", "போதும்டா", "யாருடா"]
+
+
+def load_top_channel_coverage() -> pd.DataFrame:
+    try:
+        from data import load_top_channel_coverage as data_loader
+
+        return data_loader()
+    except (ImportError, AttributeError):
+        try:
+            source = (
+                TOP_CHANNEL_COVERAGE_FILE
+                if TOP_CHANNEL_COVERAGE_FILE.exists()
+                else f"{RAW_ROOT}/top_channel_coverage.csv"
+            )
+            return pd.read_csv(source)
+        except Exception:
+            return pd.DataFrame()
 
 st.set_page_config(page_title="Tamil Cinema YouTube Radar", page_icon="▶️", layout="wide")
 st.markdown("""
@@ -1431,3 +1452,4 @@ with st.expander("Monitor health and methodology"):
         st.code("\n".join(errors), language=None)
 
 st.caption("Tamil Cinema YouTube Radar · Public YouTube data · Activity signals are not audience size, film quality or box-office estimates.")
+
