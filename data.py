@@ -12,6 +12,7 @@ ROOT = Path(__file__).parent
 LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
 META_FILE = ROOT / "data" / "live" / "scan_metadata.json"
 VIDEO_FILE = ROOT / "data" / "live" / "video_snapshots.csv"
+CHANNEL_EVALUATION_FILE = ROOT / "data" / "live" / "channel_evaluation.csv"
 RAW_ROOT = "https://raw.githubusercontent.com/purushothaman-98/cinema-wall/main/data/live"
 
 def _format_from_duration(duration: object, title: object) -> str:
@@ -106,3 +107,6 @@ def load_video_snapshots() -> pd.DataFrame:
     )
     frame = frame.dropna(subset=["video_id", "film", "scanned_at"])
     return frame
+
+def load_channel_evaluation() -> pd.DataFrame:
+    return _csv(CHANNEL_EVALUATION_FILE, "channel_evaluation.csv")
