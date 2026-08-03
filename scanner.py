@@ -27,6 +27,7 @@ COMMENTS = LIVE / "comments.csv"
 VIDEOS = LIVE / "video_snapshots.csv"
 META = LIVE / "scan_metadata.json"
 CHANNEL_EVALUATION = LIVE / "channel_evaluation.csv"
+TOP_CHANNEL_COVERAGE = LIVE / "top_channel_coverage.csv"
 
 def normalized(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
@@ -179,6 +180,9 @@ def source_profile(channel: object) -> dict:
         "critic_weight": 0.5,
         "engagement_weight": 0.6,
     }
+
+def source_profile_name(channel: object) -> str:
+    return str(source_profile(channel).get("name") or channel or "Open YouTube")
 
 def video_intent(row: dict | pd.Series) -> str:
     text = f"{row.get('title', '')} {row.get('description', '')}".lower()
@@ -456,6 +460,139 @@ def review_video_counts_by_film(known: pd.DataFrame) -> dict[str, int]:
         return {}
     return frame.groupby("film")["video_id"].nunique().astype(int).to_dict()
 
+def top_channel_profiles() -> list[dict]:
+    configured = [str(name).strip() for name in CFG.get("top_channel_coverage_channels", []) if str(name).strip()]
+    profiles = CFG.get("source_channels", [])
+    if not configured:
+        return profiles[:8]
+    by_name = {str(profile.get("name", "")).strip(): profile for profile in profiles}
+    selected = [by_name[name] for name in configured if name in by_name]
+    missing = [name for name in configured if name not in by_name]
+    for name in missing:
+        selected.append({"name": name, "aliases": [name], "source_category": "unknown"})
+    return selected
+
+def review_snapshot_frame(snapshots: pd.DataFrame) -> pd.DataFrame:
+    if snapshots.empty or "film" not in snapshots or "channel" not in snapshots:
+        return pd.DataFrame()
+    frame = snapshots.copy()
+    if "scanned_at" in frame:
+        frame["scanned_at"] = pd.to_datetime(frame["scanned_at"], format="mixed", errors="coerce", utc=True)
+        frame = frame.sort_values("scanned_at").drop_duplicates("video_id", keep="last")
+    if "content_format" not in frame:
+        frame["content_format"] = "Video"
+    if "review_evidence" in frame:
+        evidence = frame["review_evidence"].fillna(True).astype(bool)
+    else:
+        evidence = pd.Series(True, index=frame.index)
+    frame = frame[evidence & frame["content_format"].eq("Video")].copy()
+    if frame.empty:
+        return frame
+    frame["source_profile"] = frame["channel"].map(source_profile_name)
+    return frame
+
+def build_top_channel_coverage(
+    films: list[str],
+    snapshots: pd.DataFrame,
+    comments: pd.DataFrame,
+    checked_channels: set[str] | None = None,
+) -> pd.DataFrame:
+    checked_channels = checked_channels or set()
+    review_frame = review_snapshot_frame(snapshots)
+    comment_frame = comments.copy() if not comments.empty else pd.DataFrame()
+    if not comment_frame.empty and "channel" in comment_frame:
+        comment_frame["source_profile"] = comment_frame["channel"].map(source_profile_name)
+    rows = []
+    profiles = top_channel_profiles()
+    for film in films:
+        film_reviews = review_frame[review_frame["film"].eq(film)] if not review_frame.empty else pd.DataFrame()
+        film_comments = comment_frame[comment_frame["film"].eq(film)] if not comment_frame.empty and "film" in comment_frame else pd.DataFrame()
+        present_channels = set(film_reviews.get("source_profile", pd.Series(dtype=str)).dropna().astype(str))
+        present_channels.update(film_comments.get("source_profile", pd.Series(dtype=str)).dropna().astype(str))
+        coverage_count = len(present_channels.intersection({str(profile.get("name")) for profile in profiles}))
+        for order, profile in enumerate(profiles, start=1):
+            channel = str(profile.get("name", "")).strip()
+            channel_reviews = film_reviews[film_reviews["source_profile"].eq(channel)] if not film_reviews.empty else pd.DataFrame()
+            channel_comments = film_comments[film_comments.get("source_profile", pd.Series(dtype=str)).eq(channel)] if not film_comments.empty else pd.DataFrame()
+            tracked_videos = int(channel_reviews["video_id"].nunique()) if not channel_reviews.empty else 0
+            stored_comments = int(len(channel_comments)) if not channel_comments.empty else 0
+            if stored_comments:
+                status = "fetched_with_comments"
+                note = "Comment evidence from this channel is stored."
+            elif tracked_videos:
+                status = "tracked_no_comments"
+                note = "Review evidence tracked, but no stored comments yet."
+            elif not profile.get("channel_id"):
+                status = "needs_channel_id"
+                note = "Add exact YouTube channel ID before low-quota upload-feed checks."
+            elif channel in checked_channels:
+                status = "checked_no_recent_match"
+                note = "Exact upload feed checked in this discovery run; no recent matching title found."
+            else:
+                status = "missing_needs_retry"
+                note = "Targeted film-channel search should retry this pair."
+            latest_published = ""
+            latest_scanned = ""
+            if not channel_reviews.empty:
+                latest_published = str(channel_reviews.get("published_at", pd.Series(dtype=str)).max())
+                latest_scanned = str(channel_reviews.get("scanned_at", pd.Series(dtype=str)).max())
+            rows.append({
+                "film": film,
+                "channel": channel,
+                "channel_rank": order,
+                "channel_id": profile.get("channel_id", ""),
+                "source_category": profile.get("source_category", ""),
+                "status": status,
+                "top_channels_present_for_film": coverage_count,
+                "top_channels_total": len(profiles),
+                "tracked_review_videos": tracked_videos,
+                "stored_comments": stored_comments,
+                "latest_published_at": latest_published,
+                "latest_scanned_at": latest_scanned,
+                "retry_priority": (len(profiles) - coverage_count) * 10 + order,
+                "note": note,
+            })
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows).sort_values(["retry_priority", "film", "channel_rank"], ascending=[False, True, True])
+
+def missing_top_channel_pairs(
+    films: list[str],
+    known: pd.DataFrame,
+    comments: pd.DataFrame,
+    max_pairs: int,
+) -> list[tuple[str, dict]]:
+    ledger = build_top_channel_coverage(films, known, comments)
+    if ledger.empty:
+        return []
+    retryable = ledger[ledger["status"].eq("missing_needs_retry")].copy()
+    if retryable.empty:
+        return []
+    interest = pd.DataFrame(columns=["film", "public_comments", "public_views"])
+    review_frame = review_snapshot_frame(known)
+    if not review_frame.empty:
+        for column in ["comments", "views"]:
+            review_frame[column] = pd.to_numeric(review_frame.get(column, 0), errors="coerce").fillna(0)
+        interest = review_frame.groupby("film", as_index=False).agg(
+            public_comments=("comments", "sum"),
+            public_views=("views", "sum"),
+        )
+    retryable = retryable.merge(interest, on="film", how="left").fillna({"public_comments": 0, "public_views": 0})
+    retryable["has_some_top_channel_coverage"] = retryable["top_channels_present_for_film"].gt(0)
+    profile_by_name = {str(profile.get("name", "")): profile for profile in top_channel_profiles()}
+    pairs: list[tuple[str, dict]] = []
+    retryable = retryable.sort_values(
+        ["has_some_top_channel_coverage", "public_comments", "public_views", "top_channels_present_for_film", "channel_rank", "film"],
+        ascending=[False, False, False, True, True, True],
+    )
+    for _, row in retryable.iterrows():
+        profile = profile_by_name.get(str(row["channel"]))
+        if profile:
+            pairs.append((str(row["film"]), profile))
+        if len(pairs) >= max_pairs:
+            break
+    return pairs
+
 def channel_matrix_profiles() -> list[dict]:
     allowed = set(CFG.get("channel_matrix_source_categories", []))
     profiles = [
@@ -511,31 +648,25 @@ def source_channel_query(profile: dict) -> str:
     channel_name = next((str(alias).strip() for alias in aliases if str(alias).strip()), "")
     return f'"{channel_name}" tamil movie review'
 
-def film_channel_queries(films: list[str], known: pd.DataFrame) -> list[tuple[str, str, str]]:
-    """Build a quota-bounded audit matrix: weak films first, then trusted channels."""
+def film_channel_queries(
+    films: list[str],
+    known: pd.DataFrame,
+    comments: pd.DataFrame | None = None,
+) -> list[tuple[str, str, str]]:
+    """Build a quota-bounded audit matrix from missing top-channel coverage."""
     if not CFG.get("channel_matrix_enabled", True):
         return []
-    counts = review_video_counts_by_film(known)
-    min_reviews = int(CFG.get("channel_matrix_min_review_videos", 4))
-    channels_per_film = int(CFG.get("channel_matrix_channels_per_film", 3))
-    max_queries = int(CFG.get("channel_matrix_max_queries", 60))
-    profiles = channel_matrix_profiles()
-    prioritized_films = sorted(
-        films,
-        key=lambda film: (counts.get(film, 0), normalized(film)),
-    )
     queries: list[tuple[str, str, str]] = []
-    for film in prioritized_films:
-        if counts.get(film, 0) >= min_reviews and len(queries) >= max_queries // 2:
-            continue
+    max_queries = int(CFG.get("top_channel_retry_max_queries", CFG.get("channel_matrix_max_queries", 60)))
+    comments = comments if comments is not None else pd.DataFrame()
+    for film, profile in missing_top_channel_pairs(films, known, comments, max_queries):
         aliases = film_aliases(film)
         film_query = aliases[0]
-        for profile in profiles[:channels_per_film]:
-            channel_name = profile.get("name", "")
-            query = f'"{film_query}" "{channel_name}" tamil movie review'
-            queries.append((film, channel_name, query))
-            if len(queries) >= max_queries:
-                return queries
+        channel_name = profile.get("name", "")
+        query = f'"{film_query}" "{channel_name}" tamil movie review'
+        queries.append((film, channel_name, query))
+        if len(queries) >= max_queries:
+            return queries
     return queries
 
 def direct_discovery_films(films: list[str], known: pd.DataFrame) -> list[str]:
@@ -803,7 +934,7 @@ def main() -> None:
                 pause_after_search()
             except Exception as exc:
                 errors.append(f"Broad discovery/{query}: {safe_error(exc)}")
-        for film, channel_name, query in film_channel_queries(films, known):
+        for film, channel_name, query in film_channel_queries(films, known, archive_comments):
             query_hits = 0
             matched_hits = 0
             try:
@@ -1007,6 +1138,18 @@ def main() -> None:
         set(stored_comments.get("film", pd.Series(dtype=str)).dropna().astype(str))
         | set(films)
     )
+    checked_top_channels = (
+        {str(item.get("channel", "")).strip() for item in upload_feed_queries if item.get("channel")}
+        if do_discovery else set()
+    )
+    top_channel_coverage = build_top_channel_coverage(
+        all_films_analyzed,
+        stored_snapshots,
+        stored_comments,
+        checked_top_channels,
+    )
+    if not top_channel_coverage.empty:
+        top_channel_coverage.to_csv(TOP_CHANNEL_COVERAGE, index=False)
     film_insights = build_film_insights(stored_comments)
     META.write_text(json.dumps({
         "status": status,
@@ -1072,6 +1215,13 @@ def main() -> None:
         "youtube_channels": [profile.get("name") for profile in CFG.get("source_channels", [])],
         "source_taxonomy": CFG.get("source_channels", []),
         "channel_evaluation_rows": int(len(channel_evaluation)),
+        "top_channel_coverage_channels": [profile.get("name") for profile in top_channel_profiles()],
+        "top_channel_coverage_rows": int(len(top_channel_coverage)),
+        "top_channel_missing_pairs": (
+            int(top_channel_coverage["status"].isin(["missing_needs_retry", "needs_channel_id"]).sum())
+            if not top_channel_coverage.empty else 0
+        ),
+        "top_channel_retry_queries_run": len(channel_matrix_queries),
         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
         "errors": errors,
     }, indent=2), encoding="utf-8")
