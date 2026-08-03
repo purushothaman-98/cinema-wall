@@ -47,7 +47,7 @@
   "comments_per_video_daily": 300,
   "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 11,
+  "selection_version": 12,
   "top_channel_coverage_channels": [
     "Tamil Talkies",
     "KaKi's Talkies",
@@ -347,5 +347,15 @@
     " விமர்சனம்",
     "திரை விமர்சனம்"
   ],
-  "active_shorts_per_film": 3
+  "active_shorts_per_film": 3,
+  "manual_video_seeds": [
+    {
+      "film": "Jana Nayagan",
+      "channel": "Tamil Talkies",
+      "video_id": "jVUt3w72nKE",
+      "reason": "Public index lists this as the Tamil Talkies JANANAYAGAN review; search API was rate-limited.",
+      "signal_score": 5,
+      "trusted_channel": true
+    }
+  ]
 }
