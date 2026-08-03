@@ -32,11 +32,21 @@ TOP_CHANNEL_COVERAGE = LIVE / "top_channel_coverage.csv"
 def normalized(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
 
+def compact_normalized(value: object) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value or "").lower())
+
+def text_contains_alias(text: object, alias: object) -> bool:
+    spaced_text = f" {normalized(text)} "
+    spaced_alias = normalized(alias)
+    if spaced_alias and f" {spaced_alias} " in spaced_text:
+        return True
+    compact_alias = compact_normalized(alias)
+    return bool(compact_alias and compact_alias in compact_normalized(text))
+
 def title_matches_film(video: dict | pd.Series) -> bool:
     film = str(video.get("film", "")).strip()
-    title = f" {normalized(video.get('title', ''))} "
     aliases = film_aliases(film)
-    return any(f" {normalized(alias)} " in title for alias in aliases if normalized(alias))
+    return any(text_contains_alias(video.get("title", ""), alias) for alias in aliases)
 
 def film_aliases(film: str) -> list[str]:
     aliases = [film]
@@ -47,8 +57,8 @@ def film_aliases(film: str) -> list[str]:
     return list(dict.fromkeys(alias for alias in aliases if str(alias).strip()))
 
 def video_mentions_film(video: dict | pd.Series, film: str) -> bool:
-    text = f" {normalized(video.get('title', ''))} {normalized(video.get('description', ''))} "
-    return any(f" {normalized(alias)} " in text for alias in film_aliases(film) if normalized(alias))
+    text = f"{video.get('title', '')} {video.get('description', '')}"
+    return any(text_contains_alias(text, alias) for alias in film_aliases(film))
 
 def require(name: str) -> str:
     value = os.getenv(name, "").strip()
