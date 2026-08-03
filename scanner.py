@@ -984,6 +984,14 @@ def main() -> None:
                     "trusted_channel": row.get("trusted_channel", False),
                     "promotional": row.get("promotional", False),
                 })
+        for seed in CFG.get("manual_video_seeds", []):
+            if str(seed.get("film", "")).strip() == film and str(seed.get("video_id", "")).strip():
+                candidates.append({
+                    "video_id": str(seed["video_id"]).strip(),
+                    "signal_score": seed.get("signal_score", 5),
+                    "trusted_channel": seed.get("trusted_channel", True),
+                    "promotional": seed.get("promotional", False),
+                })
 
         if do_discovery:
             if film in direct_films:
