@@ -1,0 +1,214 @@
+diff --git a/collectors.py b/collectors.py
+index d760917..6e126db 100644
+--- a/collectors.py
++++ b/collectors.py
+@@ -25,6 +25,47 @@ def youtube_search_query(query: str, api_key: str, max_results: int = 12) -> lis
+ def youtube_search(film: str, api_key: str, max_results: int = 12) -> list[dict]:
+     return youtube_search_query(f'"{film}" Tamil movie review public review', api_key, max_results)
+ 
++def youtube_channel_uploads(channel_id: str, api_key: str, max_results: int = 25) -> list[dict]:
++    """Fetch recent uploads from a known channel ID without spending search quota."""
++    if not str(channel_id or "").strip():
++        return []
++    channel_payload = _youtube_get("channels", {
++        "key": api_key, "part": "contentDetails", "id": channel_id,
++    })
++    uploads = None
++    for item in channel_payload.get("items", []):
++        uploads = (
++            item.get("contentDetails", {})
++            .get("relatedPlaylists", {})
++            .get("uploads")
++        )
++        if uploads:
++            break
++    if not uploads:
++        return []
++    payload = _youtube_get("playlistItems", {
++        "key": api_key,
++        "part": "snippet,contentDetails",
++        "playlistId": uploads,
++        "maxResults": min(max_results, 50),
++    })
++    rows = []
++    for item in payload.get("items", []):
++        snippet = item.get("snippet", {})
++        content = item.get("contentDetails", {})
++        video_id = content.get("videoId")
++        if not video_id:
++            continue
++        rows.append({
++            "video_id": video_id,
++            "channelTitle": snippet.get("channelTitle", ""),
++            "channelId": snippet.get("channelId", channel_id),
++            "title": snippet.get("title", ""),
++            "description": snippet.get("description", ""),
++            "publishedAt": snippet.get("publishedAt") or content.get("videoPublishedAt"),
++        })
++    return rows
++
+ def youtube_details(video_ids: list[str], api_key: str) -> pd.DataFrame:
+     unique_ids = list(dict.fromkeys(video_ids))
+     rows = []
+diff --git a/scanner.py b/scanner.py
+index 31efe2d..133a684 100644
+--- a/scanner.py
++++ b/scanner.py
+@@ -11,7 +11,13 @@ from pathlib import Path
+ import pandas as pd
+ import requests
+ 
+-from collectors import youtube_comments, youtube_details, youtube_search, youtube_search_query
++from collectors import (
++    youtube_channel_uploads,
++    youtube_comments,
++    youtube_details,
++    youtube_search,
++    youtube_search_query,
++)
+ from youtube_analysis import enrich_comments
+ 
+ ROOT = Path(__file__).parent
+@@ -480,6 +486,26 @@ def source_channel_discovery_profiles() -> list[dict]:
+     )
+     return profiles[: int(CFG.get("source_channel_discovery_max_queries", 0))]
+ 
++def upload_feed_profiles() -> list[dict]:
++    """Known channel-ID sources whose recent uploads can be checked cheaply."""
++    allowed = set(CFG.get("upload_feed_source_categories", []))
++    profiles = [
++        profile for profile in CFG.get("source_channels", [])
++        if profile.get("channel_id")
++        and (
++            not allowed
++            or profile.get("source_category") in allowed
++        )
++    ]
++    profiles.sort(
++        key=lambda item: (
++            float(item.get("critic_weight", 0)),
++            float(item.get("engagement_weight", 0)),
++        ),
++        reverse=True,
++    )
++    return profiles[: int(CFG.get("upload_feed_max_channels", len(profiles)))]
++
+ def source_channel_query(profile: dict) -> str:
+     aliases = [profile.get("name", ""), *profile.get("aliases", [])]
+     channel_name = next((str(alias).strip() for alias in aliases if str(alias).strip()), "")
+@@ -707,12 +733,42 @@ def main() -> None:
+     discovery_video_hits = 0
+     source_channel_hits = 0
+     source_channel_matches = 0
++    upload_feed_hits = 0
++    upload_feed_matches = 0
++    upload_feed_queries: list[dict] = []
+     source_channel_queries: list[dict] = []
+     channel_matrix_candidates: dict[str, list[dict]] = {film: [] for film in films}
+     channel_matrix_hits = 0
+     channel_matrix_queries: list[dict] = []
+     if do_discovery:
+         direct_films = set(direct_discovery_films(films, known))
++        for profile in upload_feed_profiles():
++            channel_id = str(profile.get("channel_id", "")).strip()
++            if not channel_id:
++                continue
++            query_hits = 0
++            matched_hits = 0
++            try:
++                for item in youtube_channel_uploads(
++                    channel_id,
++                    youtube_key,
++                    int(CFG.get("upload_feed_videos_per_channel", 25)),
++                ):
++                    query_hits += 1
++                    upload_feed_hits += 1
++                    for film in films:
++                        if video_mentions_film(item, film):
++                            matched_hits += 1
++                            upload_feed_matches += 1
++                            broad_candidates.setdefault(film, []).append(item)
++            except Exception as exc:
++                errors.append(f"Upload feed/{profile.get('name', 'unknown')}: {safe_error(exc)}")
++            upload_feed_queries.append({
++                "channel": profile.get("name"),
++                "channel_id": channel_id,
++                "hits": query_hits,
++                "matched_hits": matched_hits,
++            })
+         for profile in source_channel_discovery_profiles():
+             query = source_channel_query(profile)
+             if not query.strip('" '):
+@@ -971,6 +1027,10 @@ def main() -> None:
+         "source_channel_video_hits": source_channel_hits,
+         "source_channel_matched_hits": source_channel_matches,
+         "source_channel_queries": source_channel_queries,
++        "upload_feed_channels_run": len(upload_feed_queries),
++        "upload_feed_video_hits": upload_feed_hits,
++        "upload_feed_matched_hits": upload_feed_matches,
++        "upload_feed_queries": upload_feed_queries,
+         "direct_film_discovery_queries_run": len(direct_discovery_films(films, known)) if do_discovery else 0,
+         "direct_film_discovery_films": direct_discovery_films(films, known) if do_discovery else [],
+         "channel_matrix_enabled": CFG.get("channel_matrix_enabled", True),
+diff --git a/scanner_config.json b/scanner_config.json
+index da86195..b53731f 100644
+--- a/scanner_config.json
++++ b/scanner_config.json
+@@ -14,6 +14,15 @@
+   "organic_videos_per_film": 2,
+   "context_videos_per_film": 1,
+   "source_channel_discovery_max_queries": 12,
++  "upload_feed_max_channels": 12,
++  "upload_feed_videos_per_channel": 25,
++  "upload_feed_source_categories": [
++    "critic_review",
++    "general_review",
++    "deep_analysis",
++    "roast_commentary",
++    "mixed_media"
++  ],
+   "source_channel_discovery_source_categories": [
+     "critic_review",
+     "general_review",
+@@ -37,7 +46,7 @@
+   "comments_per_video_daily": 300,
+   "comment_refresh_hours": 6,
+   "keep_history_days": 730,
+-  "selection_version": 8,
++  "selection_version": 9,
+   "manual_films": [],
+   "youtube_discovery_queries": [
+     "new tamil movie review today",
+@@ -76,22 +85,22 @@
+     "toxic shocking news"
+   ],
+   "source_channels": [
+-    {"name": "KaKi's Talkies", "aliases": ["KaKi's Talkies", "Kakis Talkies"], "source_category": "general_review", "critic_weight": 1.0, "engagement_weight": 0.9},
+-    {"name": "Sudhir Srinivasan", "aliases": ["Sudhir Srinivasan"], "source_category": "critic_review", "critic_weight": 1.0, "engagement_weight": 0.75},
+-    {"name": "Galatta Plus", "aliases": ["Galatta Plus", "Baradwaj Rangan", "BR South Cinema"], "source_category": "critic_review", "critic_weight": 0.95, "engagement_weight": 0.75},
+-    {"name": "Second Show", "aliases": ["Second Show"], "source_category": "general_review", "critic_weight": 0.85, "engagement_weight": 0.85},
+-    {"name": "Delite Cinemas", "aliases": ["Delite Cinemas"], "source_category": "general_review", "critic_weight": 0.82, "engagement_weight": 0.85},
+-    {"name": "Filmi Craft", "aliases": ["Filmi Craft", "Filmi Craft Arun"], "source_category": "general_review", "critic_weight": 0.78, "engagement_weight": 0.8},
++    {"name": "KaKi's Talkies", "aliases": ["KaKi's Talkies", "Kakis Talkies"], "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA", "source_category": "general_review", "critic_weight": 1.0, "engagement_weight": 0.9},
++    {"name": "Sudhir Srinivasan", "aliases": ["Sudhir Srinivasan"], "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg", "source_category": "critic_review", "critic_weight": 1.0, "engagement_weight": 0.75},
++    {"name": "Galatta Plus", "aliases": ["Galatta Plus", "Baradwaj Rangan", "BR South Cinema"], "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ", "source_category": "critic_review", "critic_weight": 0.95, "engagement_weight": 0.75},
++    {"name": "Second Show", "aliases": ["Second Show"], "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ", "source_category": "general_review", "critic_weight": 0.85, "engagement_weight": 0.85},
++    {"name": "Delite Cinemas", "aliases": ["Delite Cinemas"], "channel_id": "UCAPY9agmayYQ5-tYikGlxhA", "source_category": "general_review", "critic_weight": 0.82, "engagement_weight": 0.85},
++    {"name": "Filmi Craft", "aliases": ["Filmi Craft", "Filmi Craft Arun"], "channel_id": "UClF9UTljviumfJf7t-VR5tg", "source_category": "general_review", "critic_weight": 0.78, "engagement_weight": 0.8},
+     {"name": "Nona Prince", "aliases": ["Nona Prince"], "source_category": "deep_analysis", "critic_weight": 0.75, "engagement_weight": 0.65},
+-    {"name": "Tamil Talkies", "aliases": ["Tamil Talkies", "Blue Sattai"], "source_category": "roast_commentary", "critic_weight": 0.4, "engagement_weight": 1.0},
++    {"name": "Tamil Talkies", "aliases": ["Tamil Talkies", "Blue Sattai"], "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ", "source_category": "roast_commentary", "critic_weight": 0.4, "engagement_weight": 1.0},
+     {"name": "Plip Plip", "aliases": ["Plip Plip"], "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
+-    {"name": "Empty Hand", "aliases": ["Empty Hand"], "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
++    {"name": "Empty Hand", "aliases": ["Empty Hand"], "channel_id": "UC8_aMwsn53tncdH-5iLu8-w", "source_category": "roast_commentary", "critic_weight": 0.35, "engagement_weight": 0.95},
+     {"name": "Kodangi", "aliases": ["Kodangi", "V Studio Kodangi"], "source_category": "roast_commentary", "critic_weight": 0.45, "engagement_weight": 0.85},
+     {"name": "Touring Talkies", "aliases": ["Touring Talkies"], "source_category": "interview_archive", "critic_weight": 0.5, "engagement_weight": 0.65},
+     {"name": "BehindwoodsTV", "aliases": ["BehindwoodsTV", "Behindwoods"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
+     {"name": "Galatta Tamil", "aliases": ["Galatta Tamil"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.8},
+-    {"name": "Cinema Vikatan", "aliases": ["Cinema Vikatan"], "source_category": "mixed_media", "critic_weight": 0.6, "engagement_weight": 0.75},
+-    {"name": "Valai Pechu", "aliases": ["Valai Pechu"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
++    {"name": "Cinema Vikatan", "aliases": ["Cinema Vikatan"], "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA", "source_category": "mixed_media", "critic_weight": 0.6, "engagement_weight": 0.75},
++    {"name": "Valai Pechu", "aliases": ["Valai Pechu"], "channel_id": "UCRTmSft-1I9f0yzTnz32oMg", "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
+     {"name": "Fully Filmy", "aliases": ["Fully Filmy"], "source_category": "mixed_media", "critic_weight": 0.35, "engagement_weight": 0.7},
+     {"name": "Movie Crow", "aliases": ["Movie Crow", "Moviecrow"], "source_category": "mixed_media", "critic_weight": 0.5, "engagement_weight": 0.65},
+     {"name": "Open Pannaa", "aliases": ["Open Pannaa"], "source_category": "mixed_media", "critic_weight": 0.45, "engagement_weight": 0.75},
