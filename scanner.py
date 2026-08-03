@@ -497,6 +497,15 @@ def build_top_channel_coverage(
     comments: pd.DataFrame,
     checked_channels: set[str] | None = None,
 ) -> pd.DataFrame:
+    def latest_datetime_text(frame: pd.DataFrame, column: str) -> str:
+        if frame.empty or column not in frame:
+            return ""
+        values = pd.to_datetime(frame[column], format="mixed", errors="coerce", utc=True)
+        latest = values.max()
+        if pd.isna(latest):
+            return ""
+        return latest.isoformat()
+
     checked_channels = checked_channels or set()
     review_frame = review_snapshot_frame(snapshots)
     comment_frame = comments.copy() if not comments.empty else pd.DataFrame()
@@ -534,8 +543,8 @@ def build_top_channel_coverage(
             latest_published = ""
             latest_scanned = ""
             if not channel_reviews.empty:
-                latest_published = str(channel_reviews.get("published_at", pd.Series(dtype=str)).max())
-                latest_scanned = str(channel_reviews.get("scanned_at", pd.Series(dtype=str)).max())
+                latest_published = latest_datetime_text(channel_reviews, "published_at")
+                latest_scanned = latest_datetime_text(channel_reviews, "scanned_at")
             rows.append({
                 "film": film,
                 "channel": channel,
