@@ -1,7 +1,7 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-08-03T12:46:01.766787+00:00",
-  "last_video_discovery": "2026-08-02T23:25:39.692967+00:00",
+  "status": "partial",
+  "last_scan": "2026-08-03T12:55:18.801390+00:00",
+  "last_video_discovery": "2026-08-03T12:55:18.801390+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -10,34 +10,35 @@
     "primary_release_date.desc"
   ],
   "keep_history_days": 730,
-  "selection_version": 8,
+  "selection_version": 9,
   "active_video_ids": [
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
     "02LIHFCYLFY",
+    "0hXaHtpiwS0",
     "4v6OWiZAv7Q",
+    "5sxIMEpZ_I4",
     "772yoe3x_Ng",
     "8HSLGSq5jgM",
     "8KI7aZ5A9_I",
-    "8YezgDADO7o",
     "8snjk__6u_M",
     "9UmC0sRxGIE",
     "9yr2IPl0XgE",
-    "ACIapYHzUaM",
+    "BYPf0aA69aM",
     "BiI-53i7NVI",
+    "BmHN5fdO_7o",
     "D96FUzC5bx8",
     "Dmw2-tr7Xl0",
     "Eai1avWhY7w",
     "G-PQXCuMTjM",
+    "G66Q8QcMLGQ",
     "HkHXpy6kQcI",
-    "HsIyY-PQIrA",
     "HzhLqaggnHM",
     "K0J8RCeuk5c",
     "KIlj5fsPiIg",
     "Km3-cWPD8hA",
     "Lmk7NMvKkys",
     "MH7jdniLG5o",
-    "MSgVwrO8rZ0",
     "MU-5IC-nDso",
     "MpOLjhV3doE",
     "NcvGH-vUS3o",
@@ -45,8 +46,8 @@
     "OjlO3i690xU",
     "P5d440kliRw",
     "QkGUFx1Ns8Y",
-    "Qm6wSNrF-K0",
     "R3WI0NEZ5Xo",
+    "ROt7AoyqFdo",
     "TJQqXe8Jc0w",
     "TanDK1_9kfI",
     "VWfXQbilQ-w",
@@ -69,16 +70,17 @@
     "fsb95BIYrDk",
     "gW-OYoO9xW4",
     "ghgTkC-SI9U",
-    "hIChhoB54bc",
-    "hdOtL7CHS2k",
     "iGQMB_Q1riI",
     "jQlyBUEdWyI",
     "kM1KK42ngzY",
     "kP8UgzHSxgQ",
     "kiFeXcU-JI4",
     "kpxThIe1jZ4",
+    "l0NAjDxOr44",
     "m_kxIfJmqfI",
     "mplpkZXBxhI",
+    "nub83OozhZk",
+    "nwCjD1lAyVk",
     "o5Zs13c_cTM",
     "oFX2kvxUJR4",
     "ofZYmfnDvx0",
@@ -93,17 +95,17 @@
     "tWfZJPhxo6o",
     "tfnh11wjo5o",
     "uSiNOekvOuY",
+    "uXFrdVEQotE",
     "vAeDM3Uduxo",
     "vmIVxWqIqPo",
     "w90XD6kUaV8",
-    "wvWd-V4-LUA",
     "xX8nMqCjtZY",
     "yk4D0rNz2No",
     "zTAqIoV2nc8",
     "zTH1Cj9brYs"
   ],
-  "out_of_scope_videos_pruned": 10,
-  "discovery_mode": "monitor_existing_selection",
+  "out_of_scope_videos_pruned": 0,
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -122,19 +124,185 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
+  "broad_discovery_video_hits": 24,
   "broad_discovery_queries_run": 2,
-  "source_channel_queries_run": 0,
-  "source_channel_video_hits": 0,
-  "source_channel_matched_hits": 0,
-  "source_channel_queries": [],
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "source_channel_queries_run": 11,
+  "source_channel_video_hits": 132,
+  "source_channel_matched_hits": 17,
+  "source_channel_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "query": "\"KaKi's Talkies\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 2
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sudhir Srinivasan\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 2
+    },
+    {
+      "channel": "Galatta Plus",
+      "query": "\"Galatta Plus\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 3
+    },
+    {
+      "channel": "Second Show",
+      "query": "\"Second Show\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 4
+    },
+    {
+      "channel": "Delite Cinemas",
+      "query": "\"Delite Cinemas\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Filmi Craft",
+      "query": "\"Filmi Craft\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 1
+    },
+    {
+      "channel": "Nona Prince",
+      "query": "\"Nona Prince\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Kodangi",
+      "query": "\"Kodangi\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Tamil Talkies",
+      "query": "\"Tamil Talkies\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 3
+    },
+    {
+      "channel": "Plip Plip",
+      "query": "\"Plip Plip\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Empty Hand",
+      "query": "\"Empty Hand\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 2
+    }
+  ],
+  "upload_feed_channels_run": 10,
+  "upload_feed_video_hits": 250,
+  "upload_feed_matched_hits": 63,
+  "upload_feed_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
+      "hits": 25,
+      "matched_hits": 7
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
+      "hits": 25,
+      "matched_hits": 11
+    },
+    {
+      "channel": "Galatta Plus",
+      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
+      "hits": 25,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Second Show",
+      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
+      "hits": 25,
+      "matched_hits": 4
+    },
+    {
+      "channel": "Delite Cinemas",
+      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
+      "hits": 25,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Filmi Craft",
+      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
+      "hits": 25,
+      "matched_hits": 2
+    },
+    {
+      "channel": "Cinema Vikatan",
+      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
+      "hits": 25,
+      "matched_hits": 28
+    },
+    {
+      "channel": "Valai Pechu",
+      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
+      "hits": 25,
+      "matched_hits": 1
+    },
+    {
+      "channel": "Tamil Talkies",
+      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
+      "hits": 25,
+      "matched_hits": 8
+    },
+    {
+      "channel": "Empty Hand",
+      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
+      "hits": 25,
+      "matched_hits": 2
+    }
+  ],
+  "direct_film_discovery_queries_run": 4,
+  "direct_film_discovery_films": [
+    "Arjunan Per Paththu",
+    "Find Me",
+    "Sathyavan Savithiri",
+    "Suitcased"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
+  "channel_matrix_queries_run": 4,
+  "channel_matrix_video_hits": 16,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "KaKi's Talkies",
+      "query": "\"Arjunan Per Paththu\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arjunan Per Paththu",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arjunan Per Paththu\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "KaKi's Talkies",
+      "query": "\"Find Me\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    },
+    {
+      "film": "Find Me",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Find Me\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -216,31 +384,31 @@
       ]
     },
     "Anbe Diana": {
-      "summary": "Based on 267 useful public comments. Of 65 comments with detectable reaction wording, 58 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, release & theatre, story & screenplay.",
-      "useful_comments": 267,
-      "explicit_reaction_comments": 65,
-      "appreciative_signals": 58,
+      "summary": "Based on 273 useful public comments. Of 66 comments with detectable reaction wording, 59 were appreciative and 7 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss comedy, story & screenplay, release & theatre.",
+      "useful_comments": 273,
+      "explicit_reaction_comments": 66,
+      "appreciative_signals": 59,
       "critical_signals": 7,
-      "substantive_share": 0.2172,
+      "substantive_share": 0.2161,
       "top_aspects": [
         {
           "name": "Comedy",
           "comments": 11
         },
         {
-          "name": "Release & theatre",
-          "comments": 8
+          "name": "Story & screenplay",
+          "comments": 9
         },
         {
-          "name": "Story & screenplay",
+          "name": "Release & theatre",
           "comments": 8
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 148,
-          "appreciative_signals": 34,
+          "useful_comments": 154,
+          "appreciative_signals": 35,
           "critical_signals": 3,
           "questions": 11,
           "leading_topic": "General reaction"
@@ -325,12 +493,12 @@
       "reviewers": []
     },
     "Arulvaan": {
-      "summary": "Based on 275 useful public comments. Of 69 comments with detectable reaction wording, 65 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
-      "useful_comments": 275,
-      "explicit_reaction_comments": 69,
-      "appreciative_signals": 65,
+      "summary": "Based on 291 useful public comments. Of 73 comments with detectable reaction wording, 69 were appreciative and 4 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 291,
+      "explicit_reaction_comments": 73,
+      "appreciative_signals": 69,
       "critical_signals": 4,
-      "substantive_share": 0.2364,
+      "substantive_share": 0.2405,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -338,7 +506,7 @@
         },
         {
           "name": "Story & screenplay",
-          "comments": 9
+          "comments": 10
         },
         {
           "name": "Acting & characters",
@@ -356,7 +524,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 86,
+          "useful_comments": 90,
           "appreciative_signals": 16,
           "critical_signals": 4,
           "questions": 12,
@@ -366,6 +534,14 @@
           "channel": "Trendswood Tv",
           "useful_comments": 32,
           "appreciative_signals": 5,
+          "critical_signals": 0,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 12,
+          "appreciative_signals": 4,
           "critical_signals": 0,
           "questions": 3,
           "leading_topic": "General reaction"
@@ -577,16 +753,16 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 442 useful public comments. Of 114 comments with detectable reaction wording, 93 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 442,
-      "explicit_reaction_comments": 114,
-      "appreciative_signals": 93,
-      "critical_signals": 21,
-      "substantive_share": 0.1765,
+      "summary": "Based on 451 useful public comments. Of 117 comments with detectable reaction wording, 95 were appreciative and 22 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 451,
+      "explicit_reaction_comments": 117,
+      "appreciative_signals": 95,
+      "critical_signals": 22,
+      "substantive_share": 0.184,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 17
+          "comments": 18
         },
         {
           "name": "Comedy",
@@ -594,7 +770,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 6
+          "comments": 8
         }
       ],
       "reviewers": [
@@ -636,6 +812,14 @@
           "appreciative_signals": 5,
           "critical_signals": 1,
           "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Galatta Plus",
+          "useful_comments": 13,
+          "appreciative_signals": 3,
+          "critical_signals": 1,
+          "questions": 2,
           "leading_topic": "General reaction"
         },
         {
@@ -733,24 +917,24 @@
       "reviewers": []
     },
     "Idhayam Murali": {
-      "summary": "Based on 613 useful public comments. Of 225 comments with detectable reaction wording, 158 were appreciative and 67 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 613,
-      "explicit_reaction_comments": 225,
-      "appreciative_signals": 158,
-      "critical_signals": 67,
-      "substantive_share": 0.2055,
+      "summary": "Based on 645 useful public comments. Of 238 comments with detectable reaction wording, 167 were appreciative and 71 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 645,
+      "explicit_reaction_comments": 238,
+      "appreciative_signals": 167,
+      "critical_signals": 71,
+      "substantive_share": 0.2047,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 31
+          "comments": 34
         },
         {
           "name": "Acting & characters",
-          "comments": 26
+          "comments": 29
         },
         {
           "name": "Emotion",
-          "comments": 22
+          "comments": 25
         }
       ],
       "reviewers": [
@@ -803,6 +987,14 @@
           "leading_topic": "General reaction"
         },
         {
+          "channel": "Second Show",
+          "useful_comments": 32,
+          "appreciative_signals": 9,
+          "critical_signals": 4,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
           "channel": "Valai Pechu",
           "useful_comments": 28,
           "appreciative_signals": 6,
@@ -821,33 +1013,65 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 173 useful public comments. Of 42 comments with detectable reaction wording, 31 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, pacing & runtime.",
-      "useful_comments": 173,
-      "explicit_reaction_comments": 42,
-      "appreciative_signals": 31,
-      "critical_signals": 11,
-      "substantive_share": 0.2775,
+      "summary": "Based on 910 useful public comments. Of 205 comments with detectable reaction wording, 131 were appreciative and 74 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 910,
+      "explicit_reaction_comments": 205,
+      "appreciative_signals": 131,
+      "critical_signals": 74,
+      "substantive_share": 0.3055,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 16
+          "comments": 53
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 41
         },
         {
           "name": "Story & screenplay",
-          "comments": 4
-        },
-        {
-          "name": "Pacing & runtime",
-          "comments": 4
+          "comments": 34
         }
       ],
       "reviewers": [
+        {
+          "channel": "Empty Hand",
+          "useful_comments": 250,
+          "appreciative_signals": 22,
+          "critical_signals": 13,
+          "questions": 36,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 244,
+          "appreciative_signals": 33,
+          "critical_signals": 21,
+          "questions": 26,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Galatta Plus",
+          "useful_comments": 176,
+          "appreciative_signals": 27,
+          "critical_signals": 25,
+          "questions": 43,
+          "leading_topic": "General reaction"
+        },
         {
           "channel": "KaKi's Talkies",
           "useful_comments": 124,
           "appreciative_signals": 21,
           "critical_signals": 7,
           "questions": 17,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 67,
+          "appreciative_signals": 18,
+          "critical_signals": 4,
+          "questions": 24,
           "leading_topic": "General reaction"
         },
         {
@@ -1068,19 +1292,19 @@
       "reviewers": []
     },
     "Love Oh Love": {
-      "summary": "Based on 109 useful public comments. Of 29 comments with detectable reaction wording, 21 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
-      "useful_comments": 109,
-      "explicit_reaction_comments": 29,
+      "summary": "Based on 113 useful public comments. Of 30 comments with detectable reaction wording, 21 were appreciative and 9 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, acting & characters.",
+      "useful_comments": 113,
+      "explicit_reaction_comments": 30,
       "appreciative_signals": 21,
-      "critical_signals": 8,
-      "substantive_share": 0.211,
+      "critical_signals": 9,
+      "substantive_share": 0.2035,
       "top_aspects": [
         {
-          "name": "Story & screenplay",
-          "comments": 5
+          "name": "Release & theatre",
+          "comments": 6
         },
         {
-          "name": "Release & theatre",
+          "name": "Story & screenplay",
           "comments": 5
         },
         {
@@ -1091,9 +1315,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 45,
+          "useful_comments": 49,
           "appreciative_signals": 12,
-          "critical_signals": 6,
+          "critical_signals": 7,
           "questions": 5,
           "leading_topic": "General reaction"
         },
@@ -1491,18 +1715,18 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 2924,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 91,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 32,
-    "public_comment_count_unchanged": 57
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
-  "stored_comments": 11019,
-  "videos_monitored": 89,
-  "standard_videos_monitored": 65,
+  "new_comments_added": 940,
+  "stored_comments": 11958,
+  "videos_monitored": 91,
+  "standard_videos_monitored": 67,
   "shorts_monitored": 24,
   "movie_catalog": [
     {
@@ -3106,6 +3330,7 @@
         "KaKi's Talkies",
         "Kakis Talkies"
       ],
+      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
       "source_category": "general_review",
       "critic_weight": 1.0,
       "engagement_weight": 0.9
@@ -3115,6 +3340,7 @@
       "aliases": [
         "Sudhir Srinivasan"
       ],
+      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
       "source_category": "critic_review",
       "critic_weight": 1.0,
       "engagement_weight": 0.75
@@ -3126,6 +3352,7 @@
         "Baradwaj Rangan",
         "BR South Cinema"
       ],
+      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
       "source_category": "critic_review",
       "critic_weight": 0.95,
       "engagement_weight": 0.75
@@ -3135,6 +3362,7 @@
       "aliases": [
         "Second Show"
       ],
+      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
       "source_category": "general_review",
       "critic_weight": 0.85,
       "engagement_weight": 0.85
@@ -3144,6 +3372,7 @@
       "aliases": [
         "Delite Cinemas"
       ],
+      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
       "source_category": "general_review",
       "critic_weight": 0.82,
       "engagement_weight": 0.85
@@ -3154,6 +3383,7 @@
         "Filmi Craft",
         "Filmi Craft Arun"
       ],
+      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
       "source_category": "general_review",
       "critic_weight": 0.78,
       "engagement_weight": 0.8
@@ -3173,6 +3403,7 @@
         "Tamil Talkies",
         "Blue Sattai"
       ],
+      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
       "source_category": "roast_commentary",
       "critic_weight": 0.4,
       "engagement_weight": 1.0
@@ -3191,6 +3422,7 @@
       "aliases": [
         "Empty Hand"
       ],
+      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
       "source_category": "roast_commentary",
       "critic_weight": 0.35,
       "engagement_weight": 0.95
@@ -3238,6 +3470,7 @@
       "aliases": [
         "Cinema Vikatan"
       ],
+      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
       "source_category": "mixed_media",
       "critic_weight": 0.6,
       "engagement_weight": 0.75
@@ -3247,6 +3480,7 @@
       "aliases": [
         "Valai Pechu"
       ],
+      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
       "source_category": "mixed_media",
       "critic_weight": 0.45,
       "engagement_weight": 0.75
@@ -3294,5 +3528,7 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Video statistics/Find Me: Columns must be same length as key"
+  ]
 }
