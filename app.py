@@ -31,6 +31,8 @@ st.markdown("""
 .film-row img{width:72px;height:108px;object-fit:cover;border-radius:10px;background:#e9dfd1}.film-main{min-width:0}.film-name{font-size:19px;font-weight:900;line-height:1.05;color:#17130f}.film-sub{font-size:12px;color:#756d62;margin-top:5px;line-height:1.35}.film-pill{display:inline-block;background:#f4eadb;border:1px solid #dfd1be;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:850;color:#6b4e2f;margin-top:7px}.film-cell{font-size:12px;color:#756d62}.film-cell b{display:block;font-size:18px;color:#17130f;line-height:1.15}.film-open{font-size:11px;font-weight:900;color:#d53c1c;text-align:right}
 @media(max-width:900px){.film-row{grid-template-columns:72px 1fr;gap:10px}.film-cell,.film-open{grid-column:2;text-align:left}.film-row img{width:62px;height:93px}.film-name{font-size:17px}}
 .section-note{color:#756d62;font-size:13px;margin-top:-8px;margin-bottom:12px}.badge{display:inline-block;background:#ffe6df;color:#a22d16;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;letter-spacing:.05em}.insight-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:12px;padding:15px 16px;margin-bottom:12px;min-height:120px}.insight-card .label{font-size:11px;font-weight:850;letter-spacing:.08em;color:#8d8173;text-transform:uppercase}.insight-card .value{font-size:24px;font-weight:900;line-height:1.05;margin-top:8px;color:#15130f}.insight-card .note{font-size:12px;color:#70675d;margin-top:7px;line-height:1.35}
+.wall-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:10px 0 18px}.wall-card{background:#15110e;color:#fffdf8;border-radius:16px;overflow:hidden;min-height:390px;box-shadow:0 14px 34px rgba(42,26,14,.16);border:1px solid rgba(255,255,255,.08)}.wall-poster{height:220px;background:#2d2520 center/cover}.wall-body{padding:14px}.wall-title{font-size:21px;font-weight:950;line-height:1.03;margin-bottom:8px}.wall-meta{font-size:11px;color:#d8c8b6;line-height:1.42}.wall-score{display:flex;align-items:center;gap:8px;margin:12px 0}.score-dot{width:12px;height:12px;border-radius:50%;background:#ff4b2b;box-shadow:0 0 0 5px rgba(255,75,43,.16)}.score-label{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.wall-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.wall-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px}.wall-stat b{display:block;font-size:18px}.wall-stat span{font-size:10px;color:#d8c8b6}.wall-chip{display:inline-block;background:#fff1e8;color:#7a2d18;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:850;margin:8px 5px 0 0}.lens-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:14px;padding:14px 16px;margin-bottom:12px}.lens-card h4{font-size:16px;margin:0 0 6px;color:#17130f}.lens-card p{font-size:13px;line-height:1.45;color:#756d62;margin:0}.quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.quote-card{background:#fffdf8;border:1px solid #ddd3c3;border-radius:14px;padding:13px 14px;min-height:152px}.quote-card .quote-film{font-size:11px;font-weight:900;color:#a53a1d;text-transform:uppercase;letter-spacing:.08em}.quote-card .quote-text{font-size:14px;line-height:1.42;color:#1f1915;margin-top:8px}.quote-card .quote-meta{font-size:11px;color:#756d62;margin-top:10px}
+@media(max-width:1100px){.wall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quote-grid{grid-template-columns:1fr 1fr}}@media(max-width:680px){.wall-grid,.quote-grid{grid-template-columns:1fr}.hero h1{font-size:42px}.hero{padding:32px 24px}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -231,6 +233,131 @@ def audience_summary(frame: pd.DataFrame) -> str:
     return f"Audience response is {mood}; discussion is led by {topic.lower()} ({len(useful):,} useful comments)."
 
 
+def pct(value: object) -> str:
+    try:
+        return f"{float(value):.0%}"
+    except Exception:
+        return "0%"
+
+
+def evidence_grade(score: float) -> tuple[str, str]:
+    if score >= 72:
+        return "Strong evidence", "#31c48d"
+    if score >= 48:
+        return "Useful evidence", "#ff9f1c"
+    if score >= 24:
+        return "Thin evidence", "#ff4b2b"
+    return "Awaiting evidence", "#8d8173"
+
+
+def build_evidence_wall(films: pd.DataFrame, comments_frame: pd.DataFrame, latest_frame: pd.DataFrame) -> pd.DataFrame:
+    if films.empty:
+        return pd.DataFrame()
+    base = films.copy()
+    if comments_frame.empty:
+        comment_rollup = pd.DataFrame(columns=["film"])
+    else:
+        useful = ~comments_frame["low_information"].fillna(False).astype(bool)
+        detail = comments_frame["comment_kind"].isin(["Detailed discussion", "Question"])
+        comment_rollup = comments_frame.assign(useful=useful, detailed=detail).groupby("film", as_index=False).agg(
+            stored_comments=("source_id", "nunique"),
+            useful_comments=("useful", "sum"),
+            questions=("is_question", "sum"),
+            detailed_comments=("detailed", "sum"),
+            channels_with_comments=("channel", "nunique"),
+        )
+        topics = comments_frame[useful].groupby("film")["topic"].agg(
+            lambda values: str(values.value_counts().index[0]) if len(values) else "General reaction"
+        ).reset_index(name="lead_topic")
+        signals = comments_frame[useful].groupby("film")["reaction_signal"].agg(
+            lambda values: str(values.value_counts().index[0]) if len(values) else "Mixed / unclear"
+        ).reset_index(name="lead_signal")
+        comment_rollup = comment_rollup.merge(topics, on="film", how="left").merge(signals, on="film", how="left")
+    if latest_frame.empty:
+        video_rollup = pd.DataFrame(columns=["film"])
+    else:
+        video_rollup = latest_frame.groupby("film", as_index=False).agg(
+            source_layers=("source_category", "nunique"),
+            reviewer_channels=("channel", "nunique"),
+            review_items=("video_intent", lambda values: int(pd.Series(values).isin(["review", "short_review", "public_review", "deep_analysis", "roast_commentary", "film_discussion"]).sum())),
+            context_items=("video_intent", lambda values: int(pd.Series(values).isin(["interview_archive", "news_update"]).sum())),
+        )
+    result = base.merge(comment_rollup, on="film", how="left").merge(video_rollup, on="film", how="left")
+    for column in ["stored_comments", "useful_comments", "questions", "detailed_comments", "channels_with_comments", "source_layers", "reviewer_channels", "review_items", "context_items"]:
+        result[column] = pd.to_numeric(result.get(column, 0), errors="coerce").fillna(0)
+    result["lead_topic"] = result.get("lead_topic", "General reaction").fillna("General reaction")
+    result["lead_signal"] = result.get("lead_signal", "Mixed / unclear").fillna("Mixed / unclear")
+    result["useful_share"] = result["useful_comments"] / result["stored_comments"].where(result["stored_comments"].gt(0), pd.NA)
+    result["quality_score"] = (
+        result["stored_comments"].clip(upper=300) / 300 * 32
+        + result["reviewer_channels"].clip(upper=6) / 6 * 18
+        + result["source_layers"].clip(upper=4) / 4 * 12
+        + result["useful_share"].fillna(0).clip(upper=1) * 18
+        + result["review_items"].clip(upper=6) / 6 * 15
+        + result["questions"].clip(upper=30) / 30 * 5
+    )
+    grades = result["quality_score"].map(evidence_grade)
+    result["evidence_label"] = grades.map(lambda item: item[0])
+    result["evidence_color"] = grades.map(lambda item: item[1])
+    return result.sort_values(["quality_score", "public_views", "stored_comments"], ascending=False)
+
+
+def render_cinema_wall(rows: pd.DataFrame, limit: int = 12) -> None:
+    if rows.empty:
+        st.info("No films available for the wall yet.")
+        return
+    cards = []
+    for _, row in rows.head(limit).iterrows():
+        film = str(row.get("film", "Unknown film"))
+        poster = row.get("poster_url")
+        bg = f"background-image:url({html.escape(str(poster))})" if isinstance(poster, str) and poster.startswith("http") else ""
+        cards.append(
+            f'''<a href="?movie={quote(film)}" style="color:inherit;text-decoration:none">
+<div class="wall-card">
+  <div class="wall-poster" style="{bg}"></div>
+  <div class="wall-body">
+    <div class="wall-title">{html.escape(film)}</div>
+    <div class="wall-meta">{html.escape(str(row.get("release_date", "Release unavailable")))} · {html.escape(str(row.get("lead_topic", "General reaction")))}</div>
+    <div class="wall-score"><span class="score-dot" style="background:{html.escape(str(row.get("evidence_color", "#ff4b2b")))}"></span><span class="score-label">{html.escape(str(row.get("evidence_label", "Thin evidence")))}</span></div>
+    <div class="wall-meta">Signal: {html.escape(str(row.get("lead_signal", "Mixed / unclear")))} · Useful share: {pct(row.get("useful_share", 0))}</div>
+    <div class="wall-stats">
+      <div class="wall-stat"><b>{fmt_int(row.get("stored_comments", 0))}</b><span>comments read</span></div>
+      <div class="wall-stat"><b>{fmt_int(row.get("reviewer_channels", 0))}</b><span>channels</span></div>
+      <div class="wall-stat"><b>{fmt_int(row.get("videos", 0))}+{fmt_int(row.get("shorts", 0))}</b><span>videos + Shorts</span></div>
+      <div class="wall-stat"><b>{fmt_int(row.get("views_per_30m", 0))}</b><span>views / 30m</span></div>
+    </div>
+    <span class="wall-chip">{html.escape(str(row.get("status", "Archive")))}</span>
+  </div>
+</div></a>'''
+        )
+    st.markdown('<div class="wall-grid">' + "".join(cards) + "</div>", unsafe_allow_html=True)
+
+
+def render_comment_mosaic(frame: pd.DataFrame, limit: int = 9) -> None:
+    if frame.empty:
+        st.info("No comments match this lens yet.")
+        return
+    valuable = frame[
+        (~frame["low_information"].fillna(False).astype(bool))
+        & (frame["is_question"].fillna(False).astype(bool) | frame["word_count"].ge(8) | ~frame["topic"].eq("General reaction"))
+    ].copy()
+    if valuable.empty:
+        st.info("The stored comments are mostly short reactions for this lens.")
+        return
+    valuable["rank"] = pd.to_numeric(valuable.get("likes", 0), errors="coerce").fillna(0) + valuable["word_count"].fillna(0) / 5
+    cards = []
+    for _, row in valuable.sort_values("rank", ascending=False).head(limit).iterrows():
+        label = "Question" if bool(row.get("is_question", False)) else str(row.get("topic", "Audience note"))
+        cards.append(
+            f'''<div class="quote-card">
+  <div class="quote-film">{html.escape(str(row.get("film", "Film")))} · {html.escape(label)}</div>
+  <div class="quote-text">{html.escape(compact(row.get("text", ""), 230))}</div>
+  <div class="quote-meta">{html.escape(str(row.get("channel", "YouTube")))} · {fmt_int(row.get("likes", 0))} likes</div>
+</div>'''
+        )
+    st.markdown('<div class="quote-grid">' + "".join(cards) + "</div>", unsafe_allow_html=True)
+
+
 def render_movie_page(movie: str, comments: pd.DataFrame, videos: pd.DataFrame, meta: dict, catalog: dict[str, dict]) -> None:
     item = catalog.get(movie, {})
     film_comments = comments[comments["film"].eq(movie)].copy()
@@ -372,9 +499,9 @@ with st.sidebar:
         st.cache_data.clear()
         st.rerun()
 
-st.markdown("""<div class="hero"><span class="kicker">TAMIL CINEMA · YOUTUBE INTELLIGENCE</span>
-<h1>Reviews move fast.<br>The radar moves faster.</h1>
-<p>A public-data dashboard for recent Tamil films: half-hour velocity, lifetime reach, reviewer coverage, language mix, discussion quality and audience questions without turning comments into a fake rating score.</p></div>""", unsafe_allow_html=True)
+st.markdown("""<div class="hero"><span class="kicker">CINEMA WALL · COMMENT-DERIVED INTELLIGENCE</span>
+<h1>What are people<br>really discussing?</h1>
+<p>This is not a star-rating site. It reads public YouTube review discussions indirectly: which reviewer videos exist, where comments cluster, what topics repeat, which comments add real evidence, and where the database is still thin.</p></div>""", unsafe_allow_html=True)
 
 if comments.empty:
     st.warning("No YouTube comments are stored yet. Run the YouTube monitor once from GitHub Actions.")
@@ -480,6 +607,107 @@ metrics[4].metric("Current Shorts", int(current_scan_videos["content_format"].eq
 metrics[5].metric("Comments collected ever", f"{len(comments):,}", help="Unique comment rows stored by the radar, not YouTube's public total.")
 metrics[6].metric("New comments · 24 h", f"{len(last_24):,}")
 metrics[7].metric("Last monitor", last_scan.strftime("%d %b · %H:%M UTC") if pd.notna(last_scan) else "Pending")
+
+evidence_wall = build_evidence_wall(film_list, comments, latest_videos)
+
+st.subheader("Cinema Wall")
+st.markdown(
+    '<div class="section-note">A film card is strong only when the evidence is broad: enough comments, useful text, multiple reviewer channels and separated review/context sources. This keeps comment analysis honest when we do not directly know the movie.</div>',
+    unsafe_allow_html=True,
+)
+wall_tab, lens_tab, gap_tab = st.tabs(["Evidence wall", "Comment lenses", "Coverage gaps"])
+with wall_tab:
+    wall_filter = st.segmented_control(
+        "Wall view",
+        ["Best evidence", "Fastest now", "Weak evidence"],
+        default="Best evidence",
+        label_visibility="collapsed",
+    )
+    if wall_filter == "Fastest now":
+        wall_rows = evidence_wall.sort_values(["views_per_30m", "comments_per_30m", "quality_score"], ascending=False)
+    elif wall_filter == "Weak evidence":
+        wall_rows = evidence_wall[evidence_wall["quality_score"].lt(48)].sort_values(["public_views", "stored_comments"], ascending=False)
+    else:
+        wall_rows = evidence_wall
+    render_cinema_wall(wall_rows, 12)
+with lens_tab:
+    lens_cols = st.columns(4)
+    if not evidence_wall.empty:
+        lens_cols[0].metric("Strong evidence films", int(evidence_wall["evidence_label"].eq("Strong evidence").sum()))
+        lens_cols[1].metric("Useful / thin films", int(evidence_wall["evidence_label"].isin(["Useful evidence", "Thin evidence"]).sum()))
+        lens_cols[2].metric("Avg useful share", f"{evidence_wall['useful_share'].fillna(0).mean():.0%}")
+        lens_cols[3].metric("Reviewer channels mapped", int(evidence_wall["reviewer_channels"].sum()))
+    st.markdown(
+        """<div class="lens-card"><h4>How to read this wall</h4>
+<p>The site collects comments under review/discussion videos. That means the correct question is not “is the movie good?” but “what can public discussion under reviewer videos reveal, and how strong is that evidence?” The layers below separate evidence quality, topics, questions, sarcasm candidates and culture/history references.</p></div>""",
+        unsafe_allow_html=True,
+    )
+    topic_col, signal_col = st.columns([1.15, 1], gap="large")
+    useful_comments = comments[~comments["low_information"].fillna(False).astype(bool)].copy()
+    with topic_col:
+        st.markdown("#### Film topics that carry discussion")
+        if useful_comments.empty:
+            st.info("No useful comments available yet.")
+        else:
+            topic_matrix = useful_comments.groupby(["film", "topic"], as_index=False).size().rename(columns={"size": "Comments"})
+            topic_matrix = topic_matrix.sort_values("Comments", ascending=False).head(35)
+            fig = px.treemap(
+                topic_matrix,
+                path=["film", "topic"],
+                values="Comments",
+                color="Comments",
+                color_continuous_scale=["#ffe0d8", "#ff9f1c", "#8f1d08"],
+            )
+            fig.update_layout(height=420, margin=dict(t=10, l=0, r=0, b=0), paper_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig, width="stretch")
+    with signal_col:
+        st.markdown("#### Evidence mix")
+        if evidence_wall.empty:
+            st.info("Waiting for evidence.")
+        else:
+            grade_counts = evidence_wall["evidence_label"].value_counts().rename_axis("Evidence").reset_index(name="Films")
+            fig = px.pie(grade_counts, names="Evidence", values="Films", hole=.58, color_discrete_sequence=PALETTE)
+            fig.update_layout(height=420, legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig, width="stretch")
+    st.markdown("#### Comments worth reading")
+    render_comment_mosaic(filtered, 9)
+with gap_tab:
+    st.markdown(
+        '<div class="section-note">These are database-quality gaps, not movie-quality judgments. They tell the collector where stronger review-channel coverage or comment fetching is still needed.</div>',
+        unsafe_allow_html=True,
+    )
+    if evidence_wall.empty:
+        st.info("No coverage table available.")
+    else:
+        gaps = evidence_wall.sort_values(["quality_score", "public_views", "stored_comments"], ascending=[True, False, False]).copy()
+        gaps["useful_share"] = gaps["useful_share"].fillna(0)
+        gaps["Useful share"] = gaps["useful_share"].fillna(0) * 100
+        gaps["Evidence score"] = gaps["quality_score"]
+        gaps["Gap reason"] = gaps.apply(
+            lambda row: "no matched YouTube items" if row.get("video_total", 0) <= 0
+            else "too few stored comments" if row.get("stored_comments", 0) < 40
+            else "low reviewer-channel diversity" if row.get("reviewer_channels", 0) < 3
+            else "low useful-comment share" if row.get("useful_share", 0) < 0.35
+            else "needs stronger review/context separation",
+            axis=1,
+        )
+        st.dataframe(
+            gaps[["film", "evidence_label", "Gap reason", "Evidence score", "stored_comments", "reviewer_channels", "source_layers", "review_items", "context_items", "Useful share", "status"]].head(40),
+            hide_index=True,
+            width="stretch",
+            column_config={
+                "film": "Film",
+                "evidence_label": "Evidence grade",
+                "stored_comments": "Stored comments",
+                "reviewer_channels": "Reviewer channels",
+                "source_layers": "Source layers",
+                "review_items": "Review items",
+                "context_items": "Context items",
+                "Useful share": st.column_config.NumberColumn("Useful share", format="%.1f%%"),
+                "Evidence score": st.column_config.NumberColumn("Evidence score", format="%.1f"),
+                "status": "Monitor status",
+            },
+        )
 
 scan_times = pd.Series(sorted(videos["scanned_at"].dropna().unique())) if not videos.empty else pd.Series(dtype="datetime64[ns, UTC]")
 last_gap = scan_times.diff().dt.total_seconds().div(60).dropna().iloc[-1] if len(scan_times) >= 2 else float("nan")
