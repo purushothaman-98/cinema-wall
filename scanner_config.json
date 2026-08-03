@@ -30,9 +30,10 @@
     "roast_commentary"
   ],
   "channel_matrix_enabled": true,
-  "channel_matrix_max_queries": 4,
-  "channel_matrix_channels_per_film": 2,
+  "channel_matrix_max_queries": 40,
+  "channel_matrix_channels_per_film": 8,
   "channel_matrix_min_review_videos": 4,
+  "top_channel_retry_max_queries": 40,
   "broad_discovery_max_queries": 2,
   "direct_film_discovery_max_queries": 4,
   "youtube_search_pause_seconds": 1.25,
@@ -46,7 +47,17 @@
   "comments_per_video_daily": 300,
   "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 9,
+  "selection_version": 10,
+  "top_channel_coverage_channels": [
+    "Tamil Talkies",
+    "KaKi's Talkies",
+    "Filmi Craft",
+    "Second Show",
+    "Empty Hand",
+    "Galatta Plus",
+    "Sudhir Srinivasan",
+    "Delite Cinemas"
+  ],
   "manual_films": [],
   "youtube_discovery_queries": [
     "new tamil movie review today",
