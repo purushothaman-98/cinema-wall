@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from data import load_live, load_metadata, load_video_snapshots
+from data import load_channel_evaluation, load_live, load_metadata, load_video_snapshots
 from youtube_analysis import normalize_text, top_terms
 
 PALETTE = ["#ff4b2b", "#ff9f1c", "#2ec4b6", "#3a86ff", "#8338ec", "#ff006e", "#8ac926", "#6c757d", "#e76f51", "#00b4d8"]
@@ -36,7 +36,7 @@ st.markdown("""
 
 @st.cache_data(ttl=300)
 def get_data(schema: str):
-    return load_live(), load_video_snapshots(), load_metadata()
+    return load_live(), load_video_snapshots(), load_metadata(), load_channel_evaluation()
 
 
 def valid_text(value: object) -> bool:
@@ -340,7 +340,7 @@ def render_movie_page(movie: str, comments: pd.DataFrame, videos: pd.DataFrame, 
             fig.update_layout(height=350, legend_title=None, paper_bgcolor="rgba(0,0,0,0)")
             st.plotly_chart(fig, width="stretch")
 
-comments, videos, meta = get_data("youtube-radar-v4")
+comments, videos, meta, saved_channel_evaluation = get_data("youtube-radar-v5")
 videos = prep_videos(videos)
 comments = prep_comments(comments, videos)
 catalog_items = meta.get("movie_catalog_history") or meta.get("movie_catalog", [])
@@ -761,6 +761,14 @@ with tab_lifetime:
         '<div class="section-note">This evaluates source usefulness for the tracker, not moral quality or movie-rating accuracy. It uses only videos and comments already collected.</div>',
         unsafe_allow_html=True,
     )
+    if not saved_channel_evaluation.empty:
+        st.download_button(
+            "Download maintained channel evaluation CSV",
+            saved_channel_evaluation.to_csv(index=False),
+            "cinema-wall-channel-evaluation.csv",
+            "text/csv",
+            width="stretch",
+        )
     if latest.empty:
         st.info("No video snapshots are available for channel evaluation yet.")
     else:
@@ -899,11 +907,12 @@ with tab_data:
     cols[1].metric("Half-hour intervals", f"{len(interval_history):,}")
     cols[2].metric("Comment rows", f"{len(comments):,}")
     cols[3].metric("Retention", f"{meta.get('keep_history_days', 730)} days")
-    dl = st.columns(4)
+    dl = st.columns(5)
     dl[0].download_button("Download raw snapshots", videos.to_csv(index=False), "cinema-wall-video-snapshots.csv", "text/csv", width="stretch")
     dl[1].download_button("Download 30-min series", interval_history.to_csv(index=False), "cinema-wall-30-minute-timeseries.csv", "text/csv", width="stretch", disabled=interval_history.empty)
     dl[2].download_button("Download all comments", comments.to_csv(index=False), "cinema-wall-all-comments.csv", "text/csv", width="stretch")
     dl[3].download_button("Download scan metadata", json.dumps(meta, indent=2, ensure_ascii=False), "cinema-wall-scan-metadata.json", "application/json", width="stretch")
+    dl[4].download_button("Download channel evaluation", saved_channel_evaluation.to_csv(index=False), "cinema-wall-channel-evaluation.csv", "text/csv", width="stretch", disabled=saved_channel_evaluation.empty)
     dataset = st.radio("Preview dataset", ["30-minute time series", "Raw video snapshots", "Collected comments"], horizontal=True)
     preview = interval_history.sort_values("period", ascending=False) if dataset == "30-minute time series" else videos.sort_values("scanned_at", ascending=False) if dataset == "Raw video snapshots" else comments.sort_values("created_at", ascending=False)
     st.dataframe(preview.head(2000), hide_index=True, width="stretch")
