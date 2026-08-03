@@ -1,0 +1,1 @@
+trigger one-time 30-minute monitor scan at 2026-08-03
