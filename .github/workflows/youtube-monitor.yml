@@ -29,11 +29,18 @@ jobs:
           cache: pip
       - name: Install scanner
         run: pip install -r requirements.txt
+      - name: Validate Python files
+        run: python -m py_compile app.py collectors.py data.py scanner.py youtube_analysis.py
       - name: Fetch YouTube comments and statistics
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scanner.py
+      - name: Validate scanner outputs
+        run: |
+          test -s data/live/scan_metadata.json
+          test -s data/live/video_snapshots.csv
+          test -s data/live/top_channel_coverage.csv
       - name: Store time-series data
         run: |
           git config user.name "cinema-wall-scanner"
