@@ -13,6 +13,7 @@ LIVE_FILE = ROOT / "data" / "live" / "comments.csv"
 META_FILE = ROOT / "data" / "live" / "scan_metadata.json"
 VIDEO_FILE = ROOT / "data" / "live" / "video_snapshots.csv"
 CHANNEL_EVALUATION_FILE = ROOT / "data" / "live" / "channel_evaluation.csv"
+TOP_CHANNEL_COVERAGE_FILE = ROOT / "data" / "live" / "top_channel_coverage.csv"
 RAW_ROOT = "https://raw.githubusercontent.com/purushothaman-98/cinema-wall/main/data/live"
 
 def _format_from_duration(duration: object, title: object) -> str:
@@ -110,3 +111,6 @@ def load_video_snapshots() -> pd.DataFrame:
 
 def load_channel_evaluation() -> pd.DataFrame:
     return _csv(CHANNEL_EVALUATION_FILE, "channel_evaluation.csv")
+
+def load_top_channel_coverage() -> pd.DataFrame:
+    return _csv(TOP_CHANNEL_COVERAGE_FILE, "top_channel_coverage.csv")
