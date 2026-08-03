@@ -1,7 +1,7 @@
 {
   "status": "partial",
-  "last_scan": "2026-08-03T14:40:12.417927+00:00",
-  "last_video_discovery": "2026-08-03T14:40:12.417927+00:00",
+  "last_scan": "2026-08-03T14:49:26.642188+00:00",
+  "last_video_discovery": "2026-08-03T14:49:26.642188+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -10,13 +10,15 @@
     "primary_release_date.desc"
   ],
   "keep_history_days": 730,
-  "selection_version": 11,
+  "selection_version": 13,
   "active_video_ids": [
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
     "02LIHFCYLFY",
     "0hXaHtpiwS0",
     "0z72inq5IHk",
+    "2lKwjIWcWgM",
+    "3uSEvASQadc",
     "4v6OWiZAv7Q",
     "5sxIMEpZ_I4",
     "772yoe3x_Ng",
@@ -43,12 +45,12 @@
     "MH7jdniLG5o",
     "MpOLjhV3doE",
     "NcvGH-vUS3o",
-    "OQacFyXLUps",
     "OjlO3i690xU",
     "P5d440kliRw",
     "QkGUFx1Ns8Y",
     "R3WI0NEZ5Xo",
     "ROt7AoyqFdo",
+    "S42iXHjuTE8",
     "TJQqXe8Jc0w",
     "TanDK1_9kfI",
     "VWfXQbilQ-w",
@@ -61,6 +63,7 @@
     "_Z5LvDYvvtc",
     "_sP8WpalSdw",
     "bBjaajEGSUE",
+    "bPaudjceoio",
     "cULfT3sfuPk",
     "cZERSnAE9hE",
     "c_epeBnEeZg",
@@ -86,7 +89,7 @@
     "oiDfyURQOeE",
     "on9CuThxzYE",
     "pawx3mfvsyE",
-    "pi52Pq_k4D4",
+    "qC1wxx76_qY",
     "qGP9BhjEYjM",
     "qPd-sy5PXEg",
     "s5dR4osy9tk",
@@ -100,7 +103,7 @@
     "vmIVxWqIqPo",
     "w90XD6kUaV8",
     "xX8nMqCjtZY",
-    "yk4D0rNz2No",
+    "xvhNCnQvOvg",
     "zTAqIoV2nc8",
     "zTH1Cj9brYs"
   ],
@@ -127,8 +130,8 @@
   "broad_discovery_video_hits": 0,
   "broad_discovery_queries_run": 2,
   "source_channel_queries_run": 11,
-  "source_channel_video_hits": 0,
-  "source_channel_matched_hits": 0,
+  "source_channel_video_hits": 60,
+  "source_channel_matched_hits": 5,
   "source_channel_queries": [
     {
       "channel": "KaKi's Talkies",
@@ -139,14 +142,14 @@
     {
       "channel": "Sudhir Srinivasan",
       "query": "\"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
+      "hits": 12,
       "matched_hits": 0
     },
     {
       "channel": "Galatta Plus",
       "query": "\"Galatta Plus\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
+      "hits": 12,
+      "matched_hits": 4
     },
     {
       "channel": "Second Show",
@@ -163,19 +166,19 @@
     {
       "channel": "Filmi Craft",
       "query": "\"Filmi Craft\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
+      "hits": 12,
+      "matched_hits": 1
     },
     {
       "channel": "Nona Prince",
       "query": "\"Nona Prince\" tamil movie review",
-      "hits": 0,
+      "hits": 12,
       "matched_hits": 0
     },
     {
       "channel": "Kodangi",
       "query": "\"Kodangi\" tamil movie review",
-      "hits": 0,
+      "hits": 12,
       "matched_hits": 0
     },
     {
@@ -271,16 +274,9 @@
   ],
   "channel_matrix_enabled": true,
   "channel_matrix_queries_run": 40,
-  "channel_matrix_video_hits": 0,
-  "channel_matrix_matched_hits": 0,
+  "channel_matrix_video_hits": 19,
+  "channel_matrix_matched_hits": 17,
   "channel_matrix_queries": [
-    {
-      "film": "Jana Nayagan",
-      "channel": "Tamil Talkies",
-      "query": "\"Jana Nayagan\" \"Tamil Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
     {
       "film": "Jana Nayagan",
       "channel": "Second Show",
@@ -313,8 +309,8 @@
       "film": "Idhayam Murali",
       "channel": "Sudhir Srinivasan",
       "query": "\"Idhayam Murali\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
+      "hits": 8,
+      "matched_hits": 8
     },
     {
       "film": "Idhayam Murali",
@@ -348,8 +344,8 @@
       "film": "Gatta Kusthi 2",
       "channel": "Sudhir Srinivasan",
       "query": "\"Gatta Kusthi 2\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
+      "hits": 8,
+      "matched_hits": 7
     },
     {
       "film": "Gatta Kusthi 2",
@@ -488,8 +484,8 @@
       "film": "Nooru Sami",
       "channel": "Galatta Plus",
       "query": "\"Nooru Sami\" \"Galatta Plus\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
+      "hits": 3,
+      "matched_hits": 2
     },
     {
       "film": "Nooru Sami",
@@ -551,6 +547,13 @@
       "film": "Con City",
       "channel": "Tamil Talkies",
       "query": "\"Con City\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Con City",
+      "channel": "Filmi Craft",
+      "query": "\"Con City\" \"Filmi Craft\" tamil movie review",
       "hits": 0,
       "matched_hits": 0
     }
@@ -1005,16 +1008,16 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 451 useful public comments. Of 117 comments with detectable reaction wording, 95 were appreciative and 22 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 451,
-      "explicit_reaction_comments": 117,
-      "appreciative_signals": 95,
-      "critical_signals": 22,
-      "substantive_share": 0.184,
+      "summary": "Based on 491 useful public comments. Of 124 comments with detectable reaction wording, 101 were appreciative and 23 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 491,
+      "explicit_reaction_comments": 124,
+      "appreciative_signals": 101,
+      "critical_signals": 23,
+      "substantive_share": 0.1894,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 18
+          "comments": 20
         },
         {
           "name": "Comedy",
@@ -1022,16 +1025,16 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 8
+          "comments": 9
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 306,
-          "appreciative_signals": 68,
+          "useful_comments": 338,
+          "appreciative_signals": 71,
           "critical_signals": 16,
-          "questions": 22,
+          "questions": 30,
           "leading_topic": "General reaction"
         },
         {
@@ -1169,12 +1172,12 @@
       "reviewers": []
     },
     "Idhayam Murali": {
-      "summary": "Based on 645 useful public comments. Of 238 comments with detectable reaction wording, 167 were appreciative and 71 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 645,
+      "summary": "Based on 646 useful public comments. Of 238 comments with detectable reaction wording, 167 were appreciative and 71 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 646,
       "explicit_reaction_comments": 238,
       "appreciative_signals": 167,
       "critical_signals": 71,
-      "substantive_share": 0.2047,
+      "substantive_share": 0.2043,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1638,20 +1641,20 @@
       "reviewers": []
     },
     "Nooru Sami": {
-      "summary": "Based on 54 useful public comments. Of 15 comments with detectable reaction wording, 15 were appreciative and 0 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss emotion, release & theatre, direction & making.",
-      "useful_comments": 54,
-      "explicit_reaction_comments": 15,
-      "appreciative_signals": 15,
-      "critical_signals": 0,
-      "substantive_share": 0.3889,
+      "summary": "Based on 62 useful public comments. Of 18 comments with detectable reaction wording, 16 were appreciative and 2 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, emotion, direction & making.",
+      "useful_comments": 62,
+      "explicit_reaction_comments": 18,
+      "appreciative_signals": 16,
+      "critical_signals": 2,
+      "substantive_share": 0.4194,
       "top_aspects": [
         {
-          "name": "Emotion",
+          "name": "Story & screenplay",
           "comments": 4
         },
         {
-          "name": "Release & theatre",
-          "comments": 3
+          "name": "Emotion",
+          "comments": 4
         },
         {
           "name": "Direction & making",
@@ -1975,19 +1978,19 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 3115,
+  "comments_fetched": 3172,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 91,
+    "daily_discovery_refresh": 94,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
     "periodic_comment_refresh": 0,
     "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 348,
-  "stored_comments": 12308,
-  "videos_monitored": 91,
-  "standard_videos_monitored": 67,
-  "shorts_monitored": 24,
+  "new_comments_added": 59,
+  "stored_comments": 12367,
+  "videos_monitored": 94,
+  "standard_videos_monitored": 69,
+  "shorts_monitored": 25,
   "movie_catalog": [
     {
       "title": "Sathyavan Savithiri",
@@ -3803,30 +3806,21 @@
   ],
   "errors": [
     "Source channel/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Source channel/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Source channel/Galatta Plus: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Galatta+Plus%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Source channel/Second Show: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Second+Show%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Source channel/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Source channel/Filmi Craft: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Filmi+Craft%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Source channel/Nona Prince: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Nona+Prince%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Source channel/Kodangi: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Kodangi%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Source channel/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Source channel/Plip Plip: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Plip+Plip%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Source channel/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Broad discovery/new tamil movie review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=new+tamil+movie+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Broad discovery/tamil cinema public review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=tamil+cinema+public+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Jana Nayagan/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Jana+Nayagan%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Jana Nayagan/Second Show: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Jana+Nayagan%22+%22Second+Show%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Jana Nayagan/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Jana+Nayagan%22+%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Idhayam Murali/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Idhayam+Murali%22+%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Idhayam Murali/Galatta Plus: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Idhayam+Murali%22+%22Galatta+Plus%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Idhayam Murali/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Idhayam+Murali%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Idhayam Murali/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Idhayam+Murali%22+%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Gatta Kusthi 2/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Gatta+Kusthi+2%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Gatta Kusthi 2/Filmi Craft: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Gatta+Kusthi+2%22+%22Filmi+Craft%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Gatta Kusthi 2/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Gatta+Kusthi+2%22+%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Gatta Kusthi 2/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Gatta+Kusthi+2%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Gatta Kusthi 2/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Gatta+Kusthi+2%22+%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Anbe Diana/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Anbe+Diana%22+%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Anbe Diana/Galatta Plus: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Anbe+Diana%22+%22Galatta+Plus%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Anbe Diana/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Anbe+Diana%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
@@ -3845,7 +3839,6 @@
     "Channel matrix/Nooru Sami/Filmi Craft: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nooru+Sami%22+%22Filmi+Craft%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Nooru Sami/Second Show: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nooru+Sami%22+%22Second+Show%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Nooru Sami/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nooru+Sami%22+%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
-    "Channel matrix/Nooru Sami/Galatta Plus: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nooru+Sami%22+%22Galatta+Plus%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Nooru Sami/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nooru+Sami%22+%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Lakshmikanthan Kolai Vazhakku/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Lakshmikanthan+Kolai+Vazhakku%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Lakshmikanthan Kolai Vazhakku/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Lakshmikanthan+Kolai+Vazhakku%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
@@ -3855,6 +3848,7 @@
     "Channel matrix/Lakshmikanthan Kolai Vazhakku/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Lakshmikanthan+Kolai+Vazhakku%22+%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Lakshmikanthan Kolai Vazhakku/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Lakshmikanthan+Kolai+Vazhakku%22+%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Channel matrix/Con City/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Con+City%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Con City/Filmi Craft: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Con+City%22+%22Filmi+Craft%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Discovery/Sathyavan Savithiri: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Sathyavan+Savithiri%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Discovery/Arjunan Per Paththu: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Arjunan+Per+Paththu%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
     "Discovery/Find Me: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Find+Me%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
