@@ -13,12 +13,19 @@
   "public_review_videos_per_film": 3,
   "organic_videos_per_film": 2,
   "context_videos_per_film": 1,
+  "source_channel_discovery_max_queries": 12,
+  "source_channel_discovery_source_categories": [
+    "critic_review",
+    "general_review",
+    "deep_analysis",
+    "roast_commentary"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_max_queries": 6,
+  "channel_matrix_max_queries": 4,
   "channel_matrix_channels_per_film": 2,
   "channel_matrix_min_review_videos": 4,
-  "broad_discovery_max_queries": 3,
-  "direct_film_discovery_max_queries": 6,
+  "broad_discovery_max_queries": 2,
+  "direct_film_discovery_max_queries": 4,
   "youtube_search_pause_seconds": 1.25,
   "channel_matrix_source_categories": [
     "critic_review",
