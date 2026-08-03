@@ -961,19 +961,20 @@ with gap_tab:
             ledger = ledger[ledger["film"].isin(selected_films)]
         status_order = {
             "missing_needs_retry": 0,
-            "tracked_no_comments": 1,
-            "checked_no_recent_match": 2,
-            "needs_channel_id": 3,
-            "fetched_with_comments": 4,
+            "checked_needs_search_retry": 1,
+            "tracked_no_comments": 2,
+            "checked_no_recent_match": 3,
+            "needs_channel_id": 4,
+            "fetched_with_comments": 5,
         }
         ledger["_status_rank"] = ledger["status"].map(status_order).fillna(9)
-        missing_count = int(ledger["status"].isin(["missing_needs_retry", "needs_channel_id"]).sum())
+        retry_count = int(ledger["status"].isin(["missing_needs_retry", "checked_needs_search_retry"]).sum())
+        missing_count = int(ledger["status"].isin(["missing_needs_retry", "checked_needs_search_retry", "needs_channel_id"]).sum())
         fetched_count = int(ledger["status"].eq("fetched_with_comments").sum())
-        checked_count = int(ledger["status"].eq("checked_no_recent_match").sum())
         cols = st.columns(4)
         cols[0].metric("Top-channel rows", f"{len(ledger):,}")
         cols[1].metric("Fetched with comments", f"{fetched_count:,}")
-        cols[2].metric("Checked no recent match", f"{checked_count:,}")
+        cols[2].metric("Retryable gaps", f"{retry_count:,}")
         cols[3].metric("Missing / needs ID", f"{missing_count:,}")
         st.download_button(
             "Download top-channel coverage ledger",
@@ -1452,4 +1453,3 @@ with st.expander("Monitor health and methodology"):
         st.code("\n".join(errors), language=None)
 
 st.caption("Tamil Cinema YouTube Radar · Public YouTube data · Activity signals are not audience size, film quality or box-office estimates.")
-
