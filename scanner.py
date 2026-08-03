@@ -20,6 +20,7 @@ LIVE = ROOT / "data" / "live"
 COMMENTS = LIVE / "comments.csv"
 VIDEOS = LIVE / "video_snapshots.csv"
 META = LIVE / "scan_metadata.json"
+CHANNEL_EVALUATION = LIVE / "channel_evaluation.csv"
 
 def normalized(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
@@ -464,6 +465,26 @@ def channel_matrix_profiles() -> list[dict]:
     )
     return profiles
 
+def source_channel_discovery_profiles() -> list[dict]:
+    allowed = set(CFG.get("source_channel_discovery_source_categories", []))
+    profiles = [
+        profile for profile in CFG.get("source_channels", [])
+        if profile.get("source_category") in allowed
+    ]
+    profiles.sort(
+        key=lambda item: (
+            float(item.get("critic_weight", 0)),
+            float(item.get("engagement_weight", 0)),
+        ),
+        reverse=True,
+    )
+    return profiles[: int(CFG.get("source_channel_discovery_max_queries", 0))]
+
+def source_channel_query(profile: dict) -> str:
+    aliases = [profile.get("name", ""), *profile.get("aliases", [])]
+    channel_name = next((str(alias).strip() for alias in aliases if str(alias).strip()), "")
+    return f'"{channel_name}" tamil movie review'
+
 def film_channel_queries(films: list[str], known: pd.DataFrame) -> list[tuple[str, str, str]]:
     """Build a quota-bounded audit matrix: weak films first, then trusted channels."""
     if not CFG.get("channel_matrix_enabled", True):
@@ -542,6 +563,94 @@ def preserve_archive_guard(
             "Archive safety check failed: refusing to replace non-empty video_snapshots.csv with empty output"
         )
 
+def build_channel_evaluation(snapshots: pd.DataFrame, comments: pd.DataFrame) -> pd.DataFrame:
+    """Rank YouTube sources by useful review/comment evidence already collected."""
+    if snapshots.empty or "channel" not in snapshots:
+        return pd.DataFrame()
+    latest = snapshots.sort_values("scanned_at").drop_duplicates("video_id", keep="last").copy()
+    for column, default in {
+        "source_category": "open_youtube",
+        "video_intent": "film_discussion",
+        "content_format": "Video",
+    }.items():
+        if column not in latest:
+            latest[column] = default
+        latest[column] = latest[column].fillna(default)
+    latest["public_comments"] = pd.to_numeric(latest.get("comments"), errors="coerce").fillna(0)
+    latest["views"] = pd.to_numeric(latest.get("views"), errors="coerce").fillna(0)
+    review_intents = {
+        "review", "short_review", "public_review", "deep_analysis",
+        "roast_commentary", "film_discussion",
+    }
+    context_intents = {"interview_archive", "news_update"}
+    channel_rows = []
+    comment_counts = pd.DataFrame()
+    if not comments.empty and "channel" in comments:
+        comment_frame = comments.copy()
+        comment_frame["low_information"] = (
+            comment_frame.get("low_information", False).fillna(False).astype(bool)
+            if "low_information" in comment_frame else False
+        )
+        comment_frame["is_question"] = (
+            comment_frame.get("is_question", False).fillna(False).astype(bool)
+            if "is_question" in comment_frame else False
+        )
+        comment_counts = comment_frame.groupby("channel").agg(
+            stored_comments=("text", "count"),
+            useful_comments=("low_information", lambda values: int((~values).sum())),
+            questions=("is_question", "sum"),
+        )
+    for channel, frame in latest.groupby("channel"):
+        profile = source_profile(channel)
+        comments_row = comment_counts.loc[channel] if channel in comment_counts.index else {}
+        stored_comments = int(comments_row.get("stored_comments", 0)) if len(comment_counts) else 0
+        useful_comments = int(comments_row.get("useful_comments", 0)) if len(comment_counts) else 0
+        questions = int(comments_row.get("questions", 0)) if len(comment_counts) else 0
+        items = int(frame["video_id"].nunique())
+        review_items = int(frame["video_intent"].isin(review_intents).sum())
+        context_items = int(frame["video_intent"].isin(context_intents).sum())
+        shorts = int(frame["content_format"].eq("Short").sum())
+        films = int(frame["film"].nunique()) if "film" in frame else 0
+        public_comments = int(frame["public_comments"].sum())
+        useful_share = useful_comments / stored_comments if stored_comments else 0.0
+        review_share = review_items / items if items else 0.0
+        comments_per_item = public_comments / items if items else 0.0
+        tracker_value = (
+            2.0 * films
+            + 1.5 * review_items
+            + 0.4 * shorts
+            + 0.015 * min(public_comments, 5000)
+            + 3.0 * float(profile.get("critic_weight", 0.5))
+            + 2.0 * useful_share
+            - 1.0 * context_items
+        )
+        channel_rows.append({
+            "channel": channel,
+            "source_profile": profile.get("name", channel),
+            "source_category": profile.get("source_category", "open_youtube"),
+            "films_covered": films,
+            "items_tracked": items,
+            "full_videos": int(frame["content_format"].eq("Video").sum()),
+            "shorts": shorts,
+            "review_discussion_items": review_items,
+            "context_items": context_items,
+            "review_share_pct": round(review_share * 100, 1),
+            "stored_comments": stored_comments,
+            "useful_comments": useful_comments,
+            "useful_share_pct": round(useful_share * 100, 1),
+            "questions": questions,
+            "public_comments": public_comments,
+            "views": int(frame["views"].sum()),
+            "comments_per_item": round(comments_per_item, 1),
+            "tracker_value": round(tracker_value, 2),
+        })
+    if not channel_rows:
+        return pd.DataFrame()
+    return pd.DataFrame(channel_rows).sort_values(
+        ["tracker_value", "films_covered", "public_comments"],
+        ascending=False,
+    )
+
 def main() -> None:
     youtube_key = require("YOUTUBE_API_KEY")
     tmdb_key = require("TMDB_API_KEY")
@@ -596,11 +705,38 @@ def main() -> None:
     films = [item["title"] for item in catalog]
     broad_candidates: dict[str, list[dict]] = {film: [] for film in films}
     discovery_video_hits = 0
+    source_channel_hits = 0
+    source_channel_matches = 0
+    source_channel_queries: list[dict] = []
     channel_matrix_candidates: dict[str, list[dict]] = {film: [] for film in films}
     channel_matrix_hits = 0
     channel_matrix_queries: list[dict] = []
     if do_discovery:
         direct_films = set(direct_discovery_films(films, known))
+        for profile in source_channel_discovery_profiles():
+            query = source_channel_query(profile)
+            if not query.strip('" '):
+                continue
+            query_hits = 0
+            matched_hits = 0
+            try:
+                for item in youtube_search_query(query, youtube_key, CFG["youtube_videos_per_film"]):
+                    query_hits += 1
+                    source_channel_hits += 1
+                    for film in films:
+                        if video_mentions_film(item, film):
+                            matched_hits += 1
+                            source_channel_matches += 1
+                            broad_candidates.setdefault(film, []).append(item)
+                pause_after_search()
+            except Exception as exc:
+                errors.append(f"Source channel/{profile.get('name', 'unknown')}: {safe_error(exc)}")
+            source_channel_queries.append({
+                "channel": profile.get("name"),
+                "query": query,
+                "hits": query_hits,
+                "matched_hits": matched_hits,
+            })
         for query in CFG.get("youtube_discovery_queries", [])[: int(CFG.get("broad_discovery_max_queries", 8))]:
             try:
                 for item in youtube_search_query(query, youtube_key, CFG["youtube_videos_per_film"]):
@@ -796,6 +932,9 @@ def main() -> None:
         stored_comments.to_csv(COMMENTS, index=False)
     if not stored_snapshots.empty:
         stored_snapshots.to_csv(VIDEOS, index=False)
+    channel_evaluation = build_channel_evaluation(stored_snapshots, stored_comments)
+    if not channel_evaluation.empty:
+        channel_evaluation.to_csv(CHANNEL_EVALUATION, index=False)
 
     last_discovery = now_iso if do_discovery else metadata.get("last_video_discovery")
     status = "healthy" if not errors else "partial"
@@ -828,6 +967,10 @@ def main() -> None:
             len(CFG.get("youtube_discovery_queries", [])),
             int(CFG.get("broad_discovery_max_queries", 8)),
         ),
+        "source_channel_queries_run": len(source_channel_queries),
+        "source_channel_video_hits": source_channel_hits,
+        "source_channel_matched_hits": source_channel_matches,
+        "source_channel_queries": source_channel_queries,
         "direct_film_discovery_queries_run": len(direct_discovery_films(films, known)) if do_discovery else 0,
         "direct_film_discovery_films": direct_discovery_films(films, known) if do_discovery else [],
         "channel_matrix_enabled": CFG.get("channel_matrix_enabled", True),
@@ -861,6 +1004,7 @@ def main() -> None:
         "all_films_analyzed": all_films_analyzed,
         "youtube_channels": [profile.get("name") for profile in CFG.get("source_channels", [])],
         "source_taxonomy": CFG.get("source_channels", []),
+        "channel_evaluation_rows": int(len(channel_evaluation)),
         "collectors": ["YouTube Data API", "youtube-comment-downloader fallback"],
         "errors": errors,
     }, indent=2), encoding="utf-8")
