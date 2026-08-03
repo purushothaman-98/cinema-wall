@@ -1,7 +1,7 @@
 {
   "status": "partial",
-  "last_scan": "2026-08-03T14:23:08.489979+00:00",
-  "last_video_discovery": "2026-08-03T14:23:08.489979+00:00",
+  "last_scan": "2026-08-03T14:40:12.417927+00:00",
+  "last_video_discovery": "2026-08-03T14:40:12.417927+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -10,12 +10,13 @@
     "primary_release_date.desc"
   ],
   "keep_history_days": 730,
-  "selection_version": 10,
+  "selection_version": 11,
   "active_video_ids": [
     "-U9HzhHWSYI",
     "-kGabMiAGkA",
     "02LIHFCYLFY",
     "0hXaHtpiwS0",
+    "0z72inq5IHk",
     "4v6OWiZAv7Q",
     "5sxIMEpZ_I4",
     "772yoe3x_Ng",
@@ -32,6 +33,7 @@
     "Eai1avWhY7w",
     "G-PQXCuMTjM",
     "G66Q8QcMLGQ",
+    "GPVCddT5-oI",
     "HkHXpy6kQcI",
     "HzhLqaggnHM",
     "K0J8RCeuk5c",
@@ -39,7 +41,6 @@
     "Km3-cWPD8hA",
     "Lmk7NMvKkys",
     "MH7jdniLG5o",
-    "MU-5IC-nDso",
     "MpOLjhV3doE",
     "NcvGH-vUS3o",
     "OQacFyXLUps",
@@ -54,7 +55,6 @@
     "VfwRqHAvVOQ",
     "VgC5hOmEzYA",
     "X030fOP0e0A",
-    "Y53oAxxbIRQ",
     "YeH-S-6UVsw",
     "Z2-q3a28ZXg",
     "ZjKkkomxdw4",
@@ -65,13 +65,12 @@
     "cZERSnAE9hE",
     "c_epeBnEeZg",
     "doqGi23QOu4",
-    "f-HWdoIsZ0o",
     "f9vSQANdQ8Y",
     "fsb95BIYrDk",
     "gW-OYoO9xW4",
     "ghgTkC-SI9U",
-    "iGQMB_Q1riI",
     "jQlyBUEdWyI",
+    "jVUt3w72nKE",
     "kM1KK42ngzY",
     "kP8UgzHSxgQ",
     "kiFeXcU-JI4",
@@ -90,6 +89,7 @@
     "pi52Pq_k4D4",
     "qGP9BhjEYjM",
     "qPd-sy5PXEg",
+    "s5dR4osy9tk",
     "sq-JYRSvoXo",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
@@ -199,13 +199,13 @@
   ],
   "upload_feed_channels_run": 10,
   "upload_feed_video_hits": 250,
-  "upload_feed_matched_hits": 61,
+  "upload_feed_matched_hits": 106,
   "upload_feed_queries": [
     {
       "channel": "KaKi's Talkies",
       "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
       "hits": 25,
-      "matched_hits": 7
+      "matched_hits": 8
     },
     {
       "channel": "Sudhir Srinivasan",
@@ -217,19 +217,19 @@
       "channel": "Galatta Plus",
       "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
       "hits": 25,
-      "matched_hits": 0
+      "matched_hits": 2
     },
     {
       "channel": "Second Show",
       "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
       "hits": 25,
-      "matched_hits": 4
+      "matched_hits": 6
     },
     {
       "channel": "Delite Cinemas",
       "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
       "hits": 25,
-      "matched_hits": 0
+      "matched_hits": 13
     },
     {
       "channel": "Filmi Craft",
@@ -241,19 +241,19 @@
       "channel": "Cinema Vikatan",
       "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
       "hits": 25,
-      "matched_hits": 26
+      "matched_hits": 24
     },
     {
       "channel": "Valai Pechu",
       "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
       "hits": 25,
-      "matched_hits": 1
+      "matched_hits": 18
     },
     {
       "channel": "Tamil Talkies",
       "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
       "hits": 25,
-      "matched_hits": 8
+      "matched_hits": 20
     },
     {
       "channel": "Empty Hand",
@@ -1265,27 +1265,35 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 912 useful public comments. Of 205 comments with detectable reaction wording, 131 were appreciative and 74 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 912,
-      "explicit_reaction_comments": 205,
-      "appreciative_signals": 131,
-      "critical_signals": 74,
-      "substantive_share": 0.3048,
+      "summary": "Based on 1,186 useful public comments. Of 284 comments with detectable reaction wording, 197 were appreciative and 87 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1186,
+      "explicit_reaction_comments": 284,
+      "appreciative_signals": 197,
+      "critical_signals": 87,
+      "substantive_share": 0.2833,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 53
+          "comments": 61
         },
         {
           "name": "Acting & characters",
-          "comments": 41
+          "comments": 51
         },
         {
           "name": "Story & screenplay",
-          "comments": 34
+          "comments": 37
         }
       ],
       "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 274,
+          "appreciative_signals": 66,
+          "critical_signals": 13,
+          "questions": 35,
+          "leading_topic": "General reaction"
+        },
         {
           "channel": "Empty Hand",
           "useful_comments": 252,
@@ -1967,7 +1975,7 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 2924,
+  "comments_fetched": 3115,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 91,
     "new_or_unknown_video": 0,
@@ -1975,8 +1983,8 @@
     "periodic_comment_refresh": 0,
     "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 2,
-  "stored_comments": 11960,
+  "new_comments_added": 348,
+  "stored_comments": 12308,
   "videos_monitored": 91,
   "standard_videos_monitored": 67,
   "shorts_monitored": 24,
@@ -3584,7 +3592,7 @@
       ],
       "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
       "source_category": "general_review",
-      "critic_weight": 1.0,
+      "critic_weight": 1,
       "engagement_weight": 0.9
     },
     {
@@ -3594,7 +3602,7 @@
       ],
       "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
       "source_category": "critic_review",
-      "critic_weight": 1.0,
+      "critic_weight": 1,
       "engagement_weight": 0.75
     },
     {
@@ -3658,7 +3666,7 @@
       "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
       "source_category": "roast_commentary",
       "critic_weight": 0.4,
-      "engagement_weight": 1.0
+      "engagement_weight": 1
     },
     {
       "name": "Plip Plip",
