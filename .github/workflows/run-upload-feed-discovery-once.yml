@@ -1,0 +1,44 @@
+name: Run upload feed discovery once
+
+on:
+  push:
+    paths:
+      - .github/run-once/upload-feed-discovery.txt
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cinema-wall-upload-feed-discovery-once
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install scanner
+        run: pip install -r requirements.txt
+      - name: Run forced discovery
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scanner.py
+      - name: Store data and remove one-shot workflow
+        run: |
+          git config user.name "cinema-wall-scanner"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f .github/run-once/upload-feed-discovery.txt .github/workflows/run-upload-feed-discovery-once.yml
+          git add data/live/comments.csv data/live/video_snapshots.csv data/live/scan_metadata.json data/live/channel_evaluation.csv .github/run-once/upload-feed-discovery.txt .github/workflows/run-upload-feed-discovery-once.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "data: run upload feed discovery"
+            git pull --rebase
+            git push
+          fi
