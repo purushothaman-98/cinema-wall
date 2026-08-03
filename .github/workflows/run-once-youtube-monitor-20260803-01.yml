@@ -1,0 +1,44 @@
+name: Run once YouTube monitor 20260803 01
+
+on:
+  push:
+    paths:
+      - .github/run-once/youtube-monitor-20260803-01.txt
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cinema-wall-youtube-monitor
+  cancel-in-progress: false
+
+jobs:
+  run-once-youtube-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install scanner
+        run: pip install -r requirements.txt
+      - name: Run monitor scan
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scanner.py
+      - name: Commit data and cleanup
+        run: |
+          git config user.name "cinema-wall-scanner"
+          git config user.email "actions@users.noreply.github.com"
+          git rm -f .github/workflows/run-once-youtube-monitor-20260803-01.yml .github/run-once/youtube-monitor-20260803-01.txt
+          git add data/live/comments.csv data/live/video_snapshots.csv data/live/scan_metadata.json data/live/channel_evaluation.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data: run one-time YouTube monitor"
+            git pull --rebase
+            git push
+          fi
