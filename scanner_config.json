@@ -15,7 +15,7 @@
   "context_videos_per_film": 1,
   "source_channel_discovery_max_queries": 12,
   "upload_feed_max_channels": 12,
-  "upload_feed_videos_per_channel": 25,
+  "upload_feed_videos_per_channel": 50,
   "upload_feed_source_categories": [
     "critic_review",
     "general_review",
@@ -47,7 +47,8 @@
   "comments_per_video_daily": 300,
   "comment_refresh_hours": 6,
   "keep_history_days": 730,
-  "selection_version": 13,
+  "selection_version": 14,
+  "min_compact_alias_length": 6,
   "top_channel_coverage_channels": [
     "Tamil Talkies",
     "KaKi's Talkies",
