@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-04T12:23:41.255970+00:00",
+  "last_scan": "2026-08-04T14:56:50.107270+00:00",
   "last_video_discovery": "2026-08-03T15:05:15.978392+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -885,12 +885,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,192 useful public comments. Of 284 comments with detectable reaction wording, 197 were appreciative and 87 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1192,
+      "summary": "Based on 1,193 useful public comments. Of 284 comments with detectable reaction wording, 197 were appreciative and 87 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1193,
       "explicit_reaction_comments": 284,
       "appreciative_signals": 197,
       "critical_signals": 87,
-      "substantive_share": 0.2827,
+      "substantive_share": 0.2825,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -916,7 +916,7 @@
         },
         {
           "channel": "Empty Hand",
-          "useful_comments": 254,
+          "useful_comments": 255,
           "appreciative_signals": 22,
           "critical_signals": 13,
           "questions": 36,
@@ -1595,16 +1595,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 1392,
+  "comments_fetched": 50,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 94,
-    "public_comment_count_unchanged": 3
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 27,
+    "public_comment_count_unchanged": 69
   },
-  "new_comments_added": 0,
-  "stored_comments": 12692,
+  "new_comments_added": 1,
+  "stored_comments": 12693,
   "videos_monitored": 97,
   "standard_videos_monitored": 72,
   "shorts_monitored": 25,
