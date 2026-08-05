@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-05T04:36:20.434698+00:00",
+  "last_scan": "2026-08-05T07:30:45.087178+00:00",
   "last_video_discovery": "2026-08-04T16:46:42.980231+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -898,12 +898,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,193 useful public comments. Of 284 comments with detectable reaction wording, 197 were appreciative and 87 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1193,
-      "explicit_reaction_comments": 284,
+      "summary": "Based on 1,194 useful public comments. Of 285 comments with detectable reaction wording, 197 were appreciative and 88 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1194,
+      "explicit_reaction_comments": 285,
       "appreciative_signals": 197,
-      "critical_signals": 87,
-      "substantive_share": 0.2825,
+      "critical_signals": 88,
+      "substantive_share": 0.2822,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -945,9 +945,9 @@
         },
         {
           "channel": "Galatta Plus",
-          "useful_comments": 176,
+          "useful_comments": 177,
           "appreciative_signals": 27,
-          "critical_signals": 25,
+          "critical_signals": 26,
           "questions": 43,
           "leading_topic": "General reaction"
         },
@@ -1608,16 +1608,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 1327,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 30,
-    "public_comment_count_unchanged": 71
+    "periodic_comment_refresh": 99,
+    "public_comment_count_unchanged": 2
   },
-  "new_comments_added": 0,
-  "stored_comments": 12736,
+  "new_comments_added": 1,
+  "stored_comments": 12737,
   "videos_monitored": 102,
   "standard_videos_monitored": 73,
   "shorts_monitored": 29,
