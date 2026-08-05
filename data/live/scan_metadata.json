@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-05T18:00:09.754219+00:00",
+  "last_scan": "2026-08-05T19:28:02.568650+00:00",
   "last_video_discovery": "2026-08-05T18:00:09.754219+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -116,7 +116,7 @@
     "zTH1Cj9brYs"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -135,437 +135,23 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 24,
-  "broad_discovery_queries_run": 2,
-  "source_channel_queries_run": 11,
-  "source_channel_video_hits": 132,
-  "source_channel_matched_hits": 26,
-  "source_channel_queries": [
-    {
-      "channel": "KaKi's Talkies",
-      "query": "\"KaKi's Talkies\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 4
-    },
-    {
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Sudhir Srinivasan\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 2
-    },
-    {
-      "channel": "Galatta Plus",
-      "query": "\"Galatta Plus\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 4
-    },
-    {
-      "channel": "Second Show",
-      "query": "\"Second Show\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 5
-    },
-    {
-      "channel": "Delite Cinemas",
-      "query": "\"Delite Cinemas\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 7
-    },
-    {
-      "channel": "Filmi Craft",
-      "query": "\"Filmi Craft\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 1
-    },
-    {
-      "channel": "Nona Prince",
-      "query": "\"Nona Prince\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Kodangi",
-      "query": "\"Kodangi\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Tamil Talkies",
-      "query": "\"Tamil Talkies\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Plip Plip",
-      "query": "\"Plip Plip\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Empty Hand",
-      "query": "\"Empty Hand\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 3
-    }
-  ],
-  "upload_feed_channels_run": 10,
-  "upload_feed_video_hits": 500,
-  "upload_feed_matched_hits": 182,
-  "upload_feed_queries": [
-    {
-      "channel": "KaKi's Talkies",
-      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
-      "hits": 50,
-      "matched_hits": 13
-    },
-    {
-      "channel": "Sudhir Srinivasan",
-      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
-      "hits": 50,
-      "matched_hits": 20
-    },
-    {
-      "channel": "Galatta Plus",
-      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
-      "hits": 50,
-      "matched_hits": 3
-    },
-    {
-      "channel": "Second Show",
-      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
-      "hits": 50,
-      "matched_hits": 7
-    },
-    {
-      "channel": "Delite Cinemas",
-      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
-      "hits": 50,
-      "matched_hits": 16
-    },
-    {
-      "channel": "Filmi Craft",
-      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
-      "hits": 50,
-      "matched_hits": 8
-    },
-    {
-      "channel": "Cinema Vikatan",
-      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
-      "hits": 50,
-      "matched_hits": 42
-    },
-    {
-      "channel": "Valai Pechu",
-      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
-      "hits": 50,
-      "matched_hits": 45
-    },
-    {
-      "channel": "Tamil Talkies",
-      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
-      "hits": 50,
-      "matched_hits": 24
-    },
-    {
-      "channel": "Empty Hand",
-      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
-      "hits": 50,
-      "matched_hits": 4
-    }
-  ],
-  "direct_film_discovery_queries_run": 4,
-  "direct_film_discovery_films": [
-    "Find Me",
-    "Oru Kaalathil Aasthireliyavil",
-    "Suitcased",
-    "Sweet Rogue Killer"
-  ],
+  "broad_discovery_video_hits": 0,
+  "broad_discovery_queries_run": 0,
+  "source_channel_queries_run": 0,
+  "source_channel_video_hits": 0,
+  "source_channel_matched_hits": 0,
+  "source_channel_queries": [],
+  "upload_feed_channels_run": 0,
+  "upload_feed_video_hits": 0,
+  "upload_feed_matched_hits": 0,
+  "upload_feed_queries": [],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 40,
-  "channel_matrix_video_hits": 101,
-  "channel_matrix_matched_hits": 81,
-  "channel_matrix_queries": [
-    {
-      "film": "Jana Nayagan",
-      "channel": "Second Show",
-      "query": "\"Jana Nayagan\" \"Second Show\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Jana Nayagan",
-      "channel": "Delite Cinemas",
-      "query": "\"Jana Nayagan\" \"Delite Cinemas\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Idhayam Murali",
-      "channel": "Empty Hand",
-      "query": "\"Idhayam Murali\" \"Empty Hand\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Idhayam Murali",
-      "channel": "Delite Cinemas",
-      "query": "\"Idhayam Murali\" \"Delite Cinemas\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "KaKi's Talkies",
-      "query": "\"Gatta Kusthi 2\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Empty Hand",
-      "query": "\"Gatta Kusthi 2\" \"Empty Hand\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 0
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Gatta Kusthi 2\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 7
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Delite Cinemas",
-      "query": "\"Gatta Kusthi 2\" \"Delite Cinemas\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Anbe Diana",
-      "channel": "Empty Hand",
-      "query": "\"Anbe Diana\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Anbe Diana",
-      "channel": "Delite Cinemas",
-      "query": "\"Anbe Diana\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Filmi Craft",
-      "query": "\"Arulvaan\" \"Filmi Craft\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Second Show",
-      "query": "\"Arulvaan\" \"Second Show\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 2
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Empty Hand",
-      "query": "\"Arulvaan\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Galatta Plus",
-      "query": "\"Arulvaan\" \"Galatta Plus\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arulvaan\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Delite Cinemas",
-      "query": "\"Arulvaan\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Con City",
-      "channel": "Empty Hand",
-      "query": "\"Con City\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Con City",
-      "channel": "Galatta Plus",
-      "query": "\"Con City\" \"Galatta Plus\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Con City",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Con City\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Con City",
-      "channel": "Delite Cinemas",
-      "query": "\"Con City\" \"Delite Cinemas\" tamil movie review",
-      "hits": 3,
-      "matched_hits": 1
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Second Show",
-      "query": "\"Love Oh Love\" \"Second Show\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Empty Hand",
-      "query": "\"Love Oh Love\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Love Oh Love\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Delite Cinemas",
-      "query": "\"Love Oh Love\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Nooru Sami",
-      "channel": "Tamil Talkies",
-      "query": "\"Nooru Sami\" \"Tamil Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 5
-    },
-    {
-      "film": "Nooru Sami",
-      "channel": "Filmi Craft",
-      "query": "\"Nooru Sami\" \"Filmi Craft\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 3
-    },
-    {
-      "film": "Nooru Sami",
-      "channel": "Second Show",
-      "query": "\"Nooru Sami\" \"Second Show\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 0
-    },
-    {
-      "film": "Nooru Sami",
-      "channel": "Empty Hand",
-      "query": "\"Nooru Sami\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Nooru Sami",
-      "channel": "Delite Cinemas",
-      "query": "\"Nooru Sami\" \"Delite Cinemas\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Tamil Talkies",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Tamil Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 5
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "KaKi's Talkies",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Filmi Craft",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Filmi Craft\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Second Show",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Second Show\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Empty Hand",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Delite Cinemas",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Heartin",
-      "channel": "Tamil Talkies",
-      "query": "\"Heartin\" \"Tamil Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Heartin",
-      "channel": "KaKi's Talkies",
-      "query": "\"Heartin\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Heartin",
-      "channel": "Second Show",
-      "query": "\"Heartin\" \"Second Show\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Heartin",
-      "channel": "Empty Hand",
-      "query": "\"Heartin\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
+  "channel_matrix_matched_hits": 0,
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -2035,15 +1621,15 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 3392,
+  "comments_fetched": 0,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 102,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "periodic_comment_refresh": 28,
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 24,
+  "new_comments_added": 0,
   "stored_comments": 12766,
   "videos_monitored": 102,
   "standard_videos_monitored": 73,
@@ -3873,8 +3459,8 @@
     "Delite Cinemas"
   ],
   "top_channel_coverage_rows": 312,
-  "top_channel_missing_pairs": 0,
-  "top_channel_retry_queries_run": 40,
+  "top_channel_missing_pairs": 241,
+  "top_channel_retry_queries_run": 0,
   "collectors": [
     "YouTube Data API",
     "youtube-comment-downloader fallback"
