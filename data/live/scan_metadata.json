@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-06T11:38:34.874931+00:00",
+  "last_scan": "2026-08-06T13:29:16.010459+00:00",
   "last_video_discovery": "2026-08-05T18:00:09.754219+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -911,12 +911,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,202 useful public comments. Of 287 comments with detectable reaction wording, 198 were appreciative and 89 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1202,
+      "summary": "Based on 1,203 useful public comments. Of 287 comments with detectable reaction wording, 198 were appreciative and 89 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1203,
       "explicit_reaction_comments": 287,
       "appreciative_signals": 198,
       "critical_signals": 89,
-      "substantive_share": 0.282,
+      "substantive_share": 0.2826,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -934,7 +934,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 282,
+          "useful_comments": 283,
           "appreciative_signals": 67,
           "critical_signals": 13,
           "questions": 36,
@@ -1621,16 +1621,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 150,
+  "comments_fetched": 55,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 29,
-    "public_comment_count_unchanged": 71
+    "public_comment_count_unchanged": 72
   },
   "new_comments_added": 1,
-  "stored_comments": 12772,
+  "stored_comments": 12773,
   "videos_monitored": 102,
   "standard_videos_monitored": 73,
   "shorts_monitored": 29,
