@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-06T03:56:35.928203+00:00",
+  "last_scan": "2026-08-06T06:22:43.387937+00:00",
   "last_video_discovery": "2026-08-05T18:00:09.754219+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -911,16 +911,16 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,199 useful public comments. Of 286 comments with detectable reaction wording, 198 were appreciative and 88 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1199,
+      "summary": "Based on 1,201 useful public comments. Of 286 comments with detectable reaction wording, 198 were appreciative and 88 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1201,
       "explicit_reaction_comments": 286,
       "appreciative_signals": 198,
       "critical_signals": 88,
-      "substantive_share": 0.2819,
+      "substantive_share": 0.2823,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 61
+          "comments": 62
         },
         {
           "name": "Acting & characters",
@@ -934,7 +934,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 281,
+          "useful_comments": 282,
           "appreciative_signals": 67,
           "critical_signals": 13,
           "questions": 36,
@@ -942,7 +942,7 @@
         },
         {
           "channel": "Empty Hand",
-          "useful_comments": 256,
+          "useful_comments": 257,
           "appreciative_signals": 22,
           "critical_signals": 13,
           "questions": 36,
@@ -1621,16 +1621,16 @@
     "Nooru Sami",
     "Dark Giant"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 105,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 3,
     "periodic_comment_refresh": 28,
-    "public_comment_count_unchanged": 72
+    "public_comment_count_unchanged": 71
   },
   "new_comments_added": 2,
-  "stored_comments": 12768,
+  "stored_comments": 12770,
   "videos_monitored": 102,
   "standard_videos_monitored": 73,
   "shorts_monitored": 29,
