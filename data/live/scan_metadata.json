@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-07T09:29:14.801224+00:00",
+  "last_scan": "2026-08-07T10:25:39.181041+00:00",
   "last_video_discovery": "2026-08-07T00:35:53.413619+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -590,16 +590,16 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 66 useful public comments. Of 19 comments with detectable reaction wording, 14 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, direction & making.",
-      "useful_comments": 66,
+      "summary": "Based on 67 useful public comments. Of 19 comments with detectable reaction wording, 14 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, direction & making.",
+      "useful_comments": 67,
       "explicit_reaction_comments": 19,
       "appreciative_signals": 14,
       "critical_signals": 5,
-      "substantive_share": 0.5303,
+      "substantive_share": 0.5224,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 5
+          "comments": 6
         },
         {
           "name": "Release & theatre",
@@ -613,7 +613,7 @@
       "reviewers": [
         {
           "channel": "Galatta Plus",
-          "useful_comments": 66,
+          "useful_comments": 67,
           "appreciative_signals": 14,
           "critical_signals": 5,
           "questions": 18,
@@ -1685,16 +1685,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 97,
+  "comments_fetched": 104,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 26,
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 27,
     "public_comment_count_unchanged": 67
   },
-  "new_comments_added": 3,
-  "stored_comments": 13002,
+  "new_comments_added": 1,
+  "stored_comments": 13003,
   "videos_monitored": 96,
   "standard_videos_monitored": 67,
   "shorts_monitored": 29,
