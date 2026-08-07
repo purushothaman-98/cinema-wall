@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-07T03:42:45.426715+00:00",
+  "last_scan": "2026-08-07T05:26:54.896947+00:00",
   "last_video_discovery": "2026-08-07T00:35:53.413619+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -532,10 +532,10 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
-      "useful_comments": 1,
-      "explicit_reaction_comments": 0,
-      "appreciative_signals": 0,
+      "summary": "Based on 2 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 2,
+      "explicit_reaction_comments": 1,
+      "appreciative_signals": 1,
       "critical_signals": 0,
       "substantive_share": 0.0,
       "top_aspects": [],
@@ -1685,16 +1685,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 101,
+  "comments_fetched": 2,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 26,
-    "public_comment_count_unchanged": 67
+    "public_comment_count_unchanged": 69
   },
-  "new_comments_added": 2,
-  "stored_comments": 12995,
+  "new_comments_added": 1,
+  "stored_comments": 12996,
   "videos_monitored": 96,
   "standard_videos_monitored": 67,
   "shorts_monitored": 29,
