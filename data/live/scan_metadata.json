@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-07T11:13:42.261853+00:00",
+  "last_scan": "2026-08-07T12:04:49.280063+00:00",
   "last_video_discovery": "2026-08-07T00:35:53.413619+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -492,12 +492,12 @@
       ]
     },
     "Con City": {
-      "summary": "Based on 135 useful public comments. Of 33 comments with detectable reaction wording, 25 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss pacing & runtime, story & screenplay, release & theatre.",
-      "useful_comments": 135,
+      "summary": "Based on 136 useful public comments. Of 33 comments with detectable reaction wording, 25 were appreciative and 8 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss pacing & runtime, story & screenplay, release & theatre.",
+      "useful_comments": 136,
       "explicit_reaction_comments": 33,
       "appreciative_signals": 25,
       "critical_signals": 8,
-      "substantive_share": 0.1778,
+      "substantive_share": 0.1838,
       "top_aspects": [
         {
           "name": "Pacing & runtime",
@@ -515,10 +515,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 116,
+          "useful_comments": 117,
           "appreciative_signals": 20,
           "critical_signals": 6,
-          "questions": 5,
+          "questions": 6,
           "leading_topic": "General reaction"
         },
         {
@@ -590,12 +590,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 67 useful public comments. Of 19 comments with detectable reaction wording, 14 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, direction & making.",
-      "useful_comments": 67,
+      "summary": "Based on 68 useful public comments. Of 19 comments with detectable reaction wording, 14 were appreciative and 5 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, direction & making.",
+      "useful_comments": 68,
       "explicit_reaction_comments": 19,
       "appreciative_signals": 14,
       "critical_signals": 5,
-      "substantive_share": 0.5224,
+      "substantive_share": 0.5147,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -613,7 +613,7 @@
       "reviewers": [
         {
           "channel": "Galatta Plus",
-          "useful_comments": 67,
+          "useful_comments": 68,
           "appreciative_signals": 14,
           "critical_signals": 5,
           "questions": 18,
@@ -1685,16 +1685,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 26,
-    "public_comment_count_unchanged": 70
+    "public_comment_count_unchanged": 68
   },
-  "new_comments_added": 0,
-  "stored_comments": 13003,
+  "new_comments_added": 2,
+  "stored_comments": 13005,
   "videos_monitored": 96,
   "standard_videos_monitored": 67,
   "shorts_monitored": 29,
