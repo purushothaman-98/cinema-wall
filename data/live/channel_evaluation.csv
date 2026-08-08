@@ -1,15 +1,15 @@
 channel,source_profile,source_category,films_covered,items_tracked,full_videos,shorts,review_discussion_items,context_items,review_share_pct,stored_comments,useful_comments,useful_share_pct,questions,public_comments,views,comments_per_item,tracker_value
-Tamil Talkies,Tamil Talkies,roast_commentary,15,25,22,3,25,0,100.0,4546,4547,100.0,420,13332,7192735,533.3,146.9
-Filmi craft,Filmi Craft,general_review,16,17,17,0,17,0,100.0,1924,1924,100.0,116,2342,1199450,137.8,96.97
-KaKi's Talkies,KaKi's Talkies,general_review,18,19,19,0,19,0,100.0,709,709,100.0,90,1136,734413,59.8,86.54
-Empty Hand,Empty Hand,roast_commentary,3,3,3,0,3,0,100.0,1144,1144,100.0,98,3329,1646490,1109.7,63.48
-Second Show,Second Show,general_review,11,11,11,0,11,0,100.0,554,554,100.0,68,776,255435,70.5,54.69
-tamilcinemareview,tamilcinemareview,open_youtube,9,9,9,0,9,0,100.0,934,936,100.2,91,1243,583417,138.1,53.65
-Galatta Plus,Galatta Plus,critic_review,12,14,13,1,7,7,50.0,443,443,100.0,95,785,436807,56.1,44.52
+Tamil Talkies,Tamil Talkies,roast_commentary,15,25,22,3,25,0,100.0,4548,4549,100.0,420,13334,7194472,533.4,146.9
+Filmi craft,Filmi Craft,general_review,16,17,17,0,17,0,100.0,1925,1925,100.0,116,2343,1199762,137.8,96.98
+KaKi's Talkies,KaKi's Talkies,general_review,18,19,19,0,19,0,100.0,709,709,100.0,90,1136,734637,59.8,86.54
+Empty Hand,Empty Hand,roast_commentary,3,3,3,0,3,0,100.0,1144,1144,100.0,98,3329,1647560,1109.7,63.48
+Second Show,Second Show,general_review,11,11,11,0,11,0,100.0,554,554,100.0,68,776,255425,70.5,54.69
+tamilcinemareview,tamilcinemareview,open_youtube,9,9,9,0,9,0,100.0,934,936,100.2,91,1243,583419,138.1,53.65
+Galatta Plus,Galatta Plus,critic_review,12,14,13,1,7,7,50.0,443,443,100.0,95,785,437014,56.1,44.52
 Trendswood Tv,Trendswood Tv,open_youtube,5,5,5,0,5,0,100.0,370,370,100.0,23,498,240905,99.6,28.47
 The Fencer Show,The Fencer Show,open_youtube,6,7,5,2,7,0,100.0,57,57,100.0,3,85,129490,12.1,28.07
 Valai Pechu,Valai Pechu,mixed_media,5,5,5,0,5,0,100.0,375,375,100.0,33,426,439196,85.2,27.24
-Makkal Talkies,Makkal Talkies,open_youtube,4,8,2,6,8,0,100.0,42,42,100.0,2,49,458096,6.1,26.63
+Makkal Talkies,Makkal Talkies,open_youtube,4,8,2,6,8,0,100.0,42,42,100.0,2,49,458105,6.1,26.63
 "Mr Mus . 1.5 crore views . 1 hour ago
 
 
@@ -20,17 +20,17 @@ Makkal Talkies,Makkal Talkies,open_youtube,4,8,2,6,8,0,100.0,42,42,100.0,2,49,45
 
 
 
-...",open_youtube,5,7,0,7,7,0,100.0,0,0,0.0,0,0,51541,0.0,24.8
-Tubelight Mind,Tubelight Mind,open_youtube,2,2,1,1,2,0,100.0,699,699,100.0,40,912,2470832,456.0,24.58
-Sudhir Srinivasan,Sudhir Srinivasan,critic_review,8,8,8,0,2,6,25.0,227,227,100.0,68,331,107432,41.4,22.96
+...",open_youtube,5,7,0,7,7,0,100.0,0,0,0.0,0,0,51556,0.0,24.8
+Tubelight Mind,Tubelight Mind,open_youtube,2,2,1,1,2,0,100.0,699,699,100.0,40,912,2470856,456.0,24.58
+Sudhir Srinivasan,Sudhir Srinivasan,critic_review,8,8,8,0,2,6,25.0,228,228,100.0,68,332,107517,41.5,22.98
 Thi Cinemas,Thi Cinemas,open_youtube,4,4,4,0,4,0,100.0,238,238,100.0,15,350,664779,87.5,22.75
 Critics Mohan,Critics Mohan,open_youtube,4,5,4,1,5,0,100.0,12,12,100.0,0,17,42235,3.4,19.66
-Bingoo Box,Bingoo Box,open_youtube,3,3,3,0,3,0,100.0,101,101,100.0,4,187,123066,62.3,16.8
+Bingoo Box,Bingoo Box,open_youtube,3,3,3,0,3,0,100.0,101,101,100.0,4,187,123078,62.3,16.8
 Gurubaai,Gurubaai,open_youtube,1,1,1,0,1,0,100.0,415,415,100.0,48,570,553204,570.0,15.55
 cut 2 cut,cut 2 cut,open_youtube,2,5,4,1,5,0,100.0,3,3,100.0,0,4,15212,0.8,15.46
 Rafi Theatre,Rafi Theatre,open_youtube,3,3,0,3,3,0,100.0,1,1,100.0,0,1,2858,0.3,15.21
 Mr Retro Review ,Mr Retro Review ,open_youtube,3,3,1,2,3,0,100.0,1,1,100.0,0,2,17910,0.7,14.83
-Tamizhaga TentKottai,Tamizhaga TentKottai,open_youtube,3,3,3,0,3,0,100.0,23,23,100.0,3,23,2924,7.7,14.35
+Tamizhaga TentKottai,Tamizhaga TentKottai,open_youtube,3,3,3,0,3,0,100.0,23,23,100.0,3,23,2925,7.7,14.35
 Aj Cine Talkies,Aj Cine Talkies,open_youtube,3,3,3,0,3,0,100.0,12,12,100.0,1,12,11050,4.0,14.18
 Salem Tamizha,Salem Tamizha,open_youtube,2,3,0,3,3,0,100.0,4,4,100.0,0,4,41961,1.3,13.26
 CK RAMNADKAARAN,CK RAMNADKAARAN,open_youtube,1,4,1,3,4,0,100.0,2,2,100.0,0,2,1544,0.5,12.73
@@ -43,7 +43,7 @@ Mr. GK Movie Man,Mr. GK Movie Man,open_youtube,2,2,2,0,2,0,100.0,18,18,100.0,2,1
 Aswanth Kok,Aswanth Kok,open_youtube,1,1,1,0,1,0,100.0,104,104,100.0,4,190,141786,190.0,9.85
 Uruttu Arafath Voice,Uruttu Arafath Voice,open_youtube,1,1,0,1,1,0,100.0,59,59,100.0,4,125,439906,125.0,9.28
 Shruti TV,Shruti TV,open_youtube,1,2,2,0,2,0,100.0,29,29,100.0,3,37,23794,18.5,9.05
-Daily Entertainment Tamil,Daily Entertainment Tamil,open_youtube,1,3,1,2,3,0,100.0,0,0,0.0,0,0,3162,0.0,8.8
+Daily Entertainment Tamil,Daily Entertainment Tamil,open_youtube,1,3,1,2,3,0,100.0,0,0,0.0,0,0,3195,0.0,8.8
 Cinema Vikatan,Cinema Vikatan,mixed_media,1,1,0,1,1,0,100.0,37,37,100.0,1,58,790954,58.0,8.57
 Live On Heaven TV,Live On Heaven TV,open_youtube,1,2,2,0,2,0,100.0,1,1,100.0,0,1,3671,0.5,8.52
 FrameFlix,FrameFlix,open_youtube,2,2,2,0,2,0,100.0,0,0,0.0,0,0,962,0.0,8.5
@@ -54,11 +54,11 @@ Akfilmverse ,Akfilmverse ,open_youtube,1,1,0,1,1,0,100.0,38,38,100.0,2,52,405413
 Makkal Vote,Makkal Vote,open_youtube,1,1,0,1,1,0,100.0,24,24,100.0,1,39,288962,39.0,7.98
 Black Pepper News,Black Pepper News,open_youtube,1,1,1,0,1,0,100.0,42,42,100.0,4,54,146170,54.0,7.81
 Just REviewSS,Just REviewSS,open_youtube,1,1,0,1,1,0,100.0,21,21,100.0,0,21,23512,21.0,7.71
-Thirupathi Jilebi,Thirupathi Jilebi,open_youtube,1,1,0,1,1,0,100.0,11,11,100.0,2,17,22757,17.0,7.66
-themaheswaranr,themaheswaranr,open_youtube,1,1,0,1,1,0,100.0,8,8,100.0,2,15,20442,15.0,7.62
+Thirupathi Jilebi,Thirupathi Jilebi,open_youtube,1,1,0,1,1,0,100.0,11,11,100.0,2,17,22764,17.0,7.66
+themaheswaranr,themaheswaranr,open_youtube,1,1,0,1,1,0,100.0,8,8,100.0,2,15,20451,15.0,7.62
 Krishna Uncut,Krishna Uncut,open_youtube,1,1,0,1,1,0,100.0,7,7,100.0,0,14,9194,14.0,7.61
 Channel 5 Cinema,Channel 5 Cinema,open_youtube,4,4,4,0,0,4,0.0,4,4,100.0,1,4,3136,1.0,7.56
-Soda Buddi,Soda Buddi,open_youtube,1,1,0,1,1,0,100.0,10,10,100.0,0,10,56818,10.0,7.55
+Soda Buddi,Soda Buddi,open_youtube,1,1,0,1,1,0,100.0,10,10,100.0,0,10,56819,10.0,7.55
 Arjun Dhanush,Arjun Dhanush,open_youtube,1,1,0,1,1,0,100.0,9,9,100.0,0,9,22175,9.0,7.54
 Bollywood Collection,Bollywood Collection,open_youtube,1,1,0,1,1,0,100.0,8,8,100.0,0,9,52961,9.0,7.54
 thiru movie zone,thiru movie zone,open_youtube,1,1,0,1,1,0,100.0,7,7,100.0,0,7,1138,7.0,7.5
@@ -74,7 +74,7 @@ SPUNKY ASLAM ,SPUNKY ASLAM ,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,0,2,4475,2.
 filminotess,filminotess,open_youtube,1,1,0,1,1,0,100.0,2,2,100.0,0,2,99068,2.0,7.43
 Filmy SinghSaheb ,Filmy SinghSaheb ,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,0,1,1020,1.0,7.42
 Karthik Reacts,Karthik Reacts,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,0,1,4393,1.0,7.42
-MADRAS TELETOWER,MADRAS TELETOWER,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,0,1,1661,1.0,7.42
+MADRAS TELETOWER,MADRAS TELETOWER,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,0,1,1679,1.0,7.42
 MIDDLE CLASS ARAVIND,MIDDLE CLASS ARAVIND,open_youtube,1,1,0,1,1,0,100.0,1,1,100.0,1,1,1539,1.0,7.42
 Narrated By S P VEERA,Narrated By S P VEERA,open_youtube,1,1,1,0,1,0,100.0,18,18,100.0,1,26,30631,26.0,7.39
 Kumudam Cinema,Kumudam Cinema,open_youtube,1,2,0,2,2,0,100.0,0,0,0.0,0,0,1936,0.0,7.3
@@ -84,7 +84,7 @@ Kuttyma Tamil TV,Kuttyma Tamil TV,open_youtube,1,1,1,0,1,0,100.0,11,11,100.0,0,1
 Recent Voice,Recent Voice,open_youtube,1,1,1,0,1,0,100.0,11,11,100.0,1,11,19753,11.0,7.17
 Review Petti & USA Vlogs,Review Petti & USA Vlogs,open_youtube,1,1,1,0,1,0,100.0,5,5,100.0,0,11,1838,11.0,7.17
 4T Movie Lover,4T Movie Lover,open_youtube,1,1,1,0,1,0,100.0,9,9,100.0,1,9,3617,9.0,7.13
-FILMY MASALA,FILMY MASALA,open_youtube,1,1,1,0,1,0,100.0,6,6,100.0,0,7,19662,7.0,7.11
+FILMY MASALA,FILMY MASALA,open_youtube,1,1,1,0,1,0,100.0,6,6,100.0,0,7,19696,7.0,7.11
 Recall tamizha ,Recall tamizha ,open_youtube,1,1,1,0,1,0,100.0,7,7,100.0,0,7,23380,7.0,7.11
 Chennai Day,Chennai Day,open_youtube,1,1,1,0,1,0,100.0,5,5,100.0,1,6,8260,6.0,7.09
 Jeeva Anand,Jeeva Anand,open_youtube,1,1,1,0,1,0,100.0,2,2,100.0,0,5,4514,5.0,7.08
@@ -124,7 +124,7 @@ Cinema Talks,Cinema Talks,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,1901,0.0,5.
 Cinema Trip,Cinema Trip,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,8123,0.0,5.4
 Cinepulse Telugu (Charan Talks),Cinepulse Telugu (Charan Talks),open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,7470,0.0,5.4
 Filmy Bolly Holly Review ,Filmy Bolly Holly Review ,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,729,0.0,5.4
-Good Things🍁,Good Things🍁,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,3164,0.0,5.4
+Good Things🍁,Good Things🍁,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,3166,0.0,5.4
 Hariprasad Filmmaker ,Hariprasad Filmmaker ,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,2059,0.0,5.4
 KING 24x7,KING 24x7,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,1891,0.0,5.4
 KalakkalcinemaVideos,KalakkalcinemaVideos,open_youtube,1,1,0,1,1,0,100.0,0,0,0.0,0,0,813,0.0,5.4
@@ -152,7 +152,7 @@ Newston Cinema,Newston Cinema,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,21,355052
 A to Z 360,A to Z 360,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,309,0.0,5.0
 AMN Tv,AMN Tv,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,380,0.0,5.0
 Appustudio27,Appustudio27,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,50,0.0,5.0
-Best Tamil Movie Review ,Best Tamil Movie Review ,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,54,0.0,5.0
+Best Tamil Movie Review ,Best Tamil Movie Review ,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,55,0.0,5.0
 BestinQ Media,BestinQ Media,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,83,0.0,5.0
 CSR FILM TALKS,CSR FILM TALKS,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,2420,0.0,5.0
 Chennai Bites ,Chennai Bites ,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,26117,0.0,5.0
@@ -163,7 +163,7 @@ Gem Cinemas,Gem Cinemas,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,103,0.0,5.0
 Kino Updates,Kino Updates,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,50,0.0,5.0
 Kuraltv,Kuraltv,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,13,0.0,5.0
 Mobile Journalist,Mobile Journalist,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,27810,0.0,5.0
-Movie studio Film,Movie studio Film,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,270,0.0,5.0
+Movie studio Film,Movie studio Film,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,271,0.0,5.0
 New Cinema Tv,New Cinema Tv,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1410,0.0,5.0
 New Filmalaya,New Filmalaya,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,57,0.0,5.0
 OH CINEMA,OH CINEMA,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1282,0.0,5.0
@@ -171,7 +171,7 @@ PEGXON REVIEW,PEGXON REVIEW,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1197,0.0,
 People Cinema,People Cinema,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,235,0.0,5.0
 Review with Ankit ,Review with Ankit ,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,9,0.0,5.0
 S2 TALKIES,S2 TALKIES,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1673,0.0,5.0
-Salem Nanba,Salem Nanba,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,82,0.0,5.0
+Salem Nanba,Salem Nanba,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,92,0.0,5.0
 Santhosh Vlog 🏂,Santhosh Vlog 🏂,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,108,0.0,5.0
 Sasi_edits,Sasi_edits,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,10,0.0,5.0
 Tamilanda ks settu,Tamilanda ks settu,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1564,0.0,5.0
@@ -179,14 +179,14 @@ Tamzihan Frames,Tamzihan Frames,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,117,0
 They Famous,They Famous,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,14,0.0,5.0
 This Is MADRAS,This Is MADRAS,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,175,0.0,5.0
 Tiruvannamalai Times,Tiruvannamalai Times,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,2005,0.0,5.0
-Today Cinema,Today Cinema,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1283,0.0,5.0
+Today Cinema,Today Cinema,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,1310,0.0,5.0
 Udaya Jwala Telugu vlogs,Udaya Jwala Telugu vlogs,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,866,0.0,5.0
 VJ Vlogscity,VJ Vlogscity,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,60,0.0,5.0
 VJ. Saran Review ,VJ. Saran Review ,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,27,0.0,5.0
 Vadachennai Talkies,Vadachennai Talkies,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,45,0.0,5.0
 Weekly Voice Official,Weekly Voice Official,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,12,0.0,5.0
 voicetalktamil,voicetalktamil,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,34,0.0,5.0
-அரசியல் விவாதம்,அரசியல் விவாதம்,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,9290,0.0,5.0
+அரசியல் விவாதம்,அரசியல் விவாதம்,open_youtube,1,1,1,0,1,0,100.0,0,0,0.0,0,0,9300,0.0,5.0
 World Cinema Vibes,World Cinema Vibes,open_youtube,1,1,1,0,0,1,0.0,13,13,100.0,0,17,13852,17.0,4.75
 Sun News,Sun News,open_youtube,1,1,1,0,0,1,0.0,1,1,100.0,1,3,2654,3.0,4.54
 VmrTalks,VmrTalks,open_youtube,1,1,1,0,0,1,0.0,2,2,100.0,0,2,597,2.0,4.53
