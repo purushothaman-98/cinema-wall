@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-08T21:18:54.735962+00:00",
+  "last_scan": "2026-08-08T21:52:32.222938+00:00",
   "last_video_discovery": "2026-08-08T00:41:49.646546+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -960,12 +960,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 661 useful public comments. Of 246 comments with detectable reaction wording, 170 were appreciative and 76 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 661,
+      "summary": "Based on 662 useful public comments. Of 246 comments with detectable reaction wording, 170 were appreciative and 76 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 662,
       "explicit_reaction_comments": 246,
       "appreciative_signals": 170,
       "critical_signals": 76,
-      "substantive_share": 0.2027,
+      "substantive_share": 0.2039,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -973,7 +973,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 29
+          "comments": 30
         },
         {
           "name": "Emotion",
@@ -1015,10 +1015,10 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 58,
+          "useful_comments": 59,
           "appreciative_signals": 12,
           "critical_signals": 4,
-          "questions": 3,
+          "questions": 4,
           "leading_topic": "General reaction"
         },
         {
@@ -1766,16 +1766,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 150,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 74
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 75
   },
   "new_comments_added": 1,
-  "stored_comments": 13916,
+  "stored_comments": 13917,
   "videos_monitored": 115,
   "standard_videos_monitored": 82,
   "shorts_monitored": 33,
