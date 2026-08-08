@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-08T20:15:38.422500+00:00",
+  "last_scan": "2026-08-08T20:54:52.373674+00:00",
   "last_video_discovery": "2026-08-08T00:41:49.646546+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -655,12 +655,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 326 useful public comments. Of 83 comments with detectable reaction wording, 71 were appreciative and 12 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 326,
+      "summary": "Based on 327 useful public comments. Of 83 comments with detectable reaction wording, 71 were appreciative and 12 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 327,
       "explicit_reaction_comments": 83,
       "appreciative_signals": 71,
       "critical_signals": 12,
-      "substantive_share": 0.3405,
+      "substantive_share": 0.3394,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -678,7 +678,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 183,
+          "useful_comments": 184,
           "appreciative_signals": 39,
           "critical_signals": 5,
           "questions": 24,
@@ -960,12 +960,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 660 useful public comments. Of 245 comments with detectable reaction wording, 170 were appreciative and 75 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 660,
-      "explicit_reaction_comments": 245,
+      "summary": "Based on 661 useful public comments. Of 246 comments with detectable reaction wording, 170 were appreciative and 76 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 661,
+      "explicit_reaction_comments": 246,
       "appreciative_signals": 170,
-      "critical_signals": 75,
-      "substantive_share": 0.203,
+      "critical_signals": 76,
+      "substantive_share": 0.2027,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -983,9 +983,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 216,
+          "useful_comments": 217,
           "appreciative_signals": 59,
-          "critical_signals": 21,
+          "critical_signals": 22,
           "questions": 23,
           "leading_topic": "General reaction"
         },
@@ -1766,16 +1766,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 1376,
+  "comments_fetched": 199,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 99,
-    "public_comment_count_unchanged": 14
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 73
   },
-  "new_comments_added": 2,
-  "stored_comments": 13910,
+  "new_comments_added": 5,
+  "stored_comments": 13915,
   "videos_monitored": 115,
   "standard_videos_monitored": 82,
   "shorts_monitored": 33,
