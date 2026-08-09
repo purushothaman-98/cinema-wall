@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T05:27:59.648554+00:00",
+  "last_scan": "2026-08-09T06:06:34.802745+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -657,12 +657,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 348 useful public comments. Of 91 comments with detectable reaction wording, 80 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 348,
+      "summary": "Based on 349 useful public comments. Of 91 comments with detectable reaction wording, 80 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 349,
       "explicit_reaction_comments": 91,
       "appreciative_signals": 80,
       "critical_signals": 11,
-      "substantive_share": 0.3477,
+      "substantive_share": 0.3496,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -680,7 +680,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 194,
+          "useful_comments": 195,
           "appreciative_signals": 42,
           "critical_signals": 4,
           "questions": 24,
@@ -1768,16 +1768,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 292,
+  "comments_fetched": 114,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 6,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 37,
-    "public_comment_count_unchanged": 74
+    "public_comment_count_unchanged": 78
   },
-  "new_comments_added": 45,
-  "stored_comments": 14254,
+  "new_comments_added": 36,
+  "stored_comments": 14255,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
