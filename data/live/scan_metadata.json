@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T10:59:04.471986+00:00",
+  "last_scan": "2026-08-09T11:25:28.268511+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -553,12 +553,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 493 useful public comments. Of 94 comments with detectable reaction wording, 83 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 493,
+      "summary": "Based on 494 useful public comments. Of 94 comments with detectable reaction wording, 83 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 494,
       "explicit_reaction_comments": 94,
       "appreciative_signals": 83,
       "critical_signals": 11,
-      "substantive_share": 0.1785,
+      "substantive_share": 0.1781,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -576,7 +576,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 303,
+          "useful_comments": 304,
           "appreciative_signals": 41,
           "critical_signals": 2,
           "questions": 21,
@@ -657,12 +657,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 369 useful public comments. Of 99 comments with detectable reaction wording, 86 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 369,
+      "summary": "Based on 370 useful public comments. Of 99 comments with detectable reaction wording, 86 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 370,
       "explicit_reaction_comments": 99,
       "appreciative_signals": 86,
       "critical_signals": 13,
-      "substantive_share": 0.355,
+      "substantive_share": 0.3541,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -680,7 +680,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 212,
+          "useful_comments": 213,
           "appreciative_signals": 48,
           "critical_signals": 5,
           "questions": 27,
@@ -1768,16 +1768,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 165,
+  "comments_fetched": 135,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 37,
-    "public_comment_count_unchanged": 77
+    "public_comment_count_unchanged": 78
   },
-  "new_comments_added": 42,
-  "stored_comments": 14289,
+  "new_comments_added": 37,
+  "stored_comments": 14291,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
