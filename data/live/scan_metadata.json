@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T15:27:16.189005+00:00",
+  "last_scan": "2026-08-09T15:56:16.932653+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -553,12 +553,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 503 useful public comments. Of 96 comments with detectable reaction wording, 85 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 503,
+      "summary": "Based on 505 useful public comments. Of 96 comments with detectable reaction wording, 85 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 505,
       "explicit_reaction_comments": 96,
       "appreciative_signals": 85,
       "critical_signals": 11,
-      "substantive_share": 0.1769,
+      "substantive_share": 0.1762,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -576,7 +576,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 311,
+          "useful_comments": 313,
           "appreciative_signals": 42,
           "critical_signals": 2,
           "questions": 21,
@@ -657,12 +657,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 379 useful public comments. Of 103 comments with detectable reaction wording, 90 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 379,
+      "summary": "Based on 380 useful public comments. Of 103 comments with detectable reaction wording, 90 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 380,
       "explicit_reaction_comments": 103,
       "appreciative_signals": 90,
       "critical_signals": 13,
-      "substantive_share": 0.3536,
+      "substantive_share": 0.3526,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -680,7 +680,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 219,
+          "useful_comments": 220,
           "appreciative_signals": 50,
           "critical_signals": 5,
           "questions": 28,
@@ -1058,12 +1058,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,484 useful public comments. Of 360 comments with detectable reaction wording, 247 were appreciative and 113 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1484,
-      "explicit_reaction_comments": 360,
-      "appreciative_signals": 247,
+      "summary": "Based on 1,485 useful public comments. Of 361 comments with detectable reaction wording, 248 were appreciative and 113 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1485,
+      "explicit_reaction_comments": 361,
+      "appreciative_signals": 248,
       "critical_signals": 113,
-      "substantive_share": 0.2857,
+      "substantive_share": 0.2862,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1089,8 +1089,8 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 296,
-          "appreciative_signals": 69,
+          "useful_comments": 297,
+          "appreciative_signals": 70,
           "critical_signals": 14,
           "questions": 38,
           "leading_topic": "General reaction"
@@ -1768,16 +1768,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 187,
+  "comments_fetched": 235,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 38,
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 37,
     "public_comment_count_unchanged": 76
   },
   "new_comments_added": 39,
-  "stored_comments": 14317,
+  "stored_comments": 14321,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
