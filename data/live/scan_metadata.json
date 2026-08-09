@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T20:18:11.999763+00:00",
+  "last_scan": "2026-08-09T20:58:58.789738+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -553,12 +553,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 516 useful public comments. Of 99 comments with detectable reaction wording, 88 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 516,
-      "explicit_reaction_comments": 99,
-      "appreciative_signals": 88,
+      "summary": "Based on 517 useful public comments. Of 100 comments with detectable reaction wording, 89 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 517,
+      "explicit_reaction_comments": 100,
+      "appreciative_signals": 89,
       "critical_signals": 11,
-      "substantive_share": 0.1744,
+      "substantive_share": 0.176,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -569,7 +569,7 @@
           "comments": 17
         },
         {
-          "name": "Music & sound",
+          "name": "Story & screenplay",
           "comments": 13
         }
       ],
@@ -600,8 +600,8 @@
         },
         {
           "channel": "Sudhir Srinivasan",
-          "useful_comments": 29,
-          "appreciative_signals": 10,
+          "useful_comments": 30,
+          "appreciative_signals": 11,
           "critical_signals": 1,
           "questions": 8,
           "leading_topic": "General reaction"
@@ -1768,16 +1768,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 1479,
+  "comments_fetched": 118,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 102,
-    "public_comment_count_unchanged": 12
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 38,
+    "public_comment_count_unchanged": 78
   },
-  "new_comments_added": 39,
-  "stored_comments": 14356,
+  "new_comments_added": 36,
+  "stored_comments": 14357,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
