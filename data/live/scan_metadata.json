@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T02:55:33.807031+00:00",
+  "last_scan": "2026-08-09T04:08:27.356138+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -553,16 +553,16 @@
       ]
     },
     "DC": {
-      "summary": "Based on 473 useful public comments. Of 90 comments with detectable reaction wording, 79 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 473,
-      "explicit_reaction_comments": 90,
-      "appreciative_signals": 79,
+      "summary": "Based on 479 useful public comments. Of 91 comments with detectable reaction wording, 80 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 479,
+      "explicit_reaction_comments": 91,
+      "appreciative_signals": 80,
       "critical_signals": 11,
-      "substantive_share": 0.1818,
+      "substantive_share": 0.1816,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 30
+          "comments": 31
         },
         {
           "name": "Release & theatre",
@@ -576,8 +576,8 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 286,
-          "appreciative_signals": 37,
+          "useful_comments": 292,
+          "appreciative_signals": 38,
           "critical_signals": 2,
           "questions": 20,
           "leading_topic": "General reaction"
@@ -657,12 +657,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 339 useful public comments. Of 86 comments with detectable reaction wording, 75 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 339,
-      "explicit_reaction_comments": 86,
-      "appreciative_signals": 75,
+      "summary": "Based on 342 useful public comments. Of 87 comments with detectable reaction wording, 76 were appreciative and 11 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 342,
+      "explicit_reaction_comments": 87,
+      "appreciative_signals": 76,
       "critical_signals": 11,
-      "substantive_share": 0.3451,
+      "substantive_share": 0.345,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -680,8 +680,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 188,
-          "appreciative_signals": 39,
+          "useful_comments": 190,
+          "appreciative_signals": 40,
           "critical_signals": 4,
           "questions": 24,
           "leading_topic": "General reaction"
@@ -696,10 +696,10 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 66,
+          "useful_comments": 67,
           "appreciative_signals": 17,
           "critical_signals": 1,
-          "questions": 7,
+          "questions": 8,
           "leading_topic": "General reaction"
         }
       ]
@@ -1768,7 +1768,7 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 116,
+  "comments_fetched": 185,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1776,8 +1776,8 @@
     "periodic_comment_refresh": 37,
     "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 39,
-  "stored_comments": 14234,
+  "new_comments_added": 45,
+  "stored_comments": 14244,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
