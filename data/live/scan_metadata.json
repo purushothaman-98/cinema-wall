@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-09T20:58:58.789738+00:00",
+  "last_scan": "2026-08-09T21:28:20.799042+00:00",
   "last_video_discovery": "2026-08-09T00:44:41.012386+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -657,16 +657,16 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 400 useful public comments. Of 111 comments with detectable reaction wording, 96 were appreciative and 15 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 400,
-      "explicit_reaction_comments": 111,
-      "appreciative_signals": 96,
+      "summary": "Based on 403 useful public comments. Of 112 comments with detectable reaction wording, 97 were appreciative and 15 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 403,
+      "explicit_reaction_comments": 112,
+      "appreciative_signals": 97,
       "critical_signals": 15,
-      "substantive_share": 0.35,
+      "substantive_share": 0.3499,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 21
+          "comments": 22
         },
         {
           "name": "Release & theatre",
@@ -680,8 +680,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 237,
-          "appreciative_signals": 55,
+          "useful_comments": 240,
+          "appreciative_signals": 56,
           "critical_signals": 6,
           "questions": 30,
           "leading_topic": "General reaction"
@@ -1768,7 +1768,7 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 118,
+  "comments_fetched": 87,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1776,8 +1776,8 @@
     "periodic_comment_refresh": 38,
     "public_comment_count_unchanged": 78
   },
-  "new_comments_added": 36,
-  "stored_comments": 14357,
+  "new_comments_added": 38,
+  "stored_comments": 14360,
   "videos_monitored": 117,
   "standard_videos_monitored": 83,
   "shorts_monitored": 34,
