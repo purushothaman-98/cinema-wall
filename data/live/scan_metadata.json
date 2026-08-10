@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-10T20:07:17.975086+00:00",
+  "last_scan": "2026-08-10T21:08:24.505452+00:00",
   "last_video_discovery": "2026-08-10T00:46:28.922303+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -556,12 +556,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 638 useful public comments. Of 132 comments with detectable reaction wording, 119 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 638,
+      "summary": "Based on 640 useful public comments. Of 132 comments with detectable reaction wording, 119 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 640,
       "explicit_reaction_comments": 132,
       "appreciative_signals": 119,
       "critical_signals": 13,
-      "substantive_share": 0.1959,
+      "substantive_share": 0.1969,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -579,7 +579,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 372,
+          "useful_comments": 373,
           "appreciative_signals": 54,
           "critical_signals": 2,
           "questions": 27,
@@ -603,10 +603,10 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 41,
+          "useful_comments": 42,
           "appreciative_signals": 8,
           "critical_signals": 1,
-          "questions": 5,
+          "questions": 6,
           "leading_topic": "General reaction"
         },
         {
@@ -1787,16 +1787,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 1328,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 40,
-    "public_comment_count_unchanged": 79
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 103,
+    "public_comment_count_unchanged": 15
   },
   "new_comments_added": 2,
-  "stored_comments": 14555,
+  "stored_comments": 14557,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
