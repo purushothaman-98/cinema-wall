@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-11T08:01:34.135948+00:00",
+  "last_scan": "2026-08-11T09:27:10.354480+00:00",
   "last_video_discovery": "2026-08-11T01:05:19.440226+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -556,20 +556,20 @@
       ]
     },
     "DC": {
-      "summary": "Based on 694 useful public comments. Of 149 comments with detectable reaction wording, 131 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 694,
+      "summary": "Based on 701 useful public comments. Of 149 comments with detectable reaction wording, 131 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 701,
       "explicit_reaction_comments": 149,
       "appreciative_signals": 131,
       "critical_signals": 18,
-      "substantive_share": 0.219,
+      "substantive_share": 0.2197,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 61
+          "comments": 62
         },
         {
           "name": "Release & theatre",
-          "comments": 21
+          "comments": 22
         },
         {
           "name": "Music & sound",
@@ -579,7 +579,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 384,
+          "useful_comments": 388,
           "appreciative_signals": 56,
           "critical_signals": 2,
           "questions": 28,
@@ -595,7 +595,7 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 58,
+          "useful_comments": 61,
           "appreciative_signals": 15,
           "critical_signals": 1,
           "questions": 12,
@@ -684,12 +684,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 455 useful public comments. Of 132 comments with detectable reaction wording, 114 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 455,
+      "summary": "Based on 457 useful public comments. Of 132 comments with detectable reaction wording, 114 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 457,
       "explicit_reaction_comments": 132,
       "appreciative_signals": 114,
       "critical_signals": 18,
-      "substantive_share": 0.3516,
+      "substantive_share": 0.3501,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -707,7 +707,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 283,
+          "useful_comments": 285,
           "appreciative_signals": 70,
           "critical_signals": 9,
           "questions": 35,
@@ -989,12 +989,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 673 useful public comments. Of 252 comments with detectable reaction wording, 172 were appreciative and 80 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 673,
+      "summary": "Based on 674 useful public comments. Of 252 comments with detectable reaction wording, 172 were appreciative and 80 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 674,
       "explicit_reaction_comments": 252,
       "appreciative_signals": 172,
       "critical_signals": 80,
-      "substantive_share": 0.2065,
+      "substantive_share": 0.2062,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1012,7 +1012,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 225,
+          "useful_comments": 226,
           "appreciative_signals": 61,
           "critical_signals": 25,
           "questions": 24,
@@ -1795,16 +1795,16 @@
     "Angikaaram",
     "Andharan"
   ],
-  "comments_fetched": 1735,
+  "comments_fetched": 218,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 6,
-    "periodic_comment_refresh": 109,
-    "public_comment_count_unchanged": 5
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 43,
+    "public_comment_count_unchanged": 72
   },
-  "new_comments_added": 7,
-  "stored_comments": 14636,
+  "new_comments_added": 11,
+  "stored_comments": 14647,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
