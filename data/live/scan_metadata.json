@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-12T12:39:36.678442+00:00",
+  "last_scan": "2026-08-12T14:11:17.040638+00:00",
   "last_video_discovery": "2026-08-12T03:02:21.690705+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -556,16 +556,16 @@
       ]
     },
     "DC": {
-      "summary": "Based on 751 useful public comments. Of 158 comments with detectable reaction wording, 140 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 751,
+      "summary": "Based on 754 useful public comments. Of 158 comments with detectable reaction wording, 140 were appreciative and 18 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 754,
       "explicit_reaction_comments": 158,
       "appreciative_signals": 140,
       "critical_signals": 18,
-      "substantive_share": 0.2184,
+      "substantive_share": 0.2202,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 69
+          "comments": 70
         },
         {
           "name": "Release & theatre",
@@ -579,7 +579,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 418,
+          "useful_comments": 420,
           "appreciative_signals": 60,
           "critical_signals": 2,
           "questions": 30,
@@ -603,7 +603,7 @@
         },
         {
           "channel": "Sudhir Srinivasan",
-          "useful_comments": 45,
+          "useful_comments": 46,
           "appreciative_signals": 19,
           "critical_signals": 1,
           "questions": 12,
@@ -692,12 +692,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 483 useful public comments. Of 143 comments with detectable reaction wording, 124 were appreciative and 19 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 483,
-      "explicit_reaction_comments": 143,
-      "appreciative_signals": 124,
-      "critical_signals": 19,
-      "substantive_share": 0.3478,
+      "summary": "Based on 490 useful public comments. Of 146 comments with detectable reaction wording, 126 were appreciative and 20 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 490,
+      "explicit_reaction_comments": 146,
+      "appreciative_signals": 126,
+      "critical_signals": 20,
+      "substantive_share": 0.3469,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -715,10 +715,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 308,
-          "appreciative_signals": 79,
-          "critical_signals": 9,
-          "questions": 38,
+          "useful_comments": 315,
+          "appreciative_signals": 81,
+          "critical_signals": 10,
+          "questions": 40,
           "leading_topic": "General reaction"
         },
         {
@@ -1803,16 +1803,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 43,
+  "comments_fetched": 352,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 40,
-    "public_comment_count_unchanged": 79
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 43,
+    "public_comment_count_unchanged": 72
   },
-  "new_comments_added": 0,
-  "stored_comments": 14753,
+  "new_comments_added": 10,
+  "stored_comments": 14763,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
