@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-12T22:08:23.203286+00:00",
+  "last_scan": "2026-08-12T23:07:47.420033+00:00",
   "last_video_discovery": "2026-08-12T03:02:21.690705+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -556,12 +556,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 767 useful public comments. Of 160 comments with detectable reaction wording, 141 were appreciative and 19 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 767,
+      "summary": "Based on 768 useful public comments. Of 160 comments with detectable reaction wording, 141 were appreciative and 19 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 768,
       "explicit_reaction_comments": 160,
       "appreciative_signals": 141,
       "critical_signals": 19,
-      "substantive_share": 0.2203,
+      "substantive_share": 0.2201,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -579,7 +579,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 429,
+          "useful_comments": 430,
           "appreciative_signals": 61,
           "critical_signals": 3,
           "questions": 32,
@@ -997,12 +997,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 679 useful public comments. Of 255 comments with detectable reaction wording, 173 were appreciative and 82 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 679,
-      "explicit_reaction_comments": 255,
-      "appreciative_signals": 173,
+      "summary": "Based on 680 useful public comments. Of 256 comments with detectable reaction wording, 174 were appreciative and 82 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 680,
+      "explicit_reaction_comments": 256,
+      "appreciative_signals": 174,
       "critical_signals": 82,
-      "substantive_share": 0.2077,
+      "substantive_share": 0.2088,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1010,7 +1010,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 30
+          "comments": 31
         },
         {
           "name": "Emotion",
@@ -1052,8 +1052,8 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 61,
-          "appreciative_signals": 12,
+          "useful_comments": 62,
+          "appreciative_signals": 13,
           "critical_signals": 6,
           "questions": 4,
           "leading_topic": "General reaction"
@@ -1803,16 +1803,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 61,
+  "comments_fetched": 1556,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 41,
-    "public_comment_count_unchanged": 78
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 105,
+    "public_comment_count_unchanged": 11
   },
-  "new_comments_added": 0,
-  "stored_comments": 14781,
+  "new_comments_added": 2,
+  "stored_comments": 14783,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
