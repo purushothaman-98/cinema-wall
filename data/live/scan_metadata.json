@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-12T19:33:43.300127+00:00",
+  "last_scan": "2026-08-12T20:30:45.022429+00:00",
   "last_video_discovery": "2026-08-12T03:02:21.690705+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1803,16 +1803,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 193,
+  "comments_fetched": 250,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 41,
-    "public_comment_count_unchanged": 76
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 44,
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 3,
-  "stored_comments": 14780,
+  "new_comments_added": 1,
+  "stored_comments": 14781,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
