@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-14T03:04:26.809619+00:00",
-  "last_video_discovery": "2026-08-13T03:05:45.631734+00:00",
+  "last_scan": "2026-08-14T05:12:06.160509+00:00",
+  "last_video_discovery": "2026-08-14T05:12:06.160509+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -13,6 +13,7 @@
   "selection_version": 14,
   "active_video_ids": [
     "-21sCJC07ns",
+    "-K22RQIwhaE",
     "02LIHFCYLFY",
     "0hXaHtpiwS0",
     "0z72inq5IHk",
@@ -29,6 +30,7 @@
     "9UmC0sRxGIE",
     "BYPf0aA69aM",
     "BmHN5fdO_7o",
+    "BxrKP37defE",
     "CIqalCiVHPU",
     "D96FUzC5bx8",
     "Dmw2-tr7Xl0",
@@ -37,38 +39,35 @@
     "GPVCddT5-oI",
     "HMFml_NutNg",
     "HzhLqaggnHM",
+    "Ico05t90x8Q",
     "Jcf9Q-D7_5M",
     "JkieWytV00k",
     "KIlj5fsPiIg",
-    "KW3_NQi1LEk",
     "LFdZjfqV2gY",
     "Lf9zxufJt-A",
     "LgXJd4aZR98",
     "Lmk7NMvKkys",
+    "Lx6KpeeGneU",
     "MDztlUCs6AY",
     "MH7jdniLG5o",
-    "MpOLjhV3doE",
     "NcvGH-vUS3o",
-    "NenTKnFjWg8",
     "OjlO3i690xU",
+    "OzWTtp3O3vU",
     "P5d440kliRw",
     "Q8WVB5ub5Ps",
     "QkGUFx1Ns8Y",
     "R2ld_JJTGJo",
-    "R3WI0NEZ5Xo",
     "R76a25Ggjx8",
     "RLhvDMZedVc",
     "S42iXHjuTE8",
-    "TJQqXe8Jc0w",
     "TanDK1_9kfI",
+    "V4dLU02wodQ",
     "VWaKFuvU6_s",
-    "VWfXQbilQ-w",
     "Vqc-L2YanLk",
     "VrU7nl5NIW4",
     "X030fOP0e0A",
     "YeH-S-6UVsw",
     "YvYPlnF07w8",
-    "Z0uCtHbEGbU",
     "_P7O4ZxqqFk",
     "_Z5LvDYvvtc",
     "_sP8WpalSdw",
@@ -78,22 +77,19 @@
     "bGQYk-QJ6Z4",
     "bPaudjceoio",
     "byPjJv37-_o",
+    "c-Ftb2efv1k",
     "c7EzzEgyfFM",
     "cULfT3sfuPk",
     "cZERSnAE9hE",
-    "dBwnpEbBG04",
-    "dNiR-DIM8ws",
     "doqGi23QOu4",
-    "eaKYIJljJog",
     "f02UVsH2gwY",
     "f9vSQANdQ8Y",
     "fffgqHQBHrY",
-    "fsb95BIYrDk",
     "ghgTkC-SI9U",
     "gtXuV6ihcv8",
     "hQ8k74xQPDU",
-    "hiaftYK7Enk",
     "iza7zuCiHNA",
+    "j2IMskHJooU",
     "jVUt3w72nKE",
     "jo9pLKTXTRc",
     "kM1KK42ngzY",
@@ -103,6 +99,7 @@
     "l0NAjDxOr44",
     "lsSwlXL3OCY",
     "m_kxIfJmqfI",
+    "mas-FDw189g",
     "mplpkZXBxhI",
     "nub83OozhZk",
     "nwCjD1lAyVk",
@@ -117,24 +114,23 @@
     "rpEqVl_nUW8",
     "s5dR4osy9tk",
     "sNX0f8e4YP4",
-    "sq-JYRSvoXo",
     "t5I5hZqmAxM",
     "tKKZGqzZrYM",
     "tWfZJPhxo6o",
     "tfnh11wjo5o",
     "uLLI5U_6BME",
-    "uSiNOekvOuY",
     "uXFrdVEQotE",
     "w90XD6kUaV8",
     "w925Bd_-RnY",
     "xTBc8z__vY4",
     "xafyTIvroj8",
     "xvhNCnQvOvg",
+    "yND464uM0Gs",
     "zTAqIoV2nc8",
     "zilLN4gMGsI"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -153,23 +149,437 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 0,
-  "broad_discovery_queries_run": 0,
-  "source_channel_queries_run": 0,
-  "source_channel_video_hits": 0,
-  "source_channel_matched_hits": 0,
-  "source_channel_queries": [],
-  "upload_feed_channels_run": 0,
-  "upload_feed_video_hits": 0,
-  "upload_feed_matched_hits": 0,
-  "upload_feed_queries": [],
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "broad_discovery_video_hits": 24,
+  "broad_discovery_queries_run": 2,
+  "source_channel_queries_run": 11,
+  "source_channel_video_hits": 132,
+  "source_channel_matched_hits": 49,
+  "source_channel_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "query": "\"KaKi's Talkies\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 5
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sudhir Srinivasan\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 5
+    },
+    {
+      "channel": "Galatta Plus",
+      "query": "\"Galatta Plus\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 9
+    },
+    {
+      "channel": "Second Show",
+      "query": "\"Second Show\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 6
+    },
+    {
+      "channel": "Delite Cinemas",
+      "query": "\"Delite Cinemas\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 6
+    },
+    {
+      "channel": "Filmi Craft",
+      "query": "\"Filmi Craft\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 2
+    },
+    {
+      "channel": "Nona Prince",
+      "query": "\"Nona Prince\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 3
+    },
+    {
+      "channel": "Kodangi",
+      "query": "\"Kodangi\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Tamil Talkies",
+      "query": "\"Tamil Talkies\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 9
+    },
+    {
+      "channel": "Plip Plip",
+      "query": "\"Plip Plip\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Empty Hand",
+      "query": "\"Empty Hand\" tamil movie review",
+      "hits": 12,
+      "matched_hits": 4
+    }
+  ],
+  "upload_feed_channels_run": 10,
+  "upload_feed_video_hits": 500,
+  "upload_feed_matched_hits": 167,
+  "upload_feed_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
+      "hits": 50,
+      "matched_hits": 16
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
+      "hits": 50,
+      "matched_hits": 29
+    },
+    {
+      "channel": "Galatta Plus",
+      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
+      "hits": 50,
+      "matched_hits": 4
+    },
+    {
+      "channel": "Second Show",
+      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
+      "hits": 50,
+      "matched_hits": 8
+    },
+    {
+      "channel": "Delite Cinemas",
+      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
+      "hits": 50,
+      "matched_hits": 21
+    },
+    {
+      "channel": "Filmi Craft",
+      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
+      "hits": 50,
+      "matched_hits": 9
+    },
+    {
+      "channel": "Cinema Vikatan",
+      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
+      "hits": 50,
+      "matched_hits": 7
+    },
+    {
+      "channel": "Valai Pechu",
+      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
+      "hits": 50,
+      "matched_hits": 40
+    },
+    {
+      "channel": "Tamil Talkies",
+      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
+      "hits": 50,
+      "matched_hits": 28
+    },
+    {
+      "channel": "Empty Hand",
+      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
+      "hits": 50,
+      "matched_hits": 5
+    }
+  ],
+  "direct_film_discovery_queries_run": 4,
+  "direct_film_discovery_films": [
+    "Find Me",
+    "Magudam",
+    "Sweet Rogue Killer",
+    "Tholaivil Oru Kadhal"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
-  "channel_matrix_video_hits": 0,
-  "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries_run": 40,
+  "channel_matrix_video_hits": 107,
+  "channel_matrix_matched_hits": 76,
+  "channel_matrix_queries": [
+    {
+      "film": "Jana Nayagan",
+      "channel": "Second Show",
+      "query": "\"Jana Nayagan\" \"Second Show\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "Jana Nayagan",
+      "channel": "Delite Cinemas",
+      "query": "\"Jana Nayagan\" \"Delite Cinemas\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "DC",
+      "channel": "Delite Cinemas",
+      "query": "\"DC\" \"Delite Cinemas\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 3
+    },
+    {
+      "film": "Idhayam Murali",
+      "channel": "Empty Hand",
+      "query": "\"Idhayam Murali\" \"Empty Hand\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "Idhayam Murali",
+      "channel": "Delite Cinemas",
+      "query": "\"Idhayam Murali\" \"Delite Cinemas\" tamil movie review",
+      "hits": 1,
+      "matched_hits": 1
+    },
+    {
+      "film": "Gatta Kusthi 2",
+      "channel": "KaKi's Talkies",
+      "query": "\"Gatta Kusthi 2\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 1,
+      "matched_hits": 1
+    },
+    {
+      "film": "Gatta Kusthi 2",
+      "channel": "Empty Hand",
+      "query": "\"Gatta Kusthi 2\" \"Empty Hand\" tamil movie review",
+      "hits": 2,
+      "matched_hits": 0
+    },
+    {
+      "film": "Gatta Kusthi 2",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Gatta Kusthi 2\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "Gatta Kusthi 2",
+      "channel": "Delite Cinemas",
+      "query": "\"Gatta Kusthi 2\" \"Delite Cinemas\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "G.D.N",
+      "channel": "KaKi's Talkies",
+      "query": "\"G.D.N\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 1,
+      "matched_hits": 1
+    },
+    {
+      "film": "G.D.N",
+      "channel": "Second Show",
+      "query": "\"G.D.N\" \"Second Show\" tamil movie review",
+      "hits": 5,
+      "matched_hits": 1
+    },
+    {
+      "film": "G.D.N",
+      "channel": "Empty Hand",
+      "query": "\"G.D.N\" \"Empty Hand\" tamil movie review",
+      "hits": 2,
+      "matched_hits": 0
+    },
+    {
+      "film": "G.D.N",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"G.D.N\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 3,
+      "matched_hits": 2
+    },
+    {
+      "film": "G.D.N",
+      "channel": "Delite Cinemas",
+      "query": "\"G.D.N\" \"Delite Cinemas\" tamil movie review",
+      "hits": 2,
+      "matched_hits": 2
+    },
+    {
+      "film": "Anbe Diana",
+      "channel": "Empty Hand",
+      "query": "\"Anbe Diana\" \"Empty Hand\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Anbe Diana",
+      "channel": "Delite Cinemas",
+      "query": "\"Anbe Diana\" \"Delite Cinemas\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Filmi Craft",
+      "query": "\"Arulvaan\" \"Filmi Craft\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Second Show",
+      "query": "\"Arulvaan\" \"Second Show\" tamil movie review",
+      "hits": 2,
+      "matched_hits": 2
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Empty Hand",
+      "query": "\"Arulvaan\" \"Empty Hand\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Galatta Plus",
+      "query": "\"Arulvaan\" \"Galatta Plus\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Arulvaan\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Arulvaan",
+      "channel": "Delite Cinemas",
+      "query": "\"Arulvaan\" \"Delite Cinemas\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Con City",
+      "channel": "Empty Hand",
+      "query": "\"Con City\" \"Empty Hand\" tamil movie review",
+      "hits": 3,
+      "matched_hits": 2
+    },
+    {
+      "film": "Con City",
+      "channel": "Galatta Plus",
+      "query": "\"Con City\" \"Galatta Plus\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 4
+    },
+    {
+      "film": "Con City",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Con City\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 3,
+      "matched_hits": 2
+    },
+    {
+      "film": "Con City",
+      "channel": "Delite Cinemas",
+      "query": "\"Con City\" \"Delite Cinemas\" tamil movie review",
+      "hits": 3,
+      "matched_hits": 1
+    },
+    {
+      "film": "Love Oh Love",
+      "channel": "Second Show",
+      "query": "\"Love Oh Love\" \"Second Show\" tamil movie review",
+      "hits": 3,
+      "matched_hits": 0
+    },
+    {
+      "film": "Love Oh Love",
+      "channel": "Empty Hand",
+      "query": "\"Love Oh Love\" \"Empty Hand\" tamil movie review",
+      "hits": 1,
+      "matched_hits": 0
+    },
+    {
+      "film": "Love Oh Love",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Love Oh Love\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Love Oh Love",
+      "channel": "Delite Cinemas",
+      "query": "\"Love Oh Love\" \"Delite Cinemas\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Heartin",
+      "channel": "Tamil Talkies",
+      "query": "\"Heartin\" \"Tamil Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 8
+    },
+    {
+      "film": "Heartin",
+      "channel": "Second Show",
+      "query": "\"Heartin\" \"Second Show\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Heartin",
+      "channel": "Empty Hand",
+      "query": "\"Heartin\" \"Empty Hand\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Heartin",
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Heartin\" \"Sudhir Srinivasan\" tamil movie review",
+      "hits": 2,
+      "matched_hits": 0
+    },
+    {
+      "film": "Heartin",
+      "channel": "Delite Cinemas",
+      "query": "\"Heartin\" \"Delite Cinemas\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Lakshmikanthan Kolai Vazhakku",
+      "channel": "Tamil Talkies",
+      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Tamil Talkies\" tamil movie review",
+      "hits": 8,
+      "matched_hits": 6
+    },
+    {
+      "film": "Lakshmikanthan Kolai Vazhakku",
+      "channel": "KaKi's Talkies",
+      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Lakshmikanthan Kolai Vazhakku",
+      "channel": "Filmi Craft",
+      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Filmi Craft\" tamil movie review",
+      "hits": 1,
+      "matched_hits": 0
+    },
+    {
+      "film": "Lakshmikanthan Kolai Vazhakku",
+      "channel": "Second Show",
+      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Second Show\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Lakshmikanthan Kolai Vazhakku",
+      "channel": "Empty Hand",
+      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Empty Hand\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -556,24 +966,24 @@
       ]
     },
     "DC": {
-      "summary": "Based on 883 useful public comments. Of 190 comments with detectable reaction wording, 164 were appreciative and 26 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 883,
-      "explicit_reaction_comments": 190,
-      "appreciative_signals": 164,
-      "critical_signals": 26,
-      "substantive_share": 0.2129,
+      "summary": "Based on 1,135 useful public comments. Of 253 comments with detectable reaction wording, 216 were appreciative and 37 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
+      "useful_comments": 1135,
+      "explicit_reaction_comments": 253,
+      "appreciative_signals": 216,
+      "critical_signals": 37,
+      "substantive_share": 0.2247,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 73
-        },
-        {
-          "name": "Release & theatre",
-          "comments": 30
+          "comments": 76
         },
         {
           "name": "Music & sound",
-          "comments": 23
+          "comments": 40
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 35
         }
       ],
       "reviewers": [
@@ -586,6 +996,14 @@
           "leading_topic": "General reaction"
         },
         {
+          "channel": "Tamil Talkies",
+          "useful_comments": 300,
+          "appreciative_signals": 55,
+          "critical_signals": 16,
+          "questions": 31,
+          "leading_topic": "General reaction"
+        },
+        {
           "channel": "Filmi craft",
           "useful_comments": 125,
           "appreciative_signals": 27,
@@ -594,25 +1012,17 @@
           "leading_topic": "General reaction"
         },
         {
-          "channel": "Tamil Talkies",
-          "useful_comments": 87,
-          "appreciative_signals": 15,
-          "critical_signals": 6,
-          "questions": 5,
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 84,
+          "appreciative_signals": 32,
+          "critical_signals": 2,
+          "questions": 22,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Second Show",
           "useful_comments": 64,
           "appreciative_signals": 16,
-          "critical_signals": 1,
-          "questions": 12,
-          "leading_topic": "General reaction"
-        },
-        {
-          "channel": "Sudhir Srinivasan",
-          "useful_comments": 49,
-          "appreciative_signals": 20,
           "critical_signals": 1,
           "questions": 12,
           "leading_topic": "General reaction"
@@ -1443,6 +1853,16 @@
         }
       ]
     },
+    "Magudam": {
+      "summary": "Based on 3 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
+      "useful_comments": 3,
+      "explicit_reaction_comments": 0,
+      "appreciative_signals": 0,
+      "critical_signals": 0,
+      "substantive_share": 0.0,
+      "top_aspects": [],
+      "reviewers": []
+    },
     "Moondram Kan": {
       "summary": "Based on 16 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Most collected comments are general reactions rather than discussion of a specific film aspect.",
       "useful_comments": 16,
@@ -1683,6 +2103,38 @@
       "top_aspects": [],
       "reviewers": []
     },
+    "Vishwanath & Sons": {
+      "summary": "Based on 24 useful public comments. Of 11 comments with detectable reaction wording, 7 were appreciative and 4 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss emotion, release & theatre, acting & characters.",
+      "useful_comments": 24,
+      "explicit_reaction_comments": 11,
+      "appreciative_signals": 7,
+      "critical_signals": 4,
+      "substantive_share": 0.1667,
+      "top_aspects": [
+        {
+          "name": "Emotion",
+          "comments": 3
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 3
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 1
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "\u0ba8\u0bc7\u0bb0\u0bcd \u0b95\u0bc7\u0bb3\u0bcd\u0bb5\u0bbf",
+          "useful_comments": 24,
+          "appreciative_signals": 7,
+          "critical_signals": 4,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
     "Youth": {
       "summary": "Based on 1,092 useful public comments. Of 305 comments with detectable reaction wording, 229 were appreciative and 76 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
       "useful_comments": 1092,
@@ -1790,6 +2242,8 @@
   },
   "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
+    "Vishwanath & Sons",
+    "Magudam",
     "DC",
     "G.D.N",
     "Photographer",
@@ -1807,24 +2261,76 @@
     "Gatta Kusthi 2",
     "Find Me",
     "Con City",
-    "Heartin",
-    "Andharan",
-    "Angikaaram"
+    "Heartin"
   ],
-  "comments_fetched": 338,
+  "comments_fetched": 5073,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 116,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 5,
-    "periodic_comment_refresh": 43,
-    "public_comment_count_unchanged": 72
+    "public_comment_count_increased": 0,
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 5,
-  "stored_comments": 14999,
-  "videos_monitored": 120,
-  "standard_videos_monitored": 86,
-  "shorts_monitored": 34,
+  "new_comments_added": 388,
+  "stored_comments": 15387,
+  "videos_monitored": 116,
+  "standard_videos_monitored": 85,
+  "shorts_monitored": 31,
   "movie_catalog": [
+    {
+      "title": "Vishwanath & Sons",
+      "original_title": "\u0bb5\u0bbf\u0bb8\u0bcd\u0bb5\u0ba8\u0bbe\u0ba4\u0bcd & \u0b9a\u0ba9\u0bcd\u0bb8\u0bcd",
+      "release_date": "2026-08-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/adDZVEQZnMJ380zPOmVj6vBWHgk.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gwjl5ZaW15ZcXPowkYoiDZXGZtH.jpg",
+      "tmdb_id": 1408162,
+      "overview": "Sanjay Vishwanath is an acclaimed professional handgunner in his 40s with a major stake in fame and wealth. When he comes across a woman named Maddy in her 20s, their dynamic poses many issues that they must come to terms with.",
+      "runtime": 161,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "director": "Venky Atluri",
+      "cast": [
+        "Suriya",
+        "Mamitha Baiju",
+        "Radhika Sarathkumar",
+        "Nassar",
+        "Sunil",
+        "Bhavani Sre",
+        "Harsha Chemudu",
+        "Cell Murugan",
+        "Mathew Varghese",
+        "Kalyani Natarajan"
+      ]
+    },
+    {
+      "title": "Magudam",
+      "original_title": "\u0bae\u0b95\u0bc1\u0b9f\u0bae\u0bcd",
+      "release_date": "2026-08-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uPsJfQHRw5QiwQqOoOQWkfBmnhE.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1506833,
+      "overview": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
+      "runtime": 184,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Vishal Krishna",
+      "cast": [
+        "Vishal Krishna",
+        "Anjali",
+        "Dushara Vijayan",
+        "John Vijay",
+        "Jayaprakash",
+        "Ajay",
+        "Vamsi Krishna",
+        "Abu Salim",
+        "Arjai",
+        "Vj Jhansi"
+      ]
+    },
     {
       "title": "DC",
       "original_title": "\u0b9f\u0bbf\u0b9a\u0bbf",
@@ -2278,48 +2784,6 @@
         "Uma Padmanabhan",
         "Ajit Koshy",
         "Mathew Varghese"
-      ]
-    },
-    {
-      "title": "Andharan",
-      "original_title": "Andharan",
-      "release_date": "2026-06-26",
-      "poster_url": "https://image.tmdb.org/t/p/w500/3cy5aVMPcIkEn99lDbgnH7j4QOj.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/kaTGifoQW0qpR2ryK9Yy0iGoQgF.jpg",
-      "tmdb_id": 1738076,
-      "overview": "Karthika's fianc\u00e9s mysteriously die before marriage. Officer Chezhiyan investigates the deaths and discovers dark secrets from her past, revealing the hidden forces haunting her life as truth and fear collide.",
-      "runtime": 125,
-      "genres": [
-        "Thriller"
-      ],
-      "director": null,
-      "cast": [
-        "Prajin Padmanabhan",
-        "Anupama Kumar"
-      ]
-    },
-    {
-      "title": "Angikaaram",
-      "original_title": "\u0b85\u0b99\u0bcd\u0b95\u0bc0\u0b95\u0bbe\u0bb0\u0bae\u0bcd",
-      "release_date": "2026-06-26",
-      "poster_url": "https://image.tmdb.org/t/p/w500/rRyz56Fubfwmre6F5QiYyIzKmnT.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/w5EprlCldSQ5lPTHFmhvXAsb8VB.jpg",
-      "tmdb_id": 1485325,
-      "overview": "Inspired by true events, this film follows the journey of a man who has had enough, fights for recognition against a system shaped strictly by politics and power.",
-      "runtime": 140,
-      "genres": [
-        "Drama",
-        "Action"
-      ],
-      "director": "JP Thenpathiyan",
-      "cast": [
-        "Kotapadi J Rajesh",
-        "Sindhoori Vishwanath",
-        "Mansoor Ali Khan",
-        "Rangaraj Pandey",
-        "Viji Venkatesh",
-        "Rama",
-        "Mohan Raman"
       ]
     }
   ],
@@ -3463,6 +3927,60 @@
         "Uriyadi Shiva",
         "Vetrivel Raja"
       ]
+    },
+    {
+      "title": "Vishwanath & Sons",
+      "original_title": "\u0bb5\u0bbf\u0bb8\u0bcd\u0bb5\u0ba8\u0bbe\u0ba4\u0bcd & \u0b9a\u0ba9\u0bcd\u0bb8\u0bcd",
+      "release_date": "2026-08-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/adDZVEQZnMJ380zPOmVj6vBWHgk.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/gwjl5ZaW15ZcXPowkYoiDZXGZtH.jpg",
+      "tmdb_id": 1408162,
+      "overview": "Sanjay Vishwanath is an acclaimed professional handgunner in his 40s with a major stake in fame and wealth. When he comes across a woman named Maddy in her 20s, their dynamic poses many issues that they must come to terms with.",
+      "runtime": 161,
+      "genres": [
+        "Drama",
+        "Romance"
+      ],
+      "director": "Venky Atluri",
+      "cast": [
+        "Suriya",
+        "Mamitha Baiju",
+        "Radhika Sarathkumar",
+        "Nassar",
+        "Sunil",
+        "Bhavani Sre",
+        "Harsha Chemudu",
+        "Cell Murugan",
+        "Mathew Varghese",
+        "Kalyani Natarajan"
+      ]
+    },
+    {
+      "title": "Magudam",
+      "original_title": "\u0bae\u0b95\u0bc1\u0b9f\u0bae\u0bcd",
+      "release_date": "2026-08-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uPsJfQHRw5QiwQqOoOQWkfBmnhE.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1506833,
+      "overview": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
+      "runtime": 184,
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "director": "Vishal Krishna",
+      "cast": [
+        "Vishal Krishna",
+        "Anjali",
+        "Dushara Vijayan",
+        "John Vijay",
+        "Jayaprakash",
+        "Ajay",
+        "Vamsi Krishna",
+        "Abu Salim",
+        "Arjai",
+        "Vj Jhansi"
+      ]
     }
   ],
   "all_films_analyzed": [
@@ -3493,6 +4011,7 @@
     "Karuppu",
     "Lakshmikanthan Kolai Vazhakku",
     "Love Oh Love",
+    "Magudam",
     "Moondram Kan",
     "Mr. X",
     "Neelira",
@@ -3506,6 +4025,7 @@
     "Tholaivil Oru Kadhal",
     "Unsaid",
     "Valluvan",
+    "Vishwanath & Sons",
     "Youth"
   ],
   "youtube_channels": [
@@ -3730,7 +4250,7 @@
       "engagement_weight": 0.7
     }
   ],
-  "channel_evaluation_rows": 179,
+  "channel_evaluation_rows": 182,
   "top_channel_coverage_channels": [
     "Tamil Talkies",
     "KaKi's Talkies",
@@ -3741,9 +4261,9 @@
     "Sudhir Srinivasan",
     "Delite Cinemas"
   ],
-  "top_channel_coverage_rows": 328,
-  "top_channel_missing_pairs": 244,
-  "top_channel_retry_queries_run": 0,
+  "top_channel_coverage_rows": 344,
+  "top_channel_missing_pairs": 0,
+  "top_channel_retry_queries_run": 40,
   "collectors": [
     "YouTube Data API",
     "youtube-comment-downloader fallback"
