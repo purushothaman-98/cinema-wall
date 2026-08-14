@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-14T16:11:33.136377+00:00",
+  "last_scan": "2026-08-14T17:23:23.062035+00:00",
   "last_video_discovery": "2026-08-14T05:12:06.160509+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -552,12 +552,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1,171 useful public comments. Of 262 comments with detectable reaction wording, 223 were appreciative and 39 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
-      "useful_comments": 1171,
-      "explicit_reaction_comments": 262,
-      "appreciative_signals": 223,
+      "summary": "Based on 1,175 useful public comments. Of 263 comments with detectable reaction wording, 224 were appreciative and 39 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
+      "useful_comments": 1175,
+      "explicit_reaction_comments": 263,
+      "appreciative_signals": 224,
       "critical_signals": 39,
-      "substantive_share": 0.2254,
+      "substantive_share": 0.2264,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -583,7 +583,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 326,
+          "useful_comments": 329,
           "appreciative_signals": 61,
           "critical_signals": 16,
           "questions": 33,
@@ -599,8 +599,8 @@
         },
         {
           "channel": "Sudhir Srinivasan",
-          "useful_comments": 85,
-          "appreciative_signals": 32,
+          "useful_comments": 86,
+          "appreciative_signals": 33,
           "critical_signals": 2,
           "questions": 23,
           "leading_topic": "General reaction"
@@ -696,12 +696,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 518 useful public comments. Of 158 comments with detectable reaction wording, 137 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 518,
+      "summary": "Based on 519 useful public comments. Of 158 comments with detectable reaction wording, 137 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 519,
       "explicit_reaction_comments": 158,
       "appreciative_signals": 137,
       "critical_signals": 21,
-      "substantive_share": 0.3359,
+      "substantive_share": 0.3353,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -719,7 +719,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 341,
+          "useful_comments": 342,
           "appreciative_signals": 91,
           "critical_signals": 11,
           "questions": 40,
@@ -1854,7 +1854,7 @@
     "Con City",
     "Heartin"
   ],
-  "comments_fetched": 240,
+  "comments_fetched": 293,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1862,8 +1862,8 @@
     "periodic_comment_refresh": 41,
     "public_comment_count_unchanged": 70
   },
-  "new_comments_added": 6,
-  "stored_comments": 15459,
+  "new_comments_added": 7,
+  "stored_comments": 15466,
   "videos_monitored": 116,
   "standard_videos_monitored": 85,
   "shorts_monitored": 31,
