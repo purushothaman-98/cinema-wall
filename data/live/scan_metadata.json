@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-14T17:23:23.062035+00:00",
+  "last_scan": "2026-08-14T18:12:15.552399+00:00",
   "last_video_discovery": "2026-08-14T05:12:06.160509+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1097,12 +1097,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,500 useful public comments. Of 367 comments with detectable reaction wording, 254 were appreciative and 113 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1500,
+      "summary": "Based on 1,501 useful public comments. Of 367 comments with detectable reaction wording, 254 were appreciative and 113 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1501,
       "explicit_reaction_comments": 367,
       "appreciative_signals": 254,
       "critical_signals": 113,
-      "substantive_share": 0.2847,
+      "substantive_share": 0.2845,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1128,7 +1128,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 307,
+          "useful_comments": 308,
           "appreciative_signals": 76,
           "critical_signals": 14,
           "questions": 40,
@@ -1854,16 +1854,16 @@
     "Con City",
     "Heartin"
   ],
-  "comments_fetched": 293,
+  "comments_fetched": 1418,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 5,
-    "periodic_comment_refresh": 41,
-    "public_comment_count_unchanged": 70
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 102,
+    "public_comment_count_unchanged": 12
   },
-  "new_comments_added": 7,
-  "stored_comments": 15466,
+  "new_comments_added": 2,
+  "stored_comments": 15468,
   "videos_monitored": 116,
   "standard_videos_monitored": 85,
   "shorts_monitored": 31,
