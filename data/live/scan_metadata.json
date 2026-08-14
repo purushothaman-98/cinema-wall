@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-14T00:04:55.999371+00:00",
+  "last_scan": "2026-08-14T03:04:26.809619+00:00",
   "last_video_discovery": "2026-08-13T03:05:45.631734+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -556,12 +556,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 880 useful public comments. Of 189 comments with detectable reaction wording, 164 were appreciative and 25 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
-      "useful_comments": 880,
-      "explicit_reaction_comments": 189,
+      "summary": "Based on 883 useful public comments. Of 190 comments with detectable reaction wording, 164 were appreciative and 26 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 883,
+      "explicit_reaction_comments": 190,
       "appreciative_signals": 164,
-      "critical_signals": 25,
-      "substantive_share": 0.2125,
+      "critical_signals": 26,
+      "substantive_share": 0.2129,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -569,7 +569,7 @@
         },
         {
           "name": "Release & theatre",
-          "comments": 29
+          "comments": 30
         },
         {
           "name": "Music & sound",
@@ -595,9 +595,9 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 85,
+          "useful_comments": 87,
           "appreciative_signals": 15,
-          "critical_signals": 5,
+          "critical_signals": 6,
           "questions": 5,
           "leading_topic": "General reaction"
         },
@@ -700,12 +700,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 508 useful public comments. Of 153 comments with detectable reaction wording, 133 were appreciative and 20 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
-      "useful_comments": 508,
+      "summary": "Based on 510 useful public comments. Of 153 comments with detectable reaction wording, 133 were appreciative and 20 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, story & screenplay.",
+      "useful_comments": 510,
       "explicit_reaction_comments": 153,
       "appreciative_signals": 133,
       "critical_signals": 20,
-      "substantive_share": 0.3346,
+      "substantive_share": 0.3373,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -723,7 +723,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 333,
+          "useful_comments": 334,
           "appreciative_signals": 88,
           "critical_signals": 10,
           "questions": 40,
@@ -731,7 +731,7 @@
         },
         {
           "channel": "Galatta Plus",
-          "useful_comments": 102,
+          "useful_comments": 103,
           "appreciative_signals": 26,
           "critical_signals": 8,
           "questions": 26,
@@ -1811,16 +1811,16 @@
     "Andharan",
     "Angikaaram"
   ],
-  "comments_fetched": 1,
+  "comments_fetched": 338,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 80
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 43,
+    "public_comment_count_unchanged": 72
   },
-  "new_comments_added": 0,
-  "stored_comments": 14994,
+  "new_comments_added": 5,
+  "stored_comments": 14999,
   "videos_monitored": 120,
   "standard_videos_monitored": 86,
   "shorts_monitored": 34,
