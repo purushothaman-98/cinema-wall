@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-15T07:04:22.249271+00:00",
+  "last_scan": "2026-08-15T07:49:56.129480+00:00",
   "last_video_discovery": "2026-08-15T05:17:32.224570+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1440,12 +1440,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 272 useful public comments. Of 65 comments with detectable reaction wording, 25 were appreciative and 40 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
-      "useful_comments": 272,
-      "explicit_reaction_comments": 65,
-      "appreciative_signals": 25,
-      "critical_signals": 40,
-      "substantive_share": 0.1801,
+      "summary": "Based on 281 useful public comments. Of 69 comments with detectable reaction wording, 27 were appreciative and 42 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
+      "useful_comments": 281,
+      "explicit_reaction_comments": 69,
+      "appreciative_signals": 27,
+      "critical_signals": 42,
+      "substantive_share": 0.1815,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1463,16 +1463,16 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 183,
+          "useful_comments": 190,
           "appreciative_signals": 13,
-          "critical_signals": 29,
-          "questions": 19,
+          "critical_signals": 31,
+          "questions": 20,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 81,
-          "appreciative_signals": 12,
+          "useful_comments": 82,
+          "appreciative_signals": 13,
           "critical_signals": 11,
           "questions": 7,
           "leading_topic": "General reaction"
@@ -1720,33 +1720,33 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 318 useful public comments. Of 80 comments with detectable reaction wording, 56 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
-      "useful_comments": 318,
-      "explicit_reaction_comments": 80,
-      "appreciative_signals": 56,
+      "summary": "Based on 334 useful public comments. Of 83 comments with detectable reaction wording, 59 were appreciative and 24 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 334,
+      "explicit_reaction_comments": 83,
+      "appreciative_signals": 59,
       "critical_signals": 24,
-      "substantive_share": 0.1918,
+      "substantive_share": 0.1976,
       "top_aspects": [
         {
           "name": "Story & screenplay",
-          "comments": 19
+          "comments": 20
         },
         {
           "name": "Release & theatre",
-          "comments": 12
+          "comments": 13
         },
         {
           "name": "Acting & characters",
-          "comments": 7
+          "comments": 8
         }
       ],
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 279,
-          "appreciative_signals": 46,
+          "useful_comments": 294,
+          "appreciative_signals": 48,
           "critical_signals": 17,
-          "questions": 23,
+          "questions": 24,
           "leading_topic": "General reaction"
         },
         {
@@ -1887,16 +1887,16 @@
     "Find Me",
     "Heartin"
   ],
-  "comments_fetched": 304,
+  "comments_fetched": 163,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 7,
-    "periodic_comment_refresh": 41,
-    "public_comment_count_unchanged": 68
+    "public_comment_count_increased": 5,
+    "periodic_comment_refresh": 40,
+    "public_comment_count_unchanged": 71
   },
-  "new_comments_added": 42,
-  "stored_comments": 16217,
+  "new_comments_added": 30,
+  "stored_comments": 16247,
   "videos_monitored": 116,
   "standard_videos_monitored": 83,
   "shorts_monitored": 33,
