@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-15T00:31:45.124551+00:00",
+  "last_scan": "2026-08-15T02:07:15.949857+00:00",
   "last_video_discovery": "2026-08-14T05:12:06.160509+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1854,16 +1854,16 @@
     "Con City",
     "Heartin"
   ],
-  "comments_fetched": 1317,
+  "comments_fetched": 194,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 102,
-    "public_comment_count_unchanged": 14
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 43,
+    "public_comment_count_unchanged": 72
   },
-  "new_comments_added": 0,
-  "stored_comments": 15482,
+  "new_comments_added": 1,
+  "stored_comments": 15483,
   "videos_monitored": 116,
   "standard_videos_monitored": 85,
   "shorts_monitored": 31,
