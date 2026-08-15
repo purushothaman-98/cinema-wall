@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-15T04:29:51.689128+00:00",
+  "last_scan": "2026-08-15T04:57:16.369417+00:00",
   "last_video_discovery": "2026-08-14T05:12:06.160509+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -552,12 +552,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1,190 useful public comments. Of 266 comments with detectable reaction wording, 227 were appreciative and 39 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
-      "useful_comments": 1190,
-      "explicit_reaction_comments": 266,
-      "appreciative_signals": 227,
+      "summary": "Based on 1,192 useful public comments. Of 267 comments with detectable reaction wording, 228 were appreciative and 39 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
+      "useful_comments": 1192,
+      "explicit_reaction_comments": 267,
+      "appreciative_signals": 228,
       "critical_signals": 39,
-      "substantive_share": 0.2286,
+      "substantive_share": 0.2282,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -583,7 +583,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 339,
+          "useful_comments": 340,
           "appreciative_signals": 63,
           "critical_signals": 16,
           "questions": 36,
@@ -591,8 +591,8 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 129,
-          "appreciative_signals": 28,
+          "useful_comments": 130,
+          "appreciative_signals": 29,
           "critical_signals": 7,
           "questions": 15,
           "leading_topic": "General reaction"
@@ -1854,16 +1854,16 @@
     "Con City",
     "Heartin"
   ],
-  "comments_fetched": 149,
+  "comments_fetched": 150,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 4,
+    "public_comment_count_increased": 3,
     "periodic_comment_refresh": 40,
-    "public_comment_count_unchanged": 72
+    "public_comment_count_unchanged": 73
   },
-  "new_comments_added": 3,
-  "stored_comments": 15495,
+  "new_comments_added": 2,
+  "stored_comments": 15497,
   "videos_monitored": 116,
   "standard_videos_monitored": 85,
   "shorts_monitored": 31,
