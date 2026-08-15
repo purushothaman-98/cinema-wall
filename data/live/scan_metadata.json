@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-15T10:10:56.818338+00:00",
+  "last_scan": "2026-08-15T10:45:38.574271+00:00",
   "last_video_discovery": "2026-08-15T05:17:32.224570+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -696,12 +696,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 520 useful public comments. Of 158 comments with detectable reaction wording, 137 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 520,
+      "summary": "Based on 521 useful public comments. Of 158 comments with detectable reaction wording, 137 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 521,
       "explicit_reaction_comments": 158,
       "appreciative_signals": 137,
       "critical_signals": 21,
-      "substantive_share": 0.3346,
+      "substantive_share": 0.334,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -719,7 +719,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 343,
+          "useful_comments": 344,
           "appreciative_signals": 91,
           "critical_signals": 11,
           "questions": 40,
@@ -1001,12 +1001,12 @@
       ]
     },
     "Idhayam Murali": {
-      "summary": "Based on 688 useful public comments. Of 260 comments with detectable reaction wording, 175 were appreciative and 85 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
-      "useful_comments": 688,
-      "explicit_reaction_comments": 260,
+      "summary": "Based on 689 useful public comments. Of 261 comments with detectable reaction wording, 175 were appreciative and 86 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 689,
+      "explicit_reaction_comments": 261,
       "appreciative_signals": 175,
-      "critical_signals": 85,
-      "substantive_share": 0.2093,
+      "critical_signals": 86,
+      "substantive_share": 0.209,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1024,9 +1024,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 236,
+          "useful_comments": 237,
           "appreciative_signals": 63,
-          "critical_signals": 28,
+          "critical_signals": 29,
           "questions": 24,
           "leading_topic": "General reaction"
         },
@@ -1440,12 +1440,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 318 useful public comments. Of 79 comments with detectable reaction wording, 31 were appreciative and 48 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
-      "useful_comments": 318,
-      "explicit_reaction_comments": 79,
+      "summary": "Based on 323 useful public comments. Of 81 comments with detectable reaction wording, 31 were appreciative and 50 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
+      "useful_comments": 323,
+      "explicit_reaction_comments": 81,
       "appreciative_signals": 31,
-      "critical_signals": 48,
-      "substantive_share": 0.1824,
+      "critical_signals": 50,
+      "substantive_share": 0.1796,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1463,9 +1463,9 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 223,
+          "useful_comments": 228,
           "appreciative_signals": 17,
-          "critical_signals": 35,
+          "critical_signals": 37,
           "questions": 22,
           "leading_topic": "General reaction"
         },
@@ -1720,16 +1720,16 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 378 useful public comments. Of 95 comments with detectable reaction wording, 69 were appreciative and 26 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
-      "useful_comments": 378,
-      "explicit_reaction_comments": 95,
-      "appreciative_signals": 69,
-      "critical_signals": 26,
-      "substantive_share": 0.2037,
+      "summary": "Based on 390 useful public comments. Of 101 comments with detectable reaction wording, 74 were appreciative and 27 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, release & theatre, acting & characters.",
+      "useful_comments": 390,
+      "explicit_reaction_comments": 101,
+      "appreciative_signals": 74,
+      "critical_signals": 27,
+      "substantive_share": 0.2026,
       "top_aspects": [
         {
           "name": "Story & screenplay",
-          "comments": 23
+          "comments": 24
         },
         {
           "name": "Release & theatre",
@@ -1743,10 +1743,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 337,
-          "appreciative_signals": 57,
-          "critical_signals": 19,
-          "questions": 31,
+          "useful_comments": 349,
+          "appreciative_signals": 62,
+          "critical_signals": 20,
+          "questions": 32,
           "leading_topic": "General reaction"
         },
         {
@@ -1887,7 +1887,7 @@
     "Find Me",
     "Heartin"
   ],
-  "comments_fetched": 250,
+  "comments_fetched": 191,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
@@ -1895,8 +1895,8 @@
     "periodic_comment_refresh": 40,
     "public_comment_count_unchanged": 71
   },
-  "new_comments_added": 20,
-  "stored_comments": 16354,
+  "new_comments_added": 24,
+  "stored_comments": 16378,
   "videos_monitored": 116,
   "standard_videos_monitored": 83,
   "shorts_monitored": 33,
