@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-16T09:16:50.781638+00:00",
+  "last_scan": "2026-08-16T09:48:58.041133+00:00",
   "last_video_discovery": "2026-08-16T05:21:11.943388+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1442,16 +1442,16 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 488 useful public comments. Of 139 comments with detectable reaction wording, 54 were appreciative and 85 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
-      "useful_comments": 488,
+      "summary": "Based on 489 useful public comments. Of 139 comments with detectable reaction wording, 54 were appreciative and 85 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
+      "useful_comments": 489,
       "explicit_reaction_comments": 139,
       "appreciative_signals": 54,
       "critical_signals": 85,
-      "substantive_share": 0.1783,
+      "substantive_share": 0.1779,
       "top_aspects": [
         {
           "name": "Release & theatre",
-          "comments": 18
+          "comments": 19
         },
         {
           "name": "Direction & making",
@@ -1481,7 +1481,7 @@
         },
         {
           "channel": "KaKi's Talkies",
-          "useful_comments": 73,
+          "useful_comments": 74,
           "appreciative_signals": 7,
           "critical_signals": 7,
           "questions": 10,
@@ -1905,16 +1905,16 @@
     "Find Me",
     "Heartin"
   ],
-  "comments_fetched": 300,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 6,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 41,
-    "public_comment_count_unchanged": 71
+    "public_comment_count_unchanged": 75
   },
-  "new_comments_added": 7,
-  "stored_comments": 16859,
+  "new_comments_added": 2,
+  "stored_comments": 16861,
   "videos_monitored": 118,
   "standard_videos_monitored": 82,
   "shorts_monitored": 36,
