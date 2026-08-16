@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-16T22:44:03.762691+00:00",
+  "last_scan": "2026-08-16T23:09:32.592329+00:00",
   "last_video_discovery": "2026-08-16T05:21:11.943388+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1905,16 +1905,16 @@
     "Find Me",
     "Heartin"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 150,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 39,
-    "public_comment_count_unchanged": 79
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 41,
+    "public_comment_count_unchanged": 76
   },
-  "new_comments_added": 0,
-  "stored_comments": 16993,
+  "new_comments_added": 1,
+  "stored_comments": 16994,
   "videos_monitored": 118,
   "standard_videos_monitored": 82,
   "shorts_monitored": 36,
