@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-16T21:41:05.440193+00:00",
+  "last_scan": "2026-08-16T22:09:19.799681+00:00",
   "last_video_discovery": "2026-08-16T05:21:11.943388+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1730,12 +1730,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 614 useful public comments. Of 185 comments with detectable reaction wording, 149 were appreciative and 36 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 614,
-      "explicit_reaction_comments": 185,
-      "appreciative_signals": 149,
+      "summary": "Based on 615 useful public comments. Of 186 comments with detectable reaction wording, 150 were appreciative and 36 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 615,
+      "explicit_reaction_comments": 186,
+      "appreciative_signals": 150,
       "critical_signals": 36,
-      "substantive_share": 0.2199,
+      "substantive_share": 0.2211,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1743,7 +1743,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 22
+          "comments": 23
         },
         {
           "name": "Emotion",
@@ -1753,8 +1753,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 571,
-          "appreciative_signals": 136,
+          "useful_comments": 572,
+          "appreciative_signals": 137,
           "critical_signals": 29,
           "questions": 54,
           "leading_topic": "General reaction"
@@ -1905,16 +1905,16 @@
     "Find Me",
     "Heartin"
   ],
-  "comments_fetched": 118,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 40,
-    "public_comment_count_unchanged": 76
+    "periodic_comment_refresh": 39,
+    "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 2,
-  "stored_comments": 16992,
+  "new_comments_added": 1,
+  "stored_comments": 16993,
   "videos_monitored": 118,
   "standard_videos_monitored": 82,
   "shorts_monitored": 36,
