@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-17T17:52:00.522694+00:00",
+  "last_scan": "2026-08-17T18:21:16.349371+00:00",
   "last_video_discovery": "2026-08-17T05:57:09.877622+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -69,7 +69,6 @@
     "YeH-S-6UVsw",
     "_P7O4ZxqqFk",
     "_Z5LvDYvvtc",
-    "a3rSU2ZzXt4",
     "bBjaajEGSUE",
     "bPaudjceoio",
     "byPjJv37-_o",
@@ -1915,18 +1914,18 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 59,
+  "comments_fetched": 1528,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 36,
-    "public_comment_count_unchanged": 75
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 97,
+    "public_comment_count_unchanged": 12
   },
-  "new_comments_added": 1,
-  "stored_comments": 17221,
-  "videos_monitored": 112,
-  "standard_videos_monitored": 78,
+  "new_comments_added": 2,
+  "stored_comments": 17223,
+  "videos_monitored": 111,
+  "standard_videos_monitored": 77,
   "shorts_monitored": 34,
   "movie_catalog": [
     {
