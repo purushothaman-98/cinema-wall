@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-17T21:15:36.586123+00:00",
+  "last_scan": "2026-08-17T21:46:56.373631+00:00",
   "last_video_discovery": "2026-08-17T05:57:09.877622+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1435,12 +1435,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 546 useful public comments. Of 152 comments with detectable reaction wording, 59 were appreciative and 93 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
-      "useful_comments": 546,
+      "summary": "Based on 547 useful public comments. Of 152 comments with detectable reaction wording, 59 were appreciative and 93 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
+      "useful_comments": 547,
       "explicit_reaction_comments": 152,
       "appreciative_signals": 59,
       "critical_signals": 93,
-      "substantive_share": 0.1795,
+      "substantive_share": 0.1792,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1458,7 +1458,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 349,
+          "useful_comments": 350,
           "appreciative_signals": 34,
           "critical_signals": 71,
           "questions": 28,
@@ -1723,12 +1723,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 755 useful public comments. Of 241 comments with detectable reaction wording, 193 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 755,
-      "explicit_reaction_comments": 241,
-      "appreciative_signals": 193,
+      "summary": "Based on 757 useful public comments. Of 242 comments with detectable reaction wording, 194 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 757,
+      "explicit_reaction_comments": 242,
+      "appreciative_signals": 194,
       "critical_signals": 48,
-      "substantive_share": 0.2371,
+      "substantive_share": 0.2378,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1746,15 +1746,15 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 611,
-          "appreciative_signals": 154,
+          "useful_comments": 612,
+          "appreciative_signals": 155,
           "critical_signals": 33,
-          "questions": 59,
+          "questions": 60,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Second Show",
-          "useful_comments": 82,
+          "useful_comments": 83,
           "appreciative_signals": 21,
           "critical_signals": 8,
           "questions": 9,
@@ -1914,16 +1914,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 67,
+  "comments_fetched": 150,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 3,
     "periodic_comment_refresh": 34,
-    "public_comment_count_unchanged": 75
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 1,
-  "stored_comments": 17236,
+  "new_comments_added": 3,
+  "stored_comments": 17239,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
