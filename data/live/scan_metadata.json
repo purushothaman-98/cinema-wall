@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-17T11:15:23.515838+00:00",
+  "last_scan": "2026-08-17T11:47:54.524116+00:00",
   "last_video_discovery": "2026-08-17T05:57:09.877622+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1436,12 +1436,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 533 useful public comments. Of 149 comments with detectable reaction wording, 57 were appreciative and 92 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
-      "useful_comments": 533,
+      "summary": "Based on 535 useful public comments. Of 149 comments with detectable reaction wording, 57 were appreciative and 92 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
+      "useful_comments": 535,
       "explicit_reaction_comments": 149,
       "appreciative_signals": 57,
       "critical_signals": 92,
-      "substantive_share": 0.1782,
+      "substantive_share": 0.1794,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1459,7 +1459,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 339,
+          "useful_comments": 340,
           "appreciative_signals": 32,
           "critical_signals": 70,
           "questions": 27,
@@ -1915,16 +1915,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 109,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
+    "public_comment_count_increased": 3,
     "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 76
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 1,
-  "stored_comments": 17172,
+  "new_comments_added": 2,
+  "stored_comments": 17174,
   "videos_monitored": 112,
   "standard_videos_monitored": 78,
   "shorts_monitored": 34,
