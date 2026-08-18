@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T02:51:39.468506+00:00",
+  "last_scan": "2026-08-18T03:35:06.804516+00:00",
   "last_video_discovery": "2026-08-17T05:57:09.877622+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -547,12 +547,12 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1,269 useful public comments. Of 293 comments with detectable reaction wording, 249 were appreciative and 44 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
-      "useful_comments": 1269,
-      "explicit_reaction_comments": 293,
-      "appreciative_signals": 249,
+      "summary": "Based on 1,271 useful public comments. Of 294 comments with detectable reaction wording, 250 were appreciative and 44 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
+      "useful_comments": 1271,
+      "explicit_reaction_comments": 294,
+      "appreciative_signals": 250,
       "critical_signals": 44,
-      "substantive_share": 0.2317,
+      "substantive_share": 0.2321,
       "top_aspects": [
         {
           "name": "Acting & characters",
@@ -578,10 +578,10 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 394,
-          "appreciative_signals": 77,
+          "useful_comments": 396,
+          "appreciative_signals": 78,
           "critical_signals": 21,
-          "questions": 41,
+          "questions": 42,
           "leading_topic": "General reaction"
         },
         {
@@ -1723,12 +1723,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 759 useful public comments. Of 242 comments with detectable reaction wording, 194 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 759,
-      "explicit_reaction_comments": 242,
-      "appreciative_signals": 194,
+      "summary": "Based on 760 useful public comments. Of 243 comments with detectable reaction wording, 195 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 760,
+      "explicit_reaction_comments": 243,
+      "appreciative_signals": 195,
       "critical_signals": 48,
-      "substantive_share": 0.2385,
+      "substantive_share": 0.2395,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1736,7 +1736,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 35
+          "comments": 36
         },
         {
           "name": "Emotion",
@@ -1754,8 +1754,8 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 83,
-          "appreciative_signals": 21,
+          "useful_comments": 84,
+          "appreciative_signals": 22,
           "critical_signals": 8,
           "questions": 9,
           "leading_topic": "General reaction"
@@ -1914,16 +1914,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 110,
+  "comments_fetched": 217,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 4,
     "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 74
+    "public_comment_count_unchanged": 72
   },
-  "new_comments_added": 2,
-  "stored_comments": 17248,
+  "new_comments_added": 6,
+  "stored_comments": 17254,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
