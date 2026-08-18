@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T15:27:29.035861+00:00",
+  "last_scan": "2026-08-18T15:55:20.717825+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -691,12 +691,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 542 useful public comments. Of 166 comments with detectable reaction wording, 145 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 542,
+      "summary": "Based on 543 useful public comments. Of 166 comments with detectable reaction wording, 145 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 543,
       "explicit_reaction_comments": 166,
       "appreciative_signals": 145,
       "critical_signals": 21,
-      "substantive_share": 0.3339,
+      "substantive_share": 0.3333,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -714,7 +714,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 361,
+          "useful_comments": 362,
           "appreciative_signals": 99,
           "critical_signals": 11,
           "questions": 43,
@@ -1739,16 +1739,16 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 782 useful public comments. Of 251 comments with detectable reaction wording, 199 were appreciative and 52 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 782,
-      "explicit_reaction_comments": 251,
-      "appreciative_signals": 199,
+      "summary": "Based on 785 useful public comments. Of 252 comments with detectable reaction wording, 200 were appreciative and 52 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 785,
+      "explicit_reaction_comments": 252,
+      "appreciative_signals": 200,
       "critical_signals": 52,
-      "substantive_share": 0.2391,
+      "substantive_share": 0.2395,
       "top_aspects": [
         {
           "name": "Story & screenplay",
-          "comments": 54
+          "comments": 55
         },
         {
           "name": "Acting & characters",
@@ -1762,10 +1762,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 631,
-          "appreciative_signals": 158,
+          "useful_comments": 634,
+          "appreciative_signals": 159,
           "critical_signals": 35,
-          "questions": 63,
+          "questions": 64,
           "leading_topic": "General reaction"
         },
         {
@@ -1934,12 +1934,12 @@
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 34,
+    "public_comment_count_increased": 2,
+    "periodic_comment_refresh": 33,
     "public_comment_count_unchanged": 76
   },
-  "new_comments_added": 1,
-  "stored_comments": 17338,
+  "new_comments_added": 4,
+  "stored_comments": 17342,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
