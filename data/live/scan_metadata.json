@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T09:21:36.472320+00:00",
+  "last_scan": "2026-08-18T09:56:11.144942+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -547,16 +547,16 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1,279 useful public comments. Of 297 comments with detectable reaction wording, 252 were appreciative and 45 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
-      "useful_comments": 1279,
+      "summary": "Based on 1,280 useful public comments. Of 297 comments with detectable reaction wording, 252 were appreciative and 45 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
+      "useful_comments": 1280,
       "explicit_reaction_comments": 297,
       "appreciative_signals": 252,
       "critical_signals": 45,
-      "substantive_share": 0.2346,
+      "substantive_share": 0.2352,
       "top_aspects": [
         {
           "name": "Acting & characters",
-          "comments": 82
+          "comments": 83
         },
         {
           "name": "Music & sound",
@@ -570,7 +570,7 @@
       "reviewers": [
         {
           "channel": "Empty Hand",
-          "useful_comments": 484,
+          "useful_comments": 485,
           "appreciative_signals": 75,
           "critical_signals": 5,
           "questions": 36,
@@ -1930,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 150,
+  "comments_fetched": 50,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 75
+    "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 3,
-  "stored_comments": 17319,
+  "new_comments_added": 1,
+  "stored_comments": 17320,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
