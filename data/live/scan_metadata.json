@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T23:12:04.579500+00:00",
+  "last_scan": "2026-08-18T23:44:01.891659+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1739,8 +1739,8 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 808 useful public comments. Of 256 comments with detectable reaction wording, 203 were appreciative and 53 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 808,
+      "summary": "Based on 812 useful public comments. Of 256 comments with detectable reaction wording, 203 were appreciative and 53 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 812,
       "explicit_reaction_comments": 256,
       "appreciative_signals": 203,
       "critical_signals": 53,
@@ -1762,7 +1762,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 643,
+          "useful_comments": 647,
           "appreciative_signals": 160,
           "critical_signals": 35,
           "questions": 65,
@@ -1930,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 222,
+  "comments_fetched": 50,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 37,
-    "public_comment_count_unchanged": 73
+    "periodic_comment_refresh": 33,
+    "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 1,
-  "stored_comments": 17383,
+  "new_comments_added": 4,
+  "stored_comments": 17387,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
