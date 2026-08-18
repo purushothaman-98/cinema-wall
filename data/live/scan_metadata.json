@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T17:51:22.554614+00:00",
+  "last_scan": "2026-08-18T18:19:38.275136+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1739,12 +1739,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 791 useful public comments. Of 252 comments with detectable reaction wording, 200 were appreciative and 52 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 791,
+      "summary": "Based on 795 useful public comments. Of 252 comments with detectable reaction wording, 200 were appreciative and 52 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 795,
       "explicit_reaction_comments": 252,
       "appreciative_signals": 200,
       "critical_signals": 52,
-      "substantive_share": 0.2389,
+      "substantive_share": 0.2403,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1752,7 +1752,7 @@
         },
         {
           "name": "Acting & characters",
-          "comments": 36
+          "comments": 37
         },
         {
           "name": "Emotion",
@@ -1762,7 +1762,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 640,
+          "useful_comments": 642,
           "appreciative_signals": 159,
           "critical_signals": 35,
           "questions": 65,
@@ -1786,10 +1786,10 @@
         },
         {
           "channel": "Nona Prince",
-          "useful_comments": 16,
+          "useful_comments": 18,
           "appreciative_signals": 3,
           "critical_signals": 0,
-          "questions": 1,
+          "questions": 2,
           "leading_topic": "General reaction"
         },
         {
@@ -1930,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 11,
+  "comments_fetched": 69,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 77
+    "public_comment_count_unchanged": 76
   },
-  "new_comments_added": 0,
-  "stored_comments": 17353,
+  "new_comments_added": 4,
+  "stored_comments": 17357,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
