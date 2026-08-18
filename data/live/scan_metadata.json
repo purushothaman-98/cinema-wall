@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T10:16:58.680610+00:00",
+  "last_scan": "2026-08-18T10:53:28.354364+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -811,12 +811,12 @@
       ]
     },
     "Gatta Kusthi 2": {
-      "summary": "Based on 573 useful public comments. Of 139 comments with detectable reaction wording, 110 were appreciative and 29 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
-      "useful_comments": 573,
-      "explicit_reaction_comments": 139,
-      "appreciative_signals": 110,
+      "summary": "Based on 574 useful public comments. Of 140 comments with detectable reaction wording, 111 were appreciative and 29 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, comedy, acting & characters.",
+      "useful_comments": 574,
+      "explicit_reaction_comments": 140,
+      "appreciative_signals": 111,
       "critical_signals": 29,
-      "substantive_share": 0.1798,
+      "substantive_share": 0.1794,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -834,8 +834,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 343,
-          "appreciative_signals": 71,
+          "useful_comments": 344,
+          "appreciative_signals": 72,
           "critical_signals": 18,
           "questions": 30,
           "leading_topic": "General reaction"
@@ -1739,12 +1739,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 775 useful public comments. Of 248 comments with detectable reaction wording, 197 were appreciative and 51 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 775,
-      "explicit_reaction_comments": 248,
-      "appreciative_signals": 197,
-      "critical_signals": 51,
-      "substantive_share": 0.2387,
+      "summary": "Based on 779 useful public comments. Of 250 comments with detectable reaction wording, 198 were appreciative and 52 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 779,
+      "explicit_reaction_comments": 250,
+      "appreciative_signals": 198,
+      "critical_signals": 52,
+      "substantive_share": 0.2401,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1762,17 +1762,17 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 626,
-          "appreciative_signals": 156,
+          "useful_comments": 629,
+          "appreciative_signals": 157,
           "critical_signals": 35,
-          "questions": 62,
+          "questions": 63,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Second Show",
-          "useful_comments": 87,
+          "useful_comments": 88,
           "appreciative_signals": 23,
-          "critical_signals": 9,
+          "critical_signals": 10,
           "questions": 9,
           "leading_topic": "General reaction"
         },
@@ -1930,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 172,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 4,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 78
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 0,
-  "stored_comments": 17320,
+  "new_comments_added": 5,
+  "stored_comments": 17325,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
