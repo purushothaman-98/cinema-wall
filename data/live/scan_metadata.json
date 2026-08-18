@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-18T06:22:32.393497+00:00",
+  "last_scan": "2026-08-18T07:12:22.824545+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -125,7 +125,7 @@
     "zilLN4gMGsI"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "daily_tmdb_plus_broad_youtube",
+  "discovery_mode": "monitor_existing_selection",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -144,437 +144,23 @@
     "Empty Hand tamil movie review",
     "Touring Talkies tamil cinema interview"
   ],
-  "broad_discovery_video_hits": 24,
-  "broad_discovery_queries_run": 2,
-  "source_channel_queries_run": 11,
-  "source_channel_video_hits": 132,
-  "source_channel_matched_hits": 39,
-  "source_channel_queries": [
-    {
-      "channel": "KaKi's Talkies",
-      "query": "\"KaKi's Talkies\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 4
-    },
-    {
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Sudhir Srinivasan\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 6
-    },
-    {
-      "channel": "Galatta Plus",
-      "query": "\"Galatta Plus\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 6
-    },
-    {
-      "channel": "Second Show",
-      "query": "\"Second Show\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 5
-    },
-    {
-      "channel": "Delite Cinemas",
-      "query": "\"Delite Cinemas\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 7
-    },
-    {
-      "channel": "Filmi Craft",
-      "query": "\"Filmi Craft\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Nona Prince",
-      "query": "\"Nona Prince\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 4
-    },
-    {
-      "channel": "Kodangi",
-      "query": "\"Kodangi\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Tamil Talkies",
-      "query": "\"Tamil Talkies\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 3
-    },
-    {
-      "channel": "Plip Plip",
-      "query": "\"Plip Plip\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 0
-    },
-    {
-      "channel": "Empty Hand",
-      "query": "\"Empty Hand\" tamil movie review",
-      "hits": 12,
-      "matched_hits": 4
-    }
-  ],
-  "upload_feed_channels_run": 10,
-  "upload_feed_video_hits": 500,
-  "upload_feed_matched_hits": 182,
-  "upload_feed_queries": [
-    {
-      "channel": "KaKi's Talkies",
-      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
-      "hits": 50,
-      "matched_hits": 17
-    },
-    {
-      "channel": "Sudhir Srinivasan",
-      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
-      "hits": 50,
-      "matched_hits": 23
-    },
-    {
-      "channel": "Galatta Plus",
-      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
-      "hits": 50,
-      "matched_hits": 5
-    },
-    {
-      "channel": "Second Show",
-      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
-      "hits": 50,
-      "matched_hits": 8
-    },
-    {
-      "channel": "Delite Cinemas",
-      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
-      "hits": 50,
-      "matched_hits": 23
-    },
-    {
-      "channel": "Filmi Craft",
-      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
-      "hits": 50,
-      "matched_hits": 11
-    },
-    {
-      "channel": "Cinema Vikatan",
-      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
-      "hits": 50,
-      "matched_hits": 23
-    },
-    {
-      "channel": "Valai Pechu",
-      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
-      "hits": 50,
-      "matched_hits": 39
-    },
-    {
-      "channel": "Tamil Talkies",
-      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
-      "hits": 50,
-      "matched_hits": 28
-    },
-    {
-      "channel": "Empty Hand",
-      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
-      "hits": 50,
-      "matched_hits": 5
-    }
-  ],
-  "direct_film_discovery_queries_run": 4,
-  "direct_film_discovery_films": [
-    "Ananya's Call",
-    "Find Me",
-    "Samam",
-    "Sweet Rogue Killer"
-  ],
+  "broad_discovery_video_hits": 0,
+  "broad_discovery_queries_run": 0,
+  "source_channel_queries_run": 0,
+  "source_channel_video_hits": 0,
+  "source_channel_matched_hits": 0,
+  "source_channel_queries": [],
+  "upload_feed_channels_run": 0,
+  "upload_feed_video_hits": 0,
+  "upload_feed_matched_hits": 0,
+  "upload_feed_queries": [],
+  "direct_film_discovery_queries_run": 0,
+  "direct_film_discovery_films": [],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 40,
-  "channel_matrix_video_hits": 108,
-  "channel_matrix_matched_hits": 64,
-  "channel_matrix_queries": [
-    {
-      "film": "Jana Nayagan",
-      "channel": "Second Show",
-      "query": "\"Jana Nayagan\" \"Second Show\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Jana Nayagan",
-      "channel": "Delite Cinemas",
-      "query": "\"Jana Nayagan\" \"Delite Cinemas\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "DC",
-      "channel": "Delite Cinemas",
-      "query": "\"DC\" \"Delite Cinemas\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 4
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "KaKi's Talkies",
-      "query": "\"Vishwanath & Sons\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 0
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "Filmi Craft",
-      "query": "\"Vishwanath & Sons\" \"Filmi Craft\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 2
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "Empty Hand",
-      "query": "\"Vishwanath & Sons\" \"Empty Hand\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "Galatta Plus",
-      "query": "\"Vishwanath & Sons\" \"Galatta Plus\" tamil movie review",
-      "hits": 6,
-      "matched_hits": 1
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Vishwanath & Sons\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 0
-    },
-    {
-      "film": "Vishwanath & Sons",
-      "channel": "Delite Cinemas",
-      "query": "\"Vishwanath & Sons\" \"Delite Cinemas\" tamil movie review",
-      "hits": 5,
-      "matched_hits": 1
-    },
-    {
-      "film": "Idhayam Murali",
-      "channel": "Empty Hand",
-      "query": "\"Idhayam Murali\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Idhayam Murali",
-      "channel": "Delite Cinemas",
-      "query": "\"Idhayam Murali\" \"Delite Cinemas\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "KaKi's Talkies",
-      "query": "\"Gatta Kusthi 2\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Empty Hand",
-      "query": "\"Gatta Kusthi 2\" \"Empty Hand\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 0
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Gatta Kusthi 2\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 8
-    },
-    {
-      "film": "Gatta Kusthi 2",
-      "channel": "Delite Cinemas",
-      "query": "\"Gatta Kusthi 2\" \"Delite Cinemas\" tamil movie review",
-      "hits": 4,
-      "matched_hits": 3
-    },
-    {
-      "film": "Magudam",
-      "channel": "Second Show",
-      "query": "\"Magudam\" \"Second Show\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Magudam",
-      "channel": "Empty Hand",
-      "query": "\"Magudam\" \"Empty Hand\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Magudam",
-      "channel": "Galatta Plus",
-      "query": "\"Magudam\" \"Galatta Plus\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Magudam",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Magudam\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Magudam",
-      "channel": "Delite Cinemas",
-      "query": "\"Magudam\" \"Delite Cinemas\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "G.D.N",
-      "channel": "KaKi's Talkies",
-      "query": "\"G.D.N\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 2
-    },
-    {
-      "film": "G.D.N",
-      "channel": "Second Show",
-      "query": "\"G.D.N\" \"Second Show\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "G.D.N",
-      "channel": "Empty Hand",
-      "query": "\"G.D.N\" \"Empty Hand\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 0
-    },
-    {
-      "film": "G.D.N",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"G.D.N\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 3,
-      "matched_hits": 2
-    },
-    {
-      "film": "G.D.N",
-      "channel": "Delite Cinemas",
-      "query": "\"G.D.N\" \"Delite Cinemas\" tamil movie review",
-      "hits": 4,
-      "matched_hits": 4
-    },
-    {
-      "film": "Anbe Diana",
-      "channel": "Empty Hand",
-      "query": "\"Anbe Diana\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Anbe Diana",
-      "channel": "Delite Cinemas",
-      "query": "\"Anbe Diana\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Filmi Craft",
-      "query": "\"Arulvaan\" \"Filmi Craft\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 6
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Second Show",
-      "query": "\"Arulvaan\" \"Second Show\" tamil movie review",
-      "hits": 2,
-      "matched_hits": 2
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Empty Hand",
-      "query": "\"Arulvaan\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Galatta Plus",
-      "query": "\"Arulvaan\" \"Galatta Plus\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 1
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Arulvaan\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Arulvaan",
-      "channel": "Delite Cinemas",
-      "query": "\"Arulvaan\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Second Show",
-      "query": "\"Love Oh Love\" \"Second Show\" tamil movie review",
-      "hits": 3,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Empty Hand",
-      "query": "\"Love Oh Love\" \"Empty Hand\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Sudhir Srinivasan",
-      "query": "\"Love Oh Love\" \"Sudhir Srinivasan\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Love Oh Love",
-      "channel": "Delite Cinemas",
-      "query": "\"Love Oh Love\" \"Delite Cinemas\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Tamil Talkies",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Tamil Talkies\" tamil movie review",
-      "hits": 8,
-      "matched_hits": 6
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "KaKi's Talkies",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"KaKi's Talkies\" tamil movie review",
-      "hits": 0,
-      "matched_hits": 0
-    },
-    {
-      "film": "Lakshmikanthan Kolai Vazhakku",
-      "channel": "Filmi Craft",
-      "query": "\"Lakshmikanthan Kolai Vazhakku\" \"Filmi Craft\" tamil movie review",
-      "hits": 1,
-      "matched_hits": 0
-    }
-  ],
+  "channel_matrix_queries_run": 0,
+  "channel_matrix_video_hits": 0,
+  "channel_matrix_matched_hits": 0,
+  "channel_matrix_queries": [],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -1849,12 +1435,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 577 useful public comments. Of 163 comments with detectable reaction wording, 66 were appreciative and 97 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
-      "useful_comments": 577,
+      "summary": "Based on 578 useful public comments. Of 163 comments with detectable reaction wording, 66 were appreciative and 97 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
+      "useful_comments": 578,
       "explicit_reaction_comments": 163,
       "appreciative_signals": 66,
       "critical_signals": 97,
-      "substantive_share": 0.1768,
+      "substantive_share": 0.1765,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1904,7 +1490,7 @@
         },
         {
           "channel": "Next Media Office ",
-          "useful_comments": 16,
+          "useful_comments": 17,
           "appreciative_signals": 2,
           "critical_signals": 2,
           "questions": 3,
@@ -2153,12 +1739,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 765 useful public comments. Of 244 comments with detectable reaction wording, 196 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 765,
-      "explicit_reaction_comments": 244,
-      "appreciative_signals": 196,
-      "critical_signals": 48,
-      "substantive_share": 0.2405,
+      "summary": "Based on 768 useful public comments. Of 246 comments with detectable reaction wording, 197 were appreciative and 49 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 768,
+      "explicit_reaction_comments": 246,
+      "appreciative_signals": 197,
+      "critical_signals": 49,
+      "substantive_share": 0.2409,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -2176,16 +1762,16 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 618,
+          "useful_comments": 620,
           "appreciative_signals": 156,
-          "critical_signals": 33,
+          "critical_signals": 34,
           "questions": 62,
           "leading_topic": "General reaction"
         },
         {
           "channel": "Second Show",
-          "useful_comments": 85,
-          "appreciative_signals": 22,
+          "useful_comments": 86,
+          "appreciative_signals": 23,
           "critical_signals": 8,
           "questions": 9,
           "leading_topic": "General reaction"
@@ -2344,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 5923,
+  "comments_fetched": 161,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 111,
+    "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 0,
-    "public_comment_count_unchanged": 0
+    "public_comment_count_increased": 4,
+    "periodic_comment_refresh": 33,
+    "public_comment_count_unchanged": 74
   },
-  "new_comments_added": 39,
-  "stored_comments": 17303,
+  "new_comments_added": 4,
+  "stored_comments": 17307,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
@@ -4411,8 +3997,8 @@
     "Delite Cinemas"
   ],
   "top_channel_coverage_rows": 360,
-  "top_channel_missing_pairs": 0,
-  "top_channel_retry_queries_run": 40,
+  "top_channel_missing_pairs": 271,
+  "top_channel_retry_queries_run": 0,
   "collectors": [
     "YouTube Data API",
     "youtube-comment-downloader fallback"
