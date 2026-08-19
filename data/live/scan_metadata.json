@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T07:13:25.638063+00:00",
+  "last_scan": "2026-08-19T08:00:01.601239+00:00",
   "last_video_discovery": "2026-08-19T06:23:19.127201+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -691,12 +691,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 575 useful public comments. Of 169 comments with detectable reaction wording, 148 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 575,
+      "summary": "Based on 576 useful public comments. Of 169 comments with detectable reaction wording, 148 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 576,
       "explicit_reaction_comments": 169,
       "appreciative_signals": 148,
       "critical_signals": 21,
-      "substantive_share": 0.3322,
+      "substantive_share": 0.3316,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -738,7 +738,7 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 30,
+          "useful_comments": 31,
           "appreciative_signals": 2,
           "critical_signals": 0,
           "questions": 5,
@@ -1946,16 +1946,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 134,
+  "comments_fetched": 35,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 75
+    "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 3,
-  "stored_comments": 17503,
+  "new_comments_added": 1,
+  "stored_comments": 17504,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
