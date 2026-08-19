@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T21:47:31.633415+00:00",
+  "last_scan": "2026-08-19T22:13:07.367150+00:00",
   "last_video_discovery": "2026-08-19T06:23:19.127201+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1946,13 +1946,13 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 12,
+  "comments_fetched": 0,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 34,
-    "public_comment_count_unchanged": 77
+    "periodic_comment_refresh": 33,
+    "public_comment_count_unchanged": 78
   },
   "new_comments_added": 0,
   "stored_comments": 17554,
