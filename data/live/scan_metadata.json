@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T04:59:51.090470+00:00",
+  "last_scan": "2026-08-19T05:26:28.090047+00:00",
   "last_video_discovery": "2026-08-18T06:22:32.393497+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1739,12 +1739,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 814 useful public comments. Of 256 comments with detectable reaction wording, 203 were appreciative and 53 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 814,
+      "summary": "Based on 816 useful public comments. Of 256 comments with detectable reaction wording, 203 were appreciative and 53 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 816,
       "explicit_reaction_comments": 256,
       "appreciative_signals": 203,
       "critical_signals": 53,
-      "substantive_share": 0.2482,
+      "substantive_share": 0.2488,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1762,10 +1762,10 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 648,
+          "useful_comments": 650,
           "appreciative_signals": 160,
           "critical_signals": 35,
-          "questions": 65,
+          "questions": 66,
           "leading_topic": "General reaction"
         },
         {
@@ -1930,16 +1930,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 127,
+  "comments_fetched": 250,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 2,
-    "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 74
+    "periodic_comment_refresh": 36,
+    "public_comment_count_unchanged": 73
   },
-  "new_comments_added": 2,
-  "stored_comments": 17392,
+  "new_comments_added": 3,
+  "stored_comments": 17395,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
