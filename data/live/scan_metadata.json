@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T10:16:57.486812+00:00",
+  "last_scan": "2026-08-19T10:52:34.229441+00:00",
   "last_video_discovery": "2026-08-19T06:23:19.127201+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -691,12 +691,12 @@
       "reviewers": []
     },
     "G.D.N": {
-      "summary": "Based on 577 useful public comments. Of 169 comments with detectable reaction wording, 148 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 577,
+      "summary": "Based on 578 useful public comments. Of 169 comments with detectable reaction wording, 148 were appreciative and 21 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 578,
       "explicit_reaction_comments": 169,
       "appreciative_signals": 148,
       "critical_signals": 21,
-      "substantive_share": 0.331,
+      "substantive_share": 0.3322,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -708,7 +708,7 @@
         },
         {
           "name": "Story & screenplay",
-          "comments": 18
+          "comments": 19
         }
       ],
       "reviewers": [
@@ -738,7 +738,7 @@
         },
         {
           "channel": "Second Show",
-          "useful_comments": 32,
+          "useful_comments": 33,
           "appreciative_signals": 2,
           "critical_signals": 0,
           "questions": 5,
@@ -1946,16 +1946,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 100,
+  "comments_fetched": 37,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 2,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 76
+    "public_comment_count_unchanged": 77
   },
   "new_comments_added": 1,
-  "stored_comments": 17512,
+  "stored_comments": 17513,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
