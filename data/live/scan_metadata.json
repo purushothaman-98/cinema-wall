@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T09:21:51.621051+00:00",
+  "last_scan": "2026-08-19T09:56:23.613505+00:00",
   "last_video_discovery": "2026-08-19T06:23:19.127201+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1443,12 +1443,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 594 useful public comments. Of 165 comments with detectable reaction wording, 67 were appreciative and 98 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
-      "useful_comments": 594,
+      "summary": "Based on 595 useful public comments. Of 165 comments with detectable reaction wording, 67 were appreciative and 98 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, direction & making, story & screenplay.",
+      "useful_comments": 595,
       "explicit_reaction_comments": 165,
       "appreciative_signals": 67,
       "critical_signals": 98,
-      "substantive_share": 0.1751,
+      "substantive_share": 0.1748,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1490,7 +1490,7 @@
         },
         {
           "channel": "Chennai Waalaa",
-          "useful_comments": 23,
+          "useful_comments": 24,
           "appreciative_signals": 6,
           "critical_signals": 2,
           "questions": 1,
@@ -1946,16 +1946,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 236,
+  "comments_fetched": 24,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 5,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 73
+    "public_comment_count_unchanged": 77
   },
-  "new_comments_added": 5,
-  "stored_comments": 17510,
+  "new_comments_added": 1,
+  "stored_comments": 17511,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
