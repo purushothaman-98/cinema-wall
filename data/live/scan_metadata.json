@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-19T11:47:14.380083+00:00",
+  "last_scan": "2026-08-19T12:20:20.048973+00:00",
   "last_video_discovery": "2026-08-19T06:23:19.127201+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1100,12 +1100,12 @@
       ]
     },
     "Jana Nayagan": {
-      "summary": "Based on 1,533 useful public comments. Of 375 comments with detectable reaction wording, 255 were appreciative and 120 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
-      "useful_comments": 1533,
+      "summary": "Based on 1,534 useful public comments. Of 375 comments with detectable reaction wording, 255 were appreciative and 120 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
+      "useful_comments": 1534,
       "explicit_reaction_comments": 375,
       "appreciative_signals": 255,
       "critical_signals": 120,
-      "substantive_share": 0.2825,
+      "substantive_share": 0.2823,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1131,7 +1131,7 @@
         },
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 322,
+          "useful_comments": 323,
           "appreciative_signals": 76,
           "critical_signals": 16,
           "questions": 40,
@@ -1946,16 +1946,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 50,
+  "comments_fetched": 100,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 1,
+    "public_comment_count_increased": 2,
     "periodic_comment_refresh": 33,
-    "public_comment_count_unchanged": 77
+    "public_comment_count_unchanged": 76
   },
   "new_comments_added": 1,
-  "stored_comments": 17515,
+  "stored_comments": 17516,
   "videos_monitored": 111,
   "standard_videos_monitored": 77,
   "shorts_monitored": 34,
