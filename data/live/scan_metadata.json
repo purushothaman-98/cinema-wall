@@ -1,6 +1,6 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-08-20T17:23:38.947489+00:00",
+  "status": "partial",
+  "last_scan": "2026-08-20T17:54:14.747242+00:00",
   "last_video_discovery": "2026-08-20T06:24:24.585615+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1748,12 +1748,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 904 useful public comments. Of 298 comments with detectable reaction wording, 235 were appreciative and 63 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
-      "useful_comments": 904,
+      "summary": "Based on 905 useful public comments. Of 298 comments with detectable reaction wording, 235 were appreciative and 63 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, acting & characters, emotion.",
+      "useful_comments": 905,
       "explicit_reaction_comments": 298,
       "appreciative_signals": 235,
       "critical_signals": 63,
-      "substantive_share": 0.2688,
+      "substantive_share": 0.2696,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1771,7 +1771,7 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 670,
+          "useful_comments": 671,
           "appreciative_signals": 166,
           "critical_signals": 40,
           "questions": 67,
@@ -1947,16 +1947,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 58,
+  "comments_fetched": 56,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 1,
-    "periodic_comment_refresh": 35,
-    "public_comment_count_unchanged": 76
+    "periodic_comment_refresh": 34,
+    "public_comment_count_unchanged": 77
   },
   "new_comments_added": 1,
-  "stored_comments": 17614,
+  "stored_comments": 17615,
   "videos_monitored": 112,
   "standard_videos_monitored": 77,
   "shorts_monitored": 35,
@@ -4020,5 +4020,7 @@
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Comments/Jcf9Q-D7_5M: 500 Server Error: Internal Server Error for url: https://www.googleapis.com/youtube/v3/commentThreads?key=***&part=snippet&videoId=Jcf9Q-D7_5M&maxResults=50&order=time&textFormat=plainText"
+  ]
 }
