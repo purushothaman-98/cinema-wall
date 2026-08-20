@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-20T18:21:17.566770+00:00",
+  "last_scan": "2026-08-20T19:09:27.232416+00:00",
   "last_video_discovery": "2026-08-20T06:24:24.585615+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1748,12 +1748,12 @@
       "reviewers": []
     },
     "Vishwanath & Sons": {
-      "summary": "Based on 907 useful public comments. Of 299 comments with detectable reaction wording, 236 were appreciative and 63 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, emotion, acting & characters.",
-      "useful_comments": 907,
-      "explicit_reaction_comments": 299,
-      "appreciative_signals": 236,
+      "summary": "Based on 908 useful public comments. Of 300 comments with detectable reaction wording, 237 were appreciative and 63 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, emotion, acting & characters.",
+      "useful_comments": 908,
+      "explicit_reaction_comments": 300,
+      "appreciative_signals": 237,
       "critical_signals": 63,
-      "substantive_share": 0.2712,
+      "substantive_share": 0.2709,
       "top_aspects": [
         {
           "name": "Story & screenplay",
@@ -1771,8 +1771,8 @@
       "reviewers": [
         {
           "channel": "Tamil Talkies",
-          "useful_comments": 672,
-          "appreciative_signals": 166,
+          "useful_comments": 673,
+          "appreciative_signals": 167,
           "critical_signals": 40,
           "questions": 68,
           "leading_topic": "General reaction"
@@ -1951,12 +1951,12 @@
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 3,
-    "periodic_comment_refresh": 33,
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 35,
     "public_comment_count_unchanged": 76
   },
-  "new_comments_added": 3,
-  "stored_comments": 17618,
+  "new_comments_added": 1,
+  "stored_comments": 17619,
   "videos_monitored": 112,
   "standard_videos_monitored": 77,
   "shorts_monitored": 35,
