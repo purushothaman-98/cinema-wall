@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-21T00:34:23.417279+00:00",
+  "last_scan": "2026-08-21T02:17:00.631064+00:00",
   "last_video_discovery": "2026-08-20T06:24:24.585615+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -548,24 +548,24 @@
       ]
     },
     "DC": {
-      "summary": "Based on 1,316 useful public comments. Of 311 comments with detectable reaction wording, 263 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
-      "useful_comments": 1316,
+      "summary": "Based on 1,317 useful public comments. Of 311 comments with detectable reaction wording, 263 were appreciative and 48 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss acting & characters, release & theatre, music & sound.",
+      "useful_comments": 1317,
       "explicit_reaction_comments": 311,
       "appreciative_signals": 263,
       "critical_signals": 48,
-      "substantive_share": 0.2356,
+      "substantive_share": 0.2361,
       "top_aspects": [
         {
           "name": "Acting & characters",
           "comments": 85
         },
         {
-          "name": "Music & sound",
+          "name": "Release & theatre",
           "comments": 44
         },
         {
-          "name": "Release & theatre",
-          "comments": 43
+          "name": "Music & sound",
+          "comments": 44
         }
       ],
       "reviewers": [
@@ -1444,12 +1444,12 @@
       ]
     },
     "Magudam": {
-      "summary": "Based on 619 useful public comments. Of 170 comments with detectable reaction wording, 71 were appreciative and 99 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, direction & making.",
-      "useful_comments": 619,
+      "summary": "Based on 620 useful public comments. Of 170 comments with detectable reaction wording, 71 were appreciative and 99 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss release & theatre, story & screenplay, direction & making.",
+      "useful_comments": 620,
       "explicit_reaction_comments": 170,
       "appreciative_signals": 71,
       "critical_signals": 99,
-      "substantive_share": 0.1712,
+      "substantive_share": 0.171,
       "top_aspects": [
         {
           "name": "Release & theatre",
@@ -1475,7 +1475,7 @@
         },
         {
           "channel": "Filmi craft",
-          "useful_comments": 102,
+          "useful_comments": 103,
           "appreciative_signals": 16,
           "critical_signals": 15,
           "questions": 9,
@@ -1947,16 +1947,16 @@
     "Gatta Kusthi 2",
     "Find Me"
   ],
-  "comments_fetched": 106,
+  "comments_fetched": 1596,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 36,
-    "public_comment_count_unchanged": 76
+    "public_comment_count_increased": 1,
+    "periodic_comment_refresh": 98,
+    "public_comment_count_unchanged": 13
   },
-  "new_comments_added": 1,
-  "stored_comments": 17621,
+  "new_comments_added": 3,
+  "stored_comments": 17624,
   "videos_monitored": 112,
   "standard_videos_monitored": 77,
   "shorts_monitored": 35,
