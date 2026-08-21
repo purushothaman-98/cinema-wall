@@ -1,6 +1,6 @@
 {
   "status": "healthy",
-  "last_scan": "2026-08-21T08:03:55.756426+00:00",
+  "last_scan": "2026-08-21T09:06:22.439239+00:00",
   "last_video_discovery": "2026-08-21T06:24:38.812096+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
@@ -1980,13 +1980,13 @@
     "Love Oh Love",
     "Lakshmikanthan Kolai Vazhakku"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 1,
   "comment_fetch_decisions": {
     "daily_discovery_refresh": 0,
     "new_or_unknown_video": 0,
-    "public_comment_count_increased": 0,
+    "public_comment_count_increased": 1,
     "periodic_comment_refresh": 37,
-    "public_comment_count_unchanged": 74
+    "public_comment_count_unchanged": 73
   },
   "new_comments_added": 0,
   "stored_comments": 17636,
