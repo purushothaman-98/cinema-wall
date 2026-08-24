@@ -89,6 +89,28 @@ cd ../server && npm install && npm run build && npm start   # http://localhost:4
 The dashboard reads only what's already in `data/live/` — it never calls TMDB or YouTube itself, so it works fine
 even without either API key, as long as the collector has run at least once (locally or via the GitHub workflow).
 
+## Deploy for free
+
+The app is one Node process (the API in `server/` also serves the built `web/` frontend), which fits Render's free
+web service tier: no credit card, deploys straight from this GitHub repo.
+
+1. Push/merge this branch to `main` (Render will deploy whatever branch you point it at).
+2. On [render.com](https://render.com), sign up free, then **New → Blueprint**, connect this repo. Render reads
+   `render.yaml` at the repo root and creates the service automatically — no manual config needed.
+3. Wait for the first build to finish; Render shows the live URL (something like `https://cinema-wall.onrender.com`)
+   on the service page.
+4. `render.yaml` turns off Render's auto-deploy-on-push on purpose — the collector commits every 30 minutes, and
+   redeploying the dashboard that often would burn through a free plan's build-minute allowance for no real benefit.
+   To keep data reasonably fresh without that:
+   - open the new service → **Settings → Deploy Hook**, copy the URL
+   - in this repo, **Settings → Secrets and variables → Actions**, add it as `RENDER_DEPLOY_HOOK_URL`
+   - `.github/workflows/redeploy.yml` then pings that hook every 2 hours to pull the latest commit and rebuild
+     (it no-ops harmlessly until the secret exists). Trigger it manually any time from the Actions tab, or click
+     **Manual Deploy** on Render directly, if you want the very latest data sooner.
+
+Free-tier tradeoff worth knowing: Render's free web services spin down after ~15 minutes with no traffic, so the
+first visit after a quiet spell takes 30–60s to wake back up — normal, not broken.
+
 ## Processing method
 
 The transparent processing layer:

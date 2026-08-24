@@ -1,0 +1,34 @@
+name: Redeploy dashboard
+
+# render.yaml disables Render's auto-deploy-on-push (the data collector
+# commits every 30 minutes; rebuilding the dashboard every single time
+# would burn through a free plan's build-minute allowance for no reason).
+# Instead, this nudges Render to pull the latest commit and rebuild every
+# couple of hours, which is plenty fresh for a dashboard, not a live feed.
+#
+# Setup (one-time): create the Render web service from render.yaml, then
+# copy its Deploy Hook URL (service -> Settings -> Deploy Hook) into this
+# repo's Actions secret RENDER_DEPLOY_HOOK_URL. Until that secret exists,
+# this workflow no-ops instead of failing.
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy hook
+        env:
+          HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "RENDER_DEPLOY_HOOK_URL secret not set yet — skipping. See render.yaml / README for setup."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK_URL"
