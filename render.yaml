@@ -20,3 +20,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      # Render's free instance is memory-constrained enough that Node's
+      # auto-detected V8 heap ceiling (~256MB) is tighter than what's
+      # actually available; give it more headroom than the default guess.
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=400"

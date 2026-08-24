@@ -108,8 +108,15 @@ web service tier: no credit card, deploys straight from this GitHub repo.
      (it no-ops harmlessly until the secret exists). Trigger it manually any time from the Actions tab, or click
      **Manual Deploy** on Render directly, if you want the very latest data sooner.
 
-Free-tier tradeoff worth knowing: Render's free web services spin down after ~15 minutes with no traffic, so the
-first visit after a quiet spell takes 30–60s to wake back up — normal, not broken.
+Free-tier tradeoffs worth knowing:
+
+- Render's free web services spin down after ~15 minutes with no traffic, so the first visit after a quiet spell
+  takes 30–60s to wake the instance back up — normal, not broken.
+- The API derives everything (momentum, evidence scores, comment composition, the arrival heatmap, …) from the raw
+  CSVs on first use and caches the result in memory. On a free instance's limited RAM, that first request after
+  a cold start can itself take ~10–15s while it parses years of retained history; every request after that is
+  near-instant until the next redeploy or wake-up. The dashboard shows a loading state during this, so it reads as
+  "slow once," not broken.
 
 ## Processing method
 

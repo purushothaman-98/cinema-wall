@@ -35,8 +35,17 @@ interface CacheEntry<T> {
 
 const cache = new Map<string, CacheEntry<unknown>>();
 
-/** Loads a CSV file into typed rows, re-parsing only when the file's mtime changes. */
-export function loadCsv<T>(filePath: string): T[] {
+/**
+ * Loads a CSV file into typed rows, re-parsing only when the file's mtime
+ * changes. Pass `omit` for columns nothing downstream reads — e.g. a raw
+ * YouTube video `description` repeated across every 30-minute snapshot of
+ * the same video for weeks. csv-parse drops those columns while parsing
+ * (via a per-column `undefined` definition), so the unwanted text is never
+ * materialized into a retained string at all, not even transiently — this
+ * is what keeps a many-year retained-history CSV parseable in a few
+ * hundred MB of heap instead of ballooning to gigabytes.
+ */
+export function loadCsv<T>(filePath: string, options: { omit?: string[] } = {}): T[] {
   let mtimeMs: number;
   try {
     mtimeMs = statSync(filePath).mtimeMs;
@@ -46,9 +55,10 @@ export function loadCsv<T>(filePath: string): T[] {
   const hit = cache.get(filePath) as CacheEntry<T> | undefined;
   if (hit && hit.mtimeMs === mtimeMs) return hit.rows;
 
+  const omit = options.omit;
   const text = readFileSync(filePath, "utf-8");
   const records = parse(text, {
-    columns: true,
+    columns: omit && omit.length > 0 ? (header: string[]) => header.map((h) => (omit.includes(h) ? undefined : h)) : true,
     skip_empty_lines: true,
     relax_column_count: true,
     bom: true,

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { getComments, getVideoSnapshots } from "../lib/store.js";
+import { cached } from "../lib/cache.js";
 import {
   arrivalHeatmap,
   buildFilmSummaries,
@@ -13,6 +14,10 @@ import {
 export const overviewRouter = Router();
 
 overviewRouter.get("/overview", (_req, res) => {
+  res.json(cached("overviewPayload", buildOverviewPayload));
+});
+
+function buildOverviewPayload() {
   const summaries = buildFilmSummaries();
   const comments = getComments();
 
@@ -38,7 +43,7 @@ overviewRouter.get("/overview", (_req, res) => {
 
   const composition = commentComposition(comments);
 
-  res.json({
+  return {
     totals: overviewTotals(),
     trending,
     strongestEvidence,
@@ -51,8 +56,8 @@ overviewRouter.get("/overview", (_req, res) => {
     contemporaryReferenceSpotlight: contextSpotlight(comments, "contemporary"),
     discussionDepthLeaders: discussionDepthLeaders(comments),
     topChannels: channelLeaderboard().slice(0, 6),
-  });
-});
+  };
+}
 
 // Kept for callers that only need the raw counts (used by the "as of" freshness badge).
 overviewRouter.get("/health", (_req, res) => {

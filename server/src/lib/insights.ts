@@ -13,6 +13,7 @@ import {
   getTopChannelCoverage,
   getVideoSnapshots,
 } from "./store.js";
+import { cached } from "./cache.js";
 
 // ---------- small utilities ----------
 
@@ -429,8 +430,12 @@ export interface FilmSummary {
   leadTopic: string | null;
 }
 
-/** One row per film: the summary card used by the films grid and the homepage. */
+/** One row per film: the summary card used by the films grid and the homepage. Cached — see cache.ts. */
 export function buildFilmSummaries(): FilmSummary[] {
+  return cached("filmSummaries", buildFilmSummariesUncached);
+}
+
+function buildFilmSummariesUncached(): FilmSummary[] {
   const videos = getVideoSnapshots();
   const comments = getComments();
   const catalog = catalogIndex();

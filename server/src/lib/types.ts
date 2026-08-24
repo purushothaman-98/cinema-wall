@@ -53,9 +53,7 @@ export interface VideoSnapshotRow {
   film: string;
   scanned_at: string;
   channel_id: string;
-  description: string;
   thumbnail_url: string;
-  duration: string;
   content_format: string;
   source_category: string;
   source_profile: string;
