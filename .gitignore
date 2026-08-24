@@ -2,6 +2,11 @@ __pycache__/
 *.py[cod]
 .venv/
 .env
-.streamlit/secrets.toml
 .pytest_cache/
 .DS_Store
+
+# Node / web dashboard
+node_modules/
+server/dist/
+web/dist/
+*.log

@@ -1,0 +1,22 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# Deploys the Node/Express API (server/) which also serves the built React
+# dashboard (web/) as one free web service. No database, no other services.
+#
+# autoDeploy is intentionally OFF: the data collector commits to `main`
+# every 30 minutes, and this app reads the repo's data/live/*.csv files at
+# build time. Auto-deploying on every one of those commits would burn
+# through a free plan's build-minute allowance fast. Instead, trigger
+# deploys on a longer timer — see .github/workflows/redeploy.yml and the
+# "Deploy for free" section in README.md.
+services:
+  - type: web
+    name: cinema-wall
+    runtime: node
+    plan: free
+    autoDeploy: false
+    buildCommand: "cd web && npm install && npm run build && cd ../server && npm install && npm run build"
+    startCommand: "node server/dist/index.js"
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

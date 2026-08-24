@@ -30,7 +30,7 @@ jobs:
       - name: Install scanner
         run: pip install -r requirements.txt
       - name: Validate Python files
-        run: python -m py_compile app.py collectors.py data.py scanner.py youtube_analysis.py
+        run: python -m py_compile collectors.py scanner.py youtube_analysis.py
       - name: Fetch YouTube comments and statistics
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
