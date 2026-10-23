@@ -1,7 +1,7 @@
 {
-  "status": "healthy",
-  "last_scan": "2026-08-21T20:13:12.955226+00:00",
-  "last_video_discovery": "2026-08-21T06:24:38.812096+00:00",
+  "status": "partial",
+  "last_scan": "2026-10-23T02:15:22.237043+00:00",
+  "last_video_discovery": "2026-10-23T02:15:22.237043+00:00",
   "scan_interval_minutes": 30,
   "video_discovery_hours": 24,
   "tmdb_discovery_pages": 3,
@@ -12,120 +12,40 @@
   "keep_history_days": 730,
   "selection_version": 14,
   "active_video_ids": [
-    "-21sCJC07ns",
-    "0hXaHtpiwS0",
-    "0z72inq5IHk",
-    "1aynHh4uCT4",
-    "1mbew1azkdQ",
-    "1qcKf4QWWg4",
-    "2Vakzy6NK5c",
-    "2sF5k4WAmWQ",
-    "2xytMHn6n8E",
-    "4v6OWiZAv7Q",
-    "5DYi3qAJi5o",
-    "5WvvFftjYvI",
-    "76mt41xEk80",
-    "7IPlm-OE24E",
-    "7qB7QUkKItc",
-    "8HSLGSq5jgM",
-    "8cmPUIBk84M",
-    "8rFBdwTxp74",
-    "8snjk__6u_M",
-    "9UmC0sRxGIE",
-    "BYPf0aA69aM",
-    "BmHN5fdO_7o",
-    "CIqalCiVHPU",
-    "D96FUzC5bx8",
-    "Dmw2-tr7Xl0",
-    "G66Q8QcMLGQ",
-    "GPVCddT5-oI",
-    "GUn-2xjbnkI",
-    "H4AC6oj53_g",
-    "HMFml_NutNg",
-    "HzhLqaggnHM",
-    "I8SU1Q9arJU",
-    "IRbxWndlUoU",
-    "Ico05t90x8Q",
-    "IrEqY77U0Cw",
-    "Jcf9Q-D7_5M",
-    "KIlj5fsPiIg",
-    "KImWww6ex-k",
-    "Lf9zxufJt-A",
-    "LgXJd4aZR98",
-    "MDztlUCs6AY",
-    "MH7jdniLG5o",
-    "OFoHRwCehF4",
-    "OjlO3i690xU",
-    "Oo7sUsOLhcs",
-    "OzWTtp3O3vU",
-    "Q8WVB5ub5Ps",
-    "R2ld_JJTGJo",
-    "RLhvDMZedVc",
-    "TanDK1_9kfI",
-    "VWaKFuvU6_s",
-    "Vqc-L2YanLk",
-    "VrU7nl5NIW4",
-    "WADrIaVGiFg",
-    "X030fOP0e0A",
-    "XIwmGxHazpU",
-    "YeH-S-6UVsw",
-    "Z0uCtHbEGbU",
-    "_P7O4ZxqqFk",
-    "_Z5LvDYvvtc",
-    "bBjaajEGSUE",
-    "bPaudjceoio",
-    "byPjJv37-_o",
-    "c7EzzEgyfFM",
-    "cNad50ZZYwk",
-    "cULfT3sfuPk",
-    "eIb2xyyVy6I",
-    "f9vSQANdQ8Y",
-    "fffgqHQBHrY",
-    "ghgTkC-SI9U",
-    "gtXuV6ihcv8",
-    "hq_G0XZcTc8",
-    "iza7zuCiHNA",
-    "j2IMskHJooU",
-    "jVUt3w72nKE",
-    "jo9pLKTXTRc",
-    "kM1KK42ngzY",
-    "kiFeXcU-JI4",
-    "kpxThIe1jZ4",
-    "l0NAjDxOr44",
-    "lsSwlXL3OCY",
-    "m_kxIfJmqfI",
-    "mplpkZXBxhI",
-    "nub83OozhZk",
-    "nwCjD1lAyVk",
-    "o5Zs13c_cTM",
-    "oFX2kvxUJR4",
-    "ob04AKYg_Ck",
-    "on9CuThxzYE",
-    "pSj321Hek4Q",
-    "pawx3mfvsyE",
-    "pgR4WRXjavA",
-    "pgopIrupB_U",
-    "pqujJWuuqbc",
-    "qPd-sy5PXEg",
-    "r1AAFdOdk1M",
-    "rpEqVl_nUW8",
-    "s5dR4osy9tk",
-    "sNX0f8e4YP4",
-    "t5I5hZqmAxM",
-    "tKKZGqzZrYM",
-    "uLLI5U_6BME",
-    "uXFrdVEQotE",
-    "w925Bd_-RnY",
-    "wQUVWwMSmkA",
-    "xTBc8z__vY4",
-    "xafyTIvroj8",
-    "yimvoAiPwR8",
-    "yz_gBpjYjFk",
-    "zTAqIoV2nc8",
-    "zilLN4gMGsI"
+    "-XF5gdez9d4",
+    "0DjwO9a7AmA",
+    "0nxIi7XEpVs",
+    "1-UMVkjzTCU",
+    "5c9Je5DM7U0",
+    "B20G9z0CDJc",
+    "BaCYlQ3LN7g",
+    "E5p8rvcyPJU",
+    "EMhER4Sxc8c",
+    "FpsIneaCX2M",
+    "G1u7LUknHzo",
+    "IQgtp_ERAQg",
+    "IfXM6PvW1SE",
+    "JfbKx8JGzYQ",
+    "MyLPKBIJlHQ",
+    "N4MFPMvA2H4",
+    "NMWEPzhYMuI",
+    "P8FLFO0fkoI",
+    "X1eRHZ7oOQo",
+    "X1yegr71zLk",
+    "ZJYWP8P3Cb0",
+    "aRbwuTa1M9c",
+    "eTC1GA7Khp8",
+    "f1UUcH4KD4g",
+    "hLtrt26MfKE",
+    "iy1c-0N_kyE",
+    "mZOBQl-FwTA",
+    "uZHr_3Bgtfs",
+    "w0xKWJDNnQE",
+    "z6n3Gy0tm_U",
+    "zy09tyzFpX8"
   ],
   "out_of_scope_videos_pruned": 0,
-  "discovery_mode": "monitor_existing_selection",
+  "discovery_mode": "daily_tmdb_plus_broad_youtube",
   "broad_discovery_queries": [
     "new tamil movie review today",
     "tamil cinema public review today",
@@ -145,22 +65,436 @@
     "Touring Talkies tamil cinema interview"
   ],
   "broad_discovery_video_hits": 0,
-  "broad_discovery_queries_run": 0,
-  "source_channel_queries_run": 0,
+  "broad_discovery_queries_run": 2,
+  "source_channel_queries_run": 11,
   "source_channel_video_hits": 0,
   "source_channel_matched_hits": 0,
-  "source_channel_queries": [],
-  "upload_feed_channels_run": 0,
-  "upload_feed_video_hits": 0,
-  "upload_feed_matched_hits": 0,
-  "upload_feed_queries": [],
-  "direct_film_discovery_queries_run": 0,
-  "direct_film_discovery_films": [],
+  "source_channel_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "query": "\"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "query": "\"Sudhir Srinivasan\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Galatta Plus",
+      "query": "\"Galatta Plus\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Second Show",
+      "query": "\"Second Show\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Delite Cinemas",
+      "query": "\"Delite Cinemas\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Filmi Craft",
+      "query": "\"Filmi Craft\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Nona Prince",
+      "query": "\"Nona Prince\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Kodangi",
+      "query": "\"Kodangi\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Tamil Talkies",
+      "query": "\"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Plip Plip",
+      "query": "\"Plip Plip\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Empty Hand",
+      "query": "\"Empty Hand\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
+  "upload_feed_channels_run": 10,
+  "upload_feed_video_hits": 500,
+  "upload_feed_matched_hits": 186,
+  "upload_feed_queries": [
+    {
+      "channel": "KaKi's Talkies",
+      "channel_id": "UC3Rey0d4AtvWyHVu0SC-VXA",
+      "hits": 50,
+      "matched_hits": 15
+    },
+    {
+      "channel": "Sudhir Srinivasan",
+      "channel_id": "UCSHTtPCL2CV5eoj9uMPz_tg",
+      "hits": 50,
+      "matched_hits": 23
+    },
+    {
+      "channel": "Galatta Plus",
+      "channel_id": "UCTTUsQJAdGSd2mMsGGfvzhQ",
+      "hits": 50,
+      "matched_hits": 0
+    },
+    {
+      "channel": "Second Show",
+      "channel_id": "UCDyoch6mtkeC_5lNkI9W2OQ",
+      "hits": 50,
+      "matched_hits": 5
+    },
+    {
+      "channel": "Delite Cinemas",
+      "channel_id": "UCAPY9agmayYQ5-tYikGlxhA",
+      "hits": 50,
+      "matched_hits": 62
+    },
+    {
+      "channel": "Filmi Craft",
+      "channel_id": "UClF9UTljviumfJf7t-VR5tg",
+      "hits": 50,
+      "matched_hits": 5
+    },
+    {
+      "channel": "Cinema Vikatan",
+      "channel_id": "UCjF5ecCYXFDvR0UY9GcfnoA",
+      "hits": 50,
+      "matched_hits": 21
+    },
+    {
+      "channel": "Valai Pechu",
+      "channel_id": "UCRTmSft-1I9f0yzTnz32oMg",
+      "hits": 50,
+      "matched_hits": 36
+    },
+    {
+      "channel": "Tamil Talkies",
+      "channel_id": "UCkI-SYGC8fxPNcp6FsX4SRQ",
+      "hits": 50,
+      "matched_hits": 15
+    },
+    {
+      "channel": "Empty Hand",
+      "channel_id": "UC8_aMwsn53tncdH-5iLu8-w",
+      "hits": 50,
+      "matched_hits": 4
+    }
+  ],
+  "direct_film_discovery_queries_run": 4,
+  "direct_film_discovery_films": [
+    "All Pass",
+    "Anbil Avan",
+    "Baththa",
+    "Cuddle Caf\u00e9"
+  ],
   "channel_matrix_enabled": true,
-  "channel_matrix_queries_run": 0,
+  "channel_matrix_queries_run": 40,
   "channel_matrix_video_hits": 0,
   "channel_matrix_matched_hits": 0,
-  "channel_matrix_queries": [],
+  "channel_matrix_queries": [
+    {
+      "film": "All Pass",
+      "channel": "Tamil Talkies",
+      "query": "\"All Pass\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Anbil Avan",
+      "channel": "Tamil Talkies",
+      "query": "\"Anbil Avan\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Baththa",
+      "channel": "Tamil Talkies",
+      "query": "\"Baththa\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Cuddle Caf\u00e9",
+      "channel": "Tamil Talkies",
+      "query": "\"Cuddle Caf\u00e9\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Drones",
+      "channel": "Tamil Talkies",
+      "query": "\"Drones\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Haiku",
+      "channel": "Tamil Talkies",
+      "query": "\"Haiku\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Jailer 2",
+      "channel": "Tamil Talkies",
+      "query": "\"Jailer 2\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Kitti",
+      "channel": "Tamil Talkies",
+      "query": "\"Kitti\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Little Hearts: Madness of Love",
+      "channel": "Tamil Talkies",
+      "query": "\"Little Hearts: Madness of Love\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Maaruvesham",
+      "channel": "Tamil Talkies",
+      "query": "\"Maaruvesham\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Nizhalilirundhu Velicham",
+      "channel": "Tamil Talkies",
+      "query": "\"Nizhalilirundhu Velicham\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Obstacle",
+      "channel": "Tamil Talkies",
+      "query": "\"Obstacle\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Radhimaa (Documentary)",
+      "channel": "Tamil Talkies",
+      "query": "\"Radhimaa (Documentary)\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sigma",
+      "channel": "Tamil Talkies",
+      "query": "\"Sigma\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "THE BRANDOS",
+      "channel": "Tamil Talkies",
+      "query": "\"THE BRANDOS\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Thaainilam",
+      "channel": "Tamil Talkies",
+      "query": "\"Thaainilam\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "The Staircase",
+      "channel": "Tamil Talkies",
+      "query": "\"The Staircase\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Titanic",
+      "channel": "Tamil Talkies",
+      "query": "\"Titanic\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "To Love Her Again",
+      "channel": "Tamil Talkies",
+      "query": "\"To Love Her Again\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Yezhu Kadal Yezhu Malai",
+      "channel": "Tamil Talkies",
+      "query": "\"Yezhu Kadal Yezhu Malai\" \"Tamil Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "All Pass",
+      "channel": "KaKi's Talkies",
+      "query": "\"All Pass\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Anbil Avan",
+      "channel": "KaKi's Talkies",
+      "query": "\"Anbil Avan\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Baththa",
+      "channel": "KaKi's Talkies",
+      "query": "\"Baththa\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Cuddle Caf\u00e9",
+      "channel": "KaKi's Talkies",
+      "query": "\"Cuddle Caf\u00e9\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Drones",
+      "channel": "KaKi's Talkies",
+      "query": "\"Drones\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Haiku",
+      "channel": "KaKi's Talkies",
+      "query": "\"Haiku\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Jailer 2",
+      "channel": "KaKi's Talkies",
+      "query": "\"Jailer 2\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Kitti",
+      "channel": "KaKi's Talkies",
+      "query": "\"Kitti\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Little Hearts: Madness of Love",
+      "channel": "KaKi's Talkies",
+      "query": "\"Little Hearts: Madness of Love\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Maaruvesham",
+      "channel": "KaKi's Talkies",
+      "query": "\"Maaruvesham\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Nizhalilirundhu Velicham",
+      "channel": "KaKi's Talkies",
+      "query": "\"Nizhalilirundhu Velicham\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Obstacle",
+      "channel": "KaKi's Talkies",
+      "query": "\"Obstacle\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Radhimaa (Documentary)",
+      "channel": "KaKi's Talkies",
+      "query": "\"Radhimaa (Documentary)\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Sigma",
+      "channel": "KaKi's Talkies",
+      "query": "\"Sigma\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "THE BRANDOS",
+      "channel": "KaKi's Talkies",
+      "query": "\"THE BRANDOS\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Thaainilam",
+      "channel": "KaKi's Talkies",
+      "query": "\"Thaainilam\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "The Staircase",
+      "channel": "KaKi's Talkies",
+      "query": "\"The Staircase\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Titanic",
+      "channel": "KaKi's Talkies",
+      "query": "\"Titanic\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "To Love Her Again",
+      "channel": "KaKi's Talkies",
+      "query": "\"To Love Her Again\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    },
+    {
+      "film": "Yezhu Kadal Yezhu Malai",
+      "channel": "KaKi's Talkies",
+      "query": "\"Yezhu Kadal Yezhu Malai\" \"KaKi's Talkies\" tamil movie review",
+      "hits": 0,
+      "matched_hits": 0
+    }
+  ],
   "manual_films_configured": 0,
   "video_selection_buckets": {
     "trusted_videos_per_film": 4,
@@ -301,6 +635,62 @@
           "appreciative_signals": 6,
           "critical_signals": 1,
           "questions": 4,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Anbil Avan": {
+      "summary": "Based on 383 useful public comments. Of 126 comments with detectable reaction wording, 114 were appreciative and 12 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss emotion, story & screenplay, release & theatre.",
+      "useful_comments": 383,
+      "explicit_reaction_comments": 126,
+      "appreciative_signals": 114,
+      "critical_signals": 12,
+      "substantive_share": 0.1253,
+      "top_aspects": [
+        {
+          "name": "Emotion",
+          "comments": 32
+        },
+        {
+          "name": "Story & screenplay",
+          "comments": 15
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 6
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 277,
+          "appreciative_signals": 99,
+          "critical_signals": 7,
+          "questions": 10,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 54,
+          "appreciative_signals": 9,
+          "critical_signals": 2,
+          "questions": 5,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 38,
+          "appreciative_signals": 4,
+          "critical_signals": 1,
+          "questions": 8,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 14,
+          "appreciative_signals": 2,
+          "critical_signals": 2,
+          "questions": 1,
           "leading_topic": "General reaction"
         }
       ]
@@ -446,6 +836,70 @@
           "appreciative_signals": 4,
           "critical_signals": 0,
           "questions": 3,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Baththa": {
+      "summary": "Based on 697 useful public comments. Of 182 comments with detectable reaction wording, 159 were appreciative and 23 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, emotion.",
+      "useful_comments": 697,
+      "explicit_reaction_comments": 182,
+      "appreciative_signals": 159,
+      "critical_signals": 23,
+      "substantive_share": 0.1879,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 30
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 23
+        },
+        {
+          "name": "Emotion",
+          "comments": 21
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 270,
+          "appreciative_signals": 65,
+          "critical_signals": 16,
+          "questions": 29,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Empty Hand",
+          "useful_comments": 264,
+          "appreciative_signals": 45,
+          "critical_signals": 3,
+          "questions": 26,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 113,
+          "appreciative_signals": 25,
+          "critical_signals": 2,
+          "questions": 6,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 37,
+          "appreciative_signals": 18,
+          "critical_signals": 2,
+          "questions": 1,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 13,
+          "appreciative_signals": 6,
+          "critical_signals": 0,
+          "questions": 2,
           "leading_topic": "General reaction"
         }
       ]
@@ -666,6 +1120,38 @@
         }
       ],
       "reviewers": []
+    },
+    "Drones": {
+      "summary": "Based on 14 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss release & theatre, direction & making, acting & characters.",
+      "useful_comments": 14,
+      "explicit_reaction_comments": 6,
+      "appreciative_signals": 3,
+      "critical_signals": 3,
+      "substantive_share": 0.3571,
+      "top_aspects": [
+        {
+          "name": "Release & theatre",
+          "comments": 1
+        },
+        {
+          "name": "Direction & making",
+          "comments": 1
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 1
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 14,
+          "appreciative_signals": 3,
+          "critical_signals": 3,
+          "questions": 3,
+          "leading_topic": "General reaction"
+        }
+      ]
     },
     "Ego Raman": {
       "summary": "Based on 6 useful public comments. Too few comments contain clear reaction wording to describe an audience balance reliably. Beyond general reactions, viewers most often discuss acting & characters, music & sound, release & theatre.",
@@ -1095,6 +1581,78 @@
           "appreciative_signals": 5,
           "critical_signals": 4,
           "questions": 1,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
+    "Jailer 2": {
+      "summary": "Based on 951 useful public comments. Of 268 comments with detectable reaction wording, 231 were appreciative and 37 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss pacing & runtime, release & theatre, acting & characters.",
+      "useful_comments": 951,
+      "explicit_reaction_comments": 268,
+      "appreciative_signals": 231,
+      "critical_signals": 37,
+      "substantive_share": 0.2997,
+      "top_aspects": [
+        {
+          "name": "Pacing & runtime",
+          "comments": 52
+        },
+        {
+          "name": "Release & theatre",
+          "comments": 44
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 36
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Empty Hand",
+          "useful_comments": 259,
+          "appreciative_signals": 49,
+          "critical_signals": 10,
+          "questions": 26,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 247,
+          "appreciative_signals": 68,
+          "critical_signals": 6,
+          "questions": 29,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 141,
+          "appreciative_signals": 34,
+          "critical_signals": 6,
+          "questions": 22,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 119,
+          "appreciative_signals": 34,
+          "critical_signals": 5,
+          "questions": 34,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 114,
+          "appreciative_signals": 38,
+          "critical_signals": 7,
+          "questions": 12,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 71,
+          "appreciative_signals": 8,
+          "critical_signals": 3,
+          "questions": 9,
           "leading_topic": "General reaction"
         }
       ]
@@ -1682,6 +2240,62 @@
       ],
       "reviewers": []
     },
+    "Sigma": {
+      "summary": "Based on 778 useful public comments. Of 138 comments with detectable reaction wording, 88 were appreciative and 50 were critical; appreciative and critical signals are mixed. Beyond general reactions, viewers most often discuss story & screenplay, direction & making, acting & characters.",
+      "useful_comments": 778,
+      "explicit_reaction_comments": 138,
+      "appreciative_signals": 88,
+      "critical_signals": 50,
+      "substantive_share": 0.1851,
+      "top_aspects": [
+        {
+          "name": "Story & screenplay",
+          "comments": 30
+        },
+        {
+          "name": "Direction & making",
+          "comments": 25
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 18
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Tamil Talkies",
+          "useful_comments": 289,
+          "appreciative_signals": 34,
+          "critical_signals": 20,
+          "questions": 32,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Empty Hand",
+          "useful_comments": 271,
+          "appreciative_signals": 23,
+          "critical_signals": 11,
+          "questions": 21,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 140,
+          "appreciative_signals": 18,
+          "critical_signals": 14,
+          "questions": 8,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 78,
+          "appreciative_signals": 13,
+          "critical_signals": 5,
+          "questions": 8,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
     "Thaai Kizhavi": {
       "summary": "Based on 840 useful public comments. Of 229 comments with detectable reaction wording, 193 were appreciative and 36 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
       "useful_comments": 840,
@@ -1852,6 +2466,62 @@
         }
       ]
     },
+    "Yezhu Kadal Yezhu Malai": {
+      "summary": "Based on 171 useful public comments. Of 47 comments with detectable reaction wording, 34 were appreciative and 13 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss story & screenplay, emotion, acting & characters.",
+      "useful_comments": 171,
+      "explicit_reaction_comments": 47,
+      "appreciative_signals": 34,
+      "critical_signals": 13,
+      "substantive_share": 0.3743,
+      "top_aspects": [
+        {
+          "name": "Story & screenplay",
+          "comments": 16
+        },
+        {
+          "name": "Emotion",
+          "comments": 9
+        },
+        {
+          "name": "Acting & characters",
+          "comments": 9
+        }
+      ],
+      "reviewers": [
+        {
+          "channel": "Filmi craft",
+          "useful_comments": 66,
+          "appreciative_signals": 6,
+          "critical_signals": 4,
+          "questions": 7,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "KaKi's Talkies",
+          "useful_comments": 43,
+          "appreciative_signals": 9,
+          "critical_signals": 6,
+          "questions": 11,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Second Show",
+          "useful_comments": 42,
+          "appreciative_signals": 10,
+          "critical_signals": 3,
+          "questions": 4,
+          "leading_topic": "General reaction"
+        },
+        {
+          "channel": "Sudhir Srinivasan",
+          "useful_comments": 20,
+          "appreciative_signals": 9,
+          "critical_signals": 0,
+          "questions": 8,
+          "leading_topic": "General reaction"
+        }
+      ]
+    },
     "Youth": {
       "summary": "Based on 1,092 useful public comments. Of 305 comments with detectable reaction wording, 229 were appreciative and 76 were critical; appreciative signals clearly outweigh critical signals. Beyond general reactions, viewers most often discuss release & theatre, acting & characters, story & screenplay.",
       "useful_comments": 1092,
@@ -1959,546 +2629,507 @@
   },
   "insight_method": "Rule-based language, topic, depth and reaction-signal aggregation; no review score inferred",
   "films": [
-    "Pyaar Prema Kalyanam",
-    "Ram and Leela",
-    "Modha Rathri",
-    "Ananya's Call",
-    "Samam",
-    "Vishwanath & Sons",
-    "Magudam",
-    "DC",
-    "G.D.N",
-    "Photographer",
-    "Oru Kaalathil Aasthireliyavil",
-    "Jana Nayagan",
-    "Sweet Rogue Killer",
-    "Anbe Diana",
-    "Arjunan Per Paththu",
-    "Arulvaan",
-    "Tholaivil Oru Kadhal",
-    "Idhayam Murali",
-    "Love Oh Love",
-    "Lakshmikanthan Kolai Vazhakku"
+    "Haiku",
+    "Titanic",
+    "Cuddle Caf\u00e9",
+    "Nizhalilirundhu Velicham",
+    "Little Hearts: Madness of Love",
+    "Obstacle",
+    "The Staircase",
+    "Drones",
+    "THE BRANDOS",
+    "Jailer 2",
+    "All Pass",
+    "Thaainilam",
+    "Kitti",
+    "Radhimaa (Documentary)",
+    "Anbil Avan",
+    "Sigma",
+    "To Love Her Again",
+    "Baththa",
+    "Yezhu Kadal Yezhu Malai",
+    "Maaruvesham"
   ],
-  "comments_fetched": 0,
+  "comments_fetched": 3484,
   "comment_fetch_decisions": {
-    "daily_discovery_refresh": 0,
+    "daily_discovery_refresh": 31,
     "new_or_unknown_video": 0,
     "public_comment_count_increased": 0,
-    "periodic_comment_refresh": 37,
-    "public_comment_count_unchanged": 74
+    "periodic_comment_refresh": 0,
+    "public_comment_count_unchanged": 0
   },
-  "new_comments_added": 0,
-  "stored_comments": 17662,
-  "videos_monitored": 111,
-  "standard_videos_monitored": 78,
-  "shorts_monitored": 33,
+  "new_comments_added": 3484,
+  "stored_comments": 21144,
+  "videos_monitored": 31,
+  "standard_videos_monitored": 28,
+  "shorts_monitored": 3,
   "movie_catalog": [
     {
-      "title": "Pyaar Prema Kalyanam",
-      "original_title": "\u0baa\u0bcd\u0baf\u0bbe\u0bb0\u0bcd \u0baa\u0bcd\u0bb0\u0bc7\u0bae\u0bbe \u0b95\u0bb2\u0bcd\u0baf\u0bbe\u0ba3\u0bae\u0bcd",
-      "release_date": "2026-08-21",
-      "poster_url": "https://image.tmdb.org/t/p/w500/AjaNAeMXOrK9n0YqGqX0Lz5qxYu.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/jgsptBYJbuO7omWLOj1HNsqvgLM.jpg",
-      "tmdb_id": 1538273,
-      "overview": "Influencer Pavi refuses to leave her family home after marriage, so husband Elan moves in instead. Culture clashes and family chaos ensue as the newlyweds navigate their unconventional setup and challenge who defines their happiness.",
-      "runtime": 0,
+      "title": "Haiku",
+      "original_title": "\u0bb9\u0bc8\u0b95\u0bcd\u0b95\u0bc2",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/thZGedKvZnnvuLpNWEA1nmalM7K.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/40bzHa8LA48yUbXeh6TACnUcOu3.jpg",
+      "tmdb_id": 1593350,
+      "overview": "Haiku is a heartfelt romantic drama about second chances and healing. Mano, once an immature and possessive college boy, loses his first love Kodi, a bold and caring girl from a traditional Coimbatore family, after his insecurities and long-distance struggles ruin their relationship. Years later, Mano, now more mature, meets Nivi, an independent, lower-middle-class girl raised by a single mother, who is recovering from a toxic relationship with Arul. Mano helps Nivi rediscover what true love means, while Nivi gives Mano a chance to love without control and without fear. But when Nivi learns about Mano\u2019s toxic past with Kodi, doubts and insecurities threaten their bond. HAIKU beautifully explores how first love may break us, but second love teaches us to heal, forgive, and love better.",
+      "runtime": 143,
       "genres": [
         "Romance",
-        "Comedy"
-      ],
-      "director": "Elan",
-      "cast": [
-        "Elan",
-        "Saanve Meghana",
-        "Radhika Sarathkumar",
-        "M. S. Bhaskar",
-        "Yogi Babu",
-        "Geetha Kailasam",
-        "Elango Kumaravel",
-        "Senthil",
-        "Maran"
-      ]
-    },
-    {
-      "title": "Ram and Leela",
-      "original_title": "Ram and Leela",
-      "release_date": "2026-08-21",
-      "poster_url": "https://image.tmdb.org/t/p/w500/j1X0t57PguWBcaa8LAOaAHGyjcK.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/1vfiSe4LrzlA4bTqAM5yxefQXxk.jpg",
-      "tmdb_id": 1590380,
-      "overview": "The story revolves around a 30-year-old man whose family is searching for a suitable bride For his marriage. At the same time, he is also hoping to find true love, but nothing works out. Eventually, he meets a young woman named Leela, they fall in love, face several Unexpected challenges and twists, and finally overcome them to unite",
-      "runtime": 0,
-      "genres": [
-        "Romance",
-        "Comedy"
-      ],
-      "director": "Ramachandrran Kannan",
-      "cast": [
-        "Rio Raj",
-        "Vartika Jain",
-        "Chetan",
-        "Malavika Avinash",
-        "Balaji Thiyagarajan",
-        "Thaafia",
-        "Ma Ka Pa Anand",
-        "Deepa Venkat",
-        "Kavinn Coacharya",
-        "Munishkanth"
-      ]
-    },
-    {
-      "title": "Modha Rathri",
-      "original_title": "\u0bae\u0bca\u0ba4 \u0bb0\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bbf",
-      "release_date": "2026-08-21",
-      "poster_url": "https://image.tmdb.org/t/p/w500/lZiTSLDLIkW9YS6CWo8uaXZMcO6.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1685882,
-      "overview": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
-      "runtime": 155,
-      "genres": [
-        "Romance",
-        "Comedy"
-      ],
-      "director": "Raja Karuppasamy",
-      "cast": [
-        "Rishikanth",
-        "Anishma Anilkumar",
-        "Bagavathi Perumal",
-        "Chetan",
-        "Abdool Lee",
-        "A. Venkatesh",
-        "Sangeetha Balan",
-        "Shelly Kishore",
-        "Karthikeyan DK",
-        "Banupriya"
-      ]
-    },
-    {
-      "title": "Ananya's Call",
-      "original_title": "Ananya's Call",
-      "release_date": "2026-08-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/y9jYOo9z1FIav4YNAFkGAZDq0HR.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/A4FmQg9KKDxpAsWpP13535HNNJw.jpg",
-      "tmdb_id": 1581313,
-      "overview": "Faced with an impossible encounter in her own home, a young woman must race against time to stop a tragedy that defies the laws of nature.",
-      "runtime": 33,
-      "genres": [
-        "Fantasy",
-        "Thriller",
-        "Science Fiction"
-      ],
-      "director": "Gauthaam",
-      "cast": [
-        "Harini Parthibanraj",
-        "Poompavai",
-        "Rinthiya",
-        "Sakthi Nivashini",
-        "Swetha M"
-      ]
-    },
-    {
-      "title": "Samam",
-      "original_title": "Samam",
-      "release_date": "2026-08-15",
-      "poster_url": "https://image.tmdb.org/t/p/w500/bROVGsO4GBopYCvEZgfKYIJex2O.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ojKDqimQRyeyl5SGzmNMpA2KHNc.jpg",
-      "tmdb_id": 1571138,
-      "overview": "ARASI, an emerging Carnatic singer. AZHAGHU, a freelance software engineer. Their six-year-old daughter, BHOOMI.  On a post-pandemic day under curfew, Arasi prepares for her long-awaited concert. Azhaghu faces an important job interview. Bhoomi has an online school event.  Azhaghu calls his parents, THILLAI and MOHANA for support.  The family's everyday life unfolds the poetic irony of a perpetual mindset, utterly convinced of its own hierarchy, then turns around and calls it EQUAL.",
-      "runtime": 117,
-      "genres": [
-        "Drama",
-        "Family",
         "Comedy",
-        "Fantasy",
-        "Music"
+        "Drama"
       ],
-      "director": "Shiva Prasad",
+      "director": "Yuvaraj Chinnasamy",
       "cast": [
-        "Vaibhav Murugesan",
-        "Madhuvanthi",
-        "Samathmika",
-        "Subramanian Madhavan",
-        "Sharmila Thirumalaisamy"
+        "Aegan",
+        "Sridevi Apalla",
+        "Femina George",
+        "Adhirchi Arun",
+        "Subramanian Sethu",
+        "A. Adhiyaman",
+        "Mime Gopi",
+        "Indumathi Manikandan"
       ]
     },
     {
-      "title": "Vishwanath & Sons",
-      "original_title": "\u0bb5\u0bbf\u0bb8\u0bcd\u0bb5\u0ba8\u0bbe\u0ba4\u0bcd & \u0b9a\u0ba9\u0bcd\u0bb8\u0bcd",
-      "release_date": "2026-08-14",
-      "poster_url": "https://image.tmdb.org/t/p/w500/adDZVEQZnMJ380zPOmVj6vBWHgk.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/sd0RKOpnqESIWxU3sZwZhBsgAHl.jpg",
-      "tmdb_id": 1408162,
-      "overview": "Sanjay Vishwanath is an acclaimed professional handgunner in his 40s with a major stake in fame and wealth. When he comes across a woman named Maddy in her 20s, their dynamic poses many issues that they must come to terms with.",
-      "runtime": 161,
+      "title": "Titanic",
+      "original_title": "\u0b9f\u0bc8\u0b9f\u0bcd\u0b9f\u0bbe\u0ba9\u0bbf\u0b95\u0bcd",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/96HzElhMpJ1FxMNwWFULRiE49kX.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/mKqBgSkWbU1TH3kYTSFJz1SGJOj.jpg",
+      "tmdb_id": 499371,
+      "overview": "",
+      "runtime": 105,
       "genres": [
-        "Drama",
+        "Comedy",
         "Romance"
       ],
-      "director": "Venky Atluri",
+      "director": "M. Janakiraman",
       "cast": [
-        "Suriya",
-        "Mamitha Baiju",
-        "Radhika Sarathkumar",
-        "Raveena Tandon",
-        "Sunil",
-        "Harika",
-        "Nassar",
-        "Harsha Chemudu",
-        "Bhavani Sre",
-        "V.J. Pappu"
+        "Kalaiyarasan",
+        "Anandhi",
+        "Ashna Zaveri",
+        "Kaali Venkat",
+        "Jangiri Madhumitha",
+        "Chetan",
+        "Devadarshini",
+        "Balaji Mohan",
+        "Gayathrie Shankar",
+        "Raghav Vijay"
       ]
     },
     {
-      "title": "Magudam",
-      "original_title": "\u0bae\u0b95\u0bc1\u0b9f\u0bae\u0bcd",
-      "release_date": "2026-08-14",
-      "poster_url": "https://image.tmdb.org/t/p/w500/uPsJfQHRw5QiwQqOoOQWkfBmnhE.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1506833,
-      "overview": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
-      "runtime": 184,
+      "title": "Cuddle Caf\u00e9",
+      "original_title": "Cuddle Caf\u00e9",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/849uWg5xvgT7lQbewyvyjFRZKPs.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ppZTQMZFd14OVUzSxEE1cUPSpuz.jpg",
+      "tmdb_id": 1778703,
+      "overview": "In a world where loneliness has become ordinary and warmth is something humans buy with money, the protagonist lives a life that does not move forward. Instead of solving the problems that weigh on him, he chooses ignorance and quiet laziness. One evening after work, he steps into a Cuddle Caf\u00e9. What happens next becomes the story.",
+      "runtime": 26,
       "genres": [
-        "Action",
-        "Thriller"
+        "Drama"
       ],
-      "director": "Vishal Krishna",
+      "director": "Siva Prasad Loganathan",
       "cast": [
-        "Vishal Krishna",
-        "Anjali",
-        "Dushara Vijayan",
-        "John Vijay",
-        "Jayaprakash",
-        "Ajay",
-        "Vamsi Krishna",
-        "Abu Salim",
-        "Arjai",
-        "Vj Jhansi"
+        "Sohan Shetty",
+        "Indukala",
+        "Deepti Shetty",
+        "Ujan Ghosh"
       ]
     },
     {
-      "title": "DC",
-      "original_title": "\u0b9f\u0bbf\u0b9a\u0bbf",
-      "release_date": "2026-08-07",
-      "poster_url": "https://image.tmdb.org/t/p/w500/k9AwqfQ9wYtaGew8oZh6GBouvO2.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
-      "tmdb_id": 1479832,
-      "overview": "Rebel Devadas joins forces with Chandra in a dangerous world where passion and peril collide. Their turbulent alliance demands bloodshed and tests loyalties as survival becomes the ultimate stake in their fight.",
-      "runtime": 142,
+      "title": "Nizhalilirundhu Velicham",
+      "original_title": "\u0ba8\u0bbf\u0bb4\u0bb2\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0b9a\u0bcd\u0b9a\u0bae\u0bcd",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/4oYBISRjqGVeWTwT1F1EfWDoGpb.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yLqwA3XL4DZLuGh4Dk5ReoLXM9y.jpg",
+      "tmdb_id": 1794156,
+      "overview": "When life's rejections push a man to his breaking point, an unwavering bond pulls him back into the light.",
+      "runtime": 23,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Manoj Sivakumar",
+      "cast": [
+        "Pugazh",
+        "Roshan",
+        "Senthil",
+        "Manoj Sivakumar"
+      ]
+    },
+    {
+      "title": "Little Hearts: Madness of Love",
+      "original_title": "Little Hearts: Madness of Love",
+      "release_date": "2026-10-22",
+      "poster_url": null,
+      "backdrop_url": null,
+      "tmdb_id": 1705789,
+      "overview": "A broke, desperate filmmaker fakes a public proposal to chase online fame. It goes viral, turning into real love, real fallout, and a harsh choice feed the algorithm or protect his heart in a world where emotions are content, at any cost",
+      "runtime": 103,
       "genres": [
         "Romance",
-        "Action",
-        "Drama"
-      ],
-      "director": "Arun Matheswaran",
-      "cast": [
-        "Lokesh Kanagaraj",
-        "Wamiqa Gabbi",
-        "Sanjana Krishnamoorthy",
-        "Avinash Raghudevan",
-        "Jawahar Sakthi",
-        "Sharath Ravi",
-        "Kasthoori Raja",
-        "Thalaivasal Vijay",
-        "Pranav Teophine",
-        "Balaji Devi Prasad"
-      ]
-    },
-    {
-      "title": "G.D.N",
-      "original_title": "\u0b9c\u0bbf.\u0b9f\u0bbf.\u0b8e\u0ba9\u0bcd",
-      "release_date": "2026-08-07",
-      "poster_url": "https://image.tmdb.org/t/p/w500/f4CJS8MgxHalhCNQQCoHNN7wD0b.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/obO03s9fil9uK5R6NFjHimEUecr.jpg",
-      "tmdb_id": 1489543,
-      "overview": "Based on the life of G.D. Naidu, the 'Edison of India', dramatising his groundbreaking innovations, his industrial contributions, and conflicts with authorities\u2014including struggles where his work and international dealings faced severe scrutiny and opposition.",
-      "runtime": 146,
-      "genres": [
-        "Drama"
-      ],
-      "director": "Krishnakumar Ramakumar",
-      "cast": [
-        "R. Madhavan",
-        "Priyamani",
-        "Sathyaraj",
-        "Jayaram",
-        "Dushara Vijayan",
-        "Abdool Lee",
-        "Thambi Ramaiah",
-        "Vinay Rai",
-        "Ramesh Thilak",
-        "Karunakaran"
-      ]
-    },
-    {
-      "title": "Photographer",
-      "original_title": "Photographer",
-      "release_date": "2026-08-07",
-      "poster_url": "https://image.tmdb.org/t/p/w500/2viJLcdWykkcagEfHpGZupbZiq4.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/lvz5TgLlSLEvN0tQHJrOJisyBF8.jpg",
-      "tmdb_id": 1740942,
-      "overview": "Photographer follows Veera, a troubled and obsessive photographer determined to prove his worth in a world that has long dismissed him. Driven by ambition and haunted by a painful past, he ventures deep into Mathikettan Solai, a mysterious reserve forest, to capture a rare and elusive natural phenomenon that could change his life forever.",
-      "runtime": 0,
-      "genres": [
-        "Fantasy",
-        "Mystery",
-        "Thriller"
-      ],
-      "director": "Ashraf A",
-      "cast": [
-        "Ashraf A",
-        "Janani Samathanam",
-        "Karunakaran",
-        "Devi Mahesh",
-        "Aadukalam Naren",
-        "Vela Ramamoorthy",
-        "Nizhalgal Ravi",
-        "Kalatpadai Jai",
-        "Uriyadi Shiva",
-        "Vetrivel Raja"
-      ]
-    },
-    {
-      "title": "Oru Kaalathil Aasthireliyavil",
-      "original_title": "Oru Kaalathil Aasthireliyavil",
-      "release_date": "2026-07-31",
-      "poster_url": "https://image.tmdb.org/t/p/w500/thJNb4WSErDxaYQyY11P7TUXGeL.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/vf6CiovOfm1wBCLvGWJBGO9PLxJ.jpg",
-      "tmdb_id": 1740837,
-      "overview": "An Indian former Chief Minister (CM) receives a demanding call from Melbourne, Australia, requesting a ransom of 100 crores in exchange for a top-secret that could jeopardize their political party's future as elections are approaching.",
-      "runtime": 145,
-      "genres": [
-        "Crime",
-        "Thriller"
-      ],
-      "director": "Taraka Srinivas",
-      "cast": [
-        "Jyothirnath Goud",
-        "Saanya Bhatnagar",
-        "Chandrasekhar Kommalapati",
-        "JDR cherukuru"
-      ]
-    },
-    {
-      "title": "Jana Nayagan",
-      "original_title": "\u0b9c\u0ba9 \u0ba8\u0bbe\u0baf\u0b95\u0ba9\u0bcd",
-      "release_date": "2026-07-22",
-      "poster_url": "https://image.tmdb.org/t/p/w500/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-      "tmdb_id": 1235877,
-      "overview": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child\u2019s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
-      "runtime": 183,
-      "genres": [
-        "Action",
-        "Drama"
-      ],
-      "director": "H. Vinoth",
-      "cast": [
-        "Vijay",
-        "Pooja Hegde",
-        "Bobby Deol",
-        "Mamitha Baiju",
-        "Priyamani",
-        "Prakash Raj",
-        "Gautham Vasudev Menon",
-        "Narain",
-        "Nassar",
-        "Sunil Varma"
-      ]
-    },
-    {
-      "title": "Sweet Rogue Killer",
-      "original_title": "Sweet Rogue Killer 'SRK' : The Killer's Game",
-      "release_date": "2026-07-19",
-      "poster_url": "https://image.tmdb.org/t/p/w500/4GO0hCv3AowTaSXlBDyzxlThmez.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1654365,
-      "overview": "After destroying the Forelli empire, SRK discovers that the last surviving Forelli bloodline is secretly rebuilding its power through corruption and political influence. As a dangerous conspiracy threatens the township once again, SRK launches a final mission to expose the truth, eliminate the heir, and end the Forelli legacy forever.",
-      "runtime": 40,
-      "genres": [
-        "Action",
-        "Crime",
         "Comedy",
+        "Family",
+        "Music"
+      ],
+      "director": "Noyal Laison",
+      "cast": [
+        "Noyal Laison",
+        "Rupesh Viswanathan"
+      ]
+    },
+    {
+      "title": "Obstacle",
+      "original_title": "Obstacle",
+      "release_date": "2026-10-20",
+      "poster_url": "https://image.tmdb.org/t/p/w500/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/wJJHEBUVXNX0tJVxnReb5nopv1e.jpg",
+      "tmdb_id": 1802710,
+      "overview": "A young miserable man trapped in an unsettling life.",
+      "runtime": 9,
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "director": "Mohit vasstav Y",
+      "cast": [
+        "Pranav Y"
+      ]
+    },
+    {
+      "title": "The Staircase",
+      "original_title": "The Staircase",
+      "release_date": "2026-10-18",
+      "poster_url": "https://image.tmdb.org/t/p/w500/p0QEVeG1dhRtoisCieWgpKTKQQn.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/drtyvHFcI2SmmYiz2ZbWCHPfCoE.jpg",
+      "tmdb_id": 1800680,
+      "overview": "After getting trapped in a mysterious staircase loop, A guy struggles to find his way home, only to discover that reality may not be what it seems.",
+      "runtime": 4,
+      "genres": [
+        "Thriller",
+        "Horror"
+      ],
+      "director": "Pavan KR",
+      "cast": [
+        "Kajan"
+      ]
+    },
+    {
+      "title": "Drones",
+      "original_title": "Drones",
+      "release_date": "2026-10-16",
+      "poster_url": "https://image.tmdb.org/t/p/w500/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+      "tmdb_id": 1728763,
+      "overview": "A sleepwalking student, a mysterious miniature artist, an ancient witch, a doll house of trapped souls, and a cop cursed by love collide in a surreal world.",
+      "runtime": 152,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Mystery",
+        "Horror",
+        "Fantasy"
+      ],
+      "director": "Raghav Mirdath",
+      "cast": [
+        "Siddhi Idnani",
+        "Anjali Nair",
+        "Dravid Selvam",
+        "KPY Kuraishi",
+        "Devadarshini",
+        "Cinemawala Sathish",
+        "Sassi Selvaraj",
+        "RJ Deepak"
+      ]
+    },
+    {
+      "title": "THE BRANDOS",
+      "original_title": "THE BRANDOS",
+      "release_date": "2026-10-16",
+      "poster_url": "https://image.tmdb.org/t/p/w500/1ofMGfcUQSBWJlUapXHdDZWk9Jw.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/9yc13fghaEaGZuDhDoIMpCO1hIn.jpg",
+      "tmdb_id": 1798357,
+      "overview": "Four sons reunite after their father's death, facing the question of who will continue his legacy. But the real question is\u2026 should they continue it at all?",
+      "runtime": 20,
+      "genres": [
+        "Drama",
+        "Thriller",
+        "Mystery",
+        "Crime"
+      ],
+      "director": "B A Mukundhan",
+      "cast": [
+        "Vishal S",
+        "Varun R P",
+        "Nishanth Ravilla",
+        "Mukunth Vijayaraghavan"
+      ]
+    },
+    {
+      "title": "Jailer 2",
+      "original_title": "\u0b9c\u0bc6\u0baf\u0bbf\u0bb2\u0bb0\u0bcd 2",
+      "release_date": "2026-10-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/zpHTOdRl7GEPqFsDGqsN6Hi9Ylt.jpg",
+      "tmdb_id": 1234139,
+      "overview": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
+      "runtime": 163,
+      "genres": [
+        "Action",
+        "Comedy"
+      ],
+      "director": "Nelson",
+      "cast": [
+        "Rajinikanth",
+        "S. J. Suryah",
+        "Suraj Venjaramoodu",
+        "Ramya Krishnan",
+        "Vidya Balan",
+        "Namo Narayana",
+        "Yogi Babu",
+        "Mirnaa",
+        "Rithvik",
+        "Hakkim Shajahan"
+      ]
+    },
+    {
+      "title": "All Pass",
+      "original_title": "All Pass",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/ruF5Y282FaN6VN9ujpYIP9CJe2V.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/tKRDOQrGawdeVws7GT3kiJDsl63.jpg",
+      "tmdb_id": 1786905,
+      "overview": "Three families from different parts of North Chennai come together through circumstances and, despite financial struggles, decide to live under one roof in Sathya Nagar. Their friendship grows into a close-knit bond, with the three families living like one. But when a conflict threatens this unity and puts their relationships at risk, they must face its consequences and decide whether their bond can survive.",
+      "runtime": 124,
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "director": "Mydeen Pakkir Mydeen",
+      "cast": [
+        "Dushyanth Jayaprakash",
+        "Janany Kunaseelan",
+        "Jayaprakash",
+        "Senthikumari",
+        "Subramaniam Siva",
+        "Vinodhini Vaidyanathan",
+        "Prasanna Balachandran",
+        "Sharath Lohitashwa",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Thaainilam",
+      "original_title": "\u0ba4\u0bbe\u0baf\u0bcd\u0ba8\u0bbf\u0bb2\u0bae\u0bcd",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/gAEtUjdFleJGelsOG2OE3XKoiyF.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1010608,
+      "overview": "A father and his daughter came to India as refugees post-war in their country. Few good hands help them to rebuild their lifestyle.",
+      "runtime": 90,
+      "genres": [
+        "Family",
+        "Drama",
+        "War"
+      ],
+      "director": "Abilash.G.Devan",
+      "cast": [
+        "Amar Ramachandran",
+        "Bala Singh",
+        "Neha Amar",
+        "Nimisha Nambiar"
+      ]
+    },
+    {
+      "title": "Kitti",
+      "original_title": "\u0b95\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/9TOunLTr9xm3ZjSfdM7pWdxpdcJ.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/2o1ViPlWJfx33tWXbs7ng9EBOmd.jpg",
+      "tmdb_id": 1752883,
+      "overview": "A psychological thriller that explores the fragile boundaries between reality, fear, and the human mind. When an unexpected incident disrupts a seemingly ordinary life, the protagonist is drawn into a disturbing chain of events where nothing is what it appears to be. As reality begins to blur, hidden truths slowly emerge, forcing him to confront his deepest fears and question his own perception of what is real.",
+      "runtime": 120,
+      "genres": [
+        "Thriller",
         "Mystery"
       ],
-      "director": "Karthick Ravichandran",
+      "director": "Nedumaran Mohandoss",
       "cast": [
-        "Karthick Ravichandran",
-        "Pranav Kumar",
-        "Dinesh R K",
-        "Akash G",
-        "Dhushyanth A",
-        "Sibi Velan",
-        "Kheshiq Haribaran"
+        "Ashok Kumar Balakrishnan",
+        "Thirumaran Mohandoss",
+        "Arjoona Duraisamy",
+        "Nisha Ishmeet",
+        "Sangavi Dharmaraj",
+        "Simu Advani",
+        "Y. G. Mahendran",
+        "Aravindraj R",
+        "Cuddalore Siva",
+        "Dr. R.Pandiyan"
       ]
     },
     {
-      "title": "Anbe Diana",
-      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bc7 \u0b9f\u0baf\u0bbe\u0ba9\u0bbe",
-      "release_date": "2026-07-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/l4xqxKS7nlOni6bnTHWi3USyp4o.jpg",
-      "tmdb_id": 1607634,
+      "title": "Radhimaa (Documentary)",
+      "original_title": "Radhimaa (Documentary)",
+      "release_date": "2026-10-05",
+      "poster_url": "https://image.tmdb.org/t/p/w500/8cHsPWb2THmSHYgn32VrjSfhJ6c.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/wxCMSz4yqWnHNdLva45Qzq2fFnp.jpg",
+      "tmdb_id": 1794338,
+      "overview": "A micro documentary: Making of Radhimaa",
+      "runtime": 7,
+      "genres": [],
+      "director": "Goutham Ramesh",
+      "cast": [
+        "Sai Abhyankkar",
+        "Bhagyashri Borse"
+      ]
+    },
+    {
+      "title": "Anbil Avan",
+      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b85\u0bb5\u0ba9\u0bcd",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/3We0uVjyoiyL3BcydkN3ePz4Fpj.jpg",
+      "tmdb_id": 1431738,
+      "overview": "A married couple attempts to start a good life together, but unexpected trouble traps them in an unsettling situation that forces them to fight back for their survival.",
+      "runtime": 158,
+      "genres": [
+        "Romance",
+        "Thriller"
+      ],
+      "director": "R. Kaarthikeyan",
+      "cast": [
+        "Ashok Selvan",
+        "Preity Mukhundhan",
+        "Sabumon Abdusamad",
+        "Kadirbalu",
+        "Mahadevan Ganesh",
+        "Jawahar Sakthi",
+        "Revathi"
+      ]
+    },
+    {
+      "title": "Sigma",
+      "original_title": "\u0b9a\u0bbf\u0b95\u0bcd\u0bae\u0bbe",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/18Lhkc3nf92bY1cacQomXIqihhN.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ljNmU4qn8WJbMe9JwH3FAdZiRAi.jpg",
+      "tmdb_id": 1395215,
+      "overview": "A daring treasure hunter throws caution to the wind, outwitting deadly traps and treacherous allies with sheer nerve and cunning.",
+      "runtime": 145,
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "director": "Jason Sanjay",
+      "cast": [
+        "Sundeep Kishan",
+        "Faria Abdullah",
+        "Raju Sundaram",
+        "Sampath Raj",
+        "Shiv Panditt",
+        "Anbu Thasan",
+        "Yog Jappie",
+        "Magalakshmi Sudarsanan",
+        "Sheela Rajkumar",
+        "Kamalesh Jegan"
+      ]
+    },
+    {
+      "title": "To Love Her Again",
+      "original_title": "Marupadiyum Avalai Kaadhalikka",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3S2dNzYw570NnjH22k8mCR9P2Sc.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/nIOhzvHYAz119CaCA5C3LESaTfN.jpg",
+      "tmdb_id": 1787290,
+      "overview": "After losing his first love, a young man struggles to let go of the memories she left behind, turning heartbreak into a journey of acceptance, ambition, and quiet love",
+      "runtime": 10,
+      "genres": [
+        "Romance"
+      ],
+      "director": "Kajan",
+      "cast": [
+        "Kajan",
+        "Rohit"
+      ]
+    },
+    {
+      "title": "Baththa",
+      "original_title": "\u0baa\u0ba4\u0bcd\u0ba4\u0bbe",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/Ag59cmNNXCcKIBYdlmZ9HqPH9zG.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/xrAtBSFEYzcRRB5kOvtICSuOrok.jpg",
+      "tmdb_id": 1515692,
+      "overview": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
+      "runtime": 159,
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Action"
+      ],
+      "director": "Balaji Tharaneetharan",
+      "cast": [
+        "Vijay Sethupathi",
+        "Lijomol Jose",
+        "Sai Prithviraj",
+        "Sahasra Sree",
+        "Santhy Balachandran",
+        "Arjun Chidambaram",
+        "Hari Krishnan",
+        "Ajay Ghosh",
+        "Deepa Venkat",
+        "Ramya Pandian"
+      ]
+    },
+    {
+      "title": "Yezhu Kadal Yezhu Malai",
+      "original_title": "\u0b8f\u0bb4\u0bc1 \u0b95\u0b9f\u0bb2\u0bcd \u0b8f\u0bb4\u0bc1 \u0bae\u0bb2\u0bc8",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/wdWQA1IVCYiTTEZMSnWl1tzhBd3.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/iipz8h0FT6pKI29A6DfRunYuLok.jpg",
+      "tmdb_id": 954445,
+      "overview": "Caught between family duty and romantic love, a young man faces an impossible choice.",
+      "runtime": 137,
+      "genres": [
+        "Drama",
+        "Romance",
+        "Fantasy"
+      ],
+      "director": "Ram",
+      "cast": [
+        "Nivin Pauly",
+        "Anjali",
+        "Soori",
+        "Ravi Mariya",
+        "N. Azhagamperumal"
+      ]
+    },
+    {
+      "title": "Maaruvesham",
+      "original_title": "\u0bae\u0bbe\u0bb1\u0bc1\u0bb5\u0bc7\u0b9a\u0bae\u0bcd",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/wKnOugdY4gNAmAjUa605zpNR5px.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/opqmW90PRZo28tWFLqW8a59fqUT.jpg",
+      "tmdb_id": 1732327,
       "overview": "",
       "runtime": 0,
       "genres": [
-        "Comedy",
-        "Drama"
+        "Thriller",
+        "Drama",
+        "Mystery"
       ],
-      "director": "Pari Elavazhagan",
+      "director": "Srini",
       "cast": [
-        "Pari Elavazhagan",
-        "Ramya Ranganathan",
-        "Chetan",
-        "Roja Selvamani",
-        "Gopi Aravindh",
-        "Cell Murugan",
-        "Nikhila Sankar",
-        "Ismath Banu",
-        "Sudharshan Gandhy"
-      ]
-    },
-    {
-      "title": "Arjunan Per Paththu",
-      "original_title": "\u0b85\u0bb0\u0bcd\u0b9c\u0bc1\u0ba9\u0ba9\u0bcd  \u0baa\u0bc7\u0bb0\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1",
-      "release_date": "2026-07-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/pZiRQ7hVuDzFkCVmzw9slhjSLhO.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/bI9hY9LOpegpsDCXq4B4UFf5ukr.jpg",
-      "tmdb_id": 1607621,
-      "overview": "Arjunan, who witnessed his parents being killed by lightning in front of his eyes, cannot bear the shock and arrives in Chennai from his hometown Madurai. Arjunan, who joined a kayalang shop in Chennai, starts to love a woman. Before marrying that woman, he was a worker and wanted to become an entrepreneur. He gave away all the money he had saved up until then and bought an old Tata Ace and married the woman he loved. Arjuna happily starts driving the vehicle, thinking that his life has become as happy as he thought it would be. Arjuna, who has been facing constant problems with that old vehicle, realizes that he has been completely cheated in buying the vehicle. He brings together all those who have been affected like him and exposes all the frauds in buying and selling old vehicles, seeking justice for himself and all those who have been cheated like him.",
-      "runtime": 0,
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "director": "R Rajmohan",
-      "cast": [
-        "Yogi Babu",
-        "Anamika Mahi",
-        "Madhan Kumar Dhakshinamoorthy",
-        "Kaali Venkat",
-        "Aruldoss",
-        "Sentrayan",
-        "Subramaniam Siva",
-        "Lenin Bharathi",
-        "Myna Nandhini",
-        "M. Soundarya Saravanan"
-      ]
-    },
-    {
-      "title": "Arulvaan",
-      "original_title": "\u0b85\u0bb0\u0bc1\u0bb3\u0bcd\u0bb5\u0bbe\u0ba9\u0bcd",
-      "release_date": "2026-07-17",
-      "poster_url": "https://image.tmdb.org/t/p/w500/mAL7zUkSoHVl5LzjpuhBuzhJztk.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1616237,
-      "overview": "Follows Muthuvel, a resolute collector who overcomes all obstacles to educate a tribal girl and provide school access for the entire forest community.",
-      "runtime": 109,
-      "genres": [
-        "Drama"
-      ],
-      "director": "Ganesh Vinayak",
-      "cast": [
-        "Arulnithi",
-        "Aarav Kizar",
-        "Ramya Pandian",
-        "Krithika",
-        "Kaali Venkat",
-        "John Vijay",
-        "VTV Ganesh"
-      ]
-    },
-    {
-      "title": "Tholaivil Oru Kadhal",
-      "original_title": "Tholaivil Oru Kadhal",
-      "release_date": "2026-07-16",
-      "poster_url": null,
-      "backdrop_url": null,
-      "tmdb_id": 1740386,
-      "overview": "Love, gossip, and misunderstandings collide at a Tamil-run tech company in the US as four lives become tangled in unexpected ways.",
-      "runtime": 95,
-      "genres": [],
-      "director": null,
-      "cast": []
-    },
-    {
-      "title": "Idhayam Murali",
-      "original_title": "\u0b87\u0ba4\u0baf\u0bae\u0bcd \u0bae\u0bc1\u0bb0\u0bb3\u0bbf",
-      "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/8gfs5OsGINENFAl0h1XZPNup9lI.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/jLncLuPE5kOascGrvN39jgQHVJT.jpg",
-      "tmdb_id": 1432631,
-      "overview": "A young man navigates the complexities of unrequited love, finding that even as years pass and life takes unexpected turns, certain emotions remain deeply embedded in his heart.",
-      "runtime": 164,
-      "genres": [
-        "Romance",
-        "Comedy",
-        "Drama"
-      ],
-      "director": "Aakash Baskaran",
-      "cast": [
-        "Atharvaa Murali",
-        "Preity Mukhundhan",
-        "Kayadu Lohar",
-        "Natarajan Subramaniam",
-        "Rakshan",
-        "Niharika NM",
-        "S. Thaman",
-        "Angelin B",
-        "Dravid Selvam",
-        "Anju Kurian"
-      ]
-    },
-    {
-      "title": "Love Oh Love",
-      "original_title": "\u0bb2\u0bb5\u0bcd \u0b93\u0bb9\u0bcd \u0bb2\u0bb5\u0bcd",
-      "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/37svY2bwI83NSHuR6KSQeBhjgOt.jpg",
-      "backdrop_url": "https://image.tmdb.org/t/p/w1280/fEUJSGa6MZFEl32Gx83UXwEy98L.jpg",
-      "tmdb_id": 1579405,
-      "overview": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
-      "runtime": 130,
-      "genres": [
-        "Romance",
-        "Comedy"
-      ],
-      "director": "Magesh Rajendran",
-      "cast": [
-        "Pavish Narayanan",
-        "Naga Durga",
-        "Selvaraghavan",
-        "Vanitha Vijayakumar",
-        "K. S. Ravikumar",
-        "Adithya Kathir",
-        "M. Soundarya Saravanan",
-        "Ashwath",
-        "Ramya Subramanian"
-      ]
-    },
-    {
-      "title": "Lakshmikanthan Kolai Vazhakku",
-      "original_title": "\u0bb2\u0bb7\u0bcd\u0bae\u0bbf\u0b95\u0bbe\u0ba8\u0bcd\u0ba4\u0ba9\u0bcd \u0b95\u0bca\u0bb2\u0bc8 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1",
-      "release_date": "2026-07-10",
-      "poster_url": "https://image.tmdb.org/t/p/w500/pGS1KRODHNYzR35slcgJp9NzMiP.jpg",
-      "backdrop_url": null,
-      "tmdb_id": 1620357,
-      "overview": "A young man convicted of murder awaits execution, while a conflicted judge, an aging hangman, and a morally torn jailer confront the weight of justice, guilt, and humanity in the final hours before dawn.",
-      "runtime": 107,
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "director": "Dayal Padmanabhan",
-      "cast": [
-        "Vetri",
-        "Brigida Saga",
-        "Rangaraj Pandey",
-        "Subramaniam Siva",
-        "Saravanan",
-        "Lollu Sabha Maaran",
-        "Lizzie Antony",
-        "Kanya Bharathi",
-        "Madhan Kumar Dhakshinamoorthy"
+        "Vaibhav",
+        "Viyana",
+        "Ramki",
+        "Munishkanth",
+        "George Mariyan",
+        "Livingston",
+        "Vivek Prasanna",
+        "Indumathi Manikandan",
+        "George Vijay Nelson",
+        "Sebastian Antony"
       ]
     }
   ],
@@ -3849,54 +4480,535 @@
         "Karthikeyan DK",
         "Banupriya"
       ]
+    },
+    {
+      "title": "Haiku",
+      "original_title": "\u0bb9\u0bc8\u0b95\u0bcd\u0b95\u0bc2",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/thZGedKvZnnvuLpNWEA1nmalM7K.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/40bzHa8LA48yUbXeh6TACnUcOu3.jpg",
+      "tmdb_id": 1593350,
+      "overview": "Haiku is a heartfelt romantic drama about second chances and healing. Mano, once an immature and possessive college boy, loses his first love Kodi, a bold and caring girl from a traditional Coimbatore family, after his insecurities and long-distance struggles ruin their relationship. Years later, Mano, now more mature, meets Nivi, an independent, lower-middle-class girl raised by a single mother, who is recovering from a toxic relationship with Arul. Mano helps Nivi rediscover what true love means, while Nivi gives Mano a chance to love without control and without fear. But when Nivi learns about Mano\u2019s toxic past with Kodi, doubts and insecurities threaten their bond. HAIKU beautifully explores how first love may break us, but second love teaches us to heal, forgive, and love better.",
+      "runtime": 143,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Drama"
+      ],
+      "director": "Yuvaraj Chinnasamy",
+      "cast": [
+        "Aegan",
+        "Sridevi Apalla",
+        "Femina George",
+        "Adhirchi Arun",
+        "Subramanian Sethu",
+        "A. Adhiyaman",
+        "Mime Gopi",
+        "Indumathi Manikandan"
+      ]
+    },
+    {
+      "title": "Titanic",
+      "original_title": "\u0b9f\u0bc8\u0b9f\u0bcd\u0b9f\u0bbe\u0ba9\u0bbf\u0b95\u0bcd",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/96HzElhMpJ1FxMNwWFULRiE49kX.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/mKqBgSkWbU1TH3kYTSFJz1SGJOj.jpg",
+      "tmdb_id": 499371,
+      "overview": "",
+      "runtime": 105,
+      "genres": [
+        "Comedy",
+        "Romance"
+      ],
+      "director": "M. Janakiraman",
+      "cast": [
+        "Kalaiyarasan",
+        "Anandhi",
+        "Ashna Zaveri",
+        "Kaali Venkat",
+        "Jangiri Madhumitha",
+        "Chetan",
+        "Devadarshini",
+        "Balaji Mohan",
+        "Gayathrie Shankar",
+        "Raghav Vijay"
+      ]
+    },
+    {
+      "title": "Cuddle Caf\u00e9",
+      "original_title": "Cuddle Caf\u00e9",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/849uWg5xvgT7lQbewyvyjFRZKPs.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ppZTQMZFd14OVUzSxEE1cUPSpuz.jpg",
+      "tmdb_id": 1778703,
+      "overview": "In a world where loneliness has become ordinary and warmth is something humans buy with money, the protagonist lives a life that does not move forward. Instead of solving the problems that weigh on him, he chooses ignorance and quiet laziness. One evening after work, he steps into a Cuddle Caf\u00e9. What happens next becomes the story.",
+      "runtime": 26,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Siva Prasad Loganathan",
+      "cast": [
+        "Sohan Shetty",
+        "Indukala",
+        "Deepti Shetty",
+        "Ujan Ghosh"
+      ]
+    },
+    {
+      "title": "Nizhalilirundhu Velicham",
+      "original_title": "\u0ba8\u0bbf\u0bb4\u0bb2\u0bbf\u0bb2\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bc6\u0bb3\u0bbf\u0b9a\u0bcd\u0b9a\u0bae\u0bcd",
+      "release_date": "2026-10-23",
+      "poster_url": "https://image.tmdb.org/t/p/w500/4oYBISRjqGVeWTwT1F1EfWDoGpb.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/yLqwA3XL4DZLuGh4Dk5ReoLXM9y.jpg",
+      "tmdb_id": 1794156,
+      "overview": "When life's rejections push a man to his breaking point, an unwavering bond pulls him back into the light.",
+      "runtime": 23,
+      "genres": [
+        "Drama"
+      ],
+      "director": "Manoj Sivakumar",
+      "cast": [
+        "Pugazh",
+        "Roshan",
+        "Senthil",
+        "Manoj Sivakumar"
+      ]
+    },
+    {
+      "title": "Little Hearts: Madness of Love",
+      "original_title": "Little Hearts: Madness of Love",
+      "release_date": "2026-10-22",
+      "poster_url": null,
+      "backdrop_url": null,
+      "tmdb_id": 1705789,
+      "overview": "A broke, desperate filmmaker fakes a public proposal to chase online fame. It goes viral, turning into real love, real fallout, and a harsh choice feed the algorithm or protect his heart in a world where emotions are content, at any cost",
+      "runtime": 103,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Family",
+        "Music"
+      ],
+      "director": "Noyal Laison",
+      "cast": [
+        "Noyal Laison",
+        "Rupesh Viswanathan"
+      ]
+    },
+    {
+      "title": "Obstacle",
+      "original_title": "Obstacle",
+      "release_date": "2026-10-20",
+      "poster_url": "https://image.tmdb.org/t/p/w500/6ZBKPRACiT1SfvNfmca87A91HSO.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/wJJHEBUVXNX0tJVxnReb5nopv1e.jpg",
+      "tmdb_id": 1802710,
+      "overview": "A young miserable man trapped in an unsettling life.",
+      "runtime": 9,
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "director": "Mohit vasstav Y",
+      "cast": [
+        "Pranav Y"
+      ]
+    },
+    {
+      "title": "The Staircase",
+      "original_title": "The Staircase",
+      "release_date": "2026-10-18",
+      "poster_url": "https://image.tmdb.org/t/p/w500/p0QEVeG1dhRtoisCieWgpKTKQQn.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/drtyvHFcI2SmmYiz2ZbWCHPfCoE.jpg",
+      "tmdb_id": 1800680,
+      "overview": "After getting trapped in a mysterious staircase loop, A guy struggles to find his way home, only to discover that reality may not be what it seems.",
+      "runtime": 4,
+      "genres": [
+        "Thriller",
+        "Horror"
+      ],
+      "director": "Pavan KR",
+      "cast": [
+        "Kajan"
+      ]
+    },
+    {
+      "title": "Drones",
+      "original_title": "Drones",
+      "release_date": "2026-10-16",
+      "poster_url": "https://image.tmdb.org/t/p/w500/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+      "tmdb_id": 1728763,
+      "overview": "A sleepwalking student, a mysterious miniature artist, an ancient witch, a doll house of trapped souls, and a cop cursed by love collide in a surreal world.",
+      "runtime": 152,
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Mystery",
+        "Horror",
+        "Fantasy"
+      ],
+      "director": "Raghav Mirdath",
+      "cast": [
+        "Siddhi Idnani",
+        "Anjali Nair",
+        "Dravid Selvam",
+        "KPY Kuraishi",
+        "Devadarshini",
+        "Cinemawala Sathish",
+        "Sassi Selvaraj",
+        "RJ Deepak"
+      ]
+    },
+    {
+      "title": "THE BRANDOS",
+      "original_title": "THE BRANDOS",
+      "release_date": "2026-10-16",
+      "poster_url": "https://image.tmdb.org/t/p/w500/1ofMGfcUQSBWJlUapXHdDZWk9Jw.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/9yc13fghaEaGZuDhDoIMpCO1hIn.jpg",
+      "tmdb_id": 1798357,
+      "overview": "Four sons reunite after their father's death, facing the question of who will continue his legacy. But the real question is\u2026 should they continue it at all?",
+      "runtime": 20,
+      "genres": [
+        "Drama",
+        "Thriller",
+        "Mystery",
+        "Crime"
+      ],
+      "director": "B A Mukundhan",
+      "cast": [
+        "Vishal S",
+        "Varun R P",
+        "Nishanth Ravilla",
+        "Mukunth Vijayaraghavan"
+      ]
+    },
+    {
+      "title": "Jailer 2",
+      "original_title": "\u0b9c\u0bc6\u0baf\u0bbf\u0bb2\u0bb0\u0bcd 2",
+      "release_date": "2026-10-14",
+      "poster_url": "https://image.tmdb.org/t/p/w500/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/zpHTOdRl7GEPqFsDGqsN6Hi9Ylt.jpg",
+      "tmdb_id": 1234139,
+      "overview": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
+      "runtime": 163,
+      "genres": [
+        "Action",
+        "Comedy"
+      ],
+      "director": "Nelson",
+      "cast": [
+        "Rajinikanth",
+        "S. J. Suryah",
+        "Suraj Venjaramoodu",
+        "Ramya Krishnan",
+        "Vidya Balan",
+        "Namo Narayana",
+        "Yogi Babu",
+        "Mirnaa",
+        "Rithvik",
+        "Hakkim Shajahan"
+      ]
+    },
+    {
+      "title": "All Pass",
+      "original_title": "All Pass",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/ruF5Y282FaN6VN9ujpYIP9CJe2V.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/tKRDOQrGawdeVws7GT3kiJDsl63.jpg",
+      "tmdb_id": 1786905,
+      "overview": "Three families from different parts of North Chennai come together through circumstances and, despite financial struggles, decide to live under one roof in Sathya Nagar. Their friendship grows into a close-knit bond, with the three families living like one. But when a conflict threatens this unity and puts their relationships at risk, they must face its consequences and decide whether their bond can survive.",
+      "runtime": 124,
+      "genres": [
+        "Family",
+        "Drama"
+      ],
+      "director": "Mydeen Pakkir Mydeen",
+      "cast": [
+        "Dushyanth Jayaprakash",
+        "Janany Kunaseelan",
+        "Jayaprakash",
+        "Senthikumari",
+        "Subramaniam Siva",
+        "Vinodhini Vaidyanathan",
+        "Prasanna Balachandran",
+        "Sharath Lohitashwa",
+        "Madhan Kumar Dhakshinamoorthy"
+      ]
+    },
+    {
+      "title": "Thaainilam",
+      "original_title": "\u0ba4\u0bbe\u0baf\u0bcd\u0ba8\u0bbf\u0bb2\u0bae\u0bcd",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/gAEtUjdFleJGelsOG2OE3XKoiyF.jpg",
+      "backdrop_url": null,
+      "tmdb_id": 1010608,
+      "overview": "A father and his daughter came to India as refugees post-war in their country. Few good hands help them to rebuild their lifestyle.",
+      "runtime": 90,
+      "genres": [
+        "Family",
+        "Drama",
+        "War"
+      ],
+      "director": "Abilash.G.Devan",
+      "cast": [
+        "Amar Ramachandran",
+        "Bala Singh",
+        "Neha Amar",
+        "Nimisha Nambiar"
+      ]
+    },
+    {
+      "title": "Kitti",
+      "original_title": "\u0b95\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf",
+      "release_date": "2026-10-09",
+      "poster_url": "https://image.tmdb.org/t/p/w500/9TOunLTr9xm3ZjSfdM7pWdxpdcJ.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/2o1ViPlWJfx33tWXbs7ng9EBOmd.jpg",
+      "tmdb_id": 1752883,
+      "overview": "A psychological thriller that explores the fragile boundaries between reality, fear, and the human mind. When an unexpected incident disrupts a seemingly ordinary life, the protagonist is drawn into a disturbing chain of events where nothing is what it appears to be. As reality begins to blur, hidden truths slowly emerge, forcing him to confront his deepest fears and question his own perception of what is real.",
+      "runtime": 120,
+      "genres": [
+        "Thriller",
+        "Mystery"
+      ],
+      "director": "Nedumaran Mohandoss",
+      "cast": [
+        "Ashok Kumar Balakrishnan",
+        "Thirumaran Mohandoss",
+        "Arjoona Duraisamy",
+        "Nisha Ishmeet",
+        "Sangavi Dharmaraj",
+        "Simu Advani",
+        "Y. G. Mahendran",
+        "Aravindraj R",
+        "Cuddalore Siva",
+        "Dr. R.Pandiyan"
+      ]
+    },
+    {
+      "title": "Radhimaa (Documentary)",
+      "original_title": "Radhimaa (Documentary)",
+      "release_date": "2026-10-05",
+      "poster_url": "https://image.tmdb.org/t/p/w500/8cHsPWb2THmSHYgn32VrjSfhJ6c.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/wxCMSz4yqWnHNdLva45Qzq2fFnp.jpg",
+      "tmdb_id": 1794338,
+      "overview": "A micro documentary: Making of Radhimaa",
+      "runtime": 7,
+      "genres": [],
+      "director": "Goutham Ramesh",
+      "cast": [
+        "Sai Abhyankkar",
+        "Bhagyashri Borse"
+      ]
+    },
+    {
+      "title": "Anbil Avan",
+      "original_title": "\u0b85\u0ba9\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b85\u0bb5\u0ba9\u0bcd",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/2cN2WjL4xQvbJIhxSjGmhXL41rX.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/3We0uVjyoiyL3BcydkN3ePz4Fpj.jpg",
+      "tmdb_id": 1431738,
+      "overview": "A married couple attempts to start a good life together, but unexpected trouble traps them in an unsettling situation that forces them to fight back for their survival.",
+      "runtime": 158,
+      "genres": [
+        "Romance",
+        "Thriller"
+      ],
+      "director": "R. Kaarthikeyan",
+      "cast": [
+        "Ashok Selvan",
+        "Preity Mukhundhan",
+        "Sabumon Abdusamad",
+        "Kadirbalu",
+        "Mahadevan Ganesh",
+        "Jawahar Sakthi",
+        "Revathi"
+      ]
+    },
+    {
+      "title": "Sigma",
+      "original_title": "\u0b9a\u0bbf\u0b95\u0bcd\u0bae\u0bbe",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/18Lhkc3nf92bY1cacQomXIqihhN.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/ljNmU4qn8WJbMe9JwH3FAdZiRAi.jpg",
+      "tmdb_id": 1395215,
+      "overview": "A daring treasure hunter throws caution to the wind, outwitting deadly traps and treacherous allies with sheer nerve and cunning.",
+      "runtime": 145,
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
+      "director": "Jason Sanjay",
+      "cast": [
+        "Sundeep Kishan",
+        "Faria Abdullah",
+        "Raju Sundaram",
+        "Sampath Raj",
+        "Shiv Panditt",
+        "Anbu Thasan",
+        "Yog Jappie",
+        "Magalakshmi Sudarsanan",
+        "Sheela Rajkumar",
+        "Kamalesh Jegan"
+      ]
+    },
+    {
+      "title": "To Love Her Again",
+      "original_title": "Marupadiyum Avalai Kaadhalikka",
+      "release_date": "2026-10-02",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3S2dNzYw570NnjH22k8mCR9P2Sc.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/nIOhzvHYAz119CaCA5C3LESaTfN.jpg",
+      "tmdb_id": 1787290,
+      "overview": "After losing his first love, a young man struggles to let go of the memories she left behind, turning heartbreak into a journey of acceptance, ambition, and quiet love",
+      "runtime": 10,
+      "genres": [
+        "Romance"
+      ],
+      "director": "Kajan",
+      "cast": [
+        "Kajan",
+        "Rohit"
+      ]
+    },
+    {
+      "title": "Baththa",
+      "original_title": "\u0baa\u0ba4\u0bcd\u0ba4\u0bbe",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/Ag59cmNNXCcKIBYdlmZ9HqPH9zG.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/xrAtBSFEYzcRRB5kOvtICSuOrok.jpg",
+      "tmdb_id": 1515692,
+      "overview": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
+      "runtime": 159,
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Action"
+      ],
+      "director": "Balaji Tharaneetharan",
+      "cast": [
+        "Vijay Sethupathi",
+        "Lijomol Jose",
+        "Sai Prithviraj",
+        "Sahasra Sree",
+        "Santhy Balachandran",
+        "Arjun Chidambaram",
+        "Hari Krishnan",
+        "Ajay Ghosh",
+        "Deepa Venkat",
+        "Ramya Pandian"
+      ]
+    },
+    {
+      "title": "Yezhu Kadal Yezhu Malai",
+      "original_title": "\u0b8f\u0bb4\u0bc1 \u0b95\u0b9f\u0bb2\u0bcd \u0b8f\u0bb4\u0bc1 \u0bae\u0bb2\u0bc8",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/wdWQA1IVCYiTTEZMSnWl1tzhBd3.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/iipz8h0FT6pKI29A6DfRunYuLok.jpg",
+      "tmdb_id": 954445,
+      "overview": "Caught between family duty and romantic love, a young man faces an impossible choice.",
+      "runtime": 137,
+      "genres": [
+        "Drama",
+        "Romance",
+        "Fantasy"
+      ],
+      "director": "Ram",
+      "cast": [
+        "Nivin Pauly",
+        "Anjali",
+        "Soori",
+        "Ravi Mariya",
+        "N. Azhagamperumal"
+      ]
+    },
+    {
+      "title": "Maaruvesham",
+      "original_title": "\u0bae\u0bbe\u0bb1\u0bc1\u0bb5\u0bc7\u0b9a\u0bae\u0bcd",
+      "release_date": "2026-10-01",
+      "poster_url": "https://image.tmdb.org/t/p/w500/wKnOugdY4gNAmAjUa605zpNR5px.jpg",
+      "backdrop_url": "https://image.tmdb.org/t/p/w1280/opqmW90PRZo28tWFLqW8a59fqUT.jpg",
+      "tmdb_id": 1732327,
+      "overview": "",
+      "runtime": 0,
+      "genres": [
+        "Thriller",
+        "Drama",
+        "Mystery"
+      ],
+      "director": "Srini",
+      "cast": [
+        "Vaibhav",
+        "Viyana",
+        "Ramki",
+        "Munishkanth",
+        "George Mariyan",
+        "Livingston",
+        "Vivek Prasanna",
+        "Indumathi Manikandan",
+        "George Vijay Nelson",
+        "Sebastian Antony"
+      ]
     }
   ],
   "all_films_analyzed": [
     "29",
-    "Ananya's Call",
+    "All Pass",
     "Anbe Diana",
+    "Anbil Avan",
     "Andharan",
     "Angikaaram",
     "Anthony",
-    "Arjunan Per Paththu",
     "Arulvaan",
+    "Baththa",
     "Blast",
     "Con City",
+    "Cuddle Caf\u00e9",
     "DC",
     "Dark Giant",
     "Double Occupancy",
+    "Drones",
     "Ego Raman",
     "G.D.N",
     "Gandhi Talks",
     "Gatta Kusthi 2",
     "Granny",
     "Habeebi",
+    "Haiku",
     "Happy Raj",
     "Heartin",
     "Idhayam Murali",
+    "Jailer 2",
     "Jana Nayagan",
     "Kara",
     "Karuppu",
+    "Kitti",
     "Lakshmikanthan Kolai Vazhakku",
+    "Little Hearts: Madness of Love",
     "Love Oh Love",
+    "Maaruvesham",
     "Magudam",
     "Modha Rathri",
     "Moondram Kan",
     "Mr. X",
     "Neelira",
     "Nizhal",
+    "Nizhalilirundhu Velicham",
     "Nooru Sami",
+    "Obstacle",
     "Oru Kaalathil Aasthireliyavil",
     "Parimala and Co",
-    "Photographer",
     "Pyaar Prema Kalyanam",
-    "Ram and Leela",
-    "Samam",
-    "Sweet Rogue Killer",
+    "Radhimaa (Documentary)",
+    "Sigma",
+    "THE BRANDOS",
     "Thaai Kizhavi",
-    "Tholaivil Oru Kadhal",
+    "Thaainilam",
+    "The Staircase",
+    "Titanic",
+    "To Love Her Again",
     "Valluvan",
     "Vishwanath & Sons",
+    "Yezhu Kadal Yezhu Malai",
     "Youth"
   ],
   "youtube_channels": [
@@ -4132,12 +5244,70 @@
     "Sudhir Srinivasan",
     "Delite Cinemas"
   ],
-  "top_channel_coverage_rows": 368,
-  "top_channel_missing_pairs": 276,
-  "top_channel_retry_queries_run": 0,
+  "top_channel_coverage_rows": 472,
+  "top_channel_missing_pairs": 0,
+  "top_channel_retry_queries_run": 40,
   "collectors": [
     "YouTube Data API",
     "youtube-comment-downloader fallback"
   ],
-  "errors": []
+  "errors": [
+    "Source channel/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Sudhir Srinivasan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Sudhir+Srinivasan%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Galatta Plus: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Galatta+Plus%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Second Show: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Second+Show%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Delite Cinemas: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Delite+Cinemas%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Filmi Craft: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Filmi+Craft%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Nona Prince: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Nona+Prince%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Kodangi: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Kodangi%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Plip Plip: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Plip+Plip%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Source channel/Empty Hand: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Empty+Hand%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/new tamil movie review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=new+tamil+movie+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Broad discovery/tamil cinema public review today: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=tamil+cinema+public+review+today&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/All Pass/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22All+Pass%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Anbil Avan/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Anbil+Avan%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Baththa/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Baththa%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Cuddle Caf\u00e9/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Cuddle+Caf%C3%A9%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Drones/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Drones%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Haiku/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Haiku%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Jailer 2/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Jailer+2%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Kitti/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Kitti%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Little Hearts: Madness of Love/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Little+Hearts%3A+Madness+of+Love%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Maaruvesham/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Maaruvesham%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Nizhalilirundhu Velicham/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nizhalilirundhu+Velicham%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Obstacle/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Obstacle%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Radhimaa (Documentary)/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Radhimaa+%28Documentary%29%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Sigma/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Sigma%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/THE BRANDOS/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22THE+BRANDOS%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Thaainilam/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Thaainilam%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/The Staircase/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22The+Staircase%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Titanic/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Titanic%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/To Love Her Again/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22To+Love+Her+Again%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Yezhu Kadal Yezhu Malai/Tamil Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Yezhu+Kadal+Yezhu+Malai%22+%22Tamil+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/All Pass/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22All+Pass%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Anbil Avan/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Anbil+Avan%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Baththa/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Baththa%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Cuddle Caf\u00e9/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Cuddle+Caf%C3%A9%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Drones/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Drones%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Haiku/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Haiku%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Jailer 2/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Jailer+2%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Kitti/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Kitti%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Little Hearts: Madness of Love/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Little+Hearts%3A+Madness+of+Love%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Maaruvesham/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Maaruvesham%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Nizhalilirundhu Velicham/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Nizhalilirundhu+Velicham%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Obstacle/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Obstacle%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Radhimaa (Documentary)/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Radhimaa+%28Documentary%29%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Sigma/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Sigma%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/THE BRANDOS/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22THE+BRANDOS%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Thaainilam/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Thaainilam%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/The Staircase/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22The+Staircase%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Titanic/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Titanic%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/To Love Her Again/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22To+Love+Her+Again%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Channel matrix/Yezhu Kadal Yezhu Malai/KaKi's Talkies: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=8&q=%22Yezhu+Kadal+Yezhu+Malai%22+%22KaKi%27s+Talkies%22+tamil+movie+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Cuddle Caf\u00e9: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Cuddle+Caf%C3%A9%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/All Pass: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22All+Pass%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Anbil Avan: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Anbil+Avan%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none",
+    "Discovery/Baththa: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?key=***&part=snippet&type=video&maxResults=12&q=%22Baththa%22+Tamil+movie+review+public+review&relevanceLanguage=ta&regionCode=IN&order=date&safeSearch=none"
+  ]
 }
